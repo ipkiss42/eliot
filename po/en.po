@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eliot 1.9\n"
 "Report-Msgid-Bugs-To: eliot-dev@nongnu.org\n"
-"POT-Creation-Date: 2013-03-10 23:18+0100\n"
+"POT-Creation-Date: 2016-07-16 11:39+0200\n"
 "PO-Revision-Date: 2009-06-28 14:06+0200\n"
 "Last-Translator: Olivier Teulière <ipkiss @@ via.ecp.fr>\n"
 "Language-Team: English <LL@li.org>\n"
@@ -33,17 +33,17 @@ msgstr ""
 msgid "Could not open file '%1%'"
 msgstr ""
 
-#: dic/compdic.cpp:268
+#: dic/compdic.cpp:272
 #, boost-format
-msgid "Error on line %1%, col %2%: %3%"
+msgid "Error in the word list on line %1%, col %2%: %3%"
 msgstr ""
 
-#: dic/compdic.cpp:348
+#: dic/compdic.cpp:352
 #, boost-format
 msgid "Cannot open output file '%1%'"
 msgstr ""
 
-#: dic/compdic.cpp:360
+#: dic/compdic.cpp:364
 msgid "The word list is empty!"
 msgstr ""
 
@@ -284,7 +284,7 @@ msgstr ""
 #: qt/arbitration_widget.cpp:109 qt/bag_widget.cpp:57
 #: qt/dic_tools_widget.cpp:112 qt/dic_wizard.cpp:220 qt/history_widget.cpp:85
 #: qt/topping_widget.cpp:107 qt/training_widget.cpp:73
-#: qt/ui/arbitration_widget.ui.h:211
+#: qt/ui/arbitration_widget.ui.h:210
 msgid "Points"
 msgstr ""
 
@@ -419,114 +419,114 @@ msgstr ""
 msgid "Player %1%"
 msgstr ""
 
-#: game/hints.cpp:49 qt/score_widget.cpp:50
+#: game/hints.cpp:57 qt/score_widget.cpp:50
 msgid "Score"
 msgstr ""
 
-#: game/hints.cpp:50
+#: game/hints.cpp:58
 msgid "Get the score of the move"
 msgstr ""
 
-#: game/hints.cpp:57
+#: game/hints.cpp:66
 #, boost-format
 msgid "Score: %1%"
 msgstr ""
 
-#: game/hints.cpp:63
+#: game/hints.cpp:72
 msgid "Orientation"
 msgstr ""
 
-#: game/hints.cpp:64
+#: game/hints.cpp:73
 msgid "Get the orientation of the move (horizontal/vertical)"
 msgstr ""
 
-#: game/hints.cpp:73
+#: game/hints.cpp:83
 #, boost-format
 msgid "Orientation: %1%"
 msgstr ""
 
-#: game/hints.cpp:75
+#: game/hints.cpp:85
 msgid "horizontal"
 msgstr ""
 
-#: game/hints.cpp:77
+#: game/hints.cpp:87
 msgid "vertical"
 msgstr ""
 
-#: game/hints.cpp:84
+#: game/hints.cpp:94
 msgid "Position"
 msgstr ""
 
-#: game/hints.cpp:85
+#: game/hints.cpp:95
 msgid "Get the coordinates of the move"
 msgstr ""
 
-#: game/hints.cpp:93
+#: game/hints.cpp:104
 #, boost-format
 msgid "Position: %1%"
 msgstr ""
 
-#: game/hints.cpp:100
+#: game/hints.cpp:111
 msgid "Length"
 msgstr ""
 
-#: game/hints.cpp:101
+#: game/hints.cpp:112
 msgid "Get the length of the word"
 msgstr ""
 
-#: game/hints.cpp:109
+#: game/hints.cpp:121
 #, boost-format
 msgid "Length: %1% letters"
 msgstr ""
 
-#: game/hints.cpp:116
+#: game/hints.cpp:128
 msgid "Letters from board"
 msgstr ""
 
-#: game/hints.cpp:117
+#: game/hints.cpp:129
 msgid "Get the letters of the word coming from the board"
 msgstr ""
 
-#: game/hints.cpp:133
+#: game/hints.cpp:146
 #, boost-format
 msgid "Letters from board: %1%"
 msgstr ""
 
-#: game/hints.cpp:134
+#: game/hints.cpp:147
 msgid "(none)"
 msgstr ""
 
-#: game/hints.cpp:140
+#: game/hints.cpp:153
 msgid "Word letters"
 msgstr ""
 
-#: game/hints.cpp:141
+#: game/hints.cpp:154
 msgid "Get the letters of the word in alphabetical order"
 msgstr ""
 
-#: game/hints.cpp:153
+#: game/hints.cpp:175
 #, boost-format
 msgid "Word letters: %1%"
 msgstr ""
 
-#: game/hints.cpp:160
+#: game/hints.cpp:182
 msgid "First letter"
 msgstr ""
 
-#: game/hints.cpp:161
+#: game/hints.cpp:183
 msgid "Get the first letter of the word"
 msgstr ""
 
-#: game/hints.cpp:169
+#: game/hints.cpp:192
 #, boost-format
 msgid "First letter: %1%"
 msgstr ""
 
-#: game/topping.cpp:216 qt/main_window.cpp:492 qt/ui/new_game.ui.h:282
+#: game/topping.cpp:228 qt/main_window.cpp:492 qt/ui/new_game.ui.h:281
 msgid "Topping"
 msgstr ""
 
-#: game/training.cpp:185 qt/main_window.cpp:441 qt/ui/new_game.ui.h:280
+#: game/training.cpp:185 qt/main_window.cpp:441 qt/ui/new_game.ui.h:279
 msgid "Training"
 msgstr ""
 
@@ -614,18 +614,18 @@ msgid "Invalid player type for player %1%"
 msgstr ""
 
 #: qt/arbit_assignments.cpp:60 qt/stats_widget.cpp:199
-#: qt/ui/tables_dialog.ui.h:82
+#: qt/ui/tables_dialog.ui.h:81
 msgid "Table"
 msgstr ""
 
 #: qt/arbit_assignments.cpp:61 qt/history_widget.cpp:118
-#: qt/score_widget.cpp:49 qt/ui/tables_dialog.ui.h:80
+#: qt/score_widget.cpp:49 qt/ui/tables_dialog.ui.h:79
 msgid "Player"
 msgstr ""
 
 #: qt/arbit_assignments.cpp:62 qt/arbitration_widget.cpp:107
 #: qt/history_widget.cpp:83 qt/topping_widget.cpp:105
-#: qt/training_widget.cpp:71 qt/ui/arbitration_widget.ui.h:209
+#: qt/training_widget.cpp:71 qt/ui/arbitration_widget.ui.h:208
 msgid "Word"
 msgstr ""
 
@@ -671,7 +671,7 @@ msgid "Not selected yet"
 msgstr ""
 
 #: qt/arbit_assignments.cpp:280 qt/arbit_assignments.cpp:303
-#: qt/arbitration_widget.cpp:562
+#: qt/arbitration_widget.cpp:556
 msgid "Assign move (%1) to the selected player(s)"
 msgstr ""
 
@@ -679,7 +679,7 @@ msgstr ""
 msgid "none"
 msgstr ""
 
-#: qt/arbit_assignments.cpp:302 qt/arbitration_widget.cpp:561
+#: qt/arbit_assignments.cpp:302 qt/arbitration_widget.cpp:555
 msgid "Assign selected move (%1)"
 msgstr ""
 
@@ -699,11 +699,11 @@ msgstr ""
 msgid "Suppress the currently assigned move for the selected player(s)"
 msgstr ""
 
-#: qt/arbit_assignments.cpp:331 qt/arbitration_widget.cpp:552
+#: qt/arbit_assignments.cpp:331 qt/arbitration_widget.cpp:546
 msgid "Select all players"
 msgstr ""
 
-#: qt/arbit_assignments.cpp:332 qt/arbitration_widget.cpp:553
+#: qt/arbit_assignments.cpp:332 qt/arbitration_widget.cpp:547
 msgid "Select all the players"
 msgstr ""
 
@@ -798,43 +798,43 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: qt/arbitration_widget.cpp:317
+#: qt/arbitration_widget.cpp:315
 msgid "Invalid"
 msgstr ""
 
-#: qt/arbitration_widget.cpp:360
+#: qt/arbitration_widget.cpp:358
 msgid ""
 "Some player(s) already have an assigned move. These moves will be lost if "
 "you change the rack."
 msgstr ""
 
-#: qt/arbitration_widget.cpp:362
+#: qt/arbitration_widget.cpp:360
 msgid "Do you really want to change the rack?"
 msgstr ""
 
-#: qt/arbitration_widget.cpp:428
+#: qt/arbitration_widget.cpp:426
 msgid ""
 "Warning: Cannot set the rack to '%1':\n"
 "%2"
 msgstr ""
 
-#: qt/arbitration_widget.cpp:505 qt/training_widget.cpp:356
+#: qt/arbitration_widget.cpp:499 qt/training_widget.cpp:356
 msgid "Searching with rack '%1'..."
 msgstr ""
 
-#: qt/arbitration_widget.cpp:508 qt/training_widget.cpp:358
+#: qt/arbitration_widget.cpp:502 qt/training_widget.cpp:358
 msgid "Search done"
 msgstr ""
 
-#: qt/arbitration_widget.cpp:540
+#: qt/arbitration_widget.cpp:534
 msgid "Use as master move"
 msgstr ""
 
-#: qt/arbitration_widget.cpp:541
+#: qt/arbitration_widget.cpp:535
 msgid "Use the selected move (%1) as master move"
 msgstr ""
 
-#: qt/arbitration_widget.cpp:639
+#: qt/arbitration_widget.cpp:633
 msgid "Player at table %1 selected (%2)"
 msgstr ""
 
@@ -855,8 +855,8 @@ msgid "Show definition of '%1' in an external browser"
 msgstr ""
 
 #: qt/dic_tools_widget.cpp:101 qt/dic_tools_widget.cpp:106
-#: qt/ui/arbitration_widget.ui.h:204 qt/ui/player_widget.ui.h:160
-#: qt/ui/topping_widget.ui.h:198 qt/ui/training_widget.ui.h:186
+#: qt/ui/arbitration_widget.ui.h:203 qt/ui/player_widget.ui.h:159
+#: qt/ui/topping_widget.ui.h:197 qt/ui/training_widget.ui.h:185
 msgid "Rack:"
 msgstr ""
 
@@ -1060,11 +1060,11 @@ msgstr ""
 msgid "Remove player"
 msgstr ""
 
-#: qt/fav_players.cpp:77 qt/ui/new_game.ui.h:295
+#: qt/fav_players.cpp:77 qt/ui/new_game.ui.h:294
 msgid "Move selection upwards"
 msgstr ""
 
-#: qt/fav_players.cpp:80 qt/ui/new_game.ui.h:298
+#: qt/fav_players.cpp:80 qt/ui/new_game.ui.h:297
 msgid "Move selection downwards"
 msgstr ""
 
@@ -1136,7 +1136,7 @@ msgstr ""
 msgid "Turn"
 msgstr ""
 
-#: qt/history_widget.cpp:82 qt/ui/arbitration_widget.ui.h:203
+#: qt/history_widget.cpp:82 qt/ui/arbitration_widget.ui.h:202
 msgid "Rack"
 msgstr ""
 
@@ -1148,11 +1148,11 @@ msgstr ""
 msgid "Game %"
 msgstr ""
 
-#: qt/history_widget.cpp:216 qt/main_window.cpp:1168 utils/ncurses.cpp:429
+#: qt/history_widget.cpp:216 qt/main_window.cpp:1168 utils/curses_intf.cpp:429
 msgid "(NO MOVE)"
 msgstr ""
 
-#: qt/history_widget.cpp:221 qt/main_window.cpp:1174 utils/ncurses.cpp:431
+#: qt/history_widget.cpp:221 qt/main_window.cpp:1174 utils/curses_intf.cpp:431
 msgid "(PASS)"
 msgstr ""
 
@@ -1160,7 +1160,7 @@ msgstr ""
 msgid "&Game"
 msgstr ""
 
-#: qt/main_window.cpp:157 qt/main_window.cpp:1332 qt/ui/main_window.ui.h:145
+#: qt/main_window.cpp:157 qt/main_window.cpp:1332 qt/ui/main_window.ui.h:144
 msgid "Board"
 msgstr ""
 
@@ -1191,7 +1191,8 @@ msgstr ""
 msgid "No game"
 msgstr ""
 
-#: qt/main_window.cpp:440 utils/ncurses.cpp:1118 qt/ui/prefs_dialog.ui.h:667
+#: qt/main_window.cpp:440 utils/curses_intf.cpp:1118
+#: qt/ui/prefs_dialog.ui.h:666
 msgid "Training mode"
 msgstr ""
 
@@ -1203,7 +1204,7 @@ msgstr ""
 msgid "Arbitration"
 msgstr ""
 
-#: qt/main_window.cpp:491 qt/ui/prefs_dialog.ui.h:691
+#: qt/main_window.cpp:491 qt/ui/prefs_dialog.ui.h:690
 msgid "Topping mode"
 msgstr ""
 
@@ -1211,11 +1212,11 @@ msgstr ""
 msgid "Duplicate game"
 msgstr ""
 
-#: qt/main_window.cpp:513 qt/ui/new_game.ui.h:279
+#: qt/main_window.cpp:513 qt/ui/new_game.ui.h:278
 msgid "Free game"
 msgstr ""
 
-#: qt/main_window.cpp:514 qt/ui/main_window.ui.h:147 qt/ui/new_game.ui.h:291
+#: qt/main_window.cpp:514 qt/ui/main_window.ui.h:146 qt/ui/new_game.ui.h:290
 msgid "Players"
 msgstr ""
 
@@ -1307,7 +1308,7 @@ msgstr ""
 msgid "The word contains too many letters from the rack"
 msgstr ""
 
-#: qt/main_window.cpp:774 utils/ncurses.cpp:589
+#: qt/main_window.cpp:774 utils/curses_intf.cpp:589
 msgid "Incorrect or misplaced word"
 msgstr ""
 
@@ -1525,11 +1526,11 @@ msgstr ""
 msgid "&Bag"
 msgstr ""
 
-#: qt/main_window.cpp:881 qt/ui/main_window.ui.h:129
+#: qt/main_window.cpp:881 qt/ui/main_window.ui.h:128
 msgid "Ctrl+B"
 msgstr ""
 
-#: qt/main_window.cpp:882 qt/ui/main_window.ui.h:127
+#: qt/main_window.cpp:882 qt/ui/main_window.ui.h:126
 msgid "Show/hide the remaining tiles in the bag"
 msgstr ""
 
@@ -1537,19 +1538,19 @@ msgstr ""
 msgid "&External board"
 msgstr ""
 
-#: qt/main_window.cpp:883 qt/ui/main_window.ui.h:134
+#: qt/main_window.cpp:883 qt/ui/main_window.ui.h:133
 msgid "Ctrl+E"
 msgstr ""
 
-#: qt/main_window.cpp:884 qt/ui/main_window.ui.h:132
+#: qt/main_window.cpp:884 qt/ui/main_window.ui.h:131
 msgid "Show/hide the external board"
 msgstr ""
 
-#: qt/main_window.cpp:885 qt/ui/main_window.ui.h:139
+#: qt/main_window.cpp:885 qt/ui/main_window.ui.h:138
 msgid "Ctrl+H"
 msgstr ""
 
-#: qt/main_window.cpp:886 qt/ui/main_window.ui.h:137
+#: qt/main_window.cpp:886 qt/ui/main_window.ui.h:136
 msgid "Show/hide the game history"
 msgstr ""
 
@@ -1573,11 +1574,11 @@ msgstr ""
 msgid "&Dictionary tools"
 msgstr ""
 
-#: qt/main_window.cpp:892 qt/ui/main_window.ui.h:144
+#: qt/main_window.cpp:892 qt/ui/main_window.ui.h:143
 msgid "Ctrl+D"
 msgstr ""
 
-#: qt/main_window.cpp:893 qt/ui/main_window.ui.h:142
+#: qt/main_window.cpp:893 qt/ui/main_window.ui.h:141
 msgid "Show/hide the dictionary tools"
 msgstr ""
 
@@ -1617,7 +1618,7 @@ msgstr ""
 msgid "Loading a saved game will stop the current game."
 msgstr ""
 
-#: qt/main_window.cpp:982 qt/new_game.cpp:353 utils/ncurses.cpp:648
+#: qt/main_window.cpp:982 qt/new_game.cpp:353 utils/curses_intf.cpp:648
 msgid "Load a game"
 msgstr ""
 
@@ -1625,7 +1626,7 @@ msgstr ""
 msgid "Error while loading the game:\n"
 msgstr ""
 
-#: qt/main_window.cpp:1000 utils/ncurses.cpp:661
+#: qt/main_window.cpp:1000 utils/curses_intf.cpp:661
 #, c-format
 msgid "Game loaded"
 msgstr ""
@@ -1670,12 +1671,13 @@ msgstr ""
 msgid "Dictionary creation wizard"
 msgstr ""
 
-#: qt/main_window.cpp:1278 utils/ncurses.cpp:502 qt/ui/main_window.ui.h:125
+#: qt/main_window.cpp:1278 utils/curses_intf.cpp:502
+#: qt/ui/main_window.ui.h:124
 msgid "Bag"
 msgstr ""
 
-#: qt/main_window.cpp:1361 qt/ui/main_window.ui.h:135
-#: qt/ui/main_window.ui.h:146
+#: qt/main_window.cpp:1361 qt/ui/main_window.ui.h:134
+#: qt/ui/main_window.ui.h:145
 msgid "History"
 msgstr ""
 
@@ -1683,12 +1685,12 @@ msgstr ""
 msgid "Statistics"
 msgstr ""
 
-#: qt/main_window.cpp:1396 qt/ui/prefs_dialog.ui.h:624
+#: qt/main_window.cpp:1396 qt/ui/prefs_dialog.ui.h:623
 msgid "Timer"
 msgstr ""
 
-#: qt/main_window.cpp:1409 qt/ui/dic_tools_widget.ui.h:305
-#: qt/ui/main_window.ui.h:140
+#: qt/main_window.cpp:1409 qt/ui/dic_tools_widget.ui.h:304
+#: qt/ui/main_window.ui.h:139
 msgid "Dictionary tools"
 msgstr ""
 
@@ -1706,7 +1708,7 @@ msgstr ""
 
 #. TRANSLATORS: If the website is translated in your language,
 #. feel free to adapt the URL.
-#: qt/main_window.cpp:1438 qt/update_checker.cpp:197
+#: qt/main_window.cpp:1438 qt/update_checker.cpp:199
 msgid "http://www.nongnu.org/eliot/en/"
 msgstr ""
 
@@ -1827,7 +1829,7 @@ msgstr ""
 msgid "Player %1"
 msgstr ""
 
-#: qt/new_game.cpp:115 qt/qtcommon.cpp:155 qt/ui/main_window.ui.h:124
+#: qt/new_game.cpp:115 qt/qtcommon.cpp:155 qt/ui/main_window.ui.h:123
 msgid "Eliot"
 msgstr ""
 
@@ -2172,163 +2174,163 @@ msgid "Update check failed. Please check your internet connection"
 msgstr ""
 
 #. TRANSLATORS: Here %1 represents a version number.
-#: qt/update_checker.cpp:199
+#: qt/update_checker.cpp:201
 msgid "Eliot %1 is available."
 msgstr ""
 
-#: qt/update_checker.cpp:200
+#: qt/update_checker.cpp:202
 msgid "You can download it from %1."
 msgstr ""
 
-#: qt/update_checker.cpp:202
+#: qt/update_checker.cpp:204
 msgid "This message will be displayed at most once a week."
 msgstr ""
 
-#: qt/update_checker.cpp:203
+#: qt/update_checker.cpp:205
 msgid "New version available"
 msgstr ""
 
-#: utils/ncurses.cpp:298
+#: utils/curses_intf.cpp:298
 msgid "Scores"
 msgstr ""
 
-#: utils/ncurses.cpp:302 utils/ncurses.cpp:308
+#: utils/curses_intf.cpp:302 utils/curses_intf.cpp:308
 #, c-format, boost-format
 msgid "%s: %d"
 msgstr ""
 
-#: utils/ncurses.cpp:320
+#: utils/curses_intf.cpp:320
 msgid "Racks"
 msgstr ""
 
-#: utils/ncurses.cpp:324 utils/ncurses.cpp:330
+#: utils/curses_intf.cpp:324 utils/curses_intf.cpp:330
 #, c-format, boost-format
 msgid "%s: %ls"
 msgstr ""
 
-#: utils/ncurses.cpp:344 utils/ncurses.cpp:347
+#: utils/curses_intf.cpp:344 utils/curses_intf.cpp:347
 msgid "Search complete"
 msgstr ""
 
-#: utils/ncurses.cpp:356 qt/ui/training_widget.ui.h:201
+#: utils/curses_intf.cpp:356 qt/ui/training_widget.ui.h:200
 msgid "Search results"
 msgstr ""
 
-#: utils/ncurses.cpp:385
+#: utils/curses_intf.cpp:385
 msgid "History of the game"
 msgstr ""
 
-#: utils/ncurses.cpp:391
+#: utils/curses_intf.cpp:391
 msgid " N |      RACK      |    SOLUTION     | REF | PTS | BONUS"
 msgstr ""
 
-#: utils/ncurses.cpp:456
+#: utils/curses_intf.cpp:456
 msgid "Help"
 msgstr ""
 
-#: utils/ncurses.cpp:460
+#: utils/curses_intf.cpp:460
 msgid "[Global]"
 msgstr ""
 
-#: utils/ncurses.cpp:461
+#: utils/curses_intf.cpp:461
 msgid "   h, H, ?          Show/hide help box"
 msgstr ""
 
-#: utils/ncurses.cpp:462
+#: utils/curses_intf.cpp:462
 msgid "   y, Y             Show/hide history of the game"
 msgstr ""
 
-#: utils/ncurses.cpp:463
+#: utils/curses_intf.cpp:463
 msgid ""
 "   b, B             Show/hide contents of the bag (including letters of the "
 "racks)"
 msgstr ""
 
-#: utils/ncurses.cpp:464
+#: utils/curses_intf.cpp:464
 msgid "   e, E             Show/hide dots on empty squares of the board"
 msgstr ""
 
-#: utils/ncurses.cpp:465
+#: utils/curses_intf.cpp:465
 msgid "   d, D             Check the existence of a word in the dictionary"
 msgstr ""
 
-#: utils/ncurses.cpp:466
+#: utils/curses_intf.cpp:466
 msgid "   j, J             Play a word"
 msgstr ""
 
-#: utils/ncurses.cpp:467
+#: utils/curses_intf.cpp:467
 msgid "   s, S             Save the game"
 msgstr ""
 
-#: utils/ncurses.cpp:468
+#: utils/curses_intf.cpp:468
 msgid "   l, L             Load a game"
 msgstr ""
 
-#: utils/ncurses.cpp:469
+#: utils/curses_intf.cpp:469
 msgid "   q, Q             Quit"
 msgstr ""
 
-#: utils/ncurses.cpp:472
+#: utils/curses_intf.cpp:472
 msgid "[Training mode]"
 msgstr ""
 
-#: utils/ncurses.cpp:473
+#: utils/curses_intf.cpp:473
 msgid "   *                Take a random rack"
 msgstr ""
 
-#: utils/ncurses.cpp:474
+#: utils/curses_intf.cpp:474
 msgid "   +                Complete the current rack randomly"
 msgstr ""
 
-#: utils/ncurses.cpp:475
+#: utils/curses_intf.cpp:475
 msgid "   t, T             Set the rack manually"
 msgstr ""
 
-#: utils/ncurses.cpp:476
+#: utils/curses_intf.cpp:476
 msgid "   c, C             Compute all the possible words"
 msgstr ""
 
-#: utils/ncurses.cpp:477
+#: utils/curses_intf.cpp:477
 msgid "   r, R             Show/hide search results"
 msgstr ""
 
-#: utils/ncurses.cpp:480
+#: utils/curses_intf.cpp:480
 msgid "[Duplicate mode]"
 msgstr ""
 
-#: utils/ncurses.cpp:481
+#: utils/curses_intf.cpp:481
 msgid "   n, N             Switch to the next human player"
 msgstr ""
 
-#: utils/ncurses.cpp:484
+#: utils/curses_intf.cpp:484
 msgid "[Free game mode]"
 msgstr ""
 
-#: utils/ncurses.cpp:485
+#: utils/curses_intf.cpp:485
 msgid "   p, P             Pass your turn (with or without changing letters)"
 msgstr ""
 
-#: utils/ncurses.cpp:488
+#: utils/curses_intf.cpp:488
 msgid "[Miscellaneous]"
 msgstr ""
 
-#: utils/ncurses.cpp:489
+#: utils/curses_intf.cpp:489
 msgid "   <up>, <down>     Navigate in a box line by line"
 msgstr ""
 
-#: utils/ncurses.cpp:490
+#: utils/curses_intf.cpp:490
 msgid "   <pgup>, <pgdown> Navigate in a box page by page"
 msgstr ""
 
-#: utils/ncurses.cpp:491
+#: utils/curses_intf.cpp:491
 msgid "   Ctrl-l           Refresh the screen"
 msgstr ""
 
-#: utils/ncurses.cpp:509
+#: utils/curses_intf.cpp:509
 msgid " LETTER | POINTS | FREQUENCY | REMAINING"
 msgstr ""
 
-#: utils/ncurses.cpp:565
+#: utils/curses_intf.cpp:565
 msgid "Play a word"
 msgstr ""
 
@@ -2336,593 +2338,593 @@ msgstr ""
 #. "Coordinates:". For example:
 #. Pl. word   :
 #. Coordinates:
-#: utils/ncurses.cpp:566 utils/ncurses.cpp:574
+#: utils/curses_intf.cpp:566 utils/curses_intf.cpp:574
 msgid "Played word:"
 msgstr ""
 
-#: utils/ncurses.cpp:567 utils/ncurses.cpp:575
+#: utils/curses_intf.cpp:567 utils/curses_intf.cpp:575
 msgid "Coordinates:"
 msgstr ""
 
-#: utils/ncurses.cpp:599
+#: utils/curses_intf.cpp:599
 msgid "Dictionary"
 msgstr ""
 
-#: utils/ncurses.cpp:600
+#: utils/curses_intf.cpp:600
 msgid "Enter the word to check:"
 msgstr ""
 
-#: utils/ncurses.cpp:609
+#: utils/curses_intf.cpp:609
 #, c-format, boost-format
 msgid "The word '%ls' exists"
 msgstr ""
 
-#: utils/ncurses.cpp:611
+#: utils/curses_intf.cpp:611
 #, c-format, boost-format
 msgid "The word '%ls' does not exist"
 msgstr ""
 
-#: utils/ncurses.cpp:621
+#: utils/curses_intf.cpp:621
 msgid "Save the game"
 msgstr ""
 
-#: utils/ncurses.cpp:622 utils/ncurses.cpp:649
+#: utils/curses_intf.cpp:622 utils/curses_intf.cpp:649
 msgid "Enter the file name:"
 msgstr ""
 
-#: utils/ncurses.cpp:632
+#: utils/curses_intf.cpp:632
 #, c-format, boost-format
 msgid "Game saved in '%ls'"
 msgstr ""
 
-#: utils/ncurses.cpp:637
+#: utils/curses_intf.cpp:637
 #, c-format, boost-format
 msgid "Error saving game %s:"
 msgstr ""
 
-#: utils/ncurses.cpp:666
+#: utils/curses_intf.cpp:666
 msgid "Unable to load game: "
 msgstr ""
 
-#: utils/ncurses.cpp:676
+#: utils/curses_intf.cpp:676
 msgid "Pass your turn"
 msgstr ""
 
-#: utils/ncurses.cpp:677
+#: utils/curses_intf.cpp:677
 msgid "Enter the letters to change:"
 msgstr ""
 
-#: utils/ncurses.cpp:686
+#: utils/curses_intf.cpp:686
 msgid "Cannot pass the turn"
 msgstr ""
 
-#: utils/ncurses.cpp:696
+#: utils/curses_intf.cpp:696
 msgid "Set rack"
 msgstr ""
 
-#: utils/ncurses.cpp:697
+#: utils/curses_intf.cpp:697
 msgid "Enter the new letters:"
 msgstr ""
 
-#: utils/ncurses.cpp:709
+#: utils/curses_intf.cpp:709
 msgid "Cannot take these letters from the bag:"
 msgstr ""
 
-#: utils/ncurses.cpp:1120 qt/ui/prefs_dialog.ui.h:662
+#: utils/curses_intf.cpp:1120 qt/ui/prefs_dialog.ui.h:661
 msgid "Free game mode"
 msgstr ""
 
-#: utils/ncurses.cpp:1122 qt/ui/prefs_dialog.ui.h:649
+#: utils/curses_intf.cpp:1122 qt/ui/prefs_dialog.ui.h:648
 msgid "Duplicate mode"
 msgstr ""
 
-#: utils/ncurses.cpp:1125 qt/ui/new_game.ui.h:284
+#: utils/curses_intf.cpp:1125 qt/ui/new_game.ui.h:283
 msgid "Joker game"
 msgstr ""
 
-#: utils/ncurses.cpp:1126
+#: utils/curses_intf.cpp:1126
 msgid "[h for help]"
 msgstr ""
 
-#: qt/ui/arbit_assignments.ui.h:144
+#: qt/ui/arbit_assignments.ui.h:143
 msgid "Assignments"
 msgstr ""
 
-#: qt/ui/arbit_assignments.ui.h:145
+#: qt/ui/arbit_assignments.ui.h:144
 msgid "Master move:"
 msgstr ""
 
-#: qt/ui/arbit_assignments.ui.h:147
+#: qt/ui/arbit_assignments.ui.h:146
 msgid "Select"
 msgstr ""
 
-#: qt/ui/arbit_assignments.ui.h:148
+#: qt/ui/arbit_assignments.ui.h:147
 msgid "Hide players with an assigned move"
 msgstr ""
 
-#: qt/ui/arbit_assignments.ui.h:149
+#: qt/ui/arbit_assignments.ui.h:148
 msgid "Assign move"
 msgstr ""
 
-#: qt/ui/arbit_assignments.ui.h:151
+#: qt/ui/arbit_assignments.ui.h:150
 msgid "Indicate that the selected player(s) did not play"
 msgstr ""
 
-#: qt/ui/arbit_assignments.ui.h:153
+#: qt/ui/arbit_assignments.ui.h:152
 msgid "Suppress move"
 msgstr ""
 
-#: qt/ui/arbit_assignments.ui.h:155
+#: qt/ui/arbit_assignments.ui.h:154
 msgid "Validate the current turn and start a new one"
 msgstr ""
 
-#: qt/ui/arbit_assignments.ui.h:157
+#: qt/ui/arbit_assignments.ui.h:156
 msgid "&End turn"
 msgstr ""
 
-#: qt/ui/arbitration_widget.ui.h:205
+#: qt/ui/arbitration_widget.ui.h:204
 msgid "Random"
 msgstr ""
 
-#: qt/ui/arbitration_widget.ui.h:206 qt/ui/dic_tools_widget.ui.h:308
-#: qt/ui/dic_tools_widget.ui.h:310
+#: qt/ui/arbitration_widget.ui.h:205 qt/ui/dic_tools_widget.ui.h:307
+#: qt/ui/dic_tools_widget.ui.h:309
 msgid "Search"
 msgstr ""
 
-#: qt/ui/arbitration_widget.ui.h:207
+#: qt/ui/arbitration_widget.ui.h:206
 msgid "Possible words"
 msgstr ""
 
-#: qt/ui/arbitration_widget.ui.h:208
+#: qt/ui/arbitration_widget.ui.h:207
 msgid "Filter results:"
 msgstr ""
 
-#: qt/ui/arbitration_widget.ui.h:212 qt/ui/topping_widget.ui.h:202
+#: qt/ui/arbitration_widget.ui.h:211 qt/ui/topping_widget.ui.h:201
 msgid "Word:"
 msgstr ""
 
-#: qt/ui/arbitration_widget.ui.h:213 qt/ui/player_widget.ui.h:164
-#: qt/ui/topping_widget.ui.h:203 qt/ui/training_widget.ui.h:188
+#: qt/ui/arbitration_widget.ui.h:212 qt/ui/player_widget.ui.h:163
+#: qt/ui/topping_widget.ui.h:202 qt/ui/training_widget.ui.h:187
 msgid "Ref.:"
 msgstr ""
 
-#: qt/ui/arbitration_widget.ui.h:214
+#: qt/ui/arbitration_widget.ui.h:213
 msgid "Check word"
 msgstr ""
 
-#: qt/ui/bag_widget.ui.h:110
+#: qt/ui/bag_widget.ui.h:109
 msgid "Remaining vowels:"
 msgstr ""
 
-#: qt/ui/bag_widget.ui.h:112
+#: qt/ui/bag_widget.ui.h:111
 msgid "Remaining consonants:"
 msgstr ""
 
-#: qt/ui/bag_widget.ui.h:114
+#: qt/ui/bag_widget.ui.h:113
 msgid "Remaining jokers:"
 msgstr ""
 
-#: qt/ui/dic_tools_widget.ui.h:307
+#: qt/ui/dic_tools_widget.ui.h:306
 msgid "Check"
 msgstr ""
 
-#: qt/ui/dic_tools_widget.ui.h:309
+#: qt/ui/dic_tools_widget.ui.h:308
 msgid "Plus 1"
 msgstr ""
 
-#: qt/ui/dic_tools_widget.ui.h:311
+#: qt/ui/dic_tools_widget.ui.h:310
 msgid "Save list..."
 msgstr ""
 
-#: qt/ui/dic_tools_widget.ui.h:312
+#: qt/ui/dic_tools_widget.ui.h:311
 msgid "Minimum length:"
 msgstr ""
 
-#: qt/ui/dic_tools_widget.ui.h:313
+#: qt/ui/dic_tools_widget.ui.h:312
 msgid "Maximum length:"
 msgstr ""
 
-#: qt/ui/dic_tools_widget.ui.h:314
+#: qt/ui/dic_tools_widget.ui.h:313
 msgid "Note: only the 1000 first results have been displayed"
 msgstr ""
 
-#: qt/ui/dic_tools_widget.ui.h:315
+#: qt/ui/dic_tools_widget.ui.h:314
 msgid "Regular expressions"
 msgstr ""
 
-#: qt/ui/dic_tools_widget.ui.h:316 qt/ui/dic_wizard_info_page.ui.h:142
+#: qt/ui/dic_tools_widget.ui.h:315 qt/ui/dic_wizard_info_page.ui.h:141
 msgid "Dictionary name:"
 msgstr ""
 
-#: qt/ui/dic_tools_widget.ui.h:317
+#: qt/ui/dic_tools_widget.ui.h:316
 msgid "Letters:"
 msgstr ""
 
-#: qt/ui/dic_tools_widget.ui.h:318
+#: qt/ui/dic_tools_widget.ui.h:317
 msgid "Number of words:"
 msgstr ""
 
-#: qt/ui/dic_tools_widget.ui.h:319
+#: qt/ui/dic_tools_widget.ui.h:318
 msgid "Save words list..."
 msgstr ""
 
-#: qt/ui/dic_tools_widget.ui.h:320
+#: qt/ui/dic_tools_widget.ui.h:319
 msgid "Dic. info."
 msgstr ""
 
-#: qt/ui/dic_wizard_conclusion_page.ui.h:68
-#: qt/ui/dic_wizard_info_page.ui.h:145 qt/ui/dic_wizard_info_page.ui.h:146
-#: qt/ui/dic_wizard_info_page.ui.h:147
-#: qt/ui/dic_wizard_letters_def_page.ui.h:91
+#: qt/ui/dic_wizard_conclusion_page.ui.h:67
+#: qt/ui/dic_wizard_info_page.ui.h:144 qt/ui/dic_wizard_info_page.ui.h:145
+#: qt/ui/dic_wizard_info_page.ui.h:146
+#: qt/ui/dic_wizard_letters_def_page.ui.h:90
 msgid "Description"
 msgstr ""
 
-#: qt/ui/dic_wizard_conclusion_page.ui.h:69
+#: qt/ui/dic_wizard_conclusion_page.ui.h:68
 msgid "Load this dictionary in Eliot"
 msgstr ""
 
-#: qt/ui/dic_wizard_info_page.ui.h:143 qt/ui/dic_wizard_info_page.ui.h:144
-#: qt/ui/new_game.ui.h:290 qt/ui/prefs_dialog.ui.h:638
+#: qt/ui/dic_wizard_info_page.ui.h:142 qt/ui/dic_wizard_info_page.ui.h:143
+#: qt/ui/new_game.ui.h:289 qt/ui/prefs_dialog.ui.h:637
 msgid "Browse..."
 msgstr ""
 
-#: qt/ui/dic_wizard_info_page.ui.h:148
+#: qt/ui/dic_wizard_info_page.ui.h:147
 msgid "Generated dictionary:"
 msgstr ""
 
-#: qt/ui/dic_wizard_info_page.ui.h:149
+#: qt/ui/dic_wizard_info_page.ui.h:148
 msgid "Word list:"
 msgstr ""
 
-#: qt/ui/dic_wizard_letters_def_page.ui.h:92
+#: qt/ui/dic_wizard_letters_def_page.ui.h:91
 msgid "Load letters from word list"
 msgstr ""
 
-#: qt/ui/dic_wizard_letters_def_page.ui.h:94
+#: qt/ui/dic_wizard_letters_def_page.ui.h:93
 msgid ""
 "Use the values for the current dictionary for all the letters below (unknown "
 "letters will be ignored)"
 msgstr ""
 
-#: qt/ui/dic_wizard_letters_def_page.ui.h:96
+#: qt/ui/dic_wizard_letters_def_page.ui.h:95
 msgid "Use values from current dictionary"
 msgstr ""
 
-#: qt/ui/main_window.ui.h:130
+#: qt/ui/main_window.ui.h:129
 msgid "External board"
 msgstr ""
 
-#: qt/ui/new_game.ui.h:275
+#: qt/ui/new_game.ui.h:274
 msgid "New game"
 msgstr ""
 
-#: qt/ui/new_game.ui.h:276
+#: qt/ui/new_game.ui.h:275
 msgid "Game type"
 msgstr ""
 
-#: qt/ui/new_game.ui.h:277
+#: qt/ui/new_game.ui.h:276
 msgid "Mode:"
 msgstr ""
 
-#: qt/ui/new_game.ui.h:278
+#: qt/ui/new_game.ui.h:277
 msgid "Duplicate"
 msgstr ""
 
-#: qt/ui/new_game.ui.h:281
+#: qt/ui/new_game.ui.h:280
 msgid "Arbitration (duplicate)"
 msgstr ""
 
-#: qt/ui/new_game.ui.h:283
+#: qt/ui/new_game.ui.h:282
 msgid "Variant:"
 msgstr ""
 
-#: qt/ui/new_game.ui.h:285
+#: qt/ui/new_game.ui.h:284
 msgid "Explosive game"
 msgstr ""
 
-#: qt/ui/new_game.ui.h:286
+#: qt/ui/new_game.ui.h:285
 msgid "7 among 8"
 msgstr ""
 
-#: qt/ui/new_game.ui.h:287
+#: qt/ui/new_game.ui.h:286
 msgid "Master game"
 msgstr ""
 
-#: qt/ui/new_game.ui.h:288
+#: qt/ui/new_game.ui.h:287
 msgid "Use a master game"
 msgstr ""
 
-#: qt/ui/new_game.ui.h:289
+#: qt/ui/new_game.ui.h:288
 msgid "Saved game to use:"
 msgstr ""
 
-#: qt/ui/new_game.ui.h:292
+#: qt/ui/new_game.ui.h:291
 msgid "Add &player"
 msgstr ""
 
-#: qt/ui/new_game.ui.h:293
+#: qt/ui/new_game.ui.h:292
 msgid "Add &favorite players..."
 msgstr ""
 
-#: qt/ui/player_widget.ui.h:161 qt/ui/topping_widget.ui.h:199
+#: qt/ui/player_widget.ui.h:160 qt/ui/topping_widget.ui.h:198
 msgid "Shu&ffle"
 msgstr ""
 
-#: qt/ui/player_widget.ui.h:162
+#: qt/ui/player_widget.ui.h:161
 msgid "Change letters:"
 msgstr ""
 
-#: qt/ui/player_widget.ui.h:163
+#: qt/ui/player_widget.ui.h:162
 msgid "&Pass"
 msgstr ""
 
-#: qt/ui/player_widget.ui.h:165 qt/ui/training_widget.ui.h:187
+#: qt/ui/player_widget.ui.h:164 qt/ui/training_widget.ui.h:186
 msgid "Play a word:"
 msgstr ""
 
-#: qt/ui/player_widget.ui.h:167 qt/ui/player_widget.ui.h:170
-#: qt/ui/topping_widget.ui.h:205 qt/ui/topping_widget.ui.h:208
+#: qt/ui/player_widget.ui.h:166 qt/ui/player_widget.ui.h:169
+#: qt/ui/topping_widget.ui.h:204 qt/ui/topping_widget.ui.h:207
 msgid ""
 "Enter the word to play (case-insensitive). A joker from the rack must be "
 "written in parentheses. E.g.: w(o)rd or W(O)RD"
 msgstr ""
 
-#: qt/ui/player_widget.ui.h:172 qt/ui/topping_widget.ui.h:200
-#: qt/ui/training_widget.ui.h:196
+#: qt/ui/player_widget.ui.h:171 qt/ui/topping_widget.ui.h:199
+#: qt/ui/training_widget.ui.h:195
 msgid "Play"
 msgstr ""
 
-#: qt/ui/player_widget.ui.h:174 qt/ui/player_widget.ui.h:177
-#: qt/ui/topping_widget.ui.h:211 qt/ui/topping_widget.ui.h:214
-#: qt/ui/training_widget.ui.h:190 qt/ui/training_widget.ui.h:193
+#: qt/ui/player_widget.ui.h:173 qt/ui/player_widget.ui.h:176
+#: qt/ui/topping_widget.ui.h:210 qt/ui/topping_widget.ui.h:213
+#: qt/ui/training_widget.ui.h:189 qt/ui/training_widget.ui.h:192
 msgid ""
 "Enter the coordinates of the word. Specify the row before the column for "
 "horizontal words, and the column before the row for vertical words. E.g.: H4 "
 "or 4H"
 msgstr ""
 
-#: qt/ui/player_widget.ui.h:179 qt/ui/training_widget.ui.h:195
+#: qt/ui/player_widget.ui.h:178 qt/ui/training_widget.ui.h:194
 msgid "Points:"
 msgstr ""
 
-#: qt/ui/player_widget.ui.h:181
+#: qt/ui/player_widget.ui.h:180
 msgid "Enter the letters you want to change"
 msgstr ""
 
-#: qt/ui/player_widget.ui.h:183
+#: qt/ui/player_widget.ui.h:182
 msgid "&Change"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:623
+#: qt/ui/prefs_dialog.ui.h:622
 msgid "Preferences"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:625
+#: qt/ui/prefs_dialog.ui.h:624
 msgid "Alert level (in seconds):"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:626
+#: qt/ui/prefs_dialog.ui.h:625
 msgid "Timer total duration (in seconds):"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:627
+#: qt/ui/prefs_dialog.ui.h:626
 msgid "Timer beeps"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:628
+#: qt/ui/prefs_dialog.ui.h:627
 msgid "Start timer automatically when the rack changes"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:629
+#: qt/ui/prefs_dialog.ui.h:628
 msgid "Miscellaneous"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:630
+#: qt/ui/prefs_dialog.ui.h:629
 msgid "Definitions site:"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:631
+#: qt/ui/prefs_dialog.ui.h:630
 msgid "Dictionary path:"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:633
+#: qt/ui/prefs_dialog.ui.h:632
 msgid "Enter the dictionary path (mandatory to start a game)"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:636
+#: qt/ui/prefs_dialog.ui.h:635
 msgid "Open a browser window to choose the dictionary"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:640
+#: qt/ui/prefs_dialog.ui.h:639
 msgid "Show/hide the tiles points on the board."
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:642
+#: qt/ui/prefs_dialog.ui.h:641
 msgid "Display tiles points"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:644
+#: qt/ui/prefs_dialog.ui.h:643
 msgid ""
 "If checked, the game and player histories will display the rack and the "
 "corresponding solution on the same line"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:646
+#: qt/ui/prefs_dialog.ui.h:645
 msgid "Align the rack and the solution in history"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:647
+#: qt/ui/prefs_dialog.ui.h:646
 msgid "Check periodically for new versions"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:648
+#: qt/ui/prefs_dialog.ui.h:647
 msgid "Interface"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:651 qt/ui/prefs_dialog.ui.h:664
+#: qt/ui/prefs_dialog.ui.h:650 qt/ui/prefs_dialog.ui.h:663
 msgid ""
 "If checked, playing an invalid or misplaced word will not be possible. If "
 "unchecked, you will get 0 point and lose your turn"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:653 qt/ui/prefs_dialog.ui.h:666
+#: qt/ui/prefs_dialog.ui.h:652 qt/ui/prefs_dialog.ui.h:665
 msgid "Refuse to play invalid moves"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:654 qt/ui/prefs_dialog.ui.h:689
+#: qt/ui/prefs_dialog.ui.h:653 qt/ui/prefs_dialog.ui.h:688
 msgid "Min. players for a solo:"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:655 qt/ui/prefs_dialog.ui.h:685
+#: qt/ui/prefs_dialog.ui.h:654 qt/ui/prefs_dialog.ui.h:684
 msgid "Solo value:"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:657 qt/ui/prefs_dialog.ui.h:687
+#: qt/ui/prefs_dialog.ui.h:656 qt/ui/prefs_dialog.ui.h:686
 msgid "Value of the solo bonus. Set it to 0 if you don't want solo bonus"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:660 qt/ui/prefs_dialog.ui.h:678
+#: qt/ui/prefs_dialog.ui.h:659 qt/ui/prefs_dialog.ui.h:677
 msgid "Minimum number of players needed to take into account the solo bonus"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:668 qt/ui/prefs_dialog.ui.h:690
+#: qt/ui/prefs_dialog.ui.h:667 qt/ui/prefs_dialog.ui.h:689
 msgid "Search results limit:"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:669
+#: qt/ui/prefs_dialog.ui.h:668
 msgid "Arbitration mode"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:670
+#: qt/ui/prefs_dialog.ui.h:669
 msgid "Choose a master move automatically"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:671
+#: qt/ui/prefs_dialog.ui.h:670
 msgid "Propose a new rack automatically"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:673
+#: qt/ui/prefs_dialog.ui.h:672
 msgid ""
 "If checked, any change to the player rack in training mode will update the "
 "'Plus 1' tab of the 'Dictionary tools' window"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:675
+#: qt/ui/prefs_dialog.ui.h:674
 msgid "Copy rack to the 'Plus 1' dictionary tool"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:676
+#: qt/ui/prefs_dialog.ui.h:675
 msgid "Handle solos automatically"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:680
+#: qt/ui/prefs_dialog.ui.h:679
 msgid "Penalty value:"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:681
+#: qt/ui/prefs_dialog.ui.h:680
 msgid "Warnings limit:"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:683
+#: qt/ui/prefs_dialog.ui.h:682
 msgid "Default number of points for a penalty"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:692
+#: qt/ui/prefs_dialog.ui.h:691
 msgid "Additional penalty given when the timer expires:"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:693
+#: qt/ui/prefs_dialog.ui.h:692
 msgid "Give a 1 point penalty for each elapsed second"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:694
+#: qt/ui/prefs_dialog.ui.h:693
 msgid "Game modes"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:695
+#: qt/ui/prefs_dialog.ui.h:694
 msgid "When a game is on going, ask for a confirmation:"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:696
+#: qt/ui/prefs_dialog.ui.h:695
 msgid "Before starting a new game"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:697
+#: qt/ui/prefs_dialog.ui.h:696
 msgid "Before loading a game"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:698
+#: qt/ui/prefs_dialog.ui.h:697
 msgid "Before loading a dictionary"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:699
+#: qt/ui/prefs_dialog.ui.h:698
 msgid "Before replaying a turn"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:700
+#: qt/ui/prefs_dialog.ui.h:699
 msgid "Before quitting Eliot"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:701
+#: qt/ui/prefs_dialog.ui.h:700
 msgid "In arbitration mode, ask for a confirmation:"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:702
+#: qt/ui/prefs_dialog.ui.h:701
 msgid "Before replacing the selected master move"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:703
+#: qt/ui/prefs_dialog.ui.h:702
 msgid "When selecting a non optimal master move"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:704
+#: qt/ui/prefs_dialog.ui.h:703
 msgid "When selecting a master move using jokers uselessly"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:705
+#: qt/ui/prefs_dialog.ui.h:704
 msgid "Before suppressing a player move"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:706
+#: qt/ui/prefs_dialog.ui.h:705
 msgid "Before replacing a player move"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:707
+#: qt/ui/prefs_dialog.ui.h:706
 msgid "Before losing a player move (with a rack change)"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:708
+#: qt/ui/prefs_dialog.ui.h:707
 msgid "When ending an incomplete turn"
 msgstr ""
 
-#: qt/ui/prefs_dialog.ui.h:709
+#: qt/ui/prefs_dialog.ui.h:708
 msgid "Confirmations"
 msgstr ""
 
-#: qt/ui/tables_dialog.ui.h:78
+#: qt/ui/tables_dialog.ui.h:77
 msgid "Players tables definition"
 msgstr ""
 
-#: qt/ui/topping_widget.ui.h:201
+#: qt/ui/topping_widget.ui.h:200
 msgid "Get hints..."
 msgstr ""
 
-#: qt/ui/topping_widget.ui.h:216
+#: qt/ui/topping_widget.ui.h:215
 msgid "Total score:"
 msgstr ""
 
-#: qt/ui/training_widget.ui.h:197
+#: qt/ui/training_widget.ui.h:196
 msgid "&New rack"
 msgstr ""
 
-#: qt/ui/training_widget.ui.h:198
+#: qt/ui/training_widget.ui.h:197
 msgid "&Complement"
 msgstr ""
 
-#: qt/ui/training_widget.ui.h:199
+#: qt/ui/training_widget.ui.h:198
 msgid "Sea&rch"
 msgstr ""
 
-#: qt/ui/training_widget.ui.h:200
+#: qt/ui/training_widget.ui.h:199
 msgid "&Play selected"
 msgstr ""
