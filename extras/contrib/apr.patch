@@ -1,0 +1,35 @@
+--- configure.orig	2017-10-18 16:50:19.000000000 +0200
++++ configure	2018-07-26 00:01:19.399233574 +0200
+@@ -24542,6 +24542,10 @@
+     ssize_t_fmt="ld"
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: %ld" >&5
+ $as_echo "%ld" >&6; }
++elif test "$ac_cv_sizeof_ssize_t" = "$ac_cv_sizeof_long_long"; then
++    ssize_t_fmt="lld"
++    { $as_echo "$as_me:${as_lineno-$LINENO}: result: %lld" >&5
++$as_echo "%lld" >&6; }
+ else
+     as_fn_error $? "could not determine the proper format for apr_ssize_t" "$LINENO" 5
+ fi
+@@ -24605,6 +24609,10 @@
+     size_t_fmt="ld"
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: %ld" >&5
+ $as_echo "%ld" >&6; }
++elif test "$ac_cv_sizeof_size_t" = "$ac_cv_sizeof_long_long"; then
++    size_t_fmt="lld"
++    { $as_echo "$as_me:${as_lineno-$LINENO}: result: %lld" >&5
++$as_echo "%lld" >&6; }
+ else
+     as_fn_error $? "could not determine the proper format for apr_size_t" "$LINENO" 5
+ fi
+--- Makefile.in.orig	2017-05-31 17:04:18.000000000 +0200
++++ Makefile.in	2018-07-26 09:09:47.318476559 +0200
+@@ -141,7 +141,7 @@
+ 
+ include/private/apr_escape_test_char.h: tools/gen_test_char@EXEEXT@
+ 	$(APR_MKDIR) include/private
+-	tools/gen_test_char@EXEEXT@ > $@
++	wine tools/gen_test_char@EXEEXT@ > $@
+ 
+ LINK_PROG = $(LIBTOOL) $(LTFLAGS) --mode=link $(COMPILE) $(LT_LDFLAGS) \
+ 	    @LT_NO_INSTALL@ $(ALL_LDFLAGS) -o $@

@@ -1,0 +1,11 @@
+--- Makefile.am.orig	2018-01-06 05:58:31.000000000 +0100
++++ Makefile.am	2018-07-26 00:18:30.256491382 +0200
+@@ -1,7 +1,7 @@
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-SUBDIRS = lib doc tinytest tests
++SUBDIRS = lib tinytest tests
+ 
+ if BUILDEXAMPLES
+ SUBDIRS += examples
