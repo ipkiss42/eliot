@@ -209,11 +209,11 @@ AC_ARG_ENABLE([text],AS_HELP_STRING([--enable-text],[text interface support (def
 AM_CONDITIONAL([BUILD_TEXT], [test "${enable_text}" != "no"])
 
 dnl Internationalization macros
-AM_GNU_GETTEXT_VERSION(0.18.1)
-AM_GNU_GETTEXT
+AM_GNU_GETTEXT_VERSION(0.20)
+AM_GNU_GETTEXT([external])
 
 dnl Iconv
-dnl This test depends on AM_GNU_GETTEXT executed before
+AM_ICONV
 AS_IF([test "$am_cv_func_iconv" != "yes"],
       [AC_MSG_ERROR([libiconv is needed for Eliot to work properly])])
 
@@ -240,7 +240,7 @@ fi
 dnl --------------------------------------------------------------
 dnl Output
 dnl --------------------------------------------------------------
-AC_CONFIG_FILES(intl/Makefile po/Makefile.in
+AC_CONFIG_FILES(po/Makefile.in
 dic/Makefile
 game/Makefile
 utils/Makefile
