@@ -165,11 +165,11 @@ else
 fi
 AM_CONDITIONAL([BUILD_NCURSES], [test "${want_ncurses}" = "1"])
 
-dnl Check for Qt
-AC_ARG_ENABLE([qt],AS_HELP_STRING([--enable-qt],
-              [Qt4 interface support (default enabled)]))
+dnl Check for Qt4
+AC_ARG_ENABLE([qt],AS_HELP_STRING([--enable-qt4],
+              [Qt4 interface support (default disabled)]))
 qt4_ok=0
-AS_IF([test "${enable_qt}" != "no"],
+AS_IF([test "${enable_qt4}" = "yes"],
       [PKG_CHECK_MODULES(QT, [QtCore QtGui QtNetwork >= 4.2.0],
                          [qt4_ok=1
                           dnl Check for the qt4 suffix first (useful on Archlinux, which uses qt5 by default)
@@ -182,12 +182,12 @@ AS_IF([test "${enable_qt}" != "no"],
                          [AC_MSG_ERROR([Could not find Qt on your system (using pkg-config)])]
                         )
       ])
-dnl Check for Qt5
-AC_ARG_ENABLE([qt5],AS_HELP_STRING([--enable-qt5],
-              [Qt5 interface support (default disabled)]))
+dnl Check for Qt
+AC_ARG_ENABLE([qt5],AS_HELP_STRING([--enable-qt],
+              [Qt5 interface support (default enabled)]))
 qt5_ok=0
-AS_IF([test "${enable_qt5}" = "yes"],
-      [PKG_CHECK_MODULES(QT, [Qt5Core Qt5Gui Qt5Widgets Qt5PrintSupport Qt5Network >= 5.1.0],
+AS_IF([test "${enable_qt}" != "no"],
+      [PKG_CHECK_MODULES([QT], [Qt5PrintSupport Qt5Widgets Qt5Gui Qt5Core Qt5Network >= 5.1.0],
                          [qt5_ok=1
                           AC_PATH_PROGS(MOC, moc, moc,`$PKG_CONFIG --variable=exec_prefix Qt5Core`/bin)
                           AC_PATH_PROGS(UIC, uic, uic,`$PKG_CONFIG --variable=exec_prefix Qt5Core`/bin)
