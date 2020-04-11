@@ -1,9 +1,9 @@
 APR_VERSION := 1.6.5
 APU_VERSION := 1.6.1
 ARABICA_VERSION := 2016-January
-BOOST_VERSION := 1.68.0
-EXPAT_VERSION := 2.2.6
-ICONV_VERSION := 1.15
+BOOST_VERSION := 1.72.0
+EXPAT_VERSION := 2.2.9
+ICONV_VERSION := 1.16
 LIBCONFIG_VERSION := 1.7.2
 LIBXML2_VERSION := 2.9.8
 LOG4CXX_VERSION := 0.10.0
@@ -11,7 +11,7 @@ QT_VERSION := 4.5.3
 QT2_VERSION := 5.6.3
 XERCES_VERSION := 3.2.2
 
-HOST := x86_64-w64-mingw32
+HOST := i686-w64-mingw32
 BUILD := i386-linux
 
 
@@ -24,10 +24,10 @@ WGET = wget -c -P $(ARCHIVE_DIR)
 TAR = tar -C $(BUILD_DIR)
 
 # XXX: Hardcoded for mingw on linux, at the moment
-CC = x86_64-w64-mingw32-gcc
-CXX = x86_64-w64-mingw32-g++
+CC = $(HOST)-gcc
+CXX = $(HOST)-g++
 CPPFLAGS += -I$(PREFIX)/include
-CONFIGURE = CC="$(CC)" CXX="$(CXX)" CPPFLAGS="$(CPPFLAGS)" ./configure --host=$(HOST) --build=$(BUILD) --prefix=$(PREFIX)
+CONFIGURE = CC="$(CC)" CXX="$(CXX)" CPPFLAGS="$(CPPFLAGS)" ./configure --host=$(HOST) --build=$(BUILD) --prefix=$(PREFIX) --enable-static --disable-shared
 
 # Dependencies (incomplete list):
 # expat <- apr <- apu <- log4cxx
@@ -76,7 +76,11 @@ $(APR_DIR_FLAG): $(APR_ARCHIVE)
 	touch $@
 
 .apr: $(APR_DIR_FLAG)
-	(cd $(APR_DIR) && patch -p0 < $(BASE)/apr-bugzilla-56342.patch && patch -p0 < $(BASE)/apr.patch && $(CONFIGURE) --enable-static --disable-shared && make && make install)
+	(cd $(APR_DIR) \
+		&& patch -p0 < $(BASE)/apr-configure-hacks.patch \
+		&& patch -p0 < $(BASE)/apr-bugzilla-56342.patch \
+		&& $(CONFIGURE) \
+		&& make install)
 	touch $@
 
 
@@ -94,7 +98,9 @@ $(APU_DIR_FLAG): $(APU_ARCHIVE)
 	touch $@
 
 .apu: $(APU_DIR_FLAG)
-	(cd $(APU_DIR) && $(CONFIGURE) --with-apr=$(PREFIX) --enable-static --disable-shared && make && make install)
+	(cd $(APU_DIR) \
+		&& $(CONFIGURE) --with-apr=$(PREFIX) \
+		&& make install)
 	touch $@
 
 
@@ -112,7 +118,10 @@ $(ARABICA_DIR_FLAG): $(ARABICA_ARCHIVE)
 	touch $@
 
 .arabica: $(ARABICA_DIR_FLAG)
-	(cd $(ARABICA_DIR) && autoreconf -i && $(CONFIGURE) --enable-static --disable-shared --with-parser=expat --with-expat=$(PREFIX) --with-boost=$(PREFIX) --with-tests=no --with-dom=no && make install)
+	(cd $(ARABICA_DIR) \
+		&& autoreconf -i \
+		&& $(CONFIGURE) --with-parser=expat --with-expat=$(PREFIX) --with-boost=$(PREFIX) --with-tests=no --with-dom=no \
+		&& make install)
 	touch $@
 
 
@@ -153,7 +162,10 @@ $(EXPAT_DIR_FLAG): $(EXPAT_ARCHIVE)
 	touch $@
 
 .expat: $(EXPAT_DIR_FLAG)
-	(cd $(EXPAT_DIR)/expat && ./buildconf.sh && $(CONFIGURE) --without-xmlwf --enable-static --disable-shared && make install)
+	(cd $(EXPAT_DIR)/expat \
+		&& ./buildconf.sh \
+		&& $(CONFIGURE) --without-xmlwf \
+		&& make install)
 	touch $@
 
 
@@ -171,7 +183,9 @@ $(ICONV_DIR_FLAG): $(ICONV_ARCHIVE)
 	touch $@
 
 .iconv: $(ICONV_DIR_FLAG)
-	(cd $(ICONV_DIR) && $(CONFIGURE) --enable-static --disable-shared && make && make install)
+	(cd $(ICONV_DIR) \
+		&& $(CONFIGURE) \
+		&& make install)
 	touch $@
 
 
@@ -189,7 +203,12 @@ $(LIBCONFIG_DIR_FLAG): $(LIBCONFIG_ARCHIVE)
 	touch $@
 
 .libconfig: $(LIBCONFIG_DIR_FLAG)
-	(cd $(LIBCONFIG_DIR) && autoreconf -i && patch -p0 < $(BASE)/libconfig++-ignore-docs.patch && patch -p0 < $(BASE)/libconfig++-static-build.patch && CFLAGS=-DLIBCONFIG_STATIC CXXFLAGS=-DLIBCONFIGXX_STATIC $(CONFIGURE) --disable-examples --enable-static --disable-shared && make && make install)
+	(cd $(LIBCONFIG_DIR) \
+		&& autoreconf -i \
+		&& patch -p0 < $(BASE)/libconfig++-ignore-docs.patch \
+		&& patch -p0 < $(BASE)/libconfig++-static-build.patch \
+		&& CFLAGS=-DLIBCONFIG_STATIC CXXFLAGS=-DLIBCONFIGXX_STATIC $(CONFIGURE) --disable-examples \
+		&& make install)
 	touch $@
 
 
@@ -209,7 +228,9 @@ $(LIBXML2_DIR_FLAG): $(LIBXML2_ARCHIVE)
 # TODO: add more --without-xxx flags (apparently needed for build: pattern, debug)
 # --with-legacy and --with-html are needed for arabica
 .libxml2: $(LIBXML2_DIR_FLAG)
-	(cd $(LIBXML2_DIR) && $(CONFIGURE) --enable-static --disable-shared --with-legacy --without-schematron --without-zlib --without-http --without-ftp --without-html --without-python --without-docbook --without-regexps && make install)
+	(cd $(LIBXML2_DIR) \
+		&& $(CONFIGURE) --with-legacy --without-schematron --without-zlib --without-http --without-ftp --without-html --without-python --without-docbook --without-regexps \
+		&& make install)
 	touch $@
 
 
@@ -227,7 +248,11 @@ $(LOG4CXX_DIR_FLAG): $(LOG4CXX_ARCHIVE)
 	touch $@
 
 .log4cxx: $(LOG4CXX_DIR_FLAG)
-	(cd $(LOG4CXX_DIR) && patch -p0 < $(BASE)/log4cxx-no-example.patch && patch -p0 < $(BASE)/log4cxx-build-fixes.patch && CXXFLAGS=-Wno-narrowing $(CONFIGURE) --with-apr=$(PREFIX) --with-apu=$(PREFIX) --with-apr-util=$(PREFIX) --disable-doxygen --disable-dot --enable-static --disable-shared && make && make install)
+	(cd $(LOG4CXX_DIR) \
+		&& patch -p0 < $(BASE)/log4cxx-no-example.patch \
+		&& patch -p0 < $(BASE)/log4cxx-build-fixes.patch \
+		&& CXXFLAGS=-Wno-narrowing $(CONFIGURE) --with-apr=$(PREFIX) --with-apu=$(PREFIX) --with-apr-util=$(PREFIX) --disable-doxygen --disable-dot \
+		&& make install)
 	touch $@
 
 
@@ -290,6 +315,8 @@ $(XERCES_DIR_FLAG): $(XERCES_ARCHIVE)
 	touch $@
 
 .xerces: $(XERCES_DIR_FLAG)
-	(cd $(XERCES_DIR) && $(CONFIGURE) --enable-static --disable-shared --disable-network && make install)
+	(cd $(XERCES_DIR) \
+		&& $(CONFIGURE) --disable-network \
+		&& make install)
 	touch $@
 

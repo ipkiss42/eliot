@@ -1,6 +1,6 @@
---- configure.orig	2017-10-18 16:50:19.000000000 +0200
-+++ configure	2018-07-26 00:01:19.399233574 +0200
-@@ -24542,6 +24542,10 @@
+--- configure	2018-09-10 23:14:53.000000000 +0200
++++ configure.good	2020-04-05 22:30:36.657168877 +0200
+@@ -24559,6 +24559,10 @@
      ssize_t_fmt="ld"
      { $as_echo "$as_me:${as_lineno-$LINENO}: result: %ld" >&5
  $as_echo "%ld" >&6; }
@@ -11,7 +11,7 @@
  else
      as_fn_error $? "could not determine the proper format for apr_ssize_t" "$LINENO" 5
  fi
-@@ -24605,6 +24609,10 @@
+@@ -24622,6 +24626,10 @@
      size_t_fmt="ld"
      { $as_echo "$as_me:${as_lineno-$LINENO}: result: %ld" >&5
  $as_echo "%ld" >&6; }
@@ -22,14 +22,11 @@
  else
      as_fn_error $? "could not determine the proper format for apr_size_t" "$LINENO" 5
  fi
---- Makefile.in.orig	2017-05-31 17:04:18.000000000 +0200
-+++ Makefile.in	2018-07-26 09:09:47.318476559 +0200
-@@ -141,7 +141,7 @@
+@@ -26187,6 +26195,7 @@
  
- include/private/apr_escape_test_char.h: tools/gen_test_char@EXEEXT@
- 	$(APR_MKDIR) include/private
--	tools/gen_test_char@EXEEXT@ > $@
-+	wine tools/gen_test_char@EXEEXT@ > $@
- 
- LINK_PROG = $(LIBTOOL) $(LTFLAGS) --mode=link $(COMPILE) $(LT_LDFLAGS) \
- 	    @LT_NO_INSTALL@ $(ALL_LDFLAGS) -o $@
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for robust cross-process mutex support" >&5
+ $as_echo_n "checking for robust cross-process mutex support... " >&6; }
++apr_cv_mutex_robust_shared=no
+ if ${apr_cv_mutex_robust_shared+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
