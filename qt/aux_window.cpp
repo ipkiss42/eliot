@@ -22,10 +22,11 @@
 
 #include <QApplication>
 #include <QAction>
+#include <QGuiApplication>
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QCloseEvent>
-#include <QDesktopWidget>
+#include <QScreen>
 #include <QSettings>
 
 #include "aux_window.h"
@@ -108,7 +109,7 @@ void AuxWindow::readSettings()
     QSize size = settings.value("size").toSize();
     if (size.isValid())
         resize(size);
-    const QRect &desktopRect = QApplication::desktop()->screenGeometry();
+    const QRect &desktopRect = qGuiApp->primaryScreen()->geometry();
     QPoint point = settings.value("pos", QPoint(20, 20)).toPoint();
     // If the position was saved when an external monitor was plugged, and
     // is restored when the monitor is not there anymore, the window could

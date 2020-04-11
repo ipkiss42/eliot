@@ -105,7 +105,7 @@ ToppingWidget::ToppingWidget(QWidget *parent, PlayModel &iPlayModel,
     m_model->setHeaderData(1, Qt::Horizontal, _q("Word"), Qt::DisplayRole);
     m_model->setHeaderData(2, Qt::Horizontal, _q("Ref"), Qt::DisplayRole);
     m_model->setHeaderData(3, Qt::Horizontal, _q("Points"), Qt::DisplayRole);
-    tableViewMoves->sortByColumn(3);
+    tableViewMoves->sortByColumn(3, Qt::DescendingOrder);
     // XXX: why is this needed? It is not needed in the ArbitrationWidget class
     tableViewMoves->horizontalHeader()->setSortIndicator(3, Qt::DescendingOrder);
 

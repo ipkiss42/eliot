@@ -21,6 +21,7 @@
 #include <QStandardItemModel>
 #include <QMenu>
 #include <QHeaderView>
+#include <Qt>
 
 #include "training_widget.h"
 #include "qtcommon.h"
@@ -184,7 +185,7 @@ void TrainingWidget::updateModel()
     m_model->removeRows(0, m_model->rowCount());
 
     // Force the sort column
-    treeViewResults->sortByColumn(2);
+    treeViewResults->sortByColumn(2, Qt::DescendingOrder);
 
     if (m_game == NULL)
         return;

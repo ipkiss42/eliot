@@ -20,6 +20,7 @@
 
 #include "config.h"
 
+#include <QGuiApplication>
 #include <QLabel>
 #include <QFrame>
 #include <QMessageBox>
@@ -31,7 +32,7 @@
 #include <QPrinter>
 #include <QPainter>
 #include <QDesktopServices>
-#include <QDesktopWidget>
+#include <QScreen>
 #include <QSettings>
 #include <QUrl>
 
@@ -656,7 +657,7 @@ void MainWindow::readSettings()
     QSize size = settings.value("size").toSize();
     if (size.isValid())
         resize(size);
-    const QRect &desktopRect = QApplication::desktop()->screenGeometry();
+    const QRect &desktopRect = qGuiApp->primaryScreen()->geometry();
     QPoint point = settings.value("pos", QPoint(20, 20)).toPoint();
     // If the position was saved when an external monitor was plugged, and
     // is restored when the monitor is not there anymore, the window could
@@ -1114,7 +1115,7 @@ void MainWindow::print(QPrinter *printer)
     int curHeight = (LINE_HEIGHT + textHeight + 1) / 2;
     for (unsigned int i = 0; i < nbCols; ++i)
     {
-        int textWidth = fm.width(colTitles[i]);
+        int textWidth = fm.horizontalAdvance(colTitles[i]);
         painter.drawText(curWidth + (colWidths[i] - textWidth) / 2,
                          curHeight,  colTitles[i]);
         curWidth += colWidths[i];

@@ -108,7 +108,7 @@ ArbitrationWidget::ArbitrationWidget(QWidget *parent,
     m_resultsModel->setHeaderData(1, Qt::Horizontal, _q("Ref"), Qt::DisplayRole);
     m_resultsModel->setHeaderData(2, Qt::Horizontal, _q("Points"), Qt::DisplayRole);
     m_resultsModel->setHeaderData(3, Qt::Horizontal, _q("Status"), Qt::DisplayRole);
-    treeViewResults->sortByColumn(2);
+    treeViewResults->sortByColumn(2, Qt::DescendingOrder);
 
     treeViewResults->setColumnWidth(0, 120);
     treeViewResults->setColumnWidth(1, 40);
