@@ -14,6 +14,9 @@ DMG_FILE = $(top_builddir)/eliot-$(VERSION).dmg
 
 EXTRA_DIST = COPYING.arabica LGPL-2.0.txt
 
+WIN32_DLLS = libgcc_s_sjlj-1.dll libwinpthread-1.dll libstdc++-6.dll
+U2D = unix2dos
+
 # Prepare the win32 package (directory only)
 package-win32-dir:
 # Remove previous stuff
@@ -36,15 +39,17 @@ package-win32-dir:
 # Copy relevant text files
 	for i in AUTHORS COPYING COPYING.arabica NEWS THANKS; do \
 		cp $(top_srcdir)/$$i $(WIN32_PACKAGE_DIR)/$$i.txt; \
-		todos $(WIN32_PACKAGE_DIR)/$$i.txt; \
+		$(U2D) $(WIN32_PACKAGE_DIR)/$$i.txt; \
 	done
 
 # Copy reports
 	cp -r $(top_srcdir)/extras/reports $(WIN32_PACKAGE_DIR)
-	todos $(WIN32_PACKAGE_DIR)/reports/README.txt
+	$(U2D) $(WIN32_PACKAGE_DIR)/reports/README.txt
 
-# Copy the mingw DLL
-	gunzip -c /usr/share/doc/mingw32-runtime/mingwm10.dll.gz > $(WIN32_PACKAGE_DIR)/mingwm10.dll
+# Copy the cross-compiler DLLs
+	for i in $(WIN32_DLLS); do \
+		cp /usr/i686-w64-mingw32/bin/$$i $(WIN32_PACKAGE_DIR); \
+	done
 
 
 # Prepare the win32 package (zip version)
