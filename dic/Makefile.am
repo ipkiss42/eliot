@@ -51,14 +51,14 @@ bin_PROGRAMS = \
 
 compdic_SOURCES=compdicmain.cpp
 compdic_CPPFLAGS=$(AM_CPPFLAGS) @BOOST_CPPFLAGS@
-compdic_LDADD=libdic.a @LIBICONV@
+compdic_LDADD=libdic.a @LIBINTL@ @LIBICONV@
 
 listdic_SOURCES=listdicmain.cpp
-listdic_LDADD=libdic.a @LIBICONV@
+listdic_LDADD=libdic.a @LIBINTL@ @LIBICONV@
 
 #regexp_CFLAGS=-DDEBUG_RE
 regexp_SOURCES=regexpmain.cpp
-regexp_LDADD=libdic.a @LIBICONV@
+regexp_LDADD=libdic.a @LIBINTL@ @LIBICONV@
 
 if WITH_LOGGING
 compdic_LDADD += @LOG4CXX_LIBS@
