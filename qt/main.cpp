@@ -54,7 +54,7 @@ static void bt_sighandler(int);
 class MyApplication : public QApplication
 {
 public:
-    MyApplication(int argc, char **argv)
+    MyApplication(int &argc, char **argv)
         : QApplication(argc, argv)
     {}
 
