@@ -194,11 +194,13 @@ AS_IF([test "${enable_qt}" != "no"],
                           AC_PATH_PROGS(RCC, rcc, rcc,`$PKG_CONFIG --variable=exec_prefix Qt5Core`/bin)
                           QT4LOCALEDIR="$($PKG_CONFIG --variable=prefix QtCore)/share/qt4/translations/"
                           AC_SUBST(QT4LOCALEDIR)
+                          dnl FIXME: hack
+                          CXXFLAGS="${CXXFLAGS} -fPIC"
                          ],
                          [AC_MSG_ERROR([Could not find Qt5 on your system (using pkg-config)])]
                         )
       ])
-dnl We biuld either with Qt4 or Qt5, but not both
+dnl We build either with Qt4 or Qt5, but not both
 if test "${qt5_ok}" = "1" && "${qt4_ok}" = "1"; then
     AC_MSG_ERROR([Please deactivate Qt4 explicitly if you want to build with Qt5])
 fi
