@@ -1,4 +1,4 @@
-SUBDIRS = dic game utils qt po extras
+SUBDIRS = intl dic game utils qt po extras
 
 ACLOCAL_AMFLAGS = -I m4
 

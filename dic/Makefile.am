@@ -20,7 +20,7 @@
 noinst_LIBRARIES = libdic.a
 
 localedir = $(datadir)/locale
-AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\" -I$(top_srcdir) $(INCICONV) @LOG4CXX_CFLAGS@
+AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\" -I$(top_srcdir) -I../intl -I$(top_srcdir)/intl $(INCICONV) @LOG4CXX_CFLAGS@
 
 libdic_a_SOURCES = \
 	logging.h \
@@ -51,14 +51,14 @@ bin_PROGRAMS = \
 
 compdic_SOURCES=compdicmain.cpp
 compdic_CPPFLAGS=$(AM_CPPFLAGS) @BOOST_CPPFLAGS@
-compdic_LDADD=libdic.a @LIBINTL@ @LIBICONV@
+compdic_LDADD=libdic.a @LIBINTL@
 
 listdic_SOURCES=listdicmain.cpp
-listdic_LDADD=libdic.a @LIBINTL@ @LIBICONV@
+listdic_LDADD=libdic.a @LIBINTL@
 
 #regexp_CFLAGS=-DDEBUG_RE
 regexp_SOURCES=regexpmain.cpp
-regexp_LDADD=libdic.a @LIBINTL@ @LIBICONV@
+regexp_LDADD=libdic.a @LIBINTL@
 
 if WITH_LOGGING
 compdic_LDADD += @LOG4CXX_LIBS@
