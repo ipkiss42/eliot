@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: eliot-dev@nongnu.org\n"
-"POT-Creation-Date: 2016-07-16 11:39+0200\n"
+"POT-Creation-Date: 2020-09-14 16:29+0200\n"
 "PO-Revision-Date: 2013-01-29 21:34+0100\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
@@ -211,12 +211,12 @@ msgstr " Stlačovací čas: %1% s"
 msgid " Maximum recursion level reached: %1%"
 msgstr " Dosažena nejvyšší úroveň vracení se: %1%"
 
-#: dic/csv_helper.cpp:120
+#: dic/csv_helper.cpp:122
 #, boost-format
 msgid "Invalid CSV file (variable number of fields, from %1% to %2%)"
 msgstr "Neplatný soubor CSV (různý počet polí, od %1% do %2%)"
 
-#: dic/csv_helper.cpp:138
+#: dic/csv_helper.cpp:140
 msgid "Invalid CSV data (variable number of fields)"
 msgstr "Neplatná data CSV (různý počet polí)"
 
@@ -309,11 +309,10 @@ msgstr "Okraje: %1% používané + %2% uložené"
 msgid "Letter"
 msgstr "Písmeno"
 
-#: dic/header.cpp:668 qt/arbit_assignments.cpp:64
-#: qt/arbitration_widget.cpp:109 qt/bag_widget.cpp:57
-#: qt/dic_tools_widget.cpp:112 qt/dic_wizard.cpp:220 qt/history_widget.cpp:85
-#: qt/topping_widget.cpp:107 qt/training_widget.cpp:73
-#: qt/ui/arbitration_widget.ui.h:210
+#: dic/header.cpp:668 qt/arbit_assignments.cpp:64 qt/arbitration_widget.cpp:109
+#: qt/bag_widget.cpp:57 qt/dic_tools_widget.cpp:112 qt/dic_wizard.cpp:220
+#: qt/history_widget.cpp:85 qt/topping_widget.cpp:107 qt/training_widget.cpp:74
+#: qt/ui/arbitration_widget.ui.h:208
 msgid "Points"
 msgstr "Body"
 
@@ -552,11 +551,11 @@ msgstr "Dostat první písmeno slova"
 msgid "First letter: %1%"
 msgstr "První písmeno: %1%"
 
-#: game/topping.cpp:228 qt/main_window.cpp:492 qt/ui/new_game.ui.h:281
+#: game/topping.cpp:228 qt/main_window.cpp:493 qt/ui/new_game.ui.h:280
 msgid "Topping"
 msgstr "Nejlepší tah"
 
-#: game/training.cpp:185 qt/main_window.cpp:441 qt/ui/new_game.ui.h:279
+#: game/training.cpp:185 qt/main_window.cpp:442 qt/ui/new_game.ui.h:278
 msgid "Training"
 msgstr "Procvičování"
 
@@ -645,24 +644,23 @@ msgid "Invalid player type for player %1%"
 msgstr "Neplatný typ hráče pro hráče %1%"
 
 #: qt/arbit_assignments.cpp:60 qt/stats_widget.cpp:199
-#: qt/ui/tables_dialog.ui.h:81
+#: qt/ui/tables_dialog.ui.h:79
 msgid "Table"
 msgstr "Stůl"
 
-#: qt/arbit_assignments.cpp:61 qt/history_widget.cpp:118
-#: qt/score_widget.cpp:49 qt/ui/tables_dialog.ui.h:79
+#: qt/arbit_assignments.cpp:61 qt/history_widget.cpp:118 qt/score_widget.cpp:49
+#: qt/ui/tables_dialog.ui.h:77
 msgid "Player"
 msgstr "Hráč"
 
 #: qt/arbit_assignments.cpp:62 qt/arbitration_widget.cpp:107
-#: qt/history_widget.cpp:83 qt/topping_widget.cpp:105
-#: qt/training_widget.cpp:71 qt/ui/arbitration_widget.ui.h:208
+#: qt/history_widget.cpp:83 qt/topping_widget.cpp:105 qt/training_widget.cpp:72
+#: qt/ui/arbitration_widget.ui.h:206
 msgid "Word"
 msgstr "Slovo"
 
 #: qt/arbit_assignments.cpp:63 qt/arbitration_widget.cpp:108
-#: qt/history_widget.cpp:84 qt/topping_widget.cpp:106
-#: qt/training_widget.cpp:72
+#: qt/history_widget.cpp:84 qt/topping_widget.cpp:106 qt/training_widget.cpp:73
 msgid "Ref"
 msgstr "Souřadnice"
 
@@ -857,11 +855,11 @@ msgstr ""
 "Upozornění: Nelze nastavit přihrádku na '%1':\n"
 "%2"
 
-#: qt/arbitration_widget.cpp:499 qt/training_widget.cpp:356
+#: qt/arbitration_widget.cpp:499 qt/training_widget.cpp:357
 msgid "Searching with rack '%1'..."
 msgstr "Hledá se s přihrádkou '%1'..."
 
-#: qt/arbitration_widget.cpp:502 qt/training_widget.cpp:358
+#: qt/arbitration_widget.cpp:502 qt/training_widget.cpp:359
 msgid "Search done"
 msgstr "Hledání dokončeno"
 
@@ -894,8 +892,8 @@ msgid "Show definition of '%1' in an external browser"
 msgstr "Ukázat vymezení  '%1' ve vnějším prohlížeči"
 
 #: qt/dic_tools_widget.cpp:101 qt/dic_tools_widget.cpp:106
-#: qt/ui/arbitration_widget.ui.h:203 qt/ui/player_widget.ui.h:159
-#: qt/ui/topping_widget.ui.h:197 qt/ui/training_widget.ui.h:185
+#: qt/ui/arbitration_widget.ui.h:201 qt/ui/player_widget.ui.h:156
+#: qt/ui/topping_widget.ui.h:195 qt/ui/training_widget.ui.h:183
 msgid "Rack:"
 msgstr "Přihrádka:"
 
@@ -950,7 +948,7 @@ msgid "Save words list"
 msgstr "Uložit seznam slov"
 
 #: qt/dic_tools_widget.cpp:332 qt/dic_tools_widget.cpp:348
-#: qt/dic_tools_widget.cpp:427 qt/main_window.cpp:560
+#: qt/dic_tools_widget.cpp:427 qt/main_window.cpp:561
 msgid "Eliot - Error"
 msgstr "Eliot - Chyba"
 
@@ -1132,11 +1130,11 @@ msgstr "Přidat hráče"
 msgid "Remove player"
 msgstr "Odstranit hráče"
 
-#: qt/fav_players.cpp:77 qt/ui/new_game.ui.h:294
+#: qt/fav_players.cpp:77 qt/ui/new_game.ui.h:293
 msgid "Move selection upwards"
 msgstr "Posunout výběr nahoru"
 
-#: qt/fav_players.cpp:80 qt/ui/new_game.ui.h:297
+#: qt/fav_players.cpp:80 qt/ui/new_game.ui.h:296
 msgid "Move selection downwards"
 msgstr "Posunout výběr dolů"
 
@@ -1209,7 +1207,7 @@ msgstr "Rada"
 msgid "Turn"
 msgstr "Kolo"
 
-#: qt/history_widget.cpp:82 qt/ui/arbitration_widget.ui.h:202
+#: qt/history_widget.cpp:82 qt/ui/arbitration_widget.ui.h:200
 msgid "Rack"
 msgstr "Přihrádka"
 
@@ -1221,23 +1219,23 @@ msgstr "Celkem"
 msgid "Game %"
 msgstr "Hra %"
 
-#: qt/history_widget.cpp:216 qt/main_window.cpp:1168 utils/curses_intf.cpp:429
+#: qt/history_widget.cpp:216 qt/main_window.cpp:1169 utils/curses_intf.cpp:429
 msgid "(NO MOVE)"
 msgstr "(ŽÁDNÝ TAH)"
 
-#: qt/history_widget.cpp:221 qt/main_window.cpp:1174 utils/curses_intf.cpp:431
+#: qt/history_widget.cpp:221 qt/main_window.cpp:1175 utils/curses_intf.cpp:431
 msgid "(PASS)"
 msgstr "(VZDÁNÍ)"
 
-#: qt/history_widget.cpp:279 qt/main_window.cpp:806
+#: qt/history_widget.cpp:279 qt/main_window.cpp:807
 msgid "&Game"
 msgstr "&Hra"
 
-#: qt/main_window.cpp:157 qt/main_window.cpp:1332 qt/ui/main_window.ui.h:144
+#: qt/main_window.cpp:158 qt/main_window.cpp:1333 qt/ui/main_window.ui.h:151
 msgid "Board"
 msgstr "Hrací deska"
 
-#: qt/main_window.cpp:212
+#: qt/main_window.cpp:213
 msgid ""
 "Cannot load dictionary '%1' indicated in the preferences.\n"
 "Reason: %2"
@@ -1245,65 +1243,65 @@ msgstr ""
 "Nelze nahrát slovník '%1' označený v nastavení.\n"
 "Důvod: %2"
 
-#: qt/main_window.cpp:271
+#: qt/main_window.cpp:272
 msgid "Consonants: %1 | Vowels: %2 | Jokers: %3"
 msgstr "Souhlásky: %1 | Samohlásky: %2 | Žolíci: %3"
 
-#: qt/main_window.cpp:276 qt/main_window.cpp:1458 qt/main_window.cpp:1471
-#: qt/main_window.cpp:1484 qt/main_window.cpp:1497
+#: qt/main_window.cpp:277 qt/main_window.cpp:1459 qt/main_window.cpp:1472
+#: qt/main_window.cpp:1485 qt/main_window.cpp:1498
 msgid "Turn %1/%2"
 msgstr "Kolo %1/%2"
 
-#: qt/main_window.cpp:287
+#: qt/main_window.cpp:288
 msgid "End of the game"
 msgstr "Konec hry"
 
-#: qt/main_window.cpp:297
+#: qt/main_window.cpp:298
 msgid "Error during auto-save of the game: %1"
 msgstr "Chyba při automatickém ukládání hry: %1"
 
-#: qt/main_window.cpp:395
+#: qt/main_window.cpp:396
 msgid "No game"
 msgstr "Žádná hra"
 
-#: qt/main_window.cpp:440 utils/curses_intf.cpp:1118
-#: qt/ui/prefs_dialog.ui.h:666
+#: qt/main_window.cpp:441 utils/curses_intf.cpp:1118
+#: qt/ui/prefs_dialog.ui.h:663
 msgid "Training mode"
 msgstr "Režim cvičení"
 
-#: qt/main_window.cpp:465
+#: qt/main_window.cpp:466
 msgid "Arbitration game"
 msgstr "Rozhodčí hra"
 
-#: qt/main_window.cpp:466
+#: qt/main_window.cpp:467
 msgid "Arbitration"
 msgstr "Rozhodčí režim"
 
-#: qt/main_window.cpp:491 qt/ui/prefs_dialog.ui.h:690
+#: qt/main_window.cpp:492 qt/ui/prefs_dialog.ui.h:687
 msgid "Topping mode"
 msgstr "Režim nejlepšího tahu"
 
-#: qt/main_window.cpp:511
+#: qt/main_window.cpp:512
 msgid "Duplicate game"
 msgstr "Zdvojená hra"
 
-#: qt/main_window.cpp:513 qt/ui/new_game.ui.h:278
+#: qt/main_window.cpp:514 qt/ui/new_game.ui.h:277
 msgid "Free game"
 msgstr "Volná hra"
 
-#: qt/main_window.cpp:514 qt/ui/main_window.ui.h:146 qt/ui/new_game.ui.h:290
+#: qt/main_window.cpp:515 qt/ui/main_window.ui.h:153 qt/ui/new_game.ui.h:289
 msgid "Players"
 msgstr "Hráči"
 
-#: qt/main_window.cpp:547
+#: qt/main_window.cpp:548
 msgid "No dictionary"
 msgstr "Žádný slovník"
 
-#: qt/main_window.cpp:550
+#: qt/main_window.cpp:551
 msgid "Dictionary: %1"
 msgstr "Slovník: %1"
 
-#: qt/main_window.cpp:580
+#: qt/main_window.cpp:581
 msgid ""
 "No definitions site defined.\n"
 "Please define one in the preferences."
@@ -1311,23 +1309,23 @@ msgstr ""
 "Nestanovena žádná stránka s vymezeními.\n"
 "Stanovte, prosím, jednu v nastavení."
 
-#: qt/main_window.cpp:607
+#: qt/main_window.cpp:608
 msgid "A game has been started."
 msgstr "Hra byla spuštěna."
 
-#: qt/main_window.cpp:608
+#: qt/main_window.cpp:609
 msgid "Do you really want to quit?"
 msgstr "Opravdu chcete skončit?"
 
-#: qt/main_window.cpp:681
+#: qt/main_window.cpp:682
 msgid "Loading a dictionary will stop the current game."
 msgstr "Nahrávání slovníku zastaví současnou hru."
 
-#: qt/main_window.cpp:699
+#: qt/main_window.cpp:700
 msgid "Loaded dictionary '%1'"
 msgstr "Nahraný slovník '%1'"
 
-#: qt/main_window.cpp:730
+#: qt/main_window.cpp:731
 msgid ""
 "Cannot play '%1' at position '%2':\n"
 "%3"
@@ -1335,347 +1333,347 @@ msgstr ""
 "Nelze hrát '%1' v poloze '%2':\n"
 "%3"
 
-#: qt/main_window.cpp:735
+#: qt/main_window.cpp:736
 msgid "Some letters are not valid for the current dictionary"
 msgstr "Některá písmena nejsou pro současný slovník platná"
 
-#: qt/main_window.cpp:738
+#: qt/main_window.cpp:739
 msgid "Invalid coordinates"
 msgstr "Neplatné souřadnice"
 
-#: qt/main_window.cpp:741
+#: qt/main_window.cpp:742
 msgid "The word does not exist"
 msgstr "Slovo neexistuje"
 
-#: qt/main_window.cpp:744
+#: qt/main_window.cpp:745
 msgid "The rack doesn't contain the letters needed to play this word"
 msgstr ""
 "Přihrádka neobsahuje písmena, která jsou potřebná pro hru s tímto slovem"
 
-#: qt/main_window.cpp:747
+#: qt/main_window.cpp:748
 msgid "The word is part of a longer one"
 msgstr "Slovo je částí delšího slova"
 
-#: qt/main_window.cpp:750
+#: qt/main_window.cpp:751
 msgid "The word tries to replace an existing letter"
 msgstr "Slovo zkouší nahradit stávající písmeno"
 
-#: qt/main_window.cpp:753
+#: qt/main_window.cpp:754
 msgid "An orthogonal word is not valid"
 msgstr "Pravoúhlé slovo není platné"
 
-#: qt/main_window.cpp:756
+#: qt/main_window.cpp:757
 msgid "The word is already present on the board at these coordinates"
 msgstr "Slovo je již na hrací desce přítomno na těchto souřadnicích"
 
-#: qt/main_window.cpp:759
+#: qt/main_window.cpp:760
 msgid "A word cannot be isolated (not connected to the placed words)"
 msgstr "Slovo nemůže být osamělé (nespojené s umístěnými slovy)"
 
-#: qt/main_window.cpp:762
+#: qt/main_window.cpp:763
 msgid "The first word of the game must be horizontal"
 msgstr "První slovo hry musí být vodorovné"
 
-#: qt/main_window.cpp:765
+#: qt/main_window.cpp:766
 msgid "The first word of the game must cover the H8 square"
 msgstr "První slovo hry musí pokrýt čtvereček H8"
 
-#: qt/main_window.cpp:768
+#: qt/main_window.cpp:769
 msgid "The word is going out of the board"
 msgstr "Slovo jde mimo hrací desku"
 
-#: qt/main_window.cpp:771
+#: qt/main_window.cpp:772
 msgid "The word contains too many letters from the rack"
 msgstr "Slovo obsahuje příliš mnoho písmen z přihrádky"
 
-#: qt/main_window.cpp:774 utils/curses_intf.cpp:589
+#: qt/main_window.cpp:775 utils/curses_intf.cpp:589
 msgid "Incorrect or misplaced word"
 msgstr "Nesprávné nebo špatně umístěné slovo"
 
-#: qt/main_window.cpp:807
+#: qt/main_window.cpp:808
 msgid "&New..."
 msgstr "&Nová hra..."
 
-#: qt/main_window.cpp:807
+#: qt/main_window.cpp:808
 msgid "Ctrl+N"
 msgstr "Ctrl+N"
 
-#: qt/main_window.cpp:808
+#: qt/main_window.cpp:809
 msgid "Start a new game"
 msgstr "Začít novou hru"
 
-#: qt/main_window.cpp:810
+#: qt/main_window.cpp:811
 msgid "&Load..."
 msgstr "&Nahrát hru..."
 
-#: qt/main_window.cpp:810
+#: qt/main_window.cpp:811
 msgid "Ctrl+O"
 msgstr "Ctrl+O"
 
-#: qt/main_window.cpp:811
+#: qt/main_window.cpp:812
 msgid "Load an existing game"
 msgstr "Nahrát stávající hru"
 
-#: qt/main_window.cpp:812
+#: qt/main_window.cpp:813
 msgid "Load the auto-saved game"
 msgstr "Nahrát automaticky uloženou hru"
 
-#: qt/main_window.cpp:813
+#: qt/main_window.cpp:814
 msgid "Load the automatically saved game (useful after a crash)"
 msgstr "Nahrát automaticky uloženou hru (užitečné po pádu programu)"
 
-#: qt/main_window.cpp:815
+#: qt/main_window.cpp:816
 msgid "&Save as..."
 msgstr "&Uložit jako..."
 
-#: qt/main_window.cpp:815
+#: qt/main_window.cpp:816
 msgid "Ctrl+S"
 msgstr "Ctrl+S"
 
-#: qt/main_window.cpp:816
+#: qt/main_window.cpp:817
 msgid "Save the current game"
 msgstr "Uložit nynější hru"
 
-#: qt/main_window.cpp:818
+#: qt/main_window.cpp:819
 msgid "&Print preview..."
 msgstr "&Náhled tisku..."
 
-#: qt/main_window.cpp:819
+#: qt/main_window.cpp:820
 msgid "Print preview"
 msgstr "Náhled tisku"
 
-#: qt/main_window.cpp:821
+#: qt/main_window.cpp:822
 msgid "&Print..."
 msgstr "&Tisk..."
 
-#: qt/main_window.cpp:821
+#: qt/main_window.cpp:822
 msgid "Ctrl+P"
 msgstr "Ctrl+P"
 
-#: qt/main_window.cpp:822
+#: qt/main_window.cpp:823
 msgid "Print the current game"
 msgstr "Vytisknout nynější hru"
 
-#: qt/main_window.cpp:825
+#: qt/main_window.cpp:826
 msgid "&Quit"
 msgstr "&Ukončit"
 
-#: qt/main_window.cpp:825
+#: qt/main_window.cpp:826
 msgid "Ctrl+Q"
 msgstr "Ctrl+Q"
 
-#: qt/main_window.cpp:826
+#: qt/main_window.cpp:827
 msgid "Quit Eliot"
 msgstr "Ukončit program Eliot"
 
-#: qt/main_window.cpp:831 qt/main_window.cpp:885
+#: qt/main_window.cpp:832 qt/main_window.cpp:886
 msgid "&History"
 msgstr "&Historie"
 
-#: qt/main_window.cpp:832
+#: qt/main_window.cpp:833
 msgid "&First turn"
 msgstr "&První kolo"
 
-#: qt/main_window.cpp:832
+#: qt/main_window.cpp:833
 msgid "Ctrl+Home"
 msgstr "Ctrl+Home"
 
-#: qt/main_window.cpp:833
+#: qt/main_window.cpp:834
 msgid "Go to the first turn of the game"
 msgstr "Jít na první kolo hry"
 
-#: qt/main_window.cpp:835
+#: qt/main_window.cpp:836
 msgid "&Previous turn"
 msgstr "&Předchozí kolo"
 
-#: qt/main_window.cpp:835
+#: qt/main_window.cpp:836
 msgid "Ctrl+Left"
 msgstr "Ctrl+šipka vlevo"
 
-#: qt/main_window.cpp:836
+#: qt/main_window.cpp:837
 msgid "Go to the previous turn of the game"
 msgstr "Jít na předchozí kolo hry"
 
-#: qt/main_window.cpp:838
+#: qt/main_window.cpp:839
 msgid "&Next turn"
 msgstr "&Další kolo"
 
-#: qt/main_window.cpp:838
+#: qt/main_window.cpp:839
 msgid "Ctrl+Right"
 msgstr "Ctrl+šipka vpravo"
 
-#: qt/main_window.cpp:839
+#: qt/main_window.cpp:840
 msgid "Go to the next turn of the game"
 msgstr "Jít na další kolo hry"
 
-#: qt/main_window.cpp:841
+#: qt/main_window.cpp:842
 msgid "&Last turn"
 msgstr "&Poslední kolo"
 
-#: qt/main_window.cpp:841
+#: qt/main_window.cpp:842
 msgid "Ctrl+End"
 msgstr "Ctrl+End"
 
-#: qt/main_window.cpp:842
+#: qt/main_window.cpp:843
 msgid "Go to the last turn of the game"
 msgstr "Jít na poslední kolo hry"
 
-#: qt/main_window.cpp:844
+#: qt/main_window.cpp:845
 msgid "&Replay turn"
 msgstr "&Opakovat kolo"
 
-#: qt/main_window.cpp:844
+#: qt/main_window.cpp:845
 msgid "Ctrl+R"
 msgstr "Ctrl+R"
 
-#: qt/main_window.cpp:845
+#: qt/main_window.cpp:846
 msgid ""
 "Play the game from the current position, replacing what was really played"
 msgstr "Hrát hru od současné polohy. Nahrazuje se to, co bylo skutečně hráno"
 
-#: qt/main_window.cpp:857
+#: qt/main_window.cpp:858
 msgid "&Settings"
 msgstr "&Nastavení"
 
-#: qt/main_window.cpp:858
+#: qt/main_window.cpp:859
 msgid "&Choose dictionary..."
 msgstr "&Vybrat slovník..."
 
-#: qt/main_window.cpp:858
+#: qt/main_window.cpp:859
 msgid "Ctrl+I"
 msgstr "Ctrl+I"
 
-#: qt/main_window.cpp:859
+#: qt/main_window.cpp:860
 msgid "Select a new dictionary"
 msgstr "Vybrat nový slovník"
 
-#: qt/main_window.cpp:860
+#: qt/main_window.cpp:861
 msgid "Create &new dictionary..."
 msgstr "Vytvořit &nový slovník..."
 
-#: qt/main_window.cpp:861
+#: qt/main_window.cpp:862
 msgid ""
 "Start the wizard for creating a new dictionary from an existing word list"
 msgstr ""
 "Spustit průvodce pro vytvoření nového slovníku ze stávajícího seznamu slov"
 
-#: qt/main_window.cpp:864
+#: qt/main_window.cpp:865
 msgid "&Favorite players..."
 msgstr "&Oblíbení hráči..."
 
-#: qt/main_window.cpp:865
+#: qt/main_window.cpp:866
 msgid "Define frequently used players for faster game creation"
 msgstr "Stanovit často používané hráče pro rychlejší vytvoření hry"
 
-#: qt/main_window.cpp:868
+#: qt/main_window.cpp:869
 msgid "&Define players tables..."
 msgstr "&Stanovit stoly hráčů..."
 
-#: qt/main_window.cpp:869
+#: qt/main_window.cpp:870
 msgid "Define the tables where the players are sitting, in arbitration mode"
 msgstr "Stanovit stoly, u nichž hráči sedí; v rozhodčím režimu"
 
-#: qt/main_window.cpp:871
+#: qt/main_window.cpp:872
 msgid "&Preferences..."
 msgstr "&Nastavení..."
 
-#: qt/main_window.cpp:871
+#: qt/main_window.cpp:872
 msgid "Ctrl+F"
 msgstr "Ctrl+F"
 
-#: qt/main_window.cpp:872
+#: qt/main_window.cpp:873
 msgid "Edit the preferences"
 msgstr "Upravit nastavení"
 
-#: qt/main_window.cpp:877
+#: qt/main_window.cpp:878
 msgid "&Windows"
 msgstr "&Okna"
 
-#: qt/main_window.cpp:878
+#: qt/main_window.cpp:879
 msgid "&Toolbar"
 msgstr "&Nástrojový pruh"
 
-#: qt/main_window.cpp:878
+#: qt/main_window.cpp:879
 msgid "Ctrl+T"
 msgstr "Ctrl+T"
 
-#: qt/main_window.cpp:879
+#: qt/main_window.cpp:880
 msgid "Show/hide the toolbar"
 msgstr "Ukázat/Skrýt nástrojový pruh"
 
-#: qt/main_window.cpp:881
+#: qt/main_window.cpp:882
 msgid "&Bag"
 msgstr "&Pytlík"
 
-#: qt/main_window.cpp:881 qt/ui/main_window.ui.h:128
+#: qt/main_window.cpp:882 qt/ui/main_window.ui.h:128
 msgid "Ctrl+B"
 msgstr "Ctrl+B"
 
-#: qt/main_window.cpp:882 qt/ui/main_window.ui.h:126
+#: qt/main_window.cpp:883 qt/ui/main_window.ui.h:125
 msgid "Show/hide the remaining tiles in the bag"
 msgstr "Ukázat/Skrýt zbývající hrací kameny v pytlíku"
 
-#: qt/main_window.cpp:883
+#: qt/main_window.cpp:884
 msgid "&External board"
 msgstr "&Vnější hrací deska"
 
-#: qt/main_window.cpp:883 qt/ui/main_window.ui.h:133
+#: qt/main_window.cpp:884 qt/ui/main_window.ui.h:135
 msgid "Ctrl+E"
 msgstr "Ctrl+E"
 
-#: qt/main_window.cpp:884 qt/ui/main_window.ui.h:131
+#: qt/main_window.cpp:885 qt/ui/main_window.ui.h:132
 msgid "Show/hide the external board"
 msgstr "Ukázat/Skrýt vnější hrací desku"
 
-#: qt/main_window.cpp:885 qt/ui/main_window.ui.h:138
+#: qt/main_window.cpp:886 qt/ui/main_window.ui.h:142
 msgid "Ctrl+H"
 msgstr "Ctrl+H"
 
-#: qt/main_window.cpp:886 qt/ui/main_window.ui.h:136
+#: qt/main_window.cpp:887 qt/ui/main_window.ui.h:139
 msgid "Show/hide the game history"
 msgstr "Ukázat/Skrýt záznam o průběhu hry"
 
-#: qt/main_window.cpp:888
+#: qt/main_window.cpp:889
 msgid "&Statistics"
 msgstr "S&tatistika"
 
-#: qt/main_window.cpp:889
+#: qt/main_window.cpp:890
 msgid "Show/hide the statistics"
 msgstr "Ukázat/Skrýt statistiku"
 
-#: qt/main_window.cpp:890
+#: qt/main_window.cpp:891
 msgid "Ti&mer"
 msgstr "S&topky"
 
-#: qt/main_window.cpp:891
+#: qt/main_window.cpp:892
 msgid "Show/hide the timer"
 msgstr "Ukázat/Skrýt časovač"
 
-#: qt/main_window.cpp:892
+#: qt/main_window.cpp:893
 msgid "&Dictionary tools"
 msgstr "&Slovníkové nástroje"
 
-#: qt/main_window.cpp:892 qt/ui/main_window.ui.h:143
+#: qt/main_window.cpp:893 qt/ui/main_window.ui.h:149
 msgid "Ctrl+D"
 msgstr "Ctrl+D"
 
-#: qt/main_window.cpp:893 qt/ui/main_window.ui.h:141
+#: qt/main_window.cpp:894 qt/ui/main_window.ui.h:146
 msgid "Show/hide the dictionary tools"
 msgstr "Ukázat/Skrýt slovníkové nástroje"
 
-#: qt/main_window.cpp:897
+#: qt/main_window.cpp:898
 msgid "He&lp"
 msgstr "&Nápověda"
 
-#: qt/main_window.cpp:898
+#: qt/main_window.cpp:899
 msgid "&About..."
 msgstr "&O programu..."
 
-#: qt/main_window.cpp:899 qt/main_window.cpp:1442
+#: qt/main_window.cpp:900 qt/main_window.cpp:1443
 msgid "About Eliot"
 msgstr "O programu Eliot"
 
-#: qt/main_window.cpp:910
+#: qt/main_window.cpp:911
 msgid ""
 "You have to select a dictionary (.dawg file) before starting a game. This "
 "can be done in the \"Settings\" menu.\n"
@@ -1686,103 +1684,102 @@ msgstr ""
 "provést v nabídce \"Nastavení\".\n"
 "Soubory se slovníky si můžete stáhnout na stránkách programu Eliot."
 
-#: qt/main_window.cpp:919
+#: qt/main_window.cpp:920
 msgid "Starting a new game will stop the current one."
 msgstr "Spuštění nové hry zastaví tu současnou."
 
-#: qt/main_window.cpp:944
+#: qt/main_window.cpp:945
 msgid "Game started"
 msgstr "Hra spuštěna"
 
-#: qt/main_window.cpp:967
+#: qt/main_window.cpp:968
 msgid "You have to select a dictionary first!"
 msgstr "Nejprve musíte vybrat slovník."
 
-#: qt/main_window.cpp:973
+#: qt/main_window.cpp:974
 msgid "Loading a saved game will stop the current game."
 msgstr "Nahrání uložené hry zastaví současnou hru."
 
-#: qt/main_window.cpp:982 qt/new_game.cpp:353 utils/curses_intf.cpp:648
+#: qt/main_window.cpp:983 qt/new_game.cpp:354 utils/curses_intf.cpp:648
 msgid "Load a game"
 msgstr "Nahrát hru"
 
-#: qt/main_window.cpp:993
+#: qt/main_window.cpp:994
 msgid "Error while loading the game:\n"
 msgstr "Chyba při nahrávání hry:\n"
 
-#: qt/main_window.cpp:1000 utils/curses_intf.cpp:661
+#: qt/main_window.cpp:1001 utils/curses_intf.cpp:661
 #, c-format
 msgid "Game loaded"
 msgstr "Hra nahrána"
 
-#: qt/main_window.cpp:1010
+#: qt/main_window.cpp:1011
 msgid "Save a game"
 msgstr "Uložit hru"
 
-#: qt/main_window.cpp:1016
+#: qt/main_window.cpp:1017
 msgid "Game saved"
 msgstr "Hra uložena"
 
-#: qt/main_window.cpp:1020
+#: qt/main_window.cpp:1021
 msgid "Error saving game: %1"
 msgstr "Chyba při ukládání hry: %1"
 
-#: qt/main_window.cpp:1076
+#: qt/main_window.cpp:1077
 msgid "N."
 msgstr "Č."
 
-#: qt/main_window.cpp:1076
+#: qt/main_window.cpp:1077
 msgid "RACK"
 msgstr "PŘIHRÁDKA"
 
-#: qt/main_window.cpp:1076
+#: qt/main_window.cpp:1077
 msgid "SOLUTION"
 msgstr "ŘEŠENÍ"
 
-#: qt/main_window.cpp:1076
+#: qt/main_window.cpp:1077
 msgid "REF"
 msgstr "SOUŘADNICE"
 
-#: qt/main_window.cpp:1076
+#: qt/main_window.cpp:1077
 msgid "PTS"
 msgstr "BODY"
 
-#: qt/main_window.cpp:1218 qt/prefs_dialog.cpp:344
+#: qt/main_window.cpp:1219 qt/prefs_dialog.cpp:344
 msgid "Choose a dictionary"
 msgstr "Vybrat slovník"
 
-#: qt/main_window.cpp:1226
+#: qt/main_window.cpp:1227
 msgid "Dictionary creation wizard"
 msgstr "Průvodce vytvořením slovníku"
 
-#: qt/main_window.cpp:1278 utils/curses_intf.cpp:502
-#: qt/ui/main_window.ui.h:124
+#: qt/main_window.cpp:1279 utils/curses_intf.cpp:502 qt/ui/main_window.ui.h:123
 msgid "Bag"
 msgstr "Pytlík"
 
-#: qt/main_window.cpp:1361 qt/ui/main_window.ui.h:134
-#: qt/ui/main_window.ui.h:145
+#: qt/main_window.cpp:1362 qt/ui/main_window.ui.h:137
+#: qt/ui/main_window.ui.h:152
 msgid "History"
 msgstr "Historie"
 
-#: qt/main_window.cpp:1379
+#: qt/main_window.cpp:1380
 msgid "Statistics"
 msgstr "Statistika"
 
-#: qt/main_window.cpp:1396 qt/ui/prefs_dialog.ui.h:623
+#: qt/main_window.cpp:1397 qt/ui/prefs_dialog.ui.h:620
 msgid "Timer"
 msgstr "Stopky"
 
-#: qt/main_window.cpp:1409 qt/ui/dic_tools_widget.ui.h:304
-#: qt/ui/main_window.ui.h:139
+#: qt/main_window.cpp:1410 qt/ui/dic_tools_widget.ui.h:302
+#: qt/ui/main_window.ui.h:144
 msgid "Dictionary tools"
 msgstr "Slovníkové nástroje"
 
-#: qt/main_window.cpp:1428
+#: qt/main_window.cpp:1429
 msgid "Copyright (C) 1999-2012 - Antoine Fraboulet & Olivier Teuliere."
 msgstr "Autorské právo © 1999-2012 - Antoine Fraboulet & Olivier Teuliere."
 
-#: qt/main_window.cpp:1431
+#: qt/main_window.cpp:1432
 msgid ""
 "This program is free software; you can redistribute it and/or modify it "
 "under the terms of the GNU General Public License as published by the Free "
@@ -1796,15 +1793,15 @@ msgstr ""
 
 #. TRANSLATORS: If the website is translated in your language,
 #. feel free to adapt the URL.
-#: qt/main_window.cpp:1438 qt/update_checker.cpp:199
+#: qt/main_window.cpp:1439 qt/update_checker.cpp:199
 msgid "http://www.nongnu.org/eliot/en/"
 msgstr "http://www.nongnu.org/eliot/en/"
 
-#: qt/main_window.cpp:1439
+#: qt/main_window.cpp:1440
 msgid "Web site: %1"
 msgstr "Stránky: %1"
 
-#: qt/main_window.cpp:1507
+#: qt/main_window.cpp:1508
 msgid ""
 "Replaying this turn will modify the game history by deleting the turns after "
 "the displayed one (i.e. turns \"in the future\")."
@@ -1812,19 +1809,19 @@ msgstr ""
 "Opakování tohoto kola povede k úpravě záznamu o průběhu hry smazáním kol, "
 "která jdou po zobrazeném kole /tj. kol \"v budoucnosti\""
 
-#: qt/main_window.cpp:1519
+#: qt/main_window.cpp:1520
 msgid "Replaying from turn %1"
 msgstr "Opakování od kola %1"
 
-#: qt/new_game.cpp:39 qt/players_table_helper.cpp:43
+#: qt/new_game.cpp:40 qt/players_table_helper.cpp:43
 msgid "Human"
 msgstr "Člověk"
 
-#: qt/new_game.cpp:40 qt/players_table_helper.cpp:44
+#: qt/new_game.cpp:41 qt/players_table_helper.cpp:44
 msgid "Computer"
 msgstr "Počítač"
 
-#: qt/new_game.cpp:53
+#: qt/new_game.cpp:54
 msgid ""
 "In duplicate mode, all the players are always faced with the same board and "
 "the same rack,\n"
@@ -1843,7 +1840,7 @@ msgstr ""
 "Tento režim umožňuje neomezený počet současných hráčů, a z toho důvodu je "
 "často používán při oficiálních kláních."
 
-#: qt/new_game.cpp:60
+#: qt/new_game.cpp:61
 msgid ""
 "This mode is the classical one, often played in family, where players play "
 "in turn,\n"
@@ -1858,7 +1855,7 @@ msgstr ""
 "Když jsou jen dva hráči, lze často použít i nějakou taktiku, protože "
 "nejlepší tah není nezbytně tím, kterým se dosáhne nejlepšího výsledku."
 
-#: qt/new_game.cpp:65
+#: qt/new_game.cpp:66
 msgid ""
 "In training mode, the player can set the rack freely and can see all the "
 "possible moves.\n"
@@ -1868,7 +1865,7 @@ msgstr ""
 "možné tahy.\n"
 "Nestojí proti němu žádný protihráč. Cílem je jednoduše udělat nějaký pokrok."
 
-#: qt/new_game.cpp:68
+#: qt/new_game.cpp:69
 msgid ""
 "The arbitration mode allows arbitrating a duplicate game, possibly with many "
 "players.\n"
@@ -1882,7 +1879,7 @@ msgstr ""
 "Tento režim je dokonalý pro rozhodcování zdvojených her v kroužcích nebo při "
 "kláních."
 
-#: qt/new_game.cpp:72
+#: qt/new_game.cpp:73
 msgid ""
 "In topping mode, the goal is to find the top as quickly as possible. The "
 "player is allowed\n"
@@ -1899,7 +1896,7 @@ msgstr ""
 "když hráči zabere jeho nalezení příliš mnoho času (nebo jej vůbec nenajde).\n"
 "Tento režim může být docela těžký a většinou je určen zkušeným hráčům."
 
-#: qt/new_game.cpp:78
+#: qt/new_game.cpp:79
 msgid ""
 "In a joker game, each rack contains a joker.\n"
 "When a word containing the joker is played on the grid, the joker is then "
@@ -1919,7 +1916,7 @@ msgstr ""
 "Tato obměna, obzvláště zajímavá ve zdvojeném režimu, je dobrá ke cvičení za "
 "použití žolíka."
 
-#: qt/new_game.cpp:84
+#: qt/new_game.cpp:85
 msgid ""
 "An explosive game is a bit like a joker game, except that when the computer "
 "chooses the rack\n"
@@ -1941,7 +1938,7 @@ msgstr ""
 "přihrádkou, ale obyčejně\n"
 "dává mnohem vyšší výsledky než v běžné hře."
 
-#: qt/new_game.cpp:90
+#: qt/new_game.cpp:91
 msgid ""
 "With this variant, the rack contains 8 letters instead of 7,\n"
 "but at most 7 can be played at the same time.\n"
@@ -1951,23 +1948,23 @@ msgstr ""
 "ale ve stejnou dobu je možné zahrát nejvíce 7.\n"
 "To umožňuje více kombinací v průběhu hry a tím i vyšší výsledek."
 
-#: qt/new_game.cpp:96
+#: qt/new_game.cpp:97
 msgid "Mark the selected player(s) as favorites"
 msgstr "Označit vybrané(ho) hráče jako oblíbené"
 
-#: qt/new_game.cpp:97
+#: qt/new_game.cpp:98
 msgid "Add the selected player(s) to the list of favorite players"
 msgstr "Přidat vybrané(ho) hráče do seznamu oblíbených hráčů"
 
-#: qt/new_game.cpp:114 qt/new_game.cpp:227
+#: qt/new_game.cpp:115 qt/new_game.cpp:228
 msgid "Player %1"
 msgstr "Hráč %1"
 
-#: qt/new_game.cpp:115 qt/qtcommon.cpp:155 qt/ui/main_window.ui.h:123
+#: qt/new_game.cpp:116 qt/qtcommon.cpp:155 qt/ui/main_window.ui.h:122
 msgid "Eliot"
 msgstr "Eliot"
 
-#: qt/new_game.cpp:314
+#: qt/new_game.cpp:315
 msgid "Select the players to add"
 msgstr "Vybrat hráče k přidání"
 
@@ -2209,12 +2206,11 @@ msgstr ""
 "Potvrzení můžete zobrazit ještě v budoucnosti tím,\n"
 "že změníte odpovídající volbu v nastavení."
 
-#: qt/stats_widget.cpp:133 qt/topping_widget.cpp:113 qt/training_widget.cpp:98
+#: qt/stats_widget.cpp:133 qt/topping_widget.cpp:113 qt/training_widget.cpp:99
 msgid "Lock columns sizes"
 msgstr "Zamknout velikosti sloupců"
 
-#: qt/stats_widget.cpp:135 qt/topping_widget.cpp:115
-#: qt/training_widget.cpp:100
+#: qt/stats_widget.cpp:135 qt/topping_widget.cpp:115 qt/training_widget.cpp:101
 msgid "Disable auto-resizing of the columns"
 msgstr "Zakázat automatickou změnu velikosti sloupců"
 
@@ -2342,7 +2338,7 @@ msgstr ""
 "Čas vyhrazený pro kolo vypršel.\n"
 "Nejlepší tah je %1 na %2 za %3 bodů."
 
-#: qt/training_widget.cpp:318
+#: qt/training_widget.cpp:319
 msgid ""
 "Warning: Cannot set the rack to '%1'\n"
 "%2"
@@ -2404,7 +2400,7 @@ msgstr "%s: %ls"
 msgid "Search complete"
 msgstr "Hledání hotovo"
 
-#: utils/curses_intf.cpp:356 qt/ui/training_widget.ui.h:200
+#: utils/curses_intf.cpp:356 qt/ui/training_widget.ui.h:198
 msgid "Search results"
 msgstr "Výsledky hledání"
 
@@ -2607,15 +2603,15 @@ msgstr "Zadat nová písmena:"
 msgid "Cannot take these letters from the bag:"
 msgstr "Tato písmena nelze vzít z pytlíku:"
 
-#: utils/curses_intf.cpp:1120 qt/ui/prefs_dialog.ui.h:661
+#: utils/curses_intf.cpp:1120 qt/ui/prefs_dialog.ui.h:658
 msgid "Free game mode"
 msgstr "Režim volné hry"
 
-#: utils/curses_intf.cpp:1122 qt/ui/prefs_dialog.ui.h:648
+#: utils/curses_intf.cpp:1122 qt/ui/prefs_dialog.ui.h:645
 msgid "Duplicate mode"
 msgstr "Zdvojený režim"
 
-#: utils/curses_intf.cpp:1125 qt/ui/new_game.ui.h:283
+#: utils/curses_intf.cpp:1125 qt/ui/new_game.ui.h:282
 msgid "Joker game"
 msgstr "Hra se žolíkem"
 
@@ -2623,161 +2619,160 @@ msgstr "Hra se žolíkem"
 msgid "[h for help]"
 msgstr "[h pro nápovědu]"
 
-#: qt/ui/arbit_assignments.ui.h:143
+#: qt/ui/arbit_assignments.ui.h:141
 msgid "Assignments"
 msgstr "Přiřazení"
 
-#: qt/ui/arbit_assignments.ui.h:144
+#: qt/ui/arbit_assignments.ui.h:142
 msgid "Master move:"
 msgstr "Hlavní tah:"
 
-#: qt/ui/arbit_assignments.ui.h:146
+#: qt/ui/arbit_assignments.ui.h:144
 msgid "Select"
 msgstr "Vybrat"
 
-#: qt/ui/arbit_assignments.ui.h:147
+#: qt/ui/arbit_assignments.ui.h:145
 msgid "Hide players with an assigned move"
 msgstr "Skrýt hráče s přiřazeným tahem"
 
-#: qt/ui/arbit_assignments.ui.h:148
+#: qt/ui/arbit_assignments.ui.h:146
 msgid "Assign move"
 msgstr "Přiřadit tah"
 
-#: qt/ui/arbit_assignments.ui.h:150
+#: qt/ui/arbit_assignments.ui.h:148
 msgid "Indicate that the selected player(s) did not play"
 msgstr "naznačit, že vybraný hráč(i) nehrál"
 
-#: qt/ui/arbit_assignments.ui.h:152
+#: qt/ui/arbit_assignments.ui.h:150
 msgid "Suppress move"
 msgstr "Zrušit tah"
 
-#: qt/ui/arbit_assignments.ui.h:154
+#: qt/ui/arbit_assignments.ui.h:152
 msgid "Validate the current turn and start a new one"
 msgstr "Schválit nynější tah a začít nový"
 
-#: qt/ui/arbit_assignments.ui.h:156
+#: qt/ui/arbit_assignments.ui.h:154
 msgid "&End turn"
 msgstr "&Ukončit tah"
 
-#: qt/ui/arbitration_widget.ui.h:204
+#: qt/ui/arbitration_widget.ui.h:202
 msgid "Random"
 msgstr "Náhodný"
 
-#: qt/ui/arbitration_widget.ui.h:205 qt/ui/dic_tools_widget.ui.h:307
-#: qt/ui/dic_tools_widget.ui.h:309
+#: qt/ui/arbitration_widget.ui.h:203 qt/ui/dic_tools_widget.ui.h:305
+#: qt/ui/dic_tools_widget.ui.h:307
 msgid "Search"
 msgstr "Hledat"
 
-#: qt/ui/arbitration_widget.ui.h:206
+#: qt/ui/arbitration_widget.ui.h:204
 msgid "Possible words"
 msgstr "Možná slova"
 
-#: qt/ui/arbitration_widget.ui.h:207
+#: qt/ui/arbitration_widget.ui.h:205
 msgid "Filter results:"
 msgstr "Filtrovat výsledky:"
 
-#: qt/ui/arbitration_widget.ui.h:211 qt/ui/topping_widget.ui.h:201
+#: qt/ui/arbitration_widget.ui.h:209 qt/ui/topping_widget.ui.h:199
 msgid "Word:"
 msgstr "Slovo:"
 
-#: qt/ui/arbitration_widget.ui.h:212 qt/ui/player_widget.ui.h:163
-#: qt/ui/topping_widget.ui.h:202 qt/ui/training_widget.ui.h:187
+#: qt/ui/arbitration_widget.ui.h:210 qt/ui/player_widget.ui.h:160
+#: qt/ui/topping_widget.ui.h:200 qt/ui/training_widget.ui.h:185
 msgid "Ref.:"
 msgstr "Souřadnice:"
 
-#: qt/ui/arbitration_widget.ui.h:213
+#: qt/ui/arbitration_widget.ui.h:211
 msgid "Check word"
 msgstr "Ověřit slovo"
 
-#: qt/ui/bag_widget.ui.h:109
+#: qt/ui/bag_widget.ui.h:107
 msgid "Remaining vowels:"
 msgstr "Zbývající samohlásky:"
 
-#: qt/ui/bag_widget.ui.h:111
+#: qt/ui/bag_widget.ui.h:109
 msgid "Remaining consonants:"
 msgstr "Zbývající souhlásky:"
 
-#: qt/ui/bag_widget.ui.h:113
+#: qt/ui/bag_widget.ui.h:111
 msgid "Remaining jokers:"
 msgstr "Zbývající žolíci:"
 
-#: qt/ui/dic_tools_widget.ui.h:306
+#: qt/ui/dic_tools_widget.ui.h:304
 msgid "Check"
 msgstr "Ověřit"
 
-#: qt/ui/dic_tools_widget.ui.h:308
+#: qt/ui/dic_tools_widget.ui.h:306
 msgid "Plus 1"
 msgstr "Plus 1"
 
-#: qt/ui/dic_tools_widget.ui.h:310
+#: qt/ui/dic_tools_widget.ui.h:308
 msgid "Save list..."
 msgstr "Uložit seznam..."
 
-#: qt/ui/dic_tools_widget.ui.h:311
+#: qt/ui/dic_tools_widget.ui.h:309
 msgid "Minimum length:"
 msgstr "Nejmenší délka:"
 
-#: qt/ui/dic_tools_widget.ui.h:312
+#: qt/ui/dic_tools_widget.ui.h:310
 msgid "Maximum length:"
 msgstr "Největší délka:"
 
-#: qt/ui/dic_tools_widget.ui.h:313
+#: qt/ui/dic_tools_widget.ui.h:311
 msgid "Note: only the 1000 first results have been displayed"
 msgstr "Poznámka: Bylo zobrazeno pouze prvních tisíc výsledků"
 
-#: qt/ui/dic_tools_widget.ui.h:314
+#: qt/ui/dic_tools_widget.ui.h:312
 msgid "Regular expressions"
 msgstr "Regulární výrazy"
 
-#: qt/ui/dic_tools_widget.ui.h:315 qt/ui/dic_wizard_info_page.ui.h:141
+#: qt/ui/dic_tools_widget.ui.h:313 qt/ui/dic_wizard_info_page.ui.h:138
 msgid "Dictionary name:"
 msgstr "Název slovníku:"
 
-#: qt/ui/dic_tools_widget.ui.h:316
+#: qt/ui/dic_tools_widget.ui.h:314
 msgid "Letters:"
 msgstr "Písmena:"
 
-#: qt/ui/dic_tools_widget.ui.h:317
+#: qt/ui/dic_tools_widget.ui.h:315
 msgid "Number of words:"
 msgstr "Počet slov:"
 
-#: qt/ui/dic_tools_widget.ui.h:318
+#: qt/ui/dic_tools_widget.ui.h:316
 msgid "Save words list..."
 msgstr "Uložit seznam slov..."
 
-#: qt/ui/dic_tools_widget.ui.h:319
+#: qt/ui/dic_tools_widget.ui.h:317
 msgid "Dic. info."
 msgstr "Info o slovníku"
 
-#: qt/ui/dic_wizard_conclusion_page.ui.h:67
-#: qt/ui/dic_wizard_info_page.ui.h:144 qt/ui/dic_wizard_info_page.ui.h:145
-#: qt/ui/dic_wizard_info_page.ui.h:146
-#: qt/ui/dic_wizard_letters_def_page.ui.h:90
+#: qt/ui/dic_wizard_conclusion_page.ui.h:64 qt/ui/dic_wizard_info_page.ui.h:141
+#: qt/ui/dic_wizard_info_page.ui.h:142 qt/ui/dic_wizard_info_page.ui.h:143
+#: qt/ui/dic_wizard_letters_def_page.ui.h:88
 msgid "Description"
 msgstr "Popis"
 
-#: qt/ui/dic_wizard_conclusion_page.ui.h:68
+#: qt/ui/dic_wizard_conclusion_page.ui.h:65
 msgid "Load this dictionary in Eliot"
 msgstr "Nahrát tento slovník do Eliota"
 
-#: qt/ui/dic_wizard_info_page.ui.h:142 qt/ui/dic_wizard_info_page.ui.h:143
-#: qt/ui/new_game.ui.h:289 qt/ui/prefs_dialog.ui.h:637
+#: qt/ui/dic_wizard_info_page.ui.h:139 qt/ui/dic_wizard_info_page.ui.h:140
+#: qt/ui/new_game.ui.h:288 qt/ui/prefs_dialog.ui.h:634
 msgid "Browse..."
 msgstr "Procházet..."
 
-#: qt/ui/dic_wizard_info_page.ui.h:147
+#: qt/ui/dic_wizard_info_page.ui.h:144
 msgid "Generated dictionary:"
 msgstr "Vytvořený slovník:"
 
-#: qt/ui/dic_wizard_info_page.ui.h:148
+#: qt/ui/dic_wizard_info_page.ui.h:145
 msgid "Word list:"
 msgstr "Seznam slov:"
 
-#: qt/ui/dic_wizard_letters_def_page.ui.h:91
+#: qt/ui/dic_wizard_letters_def_page.ui.h:89
 msgid "Load letters from word list"
 msgstr "Nahrát písmena ze seznamu slov"
 
-#: qt/ui/dic_wizard_letters_def_page.ui.h:93
+#: qt/ui/dic_wizard_letters_def_page.ui.h:91
 msgid ""
 "Use the values for the current dictionary for all the letters below (unknown "
 "letters will be ignored)"
@@ -2785,84 +2780,84 @@ msgstr ""
 "Použít hodnoty pro současný slovník na všechna slova (neznámá slova se budou "
 "přehlížet)"
 
-#: qt/ui/dic_wizard_letters_def_page.ui.h:95
+#: qt/ui/dic_wizard_letters_def_page.ui.h:93
 msgid "Use values from current dictionary"
 msgstr "Použít hodnoty ze současného slovníku"
 
-#: qt/ui/main_window.ui.h:129
+#: qt/ui/main_window.ui.h:130
 msgid "External board"
 msgstr "Vnější deska"
 
-#: qt/ui/new_game.ui.h:274
+#: qt/ui/new_game.ui.h:273
 msgid "New game"
 msgstr "Nová hra"
 
-#: qt/ui/new_game.ui.h:275
+#: qt/ui/new_game.ui.h:274
 msgid "Game type"
 msgstr "Druh hry"
 
-#: qt/ui/new_game.ui.h:276
+#: qt/ui/new_game.ui.h:275
 msgid "Mode:"
 msgstr "Režim:"
 
-#: qt/ui/new_game.ui.h:277
+#: qt/ui/new_game.ui.h:276
 msgid "Duplicate"
 msgstr "Zdvojení"
 
-#: qt/ui/new_game.ui.h:280
+#: qt/ui/new_game.ui.h:279
 msgid "Arbitration (duplicate)"
 msgstr "Rozhodčí režim (zdvojení)"
 
-#: qt/ui/new_game.ui.h:282
+#: qt/ui/new_game.ui.h:281
 msgid "Variant:"
 msgstr "Obměna:"
 
-#: qt/ui/new_game.ui.h:284
+#: qt/ui/new_game.ui.h:283
 msgid "Explosive game"
 msgstr "Výbušná hra"
 
-#: qt/ui/new_game.ui.h:285
+#: qt/ui/new_game.ui.h:284
 msgid "7 among 8"
 msgstr "7 mezi 8"
 
-#: qt/ui/new_game.ui.h:286
+#: qt/ui/new_game.ui.h:285
 msgid "Master game"
 msgstr "Hlavní hra"
 
-#: qt/ui/new_game.ui.h:287
+#: qt/ui/new_game.ui.h:286
 msgid "Use a master game"
 msgstr "Použít hlavní hru"
 
-#: qt/ui/new_game.ui.h:288
+#: qt/ui/new_game.ui.h:287
 msgid "Saved game to use:"
 msgstr "Uložená hra k použití:"
 
-#: qt/ui/new_game.ui.h:291
+#: qt/ui/new_game.ui.h:290
 msgid "Add &player"
 msgstr "Přidat &hráče"
 
-#: qt/ui/new_game.ui.h:292
+#: qt/ui/new_game.ui.h:291
 msgid "Add &favorite players..."
 msgstr "Přidat &oblíbené hráče..."
 
-#: qt/ui/player_widget.ui.h:160 qt/ui/topping_widget.ui.h:198
+#: qt/ui/player_widget.ui.h:157 qt/ui/topping_widget.ui.h:196
 msgid "Shu&ffle"
 msgstr "Za&míchat"
 
-#: qt/ui/player_widget.ui.h:161
+#: qt/ui/player_widget.ui.h:158
 msgid "Change letters:"
 msgstr "Změnit písmena:"
 
-#: qt/ui/player_widget.ui.h:162
+#: qt/ui/player_widget.ui.h:159
 msgid "&Pass"
 msgstr "&Vzdát"
 
-#: qt/ui/player_widget.ui.h:164 qt/ui/training_widget.ui.h:186
+#: qt/ui/player_widget.ui.h:161 qt/ui/training_widget.ui.h:184
 msgid "Play a word:"
 msgstr "Hrát slovo:"
 
-#: qt/ui/player_widget.ui.h:166 qt/ui/player_widget.ui.h:169
-#: qt/ui/topping_widget.ui.h:204 qt/ui/topping_widget.ui.h:207
+#: qt/ui/player_widget.ui.h:163 qt/ui/player_widget.ui.h:166
+#: qt/ui/topping_widget.ui.h:202 qt/ui/topping_widget.ui.h:205
 msgid ""
 "Enter the word to play (case-insensitive). A joker from the rack must be "
 "written in parentheses. E.g.: w(o)rd or W(O)RD"
@@ -2871,14 +2866,14 @@ msgstr ""
 "Žolík z přihrádky musí být zapsán v kulatých závorkách. Například: sl(o)vo "
 "nebo SL(O)VO"
 
-#: qt/ui/player_widget.ui.h:171 qt/ui/topping_widget.ui.h:199
-#: qt/ui/training_widget.ui.h:195
+#: qt/ui/player_widget.ui.h:168 qt/ui/topping_widget.ui.h:197
+#: qt/ui/training_widget.ui.h:193
 msgid "Play"
 msgstr "Hrát"
 
-#: qt/ui/player_widget.ui.h:173 qt/ui/player_widget.ui.h:176
-#: qt/ui/topping_widget.ui.h:210 qt/ui/topping_widget.ui.h:213
-#: qt/ui/training_widget.ui.h:189 qt/ui/training_widget.ui.h:192
+#: qt/ui/player_widget.ui.h:170 qt/ui/player_widget.ui.h:173
+#: qt/ui/topping_widget.ui.h:208 qt/ui/topping_widget.ui.h:211
+#: qt/ui/training_widget.ui.h:187 qt/ui/training_widget.ui.h:190
 msgid ""
 "Enter the coordinates of the word. Specify the row before the column for "
 "horizontal words, and the column before the row for vertical words. E.g.: H4 "
@@ -2887,67 +2882,67 @@ msgstr ""
 "Zadejte souřadnice slova. Určete řádek před sloupcem pro vodorovná slova, a "
 "sloupec před řádkem pro svislá slova. Např.: H4 nebo 4H"
 
-#: qt/ui/player_widget.ui.h:178 qt/ui/training_widget.ui.h:194
+#: qt/ui/player_widget.ui.h:175 qt/ui/training_widget.ui.h:192
 msgid "Points:"
 msgstr "Body:"
 
-#: qt/ui/player_widget.ui.h:180
+#: qt/ui/player_widget.ui.h:177
 msgid "Enter the letters you want to change"
 msgstr "Zadejte písmena, která chcete změnit"
 
-#: qt/ui/player_widget.ui.h:182
+#: qt/ui/player_widget.ui.h:179
 msgid "&Change"
 msgstr "&Změnit"
 
-#: qt/ui/prefs_dialog.ui.h:622
+#: qt/ui/prefs_dialog.ui.h:619
 msgid "Preferences"
 msgstr "Nastavení"
 
-#: qt/ui/prefs_dialog.ui.h:624
+#: qt/ui/prefs_dialog.ui.h:621
 msgid "Alert level (in seconds):"
 msgstr "Úroveň poplachu (v sekundách):"
 
-#: qt/ui/prefs_dialog.ui.h:625
+#: qt/ui/prefs_dialog.ui.h:622
 msgid "Timer total duration (in seconds):"
 msgstr "Celková doba trvání pro stopky v sekundách:"
 
-#: qt/ui/prefs_dialog.ui.h:626
+#: qt/ui/prefs_dialog.ui.h:623
 msgid "Timer beeps"
 msgstr "Pípnutí stopek"
 
-#: qt/ui/prefs_dialog.ui.h:627
+#: qt/ui/prefs_dialog.ui.h:624
 msgid "Start timer automatically when the rack changes"
 msgstr "Spustit stopky automaticky, když se přihrádka změní"
 
-#: qt/ui/prefs_dialog.ui.h:628
+#: qt/ui/prefs_dialog.ui.h:625
 msgid "Miscellaneous"
 msgstr "Různé"
 
-#: qt/ui/prefs_dialog.ui.h:629
+#: qt/ui/prefs_dialog.ui.h:626
 msgid "Definitions site:"
 msgstr "Stránka s vymezeními:"
 
-#: qt/ui/prefs_dialog.ui.h:630
+#: qt/ui/prefs_dialog.ui.h:627
 msgid "Dictionary path:"
 msgstr "Cesta ke slovníku:"
 
-#: qt/ui/prefs_dialog.ui.h:632
+#: qt/ui/prefs_dialog.ui.h:629
 msgid "Enter the dictionary path (mandatory to start a game)"
 msgstr "Zadejte cestu ke slovníku (povinné, aby hra mohla být spuštěna)"
 
-#: qt/ui/prefs_dialog.ui.h:635
+#: qt/ui/prefs_dialog.ui.h:632
 msgid "Open a browser window to choose the dictionary"
 msgstr "Otevřít okno s prohlížečem pro výběr slovníku"
 
-#: qt/ui/prefs_dialog.ui.h:639
+#: qt/ui/prefs_dialog.ui.h:636
 msgid "Show/hide the tiles points on the board."
 msgstr "Ukázat/Skrýt body hracích kamenů na hrací desce."
 
-#: qt/ui/prefs_dialog.ui.h:641
+#: qt/ui/prefs_dialog.ui.h:638
 msgid "Display tiles points"
 msgstr "Zobrazit body hracích kamenů"
 
-#: qt/ui/prefs_dialog.ui.h:643
+#: qt/ui/prefs_dialog.ui.h:640
 msgid ""
 "If checked, the game and player histories will display the rack and the "
 "corresponding solution on the same line"
@@ -2955,19 +2950,19 @@ msgstr ""
 "Je-li zaškrtnuto, průběh hry a minulost hráče budou zobrazovat přihrádku a "
 "odpovídající řešení na témže řádku"
 
-#: qt/ui/prefs_dialog.ui.h:645
+#: qt/ui/prefs_dialog.ui.h:642
 msgid "Align the rack and the solution in history"
 msgstr "Zarovnat přihrádku a řešení v záznamu o průběhu hry"
 
-#: qt/ui/prefs_dialog.ui.h:646
+#: qt/ui/prefs_dialog.ui.h:643
 msgid "Check periodically for new versions"
 msgstr "Pravidelně se dívat po nových verzích"
 
-#: qt/ui/prefs_dialog.ui.h:647
+#: qt/ui/prefs_dialog.ui.h:644
 msgid "Interface"
 msgstr "Rozhraní"
 
-#: qt/ui/prefs_dialog.ui.h:650 qt/ui/prefs_dialog.ui.h:663
+#: qt/ui/prefs_dialog.ui.h:647 qt/ui/prefs_dialog.ui.h:660
 msgid ""
 "If checked, playing an invalid or misplaced word will not be possible. If "
 "unchecked, you will get 0 point and lose your turn"
@@ -2975,44 +2970,44 @@ msgstr ""
 "Je-li zaškrtnuto, hra neplatného nebo špatně umístěného slova nebude možná. "
 "Není-li zaškrtnuto, dostanete 0 bodů a ztratíte své kolo"
 
-#: qt/ui/prefs_dialog.ui.h:652 qt/ui/prefs_dialog.ui.h:665
+#: qt/ui/prefs_dialog.ui.h:649 qt/ui/prefs_dialog.ui.h:662
 msgid "Refuse to play invalid moves"
 msgstr "Odmítnout hrát neplatné tahy"
 
-#: qt/ui/prefs_dialog.ui.h:653 qt/ui/prefs_dialog.ui.h:688
+#: qt/ui/prefs_dialog.ui.h:650 qt/ui/prefs_dialog.ui.h:685
 msgid "Min. players for a solo:"
 msgstr "Nejmenší počet hráčů pro sólo:"
 
-#: qt/ui/prefs_dialog.ui.h:654 qt/ui/prefs_dialog.ui.h:684
+#: qt/ui/prefs_dialog.ui.h:651 qt/ui/prefs_dialog.ui.h:681
 msgid "Solo value:"
 msgstr "Hodnota pro sólo:"
 
-#: qt/ui/prefs_dialog.ui.h:656 qt/ui/prefs_dialog.ui.h:686
+#: qt/ui/prefs_dialog.ui.h:653 qt/ui/prefs_dialog.ui.h:683
 msgid "Value of the solo bonus. Set it to 0 if you don't want solo bonus"
 msgstr ""
 "Hodnota odměny za sólo. Nastavte ji na nulu, pokud nechcete odměnu za sólo"
 
-#: qt/ui/prefs_dialog.ui.h:659 qt/ui/prefs_dialog.ui.h:677
+#: qt/ui/prefs_dialog.ui.h:656 qt/ui/prefs_dialog.ui.h:674
 msgid "Minimum number of players needed to take into account the solo bonus"
 msgstr "Nejmenší počet hráčů nezbytných pro vzetí odměny za sólo"
 
-#: qt/ui/prefs_dialog.ui.h:667 qt/ui/prefs_dialog.ui.h:689
+#: qt/ui/prefs_dialog.ui.h:664 qt/ui/prefs_dialog.ui.h:686
 msgid "Search results limit:"
 msgstr "Omezení výsledků hledání:"
 
-#: qt/ui/prefs_dialog.ui.h:668
+#: qt/ui/prefs_dialog.ui.h:665
 msgid "Arbitration mode"
 msgstr "Rozhodčí režim"
 
-#: qt/ui/prefs_dialog.ui.h:669
+#: qt/ui/prefs_dialog.ui.h:666
 msgid "Choose a master move automatically"
 msgstr "Vybrat hlavní tah automaticky"
 
-#: qt/ui/prefs_dialog.ui.h:670
+#: qt/ui/prefs_dialog.ui.h:667
 msgid "Propose a new rack automatically"
 msgstr "Navrhnout novou přihrádku automaticky"
 
-#: qt/ui/prefs_dialog.ui.h:672
+#: qt/ui/prefs_dialog.ui.h:669
 msgid ""
 "If checked, any change to the player rack in training mode will update the "
 "'Plus 1' tab of the 'Dictionary tools' window"
@@ -3020,123 +3015,123 @@ msgstr ""
 "Je-li zaškrtnuto, jakákoli změna hráčovy přihrádky v režimu procvičování "
 "obnoví kartu 'Plus 1' okna 'Slovníkové nástroje'"
 
-#: qt/ui/prefs_dialog.ui.h:674
+#: qt/ui/prefs_dialog.ui.h:671
 msgid "Copy rack to the 'Plus 1' dictionary tool"
 msgstr "Kopírovat přihrádku do slovníkového nástroje 'Plus 1'"
 
-#: qt/ui/prefs_dialog.ui.h:675
+#: qt/ui/prefs_dialog.ui.h:672
 msgid "Handle solos automatically"
 msgstr "Zacházet se sóly automaticky"
 
-#: qt/ui/prefs_dialog.ui.h:679
+#: qt/ui/prefs_dialog.ui.h:676
 msgid "Penalty value:"
 msgstr "Hodnota pro pokutu:"
 
-#: qt/ui/prefs_dialog.ui.h:680
+#: qt/ui/prefs_dialog.ui.h:677
 msgid "Warnings limit:"
 msgstr "Omezení pro varování:"
 
-#: qt/ui/prefs_dialog.ui.h:682
+#: qt/ui/prefs_dialog.ui.h:679
 msgid "Default number of points for a penalty"
 msgstr "Výchozí počet bodů pro pokutu"
 
-#: qt/ui/prefs_dialog.ui.h:691
+#: qt/ui/prefs_dialog.ui.h:688
 msgid "Additional penalty given when the timer expires:"
 msgstr "Stanovený dodatečný postih při vypršení časomíry:"
 
-#: qt/ui/prefs_dialog.ui.h:692
+#: qt/ui/prefs_dialog.ui.h:689
 msgid "Give a 1 point penalty for each elapsed second"
 msgstr "Dát za každou uplynulou sekundu 1 bod postihu"
 
-#: qt/ui/prefs_dialog.ui.h:693
+#: qt/ui/prefs_dialog.ui.h:690
 msgid "Game modes"
 msgstr "Herní režimy"
 
-#: qt/ui/prefs_dialog.ui.h:694
+#: qt/ui/prefs_dialog.ui.h:691
 msgid "When a game is on going, ask for a confirmation:"
 msgstr "Když hra běží požádat o potvrzení:"
 
-#: qt/ui/prefs_dialog.ui.h:695
+#: qt/ui/prefs_dialog.ui.h:692
 msgid "Before starting a new game"
 msgstr "Před započetím nové hry"
 
-#: qt/ui/prefs_dialog.ui.h:696
+#: qt/ui/prefs_dialog.ui.h:693
 msgid "Before loading a game"
 msgstr "Před nahráváním hry"
 
-#: qt/ui/prefs_dialog.ui.h:697
+#: qt/ui/prefs_dialog.ui.h:694
 msgid "Before loading a dictionary"
 msgstr "Před nahráváním slovníku"
 
-#: qt/ui/prefs_dialog.ui.h:698
+#: qt/ui/prefs_dialog.ui.h:695
 msgid "Before replaying a turn"
 msgstr "Před opakováním kola"
 
-#: qt/ui/prefs_dialog.ui.h:699
+#: qt/ui/prefs_dialog.ui.h:696
 msgid "Before quitting Eliot"
 msgstr "Před ukončením Eliota"
 
-#: qt/ui/prefs_dialog.ui.h:700
+#: qt/ui/prefs_dialog.ui.h:697
 msgid "In arbitration mode, ask for a confirmation:"
 msgstr "V rozhodčím režimu požádat o potvrzení:"
 
-#: qt/ui/prefs_dialog.ui.h:701
+#: qt/ui/prefs_dialog.ui.h:698
 msgid "Before replacing the selected master move"
 msgstr "Před nahrazením vybraného hlavního tahu"
 
-#: qt/ui/prefs_dialog.ui.h:702
+#: qt/ui/prefs_dialog.ui.h:699
 msgid "When selecting a non optimal master move"
 msgstr "Při výběru ne nejlepšího hlavního tahu"
 
-#: qt/ui/prefs_dialog.ui.h:703
+#: qt/ui/prefs_dialog.ui.h:700
 msgid "When selecting a master move using jokers uselessly"
 msgstr "Při výběru hlavního tahu používaje více žolíků, než je nutné"
 
-#: qt/ui/prefs_dialog.ui.h:704
+#: qt/ui/prefs_dialog.ui.h:701
 msgid "Before suppressing a player move"
 msgstr "Před zrušením hráčova tahu"
 
-#: qt/ui/prefs_dialog.ui.h:705
+#: qt/ui/prefs_dialog.ui.h:702
 msgid "Before replacing a player move"
 msgstr "Před nahrazením hráčova tahu"
 
-#: qt/ui/prefs_dialog.ui.h:706
+#: qt/ui/prefs_dialog.ui.h:703
 msgid "Before losing a player move (with a rack change)"
 msgstr "Před ztracením hráčova tahu (změnou přihrádky)"
 
-#: qt/ui/prefs_dialog.ui.h:707
+#: qt/ui/prefs_dialog.ui.h:704
 msgid "When ending an incomplete turn"
 msgstr "Při skončení neúplného tahu"
 
-#: qt/ui/prefs_dialog.ui.h:708
+#: qt/ui/prefs_dialog.ui.h:705
 msgid "Confirmations"
 msgstr "Potvrzení"
 
-#: qt/ui/tables_dialog.ui.h:77
+#: qt/ui/tables_dialog.ui.h:75
 msgid "Players tables definition"
 msgstr "Stanovení hráčských stolů"
 
-#: qt/ui/topping_widget.ui.h:200
+#: qt/ui/topping_widget.ui.h:198
 msgid "Get hints..."
 msgstr "Dostat rady..."
 
-#: qt/ui/topping_widget.ui.h:215
+#: qt/ui/topping_widget.ui.h:213
 msgid "Total score:"
 msgstr "Celkový výsledek:"
 
-#: qt/ui/training_widget.ui.h:196
+#: qt/ui/training_widget.ui.h:194
 msgid "&New rack"
 msgstr "&Nová přihrádka"
 
-#: qt/ui/training_widget.ui.h:197
+#: qt/ui/training_widget.ui.h:195
 msgid "&Complement"
 msgstr "&Doplněk"
 
-#: qt/ui/training_widget.ui.h:198
+#: qt/ui/training_widget.ui.h:196
 msgid "Sea&rch"
 msgstr "&Hledání"
 
-#: qt/ui/training_widget.ui.h:199
+#: qt/ui/training_widget.ui.h:197
 msgid "&Play selected"
 msgstr "Hrát &vybrané"
 
