@@ -3,6 +3,7 @@ APU_VERSION := 1.6.1
 ARABICA_VERSION := 2016-January
 BOOST_VERSION := 1.72.0
 EXPAT_VERSION := 2.2.9
+GETTEXT_VERSION := 0.20.1
 ICONV_VERSION := 1.16
 LIBCONFIG_VERSION := 1.7.2
 LIBXML2_VERSION := 2.9.8
@@ -31,7 +32,7 @@ CONFIGURE = CC="$(CC)" CXX="$(CXX)" CPPFLAGS="$(CPPFLAGS)" ./configure --host=$(
 
 # Dependencies (incomplete list):
 # expat <- apr <- apu <- log4cxx
-LIBS := iconv boost expat apr apu libconfig log4cxx arabica qt2
+LIBS := iconv gettext boost expat apr apu libconfig log4cxx arabica qt2
 TARGETS = $(LIBS:%=.%)
 
 .PHONY: help all clean clean-% distclean distclean-%
@@ -165,6 +166,26 @@ $(EXPAT_DIR_FLAG): $(EXPAT_ARCHIVE)
 	(cd $(EXPAT_DIR)/expat \
 		&& ./buildconf.sh \
 		&& $(CONFIGURE) --without-xmlwf \
+		&& make install)
+	touch $@
+
+
+### gettext ###
+
+GETTEXT_DIR = $(BUILD_DIR)/gettext-$(GETTEXT_VERSION)
+GETTEXT_DIR_FLAG = $(GETTEXT_DIR)/.flag
+GETTEXT_ARCHIVE = $(ARCHIVE_DIR)/gettext-$(GETTEXT_VERSION).tar.gz
+
+$(GETTEXT_ARCHIVE): $(PREFIX_FLAG)
+	$(WGET) https://ftp.gnu.org/pub/gnu/gettext/$(shell basename $@)
+
+$(GETTEXT_DIR_FLAG): $(GETTEXT_ARCHIVE)
+	$(TAR) -xzf $<
+	touch $@
+
+.gettext: $(GETTEXT_DIR_FLAG)
+	(cd $(GETTEXT_DIR) \
+		&& $(CONFIGURE) --disable-java --disable-native-java --disable-relocatable --without-emacs --without-included-libxml \
 		&& make install)
 	touch $@
 
