@@ -23,6 +23,7 @@
 
 #include <exception>
 #include <iostream>
+#include <clocale>
 #include <cstring> // For memset
 
 #if ENABLE_NLS
@@ -49,10 +50,8 @@ void usage(const char *iBinaryName)
 
 int main(int argc, char* argv[])
 {
-#if HAVE_SETLOCALE
     // Set locale via LC_ALL
     setlocale(LC_ALL, "");
-#endif
 
 #if ENABLE_NLS
     // Set the message domain

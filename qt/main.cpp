@@ -21,6 +21,7 @@
 #include "config.h"
 
 #include <iostream>
+#include <clocale>
 #include <string>
 #include <exception>
 #include <QApplication>
@@ -110,14 +111,12 @@ int main(int argc, char **argv)
 #endif
 
 
-#ifdef HAVE_SETLOCALE
     // Set locale via LC_ALL
     setlocale(LC_ALL, "");
 #ifdef __APPLE__
     // FIXME: Ugly hack: we hardcode the encoding to UTF-8, because I don't
     // know how to retrieve it properly when LANG is not set
     setlocale(LC_CTYPE, "UTF-8");
-#endif
 #endif
 
     MyApplication app(argc, argv);

@@ -24,6 +24,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <clocale>
 #include <vector>
 #include <boost/format.hpp>
 #include <boost/foreach.hpp>
@@ -165,10 +166,8 @@ void printUsage(const string &iBinaryName)
 
 int main(int argc, char* argv[])
 {
-#if HAVE_SETLOCALE
     // Set locale via LC_ALL
     setlocale(LC_ALL, "");
-#endif
 
 #if ENABLE_NLS
     // Set the message domain
