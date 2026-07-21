@@ -51,10 +51,10 @@
 
 INIT_LOGGER(game, GameFactory);
 
-GameFactory *GameFactory::m_factory = NULL;
+GameFactory *GameFactory::m_factory = nullptr;
 
 
-GameFactory::GameFactory(): m_dic(NULL), m_joker(false)
+GameFactory::GameFactory(): m_dic(nullptr), m_joker(false)
 {
 }
 
@@ -67,7 +67,7 @@ GameFactory::~GameFactory()
 
 GameFactory *GameFactory::Instance()
 {
-    if (m_factory == NULL)
+    if (m_factory == nullptr)
         m_factory = new GameFactory;
     return m_factory;
 }
@@ -76,7 +76,7 @@ GameFactory *GameFactory::Instance()
 void GameFactory::Destroy()
 {
     delete m_factory;
-    m_factory = NULL;
+    m_factory = nullptr;
 }
 
 
@@ -121,15 +121,15 @@ Game *GameFactory::createFromCmdLine(int argc, char **argv)
     // 1) Parse command-line and store everything in member variables
     static struct option long_options[] =
     {
-        {"help", no_argument, NULL, 'h'},
-        {"version", no_argument, NULL, 'v'},
-        {"dictionary", required_argument, NULL, 'd'},
-        {"dict", required_argument, NULL, 'd'},
-        {"mode", required_argument, NULL, 'm'},
-        {"human", required_argument, NULL, 'u'},
-        {"ai", required_argument, NULL, 'a'},
-        {"joker", no_argument, NULL, 500},
-        {0, 0, 0, 0}
+        {"help", no_argument, nullptr, 'h'},
+        {"version", no_argument, nullptr, 'v'},
+        {"dictionary", required_argument, nullptr, 'd'},
+        {"dict", required_argument, nullptr, 'd'},
+        {"mode", required_argument, nullptr, 'm'},
+        {"human", required_argument, nullptr, 'u'},
+        {"ai", required_argument, nullptr, 'a'},
+        {"joker", no_argument, nullptr, 500},
+        {nullptr, 0, nullptr, 0}
     };
     static char short_options[] = "hvd:m:u:a:";
 
@@ -145,11 +145,11 @@ Game *GameFactory::createFromCmdLine(int argc, char **argv)
         case 'h':
             // Help requested, display it and exit
             printUsage(argv[0]);
-            return NULL;
+            return nullptr;
         case 'v':
             // Version requested, display it and exit
             printVersion();
-            return NULL;
+            return nullptr;
         case 'd':
             m_dicStr = optarg;
             found_d = true;
@@ -163,7 +163,7 @@ Game *GameFactory::createFromCmdLine(int argc, char **argv)
             // Handle both types of players together
             {
                 wstring name;
-                if (optarg == NULL)
+                if (optarg == nullptr)
                 {
                     string s = str(boost::format(_("Player %1%")) % (m_players.size() + 1));
                     name = wfl(s);
@@ -190,7 +190,7 @@ Game *GameFactory::createFromCmdLine(int argc, char **argv)
         cerr << endl;
 
         printUsage(argv[0]);
-        return NULL;
+        return nullptr;
     }
 
     // 3) Try to load the dictionary
@@ -201,7 +201,7 @@ Game *GameFactory::createFromCmdLine(int argc, char **argv)
     catch (std::exception &e)
     {
         cerr << e.what() << endl;
-        return NULL;
+        return nullptr;
     }
 
     // 4) Prepare game parameters
@@ -218,7 +218,7 @@ Game *GameFactory::createFromCmdLine(int argc, char **argv)
     else
     {
         cerr << "Invalid game mode '" << m_modeStr << "'" << endl;
-        return NULL;
+        return nullptr;
     }
 
     // 5) Try to create a game object

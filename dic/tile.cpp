@@ -35,7 +35,7 @@ using namespace std;
 INIT_LOGGER(dic, Tile);
 
 
-const Header * Tile::m_header = NULL;
+const Header * Tile::m_header = nullptr;
 Tile Tile::m_TheJoker;
 
 

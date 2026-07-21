@@ -40,7 +40,7 @@ class BagWidget: public QWidget, private Ui::BagWidget
     DEFINE_LOGGER();
 
 public:
-    explicit BagWidget(QWidget *parent = 0);
+    explicit BagWidget(QWidget *parent = nullptr);
 
 public slots:
     void setGame(const PublicGame *iGame);
@@ -70,7 +70,7 @@ class BagWidget2: public QWidget
     DEFINE_LOGGER();
 
 public:
-    explicit BagWidget2(QWidget *parent = 0);
+    explicit BagWidget2(QWidget *parent = nullptr);
 
 public slots:
     void setGame(const PublicGame *iGame);

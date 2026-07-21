@@ -415,7 +415,7 @@ bool Dictionary::searchRegExp(const wstring &iRegexp,
         oWordList.reserve(DEFAULT_VECT_ALLOC);
 
     // Parsing
-    Node *root = NULL;
+    Node *root = nullptr;
     searchRegExpLists llist;
     // Initialize the lists of letters
     initLetterLists(*this, llist);

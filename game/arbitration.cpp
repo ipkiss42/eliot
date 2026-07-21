@@ -106,7 +106,7 @@ void Arbitration::setSolo(unsigned iPlayerId, int iPoints)
 
     // If an existing solo exists, get rid of it
     const PlayerEventCmd *cmd = getPlayerEvent(iPlayerId, PlayerEventCmd::SOLO);
-    if (cmd != 0)
+    if (cmd != nullptr)
     {
         accessNavigation().dropCommand(*cmd);
     }
@@ -131,7 +131,7 @@ int Arbitration::getSolo(unsigned iPlayerId) const
 {
     ASSERT(iPlayerId < getNPlayers(), "Wrong player number");
     const PlayerEventCmd *cmd = getPlayerEvent(iPlayerId, PlayerEventCmd::SOLO);
-    if (cmd == 0)
+    if (cmd == nullptr)
         return 0;
     return cmd->getPoints();
 }
@@ -160,7 +160,7 @@ bool Arbitration::hasWarning(unsigned iPlayerId) const
 {
     ASSERT(iPlayerId < getNPlayers(), "Wrong player number");
     const PlayerEventCmd *cmd = getPlayerEvent(iPlayerId, PlayerEventCmd::WARNING);
-    return cmd != 0;
+    return cmd != nullptr;
 }
 
 
@@ -181,7 +181,7 @@ void Arbitration::addPenalty(unsigned iPlayerId, int iPoints)
 
     // If an existing penalty exists, merge it with the new one
     const PlayerEventCmd *cmd = getPlayerEvent(iPlayerId, PlayerEventCmd::PENALTY);
-    if (cmd == 0)
+    if (cmd == nullptr)
     {
         Command *pCmd = new PlayerEventCmd(*m_players[iPlayerId],
                                            PlayerEventCmd::PENALTY, iPoints);
@@ -211,7 +211,7 @@ int Arbitration::getPenalty(unsigned iPlayerId) const
 {
     ASSERT(iPlayerId < getNPlayers(), "Wrong player number");
     const PlayerEventCmd *cmd = getPlayerEvent(iPlayerId, PlayerEventCmd::PENALTY);
-    if (cmd == 0)
+    if (cmd == nullptr)
         return 0;
     return cmd->getPoints();
 }

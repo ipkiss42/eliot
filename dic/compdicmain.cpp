@@ -188,12 +188,12 @@ int main(int argc, char* argv[])
 
     static const struct option long_options[] =
     {
-        {"help", no_argument, NULL, 'h'},
-        {"dicname", required_argument, NULL, 'd'},
-        {"letters", required_argument, NULL, 'l'},
-        {"input", required_argument, NULL, 'i'},
-        {"output", required_argument, NULL, 'o'},
-        {0, 0, 0, 0}
+        {"help", no_argument, nullptr, 'h'},
+        {"dicname", required_argument, nullptr, 'd'},
+        {"letters", required_argument, nullptr, 'l'},
+        {"input", required_argument, nullptr, 'i'},
+        {"output", required_argument, nullptr, 'o'},
+        {nullptr, 0, nullptr, 0}
     };
     static const char short_options[] = "hd:l:i:o:";
 

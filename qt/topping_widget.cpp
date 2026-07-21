@@ -82,7 +82,7 @@ ToppingWidget::ToppingWidget(QWidget *parent, PlayModel &iPlayModel,
 
     // Use the mediator
     m_mediator = new PlayWordMediator(this, *lineEditPlay, *lineEditCoords,
-                                      NULL, *pushButtonPlay,
+                                      nullptr, *pushButtonPlay,
                                       iPlayModel, m_game);
     QObject::connect(m_mediator, SIGNAL(gameUpdated()),
                      this, SIGNAL(gameUpdated()));
@@ -133,7 +133,7 @@ ToppingWidget::ToppingWidget(QWidget *parent, PlayModel &iPlayModel,
 void ToppingWidget::refresh()
 {
     updateModel();
-    if (m_game == NULL)
+    if (m_game == nullptr)
     {
         lineEditRack->setText("");
         lineEditRack->setEnabled(false);
@@ -160,7 +160,7 @@ void ToppingWidget::updateModel()
     // Clear the table
     m_model->removeRows(0, m_model->rowCount());
 
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     const vector<Move> &triedMoves = m_game->toppingGetTriedMoves();

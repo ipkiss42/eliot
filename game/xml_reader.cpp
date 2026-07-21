@@ -95,7 +95,7 @@ Game * XmlReader::read(const string &iFileName, const Dictionary &iDic)
     parser.parse(source);
 
     Game *game = handler.getGame();
-    if (game == NULL)
+    if (game == nullptr)
         throw LoadGameException(handler.errorMessage);
 
     LOG_INFO("Savegame parsed successfully");
@@ -270,7 +270,7 @@ void XmlReader::endElement(const string& namespaceURI,
     if (tag == "Mode")
     {
         // The game should not be created yet
-        if (m_game != NULL)
+        if (m_game != nullptr)
             throw LoadGameException(_("The 'Mode' tag should be the first one to be closed"));
 
         // Differ game creation until after we have read the variant
@@ -292,7 +292,7 @@ void XmlReader::endElement(const string& namespaceURI,
     if (tag == "Variant")
     {
         // The game should not be created yet
-        if (m_game != NULL)
+        if (m_game != nullptr)
             throw LoadGameException(_("The 'Variant' tag should be right after the 'Mode' one"));
 
         if (m_data == "bingo")
@@ -307,7 +307,7 @@ void XmlReader::endElement(const string& namespaceURI,
     }
 
     // Create the game
-    if (m_game == NULL)
+    if (m_game == nullptr)
     {
         m_game = GameFactory::Instance()->createGame(m_params);
     }
@@ -390,7 +390,7 @@ void XmlReader::endElement(const string& namespaceURI,
     {
         const Move &move = buildMove(*m_game, m_attributes, false);
         Duplicate *duplicateGame = dynamic_cast<Duplicate*>(m_game);
-        if (duplicateGame == NULL)
+        if (duplicateGame == nullptr)
         {
             throw LoadGameException(_("The 'MasterMove' tag should only be present for duplicate games"));
         }

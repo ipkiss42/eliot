@@ -72,7 +72,7 @@ PlayersTableHelper::PlayersTableHelper(QObject *parent,
     : QObject(parent), m_tablePlayers(tablePlayers),
     m_buttonAdd(addButton), m_buttonRemove(removeButton),
     m_showDefaultColumn(showDefaultColumn),
-    m_buttonUp(0), m_buttonDown(0)
+    m_buttonUp(nullptr), m_buttonDown(nullptr)
 {
     // Initialize the table headers
     tablePlayers->setColumnCount(m_showDefaultColumn ? 4 : 3);
@@ -507,7 +507,7 @@ QWidget *PlayersLevelDelegate::createEditor(QWidget *parent,
     const QAbstractItemModel *model = index.model();
     QString type = model->data(model->index(index.row(), 1), Qt::DisplayRole).toString();
     if (type != _q(PlayersTableHelper::kAI))
-        return NULL;
+        return nullptr;
     QSpinBox *editor = new QSpinBox(parent);
     editor->setMinimum(0);
     editor->setMaximum(100);

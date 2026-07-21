@@ -39,7 +39,7 @@ class BoardWidget: public QFrame
     DEFINE_LOGGER();
 
 public:
-    explicit BoardWidget(PlayModel &iPlayModel, QWidget *parent = 0);
+    explicit BoardWidget(PlayModel &iPlayModel, QWidget *parent = nullptr);
     void setShowTempSigns(bool iShow) { m_showTemporarySigns = iShow; }
     void setShowOnlyLastTurn(bool iShow) { m_showOnlyLastTurn = iShow; }
 

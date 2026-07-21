@@ -143,7 +143,7 @@ TrainingWidget::TrainingWidget(QWidget *parent, PlayModel &iPlayModel, PublicGam
 void TrainingWidget::refresh()
 {
     updateModel();
-    if (m_game == NULL)
+    if (m_game == nullptr)
     {
         lineEditRack->setText("");
         lineEditRack->setEnabled(false);
@@ -175,7 +175,7 @@ void TrainingWidget::updateModel()
 {
     // Consider that there is nothing to do if the number of lines is correct
     // This avoids problems when the game is updated for a test play
-    if (m_game != NULL &&
+    if (m_game != nullptr &&
         m_game->trainingGetResults().size() == static_cast<unsigned int>(m_model->rowCount()))
     {
         return;
@@ -187,7 +187,7 @@ void TrainingWidget::updateModel()
     // Force the sort column
     treeViewResults->sortByColumn(2, Qt::DescendingOrder);
 
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     const Results &results = m_game->trainingGetResults();

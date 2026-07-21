@@ -45,7 +45,7 @@ class RackWidget: public QFrame
     DEFINE_LOGGER();
 
 public:
-    explicit RackWidget(QWidget *parent = 0);
+    explicit RackWidget(QWidget *parent = nullptr);
     void setShowOnlyLastTurn(bool iShow) { m_showOnlyLastTurn = iShow; }
 
     void setPlayModel(PlayModel *iPlayModel);

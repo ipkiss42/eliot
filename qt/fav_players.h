@@ -37,7 +37,7 @@ class FavPlayersDialog: public QDialog
     DEFINE_LOGGER();
 
 public:
-    explicit FavPlayersDialog(QWidget *parent = 0);
+    explicit FavPlayersDialog(QWidget *parent = nullptr);
 
 public slots:
     virtual void accept();

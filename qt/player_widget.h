@@ -43,7 +43,7 @@ public:
     explicit PlayerWidget(QWidget *parent,
                           PlayModel &iPlayModel,
                           unsigned int iPlayerNb = 0,
-                          PublicGame *iGame = NULL);
+                          PublicGame *iGame = nullptr);
 
 signals:
     void gameUpdated();
@@ -82,7 +82,7 @@ class PlayerTabWidget: public QTabWidget
     Q_OBJECT;
 
 public:
-    explicit PlayerTabWidget(PlayModel &iPlayModel, QWidget *parent = 0);
+    explicit PlayerTabWidget(PlayModel &iPlayModel, QWidget *parent = nullptr);
 
 public slots:
     void setGame(PublicGame *iGame);

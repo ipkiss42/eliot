@@ -39,7 +39,7 @@ class DicToolsWidget: public QWidget, private Ui::DicToolsWidget
     DEFINE_LOGGER();
 
 public:
-    explicit DicToolsWidget(QWidget *parent = 0);
+    explicit DicToolsWidget(QWidget *parent = nullptr);
 
 public slots:
     void setDic(const Dictionary *iDic);

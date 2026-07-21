@@ -66,7 +66,7 @@ public:
     /// Get the game characteristics
     const GameParams & getParams() const { return m_params; }
 
-    bool hasMasterGame() const { return m_masterGame != NULL; }
+    bool hasMasterGame() const { return m_masterGame != nullptr; }
 
     /**
      * Get the dictionary associated with the game.
@@ -275,7 +275,7 @@ protected:
      *          2: Not enough vowels or consonants to complete the rack
      * @return true if a rack can be drawn, false otherwise
      */
-    bool canDrawRack(const PlayedRack &iPld, bool iCheck, int *oReason = NULL) const;
+    bool canDrawRack(const PlayedRack &iPld, bool iCheck, int *oReason = nullptr) const;
 
     /**
      * Complete the given rack randomly.

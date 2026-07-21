@@ -189,7 +189,7 @@ void ArbitAssignments::updatePlayersModel()
     unsigned currPlayerId = m_proxyPlayersModel->data(currProxyIdx, Qt::UserRole).toUInt();
 
     m_playersModel->removeRows(0, m_playersModel->rowCount());
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     const bool hideAssignedPlayers = checkBoxHideAssigned->isChecked();

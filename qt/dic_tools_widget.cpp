@@ -48,7 +48,7 @@ INIT_LOGGER(qt, DicToolsWidget);
 
 
 DicToolsWidget::DicToolsWidget(QWidget *parent)
-    : QWidget(parent), m_dic(NULL)
+    : QWidget(parent), m_dic(nullptr)
 {
     setupUi(this);
 
@@ -149,7 +149,7 @@ void DicToolsWidget::setPlus1Rack(const QString &iRack)
 void DicToolsWidget::refreshCheck()
 {
     QLineEdit *rack = lineEditCheck;
-    if (m_dic == NULL)
+    if (m_dic == nullptr)
     {
         labelCheck->setText(_q("Please select a dictionary"));
         return;
@@ -198,7 +198,7 @@ void DicToolsWidget::refreshPlus1()
     QLineEdit *rack = lineEditPlus1;
 
     model->removeRows(0, model->rowCount());
-    if (m_dic == NULL)
+    if (m_dic == nullptr)
     {
         model->setHeaderData(0, Qt::Horizontal,
                              _q("Please select a dictionary"),
@@ -249,7 +249,7 @@ void DicToolsWidget::enableSearchRegexp()
 {
     bool hasText = lineEditRegexp->text() != "";
     buttonSearchRegexp->setEnabled(hasText);
-    buttonSaveRegexp->setEnabled(m_dic != NULL && hasText);
+    buttonSaveRegexp->setEnabled(m_dic != nullptr && hasText);
 }
 
 
@@ -259,7 +259,7 @@ void DicToolsWidget::refreshRegexp()
     QLineEdit *rack = lineEditRegexp;
 
     model->removeRows(0, model->rowCount());
-    if (m_dic == NULL)
+    if (m_dic == nullptr)
     {
         model->setHeaderData(0, Qt::Horizontal,
                                _q("Please select a dictionary"),
@@ -313,7 +313,7 @@ void DicToolsWidget::refreshRegexp()
 
 void DicToolsWidget::saveRegexpResults()
 {
-    if (m_dic == NULL)
+    if (m_dic == nullptr)
         return;
 
     QString fileName = QFileDialog::getSaveFileName(this, _q("Save words list"));
@@ -354,7 +354,7 @@ void DicToolsWidget::saveRegexpResults()
 
 void DicToolsWidget::refreshDicInfo()
 {
-    if (m_dic == NULL)
+    if (m_dic == nullptr)
     {
         lineEditName->setText("");
         lineEditLetters->setText("");
@@ -410,7 +410,7 @@ void DicToolsWidget::refreshDicInfo()
 
 void DicToolsWidget::exportWordsList()
 {
-    if (m_dic == NULL)
+    if (m_dic == nullptr)
         return;
     QString fileName = QFileDialog::getSaveFileName(this, _q("Save words list"));
     if (fileName != "")

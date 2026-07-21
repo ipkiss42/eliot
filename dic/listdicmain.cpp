@@ -160,13 +160,13 @@ int main(int argc, char *argv[])
 
     static const struct option long_options[] =
     {
-        {"help", no_argument, NULL, 'h'},
-        {"dictionary", required_argument, NULL, 'd'},
-        {"header", no_argument, NULL, 'e'},
-        {"letters", no_argument, NULL, 'l'},
-        {"words", no_argument, NULL, 'w'},
-        {"hexa", no_argument, NULL, 'x'},
-        {0, 0, 0, 0}
+        {"help", no_argument, nullptr, 'h'},
+        {"dictionary", required_argument, nullptr, 'd'},
+        {"header", no_argument, nullptr, 'e'},
+        {"letters", no_argument, nullptr, 'l'},
+        {"words", no_argument, nullptr, 'w'},
+        {"hexa", no_argument, nullptr, 'x'},
+        {nullptr, 0, nullptr, 0}
     };
     static const char short_options[] = "hd:elwx";
 

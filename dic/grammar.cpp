@@ -128,7 +128,7 @@ void evaluate(const Header &iHeader, iter_t const& i, stack<Node*> &evalStack,
 
         // Extract the character and convert it to its internal code
         uint8_t code = iHeader.getCodeFromChar(*i->value.begin());
-        Node *n = new Node(NODE_VAR, code, NULL, NULL);
+        Node *n = new Node(NODE_VAR, code, nullptr, nullptr);
         evalStack.push(n);
     }
     else if (i->value.id() == RegexpGrammar::choiceId)
@@ -151,7 +151,7 @@ void evaluate(const Header &iHeader, iter_t const& i, stack<Node*> &evalStack,
             iList.letters[j][iHeader.getCodeFromChar(*itLetter)] =
                 (contains ? !negate : negate);
         }
-        Node *node = new Node(NODE_VAR, iList.symbl[j], NULL, NULL);
+        Node *node = new Node(NODE_VAR, iList.symbl[j], nullptr, nullptr);
         evalStack.push(node);
     }
     else if (i->value.id() == RegexpGrammar::varId)
@@ -159,17 +159,17 @@ void evaluate(const Header &iHeader, iter_t const& i, stack<Node*> &evalStack,
         assert(i->children.size() == 0);
 
         string var(i->value.begin(), i->value.end());
-        Node *node = NULL;
+        Node *node = nullptr;
         if (var == ":v:")
-            node = new Node(NODE_VAR, RE_VOWL_MATCH, NULL, NULL);
+            node = new Node(NODE_VAR, RE_VOWL_MATCH, nullptr, nullptr);
         else if (var == ":c:")
-            node = new Node(NODE_VAR, RE_CONS_MATCH, NULL, NULL);
+            node = new Node(NODE_VAR, RE_CONS_MATCH, nullptr, nullptr);
         else if (var == ":1:")
-            node = new Node(NODE_VAR, RE_USR1_MATCH, NULL, NULL);
+            node = new Node(NODE_VAR, RE_USR1_MATCH, nullptr, nullptr);
         else if (var == ":2:")
-            node = new Node(NODE_VAR, RE_USR2_MATCH, NULL, NULL);
+            node = new Node(NODE_VAR, RE_USR2_MATCH, nullptr, nullptr);
         else if (var == ".")
-            node = new Node(NODE_VAR, RE_ALL_MATCH, NULL, NULL);
+            node = new Node(NODE_VAR, RE_ALL_MATCH, nullptr, nullptr);
         else
             assert(0);
 
@@ -214,7 +214,7 @@ void evaluate(const Header &iHeader, iter_t const& i, stack<Node*> &evalStack,
             assert(i->children.size() == 1);
             Node *old = evalStack.top();
             evalStack.pop();
-            Node *node = new Node(NODE_STAR, '\0', old, NULL);
+            Node *node = new Node(NODE_STAR, '\0', old, nullptr);
             evalStack.push(node);
         }
         else if (*i->value.begin() == L'+')
@@ -222,7 +222,7 @@ void evaluate(const Header &iHeader, iter_t const& i, stack<Node*> &evalStack,
             assert(i->children.size() == 1);
             Node *old = evalStack.top();
             evalStack.pop();
-            Node *node = new Node(NODE_PLUS, '\0', old, NULL);
+            Node *node = new Node(NODE_PLUS, '\0', old, nullptr);
             evalStack.push(node);
         }
         else if (*i->value.begin() == L'?')
@@ -230,7 +230,7 @@ void evaluate(const Header &iHeader, iter_t const& i, stack<Node*> &evalStack,
             assert(i->children.size() == 1);
             Node *old = evalStack.top();
             evalStack.pop();
-            Node *epsilon = new Node(NODE_VAR, RE_EPSILON, NULL, NULL);
+            Node *epsilon = new Node(NODE_VAR, RE_EPSILON, nullptr, nullptr);
             Node *node = new Node(NODE_OR, '\0', old, epsilon);
             evalStack.push(node);
         }
@@ -256,7 +256,7 @@ void evaluate(const Header &iHeader, iter_t const& i, stack<Node*> &evalStack,
         evaluate(iHeader, i->children.begin(), evalStack, iList);
         Node *old = evalStack.top();
         evalStack.pop();
-        Node* sharp = new Node(NODE_VAR, RE_FINAL_TOK, NULL, NULL);
+        Node* sharp = new Node(NODE_VAR, RE_FINAL_TOK, nullptr, nullptr);
         Node *node = new Node(NODE_AND, '\0', old, sharp);
         evalStack.push(node);
     }

@@ -30,7 +30,7 @@ INIT_LOGGER(qt, GameSignals);
 
 
 GameSignals::GameSignals()
-    : m_game(0), m_currentTurn(0), m_lastTurn(0)
+    : m_game(nullptr), m_currentTurn(0), m_lastTurn(0)
 {
 }
 
@@ -46,7 +46,7 @@ void GameSignals::notifyGameChanged(PublicGame *iGame)
 
 void GameSignals::notifyGameUpdated()
 {
-    if (m_game == NULL)
+    if (m_game == nullptr)
     {
         m_currentTurn = 0;
         m_lastTurn = 0;

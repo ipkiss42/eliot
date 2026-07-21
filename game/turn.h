@@ -142,13 +142,13 @@ class Turn
             for (it = m_commands.rbegin(); it != m_commands.rend(); ++it)
             {
                 const CMD *cmd = dynamic_cast<const CMD*>(*it);
-                if (cmd != 0 && predicate(*cmd))
+                if (cmd != nullptr && predicate(*cmd))
                 {
                     // Found it!
                     return cmd;
                 }
             }
-            return 0;
+            return nullptr;
         }
 
         /**
@@ -174,7 +174,7 @@ class Turn
             for (it = m_commands.begin(); it != m_commands.end(); ++it)
             {
                 const CMD *cmd = dynamic_cast<const CMD*>(*it);
-                if (cmd != 0)
+                if (cmd != nullptr)
                 {
                     // Found one!
                     results.push_back(cmd);

@@ -217,7 +217,7 @@ void Duplicate::recordPlayerMove(Player &ioPlayer, const Move &iMove)
     MatchingPlayer predicate(ioPlayer.getId());
     const PlayerMoveCmd *cmd =
         getNavigation().getCurrentTurn().findMatchingCmd<PlayerMoveCmd>(predicate);
-    if (cmd == 0)
+    if (cmd == nullptr)
     {
         Command *pCmd = new PlayerMoveCmd(ioPlayer, iMove, isArbitrationGame());
         accessNavigation().addAndExecute(pCmd);
@@ -236,7 +236,7 @@ void Duplicate::recordPlayerMove(Player &ioPlayer, const Move &iMove)
 
 Player * Duplicate::findBestPlayer() const
 {
-    Player *bestPlayer = NULL;
+    Player *bestPlayer = nullptr;
     int bestScore = -1;
     BOOST_FOREACH(Player *player, m_players)
     {
@@ -269,7 +269,7 @@ void Duplicate::endTurn()
 
         // Find the player with the best score
         const Player *bestPlayer = findBestPlayer();
-        if (bestPlayer != NULL)
+        if (bestPlayer != nullptr)
         {
             setMasterMove(bestPlayer->getLastMove());
         }
@@ -369,7 +369,7 @@ bool Duplicate::hasPlayed(unsigned iPlayerId) const
     MatchingPlayer predicate(iPlayerId);
     const PlayerMoveCmd *cmd =
         getNavigation().getCurrentTurn().findMatchingCmd<PlayerMoveCmd>(predicate);
-    return cmd != 0 && cmd->isExecuted() && !cmd->getMove().isNull();
+    return cmd != nullptr && cmd->isExecuted() && !cmd->getMove().isNull();
 }
 
 
@@ -404,7 +404,7 @@ void Duplicate::setSoloAuto(unsigned int minNbPlayers, int iSoloValue)
     BOOST_FOREACH(const Player *player, m_players)
     {
         const PlayerEventCmd *cmd = getPlayerEvent(player->getId(), PlayerEventCmd::SOLO);
-        if (cmd != 0)
+        if (cmd != nullptr)
         {
             accessNavigation().dropCommand(*cmd);
         }
@@ -431,7 +431,7 @@ void Duplicate::setSoloAuto(unsigned int minNbPlayers, int iSoloValue)
 
     // Find the player with the best score
     Player *bestPlayer = findBestPlayer();
-    if (bestPlayer != NULL)
+    if (bestPlayer != nullptr)
     {
         int bestScore = bestPlayer->getLastMove().getScore();
 

@@ -283,7 +283,7 @@ State * AutomatonHelper::getState(const set<uint64_t> &iId) const
             return s;
         }
     }
-    return NULL;
+    return nullptr;
 }
 
 /* ************************************************** *
@@ -330,7 +330,7 @@ AutomatonHelper *AutomatonHelper::ps2nfa(uint64_t init_state_id, int *ptl, uint6
                     set<uint64_t> temp_id;
                     temp_id.insert(ens);
                     temp_state = nfa->getState(temp_id);
-                    if (temp_state == NULL)
+                    if (temp_state == nullptr)
                     {
                         temp_state = new State(temp_id);
                         nfa->addState(temp_state);
@@ -375,7 +375,7 @@ set<uint64_t> AutomatonHelper::getSuccessor(const set<uint64_t> &S,
         set<uint64_t> Ry;                                        /* Ry = \empty             */
 
         State *z;
-        if ((z = y->m_next[letter]) != NULL)                   /* \delta (y,z) = l        */
+        if ((z = y->m_next[letter]) != nullptr)                   /* \delta (y,z) = l        */
         {
             r = getSuccessor(z->getId(), RE_EPSILON, iList);
             Ry.insert(r.begin(), r.end());
@@ -383,7 +383,7 @@ set<uint64_t> AutomatonHelper::getSuccessor(const set<uint64_t> &S,
         }
 
         /* \epsilon transition from start node */
-        if ((z = y->m_next[RE_EPSILON]) != NULL)               /* \delta (y,z) = \epsilon */
+        if ((z = y->m_next[RE_EPSILON]) != nullptr)               /* \delta (y,z) = \epsilon */
         {
             r = getSuccessor(z->getId(), letter, iList);
             Ry.insert(r.begin(), r.end());       /* Ry = Ry \cup succ(z)    */
@@ -393,7 +393,7 @@ set<uint64_t> AutomatonHelper::getSuccessor(const set<uint64_t> &S,
         {
             for (unsigned int i = 0; i < iList.symbl.size(); i++)
             {
-                if (iList.letters[i][letter] && (z = y->m_next[(int)iList.symbl[i]]) != NULL)
+                if (iList.letters[i][letter] && (z = y->m_next[(int)iList.symbl[i]]) != nullptr)
                 {
                     DMSG("*** letter " << regexpPrintLetter(letter)
                           << " is in " << regexpPrintLetter(i));
@@ -456,7 +456,7 @@ AutomatonHelper *AutomatonHelper::nfa2dfa(const AutomatonHelper &iNfa,
 
                 temp_state = dfa->getState(temp_id);
 
-                if (temp_state == NULL)
+                if (temp_state == nullptr)
                 {
                     temp_state = new State(temp_id);
                     dfa->addState(temp_state);

@@ -80,14 +80,14 @@ INIT_LOGGER(qt, MainWindow);
 const char *MainWindow::m_windowName = "MainWindow";
 
 MainWindow::MainWindow(QWidget *iParent)
-    : QMainWindow(iParent), m_dic(NULL), m_game(NULL),
+    : QMainWindow(iParent), m_dic(nullptr), m_game(nullptr),
     m_gameSignals(new GameSignals),
-    m_playersWidget(NULL), m_trainingWidget(NULL),
-    m_toppingWidget(NULL),
-    m_arbitrationWidget(NULL), m_scoresWidget(NULL),
-    m_bagWindow(NULL), m_boardWindow(NULL),
-    m_historyWindow(NULL), m_statsWindow(NULL), m_timerWindow(NULL),
-    m_dicToolsWindow(NULL), m_dicNameLabel(NULL), m_timerModel(NULL)
+    m_playersWidget(nullptr), m_trainingWidget(nullptr),
+    m_toppingWidget(nullptr),
+    m_arbitrationWidget(nullptr), m_scoresWidget(nullptr),
+    m_bagWindow(nullptr), m_boardWindow(nullptr),
+    m_historyWindow(nullptr), m_statsWindow(nullptr), m_timerWindow(nullptr),
+    m_dicToolsWindow(nullptr), m_dicNameLabel(nullptr), m_timerModel(nullptr)
 {
 #ifdef DEBUG
     // Check that the string conversion routines are not buggy
@@ -108,7 +108,7 @@ MainWindow::MainWindow(QWidget *iParent)
     // calls srand() internally...
     // This could be disabled using QApplication::setDesktopSettingsAware(),
     // but we would lose the desktop integration...
-    unsigned int val = time(NULL);
+    unsigned int val = time(nullptr);
     srand(val);
 
     // Make it easier to reproduce bugs
@@ -197,7 +197,7 @@ MainWindow::MainWindow(QWidget *iParent)
     m_ui.groupBoxPlayers->hide();
 
     // Notify everyone that we have no game yet
-    m_gameSignals->notifyGameChanged(NULL);
+    m_gameSignals->notifyGameChanged(nullptr);
 
     // Load dictionary
     QString dicPath = qs.value(PrefsDialog::kINTF_DIC_PATH, "").toString();
@@ -246,19 +246,19 @@ MainWindow::~MainWindow()
 
 void MainWindow::destroyCurrentGame()
 {
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     LOG_DEBUG("Destroying current game");
 
     // Some controls, like the board, can live when there is no game.
     // We only have to give them a NULL handler instead of the current one.
-    m_gameSignals->notifyGameChanged(NULL);
+    m_gameSignals->notifyGameChanged(nullptr);
 
     m_ui.groupBoxPlayers->hide();
 
     delete m_game;
-    m_game = NULL;
+    m_game = nullptr;
 
     LOG_DEBUG("Game destroyed");
 }
@@ -266,7 +266,7 @@ void MainWindow::destroyCurrentGame()
 
 void MainWindow::refresh()
 {
-    if (m_game != NULL)
+    if (m_game != nullptr)
     {
         const Bag &bag = m_game->getBag();
         m_lettersLabel->setText(_q("Consonants: %1 | Vowels: %2 | Jokers: %3")
@@ -320,7 +320,7 @@ void MainWindow::beep()
 
 void MainWindow::linkArbitrationAnd7P1()
 {
-    if (m_arbitrationWidget == NULL || m_dicToolsWindow == NULL)
+    if (m_arbitrationWidget == nullptr || m_dicToolsWindow == nullptr)
         return;
 
     // Disconnect the arbitration rack updates from the "Plus 1" tab of the
@@ -340,7 +340,7 @@ void MainWindow::linkArbitrationAnd7P1()
 
 void MainWindow::linkRackChangesAndTimer()
 {
-    if (m_timerModel == NULL)
+    if (m_timerModel == nullptr)
         return;
     // Disable the timer auto-start mechanism
     m_gameSignals->disconnect(SIGNAL(gameRackChanged(const PlayedRack&)), m_timerModel);
@@ -382,7 +382,7 @@ void MainWindow::updateForGame(PublicGame *iGame)
     // Try to reduce flicker
     setUpdatesEnabled(false);
 
-    if (iGame == NULL)
+    if (iGame == nullptr)
     {
         m_actionGameSaveAs->setEnabled(false);
         m_actionGamePrintPreview->setEnabled(false);
@@ -402,23 +402,23 @@ void MainWindow::updateForGame(PublicGame *iGame)
 
         // Destroy the players widget
         QtCommon::DestroyObject(m_playersWidget, m_gameSignals);
-        m_playersWidget = NULL;
+        m_playersWidget = nullptr;
 
         // Destroy the training widget
         QtCommon::DestroyObject(m_trainingWidget, m_gameSignals);
-        m_trainingWidget = NULL;
+        m_trainingWidget = nullptr;
 
         // Destroy the topping widget
         QtCommon::DestroyObject(m_toppingWidget, m_gameSignals);
-        m_toppingWidget = NULL;
+        m_toppingWidget = nullptr;
 
         // Destroy the arbitration widget
         QtCommon::DestroyObject(m_arbitrationWidget, m_gameSignals);
-        m_arbitrationWidget = NULL;
+        m_arbitrationWidget = nullptr;
 
         // Destroy the scores widget
         QtCommon::DestroyObject(m_scoresWidget, m_gameSignals);
-        m_scoresWidget = NULL;
+        m_scoresWidget = nullptr;
     }
     else
     {
@@ -442,7 +442,7 @@ void MainWindow::updateForGame(PublicGame *iGame)
             m_ui.groupBoxPlayers->setTitle(_q("Training"));
 
             // Training widget
-            m_trainingWidget = new TrainingWidget(NULL, m_playModel, iGame);
+            m_trainingWidget = new TrainingWidget(nullptr, m_playModel, iGame);
             m_ui.groupBoxPlayers->layout()->addWidget(m_trainingWidget);
             QObject::connect(m_trainingWidget, SIGNAL(gameUpdated()),
                              m_gameSignals, SLOT(notifyGameUpdated()));
@@ -456,7 +456,7 @@ void MainWindow::updateForGame(PublicGame *iGame)
                              m_trainingWidget, SLOT(refresh()));
 
             // Players score
-            m_scoresWidget = new ScoreWidget(NULL, iGame);
+            m_scoresWidget = new ScoreWidget(nullptr, iGame);
             m_ui.groupBoxPlayers->layout()->addWidget(m_scoresWidget);
             QObject::connect(m_gameSignals, SIGNAL(gameUpdated()),
                              m_scoresWidget, SLOT(refresh()));
@@ -493,7 +493,7 @@ void MainWindow::updateForGame(PublicGame *iGame)
             m_ui.groupBoxPlayers->setTitle(_q("Topping"));
 
             // Players widget
-            m_toppingWidget = new ToppingWidget(NULL, m_playModel, *m_timerModel, iGame);
+            m_toppingWidget = new ToppingWidget(nullptr, m_playModel, *m_timerModel, iGame);
             m_ui.groupBoxPlayers->layout()->addWidget(m_toppingWidget);
             QObject::connect(m_toppingWidget, SIGNAL(gameUpdated()),
                              m_gameSignals, SLOT(notifyGameUpdated()));
@@ -515,7 +515,7 @@ void MainWindow::updateForGame(PublicGame *iGame)
             m_ui.groupBoxPlayers->setTitle(_q("Players"));
 
             // Players widget
-            m_playersWidget = new PlayerTabWidget(m_playModel, NULL);
+            m_playersWidget = new PlayerTabWidget(m_playModel, nullptr);
             m_ui.groupBoxPlayers->layout()->addWidget(m_playersWidget);
             QObject::connect(m_playersWidget, SIGNAL(gameUpdated()),
                              m_gameSignals, SLOT(notifyGameUpdated()));
@@ -530,7 +530,7 @@ void MainWindow::updateForGame(PublicGame *iGame)
             m_playersWidget->setGame(iGame);
 
             // Players score
-            m_scoresWidget = new ScoreWidget(NULL, iGame);
+            m_scoresWidget = new ScoreWidget(nullptr, iGame);
             m_ui.groupBoxPlayers->layout()->addWidget(m_scoresWidget);
             QObject::connect(m_gameSignals, SIGNAL(gameUpdated()),
                              m_scoresWidget, SLOT(refresh()));
@@ -544,7 +544,7 @@ void MainWindow::updateForGame(PublicGame *iGame)
 
 void MainWindow::updateStatusBar(const Dictionary *iDic)
 {
-    if (iDic == NULL)
+    if (iDic == nullptr)
         m_dicNameLabel->setText(_q("No dictionary"));
     else {
         QString dicName = qfw(m_dic->getHeader().getName());
@@ -906,7 +906,7 @@ void MainWindow::onGameNew()
 {
     LOG_DEBUG("Starting a new game (unconfirmed)");
 
-    if (m_dic == NULL)
+    if (m_dic == nullptr)
     {
         displayErrorMsg(_q("You have to select a dictionary (.dawg file) "
                            "before starting a game. This can be done in the "
@@ -937,7 +937,7 @@ void MainWindow::onGameNew()
 
     // Create a new game
     m_game = newGameDialog.createGame();
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     m_ui.groupBoxPlayers->show();
@@ -963,7 +963,7 @@ void MainWindow::onGameLoadAutoSave()
 
 void MainWindow::loadGame(QString fileName)
 {
-    if (m_dic == NULL)
+    if (m_dic == nullptr)
     {
         displayErrorMsg(_q("You have to select a dictionary first!"));
         return;
@@ -1005,7 +1005,7 @@ void MainWindow::loadGame(QString fileName)
 
 void MainWindow::onGameSaveAs()
 {
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     QString fileName = QFileDialog::getSaveFileName(this, _q("Save a game"));
@@ -1027,7 +1027,7 @@ void MainWindow::onGameSaveAs()
 void MainWindow::onGamePrint()
 {
     LOG_DEBUG("Printing game (unconfirmed)");
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     QPrinter printer(QPrinter::HighResolution);
@@ -1271,10 +1271,10 @@ void MainWindow::onWindowsToolbar()
 
 void MainWindow::onWindowsBag()
 {
-    if (m_bagWindow == NULL)
+    if (m_bagWindow == nullptr)
     {
         // Create the window
-        BagWidget2 *bag = new BagWidget2(NULL);
+        BagWidget2 *bag = new BagWidget2(nullptr);
         bag->setGame(m_game);
         m_bagWindow = new AuxWindow(*bag, _q("Bag"), "BagWindow",
                                     m_actionWindowsBag);
@@ -1289,7 +1289,7 @@ void MainWindow::onWindowsBag()
 
 void MainWindow::onWindowsBoard()
 {
-    if (m_boardWindow == NULL)
+    if (m_boardWindow == nullptr)
     {
         // Create the window
         QFrame *frame = new QFrame;
@@ -1315,7 +1315,7 @@ void MainWindow::onWindowsBoard()
 
         hSplitter->addWidget(new QWidget);
 
-        TimerWidget *timerWidget = new TimerWidget(NULL, *m_timerModel);
+        TimerWidget *timerWidget = new TimerWidget(nullptr, *m_timerModel);
         hSplitter->addWidget(timerWidget);
 
         vSplitter->addWidget(new QWidget);
@@ -1354,10 +1354,10 @@ void MainWindow::onWindowsBoard()
 
 void MainWindow::onWindowsHistory()
 {
-    if (m_historyWindow == NULL)
+    if (m_historyWindow == nullptr)
     {
         // Create the window
-        HistoryTabWidget *history = new HistoryTabWidget(NULL);
+        HistoryTabWidget *history = new HistoryTabWidget(nullptr);
         history->setGame(m_game);
         m_historyWindow = new AuxWindow(*history, _q("History"), "HistoryWindow",
                                         m_actionWindowsHistory);
@@ -1372,7 +1372,7 @@ void MainWindow::onWindowsHistory()
 
 void MainWindow::onWindowsStatistics()
 {
-    if (m_statsWindow == NULL)
+    if (m_statsWindow == nullptr)
     {
         // Create the window
         StatsWidget *stats = new StatsWidget;
@@ -1390,10 +1390,10 @@ void MainWindow::onWindowsStatistics()
 
 void MainWindow::onWindowsTimer()
 {
-    if (m_timerWindow == NULL)
+    if (m_timerWindow == nullptr)
     {
         // Create the window
-        TimerWidget *timer = new TimerWidget(NULL, *m_timerModel);
+        TimerWidget *timer = new TimerWidget(nullptr, *m_timerModel);
         m_timerWindow = new AuxWindow(*timer, _q("Timer"), "TimerWindow",
                                       m_actionWindowsTimer);
     }
@@ -1403,10 +1403,10 @@ void MainWindow::onWindowsTimer()
 
 void MainWindow::onWindowsDicTools()
 {
-    if (m_dicToolsWindow == NULL)
+    if (m_dicToolsWindow == nullptr)
     {
         // Create the window
-        DicToolsWidget *dicTools = new DicToolsWidget(NULL);
+        DicToolsWidget *dicTools = new DicToolsWidget(nullptr);
         m_dicToolsWindow = new AuxWindow(*dicTools, _q("Dictionary tools"), "DicTools",
                                     m_actionWindowsDicTools);
         QObject::connect(this, SIGNAL(dicChanged(const Dictionary*)),
@@ -1449,7 +1449,7 @@ void MainWindow::onHelpAbout()
 
 void MainWindow::onHistoryFirstTurn()
 {
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     m_game->firstTurn();
@@ -1462,7 +1462,7 @@ void MainWindow::onHistoryFirstTurn()
 
 void MainWindow::onHistoryPrevTurn()
 {
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     m_game->prevTurn();
@@ -1475,7 +1475,7 @@ void MainWindow::onHistoryPrevTurn()
 
 void MainWindow::onHistoryNextTurn()
 {
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     m_game->nextTurn();
@@ -1488,7 +1488,7 @@ void MainWindow::onHistoryNextTurn()
 
 void MainWindow::onHistoryLastTurn()
 {
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     m_game->lastTurn();
@@ -1501,7 +1501,7 @@ void MainWindow::onHistoryLastTurn()
 
 void MainWindow::onHistoryReplayTurn()
 {
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     // Ask for a confirmation, because this may lead to data loss

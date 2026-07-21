@@ -105,12 +105,12 @@ void Box::printDataLine(int n, int x, const char *fmt, ...) const
         return;
 
     va_list vl_args;
-    char *buf = NULL;
+    char *buf = nullptr;
     va_start(vl_args, fmt);
     int res = vasprintf(&buf, fmt, vl_args);
     va_end(vl_args);
 
-    if (buf == NULL || res == -1)
+    if (buf == nullptr || res == -1)
     {
         return;
     }
@@ -1156,13 +1156,13 @@ int main(int argc, char ** argv)
     textdomain(PACKAGE);
 #endif
 
-    srand(time(NULL));
+    srand(time(nullptr));
 
     int retCode = 1;
     try
     {
         Game *realGame = GameFactory::Instance()->createFromCmdLine(argc, argv);
-        if (realGame == NULL)
+        if (realGame == nullptr)
         {
             GameFactory::Destroy();
             return 1;

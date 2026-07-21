@@ -62,7 +62,7 @@ typedef boost::tokenizer<boost::char_separator<wchar_t>,
         std::wstring> Tokenizer;
 
 // A static variable for holding the line
-static wchar_t *wline_read = NULL;
+static wchar_t *wline_read = nullptr;
 
 // Read a string, and return a pointer to it.
 // Returns NULL on EOF.
@@ -95,9 +95,9 @@ wchar_t *rl_gets()
 
     // Convert the line into wide characters
     // Get the needed length (we _can't_ use string::size())
-    size_t len = mbstowcs(NULL, line_read, 0);
+    size_t len = mbstowcs(nullptr, line_read, 0);
     if (len == (size_t)-1)
-        return NULL;
+        return nullptr;
 
     wline_read = new wchar_t[len + 1];
     mbstowcs(wline_read, line_read, len + 1);
@@ -1025,7 +1025,7 @@ int main(int argc, char *argv[])
         if (argc == 3)
             seed = atoi(argv[2]);
         else
-            seed = time(NULL);
+            seed = time(nullptr);
         srand(seed);
         cerr << "Using seed: " << seed << endl;
 

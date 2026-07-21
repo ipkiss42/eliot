@@ -45,7 +45,7 @@ class HintWidget: public QWidget
 public:
     explicit HintWidget(const AbstractHint &iHint,
                         bool iShowCosts,
-                        QWidget *parent = 0);
+                        QWidget *parent = nullptr);
 
     const AbstractHint & getHint() const { return m_hint; }
 
@@ -70,7 +70,7 @@ class HintsDialog: public QDialog
     DEFINE_LOGGER();
 
 public:
-    explicit HintsDialog(QWidget *parent = 0, bool iShowCosts = false);
+    explicit HintsDialog(QWidget *parent = nullptr, bool iShowCosts = false);
     ~HintsDialog();
 
 public slots:

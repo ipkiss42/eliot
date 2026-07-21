@@ -40,7 +40,7 @@ INIT_LOGGER(qt, BoardWidget);
 
 
 BoardWidget::BoardWidget(PlayModel &iPlayModel, QWidget *parent)
-    : QFrame(parent), m_game(NULL),
+    : QFrame(parent), m_game(nullptr),
     m_playModel(iPlayModel), m_showTemporarySigns(true),
     m_showOnlyLastTurn(false)
 {
@@ -144,7 +144,7 @@ void BoardWidget::updateArrow(const Coord &iNewCoord, const Coord &iOldCoord)
 
 void BoardWidget::onMoveChanged(const Move &iMove)
 {
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     // FIXME
@@ -160,7 +160,7 @@ void BoardWidget::onMoveChanged(const Move &iMove)
 
 void BoardWidget::refresh()
 {
-    if (m_game != NULL)
+    if (m_game != nullptr)
     {
         if (m_showOnlyLastTurn && !m_game->isLastTurn())
             return;
@@ -246,7 +246,7 @@ void BoardWidget::paintEvent(QPaintEvent *)
 
 void BoardWidget::tileClicked(int row, int col, QMouseEvent *iEvent)
 {
-    if (m_game == NULL)
+    if (m_game == nullptr)
     {
         m_playModel.clear();
         return;

@@ -71,7 +71,7 @@ void ScoreWidget::updateModel()
     resizeColumnToContents(0);
     //resizeColumnToContents(1);
 
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     for (unsigned int i = 0; i < m_game->getNbPlayers(); ++i)

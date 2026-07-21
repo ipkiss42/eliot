@@ -59,8 +59,8 @@ public:
 
     PlayersTableHelper(QObject *parent,
                        QTableWidget *tableWidget,
-                       QPushButton *addButton = 0,
-                       QPushButton *removeButton = 0,
+                       QPushButton *addButton = nullptr,
+                       QPushButton *removeButton = nullptr,
                        bool showDefaultColumn = false);
 
     /// Associate up/down buttons
@@ -117,7 +117,7 @@ class PlayersTypeDelegate: public QItemDelegate
     Q_OBJECT;
 
 public:
-    explicit PlayersTypeDelegate(QObject *parent = 0);
+    explicit PlayersTypeDelegate(QObject *parent = nullptr);
     virtual ~PlayersTypeDelegate() {}
 
     // Implement the needed methods
@@ -142,7 +142,7 @@ class PlayersLevelDelegate: public QItemDelegate
     Q_OBJECT;
 
 public:
-    explicit PlayersLevelDelegate(QObject *parent = 0);
+    explicit PlayersLevelDelegate(QObject *parent = nullptr);
     virtual ~PlayersLevelDelegate() {}
 
     // Implement the needed methods

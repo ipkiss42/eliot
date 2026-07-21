@@ -75,7 +75,7 @@ QLayoutItem *TileLayout::takeAt(int index)
     if (index >= 0 && index < m_items.size())
         return m_items.takeAt(index);
     else
-        return 0;
+        return nullptr;
 }
 
 

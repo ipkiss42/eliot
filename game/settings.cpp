@@ -44,12 +44,12 @@ using namespace libconfig;
 INIT_LOGGER(game, Settings);
 
 
-Settings *Settings::m_instance = NULL;
+Settings *Settings::m_instance = nullptr;
 
 
 Settings & Settings::Instance()
 {
-    if (m_instance == NULL)
+    if (m_instance == nullptr)
     {
         m_instance = new Settings;
     }
@@ -60,7 +60,7 @@ Settings & Settings::Instance()
 void Settings::Destroy()
 {
     delete m_instance;
-    m_instance = NULL;
+    m_instance = nullptr;
 }
 
 
@@ -145,7 +145,7 @@ string Settings::GetConfigFileDir()
     // But in the case of Eliot it's not very important (we don't try to
     // merge config files)...
     const char *configDir = getenv("XDG_CONFIG_HOME");
-    if (configDir != NULL)
+    if (configDir != nullptr)
         dirName = configDir;
     else
     {

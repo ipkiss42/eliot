@@ -73,7 +73,7 @@ PlayerWidget::PlayerWidget(QWidget *parent, PlayModel &iPlayModel,
         if (!m_game->getPlayer(m_player).isHuman())
             setEnabled(false);
     }
-    if (m_game == NULL || m_game->getMode() != PublicGame::kFREEGAME)
+    if (m_game == nullptr || m_game->getMode() != PublicGame::kFREEGAME)
     {
         // Hide the freegame-specific controls
         labelChange->hide();
@@ -103,7 +103,7 @@ QSize PlayerWidget::sizeHint() const
 
 void PlayerWidget::refresh()
 {
-    if (m_game == NULL)
+    if (m_game == nullptr)
     {
         lineEditRack->clear();
         return;
@@ -202,7 +202,7 @@ void PlayerWidget::helperChangePass(QString inputLetters)
 
 
 PlayerTabWidget::PlayerTabWidget(PlayModel &iPlayModel, QWidget *parent)
-    : QTabWidget(parent), m_game(NULL), m_playModel(iPlayModel)
+    : QTabWidget(parent), m_game(nullptr), m_playModel(iPlayModel)
 {
     QObject::connect(this, SIGNAL(currentChanged(int)),
                      this, SLOT(changeCurrentPlayer(int)));
@@ -226,14 +226,14 @@ void PlayerTabWidget::setGame(PublicGame *iGame)
     }
     blockSignals(false);
 
-    if (iGame != NULL)
+    if (iGame != nullptr)
     {
         blockSignals(true);
         // Add one tab per player
         for (unsigned int i = 0; i < iGame->getNbPlayers(); ++i)
         {
             const Player &player = iGame->getPlayer(i);
-            PlayerWidget *p = new PlayerWidget(NULL, m_playModel, i, iGame);
+            PlayerWidget *p = new PlayerWidget(nullptr, m_playModel, i, iGame);
             QObject::connect(this, SIGNAL(refreshSignal()), p, SLOT(refresh()));
             // Forward signals to the outside
             QObject::connect(p, SIGNAL(notifyProblem(QString)),

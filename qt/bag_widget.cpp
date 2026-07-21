@@ -45,7 +45,7 @@ INIT_LOGGER(qt, BagWidget2);
 
 
 BagWidget::BagWidget(QWidget *parent)
-    : QWidget(parent), m_game(NULL)
+    : QWidget(parent), m_game(nullptr)
 {
     setupUi(this);
 
@@ -82,7 +82,7 @@ void BagWidget::updateModel()
 {
     m_model->removeRows(0, m_model->rowCount());
 
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     const Bag &bag = m_game->getBag();
@@ -117,7 +117,7 @@ QSize BagWidget::sizeHint() const
 
 
 BagWidget2::BagWidget2(QWidget *parent)
-    : QWidget(parent), m_game(NULL), m_totalNbTiles(0),
+    : QWidget(parent), m_game(nullptr), m_totalNbTiles(0),
     m_showPlayedTiles(true), m_showTilesInRack(true)
 {
     TileLayout *layout = new TileLayout;
@@ -154,7 +154,7 @@ void BagWidget2::setGame(const PublicGame *iGame)
     layout->clear();
     m_tilesVect.clear();
 
-    if (m_game != NULL)
+    if (m_game != nullptr)
     {
         m_totalNbTiles = 0;
         BOOST_FOREACH(const Tile &tile, m_game->getDic().getAllTiles())
@@ -169,7 +169,7 @@ void BagWidget2::setGame(const PublicGame *iGame)
 
 void BagWidget2::refresh()
 {
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     const Bag &bag = m_game->getBag();

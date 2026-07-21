@@ -183,7 +183,7 @@ void PlayWordMediator::onWordChanged()
     if (acceptableInput)
     {
         wstring playedWord;
-        GetPlayedWord(m_lineEditPlay, m_game->getDic(), &playedWord, NULL);
+        GetPlayedWord(m_lineEditPlay, m_game->getDic(), &playedWord, nullptr);
 
         Move move;
         m_game->checkPlayedWord(playedWord, wfq(m_lineEditCoord.text()), move);

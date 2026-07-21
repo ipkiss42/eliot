@@ -56,7 +56,7 @@ public:
         SHADED,
     };
 
-    explicit TileWidget(QWidget *parent = 0, Multiplier multiplier = NONE,
+    explicit TileWidget(QWidget *parent = nullptr, Multiplier multiplier = NONE,
                         int row = 0, int col = 0);
 
     void setCoordText(QString iText);

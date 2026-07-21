@@ -113,7 +113,7 @@ private:
     // Private constructor, because we only want the read() method
     // to be called externally
     XmlReader(const Dictionary &iDic) :
-        m_dic(iDic), m_game(NULL), m_firstTurn(true), m_params(iDic) {}
+        m_dic(iDic), m_game(nullptr), m_firstTurn(true), m_params(iDic) {}
 
     XmlReader(const XmlReader&);
     XmlReader& operator=(const XmlReader&);

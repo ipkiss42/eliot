@@ -49,7 +49,7 @@ static inline int wcwidth(wchar_t c)
 
 int wtoi(const wchar_t *iWStr)
 {
-    return wcstol(iWStr, NULL, 10);
+    return wcstol(iWStr, nullptr, 10);
 }
 
 
@@ -86,7 +86,7 @@ wchar_t *_wcstok(wchar_t *wcs, const wchar_t *delim, wchar_t **ptr)
 wstring convertToWc(const string& iStr)
 {
     // Get the needed length (we _can't_ use string::size())
-    size_t len = mbstowcs(NULL, iStr.c_str(), 0);
+    size_t len = mbstowcs(nullptr, iStr.c_str(), 0);
     if (len == (size_t)-1)
         return L"";
 
@@ -112,7 +112,7 @@ wstring convertToWc(const string& iStr)
 string convertToMb(const wstring& iWStr)
 {
     // Get the needed length (we _can't_ use wstring::size())
-    size_t len = wcstombs(NULL, iWStr.c_str(), 0);
+    size_t len = wcstombs(nullptr, iWStr.c_str(), 0);
     if (len == (size_t)-1)
         return "";
 

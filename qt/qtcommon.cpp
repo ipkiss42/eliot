@@ -127,11 +127,11 @@ void QtCommon::CheckConversions()
 void QtCommon::DestroyObject(QWidget *ioObjectToDestroy,
                              QObject *iSource)
 {
-    if (ioObjectToDestroy == NULL)
+    if (ioObjectToDestroy == nullptr)
         return;
     ioObjectToDestroy->hide();
     ioObjectToDestroy->disconnect();
-    if (iSource != NULL)
+    if (iSource != nullptr)
         iSource->disconnect(ioObjectToDestroy);
     ioObjectToDestroy->deleteLater();
 }
@@ -160,9 +160,9 @@ bool QtCommon::requestConfirmation(QString confoKey, QString iMsg,
     layout->addWidget(iconLabel, 0, 0, 3, 1, Qt::AlignTop);
     iconLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     QIcon icon = QApplication::style()->standardIcon(
-            QStyle::SP_MessageBoxQuestion, 0, &dialog);
+            QStyle::SP_MessageBoxQuestion, nullptr, &dialog);
     int iconSize = QApplication::style()->pixelMetric(
-            QStyle::PM_MessageBoxIconSize, 0, &dialog);
+            QStyle::PM_MessageBoxIconSize, nullptr, &dialog);
     iconLabel->setPixmap(icon.pixmap(iconSize, iconSize));
 
     QLabel *label = new QLabel;
@@ -176,7 +176,7 @@ bool QtCommon::requestConfirmation(QString confoKey, QString iMsg,
                     _q("Do you want to continue?"));
     questionLabel->setWordWrap(true);
 
-    QCheckBox *checkBox = 0;
+    QCheckBox *checkBox = nullptr;
     if (withCheckbox)
     {
         // Add a checkbox to the dialog box

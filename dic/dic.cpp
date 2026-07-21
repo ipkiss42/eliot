@@ -51,11 +51,11 @@
 INIT_LOGGER(dic, Dictionary);
 
 
-const Dictionary *Dictionary::m_dic = NULL;
+const Dictionary *Dictionary::m_dic = nullptr;
 
 
 Dictionary::Dictionary(const string &iPath)
-    : m_dawg(NULL), m_hasDisplay(false)
+    : m_dawg(nullptr), m_hasDisplay(false)
 {
     ifstream file(iPath.c_str(), ios::in | ios::binary);
 

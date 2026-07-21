@@ -60,7 +60,7 @@ class WizardInfoPage: public QWizardPage, private Ui::WizardInfoPage
     Q_OBJECT;
     DEFINE_LOGGER();
 public:
-    explicit WizardInfoPage(QWidget *parent = 0);
+    explicit WizardInfoPage(QWidget *parent = nullptr);
     virtual bool isComplete() const;
     virtual bool validatePage();
 
@@ -78,7 +78,7 @@ class WizardLettersDefPage: public QWizardPage, private Ui::WizardLettersDefPage
     Q_OBJECT;
     DEFINE_LOGGER();
 public:
-    explicit WizardLettersDefPage(const Dictionary *iCurrDic, QWidget *parent = 0);
+    explicit WizardLettersDefPage(const Dictionary *iCurrDic, QWidget *parent = nullptr);
     const QStandardItemModel * getModel() const { return m_model; }
 
 signals:
@@ -99,7 +99,7 @@ class WizardConclusionPage: public QWizardPage, private Ui::WizardConclusionPage
     Q_OBJECT;
     DEFINE_LOGGER();
 public:
-    explicit WizardConclusionPage(QWidget *parent = 0);
+    explicit WizardConclusionPage(QWidget *parent = nullptr);
     virtual void initializePage();
 };
 
@@ -109,7 +109,7 @@ class LettersDelegate: public QStyledItemDelegate
     Q_OBJECT;
 
 public:
-    explicit LettersDelegate(QWidget *parent = 0)
+    explicit LettersDelegate(QWidget *parent = nullptr)
         : QStyledItemDelegate(parent) {}
 
     virtual QWidget *createEditor(QWidget *parent,

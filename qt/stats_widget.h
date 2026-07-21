@@ -42,10 +42,10 @@ class StatsWidget: public QWidget
     DEFINE_LOGGER();
 
 public:
-    explicit StatsWidget(QWidget *parent = 0, const PublicGame *iGame = NULL);
+    explicit StatsWidget(QWidget *parent = nullptr, const PublicGame *iGame = nullptr);
 
 public slots:
-    void setGame(const PublicGame *iGame = NULL);
+    void setGame(const PublicGame *iGame = nullptr);
     void refresh();
 
 private slots:

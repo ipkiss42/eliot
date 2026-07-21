@@ -79,7 +79,7 @@ class FlippedModel : public QAbstractItemModel
 
         virtual QModelIndex index(int row, int column, const QModelIndex &) const
         {
-            return createIndex(row, column, (void*)NULL);
+            return createIndex(row, column, (void*)nullptr);
         }
 
         virtual QModelIndex parent(const QModelIndex &) const
@@ -175,21 +175,21 @@ void StatsWidget::refresh()
 {
     m_model->removeRows(0, m_model->rowCount());
 
-    unsigned histSize = m_game == NULL ? 0 : m_game->getHistory().getSize();
-    unsigned nbPlayers = m_game == NULL ? 0 : m_game->getNbPlayers();
+    unsigned histSize = m_game == nullptr ? 0 : m_game->getHistory().getSize();
+    unsigned nbPlayers = m_game == nullptr ? 0 : m_game->getNbPlayers();
 
     setModelSize(nbPlayers + 1, histSize + 10);
 
     // Some fields are displayed only in some cases
-    const bool isTraining = m_game != NULL &&
+    const bool isTraining = m_game != nullptr &&
         m_game->getParams().getMode() == GameParams::kTRAINING;
-    const bool isArbit = m_game != NULL &&
+    const bool isArbit = m_game != nullptr &&
         m_game->getParams().getMode() == GameParams::kARBITRATION;
-    const bool isFreeGame = m_game != NULL &&
+    const bool isFreeGame = m_game != nullptr &&
         m_game->getParams().getMode() == GameParams::kFREEGAME;
-    const bool isTopping = m_game != NULL &&
+    const bool isTopping = m_game != nullptr &&
         m_game->getParams().getMode() == GameParams::kTOPPING;
-    const bool canHaveSolos = m_game != NULL &&
+    const bool canHaveSolos = m_game != nullptr &&
         m_game->getParams().getMode() == GameParams::kDUPLICATE &&
         Settings::Instance().getInt("duplicate.solo-players") <= (int)m_game->getNbPlayers();
 
@@ -235,7 +235,7 @@ void StatsWidget::refresh()
     // Define the header for the Game pseudo-player
     setModelHeader(0, _q("Game"), true);
 
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     QLocale locale;
@@ -382,7 +382,7 @@ void StatsWidget::setModelTurnData(const QModelIndex &iIndex,
     if (score != 0)
     {
         bool shouldUseBold = score >= iGameTurn.getMove().getScore()
-            && (m_game == 0 || m_game->getMode() != PublicGame::kTOPPING);
+            && (m_game == nullptr || m_game->getMode() != PublicGame::kTOPPING);
         setModelText(iIndex, QVariant(score), shouldUseBold);
     }
 

@@ -39,7 +39,7 @@ class HistoryWidget: public QTreeView
     DEFINE_LOGGER();
 
 public:
-    explicit HistoryWidget(QWidget *parent = 0);
+    explicit HistoryWidget(QWidget *parent = nullptr);
 
     void setHistory(const History *iHistory,
                     const PublicGame *iGame,
@@ -99,7 +99,7 @@ class HistoryTabWidget: public QTabWidget
     Q_OBJECT;
 
 public:
-    explicit HistoryTabWidget(QWidget *parent = NULL);
+    explicit HistoryTabWidget(QWidget *parent = nullptr);
 
 public slots:
     void setGame(const PublicGame *iGame);

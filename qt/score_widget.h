@@ -35,10 +35,10 @@ class ScoreWidget: public QTreeView
     DEFINE_LOGGER();
 
 public:
-    explicit ScoreWidget(QWidget *parent = 0, const PublicGame *iGame = NULL);
+    explicit ScoreWidget(QWidget *parent = nullptr, const PublicGame *iGame = nullptr);
 
 public slots:
-    void setGame(const PublicGame *iGame = NULL);
+    void setGame(const PublicGame *iGame = nullptr);
     void refresh();
 
 protected:

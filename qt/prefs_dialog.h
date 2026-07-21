@@ -36,7 +36,7 @@ class PrefsDialog: public QDialog, private Ui::PrefsDialog
     DEFINE_LOGGER();
 
 public:
-    explicit PrefsDialog(QWidget *iParent = 0);
+    explicit PrefsDialog(QWidget *iParent = nullptr);
 
     static const QString kINTF_ALIGN_HISTORY;
     static const QString kINTF_DIC_PATH;

@@ -295,7 +295,7 @@ void WizardLettersDefPage::loadLettersFromWordList()
     }
 
     // Enable the second button only if there is a valid dictionary
-    buttonLoadFromDic->setEnabled(m_currDic != 0);
+    buttonLoadFromDic->setEnabled(m_currDic != nullptr);
 }
 
 

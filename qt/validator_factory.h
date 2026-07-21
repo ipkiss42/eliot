@@ -51,7 +51,7 @@ public:
     static QValidator *newRackValidator(QObject *parent,
                                         const Bag &iBag,
                                         bool iStrict = false,
-                                        const History *iHistory = 0,
+                                        const History *iHistory = nullptr,
                                         int iMaxLetters = 0);
 
     /**

@@ -57,7 +57,7 @@ class MainWindow: public QMainWindow
     Q_OBJECT;
 
 public:
-    MainWindow(QWidget *iParent = 0);
+    MainWindow(QWidget *iParent = nullptr);
     ~MainWindow();
 
 signals:

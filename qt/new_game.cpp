@@ -193,7 +193,7 @@ PublicGame * NewGame::createGame() const
         params.addVariant(GameParams::k7AMONG8);
 
     // Load the master game if needed
-    Game *masterGame = NULL;
+    Game *masterGame = nullptr;
     if (checkBoxUseMaster->isChecked())
     {
         const QString &path = lineEditMaster->text();
@@ -207,7 +207,7 @@ PublicGame * NewGame::createGame() const
             // But the user may have changed the file itself after the validation...
             emit notifyProblem("Error loading master game: " + qfl(e.what()));
             // Give up loading the game
-            return NULL;
+            return nullptr;
         }
     }
 

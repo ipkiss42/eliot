@@ -49,7 +49,7 @@ public:
      *      window is shown/hidden
      */
     AuxWindow(QWidget &iWidget, QString iWindowTitle,
-              QString iWindowName, QAction *iAction = NULL);
+              QString iWindowName, QAction *iAction = nullptr);
     virtual ~AuxWindow();
 
     const QWidget & getWidget() const { return m_widget; }

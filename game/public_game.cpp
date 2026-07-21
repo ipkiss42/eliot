@@ -213,7 +213,7 @@ template <typename T>
 static T & getTypedGame(Game &iGame)
 {
     T *typedGame = dynamic_cast<T*>(&iGame);
-    if (typedGame == NULL)
+    if (typedGame == nullptr)
     {
         throw GameException("Invalid game type");
     }

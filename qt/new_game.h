@@ -38,7 +38,7 @@ class NewGame: public QDialog, private Ui::NewGameDialog
     DEFINE_LOGGER();
 
 public:
-    explicit NewGame(const Dictionary& iDic, QWidget *iParent = 0);
+    explicit NewGame(const Dictionary& iDic, QWidget *iParent = nullptr);
 
     /// Possible values for the player type
     static const char * kHUMAN;

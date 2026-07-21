@@ -189,7 +189,7 @@ void XmlWriter::write(const Game &iGame, const string &iFileName)
         if (!player.isHuman())
         {
             const AIPercent *ai = dynamic_cast<const AIPercent *>(&player);
-            if (ai == NULL)
+            if (ai == nullptr)
                 throw SaveGameException(FMT1(_("Invalid player type for player %1%"), i));
             out << indent << "<Level>" << lrint(ai->getPercent() * 100) << "</Level>" << endl;
         }

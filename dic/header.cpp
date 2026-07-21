@@ -233,7 +233,7 @@ Header::Header(const DictHeaderInfo &iInfo)
                            "iInfo.consonants and iInfo.letters");
     }
 
-    m_compressDate = time(NULL);
+    m_compressDate = time(nullptr);
     m_userHost = wfl(ELIOT_COMPILE_BY + string("@") + ELIOT_COMPILE_HOST);
     m_root = iInfo.root;
     m_nbWords = iInfo.nwords;

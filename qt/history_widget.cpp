@@ -46,7 +46,7 @@ INIT_LOGGER(qt, HistoryWidget);
 
 
 HistoryWidget::HistoryWidget(QWidget *parent)
-    : QTreeView(parent), m_history(NULL), m_game(NULL),
+    : QTreeView(parent), m_history(nullptr), m_game(nullptr),
       m_forPlayer(false), m_isFreeGame(false)
 {
     m_colTurn = 0;
@@ -96,7 +96,7 @@ void HistoryWidget::setHistory(const History *iHistory,
     m_history = iHistory;
     m_game = iGame;
     m_forPlayer = iIsForPlayer;
-    m_isFreeGame = (iGame != 0 && iGame->getMode() == PublicGame::kFREEGAME);
+    m_isFreeGame = (iGame != nullptr && iGame->getMode() == PublicGame::kFREEGAME);
 
     int currColumn = m_colPenalty + 1;
     if (m_forPlayer)
@@ -146,7 +146,7 @@ void HistoryWidget::updateModel()
 {
     m_model->removeRows(0, m_model->rowCount());
 
-    if (m_history != NULL && m_history->getSize() != 0)
+    if (m_history != nullptr && m_history->getSize() != 0)
     {
         // Should we align the rack with its solution?
         QSettings qs;
@@ -273,9 +273,9 @@ void HistoryWidget::setCellData(int iRow, int iCol, const QVariant &iData)
 
 
 HistoryTabWidget::HistoryTabWidget(QWidget *parent)
-    : QTabWidget(parent), m_game(NULL)
+    : QTabWidget(parent), m_game(nullptr)
 {
-    m_gameHistoryWidget = new HistoryWidget(NULL);
+    m_gameHistoryWidget = new HistoryWidget(nullptr);
     insertTab(0, m_gameHistoryWidget, _q("&Game"));
     //setMinimalSize(300, 100);
 
@@ -299,10 +299,10 @@ void HistoryTabWidget::setGame(const PublicGame *iGame)
         removeTab(i);
     }
 
-    if (m_game == NULL)
+    if (m_game == nullptr)
     {
         // Tell the remaining tab that there is no more history to display
-        m_gameHistoryWidget->setHistory(NULL, NULL, false);
+        m_gameHistoryWidget->setHistory(nullptr, nullptr, false);
     }
     else
     {
@@ -324,7 +324,7 @@ void HistoryTabWidget::setGame(const PublicGame *iGame)
         for (unsigned int i = 0; i < m_game->getNbPlayers(); ++i)
         {
             const Player &player = m_game->getPlayer(i);
-            HistoryWidget *h = new HistoryWidget(NULL);
+            HistoryWidget *h = new HistoryWidget(nullptr);
             h->setHistory(&player.getHistory(), m_game, true);
             QObject::connect(this, SIGNAL(refreshSignal()), h, SLOT(refresh()));
             QObject::connect(h, SIGNAL(requestDefinition(QString)),
@@ -339,7 +339,7 @@ void HistoryTabWidget::refresh()
 {
     // Display the number of warnings between parentheses
     // (only if the player got at least one warning)
-    if (m_game != NULL)
+    if (m_game != nullptr)
     {
         for (unsigned int i = 0; i < m_game->getNbPlayers(); ++i)
         {

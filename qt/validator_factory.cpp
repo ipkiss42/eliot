@@ -184,7 +184,7 @@ QValidator::State RackValidator::validate(QString &input, int &) const
         }
 
         // Check that the rack has 2 consonants and 2 vocals
-        if (m_history != 0)
+        if (m_history != nullptr)
         {
             PlayedRack pld;
             pld.setManual(intInput);
@@ -239,7 +239,7 @@ DicRackValidator::DicRackValidator(QObject *parent,
 
 QValidator::State DicRackValidator::validate(QString &input, int &) const
 {
-    if (m_dic == NULL)
+    if (m_dic == nullptr)
         return Invalid;
 
     if (input == "")
@@ -298,7 +298,7 @@ RegexpValidator::RegexpValidator(QObject *parent,
 
 QValidator::State RegexpValidator::validate(QString &input, int &) const
 {
-    if (m_dic == NULL)
+    if (m_dic == nullptr)
         return Invalid;
 
     if (input == "")

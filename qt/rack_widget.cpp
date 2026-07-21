@@ -47,8 +47,8 @@ INIT_LOGGER(qt, RackWidget);
 
 
 RackWidget::RackWidget(QWidget *parent)
-    : QFrame(parent), m_game(NULL),
-      m_playModel(NULL), m_showOnlyLastTurn(false),
+    : QFrame(parent), m_game(nullptr),
+      m_playModel(nullptr), m_showOnlyLastTurn(false),
       m_dragOrigin(-1)
 {
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -66,9 +66,9 @@ RackWidget::RackWidget(QWidget *parent)
 
 void RackWidget::setPlayModel(PlayModel *iPlayModel)
 {
-    if (m_playModel != NULL)
+    if (m_playModel != nullptr)
         m_playModel->disconnect(this, SLOT(refresh()));
-    if (iPlayModel != NULL)
+    if (iPlayModel != nullptr)
     {
         QObject::connect(iPlayModel, SIGNAL(moveChanged(const Move &, const Move&)),
                          this, SLOT(refresh()));
@@ -80,7 +80,7 @@ void RackWidget::setPlayModel(PlayModel *iPlayModel)
 void RackWidget::setGame(const PublicGame *iGame)
 {
     m_game = iGame;
-    if (m_game == NULL)
+    if (m_game == nullptr)
     {
         // Delete the widgets
         TileLayout *layout = (TileLayout*) this->layout();
@@ -127,7 +127,7 @@ void RackWidget::refresh()
     while (m_tilesVect.size() < tilesCount)
     {
         TileWidget *tileWidget =
-            new TileWidget(0, TileWidget::NONE, 0, m_tilesVect.size());
+            new TileWidget(nullptr, TileWidget::NONE, 0, m_tilesVect.size());
         QObject::connect(tileWidget, SIGNAL(mousePressed(int, int, QMouseEvent*)),
                          this, SLOT(tilePressed(int, int, QMouseEvent*)));
         tileWidget->setBorder(2);
@@ -147,7 +147,7 @@ void RackWidget::refresh()
 
 vector<Tile> RackWidget::filterRack(const vector<Tile> &iTiles) const
 {
-    if (m_playModel == NULL || !m_playModel->getMove().isValid())
+    if (m_playModel == nullptr || !m_playModel->getMove().isValid())
         return iTiles;
 
     vector<Tile> result = iTiles;
@@ -174,7 +174,7 @@ vector<Tile> RackWidget::filterRack(const vector<Tile> &iTiles) const
 
 bool RackWidget::canStartDragDrop() const
 {
-    if (m_game == NULL || m_game->isFinished())
+    if (m_game == nullptr || m_game->isFinished())
         return false;
     // Drag & drop is not allowed when a word is being played
     return m_tiles.size() == m_filteredTiles.size();

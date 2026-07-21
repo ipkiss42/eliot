@@ -261,7 +261,7 @@ void ArbitrationWidget::updateResultsModel()
     // FIXME arbitration begin
     // Consider that there is nothing to do if the number of lines is correct
     // This avoids problems when the game is updated for a test play
-    if (m_game != NULL &&
+    if (m_game != nullptr &&
         m_results.size() + m_addedMoves.size() ==
                 static_cast<unsigned int>(m_resultsModel->rowCount()))
     {
@@ -271,7 +271,7 @@ void ArbitrationWidget::updateResultsModel()
 #endif
 
     m_resultsModel->removeRows(0, m_resultsModel->rowCount());
-    if (m_game == NULL)
+    if (m_game == nullptr)
         return;
 
     // First step: add the search results (type TYPE_ROUND)

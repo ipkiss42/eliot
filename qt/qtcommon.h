@@ -71,7 +71,7 @@ public:
      * from the widget to destroy as well.
      */
     static void DestroyObject(QWidget *ioWidgetToDestroy,
-                              QObject *iSource = NULL);
+                              QObject *iSource = nullptr);
 
     /**
      * Ask for a confirmation.
@@ -82,7 +82,7 @@ public:
     static bool requestConfirmation(QString confoKey,
                                     QString iMsg,
                                     QString iQuestion = "",
-                                    QWidget *iParent = 0);
+                                    QWidget *iParent = nullptr);
 
 };
 
