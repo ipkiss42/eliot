@@ -42,30 +42,30 @@ my $run_ext = ".run";
 
 # Look for ods5.dawg
 my $ods = "";
-foreach my $ods_file (@ods_array) 
+foreach my $ods_file (@ods_array)
 {
-    if (-f $ods_file) 
+    if (-f $ods_file)
     {
         $ods = $ods_file;
         last;
     }
 }
-if (not -f $ods) 
+if (not -f $ods)
 {
     die "Cannot find dictionary $ods, check files : [".join(", ", @ods_array)."]";
 }
 
 # Find eliottxt
 my $eliottxt = "";
-foreach my $eliottxt_file (@eliottxt_array) 
+foreach my $eliottxt_file (@eliottxt_array)
 {
-    if (-f $eliottxt_file) 
+    if (-f $eliottxt_file)
     {
         $eliottxt = $eliottxt_file;
         last;
     }
 }
-if (not -x $eliottxt) 
+if (not -x $eliottxt)
 {
     die "Cannot find the text interface executable in [".join(", ", @eliottxt_array)."]";
 }
@@ -146,8 +146,8 @@ foreach my $scenario (@scenarios_to_play)
     my $tmp_ref_file = "$tmp_dir/$ref_file";
     my $tmp_run_file = "$tmp_dir/$run_file";
     system("mkdir -p `dirname $tmp_ref_file`");
-    system("cat $ref_file | egrep -v '^#' | egrep -v '^\\w+> #' > $tmp_ref_file");
-    system("cat $run_file | egrep -v '^#' | egrep -v '^\\w+> #' > $tmp_run_file");
+    system("cat $ref_file | grep -Ev '^#' | grep -Ev '^\\w+> #' > $tmp_ref_file");
+    system("cat $run_file | grep -Ev '^#' | grep -Ev '^\\w+> #' > $tmp_run_file");
 
     # Is the output file different from the reference file?
     my $diff = `diff $tmp_ref_file $tmp_run_file`;
