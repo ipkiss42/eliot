@@ -31,7 +31,7 @@ INIT_LOGGER(qt, TimerWidget);
 
 TimerModel::TimerModel(int iTotalDuration, int iAlertDuration)
     :  m_remaining(m_totalDuration)
-    
+
 {
     m_timer = new QTimer(this);
 
@@ -176,7 +176,7 @@ void TimerWidget::newTotalDuration(int iNewTotal)
 void TimerWidget::alertTriggered()
 {
     QPalette pal = palette();
-    pal.setColor(QPalette::Foreground, Qt::red);
+    pal.setColor(QPalette::WindowText, Qt::red);
     setPalette(pal);
 }
 
@@ -185,7 +185,7 @@ void TimerWidget::timerReset()
 {
     // Restore the default color
     QPalette pal = palette();
-    pal.setColor(QPalette::Foreground, Qt::black);
+    pal.setColor(QPalette::WindowText, Qt::black);
     setPalette(pal);
 }
 

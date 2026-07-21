@@ -19,7 +19,6 @@
  *****************************************************************************/
 
 #include <algorithm>
-#include <functional>
 
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -40,7 +39,7 @@ using namespace std;
 INIT_LOGGER(qt, HintsDialog);
 
 
-struct CostComparator : public binary_function<const AbstractHint*, const AbstractHint*, bool>
+struct CostComparator
 {
     bool operator()(const AbstractHint *iHint1, const AbstractHint *iHint2) const
     {

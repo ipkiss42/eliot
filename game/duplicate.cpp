@@ -196,7 +196,7 @@ void Duplicate::tryEndTurn()
 }
 
 
-struct MatchingPlayer : public unary_function<PlayerMoveCmd, bool>
+struct MatchingPlayer
 {
     MatchingPlayer(unsigned iPlayerId) : m_playerId(iPlayerId) {}
 
@@ -460,7 +460,7 @@ void Duplicate::setSoloAuto(unsigned int minNbPlayers, int iSoloValue)
 
 
 /// Predicate to help retrieving commands
-struct MatchingPlayerAndEventType : public unary_function<PlayerEventCmd, bool>
+struct MatchingPlayerAndEventType
 {
     MatchingPlayerAndEventType(unsigned iPlayerId, int iEventType)
         : m_playerId(iPlayerId), m_eventType(iEventType) {}

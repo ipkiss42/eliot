@@ -253,8 +253,8 @@ void WizardLettersDefPage::loadLettersFromWordList()
     }
 
     // Sort the letters alphabetically if possible
-    QList<QChar> sortedLetters = QList<QChar>::fromSet(fileLetters);
-    qSort(sortedLetters);
+    auto sortedLetters = QList<QChar>(fileLetters.begin(), fileLetters.end());
+    sort(sortedLetters.begin(), sortedLetters.end());
 
     // Rebuild the model
     m_model->removeRows(0, m_model->rowCount());

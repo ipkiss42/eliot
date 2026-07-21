@@ -21,8 +21,6 @@
 
 #include <boost/foreach.hpp>
 #include <algorithm>
-#include <functional>
-#include <cwctype>
 #include <cmath>
 
 #include "results.h"
@@ -41,7 +39,7 @@ bool tileCompare(const Tile &t1, const Tile &t2)
     return t1.toCode() < t2.toCode();
 }
 
-struct less_points : public binary_function<const Round&, const Round&, bool>
+struct less_points
 {
     bool operator()(const Round &r1, const Round &r2)
     {
@@ -112,7 +110,7 @@ void Results::sort()
 
 
 BestResults::BestResults()
-     
+
 {
 }
 
@@ -156,7 +154,7 @@ void BestResults::clear()
 
 
 PercentResults::PercentResults(float iPercent)
-    : m_percent(iPercent) 
+    : m_percent(iPercent)
 {
 }
 
@@ -236,7 +234,7 @@ void PercentResults::clear()
 
 
 LimitResults::LimitResults(int iLimit)
-    : m_limit(iLimit) 
+    : m_limit(iLimit)
 {
 }
 
