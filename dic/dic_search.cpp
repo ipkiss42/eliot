@@ -151,8 +151,8 @@ void Dictionary::search7pl1(const wstring &iRack,
 
     struct params_7plus1_t params;
 
-    for (unsigned int i = 0; i < sizeof(params.search_letters); i++)
-        params.search_letters[i] = 0;
+    for (char & search_letter : params.search_letters)
+        search_letter = 0;
 
     /*
      * the letters are verified and changed to the dic internal
@@ -200,9 +200,9 @@ void Dictionary::search7pl1(const wstring &iRack,
     params.search_len = wordlen;
     params.search_wordtst[wordlen + 1] = L'\0';
     const wstring &letters = getHeader().getLetters();
-    for (unsigned int i = 0; i < letters.size(); i++)
+    for (wchar_t letter : letters)
     {
-        unsigned int code = getHeader().getCodeFromChar(letters[i]);
+        unsigned int code = getHeader().getCodeFromChar(letter);
         params.added_code = code;
         params.added_display = getHeader().getDisplayStr(code);
         params.search_letters[code]++;

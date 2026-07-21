@@ -1091,8 +1091,8 @@ void MainWindow::print(QPrinter *printer)
     painter.setFont(font);
 
     int maxRight = 0;
-    for (unsigned int i = 0; i < nbCols; ++i)
-        maxRight += colWidths[i];
+    for (int colWidth : colWidths)
+        maxRight += colWidth;
     int maxBottom = LINE_HEIGHT * (nbRows + 1);
 
     // Draw the horizontal lines
@@ -1102,9 +1102,9 @@ void MainWindow::print(QPrinter *printer)
     // Draw the vertical lines
     painter.drawLine(0, 0, 0, maxBottom);
     int curWidth = 0;
-    for (unsigned int i = 0; i < nbCols; ++i)
+    for (int colWidth : colWidths)
     {
-        curWidth += colWidths[i];
+        curWidth += colWidth;
         painter.drawLine(curWidth, 0, curWidth, maxBottom);
     }
 

@@ -1,6 +1,7 @@
 ---
 Checks: >
   -*,
-  modernize-use-nullptr
+  modernize-use-nullptr,
+  modernize-loop-convert
 HeaderFilterRegex: '(dic/|game/|utils/|qt/).*\.(h|hpp|hxx)$'
 

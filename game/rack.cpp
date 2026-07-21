@@ -45,9 +45,9 @@ void Rack::remove(const Tile &t)
 
 void Rack::clear()
 {
-    for (unsigned i = 0; i < m_tiles.size(); i++)
+    for (unsigned int & tile : m_tiles)
     {
-        m_tiles[i] = 0;
+        tile = 0;
     }
     m_nbTiles = 0;
 }

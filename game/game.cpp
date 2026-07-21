@@ -103,7 +103,7 @@ void Game::reorderRack(const PlayedRack &iNewRack)
     // Make sure the new rack uses the same letters
     ASSERT(pld.getRack() == iNewRack.getRack(),
            "The old and new racks have different letters" <<
-           "(old=" << lfw(pld.toString()) << 
+           "(old=" << lfw(pld.toString()) <<
            " new=" << lfw(iNewRack.toString()) << ")");
 
     m_players[currPlayer()]->setCurrentRack(iNewRack);
@@ -637,9 +637,9 @@ int Game::checkPlayedWord(const wstring &iCoord,
     // or a Tiles_ function (to transform a char* into a vector<Tile>)
     // Adding a getter on the word could help too...
     vector<Tile> tiles;
-    for (unsigned int i = 0; i < iWord.size(); i++)
+    for (wchar_t wc : iWord)
     {
-        tiles.push_back(Tile(iWord[i]));
+        tiles.push_back(Tile(wc));
     }
     round.setWord(tiles);
 

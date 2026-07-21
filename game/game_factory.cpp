@@ -225,16 +225,16 @@ Game *GameFactory::createFromCmdLine(int argc, char **argv)
     Game *game = createGame(params);
 
     // 6) Add the players
-    for (unsigned int i = 0; i < m_players.size(); ++i)
+    for (auto & player_and_name : m_players)
     {
         // Human?
-        Player *player;
-        if (m_players[i].first)
-            player = new HumanPlayer;
+        Player *new_player;
+        if (player_and_name.first)
+            new_player = new HumanPlayer;
         else
-            player = new AIPercent(1);
-        player->setName(m_players[i].second);
-        game->addPlayer(player);
+            new_player = new AIPercent(1);
+        new_player->setName(player_and_name.second);
+        game->addPlayer(new_player);
     }
 
     return game;
