@@ -42,7 +42,7 @@ class AIPercent: public AIPlayer
 public:
     /// Constructor, taking the percentage (0.0 <= iPercent <= 1.0)
     AIPercent(float iPercent);
-    virtual ~AIPercent();
+    ~AIPercent() override;
 
     float getPercent() const { return m_percent; }
 
@@ -50,10 +50,10 @@ public:
      * This method does the actual computation. It will be called before any
      * of the following methods, so it must prepare everything for them.
      */
-    virtual void compute(const Dictionary &iDic, const Board &iBoard, bool iFirstWord);
+    void compute(const Dictionary &iDic, const Board &iBoard, bool iFirstWord) override;
 
     /// Return the move played by the AI
-    virtual Move getMove() const;
+    Move getMove() const override;
 
 private:
     float m_percent;

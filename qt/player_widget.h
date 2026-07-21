@@ -54,7 +54,7 @@ public slots:
     void refresh();
 
 protected:
-    virtual QSize sizeHint() const;
+    QSize sizeHint() const override;
 
 private slots:
     void shuffle();

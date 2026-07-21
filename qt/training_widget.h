@@ -54,7 +54,7 @@ signals:
 
 protected:
     /// Define a default size
-    virtual QSize sizeHint() const;
+    QSize sizeHint() const override;
 
 private slots:
     void enablePlayButton(const QItemSelection &, const QItemSelection &);

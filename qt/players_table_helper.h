@@ -118,21 +118,21 @@ class PlayersTypeDelegate: public QItemDelegate
 
 public:
     explicit PlayersTypeDelegate(QObject *parent = nullptr);
-    virtual ~PlayersTypeDelegate() {}
+    ~PlayersTypeDelegate() override {}
 
     // Implement the needed methods
-    virtual QWidget *createEditor(QWidget *parent,
+    QWidget *createEditor(QWidget *parent,
                                   const QStyleOptionViewItem &option,
-                                  const QModelIndex &index) const;
-    virtual void setEditorData(QWidget *editor,
-                               const QModelIndex &index) const;
-    virtual void setModelData(QWidget *editor,
+                                  const QModelIndex &index) const override;
+    void setEditorData(QWidget *editor,
+                               const QModelIndex &index) const override;
+    void setModelData(QWidget *editor,
                               QAbstractItemModel *model,
-                              const QModelIndex &index) const;
+                              const QModelIndex &index) const override;
 
-    virtual void updateEditorGeometry(QWidget *editor,
+    void updateEditorGeometry(QWidget *editor,
                                       const QStyleOptionViewItem &option,
-                                      const QModelIndex &index) const;
+                                      const QModelIndex &index) const override;
 };
 
 
@@ -143,21 +143,21 @@ class PlayersLevelDelegate: public QItemDelegate
 
 public:
     explicit PlayersLevelDelegate(QObject *parent = nullptr);
-    virtual ~PlayersLevelDelegate() {}
+    ~PlayersLevelDelegate() override {}
 
     // Implement the needed methods
-    virtual QWidget *createEditor(QWidget *parent,
+    QWidget *createEditor(QWidget *parent,
                                   const QStyleOptionViewItem &option,
-                                  const QModelIndex &index) const;
-    virtual void setEditorData(QWidget *editor,
-                               const QModelIndex &index) const;
-    virtual void setModelData(QWidget *editor,
+                                  const QModelIndex &index) const override;
+    void setEditorData(QWidget *editor,
+                               const QModelIndex &index) const override;
+    void setModelData(QWidget *editor,
                               QAbstractItemModel *model,
-                              const QModelIndex &index) const;
+                              const QModelIndex &index) const override;
 
-    virtual void updateEditorGeometry(QWidget *editor,
+    void updateEditorGeometry(QWidget *editor,
                                       const QStyleOptionViewItem &option,
-                                      const QModelIndex &index) const;
+                                      const QModelIndex &index) const override;
 };
 
 #endif

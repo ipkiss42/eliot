@@ -43,7 +43,7 @@ public:
     explicit ChangeValidator(QObject *parent,
                              const QLineEdit &iLineEdit,
                              const Dictionary &iDic);
-    virtual State validate(QString &input, int &pos) const;
+    State validate(QString &input, int &pos) const override;
 
 private:
     const QLineEdit &m_lineEdit;
@@ -111,7 +111,7 @@ public:
     RackValidator(QObject *parent, const Bag &iBag,
                   const History *iHistory, bool iStrict,
                   int iMaxLetters);
-    virtual State validate(QString &input, int &pos) const;
+    State validate(QString &input, int &pos) const override;
 
 private:
     const Bag &m_bag;
@@ -221,7 +221,7 @@ public:
     explicit DicRackValidator(QObject *parent,
                               const Dictionary *iDic,
                               bool acceptJoker);
-    virtual State validate(QString &input, int &pos) const;
+    State validate(QString &input, int &pos) const override;
 
 private:
     const Dictionary *m_dic;
@@ -282,7 +282,7 @@ class RegexpValidator: public QValidator
 public:
     explicit RegexpValidator(QObject *parent,
                              const Dictionary *iDic);
-    virtual State validate(QString &input, int &pos) const;
+    State validate(QString &input, int &pos) const override;
 
 private:
     const Dictionary *m_dic;
@@ -338,7 +338,7 @@ class PlayWordValidator: public QValidator
 public:
     explicit PlayWordValidator(QObject *parent,
                                const Dictionary &iDic);
-    virtual State validate(QString &input, int &pos) const;
+    State validate(QString &input, int &pos) const override;
 
 private:
     const Dictionary &m_dic;
@@ -406,7 +406,7 @@ class CoordsValidator: public QValidator
 {
 public:
     explicit CoordsValidator(QObject *parent);
-    virtual State validate(QString &input, int &pos) const;
+    State validate(QString &input, int &pos) const override;
 };
 
 

@@ -59,7 +59,7 @@ public:
         : QApplication(argc, argv)
     {}
 
-    virtual bool notify(QObject *receiver, QEvent *event)
+    bool notify(QObject *receiver, QEvent *event) override
     {
         try
         {

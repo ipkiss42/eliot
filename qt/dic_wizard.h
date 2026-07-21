@@ -43,7 +43,7 @@ class DicWizard: public QWizard
 
 public:
     DicWizard(QWidget *parent, const Dictionary *iCurrDic);
-    virtual void accept();
+    void accept() override;
 
 private:
     int m_lettersPageId;
@@ -61,8 +61,8 @@ class WizardInfoPage: public QWizardPage, private Ui::WizardInfoPage
     DEFINE_LOGGER();
 public:
     explicit WizardInfoPage(QWidget *parent = nullptr);
-    virtual bool isComplete() const;
-    virtual bool validatePage();
+    bool isComplete() const override;
+    bool validatePage() override;
 
 signals:
     void notifyProblem(QString msg);
@@ -100,7 +100,7 @@ class WizardConclusionPage: public QWizardPage, private Ui::WizardConclusionPage
     DEFINE_LOGGER();
 public:
     explicit WizardConclusionPage(QWidget *parent = nullptr);
-    virtual void initializePage();
+    void initializePage() override;
 };
 
 
@@ -112,9 +112,9 @@ public:
     explicit LettersDelegate(QWidget *parent = nullptr)
         : QStyledItemDelegate(parent) {}
 
-    virtual QWidget *createEditor(QWidget *parent,
+    QWidget *createEditor(QWidget *parent,
                                   const QStyleOptionViewItem &option,
-                                  const QModelIndex &index) const;
+                                  const QModelIndex &index) const override;
 };
 
 #endif

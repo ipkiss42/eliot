@@ -43,7 +43,7 @@ signals:
 
 public slots:
     /// Update the players table numbers when the user selects "OK"
-    virtual void accept();
+    void accept() override;
 
 private:
     PublicGame *m_game;

@@ -48,18 +48,18 @@ public:
     /*************************
      * Game handling
      *************************/
-    virtual void start();
+    void start() override;
 
-    virtual bool isFinished() const;
+    bool isFinished() const override;
 
     /// See description of Game::play()
-    virtual int play(const wstring &iCoord, const wstring &iWord);
+    int play(const wstring &iCoord, const wstring &iWord) override;
 
     /**
      * Override the default behaviour of addPlayer(), because in topping
      * mode we only want a human player
      */
-    virtual void addPlayer(Player *iPlayer);
+    void addPlayer(Player *iPlayer) override;
 
     /**
      * Word played by the player, with the corresponding elapsed time, in seconds

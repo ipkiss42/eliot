@@ -48,14 +48,14 @@ class GameMoveCmd: public Command
     public:
         GameMoveCmd(Game &ioGame, const Move &iMove);
 
-        virtual wstring toString() const;
+        wstring toString() const override;
 
         // Getters
         const Move & getMove() const { return m_move; }
 
     protected:
-        virtual void doExecute();
-        virtual void doUndo();
+        void doExecute() override;
+        void doUndo() override;
 
     private:
         Game &m_game;

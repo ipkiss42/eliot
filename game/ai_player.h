@@ -61,10 +61,10 @@ class Tile;
 class AIPlayer: public Player
 {
 public:
-    virtual ~AIPlayer() {}
+    ~AIPlayer() override {}
 
     /// No human here. Trespassers will be shot!
-    virtual bool isHuman() const { return false; }
+    bool isHuman() const override { return false; }
 
     /**
      * This method does the actual computation. It will be called before any

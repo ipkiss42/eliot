@@ -39,14 +39,14 @@ class GameRackCmd: public Command
     public:
         GameRackCmd(Game &ioGame, const PlayedRack &iNewRack);
 
-        virtual wstring toString() const;
+        wstring toString() const override;
 
         // Getters
         const PlayedRack & getRack() const { return m_newRack; }
 
     protected:
-        virtual void doExecute();
-        virtual void doUndo();
+        void doExecute() override;
+        void doUndo() override;
 
     private:
         Game &m_game;

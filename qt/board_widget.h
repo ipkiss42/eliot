@@ -49,9 +49,9 @@ public slots:
 
 protected:
     /// Define a default size
-    virtual QSize sizeHint() const;
+    QSize sizeHint() const override;
     /// Paint the board
-    virtual void paintEvent(QPaintEvent *iEvent);
+    void paintEvent(QPaintEvent *iEvent) override;
     /// Catch mouse clicks on the board
     //virtual void mousePressEvent(QMouseEvent *iEvent);
 

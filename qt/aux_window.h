@@ -50,16 +50,16 @@ public:
      */
     AuxWindow(QWidget &iWidget, QString iWindowTitle,
               QString iWindowName, QAction *iAction = nullptr);
-    virtual ~AuxWindow();
+    ~AuxWindow() override;
 
     const QWidget & getWidget() const { return m_widget; }
 
     void toggleVisibility();
 
 protected:
-    virtual void showEvent(QShowEvent *event);
-    virtual void hideEvent(QHideEvent *event);
-    virtual void closeEvent(QCloseEvent *event);
+    void showEvent(QShowEvent *event) override;
+    void hideEvent(QHideEvent *event) override;
+    void closeEvent(QCloseEvent *event) override;
 
 private:
     QWidget &m_widget;

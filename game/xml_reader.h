@@ -69,7 +69,7 @@ class XmlReader : public Arabica::SAX::DefaultHandler<string>
 {
     DEFINE_LOGGER();
 public:
-    virtual ~XmlReader() {}
+    ~XmlReader() override {}
 
     /**
      * Only entry point of the class.
@@ -83,20 +83,20 @@ public:
 
     ////////////////////////////////////////////////////
     // ContentHandler
-    virtual void startElement(const string& namespaceURI,
+    void startElement(const string& namespaceURI,
                               const string& localName,
                               const string& qName,
-                              const AttributesT& atts);
-    virtual void endElement(const string& namespaceURI,
+                              const AttributesT& atts) override;
+    void endElement(const string& namespaceURI,
                             const string& localName,
-                            const string& qName);
-    virtual void characters(const string& ch);
+                            const string& qName) override;
+    void characters(const string& ch) override;
 
     /////////////////////////////////////////////////////
     // ErrorHandler
-    virtual void warning(const Arabica::SAX::SAXParseException<string>&);
-    virtual void error(const Arabica::SAX::SAXParseException<string>&);
-    virtual void fatalError(const Arabica::SAX::SAXParseException<string>& exception);
+    void warning(const Arabica::SAX::SAXParseException<string>&) override;
+    void error(const Arabica::SAX::SAXParseException<string>&) override;
+    void fatalError(const Arabica::SAX::SAXParseException<string>& exception) override;
 
 private:
     const Dictionary &m_dic;

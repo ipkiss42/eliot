@@ -228,11 +228,11 @@ private:
             CurrentPlayerCmd(Game &ioGame,
                              unsigned int iPlayerId);
 
-            virtual wstring toString() const;
+            wstring toString() const override;
 
         protected:
-            virtual void doExecute();
-            virtual void doUndo();
+            void doExecute() override;
+            void doUndo() override;
 
         private:
             Game &m_game;

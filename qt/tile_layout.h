@@ -33,7 +33,7 @@ class TileLayout : public QLayout
 
 public:
     TileLayout(int nbRows = 0, int nbCols = 0);
-    virtual ~TileLayout();
+    ~TileLayout() override;
 
     void clear();
 
@@ -41,13 +41,13 @@ public:
 
     int getSquareSize() const;
 
-    virtual void addItem(QLayoutItem *item) { m_items.append(item); }
-    virtual int count() const { return m_items.size(); }
-    virtual QLayoutItem *itemAt(int index) const { return m_items.value(index); }
-    virtual QLayoutItem *takeAt(int index);
-    virtual QSize minimumSize() const;
-    virtual QSize sizeHint() const;
-    virtual void setGeometry(const QRect &rect);
+    void addItem(QLayoutItem *item) override { m_items.append(item); }
+    int count() const override { return m_items.size(); }
+    QLayoutItem *itemAt(int index) const override { return m_items.value(index); }
+    QLayoutItem *takeAt(int index) override;
+    QSize minimumSize() const override;
+    QSize sizeHint() const override;
+    void setGeometry(const QRect &rect) override;
 
 private:
     QList<QLayoutItem *> m_items;

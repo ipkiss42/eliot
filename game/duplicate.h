@@ -72,16 +72,16 @@ public:
      * Pre-requisite: all the players must have the same rack when this
      * method is called
      */
-    virtual void start();
+    void start() override;
 
-    virtual bool isFinished() const;
+    bool isFinished() const override;
 
     /**
      * See description of Game::play() for the possible return values.
      * Note that if the "duplicate-reject-invalid" setting is set to false
      * the method always returns 0 (the player will have 0 for this turn)
      */
-    virtual int play(const wstring &iCoord, const wstring &iWord);
+    int play(const wstring &iCoord, const wstring &iWord) override;
 
     /**
      * Set the current player, given its ID.
@@ -103,7 +103,7 @@ public:
     const Move &getMasterMove() const { return m_masterMove; }
 
     /// Return true if the player has played for the current turn
-    virtual bool hasPlayed(unsigned int iPlayerId) const;
+    bool hasPlayed(unsigned int iPlayerId) const override;
 
 protected:
     // Protected constructor to force using the GameFactory class

@@ -71,7 +71,7 @@ class HintsDialog: public QDialog
 
 public:
     explicit HintsDialog(QWidget *parent = nullptr, bool iShowCosts = false);
-    ~HintsDialog();
+    ~HintsDialog() override;
 
 public slots:
     void setMove(const Move &iMove);

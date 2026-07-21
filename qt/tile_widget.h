@@ -67,10 +67,10 @@ public:
 
     const Tile & getTile() const { return m_tile; }
 
-    virtual int heightForWidth(int w) const;
+    int heightForWidth(int w) const override;
 
     /// Define a default size
-    virtual QSize sizeHint() const;
+    QSize sizeHint() const override;
 
 public slots:
     void tileChanged(State state, const Tile &iTile = Tile(), bool isJoker = false);
@@ -81,9 +81,9 @@ signals:
 
 protected:
     /// Paint the square
-    virtual void paintEvent(QPaintEvent *iEvent);
+    void paintEvent(QPaintEvent *iEvent) override;
     /// Catch mouse events to send a signal
-    virtual void mousePressEvent(QMouseEvent *iEvent);
+    void mousePressEvent(QMouseEvent *iEvent) override;
 
 private:
     /// Encapsulated tile

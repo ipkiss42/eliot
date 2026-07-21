@@ -110,7 +110,7 @@ signals:
     void requestDefinition(QString iWord);
 
 protected:
-    virtual QSize sizeHint() const;
+    QSize sizeHint() const override;
 
 private:
     /// Encapsulated game, can be NULL

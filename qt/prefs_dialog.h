@@ -69,7 +69,7 @@ public:
 
 public slots:
     /// Update the settings when the user selects "OK"
-    virtual void accept();
+    void accept() override;
 
 signals:
     void prefsUpdated();

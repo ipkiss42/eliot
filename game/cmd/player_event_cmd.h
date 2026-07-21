@@ -46,8 +46,8 @@ public:
 
     PlayerEventCmd(Player &ioPlayer, EventType iEvent, int iPoints = 0);
 
-    virtual bool isInsertable() const { return true; }
-    virtual wstring toString() const;
+    bool isInsertable() const override { return true; }
+    wstring toString() const override;
 
     // Getters
     const Player & getPlayer() const { return m_player; }
@@ -55,8 +55,8 @@ public:
     int getPoints() const { return m_points; }
 
 protected:
-    virtual void doExecute();
-    virtual void doUndo();
+    void doExecute() override;
+    void doUndo() override;
 
 private:
     Player &m_player;

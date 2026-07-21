@@ -72,7 +72,7 @@ class ScoreHint : public AbstractHint
     DEFINE_LOGGER();
 public:
     ScoreHint();
-    virtual string giveHint(const Move &iMove) const;
+    string giveHint(const Move &iMove) const override;
 };
 
 
@@ -84,7 +84,7 @@ class OrientationHint : public AbstractHint
     DEFINE_LOGGER();
 public:
     OrientationHint();
-    virtual string giveHint(const Move &iMove) const;
+    string giveHint(const Move &iMove) const override;
 };
 
 
@@ -96,7 +96,7 @@ class PositionHint : public AbstractHint
     DEFINE_LOGGER();
 public:
     PositionHint();
-    virtual string giveHint(const Move &iMove) const;
+    string giveHint(const Move &iMove) const override;
 };
 
 
@@ -108,7 +108,7 @@ class LengthHint : public AbstractHint
     DEFINE_LOGGER();
 public:
     LengthHint();
-    virtual string giveHint(const Move &iMove) const;
+    string giveHint(const Move &iMove) const override;
 };
 
 
@@ -120,7 +120,7 @@ class BoardLettersHint : public AbstractHint
     DEFINE_LOGGER();
 public:
     BoardLettersHint();
-    virtual string giveHint(const Move &iMove) const;
+    string giveHint(const Move &iMove) const override;
 };
 
 
@@ -132,7 +132,7 @@ class WordLettersHint : public AbstractHint
     DEFINE_LOGGER();
 public:
     WordLettersHint();
-    virtual string giveHint(const Move &iMove) const;
+    string giveHint(const Move &iMove) const override;
 };
 
 
@@ -144,7 +144,7 @@ class FirstLetterHint : public AbstractHint
     DEFINE_LOGGER();
 public:
     FirstLetterHint();
-    virtual string giveHint(const Move &iMove) const;
+    string giveHint(const Move &iMove) const override;
 };
 
 

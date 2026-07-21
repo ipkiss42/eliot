@@ -42,7 +42,7 @@ class ToppingMoveCmd: public Command
     public:
         ToppingMoveCmd(unsigned iPlayerId, const Move &iMove, int iElapsed);
 
-        virtual wstring toString() const;
+        wstring toString() const override;
 
         // Getters
         unsigned getPlayerId() const { return m_playerId; }
@@ -50,8 +50,8 @@ class ToppingMoveCmd: public Command
         int getElapsedTime() const { return m_elapsed; }
 
     protected:
-        virtual void doExecute();
-        virtual void doUndo();
+        void doExecute() override;
+        void doUndo() override;
 
     private:
         unsigned m_playerId;

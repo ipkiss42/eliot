@@ -53,16 +53,16 @@ public:
     /**
      * Start the game.
      */
-    virtual void start();
+    void start() override;
 
-    virtual bool isFinished() const;
+    bool isFinished() const override;
 
     /**
      * See description of Game::play() for the possible return values.
      * Note that if the "freegame-reject-invalid" setting is set to false
      * the method always returns 0 (the player will have 0 for this turn)
      */
-    virtual int play(const wstring &iCoord, const wstring &iWord);
+    int play(const wstring &iCoord, const wstring &iWord) override;
 
     /**
      * Pass the turn, changing the letters listed in iToChange.

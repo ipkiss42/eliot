@@ -65,35 +65,35 @@ class FlippedModel : public QAbstractItemModel
     public:
         FlippedModel(QAbstractItemModel *iRefModel) : m_refModel(iRefModel) {}
 
-        virtual int columnCount(const QModelIndex &) const
+        int columnCount(const QModelIndex &) const override
         {
             // Ignore the parent
             return m_refModel->rowCount();
         }
 
-        virtual int rowCount(const QModelIndex &) const
+        int rowCount(const QModelIndex &) const override
         {
             // Ignore the parent
             return m_refModel->columnCount();
         }
 
-        virtual QModelIndex index(int row, int column, const QModelIndex &) const
+        QModelIndex index(int row, int column, const QModelIndex &) const override
         {
             return createIndex(row, column, (void*)nullptr);
         }
 
-        virtual QModelIndex parent(const QModelIndex &) const
+        QModelIndex parent(const QModelIndex &) const override
         {
             // Ignore the given index
             return QModelIndex();
         }
 
-        virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const
+        QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override
         {
             return m_refModel->data(m_refModel->index(index.column(), index.row()), role);
         }
 
-        virtual QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const
+        QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override
         {
             Qt::Orientation newOrient =
                 orientation == Qt::Horizontal ? Qt::Vertical : Qt::Horizontal;

@@ -40,7 +40,7 @@ public:
     explicit FavPlayersDialog(QWidget *parent = nullptr);
 
 public slots:
-    virtual void accept();
+    void accept() override;
 
 signals:
     void notifyProblem(QString msg);

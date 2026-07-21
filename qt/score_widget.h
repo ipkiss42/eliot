@@ -43,7 +43,7 @@ public slots:
 
 protected:
     /// Define a default size
-    virtual QSize sizeHint() const;
+    QSize sizeHint() const override;
 
 private:
     /// Encapsulated game, can be NULL

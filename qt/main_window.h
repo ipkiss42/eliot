@@ -58,7 +58,7 @@ class MainWindow: public QMainWindow
 
 public:
     MainWindow(QWidget *iParent = nullptr);
-    ~MainWindow();
+    ~MainWindow() override;
 
 signals:
     void dicChanged(const Dictionary *iDic);
@@ -70,7 +70,7 @@ public slots:
 
 protected:
     /// Handler for close events
-    virtual void closeEvent(QCloseEvent * e);
+    void closeEvent(QCloseEvent * e) override;
 
 private slots:
     void onGameNew();

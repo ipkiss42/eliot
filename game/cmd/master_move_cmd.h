@@ -41,11 +41,11 @@ class MasterMoveCmd: public Command
 
         const Move &getMove() const { return m_newMove; }
 
-        virtual wstring toString() const;
+        wstring toString() const override;
 
     protected:
-        virtual void doExecute();
-        virtual void doUndo();
+        void doExecute() override;
+        void doUndo() override;
 
     private:
         Duplicate &m_duplicateGame;

@@ -112,10 +112,10 @@ private slots:
 
 protected:
     // Events handling
-    virtual void mousePressEvent(QMouseEvent*);
-    virtual void mouseDoubleClickEvent(QMouseEvent*);
+    void mousePressEvent(QMouseEvent*) override;
+    void mouseDoubleClickEvent(QMouseEvent*) override;
     /// Define a default size
-    virtual QSize sizeHint() const;
+    QSize sizeHint() const override;
 
 private:
     /// Model representing the number of remaining seconds

@@ -51,12 +51,12 @@ public:
     /*************************
      * Game handling
      *************************/
-    virtual void start();
+    void start() override;
 
-    virtual bool isFinished() const;
+    bool isFinished() const override;
 
     /// See description of Game::play()
-    virtual int play(const wstring &iCoord, const wstring &iWord);
+    int play(const wstring &iCoord, const wstring &iWord) override;
 
     void search();
     const Results& getResults() const { return m_results; }
@@ -80,7 +80,7 @@ public:
      * Override the default behaviour of addPlayer(), because in training
      * mode we only want a human player
      */
-    virtual void addPlayer(Player *iPlayer);
+    void addPlayer(Player *iPlayer) override;
 
 private:
     /// Private constructor and destructor to force using the GameFactory class

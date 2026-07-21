@@ -130,17 +130,17 @@ class UndoCmd : public Command
          *    become one in the future...
          */
         UndoCmd(Command *cmd);
-        ~UndoCmd();
+        ~UndoCmd() override;
 
         const Command & getWrappedCommand() const { return *m_cmd; }
 
-        virtual bool isAutoExecutable() const;
+        bool isAutoExecutable() const override;
 
-        virtual wstring toString() const;
+        wstring toString() const override;
 
     protected:
-        virtual void doExecute();
-        virtual void doUndo();
+        void doExecute() override;
+        void doUndo() override;
 
     private:
         Command *m_cmd;

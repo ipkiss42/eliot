@@ -48,15 +48,15 @@ class PlayerMoveCmd: public Command
         PlayerMoveCmd(Player &ioPlayer, const Move &iMove,
                       bool iAutoExec = false);
 
-        virtual wstring toString() const;
+        wstring toString() const override;
 
         // Getters
         const Player & getPlayer() const { return m_player; }
         const Move & getMove() const { return m_move; }
 
     protected:
-        virtual void doExecute();
-        virtual void doUndo();
+        void doExecute() override;
+        void doUndo() override;
 
     private:
         Player &m_player;

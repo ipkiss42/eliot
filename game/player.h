@@ -124,10 +124,10 @@ class HumanPlayer: public Player
 {
 public:
     HumanPlayer(): Player() {}
-    virtual ~HumanPlayer() {}
+    ~HumanPlayer() override {}
 
     // Pseudo RTTI
-    virtual bool isHuman() const { return true; }
+    bool isHuman() const override { return true; }
 };
 
 #endif

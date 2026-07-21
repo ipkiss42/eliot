@@ -83,10 +83,10 @@ class BestResults: public Results
 {
 public:
     BestResults();
-    virtual void search(const Dictionary &iDic, const Board &iBoard,
-                        const Rack &iRack, bool iFirstWord);
-    virtual void clear();
-    virtual void add(const Round &iRound);
+    void search(const Dictionary &iDic, const Board &iBoard,
+                        const Rack &iRack, bool iFirstWord) override;
+    void clear() override;
+    void add(const Round &iRound) override;
 
 private:
     int m_bestScore;
@@ -104,10 +104,10 @@ class PercentResults: public Results
 public:
     /** The percentage is given as a float between 0 (0%) and 1 (100%) */
     PercentResults(float iPercent);
-    virtual void search(const Dictionary &iDic, const Board &iBoard,
-                        const Rack &iRack, bool iFirstWord);
-    virtual void clear();
-    virtual void add(const Round &iRound);
+    void search(const Dictionary &iDic, const Board &iBoard,
+                        const Rack &iRack, bool iFirstWord) override;
+    void clear() override;
+    void add(const Round &iRound) override;
 
 private:
     const float m_percent;
@@ -125,10 +125,10 @@ class LimitResults: public Results
 {
 public:
     LimitResults(int iLimit);
-    virtual void search(const Dictionary &iDic, const Board &iBoard,
-                        const Rack &iRack, bool iFirstWord);
-    virtual void clear();
-    virtual void add(const Round &iRound);
+    void search(const Dictionary &iDic, const Board &iBoard,
+                        const Rack &iRack, bool iFirstWord) override;
+    void clear() override;
+    void add(const Round &iRound) override;
 
     void setLimit(int iNewLimit) { m_limit = iNewLimit; }
 
@@ -151,10 +151,10 @@ class MasterResults: public Results
 {
 public:
     MasterResults(const Bag &iBag);
-    virtual void search(const Dictionary &iDic, const Board &iBoard,
-                        const Rack &iRack, bool iFirstWord);
-    virtual void clear();
-    virtual void add(const Round &iRound);
+    void search(const Dictionary &iDic, const Board &iBoard,
+                        const Rack &iRack, bool iFirstWord) override;
+    void clear() override;
+    void add(const Round &iRound) override;
 
 private:
     const Bag &m_bag;
