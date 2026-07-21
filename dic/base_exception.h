@@ -33,7 +33,7 @@ class BaseException: public std::exception
 {
     public:
         BaseException(const std::string &iMessage);
-        ~BaseException() throw() override {}
+        ~BaseException() throw() override = default;
         const char *what() const throw() override;
 
         std::string getStackTrace() const;

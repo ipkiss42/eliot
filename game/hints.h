@@ -39,7 +39,7 @@ class AbstractHint
     DEFINE_LOGGER();
 public:
     AbstractHint(const string &iName, const string &iDescription, int iCost);
-    virtual ~AbstractHint() {}
+    virtual ~AbstractHint() = default;
 
     /// Get a name (or title) for the hint
     string getName() const { return m_name; }

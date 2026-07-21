@@ -38,7 +38,7 @@ class Command
 
     public:
         Command();
-        virtual ~Command() {}
+        virtual ~Command() = default;
 
         /**
          * Execute the command. This can later be undone using the undo()

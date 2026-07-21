@@ -7,6 +7,8 @@ Checks: >
   modernize-replace-auto-ptr,
   modernize-make-unique,
   modernize-make-shared,
+  modernize-use-equals-default,
+  modernize-use-equals-delete,
   modernize-use-using
 
 # Filter project header files, while allowing out of tree builds

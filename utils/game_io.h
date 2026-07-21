@@ -59,7 +59,7 @@ public:
 
 private:
     /// This class is a toolbox, and should not be instanciated
-    GameIO();
+    GameIO() = delete;
 };
 
 #endif

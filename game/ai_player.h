@@ -61,7 +61,7 @@ class Tile;
 class AIPlayer: public Player
 {
 public:
-    ~AIPlayer() override {}
+    ~AIPlayer() override = default;
 
     /// No human here. Trespassers will be shot!
     bool isHuman() const override { return false; }

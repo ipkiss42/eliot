@@ -27,9 +27,7 @@
 INIT_LOGGER(qt, PlayModel);
 
 
-PlayModel::PlayModel()
-{
-}
+PlayModel::PlayModel() = default;
 
 
 void PlayModel::clear()

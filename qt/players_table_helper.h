@@ -118,7 +118,7 @@ class PlayersTypeDelegate: public QItemDelegate
 
 public:
     explicit PlayersTypeDelegate(QObject *parent = nullptr);
-    ~PlayersTypeDelegate() override {}
+    ~PlayersTypeDelegate() override = default;
 
     // Implement the needed methods
     QWidget *createEditor(QWidget *parent,
@@ -143,7 +143,7 @@ class PlayersLevelDelegate: public QItemDelegate
 
 public:
     explicit PlayersLevelDelegate(QObject *parent = nullptr);
-    ~PlayersLevelDelegate() override {}
+    ~PlayersLevelDelegate() override = default;
 
     // Implement the needed methods
     QWidget *createEditor(QWidget *parent,

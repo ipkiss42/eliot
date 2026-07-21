@@ -69,7 +69,7 @@ class XmlReader : public Arabica::SAX::DefaultHandler<string>
 {
     DEFINE_LOGGER();
 public:
-    ~XmlReader() override {}
+    ~XmlReader() override = default;
 
     /**
      * Only entry point of the class.

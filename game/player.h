@@ -43,7 +43,7 @@ class Player
     DEFINE_LOGGER();
 public:
     explicit Player();
-    virtual ~Player() {}
+    virtual ~Player() = default;
 
     // Pseudo RTTI
     virtual bool isHuman() const = 0;
@@ -124,7 +124,7 @@ class HumanPlayer: public Player
 {
 public:
     HumanPlayer(): Player() {}
-    ~HumanPlayer() override {}
+    ~HumanPlayer() override = default;
 
     // Pseudo RTTI
     bool isHuman() const override { return true; }

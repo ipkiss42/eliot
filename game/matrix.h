@@ -43,9 +43,7 @@ public:
         resize(iSize, iSize, iValue);
     }
 
-    Matrix()
-    {
-    }
+    Matrix() = default;
 
     /**
      * Resize the matrix to iSize1 rows and iSize2 cols.

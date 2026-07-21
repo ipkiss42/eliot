@@ -50,7 +50,7 @@ class Results
 {
     DEFINE_LOGGER();
 public:
-    virtual ~Results() {}
+    virtual ~Results() = default;
     unsigned int size() const { return m_rounds.size(); }
     const Round & get(unsigned int) const;
     bool isEmpty() const { return m_rounds.empty(); }
