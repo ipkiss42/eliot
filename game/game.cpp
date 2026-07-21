@@ -722,7 +722,7 @@ void Game::setGameAndPlayersRack(const PlayedRack &iRack, bool iWithNoMove)
 
 Game::CurrentPlayerCmd::CurrentPlayerCmd(Game &ioGame,
                              unsigned int iPlayerId)
-    : m_game(ioGame), m_newPlayerId(iPlayerId), m_oldPlayerId(0)
+    : m_game(ioGame), m_newPlayerId(iPlayerId) 
 {
 }
 

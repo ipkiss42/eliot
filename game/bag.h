@@ -94,7 +94,7 @@ private:
     map<Tile, int> m_tilesMap;
 
     /// Total number of tiles in the bag
-    unsigned m_nbTiles;
+    unsigned m_nbTiles{0};
 
     /// Helper method, used by the various selectRandom*() methods
     Tile selectRandomTile(unsigned total,

@@ -30,7 +30,7 @@ INIT_LOGGER(qt, GameSignals);
 
 
 GameSignals::GameSignals()
-    : m_game(nullptr), m_currentTurn(0), m_lastTurn(0)
+     
 {
 }
 

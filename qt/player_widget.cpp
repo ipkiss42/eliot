@@ -202,7 +202,7 @@ void PlayerWidget::helperChangePass(QString inputLetters)
 
 
 PlayerTabWidget::PlayerTabWidget(PlayModel &iPlayModel, QWidget *parent)
-    : QTabWidget(parent), m_game(nullptr), m_playModel(iPlayModel)
+    : QTabWidget(parent),  m_playModel(iPlayModel)
 {
     QObject::connect(this, SIGNAL(currentChanged(int)),
                      this, SLOT(changeCurrentPlayer(int)));

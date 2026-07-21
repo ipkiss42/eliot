@@ -112,7 +112,7 @@ void Results::sort()
 
 
 BestResults::BestResults()
-    : m_bestScore(0)
+     
 {
 }
 
@@ -156,7 +156,7 @@ void BestResults::clear()
 
 
 PercentResults::PercentResults(float iPercent)
-    : m_percent(iPercent), m_bestScore(0), m_minScore(0)
+    : m_percent(iPercent) 
 {
 }
 
@@ -236,7 +236,7 @@ void PercentResults::clear()
 
 
 LimitResults::LimitResults(int iLimit)
-    : m_limit(iLimit), m_total(0), m_minScore(-1)
+    : m_limit(iLimit) 
 {
 }
 

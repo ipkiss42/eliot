@@ -85,18 +85,18 @@ private:
     vector<TileWidget *> m_tilesVect;
 
     /// Encapsulated game, can be NULL
-    const PublicGame *m_game;
+    const PublicGame *m_game{nullptr};
 
     /// Word being played
-    PlayModel *m_playModel;
+    PlayModel *m_playModel{nullptr};
 
     /**
      * Indicate whether to show only the last rack
      * (useful on the external board, in particular in arbitration mode)
      */
-    bool m_showOnlyLastTurn;
+    bool m_showOnlyLastTurn{false};
 
-    int m_dragOrigin;
+    int m_dragOrigin{-1};
 
     /**
      * If the play model is not NULL and contains a valid move, this method

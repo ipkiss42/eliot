@@ -65,7 +65,7 @@ private:
     static GameFactory *m_factory;
 
     /// Initial dictionary (it could be changed later)
-    Dictionary *m_dic;
+    Dictionary *m_dic{nullptr};
 
     /** Parameters specified on the command-line */
     //@{
@@ -77,7 +77,7 @@ private:
     string m_modeStr;
 
     /// Variant of the game
-    bool m_joker;
+    bool m_joker{false};
 
     using PlayerDesc = pair<bool, wstring>;
     vector<PlayerDesc> m_players;

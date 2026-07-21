@@ -100,7 +100,7 @@ private slots:
 
 private:
     /// Encapsulated game, can be NULL
-    PublicGame *m_game;
+    PublicGame *m_game{nullptr};
 
     /// Model for the word coordinates
     PlayModel &m_playModel;

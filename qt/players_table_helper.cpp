@@ -71,8 +71,7 @@ PlayersTableHelper::PlayersTableHelper(QObject *parent,
                                        bool showDefaultColumn)
     : QObject(parent), m_tablePlayers(tablePlayers),
     m_buttonAdd(addButton), m_buttonRemove(removeButton),
-    m_showDefaultColumn(showDefaultColumn),
-    m_buttonUp(nullptr), m_buttonDown(nullptr)
+    m_showDefaultColumn(showDefaultColumn) 
 {
     // Initialize the table headers
     tablePlayers->setColumnCount(m_showDefaultColumn ? 4 : 3);

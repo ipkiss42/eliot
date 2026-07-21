@@ -100,8 +100,8 @@ private:
     QList<QAction*> m_popupActions;
     bool m_showDefaultColumn;
     // Up/down buttons (optional)
-    QPushButton *m_buttonUp;
-    QPushButton *m_buttonDown;
+    QPushButton *m_buttonUp{nullptr};
+    QPushButton *m_buttonDown{nullptr};
 
     /// Return a "normalized" player def, i.e. with correct values
     PlayerDef normalize(const PlayerDef &iDef) const;

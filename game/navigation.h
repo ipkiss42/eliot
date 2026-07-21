@@ -102,7 +102,7 @@ class Navigation
 
     private:
         vector<Turn *> m_allTurns;
-        unsigned int m_currTurn;
+        unsigned int m_currTurn{0};
 };
 
 #endif

@@ -49,7 +49,7 @@ INIT_LOGGER(game, FreeGame);
 
 
 FreeGame::FreeGame(const GameParams &iParams, const Game *iMasterGame)
-    : Game(iParams, iMasterGame), m_finished(false)
+    : Game(iParams, iMasterGame) 
 {
 }
 

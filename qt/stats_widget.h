@@ -69,7 +69,7 @@ private:
     QTableView *m_table;
 
     /// Indicate whether the columns should be resized automatically
-    bool m_autoResizeColumns;
+    bool m_autoResizeColumns{true};
 
     static const QColor WarningBrush;
     static const QColor PenaltyBrush;

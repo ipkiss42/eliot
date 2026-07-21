@@ -100,12 +100,12 @@ private:
     wchar_t *m_endString;
 #ifdef CHECK_RECURSION
     map<int, vector<DicEdge> > m_mapForDepth;
-    int m_currentRec;
-    int m_maxRec;
+    int m_currentRec{0};
+    int m_maxRec{0};
 #endif
 
-    double m_loadTime;
-    double m_buildTime;
+    double m_loadTime{0};
+    double m_buildTime{0};
 
 
     /**

@@ -70,7 +70,7 @@ private:
     PublicGame *m_game;
 
     /// Indicate whether the columns should be resized after a search
-    bool m_autoResizeColumns;
+    bool m_autoResizeColumns{true};
 
     /// Model of the search results
     QStandardItemModel *m_model;

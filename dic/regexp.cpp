@@ -32,8 +32,7 @@ using boost::format;
 
 
 Node::Node(int type, char v, Node *fg, Node *fd)
-    : m_type(type), m_var(v), m_fg(fg), m_fd(fd), m_number(0), m_position(0),
-    m_annulable(false), m_PP(0), m_DP(0)
+    : m_type(type), m_var(v), m_fg(fg), m_fd(fd) 
 {
 }
 

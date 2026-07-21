@@ -108,8 +108,8 @@ class Box
         string m_title;
         int m_topLine;
         int m_nbLines;
-        int m_dataStart;
-        int m_dataSize;
+        int m_dataStart{0};
+        int m_dataSize{0};
 };
 
 
@@ -189,13 +189,13 @@ private:
     // Invariant: the pointer will always point to a valid PublicGame object
     PublicGame *m_game;
     // Interface state
-    State m_state;
+    State m_state{DEFAULT};
     // True when the user requested to quit
-    bool m_dying;
+    bool m_dying{false};
     // Scrolling box for the current panel
     Box m_box;
     // True if dots must be shown on empty squares
-    bool m_showDots;
+    bool m_showDots{false};
 };
 
 #endif

@@ -29,7 +29,7 @@ INIT_LOGGER(game, Rack);
 
 
 Rack::Rack()
-    : m_tiles(Dictionary::GetDic().getTileNumber() + 1, 0), m_nbTiles(0)
+    : m_tiles(Dictionary::GetDic().getTileNumber() + 1, 0) 
 {
 }
 

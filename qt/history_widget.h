@@ -56,17 +56,17 @@ private slots:
 
 private:
     /// Encapsulated history, can be NULL
-    const History *m_history;
+    const History *m_history{nullptr};
 
     /// Corresponding game (used to retrieve the players names) can be NULL
-    const PublicGame *m_game;
+    const PublicGame *m_game{nullptr};
 
     /**
      * Flag to avoid displaying the "players" column when the History object
      * is associated to a Player
      */
-    bool m_forPlayer;
-    bool m_isFreeGame;
+    bool m_forPlayer{false};
+    bool m_isFreeGame{false};
 
     int m_colTurn;
     int m_colRack;
@@ -114,7 +114,7 @@ protected:
 
 private:
     /// Encapsulated game, can be NULL
-    const PublicGame *m_game;
+    const PublicGame *m_game{nullptr};
 
     /**
      * HistoryWidget for the game: we reuse it instead of creating and

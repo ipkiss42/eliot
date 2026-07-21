@@ -82,7 +82,7 @@ public:
 
 private:
     /// True if the game is finished, false otherwise
-    bool m_finished;
+    bool m_finished{false};
 
     /// Private constructor to force using the GameFactory class
     FreeGame(const GameParams &iParams, const Game *iMasterGame);

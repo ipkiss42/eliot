@@ -189,7 +189,7 @@ class Turn
          * Pointer to the first not executed command.
          * If it is equal to m_commands.size(), all the commands have been executed.
          */
-        unsigned int m_firstNotExecuted;
+        unsigned int m_firstNotExecuted{0};
 
         /**
          * Return the index of the given command,

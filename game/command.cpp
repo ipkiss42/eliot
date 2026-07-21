@@ -27,7 +27,7 @@ INIT_LOGGER(game, UndoCmd);
 
 
 Command::Command()
-    : m_executed(false), m_humanIndependent(true), m_autoExecutable(true)
+     
 {
 }
 

@@ -272,7 +272,7 @@ private:
     Dictionary(const Dictionary&);
 
     Header *m_header;
-    uint32_t *m_dawg;
+    uint32_t *m_dawg{nullptr};
 
     /**
      * Letters of the dictionary, both in uppercase and lowercase
@@ -306,7 +306,7 @@ private:
      * of m_displayInputCache, because a tile can have input strings even if
      * its display string is equal to the internal char.
      */
-    bool m_hasDisplay;
+    bool m_hasDisplay{false};
 
     static const Dictionary *m_dic;
 

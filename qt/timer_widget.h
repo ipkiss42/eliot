@@ -75,10 +75,10 @@ private slots:
 
 private:
     /// Total duration of the timer, in seconds
-    int m_totalDuration;
+    int m_totalDuration{0};
 
     /// Alert duration of the timer, in seconds (must be lower than the total duration)
-    int m_alertDuration;
+    int m_alertDuration{0};
 
     /// Number of remaining seconds
     int m_remaining;
@@ -87,7 +87,7 @@ private:
     bool m_alertTriggered;
 
     /// Indicate whether to show the remaining time or elapsed time
-    bool m_chronoMode;
+    bool m_chronoMode{false};
 
     /// Timer used for the countdown
     QTimer *m_timer;

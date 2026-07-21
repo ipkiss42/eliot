@@ -52,7 +52,7 @@ protected:
 
 private:
     /// Encapsulated game, can be NULL
-    const PublicGame *m_game;
+    const PublicGame *m_game{nullptr};
 
 //QTreeView *m_treeView;
 
@@ -84,19 +84,19 @@ protected:
 
 private:
     /// Encapsulated game, can be NULL
-    const PublicGame *m_game;
+    const PublicGame *m_game{nullptr};
 
     /// Encapsulated tiles
     vector<TileWidget *> m_tilesVect;
 
     /// Cached value, storing the total number of tiles in the game
-    unsigned int m_totalNbTiles;
+    unsigned int m_totalNbTiles{0};
 
     /// Indicate whether the played tiles should be displayed
-    bool m_showPlayedTiles;
+    bool m_showPlayedTiles{true};
 
     /// Indicate whether the tiles in the current rack should be displayed highlighted
-    bool m_showTilesInRack;
+    bool m_showTilesInRack{true};
 
 };
 

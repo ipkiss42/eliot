@@ -45,7 +45,7 @@ INIT_LOGGER(qt, BagWidget2);
 
 
 BagWidget::BagWidget(QWidget *parent)
-    : QWidget(parent), m_game(nullptr)
+    : QWidget(parent) 
 {
     setupUi(this);
 
@@ -117,8 +117,7 @@ QSize BagWidget::sizeHint() const
 
 
 BagWidget2::BagWidget2(QWidget *parent)
-    : QWidget(parent), m_game(nullptr), m_totalNbTiles(0),
-    m_showPlayedTiles(true), m_showTilesInRack(true)
+    : QWidget(parent) 
 {
     TileLayout *layout = new TileLayout;
     layout->setSpacing(5);

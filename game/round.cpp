@@ -32,7 +32,7 @@ INIT_LOGGER(game, Round);
 
 
 Round::Round()
-    : m_coord(1, 1, Coord::HORIZONTAL), m_points(0), m_bonus(false)
+    : m_coord(1, 1, Coord::HORIZONTAL) 
 {
 }
 

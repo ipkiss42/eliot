@@ -50,7 +50,7 @@ signals:
 
 private:
     /// Dictionary in which the searches are done
-    const Dictionary *m_dic;
+    const Dictionary *m_dic{nullptr};
 
     /// Model of the tree view for the "plus 1" search
     QStandardItemModel *m_plus1Model;

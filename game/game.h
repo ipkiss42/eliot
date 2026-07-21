@@ -237,7 +237,7 @@ private:
         private:
             Game &m_game;
             unsigned int m_newPlayerId;
-            unsigned int m_oldPlayerId;
+            unsigned int m_oldPlayerId{0};
     };
 
 // TODO: check what should be private and what should be protected

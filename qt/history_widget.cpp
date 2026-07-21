@@ -46,8 +46,7 @@ INIT_LOGGER(qt, HistoryWidget);
 
 
 HistoryWidget::HistoryWidget(QWidget *parent)
-    : QTreeView(parent), m_history(nullptr), m_game(nullptr),
-      m_forPlayer(false), m_isFreeGame(false)
+    : QTreeView(parent) 
 {
     m_colTurn = 0;
     m_colRack = 1;
@@ -273,7 +272,7 @@ void HistoryWidget::setCellData(int iRow, int iCol, const QVariant &iData)
 
 
 HistoryTabWidget::HistoryTabWidget(QWidget *parent)
-    : QTabWidget(parent), m_game(nullptr)
+    : QTabWidget(parent) 
 {
     m_gameHistoryWidget = new HistoryWidget(nullptr);
     insertTab(0, m_gameHistoryWidget, _q("&Game"));

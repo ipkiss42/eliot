@@ -59,7 +59,7 @@ public:
 private:
     /// Vector indexed by tile codes, containing the number of tiles
     vector<unsigned int> m_tiles;
-    unsigned m_nbTiles;
+    unsigned m_nbTiles{0};
 };
 
 #endif

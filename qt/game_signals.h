@@ -75,13 +75,13 @@ signals:
 
 private:
     /// Wrapped game (can be NULL)
-    const PublicGame *m_game;
+    const PublicGame *m_game{nullptr};
 
     /// Current turn number. Used to emit turnChanged()
-    unsigned m_currentTurn;
+    unsigned m_currentTurn{0};
 
     /// Last known turn number. Used to emit newTurn()
-    unsigned m_lastTurn;
+    unsigned m_lastTurn{0};
 
     // Last known game rack. Used to emit gameRackChanged()
     PlayedRack m_lastGameRack;

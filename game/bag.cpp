@@ -33,7 +33,7 @@ INIT_LOGGER(game, Bag);
 
 
 Bag::Bag(const Dictionary &iDic)
-    : m_dic(iDic), m_nbTiles(0)
+    : m_dic(iDic) 
 {
     BOOST_FOREACH(const Tile &tile, m_dic.getAllTiles())
     {

@@ -55,7 +55,7 @@ const Dictionary *Dictionary::m_dic = nullptr;
 
 
 Dictionary::Dictionary(const string &iPath)
-    : m_dawg(nullptr), m_hasDisplay(false)
+     
 {
     ifstream file(iPath.c_str(), ios::in | ios::binary);
 

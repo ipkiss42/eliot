@@ -101,9 +101,9 @@ class Command
         void setAutoExecutable(bool autoExec) { m_autoExecutable = autoExec; }
 
     private:
-        bool m_executed;
-        bool m_humanIndependent;
-        bool m_autoExecutable;
+        bool m_executed{false};
+        bool m_humanIndependent{true};
+        bool m_autoExecutable{true};
 };
 
 

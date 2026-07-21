@@ -38,7 +38,7 @@ INIT_LOGGER(game, Player);
 
 
 Player::Player()
-    : m_id(0), m_tableNb(0)
+     
 {
 }
 

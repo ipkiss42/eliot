@@ -54,7 +54,7 @@ INIT_LOGGER(game, GameFactory);
 GameFactory *GameFactory::m_factory = nullptr;
 
 
-GameFactory::GameFactory(): m_dic(nullptr), m_joker(false)
+GameFactory::GameFactory() 
 {
 }
 

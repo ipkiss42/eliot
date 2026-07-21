@@ -135,10 +135,10 @@ private slots:
 
 private:
     /// Current dictionary
-    const Dictionary *m_dic;
+    const Dictionary *m_dic{nullptr};
 
     /// Current game
-    PublicGame *m_game;
+    PublicGame *m_game{nullptr};
 
     GameSignals *m_gameSignals;
 
@@ -152,19 +152,19 @@ private:
     RackWidget *m_rackWidget;
 
     /// Widget for the players
-    PlayerTabWidget *m_playersWidget;
+    PlayerTabWidget *m_playersWidget{nullptr};
 
     /// Widget for the training mode
-    TrainingWidget *m_trainingWidget;
+    TrainingWidget *m_trainingWidget{nullptr};
 
     /// Widget for the topping mode
-    ToppingWidget *m_toppingWidget;
+    ToppingWidget *m_toppingWidget{nullptr};
 
     /// Widget for the arbitration mode
-    ArbitrationWidget *m_arbitrationWidget;
+    ArbitrationWidget *m_arbitrationWidget{nullptr};
 
     /// Widget for the scores
-    ScoreWidget *m_scoresWidget;
+    ScoreWidget *m_scoresWidget{nullptr};
 
     /// Actions enabled or disabled depending on the game state
     QAction *m_actionGamePrintPreview;
@@ -185,17 +185,17 @@ private:
     /// Auxiliary windows
     //@{
     QAction *m_actionWindowsBag;
-    AuxWindow *m_bagWindow;
+    AuxWindow *m_bagWindow{nullptr};
     QAction *m_actionWindowsBoard;
-    AuxWindow *m_boardWindow;
+    AuxWindow *m_boardWindow{nullptr};
     QAction *m_actionWindowsHistory;
-    AuxWindow *m_historyWindow;
+    AuxWindow *m_historyWindow{nullptr};
     QAction *m_actionWindowsStats;
-    AuxWindow *m_statsWindow;
+    AuxWindow *m_statsWindow{nullptr};
     QAction *m_actionWindowsTimer;
-    AuxWindow *m_timerWindow;
+    AuxWindow *m_timerWindow{nullptr};
     QAction *m_actionWindowsDicTools;
-    AuxWindow *m_dicToolsWindow;
+    AuxWindow *m_dicToolsWindow{nullptr};
     //@}
 
     /// Status bar label indicating the current turn (when there is a game)
@@ -203,13 +203,13 @@ private:
     /// Status bar label indicating the remaining letters (when there is a game)
     QLabel *m_lettersLabel;
     /// Status bar label indicating the name of the current dictionary
-    QLabel *m_dicNameLabel;
+    QLabel *m_dicNameLabel{nullptr};
 
     /// Model for the coordinates of the word to play
     PlayModel m_playModel;
 
     /// Model for the timer widgets
-    TimerModel *m_timerModel;
+    TimerModel *m_timerModel{nullptr};
 
     /// Save window state
     void writeSettings() const;

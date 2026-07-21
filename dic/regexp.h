@@ -85,11 +85,11 @@ private:
     char m_var;
     Node *m_fg;
     Node *m_fd;
-    int m_number;
-    int m_position;
-    bool m_annulable;
-    uint64_t m_PP;
-    uint64_t m_DP;
+    int m_number{0};
+    int m_position{0};
+    bool m_annulable{false};
+    uint64_t m_PP{0};
+    uint64_t m_DP{0};
 
 #ifdef DEBUG_RE
     /// Print the current node to file

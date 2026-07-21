@@ -82,7 +82,7 @@ void HintWidget::buttonClicked()
 
 
 HintsDialog::HintsDialog(QWidget *parent, bool iShowCosts)
-    : QDialog(parent), m_move(nullptr), m_showCosts(iShowCosts)
+    : QDialog(parent),  m_showCosts(iShowCosts)
 {
     initializeHints();
 

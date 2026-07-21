@@ -89,7 +89,7 @@ public:
     void add(const Round &iRound) override;
 
 private:
-    int m_bestScore;
+    int m_bestScore{0};
 };
 
 /**
@@ -111,8 +111,8 @@ public:
 
 private:
     const float m_percent;
-    int m_bestScore;
-    int m_minScore;
+    int m_bestScore{0};
+    int m_minScore{0};
 };
 
 /**
@@ -135,8 +135,8 @@ public:
 private:
     int m_limit;
     map<int, int> m_scoresCount;
-    int m_total;
-    int m_minScore;
+    int m_total{0};
+    int m_minScore{-1};
 };
 
 /**

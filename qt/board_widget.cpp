@@ -40,9 +40,9 @@ INIT_LOGGER(qt, BoardWidget);
 
 
 BoardWidget::BoardWidget(PlayModel &iPlayModel, QWidget *parent)
-    : QFrame(parent), m_game(nullptr),
-    m_playModel(iPlayModel), m_showTemporarySigns(true),
-    m_showOnlyLastTurn(false)
+    : QFrame(parent), 
+    m_playModel(iPlayModel)
+    
 {
     const BoardLayout & boardLayout = BoardLayout::GetDefault();
     const unsigned nbRows = boardLayout.getRowCount();

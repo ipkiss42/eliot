@@ -82,7 +82,7 @@ public:
     wstring toString(display_mode iShowExtraSigns = RACK_EXTRA) const;
 
 private:
-    bool m_reject;
+    bool m_reject{false};
     vector<Tile> m_oldTiles;
     vector<Tile> m_newTiles;
 };

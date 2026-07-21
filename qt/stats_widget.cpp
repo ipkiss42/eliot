@@ -107,7 +107,7 @@ class FlippedModel : public QAbstractItemModel
 
 
 StatsWidget::StatsWidget(QWidget *parent, const PublicGame *iGame)
-    : QWidget(parent), m_game(iGame), m_autoResizeColumns(true)
+    : QWidget(parent), m_game(iGame) 
 {
     // Layout
     setLayout(new QVBoxLayout);

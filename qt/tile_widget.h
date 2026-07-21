@@ -98,16 +98,16 @@ private:
     int m_col;
 
     /// Whether the tile is a joker
-    bool m_isJoker;
+    bool m_isJoker{false};
 
     /// State of the tile
-    State m_state;
+    State m_state{NORMAL};
 
     /// Whether we should show the arrow
-    bool m_showArrow;
+    bool m_showArrow{false};
 
     /// Whether the arrow is horizontal
-    bool m_horizontalArrow;
+    bool m_horizontalArrow{true};
 
     /// Text used for coordinates
     QString m_text;

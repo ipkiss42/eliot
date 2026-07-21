@@ -105,7 +105,7 @@ private:
     Matrix<Tile> m_testsRow;
 
     /// Flag indicating if the board is empty or if it has letters
-    bool m_isEmpty;
+    bool m_isEmpty{true};
 
     /**
      * board_cross.c

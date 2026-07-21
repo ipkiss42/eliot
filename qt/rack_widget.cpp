@@ -47,9 +47,8 @@ INIT_LOGGER(qt, RackWidget);
 
 
 RackWidget::RackWidget(QWidget *parent)
-    : QFrame(parent), m_game(nullptr),
-      m_playModel(nullptr), m_showOnlyLastTurn(false),
-      m_dragOrigin(-1)
+    : QFrame(parent)
+      
 {
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     setFrameStyle(QFrame::Box | QFrame::Raised);

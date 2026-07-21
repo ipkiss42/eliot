@@ -64,7 +64,7 @@ Box::Box(WINDOW *win, int y, int x, int h, int w,
          unsigned int iHeadingLines)
     : m_win(win),  m_x(x), m_y(y), m_w(w), m_h(h),
     m_topLine(y + 1 + iHeadingLines),
-    m_nbLines(h - 2 - iHeadingLines), m_dataStart(0), m_dataSize(0)
+    m_nbLines(h - 2 - iHeadingLines) 
 {
 }
 
@@ -189,8 +189,8 @@ void Box::clearRect(WINDOW *win, int y, int x, int h, int w)
 
 
 CursesIntf::CursesIntf(WINDOW *win, PublicGame& iGame)
-    : m_win(win), m_game(&iGame), m_state(DEFAULT), m_dying(false),
-    m_box(win, 0, 0, 0, 0), m_showDots(false)
+    : m_win(win), m_game(&iGame), 
+    m_box(win, 0, 0, 0, 0) 
 {
 }
 

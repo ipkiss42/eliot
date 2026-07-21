@@ -33,7 +33,7 @@ INIT_LOGGER(game, Navigation);
 
 
 Navigation::Navigation()
-    : m_currTurn(0)
+     
 {
     // Start with an empty turn
     m_allTurns.push_back(new Turn);

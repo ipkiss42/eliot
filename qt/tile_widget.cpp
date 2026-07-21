@@ -50,8 +50,7 @@ const QColor TileWidget::ArrowColour(10, 10, 10);
 TileWidget::TileWidget(QWidget *parent, Multiplier multiplier,
                        int row, int col)
     : QFrame(parent), m_multiplier(multiplier),
-    m_row(row), m_col(col), m_isJoker(false),
-    m_state(NORMAL), m_showArrow(false), m_horizontalArrow(true)
+    m_row(row), m_col(col) 
 {
     QSizePolicy policy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     policy.setHeightForWidth(true);

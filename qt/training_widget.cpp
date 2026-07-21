@@ -47,7 +47,7 @@ static const int HIDDEN_COLUMN = 6;
 
 
 TrainingWidget::TrainingWidget(QWidget *parent, PlayModel &iPlayModel, PublicGame *iGame)
-    : QWidget(parent), m_game(iGame), m_autoResizeColumns(true)
+    : QWidget(parent), m_game(iGame) 
 {
     setupUi(this);
     treeViewResults->setAlternatingRowColors(true);

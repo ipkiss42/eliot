@@ -62,19 +62,19 @@ private slots:
 
 private:
     /// Encapsulated game, can be NULL
-    const PublicGame *m_game;
+    const PublicGame *m_game{nullptr};
 
     /// Coordinates of the next word to play
     PlayModel &m_playModel;
 
     /// Indicate whether to draw the arrow and the previewed word on the board
-    bool m_showTemporarySigns;
+    bool m_showTemporarySigns{true};
 
     /**
      * Indicate whether to show only the board as it is on the last turn
      * (useful for on the external board, in particular in arbitration mode)
      */
-    bool m_showOnlyLastTurn;
+    bool m_showOnlyLastTurn{false};
 
     Matrix<TileWidget*> m_widgetsMatrix;
 };

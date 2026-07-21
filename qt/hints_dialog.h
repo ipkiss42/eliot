@@ -84,7 +84,7 @@ private slots:
     void showHint(const AbstractHint &iHint);
 
 private:
-    const Move *m_move;
+    const Move *m_move{nullptr};
     vector<const AbstractHint *> m_allHints;
     bool m_showCosts;
 

@@ -32,7 +32,7 @@ INIT_LOGGER(game, Turn);
 
 
 Turn::Turn()
-    : m_firstNotExecuted(0)
+     
 {
 }
 

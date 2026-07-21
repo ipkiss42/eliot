@@ -104,13 +104,13 @@ public:
 
 private:
     /// ID of the player
-    unsigned int m_id;
+    unsigned int m_id{0};
 
     /// Name of the player
     wstring m_name;
 
     // Table number (optional: set to 0 if not used)
-    unsigned m_tableNb;
+    unsigned m_tableNb{0};
 
     /// History of the racks and rounds for the player
     History m_history;

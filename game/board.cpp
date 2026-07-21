@@ -51,8 +51,8 @@ Board::Board(const GameParams &iParams):
     m_crossCol(BOARD_REALDIM, Cross()),
     m_pointRow(BOARD_REALDIM, -1),
     m_pointCol(BOARD_REALDIM, -1),
-    m_testsRow(BOARD_REALDIM, Tile()),
-    m_isEmpty(true)
+    m_testsRow(BOARD_REALDIM, Tile())
+    
 {
     // No cross check allowed around the board
     for (int i = 0; i < BOARD_REALDIM; i++)

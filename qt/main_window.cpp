@@ -80,14 +80,8 @@ INIT_LOGGER(qt, MainWindow);
 const char *MainWindow::m_windowName = "MainWindow";
 
 MainWindow::MainWindow(QWidget *iParent)
-    : QMainWindow(iParent), m_dic(nullptr), m_game(nullptr),
-    m_gameSignals(new GameSignals),
-    m_playersWidget(nullptr), m_trainingWidget(nullptr),
-    m_toppingWidget(nullptr),
-    m_arbitrationWidget(nullptr), m_scoresWidget(nullptr),
-    m_bagWindow(nullptr), m_boardWindow(nullptr),
-    m_historyWindow(nullptr), m_statsWindow(nullptr), m_timerWindow(nullptr),
-    m_dicToolsWindow(nullptr), m_dicNameLabel(nullptr), m_timerModel(nullptr)
+    : QMainWindow(iParent), 
+    m_gameSignals(new GameSignals) 
 {
 #ifdef DEBUG
     // Check that the string conversion routines are not buggy

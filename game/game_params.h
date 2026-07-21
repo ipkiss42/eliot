@@ -63,7 +63,7 @@ class GameParams
      * (it won't be destroyed by ~GameParams())
      */
     GameParams(const Dictionary &iDic, GameMode iMode = kTRAINING)
-        : m_dic(iDic), m_mode(iMode), m_variants(0)
+        : m_dic(iDic), m_mode(iMode) 
     {
         // Set default values
         m_rackSize = 7;
@@ -100,7 +100,7 @@ class GameParams
     BoardLayout m_boardLayout;
     const Dictionary &m_dic;
     GameMode m_mode;
-    unsigned int m_variants;
+    unsigned int m_variants{0};
     int m_rackSize;
     int m_lettersToPlay;
     int m_bonusPoints;

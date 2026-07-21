@@ -47,7 +47,7 @@ INIT_LOGGER(qt, ToppingWidget);
 
 ToppingWidget::ToppingWidget(QWidget *parent, PlayModel &iPlayModel,
                              TimerModel &iTimerModel, PublicGame *iGame)
-    : QWidget(parent), m_game(iGame), m_autoResizeColumns(true),
+    : QWidget(parent), m_game(iGame), 
     m_timerModel(&iTimerModel)
 {
     setupUi(this);

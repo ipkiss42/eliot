@@ -91,8 +91,8 @@ private:
     vector<Tile> m_word;
     vector<bool> m_rackOrigin;
     Coord m_coord;
-    int m_points;
-    bool m_bonus;
+    int m_points{0};
+    bool m_bonus{false};
 };
 
 #endif
