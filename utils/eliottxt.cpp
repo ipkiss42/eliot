@@ -57,9 +57,9 @@ class Game;
 
 
 // Use a more friendly type name for the tokenizer
-typedef boost::tokenizer<boost::char_separator<wchar_t>,
+using Tokenizer = boost::tokenizer<boost::char_separator<wchar_t>,
         std::wstring::const_iterator,
-        std::wstring> Tokenizer;
+        std::wstring>;
 
 // A static variable for holding the line
 static wchar_t *wline_read = nullptr;

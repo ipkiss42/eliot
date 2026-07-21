@@ -79,7 +79,7 @@ private:
     /// Variant of the game
     bool m_joker;
 
-    typedef pair<bool, wstring> PlayerDesc;
+    using PlayerDesc = pair<bool, wstring>;
     vector<PlayerDesc> m_players;
 
     //@}

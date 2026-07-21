@@ -38,9 +38,9 @@ using namespace boost::spirit::classic;
 using namespace std;
 
 // A few typedefs to simplify things
-typedef const wchar_t *iterator_t;
-typedef tree_match<iterator_t> parse_tree_match_t;
-typedef parse_tree_match_t::const_tree_iterator iter_t;
+using iterator_t = const wchar_t *;
+using parse_tree_match_t = tree_match<iterator_t>;
+using iter_t = parse_tree_match_t::const_tree_iterator;
 
 
 struct RegexpGrammar : grammar<RegexpGrammar>

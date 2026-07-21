@@ -32,8 +32,8 @@
 using namespace std;
 
 // XXX: duplicated typedef (also present in dic.h)
-typedef wstring wdstring;
-typedef wstring wistring;
+using wdstring = wstring;
+using wistring = wstring;
 
 
 /**

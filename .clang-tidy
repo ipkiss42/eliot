@@ -6,8 +6,8 @@ Checks: >
   modernize-use-override,
   modernize-replace-auto-ptr,
   modernize-make-unique,
-  modernize-make-shared
-#   modernize-use-using
+  modernize-make-shared,
+  modernize-use-using
 
 # Filter project header files, while allowing out of tree builds
 HeaderFilterRegex: '(dic/|game/|utils/|qt/).*\.(h|hpp|hxx)$'

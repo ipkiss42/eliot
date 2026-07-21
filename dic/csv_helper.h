@@ -45,7 +45,7 @@ class CsvHelper
     DEFINE_LOGGER();
 
 public:
-    typedef vector<string> DataRow;
+    using DataRow = vector<string>;
 
     static vector<DataRow> readStream(istream &input);
 

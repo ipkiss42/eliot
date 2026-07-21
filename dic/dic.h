@@ -39,8 +39,8 @@ using namespace std;
 #define DIC_WORD_MAX 16
 
 class Header;
-typedef unsigned int dic_elt_t;
-typedef unsigned char dic_code_t;
+using dic_elt_t = unsigned int;
+using dic_code_t = unsigned char;
 struct params_cross_t;
 struct params_7plus1_t;
 struct params_regexp_t;
@@ -55,8 +55,8 @@ struct DicEdge;
  * The wdstring type has no particular interest other than signaling
  * a bit more precisely the type of contents of the string.
  */
-typedef wstring wdstring;
-typedef wstring wistring;
+using wdstring = wstring;
+using wistring = wstring;
 
 class Dictionary
 {

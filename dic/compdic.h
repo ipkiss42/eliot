@@ -44,7 +44,7 @@ using namespace std;
 class CompDic
 {
     DEFINE_LOGGER();
-    typedef boost::unordered_map<vector<DicEdge>, unsigned int> HashMap;
+    using HashMap = boost::unordered_map<vector<DicEdge>, unsigned int>;
 
 public:
     CompDic();

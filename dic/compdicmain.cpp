@@ -59,9 +59,9 @@ void readLetters(const string &iFileName, CompDic &ioBuilder)
         throw DicException((fmt(_("Could not open file '%1%'")) % iFileName).str());
 
     // Use a more friendly type name
-    typedef boost::tokenizer<boost::char_separator<wchar_t>,
+    using Tokenizer = boost::tokenizer<boost::char_separator<wchar_t>,
             std::wstring::const_iterator,
-            std::wstring> Tokenizer;
+            std::wstring>;
 
     int lineNb = 1;
     string line;

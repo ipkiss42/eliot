@@ -582,9 +582,9 @@ void Header::readDisplayAndInput(const wstring &serialized)
     // which is always considered as an input string)
 
     // Use a more friendly type name
-    typedef boost::tokenizer<boost::char_separator<wchar_t>,
+    using Tokenizer = boost::tokenizer<boost::char_separator<wchar_t>,
             std::wstring::const_iterator,
-            std::wstring> Tokenizer;
+            std::wstring>;
 
     // Split the string on double spaces
     static const boost::char_separator<wchar_t> sep1(L" ");
