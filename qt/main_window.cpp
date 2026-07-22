@@ -80,8 +80,8 @@ INIT_LOGGER(qt, MainWindow);
 const char *MainWindow::m_windowName = "MainWindow";
 
 MainWindow::MainWindow(QWidget *iParent)
-    : QMainWindow(iParent), 
-    m_gameSignals(new GameSignals) 
+    : QMainWindow(iParent),
+    m_gameSignals(new GameSignals)
 {
 #ifdef DEBUG
     // Check that the string conversion routines are not buggy
@@ -305,7 +305,7 @@ void MainWindow::beep()
     if (!qs.value(PrefsDialog::kINTF_TIMER_BEEPS, true).toBool())
         return;
 
-    LOG_DEBUG("Beep!")
+    LOG_DEBUG("Beep!");
     // FIXME: doesn't seem to be working on Ubuntu
     // (even after 'modprobe pcspkr' and when the 'beep' application works)
     QApplication::beep();
