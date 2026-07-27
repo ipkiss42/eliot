@@ -25,6 +25,7 @@
 #include <getopt.h>
 #include <string>
 #include <fstream>
+#include <iostream>
 #include <exception>
 
 #if ENABLE_NLS
@@ -54,7 +55,7 @@ INIT_LOGGER(game, GameFactory);
 GameFactory *GameFactory::m_factory = nullptr;
 
 
-GameFactory::GameFactory() 
+GameFactory::GameFactory()
 {
 }
 
