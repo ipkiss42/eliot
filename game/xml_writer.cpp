@@ -18,11 +18,13 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <string>
 #include <vector>
 #include <fstream>
 #include <cmath>
 #include <boost/foreach.hpp>
 #include <boost/format.hpp>
+#include <pugixml.hpp>
 
 #include "config.h"
 #if ENABLE_NLS
@@ -65,152 +67,134 @@ using namespace std;
 INIT_LOGGER(game, XmlWriter);
 
 
-static void addIndent(string &s)
-{
-    s += "    ";
-}
-
-static void removeIndent(string &s)
-{
-    if (s.size() >= 4)
-        s.resize(s.size() - 4);
-}
-
 static string toUtf8(const wstring &s)
 {
     return writeInUTF8(s, "Saving game");
 }
 
-static void writeMove(ostream &out, const Move &iMove,
+static void writeMove(pugi::xml_node & parentNode, const Move &iMove,
                       const string &iTag, int iPlayerId)
 {
-    out << "<" << iTag;
+    pugi::xml_node moveNode = parentNode.append_child(iTag);
     if (iPlayerId != -1)
-        out << " playerId=\"" << iPlayerId << "\"";
-    out << " points=\"" << iMove.getScore() << "\" type=\"";
+        moveNode.append_attribute("playerId").set_value(iPlayerId);
+    moveNode.append_attribute("points").set_value(iMove.getScore());
     if (iMove.isValid())
     {
         const Round &round = iMove.getRound();
-        out << "valid\" word=\"" << toUtf8(round.getWord())
-            << "\" coord=\"" << toUtf8(round.getCoord().toString()) << "\" />";
+        moveNode.append_attribute("type").set_value("valid");
+        moveNode.append_attribute("word").set_value(toUtf8(round.getWord()));
+        moveNode.append_attribute("coord").set_value(toUtf8(round.getCoord().toString()));
     }
     else if (iMove.isInvalid())
     {
-        out << "invalid\" word=\"" << toUtf8(iMove.getBadWord())
-            << "\" coord=\"" << toUtf8(iMove.getBadCoord()) << "\" />";
+        moveNode.append_attribute("type").set_value("invalid");
+        moveNode.append_attribute("word").set_value(toUtf8(iMove.getBadWord()));
+        moveNode.append_attribute("coord").set_value(toUtf8(iMove.getBadCoord()));
     }
-    else if (iMove.isChangeLetters())
-        out << "change\" letters=\"" << toUtf8(iMove.getChangedLetters()) << "\" />";
+    else if (iMove.isChangeLetters()) {
+        moveNode.append_attribute("type").set_value("change");
+        moveNode.append_attribute("letters").set_value(toUtf8(iMove.getChangedLetters()));
+    }
     else if (iMove.isPass())
-        out << "pass\" />";
+        moveNode.append_attribute("type").set_value("pass");
     else if (iMove.isNull())
-        out << "none\" />";
+        moveNode.append_attribute("type").set_value("none");
     else
         throw SaveGameException(FMT1(_("Unsupported move: %1%"), lfw(iMove.toString())));
 }
 
 
-void XmlWriter::write(const Game &iGame, const string &iFileName)
+void XmlWriter::write(const Game& iGame, const std::string& iFileName)
 {
-    LOG_INFO("Saving game into '" << iFileName << "'");
-    ofstream out(iFileName.c_str());
-    if (!out.is_open())
-        throw SaveGameException(FMT1(_("Cannot open file for writing: '%1%'"), iFileName));
+    pugi::xml_document doc;
 
+    // XML Declaration Header Block
+    pugi::xml_node decl = doc.prepend_child(pugi::node_declaration);
+    decl.append_attribute("version") = "1.0";
+    decl.append_attribute("encoding") = "UTF-8";
 
-    out << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" << endl;
+    // Root element
+    pugi::xml_node root = doc.append_child("EliotGame");
+    root.append_attribute("format") = CURRENT_XML_VERSION;
 
-    string indent = "";
-    out << indent << "<EliotGame format=\"" << CURRENT_XML_VERSION << "\">" << endl;
-    addIndent(indent);
-
-    // ------------------------
     // Write the dictionary information
-    out << indent << "<Dictionary>" << endl;
-    addIndent(indent);
+    pugi::xml_node dictNode = root.append_child("Dictionary");
+    const Dictionary& dict = iGame.getDic();
     const Header &header = iGame.getDic().getHeader();
-    out << indent << "<Name>" << toUtf8(header.getName()) << "</Name>" << endl;
-    out << indent << "<Type>";
+    dictNode.append_child("Name").text().set(toUtf8(header.getName()));
+    string dictType;
     if (header.getType() == Header::kDAWG)
-        out << "dawg";
+        dictType = "dawg";
     else if (header.getType() == Header::kGADDAG)
-        out << "gaddag";
+        dictType = "gaddag";
     else
         throw SaveGameException(_("Invalid dictionary type"));
-    out << "</Type>" << endl;
+    dictNode.append_child("Type").text().set(dictType);
+
     // Retrieve the dictionary letters, ans separate them with spaces
     wstring lettersWithSpaces = header.getLetters();
     for (size_t i = lettersWithSpaces.size() - 1; i > 0; --i)
         lettersWithSpaces.insert(i, 1, L' ');
     // Convert to a display string
-    const wstring &displayLetters =
-        iGame.getDic().convertToDisplay(lettersWithSpaces);
-    out << indent << "<Letters>" << toUtf8(displayLetters) << "</Letters>" << endl;
-    out << indent << "<WordNb>" << header.getNbWords() << "</WordNb>" << endl;
-    removeIndent(indent);
-    out << indent << "</Dictionary>" << endl;
-    // End of dictionary information
-    // ------------------------
+    const wstring &displayLetters = dict.convertToDisplay(lettersWithSpaces);
+    dictNode.append_child("Letters").text().set(toUtf8(displayLetters));
+    dictNode.append_child("WordNb").text().set(std::to_string(header.getNbWords()));
 
     // ------------------------
     // Write the game header
-    out << indent << "<Game>" << endl;
-    addIndent(indent);
+    pugi::xml_node gameNode = root.append_child("Game");
     // Game type
-    out << indent << "<Mode>";
+    string mode;
     if (iGame.getMode() == GameParams::kDUPLICATE)
-        out << "duplicate";
+        mode = "duplicate";
     else if (iGame.getMode() == GameParams::kFREEGAME)
-        out << "freegame";
+        mode = "freegame";
     else if (iGame.getMode() == GameParams::kARBITRATION)
-        out << "arbitration";
+        mode = "arbitration";
     else if (iGame.getMode() == GameParams::kTOPPING)
-        out << "topping";
+        mode = "topping";
     else
-        out << "training";
-    out << "</Mode>" << endl;
+        mode = "training";
+    gameNode.append_child("Mode").text().set(mode);
 
     // Game variant
     if (iGame.getParams().hasVariant(GameParams::kJOKER))
-        out << indent << "<Variant>bingo</Variant>" << endl;
+        gameNode.append_child("Variant").text().set("bingo");
     if (iGame.getParams().hasVariant(GameParams::kEXPLOSIVE))
-        out << indent << "<Variant>explosive</Variant>" << endl;
+        gameNode.append_child("Variant").text().set("explosive");
     if (iGame.getParams().hasVariant(GameParams::k7AMONG8))
-        out << indent << "<Variant>7among8</Variant>" << endl;
+        gameNode.append_child("Variant").text().set("7among8");
 
     // Players
     for (unsigned int i = 0; i < iGame.getNPlayers(); ++i)
     {
-        const Player &player = iGame.getPlayer(i);
-        out << indent << "<Player id=\"" << player.getId() << "\">" << endl;
-        addIndent(indent);
-        out << indent << "<Name>" << toUtf8(player.getName()) << "</Name>" << endl;
-        out << indent << "<Type>" << (player.isHuman() ? "human" : "computer") << "</Type>" << endl;
+        const Player& player = iGame.getPlayer(i);
+        pugi::xml_node pNode = gameNode.append_child("Player");
+        pNode.append_attribute("id").set_value(player.getId());
+
+        pNode.append_child("Name").text().set(toUtf8(player.getName()));
+        pNode.append_child("Type").text().set(player.isHuman() ? "human" : "computer");
         if (!player.isHuman())
         {
             const AIPercent *ai = dynamic_cast<const AIPercent *>(&player);
             if (ai == nullptr)
                 throw SaveGameException(FMT1(_("Invalid player type for player %1%"), i));
-            out << indent << "<Level>" << lrint(ai->getPercent() * 100) << "</Level>" << endl;
+            pNode.append_child("Level").text().set(std::to_string(lrint(ai->getPercent() * 100)));
         }
-        out << indent << "<TableNb>" << player.getTableNb() << "</TableNb>" << endl;
-        removeIndent(indent);
-        out << indent << "</Player>" << endl;
+        pNode.append_child("TableNb").text().set(std::to_string(player.getTableNb()));
     }
 
     // Number of turns
-    out << indent << "<Turns>"
-        << iGame.getNavigation().getNbTurns() << "</Turns>" << endl;
-
-    removeIndent(indent);
-    out << indent << "</Game>" << endl;
+    gameNode.append_child("Turns").text().set(
+        std::to_string(iGame.getNavigation().getNbTurns())
+    );
     // End of the header
     // ------------------------
 
     // ------------------------
     // Write the game history
-    out << indent << "<History>" << endl;
-    addIndent(indent);
+    pugi::xml_node historyNode = root.append_child("History");
 
 #if 0
     iGame.getNavigation().print();
@@ -221,55 +205,43 @@ void XmlWriter::write(const Game &iGame, const string &iFileName)
         if (turn->getCommands().empty() && turn == turnVect.back())
             continue;
 
-        out << indent << "<Turn>" << endl;
-        addIndent(indent);
+        pugi::xml_node turnNode = historyNode.append_child("Turn");
         BOOST_FOREACH(const Command *cmd, turn->getCommands())
         {
             if (dynamic_cast<const GameRackCmd*>(cmd))
             {
                 const GameRackCmd *rackCmd = static_cast<const GameRackCmd*>(cmd);
-                out << indent << "<GameRack>"
-                    << toUtf8(rackCmd->getRack().toString())
-                    << "</GameRack>" << endl;
+                turnNode.append_child("GameRack").text().set(toUtf8(rackCmd->getRack().toString()));
             }
             else if (dynamic_cast<const PlayerRackCmd*>(cmd))
             {
                 const PlayerRackCmd *rackCmd = static_cast<const PlayerRackCmd*>(cmd);
                 unsigned int id = rackCmd->getPlayer().getId();
-                out << indent << "<PlayerRack playerId=\"" << id << "\">"
-                    << toUtf8(rackCmd->getRack().toString())
-                    << "</PlayerRack>" << endl;
+                pugi::xml_node pRack = turnNode.append_child("PlayerRack");
+                pRack.append_attribute("playerId").set_value(id);
+                pRack.text().set(toUtf8(rackCmd->getRack().toString()));
             }
             else if (dynamic_cast<const PlayerMoveCmd*>(cmd))
             {
                 const PlayerMoveCmd *moveCmd = static_cast<const PlayerMoveCmd*>(cmd);
                 unsigned int id = moveCmd->getPlayer().getId();
-                out << indent;
-                writeMove(out, moveCmd->getMove(), "PlayerMove", id);
-                out << endl;
+                writeMove(turnNode, moveCmd->getMove(), "PlayerMove", id);
             }
             else if (dynamic_cast<const GameMoveCmd*>(cmd))
             {
                 const GameMoveCmd *moveCmd = static_cast<const GameMoveCmd*>(cmd);
-                out << indent;
-                writeMove(out, moveCmd->getMove(), "GameMove", -1);
-                out << endl;
+                writeMove(turnNode, moveCmd->getMove(), "GameMove", -1);
             }
             else if (dynamic_cast<const MasterMoveCmd*>(cmd))
             {
                 const MasterMoveCmd *moveCmd = static_cast<const MasterMoveCmd*>(cmd);
-                out << indent;
-                writeMove(out, moveCmd->getMove(), "MasterMove", -1);
-                out << endl;
+                writeMove(turnNode, moveCmd->getMove(), "MasterMove", -1);
             }
             else if (dynamic_cast<const ToppingMoveCmd*>(cmd))
             {
                 const ToppingMoveCmd *moveCmd = static_cast<const ToppingMoveCmd*>(cmd);
                 unsigned int id = moveCmd->getPlayerId();
-                out << indent;
-                // FIXME: the elapsed time is not saved
-                writeMove(out, moveCmd->getMove(), "ToppingMove", id);
-                out << endl;
+                writeMove(turnNode, moveCmd->getMove(), "ToppingMove", id);
             }
             else if (dynamic_cast<const PlayerEventCmd*>(cmd))
             {
@@ -279,25 +251,28 @@ void XmlWriter::write(const Game &iGame, const string &iFileName)
                 // Warnings
                 if (eventCmd->getEventType() == PlayerEventCmd::WARNING)
                 {
-                    out << indent << "<Warning playerId=\"" << id << "\" />" << endl;
+                    turnNode.append_child("Warning").append_attribute("playerId").set_value(id);
                 }
                 // Penalties
                 else if (eventCmd->getEventType() == PlayerEventCmd::PENALTY)
                 {
-                    out << indent << "<Penalty playerId=\"" << id
-                        << "\" points=\"" << value << "\" />" << endl;
+                    pugi::xml_node penaltyNode = turnNode.append_child("Penalty");
+                    penaltyNode.append_attribute("playerId").set_value(id);
+                    penaltyNode.append_attribute("points").set_value(value);
                 }
                 // Solos
                 else if (eventCmd->getEventType() == PlayerEventCmd::SOLO)
                 {
-                    out << indent << "<Solo playerId=\"" << id
-                        << "\" points=\"" << value << "\" />" << endl;
+                    pugi::xml_node soloNode = turnNode.append_child("Solo");
+                    soloNode.append_attribute("playerId").set_value(id);
+                    soloNode.append_attribute("points").set_value(value);
                 }
                 // End game bonuses (freegame mode)
                 else if (eventCmd->getEventType() == PlayerEventCmd::END_GAME)
                 {
-                    out << indent << "<EndGame playerId=\"" << id
-                        << "\" points=\"" << value << "\" />" << endl;
+                    pugi::xml_node endGameNode = turnNode.append_child("EndGame");
+                    endGameNode.append_attribute("playerId").set_value(id);
+                    endGameNode.append_attribute("points").set_value(value);
                 }
                 else
                 {
@@ -307,25 +282,21 @@ void XmlWriter::write(const Game &iGame, const string &iFileName)
             else
             {
                 LOG_ERROR("Unsupported command: " << lfw(cmd->toString()));
-                out << indent << "<!-- FIXME: Unsupported command: " << lfw(cmd->toString()) << " -->" << endl;
+                turnNode.append_child(pugi::node_comment).text().set(
+                    FMT1("FIXME: Unsupported command: %1%", lfw(cmd->toString())));
                 // XXX
                 //throw SaveGameException(FMT1(_("Unsupported command: %1%"), lfw(cmd->toString())));
             }
         }
-        removeIndent(indent);
-        out << indent << "</Turn>" << endl;
     }
-
-    removeIndent(indent);
-    out << indent << "</History>" << endl;
     // End of the game history
     // ------------------------
 
     // Statistics
-    out << indent << "<!-- These statistics are simply informative, "
-        << "they are not used when loading a game. -->" << endl;
-    out << indent << "<Statistics>" << endl;
-    addIndent(indent);
+    root.append_child(pugi::node_comment).set_value(
+        " These statistics are simply informative, they are not used when loading a game. "
+    );
+    pugi::xml_node statsNode = root.append_child("Statistics");
 
     // Compute the total number of points in the game
     int gameTotal = 0;
@@ -334,9 +305,8 @@ void XmlWriter::write(const Game &iGame, const string &iFileName)
         gameTotal += iGame.getHistory().getTurn(i).getMove().getScore();
     }
 
-    out << indent << "<GameStats"
-        << " totalScore=\"" << gameTotal << "\""
-        << " />" << endl;
+    pugi::xml_node gStats = statsNode.append_child("GameStats");
+    gStats.append_attribute("totalScore").set_value(gameTotal);
 
     for (unsigned int i = 0; i < iGame.getNPlayers(); ++i)
     {
@@ -358,25 +328,24 @@ void XmlWriter::write(const Game &iGame, const string &iFileName)
                 ++rank;
         }
 
-        out << indent << "<PlayerStats"
-            << " playerId=\"" << player.getId() << "\"" << endl;
-        addIndent(indent);
-        out << indent << " rawScore=\"" << player.getMovePoints() << "\""
-            << " warningsNb=\"" << player.getWarningsNb() << "\""
-            << " penaltiesPoints=\"" << player.getPenaltyPoints() << "\""
-            << " solosPoints=\"" << player.getSoloPoints() << "\"" << endl;
-        out << indent << " totalScore=\"" << playerTotal << "\""
-            << " diffWithTop=\"" << (playerTotal - gameTotal) << "\""
-            << " percentTop=\"" << percentage << "%\""
-            << " rank=\"" << rank << "\""
-            << " />" << endl;
-        removeIndent(indent);
+        pugi::xml_node psNode = statsNode.append_child("PlayerStats");
+        psNode.append_attribute("playerId").set_value(player.getId());
+        psNode.append_attribute("rawScore").set_value(player.getMovePoints());
+        psNode.append_attribute("warningsNb").set_value(player.getWarningsNb());
+        psNode.append_attribute("penaltiesPoints").set_value(player.getPenaltyPoints());
+        psNode.append_attribute("solosPoints").set_value(player.getSoloPoints());
+        psNode.append_attribute("totalScore").set_value(playerTotal);
+        psNode.append_attribute("diffWithTop").set_value(playerTotal - gameTotal);
+        psNode.append_attribute("percentTop").set_value(percentage);
+        psNode.append_attribute("rank").set_value(rank);
     }
-
-    removeIndent(indent);
-    out << indent << "</Statistics>" << endl;
     // End of the statistics
 
-    out << "</EliotGame>" << endl;
+    //. Save file with precise 4-space layout indentation
+    bool success = doc.save_file(iFileName.c_str(), "    ", pugi::format_default, pugi::encoding_utf8);
+    if (!success)
+    {
+        throw SaveGameException(FMT1(_("Cannot open file for writing: '%1%'"), iFileName));
+    }
 }
 

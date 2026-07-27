@@ -12,7 +12,7 @@ DMG_FILE = $(top_builddir)/eliot-$(VERSION).dmg
 
 .PHONY: package-win32-dir package-win32-zip package-win32-exe package-macosx
 
-EXTRA_DIST = COPYING.arabica LGPL-2.0.txt
+EXTRA_DIST = LGPL-2.0.txt
 
 WIN32_DLLS = libgcc_s_sjlj-1.dll libwinpthread-1.dll libstdc++-6.dll
 U2D = unix2dos
@@ -37,7 +37,7 @@ package-win32-dir:
 	cp $(QT4LOCALEDIR)/*.qm $(WIN32_PACKAGE_DIR)/locale/qt4/ || true
 
 # Copy relevant text files
-	for i in AUTHORS COPYING COPYING.arabica NEWS THANKS; do \
+	for i in AUTHORS COPYING NEWS THANKS; do \
 		cp $(top_srcdir)/$$i $(WIN32_PACKAGE_DIR)/$$i.txt; \
 		$(U2D) $(WIN32_PACKAGE_DIR)/$$i.txt; \
 	done

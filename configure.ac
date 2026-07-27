@@ -20,6 +20,9 @@ AC_PROG_CC
 dnl Needed for gettext
 AC_USE_SYSTEM_EXTENSIONS
 AC_PROG_CXX
+# Force C++17 support (mandated, do not fall back to older standards)
+AX_CXX_COMPILE_STDCXX([17], [ext], [mandatory])
+
 AC_PROG_MAKE_SET
 AC_PROG_RANLIB
 AM_PROG_AR
@@ -140,15 +143,8 @@ AS_IF([test "${want_logging}" = "1"],
 # Conditional, to avoid a useless dependency (in the case of shared library)
 AM_CONDITIONAL([WITH_LOGGING], [test "${with_logging}" = "1"])
 
-dnl Check for Expat
-AX_LIB_EXPAT([2.0.1])
-
-dnl Check for arabica and libxml2
-PKG_CHECK_MODULES(ARABICA, [arabica], [],
-                  [AC_MSG_ERROR([Could not find Arabica on your system (using pkg-config)])])
-
-dnl PKG_CHECK_MODULES(LIBXML2, [libxml-2.0], [],
-dnl                   [AC_MSG_ERROR([Could not find libxml2 on your system (using pkg-config)])])
+PKG_CHECK_MODULES([PUGIXML], [pugixml], [],
+                  [AC_MSG_ERROR([Could not find pugixml on your system (using pkg-config)])])
 
 dnl Check for ncurses
 dnl We enable it if asked by the user, or if ncursesw is found

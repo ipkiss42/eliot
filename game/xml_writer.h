@@ -20,7 +20,6 @@
 #ifndef XML_WRITER_H_
 #define XML_WRITER_H_
 
-#include <iosfwd>
 #include "logging.h"
 
 class Game;

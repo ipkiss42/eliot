@@ -23,35 +23,6 @@
 
 #include <map>
 
-// Remove spurious defines, to avoid compilation warnings. They are defined
-// in config.h (which is normal) and in libarabica (which is wrong:
-// libarabica should not export them via public headers).
-// We do it a first time before including the libarabica headers (in case
-// config.h was included before the current header)...
-#undef PACKAGE
-#undef PACKAGE_BUGREPORT
-#undef PACKAGE_NAME
-#undef PACKAGE_STRING
-#undef PACKAGE_TARNAME
-#undef PACKAGE_VERSION
-#undef VERSION
-
-#include <SAX/helpers/DefaultHandler.hpp>
-#include <SAX/Locator.hpp>
-#include <SAX/Attributes.hpp>
-#include <SAX/SAXException.hpp>
-
-// ... and a second time after including them (because we include
-// config.h right after)
-#undef PACKAGE
-#undef PACKAGE_BUGREPORT
-#undef PACKAGE_NAME
-#undef PACKAGE_STRING
-#undef PACKAGE_TARNAME
-#undef PACKAGE_VERSION
-#undef VERSION
-// We include config.h, because a cpp file which included it expects
-// these defines
 #include "config.h"
 
 #include "logging.h"
@@ -65,11 +36,11 @@ using std::string;
 using std::map;
 
 
-class XmlReader : public Arabica::SAX::DefaultHandler<string>
+class XmlReader
 {
     DEFINE_LOGGER();
 public:
-    ~XmlReader() override = default;
+    ~XmlReader() = default;
 
     /**
      * Only entry point of the class.
@@ -78,42 +49,8 @@ public:
      */
     static Game * read(const string &iFileName, const Dictionary &iDic);
 
-    // Return the built game
-    Game * getGame();
-
-    ////////////////////////////////////////////////////
-    // ContentHandler
-    void startElement(const string& namespaceURI,
-                              const string& localName,
-                              const string& qName,
-                              const AttributesT& atts) override;
-    void endElement(const string& namespaceURI,
-                            const string& localName,
-                            const string& qName) override;
-    void characters(const string& ch) override;
-
-    /////////////////////////////////////////////////////
-    // ErrorHandler
-    void warning(const Arabica::SAX::SAXParseException<string>&) override;
-    void error(const Arabica::SAX::SAXParseException<string>&) override;
-    void fatalError(const Arabica::SAX::SAXParseException<string>& exception) override;
-
 private:
-    const Dictionary &m_dic;
-    Game *m_game{nullptr};
-    string errorMessage;
     bool m_firstTurn{true};
-
-    string m_context;
-    string m_data;
-    map<string, Player*> m_players;
-    map<string, string> m_attributes;
-    GameParams m_params;
-
-    // Private constructor, because we only want the read() method
-    // to be called externally
-    XmlReader(const Dictionary &iDic) :
-        m_dic(iDic),  m_params(iDic) {}
 
     XmlReader(const XmlReader&);
     XmlReader& operator=(const XmlReader&);

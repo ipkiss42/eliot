@@ -21,18 +21,7 @@
 #include <fstream>
 #include <algorithm>
 #include <boost/format.hpp>
-#include <SAX/XMLReader.hpp>
-#include <SAX/InputSource.hpp>
-
-// Remove spurious defines from libarabica, to avoid compilation warnings.
-// Libarabica should not export them via public headers...
-#undef PACKAGE
-#undef PACKAGE_BUGREPORT
-#undef PACKAGE_NAME
-#undef PACKAGE_STRING
-#undef PACKAGE_TARNAME
-#undef PACKAGE_VERSION
-#undef VERSION
+#include <pugixml.hpp>
 
 #include "config.h"
 #if ENABLE_NLS
@@ -75,34 +64,6 @@ using namespace std;
 INIT_LOGGER(game, XmlReader);
 
 
-Game * XmlReader::read(const string &iFileName, const Dictionary &iDic)
-{
-    LOG_INFO("Parsing savegame '" << iFileName << "'");
-
-    ifstream is(iFileName.c_str());
-    if (!is.is_open())
-        throw LoadGameException(FMT1(_("Cannot open file '%1%'"), iFileName));
-
-    XmlReader handler(iDic);
-
-    // Set up of the parser
-    Arabica::SAX::XMLReader<std::string> parser;
-    parser.setContentHandler(handler);
-    parser.setErrorHandler(handler);
-
-    // Parsing
-    Arabica::SAX::InputSource<std::string> source(is);
-    parser.parse(source);
-
-    Game *game = handler.getGame();
-    if (game == nullptr)
-        throw LoadGameException(handler.errorMessage);
-
-    LOG_INFO("Savegame parsed successfully");
-    return game;
-}
-
-
 static wstring fromUtf8(const string &str)
 {
     return readFromUTF8(str, "Loading game");
@@ -117,41 +78,146 @@ static int toInt(const string &str)
 }
 
 
-static Player & getPlayer(map<string, Player*> &players,
-                          const string &id, const string &iTag)
+static void validateDictionary(const pugi::xml_node& dicNode, const Dictionary& iDic)
 {
-    if (players.find(id) == players.end())
-        throw LoadGameException(FMT2(_("Invalid player ID: %1% (processing tag '%2%')"), id, iTag));
-    return *players[id];
+    // Validate the dictionary
+    pugi::xml_node lettersNode = dicNode.child("Letters");
+    if (lettersNode)
+    {
+        const wdstring & displayLetters = iDic.convertToDisplay(iDic.getHeader().getLetters());
+        // Remove spaces
+        string parsedLetters = lettersNode.text().get();
+        string::iterator it = remove(parsedLetters.begin(), parsedLetters.end(), L' ');
+        parsedLetters.erase(it, parsedLetters.end());
+        // Compare
+        if (displayLetters != fromUtf8(parsedLetters))
+            throw LoadGameException(_("The current dictionary is different from the one used in the saved game"));
+    }
+    pugi::xml_node wordNbNode = dicNode.child("WordNb");
+    if (wordNbNode)
+    {
+        if (iDic.getHeader().getNbWords() != (unsigned)toInt(wordNbNode.text().get()))
+            throw LoadGameException(_("The current dictionary is different from the one used in the saved game"));
+    }
 }
 
 
-static Move buildMove(const Game &iGame, map<string, string> &attr,
-                      bool checkRack)
+static Game* createGame(const pugi::xml_node& gameNode, const Dictionary& iDic)
 {
+    GameParams params(iDic);
+
+    // Parse the game mode
+    string mode = gameNode.child("Mode").text().get();
+    if (mode == "duplicate")
+        params.setMode(GameParams::kDUPLICATE);
+    else if (mode == "freegame")
+        params.setMode(GameParams::kFREEGAME);
+    else if (mode == "training")
+        params.setMode(GameParams::kTRAINING);
+    else if (mode == "arbitration")
+        params.setMode(GameParams::kARBITRATION);
+    else if (mode == "topping")
+        params.setMode(GameParams::kTOPPING);
+    else
+        throw GameException("Invalid game mode: " + mode);
+
+    // Parse the variants
+    for (pugi::xml_node variantNode : gameNode.children("Variant")) {
+        string variant = variantNode.text().get();
+        if (variant == "bingo")
+            params.addVariant(GameParams::kJOKER);
+        else if (variant == "explosive")
+            params.addVariant(GameParams::kEXPLOSIVE);
+        else if (variant == "7among8")
+            params.addVariant(GameParams::k7AMONG8);
+        else if (variant != "")
+            throw LoadGameException(FMT1(_("Invalid game variant: %1%"), variant));
+    }
+
+    // Create the game
+    return GameFactory::Instance()->createGame(params);
+}
+
+
+static Player* createPlayer(const pugi::xml_node& playerNode)
+{
+    string playerId = playerNode.attribute("id").value();
+
+    Player *p;
+    string playerType = playerNode.child_value("Type");
+    if (playerType == "human")
+        p = new HumanPlayer();
+    else if (playerType == "computer")
+    {
+        int level = toInt(playerNode.child_value("Level"));
+        p = new AIPercent(0.01 * level);
+    }
+    else
+        throw LoadGameException(FMT1(_("Invalid player type: %1%"), playerType));
+
+    // Set the ID
+    p->setId((unsigned int)toInt(playerId));
+
+    // Set the name
+    string name = playerNode.child_value("Name");
+    p->setName(fromUtf8(name));
+
+    // Set the table number
+    string tableNb = playerNode.child_value("TableNb");
+    if (tableNb != "")
+        p->setTableNb(toInt(tableNb));
+
+    return p;
+}
+
+
+static string readPlayerIdAttribute(const pugi::xml_node &node)
+{
+    // For backwards compatibility ("playerid" was used in saved games
+    // before release 2.1, with XML version 2)
+    if (node.attribute("playerid"))
+        return node.attribute("playerid").value();
+
+    return node.attribute("playerId").value();
+}
+
+
+static Player & getPlayer(map<unsigned int, Player*> &all_players,
+                          const string &id, const string &iTag)
+{
+    int intId = toInt(id);
+    if (all_players.find(intId) == all_players.end())
+        throw LoadGameException(FMT2(_("Invalid player ID: %1% (processing tag '%2%')"), id, iTag));
+    return *all_players[intId];
+}
+
+
+static Move buildMove(const Game &iGame, const pugi::xml_node &moveCmdNode, bool checkRack)
+{
+    string type = moveCmdNode.attribute("type").value();
+    string word = moveCmdNode.attribute("word").value();
+    string coord = moveCmdNode.attribute("coord").value();
+    string letters = moveCmdNode.attribute("letters").value();
     // Build the Move object
-    string type = attr["type"];
     if (type == "valid")
     {
-        wstring word = iGame.getDic().convertFromInput(fromUtf8(attr["word"]));
+        wstring wword = iGame.getDic().convertFromInput(fromUtf8(word));
         Move move;
-        int res = iGame.checkPlayedWord(fromUtf8(attr["coord"]),
-                                        word, move, checkRack);
+        int res = iGame.checkPlayedWord(fromUtf8(coord), wword, move, checkRack);
         if (res != 0)
         {
             throw LoadGameException(FMT2(_("Invalid move marked as valid: %1% (%2%)"),
-                                         attr["word"], attr["coord"]));
+                                         word, coord));
         }
         return move;
     }
     else if (type == "invalid")
     {
-        return Move(fromUtf8(attr["word"]),
-                    fromUtf8(attr["coord"]));
+        return Move(fromUtf8(word), fromUtf8(coord));
     }
     else if (type == "change")
     {
-        return Move(fromUtf8(attr["letters"]));
+        return Move(fromUtf8(letters));
     }
     else if (type == "pass")
     {
@@ -166,318 +232,147 @@ static Move buildMove(const Game &iGame, map<string, string> &attr,
 }
 
 
-Game * XmlReader::getGame()
+Game * XmlReader::read(const string &iFileName, const Dictionary &iDic)
 {
-    return m_game;
-}
+    LOG_INFO("Parsing savegame '" << iFileName << "'");
 
+    // Load the XML file into memory
+    pugi::xml_document doc;
+    pugi::xml_parse_result result = doc.load_file(iFileName.c_str());
+    if (!result)
+        throw LoadGameException(FMT2(_("Cannot open file '%1%': %2%"), iFileName, result.description()));
 
-void XmlReader::startElement(const string& namespaceURI,
-                             const string& localName,
-                             const string& qName,
-                             const Arabica::SAX::Attributes<string>& atts)
-{
-    (void) namespaceURI;
-    (void) qName;
-    LOG_TRACE("Start Element: " << (localName.empty() ? qName : namespaceURI + ":" + localName));
-
-    m_data.clear();
-    const string &tag = localName;
-    if (tag == "EliotGame")
+    pugi::xml_node root = doc.child("EliotGame");
+    if (!root || string(root.attribute("format").value()) != CURRENT_XML_VERSION)
     {
-        // Make sure that we are loading the correct XML format
-        for (int i = 0; i < atts.getLength(); ++i)
+        LOG_ERROR("Incompatible save game format: current="
+                  << CURRENT_XML_VERSION
+                  << " savegame=" << root.attribute("format").value());
+        throw LoadGameException(_("This saved game is not compatible with the current version of Eliot."));
+    }
+
+    validateDictionary(root.child("Dictionary"), iDic);
+
+    pugi::xml_node gameNode = root.child("Game");
+    Game *game = createGame(gameNode, iDic);
+
+    map<unsigned int, Player*> all_players;
+    for (pugi::xml_node playerNode : gameNode.children("Player")) {
+        Player *player = createPlayer(playerNode);
+        if (all_players.find(player->getId()) != all_players.end())
+            throw LoadGameException(FMT1(_("A player ID must be unique: %1%"), player->getId()));
+        all_players[player->getId()] = player;
+        game->addPlayer(player);
+    }
+
+    bool firstTurn = true;
+    for (pugi::xml_node turnNode : root.child("History").children("Turn"))
+    {
+        // End the previous turn
+        if (firstTurn)
+            firstTurn = false;
+        else
+            game->accessNavigation().newTurn();
+
+        for (pugi::xml_node cmdNode : turnNode.children())
         {
-            if (atts.getLocalName(i) == "format" &&
-                atts.getValue(i) != CURRENT_XML_VERSION)
+            string tagName = cmdNode.name();
+            string cmdText = cmdNode.text().get();
+            if (tagName == "PlayerRack")
             {
-                LOG_ERROR("Incompatible save game format: current="
-                          << CURRENT_XML_VERSION
-                          << " savegame=" << atts.getValue(i));
-                throw LoadGameException(_("This saved game is not compatible with the current version of Eliot."));
+                string letters = cmdNode.text().get();
+                // Build a rack for the correct player
+                const wstring &rackStr = iDic.convertFromInput(fromUtf8(cmdText));
+                PlayedRack pldrack;
+                if (!iDic.validateLetters(rackStr, L"-+"))
+                {
+                    throw LoadGameException(FMT1(_("Rack invalid for the current dictionary: %1%"), cmdText));
+                }
+                pldrack.setManual(rackStr);
+                LOG_DEBUG("loaded rack: " << lfw(pldrack.toString()));
+
+                Player &p = getPlayer(all_players, readPlayerIdAttribute(cmdNode), tagName);
+                PlayerRackCmd *cmd = new PlayerRackCmd(p, pldrack);
+                game->accessNavigation().addAndExecute(cmd);
+                LOG_DEBUG("rack: " << lfw(pldrack.toString()));
             }
-        }
-    }
-    else if (tag == "Dictionary")
-    {
-        m_context = "Dictionary";
-    }
-    else if (tag == "Player")
-    {
-        m_context = "Player";
-        for (int i = 0; i < atts.getLength(); ++i)
-        {
-            m_attributes[atts.getLocalName(i)] = atts.getValue(i);
-        }
-    }
-    else if (tag == "GameRack" || tag == "PlayerRack" ||
-             tag == "PlayerMove" || tag == "GameMove" || tag == "MasterMove" ||
-             tag == "Warning" || tag == "Penalty" || tag == "Solo" || tag == "EndGame")
-    {
-        m_attributes.clear();
-        for (int i = 0; i < atts.getLength(); ++i)
-        {
-            m_attributes[atts.getLocalName(i)] = atts.getValue(i);
-        }
-    }
-    else if (tag == "Turn")
-    {
-        if (m_firstTurn)
-            m_firstTurn = false;
-        else
-            m_game->accessNavigation().newTurn();
-    }
-    // For backwards compatibility ("playerid" was used in saved games
-    // before release 2.1, with XML version 2)
-    if (m_attributes["playerid"] != "")
-        m_attributes["playerId"] = m_attributes["playerid"];
-}
-
-
-void XmlReader::endElement(const string& namespaceURI,
-                           const string& localName,
-                           const string&)
-{
-    (void) namespaceURI;
-    LOG_TRACE("endElement: " << namespaceURI << ":" << localName << "(" << m_data << ")");
-
-    const string &tag = localName;
-
-    // Dictionary section
-    if (m_context == "Dictionary")
-    {
-        if (tag == "Letters")
-        {
-            const wdstring & displayLetters = m_dic.convertToDisplay(m_dic.getHeader().getLetters());
-            // Remove spaces
-            string::iterator it;
-            it = remove(m_data.begin(), m_data.end(), L' ');
-            m_data.erase(it, m_data.end());
-            // Compare
-            if (displayLetters != fromUtf8(m_data))
-                throw LoadGameException(_("The current dictionary is different from the one used in the saved game"));
-        }
-        else if (tag == "WordNb")
-        {
-            if (m_dic.getHeader().getNbWords() != (unsigned)toInt(m_data))
-                throw LoadGameException(_("The current dictionary is different from the one used in the saved game"));
-        }
-        else if (tag == "Dictionary")
-            m_context = "";
-        return;
-    }
-
-    if (tag == "Mode")
-    {
-        // The game should not be created yet
-        if (m_game != nullptr)
-            throw LoadGameException(_("The 'Mode' tag should be the first one to be closed"));
-
-        // Differ game creation until after we have read the variant
-        if (m_data == "duplicate")
-            m_params.setMode(GameParams::kDUPLICATE);
-        else if (m_data == "freegame")
-            m_params.setMode(GameParams::kFREEGAME);
-        else if (m_data == "training")
-            m_params.setMode(GameParams::kTRAINING);
-        else if (m_data == "arbitration")
-            m_params.setMode(GameParams::kARBITRATION);
-        else if (m_data == "topping")
-            m_params.setMode(GameParams::kTOPPING);
-        else
-            throw GameException("Invalid game mode: " + m_data);
-        return;
-    }
-
-    if (tag == "Variant")
-    {
-        // The game should not be created yet
-        if (m_game != nullptr)
-            throw LoadGameException(_("The 'Variant' tag should be right after the 'Mode' one"));
-
-        if (m_data == "bingo")
-            m_params.addVariant(GameParams::kJOKER);
-        else if (m_data == "explosive")
-            m_params.addVariant(GameParams::kEXPLOSIVE);
-        else if (m_data == "7among8")
-            m_params.addVariant(GameParams::k7AMONG8);
-        else if (m_data != "")
-            throw LoadGameException(FMT1(_("Invalid game variant: %1%"), m_data));
-        return;
-    }
-
-    // Create the game
-    if (m_game == nullptr)
-    {
-        m_game = GameFactory::Instance()->createGame(m_params);
-    }
-
-    if (m_context == "Player")
-    {
-        if (tag == "Name")
-            m_attributes["name"] = m_data;
-        else if (tag == "Type")
-            m_attributes["type"] = m_data;
-        else if (tag == "Level")
-            m_attributes["level"] = m_data;
-        else if (tag == "TableNb")
-            m_attributes["tablenb"] = m_data;
-        else if (tag == "Player")
-        {
-            if (m_players.find(m_attributes["id"]) != m_players.end())
-                throw LoadGameException(FMT1(_("A player ID must be unique: %1%"), m_attributes["id"]));
-            // Create the player
-            Player *p;
-            if (m_attributes["type"] == "human")
-                p = new HumanPlayer();
-            else if (m_attributes["type"] == "computer")
+            else if (tagName == "GameRack")
             {
-                int level = toInt(m_attributes["level"]);
-                p = new AIPercent(0.01 * level);
+                // Build the game rack
+                const wstring &rackStr = iDic.convertFromInput(fromUtf8(cmdText));
+                PlayedRack pldrack;
+                if (!iDic.validateLetters(rackStr, L"-+"))
+                {
+                    throw LoadGameException(FMT1(_("Rack invalid for the current dictionary: %1%"), cmdText));
+                }
+                pldrack.setManual(rackStr);
+                LOG_DEBUG("loaded rack: " << lfw(pldrack.toString()));
+
+                GameRackCmd *cmd = new GameRackCmd(*game, pldrack);
+                game->accessNavigation().addAndExecute(cmd);
+                LOG_DEBUG("rack: " << lfw(pldrack.toString()));
+            }
+            else if (tagName == "MasterMove")
+            {
+                const Move move = buildMove(*game, cmdNode, false);
+                Duplicate *duplicateGame = dynamic_cast<Duplicate*>(game);
+                if (duplicateGame == nullptr)
+                {
+                    throw LoadGameException(_("The 'MasterMove' tag should only be present for duplicate games"));
+                }
+                MasterMoveCmd *cmd = new MasterMoveCmd(*duplicateGame, move);
+                game->accessNavigation().addAndExecute(cmd);
+            }
+            else if (tagName == "PlayerMove")
+            {
+                // FIXME: this is game-related logic. It should not be done here.
+                bool isArbitrationGame = game->getParams().getMode() == GameParams::kARBITRATION;
+
+                const Move move = buildMove(*game, cmdNode, /*XXX:true*/false);
+                Player &p = getPlayer(all_players, readPlayerIdAttribute(cmdNode), tagName);
+                PlayerMoveCmd *cmd = new PlayerMoveCmd(p, move, isArbitrationGame);
+                game->accessNavigation().addAndExecute(cmd);
+            }
+            else if (tagName == "GameMove")
+            {
+                const Move move = buildMove(*game, cmdNode, false);
+                GameMoveCmd *cmd = new GameMoveCmd(*game, move);
+                game->accessNavigation().addAndExecute(cmd);
+            }
+            else if (tagName == "Warning")
+            {
+                Player &p = getPlayer(all_players, readPlayerIdAttribute(cmdNode), tagName);
+                PlayerEventCmd *cmd = new PlayerEventCmd(p, PlayerEventCmd::WARNING);
+                game->accessNavigation().addAndExecute(cmd);
+            }
+            else if (tagName == "Penalty")
+            {
+                Player &p = getPlayer(all_players, readPlayerIdAttribute(cmdNode), tagName);
+                int points = cmdNode.attribute("points").as_int();
+                PlayerEventCmd *cmd = new PlayerEventCmd(p, PlayerEventCmd::PENALTY, points);
+                game->accessNavigation().addAndExecute(cmd);
+            }
+            else if (tagName == "Solo")
+            {
+                Player &p = getPlayer(all_players, readPlayerIdAttribute(cmdNode), tagName);
+                int points = cmdNode.attribute("points").as_int();
+                PlayerEventCmd *cmd = new PlayerEventCmd(p, PlayerEventCmd::SOLO, points);
+                game->accessNavigation().addAndExecute(cmd);
+            }
+            else if (tagName == "EndGame")
+            {
+                Player &p = getPlayer(all_players, readPlayerIdAttribute(cmdNode), tagName);
+                int points = cmdNode.attribute("points").as_int();
+                PlayerEventCmd *cmd = new PlayerEventCmd(p, PlayerEventCmd::END_GAME, points);
+                game->accessNavigation().addAndExecute(cmd);
             }
             else
-                throw LoadGameException(FMT1(_("Invalid player type: %1%"), m_attributes["type"]));
-            m_players[m_attributes["id"]] = p;
-
-            // Set the name
-            p->setName(fromUtf8(m_attributes["name"]));
-            // Ste the table number
-            if (m_attributes["tablenb"] != "")
-                p->setTableNb(toInt(m_attributes["tablenb"]));
-
-            m_game->addPlayer(p);
-
-            m_context = "";
+            {
+                LOG_ERROR("Unknown tag: " << tagName);
+            }
         }
     }
 
-    else if (tag == "GameRack")
-    {
-        // Build a rack for the correct player
-        const wstring &rackStr = m_dic.convertFromInput(fromUtf8(m_data));
-        PlayedRack pldrack;
-        if (!m_dic.validateLetters(rackStr, L"-+"))
-        {
-            throw LoadGameException(FMT1(_("Rack invalid for the current dictionary: %1%"), m_data));
-        }
-        pldrack.setManual(rackStr);
-        LOG_DEBUG("loaded rack: " << lfw(pldrack.toString()));
-
-        GameRackCmd *cmd = new GameRackCmd(*m_game, pldrack);
-        m_game->accessNavigation().addAndExecute(cmd);
-        LOG_DEBUG("rack: " << lfw(pldrack.toString()));
-    }
-
-    else if (tag == "PlayerRack")
-    {
-        // Build a rack for the correct player
-        const wstring &rackStr = m_dic.convertFromInput(fromUtf8(m_data));
-        PlayedRack pldrack;
-        if (!m_dic.validateLetters(rackStr, L"-+"))
-        {
-            throw LoadGameException(FMT1(_("Rack invalid for the current dictionary: %1%"), m_data));
-        }
-        pldrack.setManual(rackStr);
-        LOG_DEBUG("loaded rack: " << lfw(pldrack.toString()));
-
-        Player &p = getPlayer(m_players, m_attributes["playerId"], tag);
-        PlayerRackCmd *cmd = new PlayerRackCmd(p, pldrack);
-        m_game->accessNavigation().addAndExecute(cmd);
-        LOG_DEBUG("rack: " << lfw(pldrack.toString()));
-    }
-
-    else if (tag == "MasterMove")
-    {
-        const Move &move = buildMove(*m_game, m_attributes, false);
-        Duplicate *duplicateGame = dynamic_cast<Duplicate*>(m_game);
-        if (duplicateGame == nullptr)
-        {
-            throw LoadGameException(_("The 'MasterMove' tag should only be present for duplicate games"));
-        }
-        MasterMoveCmd *cmd = new MasterMoveCmd(*duplicateGame, move);
-        m_game->accessNavigation().addAndExecute(cmd);
-    }
-
-    else if (tag == "PlayerMove")
-    {
-        // FIXME: this is game-related logic. It should not be done here.
-        bool isArbitrationGame = m_game->getParams().getMode() == GameParams::kARBITRATION;
-
-        const Move &move = buildMove(*m_game, m_attributes, /*XXX:true*/false);
-        Player &p = getPlayer(m_players, m_attributes["playerId"], tag);
-        PlayerMoveCmd *cmd = new PlayerMoveCmd(p, move, isArbitrationGame);
-        m_game->accessNavigation().addAndExecute(cmd);
-    }
-
-    else if (tag == "GameMove")
-    {
-        const Move &move = buildMove(*m_game, m_attributes, false);
-        GameMoveCmd *cmd = new GameMoveCmd(*m_game, move);
-        m_game->accessNavigation().addAndExecute(cmd);
-    }
-
-    else if (tag == "Warning")
-    {
-        Player &p = getPlayer(m_players, m_attributes["playerId"], tag);
-        PlayerEventCmd *cmd = new PlayerEventCmd(p, PlayerEventCmd::WARNING);
-        m_game->accessNavigation().addAndExecute(cmd);
-    }
-
-    else if (tag == "Penalty")
-    {
-        Player &p = getPlayer(m_players, m_attributes["playerId"], tag);
-        int points = toInt(m_attributes["points"]);
-        LOG_ERROR("points=" << points);
-        PlayerEventCmd *cmd = new PlayerEventCmd(p, PlayerEventCmd::PENALTY, points);
-        m_game->accessNavigation().addAndExecute(cmd);
-    }
-
-    else if (tag == "Solo")
-    {
-        Player &p = getPlayer(m_players, m_attributes["playerId"], tag);
-        int points = toInt(m_attributes["points"]);
-        PlayerEventCmd *cmd = new PlayerEventCmd(p, PlayerEventCmd::SOLO, points);
-        m_game->accessNavigation().addAndExecute(cmd);
-    }
-
-    else if (tag == "EndGame")
-    {
-        Player &p = getPlayer(m_players, m_attributes["playerId"], tag);
-        int points = toInt(m_attributes["points"]);
-        PlayerEventCmd *cmd = new PlayerEventCmd(p, PlayerEventCmd::END_GAME, points);
-        m_game->accessNavigation().addAndExecute(cmd);
-    }
-
+    LOG_INFO("Savegame parsed successfully");
+    return game;
 }
-
-
-void XmlReader::characters(const string& ch)
-{
-    m_data += ch;
-    LOG_TRACE("Characters: " << ch);
-}
-
-
-void XmlReader::warning(const Arabica::SAX::SAXParseException<string>& exception)
-{
-    errorMessage = string("warning: ") + exception.what();
-    LOG_WARN(errorMessage);
-    //throw LoadGameException(string("warning: ") + exception.what());
-}
-
-
-void XmlReader::error(const Arabica::SAX::SAXParseException<string>& exception)
-{
-    errorMessage = string("error: ") + exception.what();
-    LOG_ERROR(errorMessage);
-    //throw LoadGameException(string("error: ") + exception.what());
-}
-
-
-void XmlReader::fatalError(const Arabica::SAX::SAXParseException<string>& exception)
-{
-    errorMessage = string("fatal error: ") + exception.what();
-    LOG_FATAL(errorMessage);
-    //throw LoadGameException(string("fatal error: ") + exception.what());
-}
-

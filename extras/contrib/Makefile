@@ -1,13 +1,12 @@
 APR_VERSION := 1.6.5
 APU_VERSION := 1.6.1
-ARABICA_VERSION := 2016-January
 BOOST_VERSION := 1.72.0
 EXPAT_VERSION := 2.2.9
 GETTEXT_VERSION := 0.20.1
 ICONV_VERSION := 1.16
 LIBCONFIG_VERSION := 1.7.2
-LIBXML2_VERSION := 2.9.8
 LOG4CXX_VERSION := 0.10.0
+PUGIXML_VERSION := 1.16
 QT_VERSION := 4.5.3
 QT2_VERSION := 5.6.3
 XERCES_VERSION := 3.2.2
@@ -27,12 +26,14 @@ TAR = tar -C $(BUILD_DIR)
 # XXX: Hardcoded for mingw on linux, at the moment
 CC = $(HOST)-gcc
 CXX = $(HOST)-g++
+CXXFLAGS = -std=gnu++17
 CPPFLAGS += -I$(PREFIX)/include
 CONFIGURE = CC="$(CC)" CXX="$(CXX)" CPPFLAGS="$(CPPFLAGS)" ./configure --host=$(HOST) --build=$(BUILD) --prefix=$(PREFIX) --enable-static --disable-shared
+CMAKE = cmake -B . -DCMAKE_TOOLCHAIN_FILE=$(BASE)/mingw-w64-x86_64.cmake -DCMAKE_INSTALL_PREFIX="$(PREFIX)"
 
 # Dependencies (incomplete list):
 # expat <- apr <- apu <- log4cxx
-LIBS := iconv gettext boost expat apr apu libconfig log4cxx arabica qt2
+LIBS := iconv gettext boost expat apr apu libconfig pugixml log4cxx qt2
 TARGETS = $(LIBS:%=.%)
 
 .PHONY: help all clean clean-% distclean distclean-%
@@ -101,27 +102,6 @@ $(APU_DIR_FLAG): $(APU_ARCHIVE)
 .apu: $(APU_DIR_FLAG)
 	(cd $(APU_DIR) \
 		&& $(CONFIGURE) --with-apr=$(PREFIX) \
-		&& make install)
-	touch $@
-
-
-### Arabica ###
-
-ARABICA_DIR = $(BUILD_DIR)/arabica-$(ARABICA_VERSION)
-ARABICA_DIR_FLAG = $(ARABICA_DIR)/.flag
-ARABICA_ARCHIVE = $(ARCHIVE_DIR)/$(ARABICA_VERSION).tar.gz
-
-$(ARABICA_ARCHIVE): $(PREFIX_FLAG)
-	$(WGET) https://github.com/jezhiggins/arabica/archive/$(shell basename $@)
-
-$(ARABICA_DIR_FLAG): $(ARABICA_ARCHIVE)
-	$(TAR) -xzf $<
-	touch $@
-
-.arabica: $(ARABICA_DIR_FLAG)
-	(cd $(ARABICA_DIR) \
-		&& autoreconf -i \
-		&& $(CONFIGURE) --with-parser=expat --with-expat=$(PREFIX) --with-boost=$(PREFIX) --with-tests=no --with-dom=no \
 		&& make install)
 	touch $@
 
@@ -233,28 +213,6 @@ $(LIBCONFIG_DIR_FLAG): $(LIBCONFIG_ARCHIVE)
 	touch $@
 
 
-### LibXML 2 ###
-
-LIBXML2_DIR = $(BUILD_DIR)/libxml2-$(LIBXML2_VERSION)
-LIBXML2_DIR_FLAG = $(LIBXML2_DIR)/.flag
-LIBXML2_ARCHIVE = $(ARCHIVE_DIR)/libxml2-$(LIBXML2_VERSION).tar.gz
-
-$(LIBXML2_ARCHIVE): $(PREFIX_FLAG)
-	$(WGET) ftp://xmlsoft.org/libxml2/$(shell basename $@)
-
-$(LIBXML2_DIR_FLAG): $(LIBXML2_ARCHIVE)
-	$(TAR) -xzf $<
-	touch $@
-
-# TODO: add more --without-xxx flags (apparently needed for build: pattern, debug)
-# --with-legacy and --with-html are needed for arabica
-.libxml2: $(LIBXML2_DIR_FLAG)
-	(cd $(LIBXML2_DIR) \
-		&& $(CONFIGURE) --with-legacy --without-schematron --without-zlib --without-http --without-ftp --without-html --without-python --without-docbook --without-regexps \
-		&& make install)
-	touch $@
-
-
 ### log4cxx ###
 
 LOG4CXX_DIR = $(BUILD_DIR)/apache-log4cxx-$(LOG4CXX_VERSION)
@@ -273,6 +231,29 @@ $(LOG4CXX_DIR_FLAG): $(LOG4CXX_ARCHIVE)
 		&& patch -p0 < $(BASE)/log4cxx-no-example.patch \
 		&& patch -p0 < $(BASE)/log4cxx-build-fixes.patch \
 		&& CXXFLAGS=-Wno-narrowing $(CONFIGURE) --with-apr=$(PREFIX) --with-apu=$(PREFIX) --with-apr-util=$(PREFIX) --disable-doxygen --disable-dot \
+		&& make install)
+	touch $@
+
+
+### pugixml ###
+
+PUGIXML_DIR = $(BUILD_DIR)/pugixml-$(PUGIXML_VERSION)
+PUGIXML_DIR_FLAG = $(PUGIXML_DIR)/.flag
+PUGIXML_ARCHIVE = $(ARCHIVE_DIR)/pugixml-$(PUGIXML_VERSION).tar.gz
+
+$(PUGIXML_ARCHIVE): $(PREFIX_FLAG)
+	$(WGET) https://github.com/zeux/pugixml/releases/download/v$(PUGIXML_VERSION)/$(shell basename $@)
+
+$(PUGIXML_DIR_FLAG): $(PUGIXML_ARCHIVE)
+	$(TAR) -xzf $<
+	touch $@
+
+.pugixml: $(PUGIXML_DIR_FLAG)
+	# Use header-only mode to avoid a weird linking error with seekg(std::fpos<int>)
+	(cd $(PUGIXML_DIR) \
+		&& sed -i 's@// \(#define PUGIXML_HEADER_ONLY\)@\1@' src/pugiconfig.hpp \
+		&& sed -i 's@// \(#define PUGIXML_NO_XPATH\)@\1@' src/pugiconfig.hpp \
+		&& $(CMAKE) \
 		&& make install)
 	touch $@
 
