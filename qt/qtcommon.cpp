@@ -39,6 +39,34 @@
 using namespace std;
 
 
+QString _q(const char* s)
+{
+    if (s == nullptr)
+    {
+        return QString();
+    }
+
+    string str(s);
+
+    // Check if the string is wrapped in gettext format: _("your_string_here")
+    // Length must be > 5 to safely hold at least _("")
+    if (str.rfind("_(\"", 0) == 0 && str.size() > 5 && str.back() == ')')
+    {
+        // Chop off the leading '_("' (3 chars) and trailing '")' (2 chars)
+        str = str.substr(3, str.size() - 5);
+    }
+
+#ifdef __APPLE__
+    // On MacOSX, we force the encoding to UTF-8, because we have trouble
+    // detecting the current encoding properly (see call to
+    // bind_textdomain_codeset() in main.cpp)
+    return qfu(str);
+#else
+    return QString::fromLocal8Bit(_(str.c_str()));
+#endif
+}
+
+
 wstring wfq(const QString &q)
 {
 #ifdef QT_NO_STL

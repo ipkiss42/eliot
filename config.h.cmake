@@ -1,0 +1,38 @@
+#pragma once
+
+#define VERSION "@ELIOT_VERSION_STR@"
+#define PACKAGE "@PROJECT_NAME@"
+#define PACKAGE_VERSION "@ELIOT_VERSION_STR@"
+#define PACKAGE_NAME "@PROJECT_NAME@"
+#define PACKAGE_STRING "@PROJECT_NAME@ @ELIOT_VERSION_STR@"
+
+#define ELIOT_COMPILE_BY "@ELIOT_COMPILE_BY@"
+#define ELIOT_COMPILE_HOST "@ELIOT_COMPILE_HOST@"
+
+#define LOCALEDIR "@CMAKE_INSTALL_FULL_LOCALEDIR@"
+#define QT4LOCALEDIR "@QT4LOCALEDIR@"
+
+#define ICONV_CONST @ICONV_CONST@
+
+/* Define to 1 to enable Native Language Support (NLS) */
+#cmakedefine01 ENABLE_NLS
+
+#cmakedefine HAVE_EXECINFO_H 1
+#cmakedefine HAVE_FCNTL_H 1
+#cmakedefine HAVE_UNISTD_H 1
+#cmakedefine HAVE_SYS_STAT_H 1
+#cmakedefine HAVE_SYS_TYPES_H 1
+#cmakedefine HAVE_ARPA_INET_H 1
+#cmakedefine HAVE_NETINET_IN_H 1
+#cmakedefine HAVE_READLINE_READLINE_H 1
+
+#cmakedefine HAVE_WCWIDTH 1
+#cmakedefine WORDS_BIGENDIAN 1
+#cmakedefine HAVE_LIBCONFIG 1
+
+/* Ncurses wide-character header availability mapping */
+#cmakedefine HAVE_NCURSESW_NCURSES_H 1
+#cmakedefine HAVE_NCURSESW_H 1
+#cmakedefine HAVE_NCURSES_H 1
+
+// vim:ft=c:

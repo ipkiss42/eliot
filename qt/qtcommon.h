@@ -45,15 +45,11 @@ QString qfw(const wstring &wstr);
 // Convert to/from utf-8 char*
 #define qfu(s) QString::fromUtf8(string(s).c_str())
 #define ufq(s) (s).toUtf8().data()
-// Translation macro to use gettext
-#ifdef __APPLE__
-// On MacOSX, we force the encoding to UTF-8, because we have trouble
-// detecting the current encoding properly (see call to
-// bind_textdomain_codeset() in main.cpp)
-#    define _q(s) qfu(_(s))
-#else
-#    define _q(s) QString::fromLocal8Bit(_(s))
-#endif
+
+#define Q_(text, context) _q(text)
+
+// Translation macro to apply gettext on the strings of .ui files
+QString _q(const char* s);
 
 
 class QObject;
