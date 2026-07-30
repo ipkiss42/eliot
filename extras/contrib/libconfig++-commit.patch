@@ -1,0 +1,22 @@
+--- lib/wincompat.h.orig	2025-12-14 18:14:59.000000000 +0100
++++ lib/wincompat.h	2026-07-30 19:55:16.988659950 +0200
+@@ -57,9 +57,8 @@
+ #define posix_write  _write
+
+ /* Might be able to replace this with:
+-#define posix_fsync  _commit
+ */
+-extern int posix_fsync(int fd);
++#define posix_fsync  _commit
+
+ #if _MSC_VER <= 1800
+ #define snprintf  _snprintf
+@@ -127,7 +126,7 @@
+ #include <unistd.h> /* for fsync() */
+
+ #define posix_fileno fileno
+-#define posix_fsync  fsync
++// #define posix_fsync  fsync
+ #define posix_write  write
+
+ #define INT64_CONST(I)  (I ## LL)

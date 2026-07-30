@@ -1,15 +1,15 @@
-BOOST_VERSION := 1.72.0
+BOOST_VERSION := 1.91.0
 EXPAT_VERSION := 2.2.9
 GETTEXT_VERSION := 0.20.1
 ICONV_VERSION := 1.16
-LIBCONFIG_VERSION := 1.7.2
+LIBCONFIG_VERSION := 1.8.2
 PUGIXML_VERSION := 1.16
 QT_VERSION := 4.5.3
 QT2_VERSION := 5.6.3
 SPDLOG_VERSION := 1.17.0
 XERCES_VERSION := 3.2.2
 
-HOST := i686-w64-mingw32
+HOST := x86_64-w64-mingw32
 BUILD := i386-linux
 
 
@@ -68,7 +68,7 @@ BOOST_DIR_FLAG = $(BOOST_DIR)/.flag
 BOOST_ARCHIVE = $(ARCHIVE_DIR)/boost_$(BOOST_UNDERSCORE_VERSION).tar.bz2
 
 $(BOOST_ARCHIVE): $(PREFIX_FLAG)
-	$(WGET) https://dl.bintray.com/boostorg/release/$(BOOST_VERSION)/source/$(shell basename $@)
+	$(WGET) https://archives.boost.io/release/$(BOOST_VERSION)/source/$(shell basename $@)
 
 $(BOOST_DIR_FLAG): $(BOOST_ARCHIVE)
 	$(TAR) -xjf $<
@@ -138,9 +138,9 @@ $(LIBCONFIG_DIR_FLAG): $(LIBCONFIG_ARCHIVE)
 .libconfig: $(LIBCONFIG_DIR_FLAG)
 	(cd $(LIBCONFIG_DIR) \
 		&& autoreconf -i \
-		&& patch -p0 < $(BASE)/libconfig++-ignore-docs.patch \
 		&& patch -p0 < $(BASE)/libconfig++-static-build.patch \
-		&& CFLAGS=-DLIBCONFIG_STATIC CXXFLAGS=-DLIBCONFIGXX_STATIC $(CONFIGURE) --disable-examples \
+		&& patch -p0 < $(BASE)/libconfig++-commit.patch \
+		&& CFLAGS=-DLIBCONFIG_STATIC CXXFLAGS=-DLIBCONFIGXX_STATIC $(CONFIGURE) --disable-examples --disable-doc --disable-tests \
 		&& make install)
 	touch $@
 
@@ -163,7 +163,7 @@ $(PUGIXML_DIR_FLAG): $(PUGIXML_ARCHIVE)
 	(cd $(PUGIXML_DIR) \
 		&& sed -i 's@// \(#define PUGIXML_HEADER_ONLY\)@\1@' src/pugiconfig.hpp \
 		&& sed -i 's@// \(#define PUGIXML_NO_XPATH\)@\1@' src/pugiconfig.hpp \
-		&& $(CMAKE) \
+		&& $(CMAKE) -DPUGIXML_INSTALL_SOURCE=ON \
 		&& make install)
 	touch $@
 

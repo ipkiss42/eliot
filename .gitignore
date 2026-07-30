@@ -86,6 +86,7 @@ win32
 extras/contrib/archives
 extras/contrib/build
 extras/contrib/inst
+extras/contrib/.*
 extras/reports/*.pyc
 qt/ui/*.h
 qt/*.moc.cpp
