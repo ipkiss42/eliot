@@ -91,7 +91,7 @@ void UpdateChecker::updateCheckFinished(QNetworkReply *iReply)
 
         if (newer)
         {
-            LOG_INFO("New version available: " << lfq(data));
+            LOG_INFO("New version available: {}", lfq(data));
             showNewVersion(data);
         }
         else
@@ -99,7 +99,7 @@ void UpdateChecker::updateCheckFinished(QNetworkReply *iReply)
     }
     else
     {
-        LOG_ERROR("Could not retrieve update file: " << lfq(iReply->errorString()));
+        LOG_ERROR("Could not retrieve update file: {}", lfq(iReply->errorString()));
         emit notifyInfo(_q("Update check failed. Please check your internet connection"));
     }
 
@@ -119,7 +119,7 @@ UpdateChecker::VersionNumber UpdateChecker::parseVersionNumber(QString iVersion)
     re.setPatternSyntax(QRegExp::RegExp2);
     if (re.indexIn(iVersion) == -1)
     {
-        LOG_ERROR("Error parsing version number: " << lfq(iVersion));
+        LOG_ERROR("Error parsing version number: {}", lfq(iVersion));
         vn.major = -1;
         vn.minor = -1;
         vn.letter = 0;
@@ -132,9 +132,8 @@ UpdateChecker::VersionNumber UpdateChecker::parseVersionNumber(QString iVersion)
         vn.letter = re.cap(3)[0].toLatin1();
     vn.suffix = re.cap(4);
 
-    LOG_DEBUG("Parsed version number: " << vn.major << "." << vn.minor <<
-              (vn.letter ? string(1, vn.letter) : "") << lfq(vn.suffix) <<
-              " (from '" << lfq(iVersion) << "')");
+    LOG_DEBUG("Parsed version number: {}.{}{}{} (from '{}')", vn.major, vn.minor,
+              (vn.letter ? string(1, vn.letter) : ""), lfq(vn.suffix), lfq(iVersion));
     return vn;
 }
 
@@ -188,8 +187,7 @@ bool UpdateChecker::isNewer(QString iNewVersion) const
 
     // If we reach this point, the 2 version numbers have (different) suffixes.
     // This is not expected, so we are conservative...
-    LOG_WARN("Cannot compare version numbers: " <<
-             PACKAGE_VERSION << " and " << lfq(iNewVersion));
+    LOG_WARN("Cannot compare version numbers: {} and {}", PACKAGE_VERSION, lfq(iNewVersion));
     return false;
 }
 

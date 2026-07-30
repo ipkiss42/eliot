@@ -1,14 +1,12 @@
-APR_VERSION := 1.6.5
-APU_VERSION := 1.6.1
 BOOST_VERSION := 1.72.0
 EXPAT_VERSION := 2.2.9
 GETTEXT_VERSION := 0.20.1
 ICONV_VERSION := 1.16
 LIBCONFIG_VERSION := 1.7.2
-LOG4CXX_VERSION := 0.10.0
 PUGIXML_VERSION := 1.16
 QT_VERSION := 4.5.3
 QT2_VERSION := 5.6.3
+SPDLOG_VERSION := 1.17.0
 XERCES_VERSION := 3.2.2
 
 HOST := i686-w64-mingw32
@@ -32,8 +30,7 @@ CONFIGURE = CC="$(CC)" CXX="$(CXX)" CPPFLAGS="$(CPPFLAGS)" ./configure --host=$(
 CMAKE = cmake -B . -DCMAKE_TOOLCHAIN_FILE=$(BASE)/mingw-w64-x86_64.cmake -DCMAKE_INSTALL_PREFIX="$(PREFIX)"
 
 # Dependencies (incomplete list):
-# expat <- apr <- apu <- log4cxx
-LIBS := iconv gettext boost expat apr apu libconfig pugixml log4cxx qt2
+LIBS := iconv gettext boost libconfig pugixml spdlog qt2
 TARGETS = $(LIBS:%=.%)
 
 .PHONY: help all clean clean-% distclean distclean-%
@@ -63,49 +60,6 @@ $(PREFIX_FLAG):
 	touch $@
 
 
-### APR (needed by log4cxx) ###
-
-APR_DIR = $(BUILD_DIR)/apr-$(APR_VERSION)
-APR_DIR_FLAG = $(APR_DIR)/.flag
-APR_ARCHIVE = $(ARCHIVE_DIR)/apr-$(APR_VERSION).tar.bz2
-
-$(APR_ARCHIVE): $(PREFIX_FLAG)
-#	$(WGET) http://www-eu.apache.org/dist/apr/$(shell basename $@)
-	$(WGET) http://archive.apache.org/dist/apr/$(shell basename $@)
-
-$(APR_DIR_FLAG): $(APR_ARCHIVE)
-	$(TAR) -xjf $<
-	touch $@
-
-.apr: $(APR_DIR_FLAG)
-	(cd $(APR_DIR) \
-		&& patch -p0 < $(BASE)/apr-configure-hacks.patch \
-		&& patch -p0 < $(BASE)/apr-bugzilla-56342.patch \
-		&& $(CONFIGURE) \
-		&& make install)
-	touch $@
-
-
-### APU (needed by log4cxx) ###
-
-APU_DIR = $(BUILD_DIR)/apr-util-$(APU_VERSION)
-APU_DIR_FLAG = $(APU_DIR)/.flag
-APU_ARCHIVE = $(ARCHIVE_DIR)/apr-util-$(APU_VERSION).tar.bz2
-
-$(APU_ARCHIVE): $(PREFIX_FLAG)
-	$(WGET) http://www-eu.apache.org/dist/apr/$(shell basename $@)
-
-$(APU_DIR_FLAG): $(APU_ARCHIVE)
-	$(TAR) -xjf $<
-	touch $@
-
-.apu: $(APU_DIR_FLAG)
-	(cd $(APU_DIR) \
-		&& $(CONFIGURE) --with-apr=$(PREFIX) \
-		&& make install)
-	touch $@
-
-
 ### Boost ###
 
 BOOST_UNDERSCORE_VERSION = $(subst .,_,$(BOOST_VERSION))
@@ -125,28 +79,6 @@ $(BOOST_DIR_FLAG): $(BOOST_ARCHIVE)
 .boost: $(BOOST_DIR_FLAG)
 	#(cd $(BOOST_DIR) && ./configure --prefix=$(PREFIX) && ./tools/jam/src/bin.linuxx86/bjam --toolset=gcc --prefix=$(PREFIX) --without-date_time --without-filesystem --without-graph --without-iostreams --without-program_options --without-python --without-regex --without-serialization --without-signals --without-test --without-thread --without-wave install)
 	cp -r $(BOOST_DIR)/boost $(PREFIX)/include
-	touch $@
-
-
-### Expat ###
-
-EXPAT_UNDERSCORE_VERSION = $(subst .,_,$(EXPAT_VERSION))
-EXPAT_DIR = $(BUILD_DIR)/libexpat-R_$(EXPAT_UNDERSCORE_VERSION)
-EXPAT_DIR_FLAG = $(EXPAT_DIR)/.flag
-EXPAT_ARCHIVE = $(ARCHIVE_DIR)/R_$(EXPAT_UNDERSCORE_VERSION).tar.gz
-
-$(EXPAT_ARCHIVE): $(PREFIX_FLAG)
-	$(WGET) https://github.com/libexpat/libexpat/archive/$(shell basename $@)
-
-$(EXPAT_DIR_FLAG): $(EXPAT_ARCHIVE)
-	$(TAR) -xzf $<
-	touch $@
-
-.expat: $(EXPAT_DIR_FLAG)
-	(cd $(EXPAT_DIR)/expat \
-		&& ./buildconf.sh \
-		&& $(CONFIGURE) --without-xmlwf \
-		&& make install)
 	touch $@
 
 
@@ -209,28 +141,6 @@ $(LIBCONFIG_DIR_FLAG): $(LIBCONFIG_ARCHIVE)
 		&& patch -p0 < $(BASE)/libconfig++-ignore-docs.patch \
 		&& patch -p0 < $(BASE)/libconfig++-static-build.patch \
 		&& CFLAGS=-DLIBCONFIG_STATIC CXXFLAGS=-DLIBCONFIGXX_STATIC $(CONFIGURE) --disable-examples \
-		&& make install)
-	touch $@
-
-
-### log4cxx ###
-
-LOG4CXX_DIR = $(BUILD_DIR)/apache-log4cxx-$(LOG4CXX_VERSION)
-LOG4CXX_DIR_FLAG = $(LOG4CXX_DIR)/.flag
-LOG4CXX_ARCHIVE = $(ARCHIVE_DIR)/apache-log4cxx-$(LOG4CXX_VERSION).tar.gz
-
-$(LOG4CXX_ARCHIVE): $(PREFIX_FLAG)
-	$(WGET) http://www-eu.apache.org/dist/logging/log4cxx/$(LOG4CXX_VERSION)/$(shell basename $@)
-
-$(LOG4CXX_DIR_FLAG): $(LOG4CXX_ARCHIVE)
-	$(TAR) -xzf $<
-	touch $@
-
-.log4cxx: $(LOG4CXX_DIR_FLAG)
-	(cd $(LOG4CXX_DIR) \
-		&& patch -p0 < $(BASE)/log4cxx-no-example.patch \
-		&& patch -p0 < $(BASE)/log4cxx-build-fixes.patch \
-		&& CXXFLAGS=-Wno-narrowing $(CONFIGURE) --with-apr=$(PREFIX) --with-apu=$(PREFIX) --with-apr-util=$(PREFIX) --disable-doxygen --disable-dot \
 		&& make install)
 	touch $@
 
@@ -300,6 +210,26 @@ $(QT2_DIR_FLAG): $(QT2_ARCHIVE)
 	(cd $(QT2_DIR) && make install)
 	# Keep only the qwindows plugin
 	mv $(PREFIX)/plugins/platforms/libqwindows.a $(PREFIX)/lib/ && rm -rf $(PREFIX)/plugins
+	touch $@
+
+
+### spdlog ###
+
+SPDLOG_DIR = $(BUILD_DIR)/spdlog-$(SPDLOG_VERSION)
+SPDLOG_DIR_FLAG = $(SPDLOG_DIR)/.flag
+SPDLOG_ARCHIVE = $(ARCHIVE_DIR)/v$(SPDLOG_VERSION).tar.gz
+
+$(SPDLOG_ARCHIVE): $(PREFIX_FLAG)
+	$(WGET) https://github.com/gabime/spdlog/archive/refs/tags/$(shell basename $@)
+
+$(SPDLOG_DIR_FLAG): $(SPDLOG_ARCHIVE)
+	$(TAR) -xzf $<
+	touch $@
+
+.spdlog: $(SPDLOG_DIR_FLAG)
+	(cd $(SPDLOG_DIR) \
+		&& $(CMAKE) -DSPDLOG_BUILD_EXAMPLE=OFF \
+		&& make install)
 	touch $@
 
 

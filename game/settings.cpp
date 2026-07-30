@@ -288,7 +288,7 @@ Settings::Settings()
     catch (const std::exception &e)
     {
         // Only log the exception
-        LOG_ERROR("Error reading config file: " << e.what());
+        LOG_ERROR("Error reading config file: {}", e.what());
     }
 #endif
 }

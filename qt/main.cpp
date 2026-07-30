@@ -67,7 +67,7 @@ public:
         }
         catch (const BaseException &e)
         {
-            LOG_ROOT_ERROR("Exception caught: " << e.what() << "\n" << e.getStackTrace());
+            LOG_ROOT_ERROR("Exception caught: {}\n{}", e.what(), e.getStackTrace());
             return false;
         }
     }
@@ -164,6 +164,8 @@ int main(int argc, char **argv)
 
     try
     {
+        initialize_logging();
+
         MainWindow qmain;
         qmain.show();
         return app.exec();
@@ -187,7 +189,7 @@ int main(int argc, char **argv)
 static void bt_sighandler(int signum)
 {
     LOG_ROOT_FATAL("Segmentation fault!");
-    LOG_ROOT_FATAL("Backtrace:\n" << StackTrace::GetStack());
+    LOG_ROOT_FATAL("Backtrace:\n{}", StackTrace::GetStack());
 
     // Restore the default handler to generate a nice core dump
     signal(signum, SIG_DFL);

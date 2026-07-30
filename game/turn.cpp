@@ -270,7 +270,7 @@ unsigned Turn::undoTo(unsigned iNewFirstNotExec)
 void Turn::dropFrom(unsigned iFirstToDrop)
 {
     ASSERT(iFirstToDrop < m_commands.size(), "Invalid index");
-    LOG_DEBUG("Deleting turn commands, starting from index " << iFirstToDrop);
+    LOG_DEBUG("Deleting turn commands, starting from index {}", iFirstToDrop);
 
     undoTo(iFirstToDrop);
     while (m_commands.size() > iFirstToDrop)

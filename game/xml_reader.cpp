@@ -234,7 +234,7 @@ static Move buildMove(const Game &iGame, const pugi::xml_node &moveCmdNode, bool
 
 Game * XmlReader::read(const string &iFileName, const Dictionary &iDic)
 {
-    LOG_INFO("Parsing savegame '" << iFileName << "'");
+    LOG_INFO("Parsing savegame '{}'", iFileName);
 
     // Load the XML file into memory
     pugi::xml_document doc;
@@ -245,9 +245,8 @@ Game * XmlReader::read(const string &iFileName, const Dictionary &iDic)
     pugi::xml_node root = doc.child("EliotGame");
     if (!root || string(root.attribute("format").value()) != CURRENT_XML_VERSION)
     {
-        LOG_ERROR("Incompatible save game format: current="
-                  << CURRENT_XML_VERSION
-                  << " savegame=" << root.attribute("format").value());
+        LOG_ERROR("Incompatible save game format: current={} savegame={}",
+                  CURRENT_XML_VERSION, root.attribute("format").value());
         throw LoadGameException(_("This saved game is not compatible with the current version of Eliot."));
     }
 
@@ -289,12 +288,12 @@ Game * XmlReader::read(const string &iFileName, const Dictionary &iDic)
                     throw LoadGameException(FMT1(_("Rack invalid for the current dictionary: %1%"), cmdText));
                 }
                 pldrack.setManual(rackStr);
-                LOG_DEBUG("loaded rack: " << lfw(pldrack.toString()));
+                LOG_DEBUG("loaded rack: {}", lfw(pldrack.toString()));
 
                 Player &p = getPlayer(all_players, readPlayerIdAttribute(cmdNode), tagName);
                 PlayerRackCmd *cmd = new PlayerRackCmd(p, pldrack);
                 game->accessNavigation().addAndExecute(cmd);
-                LOG_DEBUG("rack: " << lfw(pldrack.toString()));
+                LOG_DEBUG("rack: {}", lfw(pldrack.toString()));
             }
             else if (tagName == "GameRack")
             {
@@ -306,11 +305,11 @@ Game * XmlReader::read(const string &iFileName, const Dictionary &iDic)
                     throw LoadGameException(FMT1(_("Rack invalid for the current dictionary: %1%"), cmdText));
                 }
                 pldrack.setManual(rackStr);
-                LOG_DEBUG("loaded rack: " << lfw(pldrack.toString()));
+                LOG_DEBUG("loaded rack: {}", lfw(pldrack.toString()));
 
                 GameRackCmd *cmd = new GameRackCmd(*game, pldrack);
                 game->accessNavigation().addAndExecute(cmd);
-                LOG_DEBUG("rack: " << lfw(pldrack.toString()));
+                LOG_DEBUG("rack: {}", lfw(pldrack.toString()));
             }
             else if (tagName == "MasterMove")
             {
@@ -368,7 +367,7 @@ Game * XmlReader::read(const string &iFileName, const Dictionary &iDic)
             }
             else
             {
-                LOG_ERROR("Unknown tag: " << tagName);
+                LOG_ERROR("Unknown tag: {}", tagName);
             }
         }
     }

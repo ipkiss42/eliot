@@ -47,7 +47,7 @@ INIT_LOGGER(qt, ToppingWidget);
 
 ToppingWidget::ToppingWidget(QWidget *parent, PlayModel &iPlayModel,
                              TimerModel &iTimerModel, PublicGame *iGame)
-    : QWidget(parent), m_game(iGame), 
+    : QWidget(parent), m_game(iGame),
     m_timerModel(&iTimerModel)
 {
     setupUi(this);
@@ -236,7 +236,7 @@ void ToppingWidget::playWord(const wstring &iWord, const wstring &iCoord)
 
 void ToppingWidget::hintUsed(const AbstractHint &iHint)
 {
-    LOG_INFO("Hint '" << iHint.getName() << "' used for a cost of " << iHint.getCost());
+    LOG_INFO("Hint '{}' used for a cost of {}", iHint.getName(), iHint.getCost());
     m_game->toppingAddPenalty(iHint.getCost());
     emit gameUpdated();
 }

@@ -30,7 +30,7 @@ INIT_LOGGER(qt, GameSignals);
 
 
 GameSignals::GameSignals()
-     
+
 {
 }
 
@@ -64,7 +64,7 @@ void GameSignals::notifyGameUpdated()
     if (currTurn != m_currentTurn)
     {
         m_currentTurn = currTurn;
-        LOG_DEBUG("Emitting turnChanged(" << currTurn << ", " << isLastTurn << ")");
+        LOG_DEBUG("Emitting turnChanged({}, {})", currTurn, isLastTurn);
         emit turnChanged(currTurn, isLastTurn);
     }
 
@@ -72,7 +72,7 @@ void GameSignals::notifyGameUpdated()
     if (currTurn > m_lastTurn)
     {
         m_lastTurn = currTurn;
-        LOG_DEBUG("Emitting newTurn(" << currTurn << ")");
+        LOG_DEBUG("Emitting newTurn({})", currTurn);
         emit newTurn(currTurn);
     }
 
@@ -80,7 +80,7 @@ void GameSignals::notifyGameUpdated()
     if (m_game->getCurrentRack().toString(PlayedRack::RACK_EXTRA) != m_lastGameRack.toString(PlayedRack::RACK_EXTRA))
     {
         m_lastGameRack = m_game->getCurrentRack();
-        LOG_DEBUG("Emitting gameRackChanged(" << lfw(m_lastGameRack.toString()) << ")");
+        LOG_DEBUG("Emitting gameRackChanged({})", lfw(m_lastGameRack.toString()));
         emit gameRackChanged(m_lastGameRack);
     }
 
@@ -88,7 +88,7 @@ void GameSignals::notifyGameUpdated()
     if (m_game->getCurrentPlayer().getCurrentRack().toString(PlayedRack::RACK_EXTRA) != m_lastCurrPlayerRack.toString(PlayedRack::RACK_EXTRA))
     {
         m_lastCurrPlayerRack = m_game->getCurrentPlayer().getCurrentRack();
-        LOG_DEBUG("Emitting currPlayerRackChanged(" << lfw(m_lastCurrPlayerRack.toString()) << ")");
+        LOG_DEBUG("Emitting currPlayerRackChanged({})", lfw(m_lastCurrPlayerRack.toString()));
         emit currPlayerRackChanged(m_lastCurrPlayerRack);
     }
 }

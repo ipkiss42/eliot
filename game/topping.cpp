@@ -97,14 +97,13 @@ void Topping::tryWord(const wstring &iWord, const wstring &iCoord, int iElapsed)
     checkPlayedWord(iCoord, iWord, move);
 
     // Record the try
-    LOG_INFO("Player " << m_currPlayer << " plays topping move after " <<
-             iElapsed << "s: " << lfw(move.toString()));
+    LOG_INFO("Player {} plays topping move after {}s: {}", m_currPlayer, iElapsed, lfw(move.toString()));
     Command *pCmd = new ToppingMoveCmd(m_currPlayer, move, iElapsed);
     accessNavigation().addAndExecute(pCmd);
 
     // Find the best score
     int bestScore = getTopScore();
-    LOG_DEBUG("Top score to be found: " << bestScore);
+    LOG_DEBUG("Top score to be found: {}", bestScore);
     if (bestScore < 0)
     {
         endGame();

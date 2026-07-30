@@ -87,7 +87,7 @@ const Player& Game::getPlayer(unsigned int iNum) const
 
 void Game::shuffleRack()
 {
-    LOG_DEBUG("Shuffling rack for player " << currPlayer());
+    LOG_DEBUG("Shuffling rack for player {}", currPlayer());
     PlayedRack pld = getCurrentPlayer().getCurrentRack();
     pld.shuffle();
     m_players[currPlayer()]->setCurrentRack(pld);
@@ -96,8 +96,7 @@ void Game::shuffleRack()
 
 void Game::reorderRack(const PlayedRack &iNewRack)
 {
-    LOG_DEBUG("Reordering rack for player " << currPlayer() <<
-              " (newRack=" << lfw(iNewRack.toString()) << ")");
+    LOG_DEBUG("Reordering rack for player {} (newRack={})", currPlayer(), lfw(iNewRack.toString()));
     const PlayedRack &pld = getCurrentPlayer().getCurrentRack();
 
     // Make sure the new rack uses the same letters
@@ -215,7 +214,7 @@ PlayedRack Game::getRackFromMasterGame() const
 
     const TurnData &turnData = m_masterGame->getHistory().getTurn(currTurn);
     const PlayedRack &pldRack = turnData.getPlayedRack();
-    LOG_INFO("Using rack from master game: " << lfw(pldRack.toString()));
+    LOG_INFO("Using rack from master game: {}", lfw(pldRack.toString()));
 
     // Sanity check
     ASSERT(rackInBag(pldRack.getRack(), m_bag),
@@ -459,9 +458,8 @@ PlayedRack Game::helperSetRackRandom(const PlayedRack &iPld,
 
             // Get the best word
             const Round & bestRound = res.get(0);
-            LOG_DEBUG("helperSetRackRandom(): initial rack: "
-                      << lfw(pld.toString()) << " (best word: "
-                      << lfw(bestRound.getWord()) << ")");
+            LOG_DEBUG("helperSetRackRandom(): initial rack: {} (best word: {})",
+                      lfw(pld.toString()), lfw(bestRound.getWord()));
 
             // Identify the tile we should use to replace the joker
             Tile replacingTile;
@@ -484,8 +482,8 @@ PlayedRack Game::helperSetRackRandom(const PlayedRack &iPld,
                 replacingTile = bag.selectRandom();
             }
 
-            LOG_DEBUG("helperSetRackRandom(): replacing Joker with "
-                      << lfw(replacingTile.toChar()));
+            LOG_DEBUG("helperSetRackRandom(): replacing Joker with {}",
+                      lfw(replacingTile.toChar()));
 
             // If the bag does not contain the letter anymore,
             // simply keep the joker in the rack.
@@ -584,9 +582,8 @@ void Game::addPlayer(Player *iPlayer)
     iPlayer->setId(getNPlayers());
     m_players.push_back(iPlayer);
 
-    LOG_INFO("Adding player '" << lfw(iPlayer->getName())
-             << "' (" << (iPlayer->isHuman() ? "human" : "AI") << ")"
-             << " with ID " << iPlayer->getId());
+    LOG_INFO("Adding player '{}' ({}) with ID {}",
+             lfw(iPlayer->getName()), (iPlayer->isHuman() ? "human" : "AI"), iPlayer->getId());
 }
 
 
@@ -722,7 +719,7 @@ void Game::setGameAndPlayersRack(const PlayedRack &iRack, bool iWithNoMove)
 
 Game::CurrentPlayerCmd::CurrentPlayerCmd(Game &ioGame,
                              unsigned int iPlayerId)
-    : m_game(ioGame), m_newPlayerId(iPlayerId) 
+    : m_game(ioGame), m_newPlayerId(iPlayerId)
 {
 }
 

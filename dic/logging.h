@@ -23,33 +23,35 @@
 
 #include <config.h>
 
-#ifdef USE_LOGGING
-#   include <log4cxx/logger.h>
-
-#   define DEFINE_LOGGER() static log4cxx::LoggerPtr logger
-#   define INIT_LOGGER(prefix, className) log4cxx::LoggerPtr className::logger(log4cxx::Logger::getLogger(#prefix "." #className))
-
-#   define LOG_TRACE(a) LOG4CXX_TRACE(logger, a)
-#   define LOG_DEBUG(a) LOG4CXX_DEBUG(logger, a)
-#   define LOG_INFO(a) LOG4CXX_INFO(logger, a)
-#   define LOG_WARN(a) LOG4CXX_WARN(logger, a)
-#   define LOG_ERROR(a) LOG4CXX_ERROR(logger, a)
-#   define LOG_FATAL(a) LOG4CXX_FATAL(logger, a)
-#   define LOG_ROOT_ERROR(a) LOG4CXX_ERROR(log4cxx::Logger::getRootLogger(), a)
-#   define LOG_ROOT_FATAL(a) LOG4CXX_FATAL(log4cxx::Logger::getRootLogger(), a)
-#else
-#   define DEFINE_LOGGER()
-#   define INIT_LOGGER(prefix, name)
-
-#   define LOG_TRACE(a)
-#   define LOG_DEBUG(a)
-#   define LOG_INFO(a)
-#   define LOG_WARN(a)
-#   define LOG_ERROR(a)
-#   define LOG_FATAL(a)
-#   define LOG_ROOT_ERROR(a)
-#   define LOG_ROOT_FATAL(a)
-#endif // USE_LOGGING
-
+#ifndef SPDLOG_ACTIVE_LEVEL
+#define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_TRACE
 #endif
 
+#include <spdlog/spdlog.h>
+
+// Define the static logger pointer inside the class header
+#define DEFINE_LOGGER() static std::shared_ptr<spdlog::logger> logger
+
+// Initialize the logger in the .cpp file.
+// Uses the combined "prefix.className" as the logger name.
+#define INIT_LOGGER(prefix, className) \
+    std::shared_ptr<spdlog::logger> className::logger = []() { \
+        auto l = spdlog::get(#prefix "." #className); \
+        return l ? l : spdlog::default_logger(); \
+    }()
+
+// Instance-specific logging macros supporting modern formatting
+#define LOG_TRACE(...) SPDLOG_LOGGER_TRACE(logger, __VA_ARGS__)
+#define LOG_DEBUG(...) SPDLOG_LOGGER_DEBUG(logger, __VA_ARGS__)
+#define LOG_INFO(...)  SPDLOG_LOGGER_INFO(logger, __VA_ARGS__)
+#define LOG_WARN(...)  SPDLOG_LOGGER_WARN(logger, __VA_ARGS__)
+#define LOG_ERROR(...) SPDLOG_LOGGER_ERROR(logger, __VA_ARGS__)
+#define LOG_FATAL(...) SPDLOG_LOGGER_CRITICAL(logger, __VA_ARGS__)
+
+// Root logging macros (maps to spdlog's default global logger)
+#define LOG_ROOT_ERROR(...) SPDLOG_ERROR(__VA_ARGS__)
+#define LOG_ROOT_FATAL(...) SPDLOG_CRITICAL(__VA_ARGS__)
+
+void initialize_logging();
+
+#endif

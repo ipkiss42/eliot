@@ -287,7 +287,7 @@ void ArbitrationWidget::updateResultsModel()
     for (int i = 0; i < m_addedMoves.size(); ++i)
     {
         const Move &move = m_addedMoves.at(i);
-        LOG_DEBUG("Adding custom move: " << lfw(move.toString()));
+        LOG_DEBUG("Adding custom move: {}", lfw(move.toString()));
         addSingleMove(move, TYPE_ADDED, i, bestScore);
     }
 }

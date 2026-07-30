@@ -20,10 +20,10 @@
 noinst_LIBRARIES = libdic.a
 
 localedir = $(datadir)/locale
-AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\" -I$(top_srcdir) $(INCICONV) @LOG4CXX_CFLAGS@
+AM_CPPFLAGS = -DLOCALEDIR=\"$(localedir)\" -I$(top_srcdir) $(INCICONV) @SPDLOG_CFLAGS@
 
 libdic_a_SOURCES = \
-	logging.h \
+	logging.h logging.cpp \
 	base_exception.cpp base_exception.h \
 	dic_exception.cpp dic_exception.h \
 	header.cpp header.h \
@@ -51,20 +51,14 @@ bin_PROGRAMS = \
 
 compdic_SOURCES=compdicmain.cpp
 compdic_CPPFLAGS=$(AM_CPPFLAGS) @BOOST_CPPFLAGS@
-compdic_LDADD=libdic.a @LIBINTL@ @LIBICONV@
+compdic_LDADD=libdic.a @LIBINTL@ @LIBICONV@ @SPDLOG_LIBS@
 
 listdic_SOURCES=listdicmain.cpp
-listdic_LDADD=libdic.a @LIBINTL@ @LIBICONV@
+listdic_LDADD=libdic.a @LIBINTL@ @LIBICONV@ @SPDLOG_LIBS@
 
 #regexp_CFLAGS=-DDEBUG_RE
 regexp_SOURCES=regexpmain.cpp
-regexp_LDADD=libdic.a @LIBINTL@ @LIBICONV@
-
-if WITH_LOGGING
-compdic_LDADD += @LOG4CXX_LIBS@
-listdic_LDADD += @LOG4CXX_LIBS@
-regexp_LDADD += @LOG4CXX_LIBS@
-endif
+regexp_LDADD=libdic.a @LIBINTL@ @LIBICONV@ @SPDLOG_LIBS@
 
 endif
 

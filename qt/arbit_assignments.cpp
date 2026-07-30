@@ -253,7 +253,7 @@ void ArbitAssignments::updatePlayersModel()
         // Restore the selection
         if (playersIdSet.contains(player.getId()))
         {
-            LOG_DEBUG("selecting player " << player.getId());
+            LOG_DEBUG("selecting player {}", player.getId());
             QModelIndex proxyIndex = m_proxyPlayersModel->mapFromSource(m_playersModel->index(rowNum, 0));
             treeViewPlayers->selectionModel()->select(proxyIndex, QItemSelectionModel::Select | QItemSelectionModel::Rows);
         }

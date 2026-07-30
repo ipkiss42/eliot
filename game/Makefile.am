@@ -19,7 +19,7 @@
 
 noinst_LIBRARIES = libgame.a
 
-AM_CPPFLAGS = -I$(top_srcdir)/dic -I../intl -I$(top_srcdir)/intl @LIBCONFIG_CFLAGS@ @PUGIXML_CFLAGS@ @LOG4CXX_CFLAGS@
+AM_CPPFLAGS = -I$(top_srcdir)/dic -I../intl -I$(top_srcdir)/intl @LIBCONFIG_CFLAGS@ @PUGIXML_CFLAGS@ @SPDLOG_CFLAGS@
 
 libgame_a_SOURCES= \
     game_exception.cpp game_exception.h \

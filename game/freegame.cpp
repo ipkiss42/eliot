@@ -49,7 +49,7 @@ INIT_LOGGER(game, FreeGame);
 
 
 FreeGame::FreeGame(const GameParams &iParams, const Game *iMasterGame)
-    : Game(iParams, iMasterGame) 
+    : Game(iParams, iMasterGame)
 {
 }
 
@@ -99,7 +99,7 @@ void FreeGame::playAI(unsigned int p)
 
 void FreeGame::recordPlayerMove(const Move &iMove, Player &ioPlayer)
 {
-    LOG_INFO("Player " << ioPlayer.getId() << " plays: " << lfw(iMove.toString()));
+    LOG_INFO("Player {} plays: {}", ioPlayer.getId(), lfw(iMove.toString()));
     Command *pCmd = new PlayerMoveCmd(ioPlayer, iMove);
     accessNavigation().addAndExecute(pCmd);
 }

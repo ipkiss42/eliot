@@ -106,7 +106,7 @@ MainWindow::MainWindow(QWidget *iParent)
     srand(val);
 
     // Make it easier to reproduce bugs
-    LOG_DEBUG("Rand seed: " << val);
+    LOG_DEBUG("Rand seed: {}", val);
 
     QSettings qs;
     int timerTotal = qs.value(PrefsDialog::kINTF_TIMER_TOTAL_DURATION, 180).toInt();
@@ -197,7 +197,7 @@ MainWindow::MainWindow(QWidget *iParent)
     QString dicPath = qs.value(PrefsDialog::kINTF_DIC_PATH, "").toString();
     if (dicPath != "")
     {
-        LOG_INFO("Using dictionary " << lfq(dicPath));
+        LOG_INFO("Using dictionary {}", lfq(dicPath));
         try
         {
             m_dic = new Dictionary(lfq(dicPath));
@@ -288,7 +288,7 @@ void MainWindow::refresh()
         }
         catch (const std::exception &e)
         {
-            LOG_ERROR("Error during auto-save: " << e.what());
+            LOG_ERROR("Error during auto-save: {}", e.what());
             displayErrorMsg(_q("Error during auto-save of the game: %1").arg(e.what()));
         }
 
@@ -550,7 +550,7 @@ void MainWindow::updateStatusBar(const Dictionary *iDic)
 
 void MainWindow::displayErrorMsg(QString iMsg, QString iContext)
 {
-    LOG_ERROR("Displayed error: " << lfq(iMsg));
+    LOG_ERROR("Displayed error: {}", lfq(iMsg));
     if (iContext == "")
         iContext = _q("Eliot - Error");
 
@@ -560,7 +560,7 @@ void MainWindow::displayErrorMsg(QString iMsg, QString iContext)
 
 void MainWindow::displayInfoMsg(QString iMsg)
 {
-    LOG_INFO("Displayed message: " << lfq(iMsg));
+    LOG_INFO("Displayed message: {}", lfq(iMsg));
     statusBar()->showMessage(iMsg, 2000);
 }
 
@@ -582,7 +582,7 @@ void MainWindow::showDefinition(QString iWord)
     bool res = QDesktopServices::openUrl(QUrl(url));
     if (!res)
     {
-        LOG_ERROR("Could not open URL: " << lfq(url));
+        LOG_ERROR("Could not open URL: {}", lfq(url));
     }
 }
 
@@ -681,7 +681,7 @@ void MainWindow::changeDictionary(QString iFileName)
             }
         }
 
-        LOG_INFO("Loading new dictionary file: " << lfq(iFileName));
+        LOG_INFO("Loading new dictionary file: {}", lfq(iFileName));
 
         destroyCurrentGame();
 

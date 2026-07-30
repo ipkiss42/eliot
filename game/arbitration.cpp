@@ -79,7 +79,7 @@ void Arbitration::search(LimitResults &oResults)
     int limit = Settings::Instance().getInt("arbitration.search-limit");
     oResults.setLimit(limit);
     oResults.search(getDic(), getBoard(), rack, getHistory().beforeFirstRound());
-    LOG_DEBUG("Found " << oResults.size() << " results");
+    LOG_DEBUG("Found {} results", oResults.size());
 }
 
 
@@ -102,7 +102,7 @@ void Arbitration::setSolo(unsigned iPlayerId, int iPoints)
         // Retrieve the default value of the solo
         iPoints = Settings::Instance().getInt("arbitration.solo-value");
     }
-    LOG_INFO("Giving a solo of " << iPoints << " to player " << iPlayerId);
+    LOG_INFO("Giving a solo of {} to player {}", iPoints, iPlayerId);
 
     // If an existing solo exists, get rid of it
     const PlayerEventCmd *cmd = getPlayerEvent(iPlayerId, PlayerEventCmd::SOLO);
@@ -177,7 +177,7 @@ void Arbitration::addPenalty(unsigned iPlayerId, int iPoints)
         // By convention, use negative values to indicate a penalty
         iPoints = -iPoints;
     }
-    LOG_INFO("Giving a penalty of " << iPoints << " to player " << iPlayerId);
+    LOG_INFO("Giving a penalty of {} to player {}", iPoints, iPlayerId);
 
     // If an existing penalty exists, merge it with the new one
     const PlayerEventCmd *cmd = getPlayerEvent(iPlayerId, PlayerEventCmd::PENALTY);

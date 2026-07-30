@@ -30,7 +30,7 @@ INIT_LOGGER(game, PlayedRack);
 
 
 PlayedRack::PlayedRack()
-     
+
 {
 }
 

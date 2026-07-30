@@ -211,7 +211,7 @@ struct MatchingPlayer
 
 void Duplicate::recordPlayerMove(Player &ioPlayer, const Move &iMove)
 {
-    LOG_INFO("Player " << ioPlayer.getId() << " plays: " << lfw(iMove.toString()));
+    LOG_INFO("Player {} plays: ", ioPlayer.getId(), lfw(iMove.toString()));
 
     // Search a PlayerMoveCmd for the given player
     MatchingPlayer predicate(ioPlayer.getId());
@@ -225,7 +225,7 @@ void Duplicate::recordPlayerMove(Player &ioPlayer, const Move &iMove)
     else
     {
         // Replace the player move
-        LOG_DEBUG("Replacing move for player " << ioPlayer.getId());
+        LOG_DEBUG("Replacing move for player {}", ioPlayer.getId());
         if (!isArbitrationGame() && !getNavigation().isLastTurn())
             throw GameException("Cannot add a command to an old turn");
         Command *pCmd = new PlayerMoveCmd(ioPlayer, iMove, isArbitrationGame());
@@ -451,7 +451,7 @@ void Duplicate::setSoloAuto(unsigned int minNbPlayers, int iSoloValue)
         if (!otherWithSameScore)
         {
             // Give the bonus to the player of the best move
-            LOG_INFO("Giving a solo of " << iSoloValue << " to player " << bestPlayer->getId());
+            LOG_INFO("Giving a solo of {} to player {}", iSoloValue, bestPlayer->getId());
             Command *pCmd = new PlayerEventCmd(*bestPlayer, PlayerEventCmd::SOLO, iSoloValue);
             accessNavigation().insertCommand(pCmd);
         }

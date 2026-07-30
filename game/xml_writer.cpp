@@ -276,12 +276,12 @@ void XmlWriter::write(const Game& iGame, const std::string& iFileName)
                 }
                 else
                 {
-                    LOG_ERROR("Unknown event type: " << eventCmd->getEventType());
+                    LOG_ERROR("Unknown event type: {}", static_cast<int>(eventCmd->getEventType()));
                 }
             }
             else
             {
-                LOG_ERROR("Unsupported command: " << lfw(cmd->toString()));
+                LOG_ERROR("Unsupported command: {}", lfw(cmd->toString()));
                 turnNode.append_child(pugi::node_comment).text().set(
                     FMT1("FIXME: Unsupported command: %1%", lfw(cmd->toString())));
                 // XXX

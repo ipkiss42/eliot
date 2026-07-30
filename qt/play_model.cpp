@@ -54,7 +54,7 @@ void PlayModel::setMove(const Move &iMove)
     ASSERT(iMove.isValid() || iMove.isInvalid() || iMove.isNull(),
            "Unexpected move type");
 
-    LOG_DEBUG("Setting PlayModel move to " << lfw(iMove.toString()));
+    LOG_DEBUG("Setting PlayModel move to {}", lfw(iMove.toString()));
 
     // Avoid useless work
     if (iMove == m_currMove)

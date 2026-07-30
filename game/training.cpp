@@ -111,7 +111,7 @@ int Training::play(const wstring &iCoord, const wstring &iWord)
 
 void Training::recordPlayerMove(const Move &iMove, Player &ioPlayer)
 {
-    LOG_INFO("Player " << ioPlayer.getId() << " plays: " << lfw(iMove.toString()));
+    LOG_INFO("Player {} plays: {}", ioPlayer.getId(), lfw(iMove.toString()));
     // Update the rack and the score of the current player
     // PlayerMoveCmd::execute() must be called before Game::helperPlayMove()
     // (called in this class in endTurn()).

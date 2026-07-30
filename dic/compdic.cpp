@@ -70,7 +70,7 @@ INIT_LOGGER(dic, CompDic);
 
 
 CompDic::CompDic()
-     
+
 {
     m_headerInfo.root       = 0;
     m_headerInfo.nwords     = 0;
@@ -201,7 +201,7 @@ void CompDic::writeNode(DicEdge *ioEdges, unsigned int num, ostream &outFile)
         edgesAsUint[i] = htonl(edgesAsUint[i]);
     }
 
-    LOG_TRACE(fmt("writing %1% edges") % num);
+    LOG_TRACE("writing {} edges", num);
     outFile.write((char*)edgesAsUint, num * sizeof(DicEdge));
 }
 

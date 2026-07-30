@@ -48,7 +48,7 @@ INIT_LOGGER(qt, RackWidget);
 
 RackWidget::RackWidget(QWidget *parent)
     : QFrame(parent)
-      
+
 {
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     setFrameStyle(QFrame::Box | QFrame::Raised);
@@ -189,7 +189,7 @@ void RackWidget::tilePressed(int row, int col, QMouseEvent *event)
     if (!canStartDragDrop())
         return;
 
-    LOG_DEBUG("Starting drag for tile " << col);
+    LOG_DEBUG("Starting drag for tile {}", col);
 
     TileWidget *tileWidget = m_tilesVect[col];
 
@@ -262,7 +262,7 @@ void RackWidget::dropEvent(QDropEvent *event)
     if (event->mimeData()->hasFormat(MIME_TYPE))
     {
         int closestCol = findClosestTile(event->pos());
-        LOG_DEBUG("Dropping tile " << m_dragOrigin << " closest to tile " << closestCol);
+        LOG_DEBUG("Dropping tile {} closest to tile {}", m_dragOrigin, closestCol);
 
         moveTile(m_dragOrigin, closestCol);
 
