@@ -25,7 +25,7 @@
 #include <QString>
 #include <QtCore/qcontainerfwd.h>
 
-#include "ui/prefs_dialog.ui.h"
+#include "ui_prefs_dialog.h"
 #include "logging.h"
 
 

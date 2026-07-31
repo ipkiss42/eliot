@@ -24,7 +24,7 @@
 #include <QWidget>
 #include <QTabWidget>
 
-#include "ui/player_widget.ui.h"
+#include "ui_player_widget.h"
 #include "logging.h"
 
 

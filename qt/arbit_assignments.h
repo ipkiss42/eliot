@@ -23,7 +23,7 @@
 
 #include <QWidget>
 
-#include <ui/arbit_assignments.ui.h>
+#include "ui_arbit_assignments.h"
 #include "move.h"
 #include "logging.h"
 

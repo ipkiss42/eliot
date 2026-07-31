@@ -24,7 +24,7 @@
 #include <string>
 #include <QMainWindow>
 
-#include <ui/main_window.ui.h>
+#include "ui_main_window.h"
 #include "logging.h"
 #include "play_model.h"
 

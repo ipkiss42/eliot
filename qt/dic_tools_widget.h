@@ -25,7 +25,7 @@
 #include <QWidget>
 #include <QPalette>
 
-#include "ui/dic_tools_widget.ui.h"
+#include "ui_dic_tools_widget.h"
 #include "logging.h"
 
 class QStandardItemModel;

@@ -23,7 +23,7 @@
 
 #include <QDialog>
 
-#include "ui/tables_dialog.ui.h"
+#include "ui_tables_dialog.h"
 #include "logging.h"
 
 

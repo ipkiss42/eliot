@@ -24,7 +24,7 @@
 #include <QDialog>
 #include <QPalette>
 
-#include "ui/new_game.ui.h"
+#include "ui_new_game.h"
 #include "logging.h"
 
 

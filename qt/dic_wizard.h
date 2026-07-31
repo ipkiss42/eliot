@@ -25,9 +25,9 @@
 #include <QWizardPage>
 #include <QStyledItemDelegate>
 
-#include "ui/dic_wizard_info_page.ui.h"
-#include "ui/dic_wizard_letters_def_page.ui.h"
-#include "ui/dic_wizard_conclusion_page.ui.h"
+#include "ui_dic_wizard_info_page.h"
+#include "ui_dic_wizard_letters_def_page.h"
+#include "ui_dic_wizard_conclusion_page.h"
 #include "logging.h"
 
 class QStandardItemModel;

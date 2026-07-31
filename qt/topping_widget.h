@@ -22,7 +22,7 @@
 #define TOPPING_WIDGET_H_
 
 #include <QWidget>
-#include "ui/topping_widget.ui.h"
+#include "ui_topping_widget.h"
 #include "logging.h"
 
 

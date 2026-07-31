@@ -23,7 +23,7 @@
 
 #include <QWidget>
 
-#include <ui/arbitration_widget.ui.h>
+#include "ui_arbitration_widget.h"
 #include "results.h"
 #include "move.h"
 #include "logging.h"

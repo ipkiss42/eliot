@@ -22,7 +22,7 @@
 #define TRAINING_WIDGET_H_
 
 #include <QWidget>
-#include "ui/training_widget.ui.h"
+#include "ui_training_widget.h"
 #include "logging.h"
 
 

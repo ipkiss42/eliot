@@ -24,7 +24,7 @@
 #include <vector>
 #include <QWidget>
 
-#include <ui/bag_widget.ui.h>
+#include "ui_bag_widget.h"
 #include "logging.h"
 
 using std::vector;

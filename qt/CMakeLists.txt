@@ -76,60 +76,6 @@ if(BUILD_QT)
     )
 
     # --------------------------------------------------------------
-    # Native Qt build automations
-    # --------------------------------------------------------------
-    set(CMAKE_AUTOMOC ON)
-    set(CMAKE_AUTORCC ON)
-
-    # Disable the automated tracker since we are writing our own explicit rules
-    # TODO: get rid of this (and the foreach()) by adapting all includes to the
-    # default generated name (and making sure that gettext can still detect the
-    # generated files)
-    set(CMAKE_AUTOUIC OFF)
-    # Force the UI compiler to wrap layout strings in Q_("Context", "Text")
-#     set(CMAKE_AUTOUIC_OPTIONS "-tr" "Q_")
-
-
-    set(GENERATED_UI_HEADERS "")
-
-    if(ENABLE_QT5)
-        set(UIC_EXECUTABLE Qt5::uic)
-    else()
-        set(UIC_EXECUTABLE Qt6::uic)
-    endif()
-
-    # Generate a hardcoded header block at configure time
-    file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/ui_prefix.txt" "// Generated natively by Eliot\n#include \"qtcommon.h\"\n")
-
-    foreach(ui_file ${UI_FILES})
-        get_filename_component(ui_name ${ui_file} NAME_WE)
-
-        # Match what the source code expects: <ui/filename.ui.h>
-        set(output_header "${CMAKE_CURRENT_BINARY_DIR}/ui/${ui_name}.ui.h")
-
-        add_custom_command(
-            OUTPUT ${output_header}
-            COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_BINARY_DIR}/ui"
-
-            # Run uic to compile the layout into a temporary raw scratch file
-            COMMAND ${UIC_EXECUTABLE} -tr "Q_" "${CMAKE_CURRENT_SOURCE_DIR}/${ui_file}" -o "${output_header}.tmp"
-
-            # Initialize the real target header file with the custom prefix
-            COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_BINARY_DIR}/ui_prefix.txt" "${output_header}"
-
-            # Append the raw uic code
-            COMMAND ${CMAKE_COMMAND} -E cat "${output_header}.tmp" >> "${output_header}"
-
-            # Delete the temporary file
-            COMMAND ${CMAKE_COMMAND} -E remove "${output_header}.tmp"
-
-            DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/${ui_file}"
-            COMMENT "Generating localized UI layout header: ui/${ui_name}.ui.h"
-        )
-        list(APPEND GENERATED_UI_HEADERS ${output_header})
-    endforeach()
-
-    # --------------------------------------------------------------
     # Windows application icon integration
     # --------------------------------------------------------------
     if(WIN32)
@@ -139,11 +85,30 @@ if(BUILD_QT)
     endif()
 
     # --------------------------------------------------------------
-    # Target setup & compile options
+    # Native Qt build automations
     # --------------------------------------------------------------
+    set(CMAKE_AUTOMOC ON)
+    set(CMAKE_AUTORCC ON)
+    set(CMAKE_AUTOUIC ON)
+
+    # Direct the automated compiler engine to wrap layout strings in Q_()
+    set(CMAKE_AUTOUIC_OPTIONS "-tr" "Q_")
+
+    set_source_files_properties(${UI_FILES} PROPERTIES
+        AUTOUIC_OPTIONS "-tr;Q_"
+    )
+
+    # Define the binary target.
     # The WIN32 property tells CMake to build with -mwindows instead of -mconsole on Windows,
     # which avoids spawning a console window. It is ignored on other platforms.
-    add_executable(eliot WIN32 ${ELIOT_QT_SOURCES} ${GENERATED_UI_HEADERS} eliot.qrc)
+    add_executable(eliot WIN32 ${ELIOT_QT_SOURCES} ${UI_FILES} eliot.qrc)
+
+    # Look for .ui files in the "ui" subdirectory
+    set_target_properties(eliot PROPERTIES AUTOUIC_SEARCH_PATHS "${CMAKE_CURRENT_SOURCE_DIR}/ui")
+
+    # Automatically force-include qtcommon.h at the top of every file in this target.
+    # This allows resolving Q_ to our gettext-based _q() custom function.
+    target_precompile_headers(eliot PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/qtcommon.h")
 
     target_include_directories(eliot PRIVATE
         ${CMAKE_SOURCE_DIR}
