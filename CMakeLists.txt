@@ -15,8 +15,7 @@ include(GNUInstallDirs)
 option(ENABLE_DICTOOLS "build independent dictionary tools" ON)
 option(ENABLE_TEXT "text interface support" ON)
 set(ENABLE_NCURSES "AUTO" CACHE STRING "ncurses interface support (ON, OFF, or AUTO)")
-option(ENABLE_QT4 "Qt4 interface support" OFF)
-option(ENABLE_QT "Qt5 interface support" ON)
+option(ENABLE_QT5 "Qt5 interface support" ON)
 
 # Configure default build behaviors for Debug/Profile
 # Note: In CMake, use CMAKE_BUILD_TYPE=Debug instead of manual -g flags
@@ -131,18 +130,11 @@ endif()
 
 # Qt4 vs Qt5 logic
 set(BUILD_QT FALSE)
-if(ENABLE_QT4 AND ENABLE_QT)
-    message(FATAL_ERROR "Please deactivate Qt4 explicitly if you want to build with Qt5")
-endif()
+# if(ENABLE_QT4 AND ENABLE_QT5)
+#     message(FATAL_ERROR "Please deactivate Qt4 explicitly if you want to build with Qt5")
+# endif()
 
-if(ENABLE_QT4)
-    pkg_check_modules(QT REQUIRED QtCore QtGui QtNetwork>=4.2.0)
-    set(BUILD_QT TRUE)
-    pkg_get_variable(QT_PREFIX_DIR QtCore prefix)
-    set(QT4LOCALEDIR "${QT_PREFIX_DIR}/share/qt4/translations/")
-endif()
-
-if(ENABLE_QT)
+if(ENABLE_QT5)
     # Using modern native CMake targets instead of pkg-config for Qt5
     find_package(Qt5 REQUIRED COMPONENTS Core Gui Widgets Network PrintSupport)
     set(BUILD_QT TRUE)

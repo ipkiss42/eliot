@@ -4,7 +4,6 @@ GETTEXT_VERSION := 1.0
 ICONV_VERSION := 1.19
 LIBCONFIG_VERSION := 1.8.2
 PUGIXML_VERSION := 1.16
-QT_VERSION := 4.5.3
 QT2_VERSION := 5.6.3
 SPDLOG_VERSION := 1.17.0
 XERCES_VERSION := 3.2.2
@@ -172,23 +171,6 @@ $(PUGIXML_DIR_FLAG): $(PUGIXML_ARCHIVE)
 
 
 ### Qt ###
-
-# FIXME: No automated way to build it at the moment :-(
-QT_DIR = $(BUILD_DIR)/qt4-$(QT_VERSION)-win32-bin
-QT_DIR_FLAG = $(QT_DIR)/.flag
-QT_ARCHIVE = $(ARCHIVE_DIR)/qt4-$(QT_VERSION)-win32-bin.tar.bz2
-
-$(QT_ARCHIVE): $(PREFIX_FLAG)
-	$(WGET) http://dl.sv.nongnu.org/releases-noredirect/eliot/other/$(shell basename $@)
-
-$(QT_DIR_FLAG): $(QT_ARCHIVE)
-	$(TAR) -xjf $<
-	touch $@
-
-.qt: $(QT_DIR_FLAG)
-	#(cd $<; mkdir -p $(PREFIX)/bin; mkdir -p $(PREFIX)/include; mkdir -p $(PREFIX)/lib/pkgconfig; rm -f $(PREFIX)/lib/pkgconfig/Qt*; sed 's,@@PREFIX@@,$(PREFIX),' lib/pkgconfig/QtCore.pc.in > $(PREFIX)/lib/pkgconfig/QtCore.pc; sed 's,@@PREFIX@@,$(PREFIX),' lib/pkgconfig/QtGui.pc.in > $(PREFIX)/lib/pkgconfig/QtGui.pc; cp -r include/* $(PREFIX)/include; cp lib/*a $(PREFIX)/lib; mkdir -p $(PREFIX)/share/qt4/translations; cp -r share/translations/* $(PREFIX)/share/qt4/translations)
-	(cd $(QT_DIR); cp -r bin include lib share $(PREFIX); sed 's,@@PREFIX@@,$(PREFIX),' $(PREFIX)/lib/pkgconfig/QtCore.pc.in > $(PREFIX)/lib/pkgconfig/QtCore.pc; sed 's,@@PREFIX@@,$(PREFIX),' lib/pkgconfig/QtGui.pc.in > $(PREFIX)/lib/pkgconfig/QtGui.pc; rm $(PREFIX)/lib/pkgconfig/*.in)
-	touch $@
 
 QT2_DIR = $(BUILD_DIR)/qtbase-opensource-src-$(QT2_VERSION)
 QT2_DIR_FLAG = $(QT2_DIR)/.flag

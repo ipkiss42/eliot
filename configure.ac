@@ -143,28 +143,11 @@ else
 fi
 AM_CONDITIONAL([BUILD_NCURSES], [test "${want_ncurses}" = "1"])
 
-dnl Check for Qt4
-AC_ARG_ENABLE([qt],AS_HELP_STRING([--enable-qt4],
-              [Qt4 interface support (default disabled)]))
-qt4_ok=0
-AS_IF([test "${enable_qt4}" = "yes"],
-      [PKG_CHECK_MODULES(QT, [QtCore QtGui QtNetwork >= 4.2.0],
-                         [qt4_ok=1
-                          dnl Check for the qt4 suffix first (useful on Archlinux, which uses qt5 by default)
-                          AC_PATH_PROGS(MOC, [moc-qt4 moc], moc,`$PKG_CONFIG --variable=exec_prefix QtCore`/bin)
-                          AC_PATH_PROGS(UIC, [uic-qt4 uic], uic,`$PKG_CONFIG --variable=exec_prefix QtCore`/bin)
-                          AC_PATH_PROGS(RCC, [rcc-qt4 rcc], rcc,`$PKG_CONFIG --variable=exec_prefix QtCore`/bin)
-                          QT4LOCALEDIR="$($PKG_CONFIG --variable=prefix QtCore)/share/qt4/translations/"
-                          AC_SUBST(QT4LOCALEDIR)
-                         ],
-                         [AC_MSG_ERROR([Could not find Qt on your system (using pkg-config)])]
-                        )
-      ])
 dnl Check for Qt
-AC_ARG_ENABLE([qt5],AS_HELP_STRING([--enable-qt],
+AC_ARG_ENABLE([qt5],AS_HELP_STRING([--enable-qt5],
               [Qt5 interface support (default enabled)]))
 qt5_ok=0
-AS_IF([test "${enable_qt}" != "no"],
+AS_IF([test "${enable_qt5}" != "no"],
       [PKG_CHECK_MODULES([QT], [Qt5PrintSupport Qt5Widgets Qt5Gui Qt5Core Qt5Network >= 5.1.0],
                          [qt5_ok=1
                           AC_PATH_PROGS(MOC, moc, moc,`$PKG_CONFIG --variable=exec_prefix Qt5Core`/bin)
@@ -179,10 +162,10 @@ AS_IF([test "${enable_qt}" != "no"],
                         )
       ])
 dnl We build either with Qt4 or Qt5, but not both
-if test "${qt5_ok}" = "1" && "${qt4_ok}" = "1"; then
-    AC_MSG_ERROR([Please deactivate Qt4 explicitly if you want to build with Qt5])
-fi
-AM_CONDITIONAL([BUILD_QT], [test "${qt4_ok}" = "1" -o "${qt5_ok}" = "1" ])
+# if test "${qt5_ok}" = "1" && "${qt4_ok}" = "1"; then
+#     AC_MSG_ERROR([Please deactivate Qt4 explicitly if you want to build with Qt5])
+# fi
+AM_CONDITIONAL([BUILD_QT], [test "${qt5_ok}" = "1" ])
 
 dnl Enable/disable text version
 AC_ARG_ENABLE([text],AS_HELP_STRING([--enable-text],[text interface support (default enabled)]))
