@@ -1,7 +1,7 @@
 BOOST_VERSION := 1.91.0
 EXPAT_VERSION := 2.2.9
-GETTEXT_VERSION := 0.20.1
-ICONV_VERSION := 1.16
+GETTEXT_VERSION := 1.0
+ICONV_VERSION := 1.19
 LIBCONFIG_VERSION := 1.8.2
 PUGIXML_VERSION := 1.16
 QT_VERSION := 4.5.3
@@ -22,11 +22,12 @@ WGET = wget -c -P $(ARCHIVE_DIR)
 TAR = tar -C $(BUILD_DIR)
 
 # XXX: Hardcoded for mingw on linux, at the moment
-CC = $(HOST)-gcc
-CXX = $(HOST)-g++
+CC = $(HOST)-clang
+CXX = $(HOST)-clang++
+# CXXFLAGS = -std=gnu++17 -include $(BASE)/mingw-fix.h
 CXXFLAGS = -std=gnu++17
 CPPFLAGS += -I$(PREFIX)/include
-CONFIGURE = CC="$(CC)" CXX="$(CXX)" CPPFLAGS="$(CPPFLAGS)" ./configure --host=$(HOST) --build=$(BUILD) --prefix=$(PREFIX) --enable-static --disable-shared
+CONFIGURE = CC="$(CC)" CXX="$(CXX)" CPPFLAGS="$(CPPFLAGS)" CXXFLAGS="$(CXXFLAGS)" ./configure --host=$(HOST) --build=$(BUILD) --prefix=$(PREFIX) --enable-static --disable-shared
 CMAKE = cmake -B . -DCMAKE_TOOLCHAIN_FILE=$(BASE)/mingw-w64-x86_64.cmake -DCMAKE_INSTALL_PREFIX="$(PREFIX)"
 
 # Dependencies (incomplete list):
@@ -74,11 +75,13 @@ $(BOOST_DIR_FLAG): $(BOOST_ARCHIVE)
 	$(TAR) -xjf $<
 	touch $@
 
-# We don't build any library, because we don't need them (and it is really
-# hard to cross-compile with their crappy build system)
+# We don't build any library, because we don't need them (and it would take
+# a lot of time)
 .boost: $(BOOST_DIR_FLAG)
-	#(cd $(BOOST_DIR) && ./configure --prefix=$(PREFIX) && ./tools/jam/src/bin.linuxx86/bjam --toolset=gcc --prefix=$(PREFIX) --without-date_time --without-filesystem --without-graph --without-iostreams --without-program_options --without-python --without-regex --without-serialization --without-signals --without-test --without-thread --without-wave install)
-	cp -r $(BOOST_DIR)/boost $(PREFIX)/include
+	(cd $(BOOST_DIR) \
+		&& ./bootstrap.sh \
+		&& ./b2 install --prefix=$(PREFIX) --with-headers)
+# 	cp -r $(BOOST_DIR)/boost $(PREFIX)/include
 	touch $@
 
 
@@ -97,7 +100,7 @@ $(GETTEXT_DIR_FLAG): $(GETTEXT_ARCHIVE)
 
 .gettext: $(GETTEXT_DIR_FLAG)
 	(cd $(GETTEXT_DIR) \
-		&& $(CONFIGURE) --disable-java --disable-native-java --disable-relocatable --without-emacs --without-included-libxml \
+		&& $(CONFIGURE) --disable-java --disable-java --disable-modula2 --disable-curses --disable-d --disable-openmp --disable-acl --disable-relocatable --without-emacs --without-included-libxml \
 		&& make install)
 	touch $@
 
