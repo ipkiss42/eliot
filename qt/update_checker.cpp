@@ -115,9 +115,9 @@ UpdateChecker::VersionNumber UpdateChecker::parseVersionNumber(QString iVersion)
     // A version number has the following form: 1.12a-git (where 'a' is an
     // optional letter, and -git is optional as well)
     // Regexp to the rescue!
-    QRegExp re("^(\\d+)\\.(\\d+)([a-z])?(-git.*)?$");
-    re.setPatternSyntax(QRegExp::RegExp2);
-    if (re.indexIn(iVersion) == -1)
+    QRegularExpression re("^(\\d+)\\.(\\d+)([a-z])?(-git.*)?$");
+    QRegularExpressionMatch match = re.match(iVersion);
+    if (!match.hasMatch())
     {
         LOG_ERROR("Error parsing version number: {}", lfq(iVersion));
         vn.major = -1;
@@ -125,12 +125,12 @@ UpdateChecker::VersionNumber UpdateChecker::parseVersionNumber(QString iVersion)
         vn.letter = 0;
         return vn;
     }
-    vn.major = re.cap(1).toInt();
-    vn.minor = re.cap(2).toInt();
+    vn.major = match.captured(1).toInt();
+    vn.minor = match.captured(2).toInt();
     vn.letter = 0;
-    if (re.pos(3) != -1)
-        vn.letter = re.cap(3)[0].toLatin1();
-    vn.suffix = re.cap(4);
+    if (match.hasCaptured(3))
+        vn.letter = match.captured(3)[0].toLatin1();
+    vn.suffix = match.captured(4);
 
     LOG_DEBUG("Parsed version number: {}.{}{}{} (from '{}')", vn.major, vn.minor,
               (vn.letter ? string(1, vn.letter) : ""), lfq(vn.suffix), lfq(iVersion));

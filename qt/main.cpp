@@ -27,10 +27,6 @@
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
-#include "logging.h"
-#include "base_exception.h"
-#include "stacktrace.h"
-#include "main_window.h"
 #ifdef WIN32
 #   include <windows.h>
 #endif
@@ -42,6 +38,11 @@
 #   include <signal.h>
 #   include <execinfo.h>
 #endif
+
+#include "logging.h"
+#include "base_exception.h"
+#include "stacktrace.h"
+#include "main_window.h"
 
 using namespace std;
 
@@ -128,13 +129,8 @@ int main(int argc, char **argv)
 #ifdef ENABLE_NLS
     // Set the message domain
 #ifdef WIN32
-    // Get the absolute path, as returned by GetFullPathName()
-    char baseDir[MAX_PATH];
-    GetFullPathName(argv[0], MAX_PATH, baseDir, NULL);
-    char *pos = strrchr(baseDir, L'\\');
-    if (pos)
-        *pos = '\0';
-    const string localeDir = baseDir + string("\\locale");
+    QString appDir = QCoreApplication::applicationDirPath();
+    const string localeDir = appDir.toStdString() + "\\locale";
 #elif defined(__APPLE__)
     const char *bundlePath = CFStringGetCStringPtr(CFURLCopyFileSystemPath(
             CFBundleCopyBundleURL(CFBundleGetMainBundle()), kCFURLPOSIXPathStyle), CFStringGetSystemEncoding());
@@ -152,11 +148,8 @@ int main(int argc, char **argv)
     // Translations for Qt's own strings
     QTranslator translator;
     // Set the path for the translation file
-#ifdef WIN32
-    QString path = QString(localeDir.c_str()) + "\\qt4";
-#else
     QString path = QString(QT4LOCALEDIR);
-#endif
+
     QString lang = QLocale::system().name();
     translator.load(path + "/qt_" + lang);
     app.installTranslator(&translator);

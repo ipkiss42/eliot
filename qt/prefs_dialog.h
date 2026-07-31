@@ -23,11 +23,10 @@
 
 #include <QDialog>
 #include <QString>
+#include <QtCore/qcontainerfwd.h>
 
 #include "ui/prefs_dialog.ui.h"
 #include "logging.h"
-
-class QStringList;
 
 
 class PrefsDialog: public QDialog, private Ui::PrefsDialog

@@ -1073,7 +1073,7 @@ void MainWindow::print(QPrinter *printer)
     static const unsigned int nbCols = sizeof(colWidths) / sizeof(int);
     const unsigned int nbRows = history.getSize() + (SHOULD_ALIGN ? 1 : 2);
 
-    double scale = printer->pageRect().width() / double(TOTAL_WIDTH);
+    double scale = printer->pageRect(QPrinter::DevicePixel).width() / double(TOTAL_WIDTH);
     painter.scale(scale, scale);
 
     QPen pen(painter.pen());

@@ -92,7 +92,11 @@ if(BUILD_QT)
 
     set(GENERATED_UI_HEADERS "")
 
-    set(UIC_EXECUTABLE Qt5::uic)
+    if(ENABLE_QT5)
+        set(UIC_EXECUTABLE Qt5::uic)
+    else()
+        set(UIC_EXECUTABLE Qt6::uic)
+    endif()
 
     # Generate a hardcoded header block at configure time
     file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/ui_prefix.txt" "// Generated natively by Eliot\n#include \"qtcommon.h\"\n")
@@ -154,7 +158,11 @@ if(BUILD_QT)
         Iconv::Iconv
     )
 
-    target_link_libraries(eliot PRIVATE Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Network Qt5::PrintSupport)
+    if(ENABLE_QT5)
+        target_link_libraries(eliot PRIVATE Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Network Qt5::PrintSupport)
+    else()
+        target_link_libraries(eliot PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Network Qt6::PrintSupport)
+    endif()
 
     if(HAVE_LIBCONFIG)
         target_link_libraries(eliot PRIVATE ${LIBCONFIG_LIBRARIES})

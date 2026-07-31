@@ -4,13 +4,19 @@ GETTEXT_VERSION := 1.0
 ICONV_VERSION := 1.19
 LIBCONFIG_VERSION := 1.8.2
 PUGIXML_VERSION := 1.16
-QT2_VERSION := 5.6.3
+QT5_VERSION := 5.6.3
+QT6_VERSION := 6.11.1
 SPDLOG_VERSION := 1.17.0
 XERCES_VERSION := 3.2.2
 
 HOST := x86_64-w64-mingw32
 BUILD := i386-linux
 
+# Adjust for your installation
+TOOLCHAIN_PREFIX := /opt/llvm-mingw/llvm-mingw-ucrt/
+# XXX: Hardcoded for mingw on linux, at the moment
+CC = $(HOST)-clang
+CXX = $(HOST)-clang++
 
 BASE = $(shell pwd)
 PREFIX = $(BASE)/inst
@@ -20,9 +26,6 @@ BUILD_DIR = $(BASE)/build
 WGET = wget -c -P $(ARCHIVE_DIR)
 TAR = tar -C $(BUILD_DIR)
 
-# XXX: Hardcoded for mingw on linux, at the moment
-CC = $(HOST)-clang
-CXX = $(HOST)-clang++
 # CXXFLAGS = -std=gnu++17 -include $(BASE)/mingw-fix.h
 CXXFLAGS = -std=gnu++17
 CPPFLAGS += -I$(PREFIX)/include
@@ -30,7 +33,7 @@ CONFIGURE = CC="$(CC)" CXX="$(CXX)" CPPFLAGS="$(CPPFLAGS)" CXXFLAGS="$(CXXFLAGS)
 CMAKE = cmake -B . -DCMAKE_TOOLCHAIN_FILE=$(BASE)/mingw-w64-x86_64.cmake -DCMAKE_INSTALL_PREFIX="$(PREFIX)"
 
 # Dependencies (incomplete list):
-LIBS := iconv gettext boost libconfig pugixml spdlog qt2
+LIBS := iconv gettext boost libconfig pugixml spdlog qt6
 TARGETS = $(LIBS:%=.%)
 
 .PHONY: help all clean clean-% distclean distclean-%
@@ -172,29 +175,65 @@ $(PUGIXML_DIR_FLAG): $(PUGIXML_ARCHIVE)
 
 ### Qt ###
 
-QT2_DIR = $(BUILD_DIR)/qtbase-opensource-src-$(QT2_VERSION)
-QT2_DIR_FLAG = $(QT2_DIR)/.flag
-QT2_ARCHIVE = $(ARCHIVE_DIR)/qtbase-opensource-src-$(QT2_VERSION).tar.xz
+QT5_DIR = $(BUILD_DIR)/qtbase-opensource-src-$(QT5_VERSION)
+QT5_DIR_FLAG = $(QT5_DIR)/.flag
+QT5_ARCHIVE = $(ARCHIVE_DIR)/qtbase-opensource-src-$(QT5_VERSION).tar.xz
 
-$(QT2_ARCHIVE): $(PREFIX_FLAG)
-	$(WGET) https://download.qt.io/official_releases/qt/5.6/$(QT2_VERSION)/submodules/$(shell basename $@)
+$(QT5_ARCHIVE): $(PREFIX_FLAG)
+	$(WGET) https://download.qt.io/official_releases/qt/5.6/$(QT5_VERSION)/submodules/$(shell basename $@)
 
-$(QT2_DIR_FLAG): $(QT2_ARCHIVE)
+$(QT5_DIR_FLAG): $(QT5_ARCHIVE)
 	$(TAR) -xJf $<
 	touch $@
 
-.qt2: $(QT2_DIR_FLAG)
-	(cd $(QT2_DIR) && CPPFLAGS="$(PREFIX)/include" ./configure -xplatform win32-g++ -device-option CROSS_COMPILE=$(HOST)- --prefix=$(PREFIX) -static -opensource -confirm-license -release -no-pkg-config -no-gif -qt-libjpeg -no-openssl -no-opengl -no-dbus -no-qml-debug -no-audio-backend -no-sql-sqlite -no-sql-odbc -no-pch -no-compile-examples -nomake examples)
+.qt5: $(QT5_DIR_FLAG)
+	(cd $(QT5_DIR) && CPPFLAGS="$(PREFIX)/include" ./configure -xplatform win32-g++ -device-option CROSS_COMPILE=$(HOST)- --prefix=$(PREFIX) -static -opensource -confirm-license -release -no-pkg-config -no-gif -qt-libjpeg -no-openssl -no-opengl -no-dbus -no-qml-debug -no-audio-backend -no-sql-sqlite -no-sql-odbc -no-pch -no-compile-examples -nomake examples)
 	# Build
-	(cd $(QT2_DIR) && make)
+	(cd $(QT5_DIR) && make)
 	# Fix .pc files to remove debug version (d)
-	(cd $(QT2_DIR)/lib/pkgconfig && for i in *.pc; do sed -i -e 's/d\.a/.a/g' -e 's/d $$/ /' $$i; done)
+	(cd $(QT5_DIR)/lib/pkgconfig && for i in *.pc; do sed -i -e 's/d\.a/.a/g' -e 's/d $$/ /' $$i; done)
 	# Fix Qt5Core.pc file to include qwindows (QWindowsIntegrationPlugin) and Qt5Platform Support
-	(cd $(QT2_DIR)/lib/pkgconfig; sed -i -e 's/ -lQt5Core/ -lqwindows -lQt5PlatformSupport -lQt5Core/g' Qt5Core.pc)
+	(cd $(QT5_DIR)/lib/pkgconfig; sed -i -e 's/ -lQt5Core/ -lqwindows -lQt5PlatformSupport -lQt5Core/g' Qt5Core.pc)
 	# Install
-	(cd $(QT2_DIR) && make install)
+	(cd $(QT5_DIR) && make install)
 	# Keep only the qwindows plugin
 	mv $(PREFIX)/plugins/platforms/libqwindows.a $(PREFIX)/lib/ && rm -rf $(PREFIX)/plugins
+	touch $@
+
+
+QT6_DIR = $(BUILD_DIR)/qtbase-everywhere-src-$(QT6_VERSION)
+QT6_DIR_FLAG = $(QT6_DIR)/.flag
+QT6_ARCHIVE = $(ARCHIVE_DIR)/qtbase-everywhere-src-$(QT6_VERSION).tar.xz
+
+$(QT6_ARCHIVE): $(PREFIX_FLAG)
+	# FIXME: "6.11" hardcoded
+	$(WGET) https://download.qt.io/archive/qt/6.11/$(QT6_VERSION)/submodules/qtbase-everywhere-src-$(QT6_VERSION).tar.xz
+
+$(QT6_DIR_FLAG): $(QT6_ARCHIVE)
+	$(TAR) -xJf $<
+	touch $@
+
+.qt6: $(QT6_DIR_FLAG)
+	(cd $(QT6_DIR) && mkdir -p build && cd build && \
+		cmake .. \
+		-G Ninja \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=$(PREFIX) \
+		-DCMAKE_TOOLCHAIN_FILE=$(BASE)/llvm-mingw-toolchain.cmake \
+		-DCMAKE_FIND_ROOT_PATH="$(TOOLCHAIN_PREFIX)${HOST}" \
+		-DQT_HOST_PATH=/usr \
+		-DQT_BUILD_SHARED_LIBS=OFF \
+		-DBUILD_SHARED_LIBS=OFF \
+		-DQT_BUILD_EXAMPLES=OFF \
+		-DQT_BUILD_TESTS=OFF \
+		-DFEATURE_testlib=OFF \
+		-DFEATURE_dbus=OFF \
+		-DFEATURE_sql=OFF \
+		-DFEATURE_testlib=OFF \
+		-DFEATURE_xml=OFF \
+		-Wno-author)
+	cmake --build $(QT6_DIR)/build --parallel 4
+	cmake --install $(QT6_DIR)/build
 	touch $@
 
 

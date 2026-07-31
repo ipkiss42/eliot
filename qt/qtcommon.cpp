@@ -158,9 +158,6 @@ void QtCommon::DestroyObject(QWidget *ioObjectToDestroy,
     if (ioObjectToDestroy == nullptr)
         return;
     ioObjectToDestroy->hide();
-    ioObjectToDestroy->disconnect();
-    if (iSource != nullptr)
-        iSource->disconnect(ioObjectToDestroy);
     ioObjectToDestroy->deleteLater();
 }
 

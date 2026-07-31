@@ -241,7 +241,8 @@ void PlayersTableHelper::addPlayer(const PlayerDef &iPlayer,
                                    bool selectAndEdit,
                                    bool renameIfDuplicate)
 {
-    QSet<PlayerDef> tmpSet = getPlayers(false).toSet();
+    auto playersList = getPlayers(false);
+    QSet<PlayerDef> tmpSet(playersList.begin(), playersList.end());
     PlayerDef def = normalize(iPlayer);
     // Generate a unique name if needed
     if (renameIfDuplicate)

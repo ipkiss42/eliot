@@ -1,0 +1,18 @@
+set(CMAKE_SYSTEM_NAME Windows)
+set(CMAKE_SYSTEM_PROCESSOR x86_64)
+
+set(TOOLCHAIN_PREFIX "x86_64-w64-mingw32")
+
+# Define the cross-compilers
+set(CMAKE_C_COMPILER "${TOOLCHAIN_PREFIX}-clang")
+set(CMAKE_CXX_COMPILER "${TOOLCHAIN_PREFIX}-clang++")
+set(CMAKE_RC_COMPILER "${TOOLCHAIN_PREFIX}-windres")
+
+set(PKG_CONFIG_EXECUTABLE "${TOOLCHAIN_PREFIX}-pkg-config" CACHE FILEPATH "pkg-config executable")
+
+# Force find_package to search the target Windows folders, not host Linux folders
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+

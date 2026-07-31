@@ -107,7 +107,7 @@ class FlippedModel : public QAbstractItemModel
 
 
 StatsWidget::StatsWidget(QWidget *parent, const PublicGame *iGame)
-    : QWidget(parent), m_game(iGame) 
+    : QWidget(parent), m_game(iGame)
 {
     // Layout
     setLayout(new QVBoxLayout);
@@ -537,8 +537,8 @@ void StatsWidget::onPrintPreview()
 void StatsWidget::print(QPrinter *printer)
 {
     // Dimensions of the page
-    const int pageWidth = printer->pageRect().width();
-    const int pageHeight = printer->pageRect().height();
+    const int pageWidth = printer->pageRect(QPrinter::DevicePixel).width();
+    const int pageHeight = printer->pageRect(QPrinter::DevicePixel).height();
     // Dimensions of the table (without the useless space after
     // the last row and last column)
     const int width = 2 + m_table->verticalHeader()->width() + m_table->horizontalHeader()->length();

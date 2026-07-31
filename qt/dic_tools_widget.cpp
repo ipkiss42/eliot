@@ -48,16 +48,16 @@ INIT_LOGGER(qt, DicToolsWidget);
 
 
 DicToolsWidget::DicToolsWidget(QWidget *parent)
-    : QWidget(parent) 
+    : QWidget(parent)
 {
     setupUi(this);
 
     redPalette = labelCheck->palette();
-    redPalette.setColor(QPalette::Foreground, Qt::red);
+    redPalette.setColor(QPalette::WindowText, Qt::red);
     darkYellowPalette = labelCheck->palette();
-    darkYellowPalette.setColor(QPalette::Foreground, Qt::darkYellow);
+    darkYellowPalette.setColor(QPalette::WindowText, Qt::darkYellow);
     greenPalette = labelCheck->palette();
-    greenPalette.setColor(QPalette::Foreground, Qt::darkGreen);
+    greenPalette.setColor(QPalette::WindowText, Qt::darkGreen);
 
     labelLimitReached->hide();
 
