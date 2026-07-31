@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 4.3.0)
 project(eliot VERSION 2.3 LANGUAGES C CXX)
 set(ELIOT_VERSION_STR "${PROJECT_VERSION}-git")
 
-# Force C++17 support with GNU extensions
+# Force C++17 support without GNU extensions
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_STANDARD_REQUIRED OFF)
 set(CMAKE_CXX_EXTENSIONS ON)
 
 include(GNUInstallDirs)

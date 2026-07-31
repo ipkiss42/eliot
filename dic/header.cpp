@@ -675,8 +675,8 @@ void Header::print(ostream &out) const
         fmter % centerAndConvert(wstring(1, m_letters[i]), sz("Letter"));
         fmter % centerAndConvert(str(wformat(L"%1%") % m_points[i]), sz("Points"));
         fmter % centerAndConvert(str(wformat(L"%1%") % m_frequency[i]), sz("Frequency"));
-        fmter % centerAndConvert(str(wformat(L"%1%") % m_vowels[i]), sz("Vowel"));
-        fmter % centerAndConvert(str(wformat(L"%1%") % m_consonants[i]), sz("Consonant"));
+        fmter % centerAndConvert(str(wformat(L"%1%") % static_cast<bool>(m_vowels[i])), sz("Vowel"));
+        fmter % centerAndConvert(str(wformat(L"%1%") % static_cast<bool>(m_consonants[i])), sz("Consonant"));
         map<wchar_t, vector<wstring> >::const_iterator it =
             m_displayAndInputData.find(m_letters[i]);
         if (it != m_displayAndInputData.end())

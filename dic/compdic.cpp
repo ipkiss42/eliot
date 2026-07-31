@@ -37,10 +37,6 @@
 #include <cerrno>
 #include <cstring>
 
-#include "compdic.h"
-#include "encoding.h"
-#include "dic_exception.h"
-
 // For htonl & Co.
 #ifdef WIN32
 #   include <winsock2.h>
@@ -59,6 +55,10 @@
 #else
 #   define _(String) String
 #endif
+
+#include "compdic.h"
+#include "encoding.h"
+#include "dic_exception.h"
 
 #define MAX_STRING_LENGTH 200
 
