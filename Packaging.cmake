@@ -70,12 +70,10 @@ add_custom_command(TARGET package-win32-dir POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory "${QT4LOCALEDIR}" "${WIN32_PACKAGE_DIR}/locale/qt/"
 
     # Copy text documentation files
-    COMMAND ${CMAKE_COMMAND} -E copy
-        "${CMAKE_CURRENT_SOURCE_DIR}/AUTHORS"
-        "${CMAKE_CURRENT_SOURCE_DIR}/COPYING"
-        "${CMAKE_CURRENT_SOURCE_DIR}/NEWS"
-        "${CMAKE_CURRENT_SOURCE_DIR}/THANKS"
-        "${WIN32_PACKAGE_DIR}/"
+    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/AUTHORS" "${WIN32_PACKAGE_DIR}/AUTHORS.txt"
+    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/COPYING" "${WIN32_PACKAGE_DIR}/COPYING.txt"
+    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/NEWS"    "${WIN32_PACKAGE_DIR}/NEWS.txt"
+    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/THANKS"  "${WIN32_PACKAGE_DIR}/THANKS.txt"
 
     COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_SOURCE_DIR}/extras/reports" "${WIN32_PACKAGE_DIR}/reports"
 
@@ -97,42 +95,6 @@ if(ZIP_EXECUTABLE)
         COMMAND ${CMAKE_COMMAND} -E rm -rf "${WIN32_PACKAGE_DIR}"
         WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
         COMMENT "Windows ZIP archive generated at: ${WIN32_ZIP_FILE}"
-    )
-endif()
-
-# ------------------------------------------------------------------------------
-# Target: package-win32-exe (InnoSetup Installer Layer)
-# ------------------------------------------------------------------------------
-# Prepare the win32 package (exe version)
-# This target supposes that a 'iscc' script is available:
-# see https://katastrophos.net/andre/blog/2009/03/16/setting-up-the-inno-setup-compiler-on-debian/
-# It also supposes the ELIOT_DIC_DIR environment variable points to a folder
-# containing the dictionaries, with the correct structure.
-find_program(ISCC_EXECUTABLE NAMES iscc)
-if(ISCC_EXECUTABLE)
-    add_custom_target(package-win32-exe
-        DEPENDS package-win32-dir
-
-        # Make sure that the environment variable is present,
-        # and check quickly the directory
-        COMMAND ${CMAKE_COMMAND} -E echo "Validating dictionary path constraints..."
-        COMMAND test -d "$ENV{ELIOT_DIC_DIR}" || (echo "Error: ELIOT_DIC_DIR environment variable is missing!" && exit 1)
-        COMMAND test -d "$ENV{ELIOT_DIC_DIR}/english" || (echo "Error: Invalid dictionary layout structure!" && exit 1)
-
-        # Prepare a temporary directory for InnoSetup
-        COMMAND ${CMAKE_COMMAND} -E rm -rf "${WIN32_INSTALLER_DIR}"
-        COMMAND ${CMAKE_COMMAND} -E make_directory "${WIN32_INSTALLER_DIR}"
-        COMMAND ${CMAKE_COMMAND} -E rename "${WIN32_PACKAGE_DIR}" "${WIN32_INSTALLER_DIR}/eliot"
-        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_SOURCE_DIR}/extras/innosetup" "${WIN32_INSTALLER_DIR}"
-        COMMAND ${CMAKE_COMMAND} -E copy_directory "${CMAKE_CURRENT_BINARY_DIR}/extras/innosetup" "${WIN32_INSTALLER_DIR}"
-        COMMAND ${CMAKE_COMMAND} -E copy_directory "$ENV{ELIOT_DIC_DIR}" "${WIN32_INSTALLER_DIR}/dictionaries"
-
-        # Run the compiler
-        COMMAND ${ISCC_EXECUTABLE} "${WIN32_INSTALLER_DIR}/eliot-setup.iss"
-        COMMAND ${CMAKE_COMMAND} -E copy "${WIN32_INSTALLER_DIR}/Output/setup.exe" "${WIN32_EXE_FILE}"
-        COMMAND ${CMAKE_COMMAND} -E rm -rf "${WIN32_INSTALLER_DIR}"
-
-        COMMENT "Windows installer setup executable generated at: ${WIN32_EXE_FILE}"
     )
 endif()
 

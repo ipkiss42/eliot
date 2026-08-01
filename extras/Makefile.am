@@ -6,5 +6,5 @@ shortcut_DATA = eliot.desktop
 icondir = $(datadir)/icons
 icon_DATA = eliot.png
 
-EXTRA_DIST = $(shortcut_DATA) $(icon_DATA) eliot.xpm macosx innosetup reports contrib
+EXTRA_DIST = $(shortcut_DATA) $(icon_DATA) eliot.xpm macosx reports contrib
 

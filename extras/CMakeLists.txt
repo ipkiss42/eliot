@@ -24,10 +24,3 @@
 install(FILES eliot.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
 install(FILES eliot.png DESTINATION ${CMAKE_INSTALL_DATADIR}/icons)
 
-# --------------------------------------------------------------
-# Packaging / source tarball
-# --------------------------------------------------------------
-if(WIN32)
-    configure_file(innosetup/eliot-setup.iss.in innosetup/eliot-setup.iss @ONLY)
-endif()
-
