@@ -86,6 +86,5 @@ target_link_libraries(game
 )
 
 if(HAVE_LIBCONFIG)
-    target_link_libraries(game PRIVATE ${LIBCONFIG_LIBRARIES})
-    target_include_directories(game PRIVATE ${LIBCONFIG_INCLUDE_DIRS})
+    target_link_libraries(game PRIVATE PkgConfig::LIBCONFIG++)
 endif()

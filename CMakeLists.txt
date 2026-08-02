@@ -90,8 +90,10 @@ find_package(PkgConfig REQUIRED)
 find_package(Boost 1.36.0 REQUIRED)
 
 # libconfig++
-pkg_check_modules(LIBCONFIG libconfig++)
-if(LIBCONFIG_FOUND)
+# Their cmake support is really bad in version 1.8.2,
+# so keep using pkg-config for now.
+pkg_check_modules(LIBCONFIG++ libconfig++ IMPORTED_TARGET)
+if(LIBCONFIG++_FOUND)
     set(HAVE_LIBCONFIG 1)
 else()
     set(HAVE_LIBCONFIG 0)

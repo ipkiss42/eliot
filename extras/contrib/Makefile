@@ -145,7 +145,7 @@ $(LIBCONFIG_DIR_FLAG): $(LIBCONFIG_ARCHIVE)
 		&& autoreconf -i \
 		&& patch -p0 < $(BASE)/libconfig++-static-build.patch \
 		&& patch -p0 < $(BASE)/libconfig++-commit.patch \
-		&& CFLAGS=-DLIBCONFIG_STATIC CXXFLAGS=-DLIBCONFIGXX_STATIC $(CONFIGURE) --disable-examples --disable-doc --disable-tests \
+		&& $(CONFIGURE) --disable-examples --disable-doc --disable-tests \
 		&& make install)
 	touch $@
 
