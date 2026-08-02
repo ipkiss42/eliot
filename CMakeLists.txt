@@ -15,8 +15,7 @@ include(GNUInstallDirs)
 option(ENABLE_DICTOOLS "build independent dictionary tools" ON)
 option(ENABLE_TEXT "text interface support" ON)
 set(ENABLE_NCURSES "AUTO" CACHE STRING "ncurses interface support (ON, OFF, or AUTO)")
-option(ENABLE_QT5 "Qt5 interface support" ON)
-option(ENABLE_QT6 "Qt6 interface support" OFF)
+option(ENABLE_QT6 "Qt6 interface support" ON)
 
 # Configure default build behaviors for Debug/Profile
 # Note: In CMake, use CMAKE_BUILD_TYPE=Debug instead of manual -g flags
@@ -131,38 +130,13 @@ if(NOT ENABLE_NCURSES STREQUAL "OFF")
     endif()
 endif()
 
-# Qt4 vs Qt5 logic
 set(BUILD_QT FALSE)
-if(ENABLE_QT5 AND ENABLE_QT6)
-    message(FATAL_ERROR "Please disable Qt5 explicitly if you want to build with Qt6")
-endif()
-
-if(ENABLE_QT5)
-    # Using modern native CMake targets instead of pkg-config for Qt5
-    find_package(Qt5 REQUIRED COMPONENTS Core Gui Widgets Network PrintSupport)
-    set(BUILD_QT TRUE)
-    # FIXME: hack?
-    set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-
-    # Safely query the active Qt5 system translations folder via qmake location properties
-    get_target_property(Qt5_Core_EXE Qt5::qmake LOCATION)
-    execute_process(
-        COMMAND ${Qt5_Core_EXE} -query QT_INSTALL_TRANSLATIONS
-        OUTPUT_VARIABLE QT5_TRANS_DIR
-        OUTPUT_STRIP_TRAILING_WHITESPACE
-    )
-    # FIXME: using a QT4 prefix is inelegant
-    set(QT4LOCALEDIR "${QT5_TRANS_DIR}/")
-endif()
-
 if(ENABLE_QT6)
-    # Using modern native CMake targets instead of pkg-config for Qt5
     find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets Network PrintSupport)
     set(BUILD_QT TRUE)
     # FIXME: hack?
     set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-    # Safely query the active Qt5 system translations folder via qmake location properties
     get_target_property(Qt6_Core_EXE Qt6::qmake LOCATION)
     execute_process(
         COMMAND ${Qt6_Core_EXE} -query QT_INSTALL_TRANSLATIONS

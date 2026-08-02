@@ -35,7 +35,7 @@ Note that the OS-specific instructions may contain hints on how to install them 
  - libconfig++ (optional): http://www.hyperrealm.com/libconfig/
    --> Used for persisting preferences to disk
 
- - Qt (optional, but strongly recommended): http://qt.nokia.com/
+ - Qt (optional, but strongly recommended): https://www.qt.io/development/qt-framework
    --> Used for the graphical interface (see below)
 
  - libncursesw (optional): http://www.gnu.org/software/ncurses/
@@ -43,14 +43,13 @@ Note that the OS-specific instructions may contain hints on how to install them 
 
 There are in fact several interfaces to Eliot:
  - a Qt interface: the best interface to use, it supports all the features.
-   This one is enabled by default if Qt development files are detected, but
-   you can force it with --enable-qt6
+   This one is enabled by default.
  - one in text mode: mostly useful to debug Eliot
  - one using the ncursesw library: nice and almost complete, but not really
    graphical
 
 These interfaces can be enabled or disabled at configuration time. Example:
-    cmake -B build -DENABLE_QT6=ON -DENABLE_NCURSES=ON -DENABLE_TEXT=OFF
+    cmake -B build -DENABLE_QT6=OFF -DENABLE_NCURSES=ON -DENABLE_TEXT=OFF
 
 
 
