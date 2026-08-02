@@ -141,7 +141,9 @@ if(BUILD_QT)
     # --------------------------------------------------------------
     # Target setup & compile options
     # --------------------------------------------------------------
-    add_executable(eliot ${ELIOT_QT_SOURCES} ${GENERATED_UI_HEADERS} eliot.qrc)
+    # The WIN32 property tells CMake to build with -mwindows instead of -mconsole on Windows,
+    # which avoids spawning a console window. It is ignored on other platforms.
+    add_executable(eliot WIN32 ${ELIOT_QT_SOURCES} ${GENERATED_UI_HEADERS} eliot.qrc)
 
     target_include_directories(eliot PRIVATE
         ${CMAKE_SOURCE_DIR}
