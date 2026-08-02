@@ -76,17 +76,19 @@ public:
 
 int main(int argc, char **argv)
 {
+    initialize_logging();
+
 #ifdef HAVE_EXECINFO_H
     // Install a custom signal handler to print a backtrace when crashing
     // See http://www.linuxjournal.com/article/6391 for inspiration
     signal(SIGSEGV, &bt_sighandler);
 #endif
 
+#if defined(ENABLE_NLS) && defined(__APPLE__)
     // On Mac, running Eliot from the dock does not automatically set the LANG
     // variable, so we do it ourselves.
     // Note: The following block of code is copied from VLC, and slightly
     // modified by me (original author: Pierre d'Herbemont)
-#if defined(ENABLE_NLS) && defined(__APPLE__)
     /* Check if $LANG is set. */
     if (NULL == getenv("LANG"))
     {
@@ -111,13 +113,14 @@ int main(int argc, char **argv)
     }
 #endif
 
-
+#ifdef ENABLE_NLS
     // Set locale via LC_ALL
     setlocale(LC_ALL, "");
 #ifdef __APPLE__
     // FIXME: Ugly hack: we hardcode the encoding to UTF-8, because I don't
     // know how to retrieve it properly when LANG is not set
     setlocale(LC_CTYPE, "UTF-8");
+#endif
 #endif
 
     MyApplication app(argc, argv);
@@ -139,10 +142,8 @@ int main(int argc, char **argv)
     static const string localeDir = LOCALEDIR;
 #endif
     bindtextdomain(PACKAGE, localeDir.c_str());
-#ifdef __APPLE__
     // Force messages to UTF-8
     bind_textdomain_codeset(PACKAGE, "UTF-8");
-#endif
     textdomain(PACKAGE);
 
     // Translations for Qt's own strings
@@ -157,8 +158,6 @@ int main(int argc, char **argv)
 
     try
     {
-        initialize_logging();
-
         MainWindow qmain;
         qmain.show();
         return app.exec();

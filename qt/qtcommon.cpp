@@ -56,11 +56,11 @@ QString _q(const char* s)
         str = str.substr(3, str.size() - 5);
     }
 
-#ifdef __APPLE__
+#if defined(__APPLE__) || defined(WIN32)
     // On MacOSX, we force the encoding to UTF-8, because we have trouble
     // detecting the current encoding properly (see call to
     // bind_textdomain_codeset() in main.cpp)
-    return qfu(str);
+    return qfu(_(str.c_str()));
 #else
     return QString::fromLocal8Bit(_(str.c_str()));
 #endif
