@@ -78,6 +78,20 @@ int main(int argc, char **argv)
 {
     initialize_logging();
 
+#ifdef WIN32
+    // If started from an active console terminal, re-attach our text output streams to it
+    // This allows getting stdout messages in the terminal automatically.
+    if (AttachConsole(ATTACH_PARENT_PROCESS)) {
+        // Re-route standard input/output descriptors back to the command prompt window
+        (void)freopen("CONOUT$", "w", stdout);
+        (void)freopen("CONOUT$", "w", stderr);
+        (void)freopen("CONIN$", "r", stdin);
+
+        // Force C++ standard streams to stay in sync with the new descriptors
+        std::ios_base::sync_with_stdio(true);
+    }
+#endif
+
 #ifdef HAVE_EXECINFO_H
     // Install a custom signal handler to print a backtrace when crashing
     // See http://www.linuxjournal.com/article/6391 for inspiration

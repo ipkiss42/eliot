@@ -23,6 +23,7 @@
 
 #include <config.h>
 
+// Must be before any include of spdlog headers
 #ifndef SPDLOG_ACTIVE_LEVEL
 #define SPDLOG_ACTIVE_LEVEL SPDLOG_LEVEL_TRACE
 #endif
@@ -30,23 +31,23 @@
 #include <spdlog/spdlog.h>
 
 // Define the static logger pointer inside the class header
-#define DEFINE_LOGGER() static std::shared_ptr<spdlog::logger> logger
+#define DEFINE_LOGGER() static std::shared_ptr<spdlog::logger> getLogger()
 
 // Initialize the logger in the .cpp file.
 // Uses the combined "prefix.className" as the logger name.
 #define INIT_LOGGER(prefix, className) \
-    std::shared_ptr<spdlog::logger> className::logger = []() { \
+    std::shared_ptr<spdlog::logger> className::getLogger() { \
         auto l = spdlog::get(#prefix "." #className); \
         return l ? l : spdlog::default_logger(); \
-    }()
+    }
 
 // Instance-specific logging macros supporting modern formatting
-#define LOG_TRACE(...) SPDLOG_LOGGER_TRACE(logger, __VA_ARGS__)
-#define LOG_DEBUG(...) SPDLOG_LOGGER_DEBUG(logger, __VA_ARGS__)
-#define LOG_INFO(...)  SPDLOG_LOGGER_INFO(logger, __VA_ARGS__)
-#define LOG_WARN(...)  SPDLOG_LOGGER_WARN(logger, __VA_ARGS__)
-#define LOG_ERROR(...) SPDLOG_LOGGER_ERROR(logger, __VA_ARGS__)
-#define LOG_FATAL(...) SPDLOG_LOGGER_CRITICAL(logger, __VA_ARGS__)
+#define LOG_TRACE(...) SPDLOG_LOGGER_TRACE(getLogger(), __VA_ARGS__)
+#define LOG_DEBUG(...) SPDLOG_LOGGER_DEBUG(getLogger(), __VA_ARGS__)
+#define LOG_INFO(...)  SPDLOG_LOGGER_INFO(getLogger(), __VA_ARGS__)
+#define LOG_WARN(...)  SPDLOG_LOGGER_WARN(getLogger(), __VA_ARGS__)
+#define LOG_ERROR(...) SPDLOG_LOGGER_ERROR(getLogger(), __VA_ARGS__)
+#define LOG_FATAL(...) SPDLOG_LOGGER_CRITICAL(getLogger(), __VA_ARGS__)
 
 // Root logging macros (maps to spdlog's default global logger)
 #define LOG_ROOT_ERROR(...) SPDLOG_ERROR(__VA_ARGS__)
