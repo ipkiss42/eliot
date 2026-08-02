@@ -163,7 +163,11 @@ int main(int argc, char **argv)
     // Translations for Qt's own strings
     QTranslator translator;
     // Set the path for the translation file
+#ifdef WIN32
+    QString path = QString::fromLocal8Bit(localeDir + "\\qt");
+#else
     QString path = QString(QT4LOCALEDIR);
+#endif
 
     QString lang = QLocale::system().name();
     translator.load(path + "/qt_" + lang);
