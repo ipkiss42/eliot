@@ -15,11 +15,9 @@ mailing-list.
 1) General information
 ======================
 
-If you build Eliot from a CVS snapshot, you need to run ./bootstrap to generate
-the configure script. This is not needed when building from a release tarball.
-
-In the following, do not forget that the ./configure command can take options.
-Run ./configure --help to have the list of available options.
+In the following, do not forget that the cmake configuration command
+can take options.
+Run "cmake -B build -LH | grep ENABLE" to have the list of available options.
 
 Here are the external dependencies of Eliot, with a link to the relevant website.
 You need to install them (at least the mandatory ones) before building Eliot.
@@ -28,12 +26,14 @@ Note that the OS-specific instructions may contain hints on how to install them 
  - libboost (mandatory): http://www.boost.org/
    --> Used for many things
 
- - libarabica (mandatory): http://www.jezuk.co.uk/cgi-bin/view/arabica
+ - pugixml (mandatory): https://pugixml.org/
    --> Used for saving/loading games
-   You can use any XML back-end supported by Arabica (like expat, or libxml2)
+
+ - spdlog (mandatory): https://github.com/gabime/spdlog
+   --> Used for logging
 
  - libconfig++ (optional): http://www.hyperrealm.com/libconfig/
-   --> Used for saving/loading preferences
+   --> Used for persisting preferences to disk
 
  - Qt (optional, but strongly recommended): http://qt.nokia.com/
    --> Used for the graphical interface (see below)
@@ -44,13 +44,13 @@ Note that the OS-specific instructions may contain hints on how to install them 
 There are in fact several interfaces to Eliot:
  - a Qt interface: the best interface to use, it supports all the features.
    This one is enabled by default if Qt development files are detected, but
-   you can force it with --enable-qt
+   you can force it with --enable-qt6
  - one in text mode: mostly useful to debug Eliot
  - one using the ncursesw library: nice and almost complete, but not really
    graphical
 
 These interfaces can be enabled or disabled at configuration time. Example:
-    ./configure --disable-text --enable-ncurses --enable-qt
+    cmake -B build -DENABLE_QT6=ON -DENABLE_NCURSES=ON -DENABLE_TEXT=OFF
 
 
 
@@ -60,22 +60,17 @@ These interfaces can be enabled or disabled at configuration time. Example:
 * Install the dependencies
 On Debian-based systems (like Ubuntu), the following command should install
 the needed dependencies (you may need to adjust the version numbers):
-    sudo apt-get install libboost-dev libqt4-dev libconfig++-dev libncursesw5-dev libexpat-dev
-On RPM-based systems, the command should be the following (as root):
-    yum install boost-devel qt-devel expat-devel libconfig-devel
+    sudo apt install -y cmake libboost-dev libconfig++-dev libspdlog-dev libpugixml-dev qt6-base-dev
+On RPM-based systems, the command should be the following:
+    sudo yum install -y cmake boost-devel libconfig-devel spdlog-devel pugixml-devel qt6-qtbase-devel
+On Arch-based systems, the command should be the following:
+    sudo pacman -Syu --needed cmake boost libconfig spdlog pugixml qt6-base
 
-* Download and build libarabica (unless it is packaged for your distribution):
-    a) Download the latest release (see link above) and extract the archive
-    b) Build with the following line:
-       ./configure --enable-static --disable-shared --with-parser=expat && make
-    c) Install it, as root:
-       make install
+* Build Eliot (here in the "build" folder", with the following command:
+    cmake -B build && cmake --build build --parallel 4
 
-* Build Eliot, with the following command:
-    ./configure && make
-
-* Install it, as root:
-    make install
+* Install it:
+    sudo cmake --install build
 
 
 
@@ -83,17 +78,19 @@ On RPM-based systems, the command should be the following (as root):
 ================
 
 There are 2 ways to proceed:
-* cross-compilation from a Linux host, using the mingw32 cross-compiler
-* directly on Windows, using Cygwin (http://www.cygwin.com/)
+* Cross-compilation from a Linux host, using the mingw32 cross-compiler
+* Directly on Windows, using Cygwin (http://www.cygwin.com/)
+
 Only the cross-compilation is officially supported (but adapting these
 instructions for Cygwin shouldn't be too hard; patches welcome!).
 
 Here are the steps for the cross-compilation:
 
-* install the build environment (this step is not documented here,
-  as it is out of the scope of this document)
+* Install the build environment:
+    * Go to https://github.com/mstorsjo/llvm-mingw/releases
+    * Download and install the latest "UCRT" version for your platform
 
-* build and install dependencies:
+* Build and install dependencies:
   The Makefile in the 'extras/contrib' directory should be able to do it for you:
 
     cd extras/contrib && make all
@@ -101,39 +98,37 @@ Here are the steps for the cross-compilation:
   Eliot dependencies will be downloaded and cross-compiled.
   The dependencies are installed in 'extras/contrib/inst'
 
-* build Eliot:
+* Build Eliot:
 
-    - if you don't have the 'configure' script, generate it:
-            ./bootstrap
+    - Configure with the following command (feel free to tweak it as needed):
+            export ROOT="$(pwd)"
+            export INST="$ROOT/extras/contrib/inst" && \
+            export PKG_CONFIG_PATH="$INST/lib/pkgconfig:$PKG_CONFIG_PATH" \
+            export PKG_CONFIG_PATH_CUSTOM="$INST/lib/pkgconfig:$PKG_CONFIG_PATH_CUSTOM" \
+            cmake -B win-build \
+                --toolchain "$ROOT/extras/contrib/llvm-mingw-toolchain.cmake" \
+                -DCMAKE_FIND_ROOT_PATH="$ROOT"
 
-    - configure with the following command:
-            export INST=`pwd`/extras/contrib/inst && \
-            PKG_CONFIG_PATH="${INST}/lib/pkgconfig:${PKG_CONFIG_PATH}" \
-            CPPFLAGS=-I${INST}/include LDFLAGS=-L${INST}/lib CXX=i586-mingw32msvc-g++ \
-            ./configure --host=i586-mingw32msvc --build=i386-linux \
-            --with-boost=${INST} --with-expat=${INST}
+    - To compile, run 'cmake --build win-build --parallel 4' (to use 4 compilation cores)
 
-    - to compile, run 'make'
-
-    - run 'make package-win32-zip' to get everything packed up in a nice .zip
+    - Run 'cmake --build win-build -t package-win32-zip' to get everything packed up in a nice .zip
 
 
 
 4) Mac OS X build
 =================
 
+Note: the Mac OS X build hasn't been tested since the switch to CMake.
+Expect some issues and needed patches.
+
 * Installing dependencies can be done easily using MacPorts (http://www.macports.org/):
-    sudo port install libconfig-hr
-    sudo port install boost
-    sudo port install arabica
-    sudo port install qt4-mac
+    sudo port install cmake boost libconfig spdlog pugixml qt6-qtbase
 
 * Configure: you can use the following command (assuming the dependencies are installed in /opt/local):
-    CPPFLAGS="-I/opt/local/include/libxml2 -I/opt/local/include" \
-    LDFLAGS="-L/opt/local/lib" \
-    LIBS="-lxml2" \
-    ./configure --enable-qt --disable-text
+    export INST=/opt/local \
+    export PKG_CONFIG_PATH="$INST/lib/pkgconfig:$PKG_CONFIG_PATH" \
+    cmake -B build -DENABLE_TEXT=OFF -DCMAKE_FIND_ROOT_PATH="$INST"
 
-* To compile, run 'make'
+* To compile, run 'cmake --build build --parallel 4'
 
 * Then, to get a ready to use .dmg file, run 'make package-macosx-dmg'
