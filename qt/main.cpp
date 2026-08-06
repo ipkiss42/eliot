@@ -166,7 +166,7 @@ int main(int argc, char **argv)
 #ifdef WIN32
     QString path = QString::fromLocal8Bit(localeDir + "\\qt");
 #else
-    QString path = QString(QT4LOCALEDIR);
+    QString path = QString(QT_TRANSLATIONS_DIR);
 #endif
 
     QString lang = QLocale::system().name();

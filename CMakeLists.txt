@@ -143,8 +143,7 @@ if(ENABLE_QT6)
         OUTPUT_VARIABLE QT6_TRANS_DIR
         OUTPUT_STRIP_TRAILING_WHITESPACE
     )
-    # FIXME: using a QT4 prefix is inelegant
-    set(QT4LOCALEDIR "${QT6_TRANS_DIR}/")
+    set(QT_TRANSLATIONS_DIR "${QT6_TRANS_DIR}/")
 endif()
 
 # --------------------------------------------------------------

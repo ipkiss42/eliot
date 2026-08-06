@@ -67,7 +67,7 @@ endforeach()
 # Process asset copies and cross-compiler runtime dependencies dynamically
 add_custom_command(TARGET package-win32-dir POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory "${WIN32_PACKAGE_DIR}/locale/qt"
-    COMMAND ${CMAKE_COMMAND} -E copy_directory "${QT4LOCALEDIR}" "${WIN32_PACKAGE_DIR}/locale/qt/"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory "${QT_TRANSLATIONS_DIR}" "${WIN32_PACKAGE_DIR}/locale/qt/"
 
     # Copy text documentation files
     COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/AUTHORS" "${WIN32_PACKAGE_DIR}/AUTHORS.txt"
@@ -140,7 +140,7 @@ if(APPLE)
     add_custom_command(TARGET package-macosx POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory "${MACOSX_PACKAGE_DIR}/locale/qt"
         # The true fallback allows copying if the globs match, ignoring if they are missing
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${QT4LOCALEDIR}/qt_*.qm" "${MACOSX_PACKAGE_DIR}/locale/qt/" OR_IF_MISSING
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different "${QT_TRANSLATIONS_DIR}/qt_*.qm" "${MACOSX_PACKAGE_DIR}/locale/qt/" OR_IF_MISSING
         COMMAND ${CMAKE_COMMAND} -E copy_directory "/opt/local/share/qt/resources/qt_menu.nib" "${MACOSX_PACKAGE_DIR}/Contents/Resources/qt_menu.nib"
     )
 
