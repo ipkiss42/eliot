@@ -2,6 +2,14 @@ cmake_minimum_required(VERSION 4.3.0)
 project(eliot VERSION 2.3 LANGUAGES C CXX)
 set(ELIOT_VERSION_STR "${PROJECT_VERSION}-git")
 
+# Default build type
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+    set(default_build_type "RelWithDebInfo")
+
+    message(STATUS "Setting build type to '${default_build_type}' as none was specified.")
+    set(CMAKE_BUILD_TYPE "${default_build_type}" CACHE STRING "Choose the type of build." FORCE)
+endif()
+
 # Force C++17 support without GNU extensions
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED OFF)
@@ -18,10 +26,8 @@ set(ENABLE_NCURSES "AUTO" CACHE STRING "ncurses interface support (ON, OFF, or A
 option(ENABLE_QT6 "Qt6 interface support" ON)
 
 # Configure default build behaviors for Debug/Profile
-# Note: In CMake, use CMAKE_BUILD_TYPE=Debug instead of manual -g flags
-if(CMAKE_BUILD_TYPE STREQUAL "Debug" OR CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
-    add_compile_definitions(DEBUG)
-endif()
+set(DEBUG_INFO_ENABLED $<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>)
+add_compile_definitions($<${DEBUG_INFO_ENABLED}:DEBUG>)
 
 # Profile build logic
 option(ENABLE_PROFILE "profile mode" OFF)

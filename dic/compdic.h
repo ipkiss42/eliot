@@ -37,7 +37,6 @@ class Header;
 
 using namespace std;
 
-//#define DEBUG_OUTPUT
 #define CHECK_RECURSION
 
 
