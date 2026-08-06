@@ -25,7 +25,6 @@
 #include "results.h"
 #include "board.h"
 #include "board_layout.h"
-#include "bag.h"
 #include "rack.h"
 
 #include "dic.h"
@@ -43,9 +42,9 @@ INIT_LOGGER(game, MoveSelector);
 #define BENJAMIN 5
 
 
-MoveSelector::MoveSelector(const Bag &iBag, const Dictionary &iDic,
+MoveSelector::MoveSelector(const Dictionary &iDic,
                            const Board &iBoard, const Rack &iRack)
-    : m_bag(iBag), m_dic(iDic), m_board(iBoard), m_rack(iRack)
+    : m_dic(iDic), m_board(iBoard), m_rack(iRack)
 {
 }
 

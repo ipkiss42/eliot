@@ -82,7 +82,7 @@ protected:
 class BestResults: public Results
 {
 public:
-    BestResults();
+    BestResults() = default;
     void search(const Dictionary &iDic, const Board &iBoard,
                         const Rack &iRack, bool iFirstWord) override;
     void clear() override;
@@ -150,14 +150,13 @@ private:
 class MasterResults: public Results
 {
 public:
-    MasterResults(const Bag &iBag);
+    MasterResults() = default;
     void search(const Dictionary &iDic, const Board &iBoard,
                         const Rack &iRack, bool iFirstWord) override;
     void clear() override;
     void add(const Round &iRound) override;
 
 private:
-    const Bag &m_bag;
     BestResults m_bestResults;
 };
 

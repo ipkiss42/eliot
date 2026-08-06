@@ -97,7 +97,7 @@ void Duplicate::playAI(unsigned int p)
     ASSERT(!hasPlayed(p), "AI player has already played");
 
     AIPlayer *player = dynamic_cast<AIPlayer*>(m_players[p]);
-    ASSERT(player != NULL, "AI requested for a human player");
+    ASSERT(player != nullptr, "AI requested for a human player");
 
     player->compute(getDic(), getBoard(), getHistory().beforeFirstRound());
     const Move &move = player->getMove();
@@ -277,7 +277,7 @@ void Duplicate::endTurn()
         {
             // If nobody played a valid round, we are forced to play a valid move.
             // So let's take the best one...
-            MasterResults results(getBag());
+            MasterResults results;
             // Take the first player's rack
             const Rack &rack =
                 m_players[REF_PLAYER_ID]->getLastRack().getRack();

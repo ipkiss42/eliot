@@ -371,30 +371,31 @@ void Dictionary::searchRegexpRec(const struct params_regexp_t &params,
  * 4: user defined 2
  * x: lists used during parsing
  */
-static void initLetterLists(const Dictionary &iDic,
-                            searchRegExpLists &iList)
+static searchRegExpLists initLetterLists(const Dictionary &iDic)
 {
-    memset(&iList, 0, sizeof(iList));
+    searchRegExpLists lists;
     // Prepare the space for 5 items
-    iList.symbl.assign(5, 0);
-    iList.letters.assign(5, vector<bool>(DIC_LETTERS + 1, false));
+    lists.symbl.assign(5, 0);
+    lists.letters.assign(5, vector<bool>(DIC_LETTERS + 1, false));
 
-    iList.symbl[0] = RE_ALL_MATCH; // All letters
-    iList.symbl[1] = RE_VOWL_MATCH; // Vowels
-    iList.symbl[2] = RE_CONS_MATCH; // Consonants
-    iList.letters[0][0] = false;
-    iList.letters[1][0] = false;
-    iList.letters[2][0] = false;
+    lists.symbl[0] = RE_ALL_MATCH; // All letters
+    lists.symbl[1] = RE_VOWL_MATCH; // Vowels
+    lists.symbl[2] = RE_CONS_MATCH; // Consonants
+    lists.letters[0][0] = false;
+    lists.letters[1][0] = false;
+    lists.letters[2][0] = false;
     const wstring &allLetters = iDic.getHeader().getLetters();
     for (size_t i = 1; i <= allLetters.size(); ++i)
     {
-        iList.letters[0][i] = true;
-        iList.letters[1][i] = iDic.getHeader().isVowel(i);
-        iList.letters[2][i] = iDic.getHeader().isConsonant(i);
+        lists.letters[0][i] = true;
+        lists.letters[1][i] = iDic.getHeader().isVowel(i);
+        lists.letters[2][i] = iDic.getHeader().isConsonant(i);
     }
 
-    iList.symbl[3] = RE_USR1_MATCH; // User defined list 1
-    iList.symbl[4] = RE_USR2_MATCH; // User defined list 2
+    lists.symbl[3] = RE_USR1_MATCH; // User defined list 1
+    lists.symbl[4] = RE_USR2_MATCH; // User defined list 2
+
+    return lists;
 }
 
 
@@ -416,9 +417,8 @@ bool Dictionary::searchRegExp(const wstring &iRegexp,
 
     // Parsing
     Node *root = nullptr;
-    searchRegExpLists llist;
     // Initialize the lists of letters
-    initLetterLists(*this, llist);
+    searchRegExpLists llist = initLetterLists(*this);
     bool parsingOk = parseRegexp(*this, (iRegexp + L"#").c_str(), &root, llist);
 
     if (!parsingOk)

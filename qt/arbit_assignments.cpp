@@ -525,7 +525,7 @@ void ArbitAssignments::setDefaultMasterMove()
         return;
 
     // Search the best moves
-    MasterResults results(m_game->getBag());
+    MasterResults results;
     results.search(m_game->getDic(), m_game->getBoard(),
                    m_game->getCurrentRack().getRack(),
                    m_game->getHistory().beforeFirstRound());

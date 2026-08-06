@@ -152,8 +152,7 @@ void QtCommon::CheckConversions()
 }
 
 
-void QtCommon::DestroyObject(QWidget *ioObjectToDestroy,
-                             QObject *iSource)
+void QtCommon::DestroyObject(QWidget *ioObjectToDestroy)
 {
     if (ioObjectToDestroy == nullptr)
         return;

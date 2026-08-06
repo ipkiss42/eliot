@@ -243,7 +243,7 @@ void RackWidget::dragMoveEvent(QDragMoveEvent *event)
     {
         event->setDropAction(Qt::MoveAction);
 
-        int closestCol = findClosestTile(event->pos());
+        int closestCol = findClosestTile(event->position().toPoint());
         moveTile(m_dragOrigin, closestCol, true);
         // We have a new drag origin, since we just moved the tile
         m_dragOrigin = closestCol;
@@ -261,7 +261,7 @@ void RackWidget::dropEvent(QDropEvent *event)
 {
     if (event->mimeData()->hasFormat(MIME_TYPE))
     {
-        int closestCol = findClosestTile(event->pos());
+        int closestCol = findClosestTile(event->position().toPoint());
         LOG_DEBUG("Dropping tile {} closest to tile {}", m_dragOrigin, closestCol);
 
         moveTile(m_dragOrigin, closestCol);

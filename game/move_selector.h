@@ -25,7 +25,6 @@
 
 class Round;
 class BestResults;
-class Bag;
 class Dictionary;
 class Board;
 class Rack;
@@ -42,7 +41,7 @@ class MoveSelector
     DEFINE_LOGGER();
 public:
 
-    MoveSelector(const Bag &iBag, const Dictionary &iDic,
+    MoveSelector(const Dictionary &iDic,
                  const Board &iBoard, const Rack &iRack);
 
     /**
@@ -59,7 +58,6 @@ public:
     Round selectMaster(const BestResults &iResults) const;
 
 private:
-    const Bag &m_bag;
     const Dictionary &m_dic;
     const Board &m_board;
     const Rack &m_rack;

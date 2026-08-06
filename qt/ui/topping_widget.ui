@@ -151,9 +151,6 @@
        </item>
        <item>
         <widget class="QWidget" name="widgetContainer" native="true">
-         <zorder>horizontalLayoutWidget</zorder>
-         <zorder>horizontalLayoutWidget</zorder>
-         <zorder>horizontalLayoutWidget</zorder>
         </widget>
        </item>
        <item>

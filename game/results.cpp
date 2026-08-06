@@ -109,12 +109,6 @@ void Results::sort()
 }
 
 
-BestResults::BestResults()
-
-{
-}
-
-
 void BestResults::search(const Dictionary &iDic, const Board &iBoard,
                          const Rack &iRack, bool iFirstWord)
 {
@@ -306,13 +300,6 @@ void LimitResults::clear()
 }
 
 
-
-MasterResults::MasterResults(const Bag &iBag)
-    : m_bag(iBag)
-{
-}
-
-
 void MasterResults::search(const Dictionary &iDic, const Board &iBoard,
                            const Rack &iRack, bool iFirstWord)
 {
@@ -324,7 +311,7 @@ void MasterResults::search(const Dictionary &iDic, const Board &iBoard,
         return;
 
     // Find the best round, according to the heuristics in MoveSelector
-    MoveSelector selector(m_bag, iDic, iBoard, iRack);
+    MoveSelector selector(iDic, iBoard, iRack);
     const Round &round = selector.selectMaster(m_bestResults);
     m_rounds.push_back(round);
 }

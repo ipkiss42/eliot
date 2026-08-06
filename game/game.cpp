@@ -450,7 +450,7 @@ PlayedRack Game::helperSetRackRandom(const PlayedRack &iPld,
     {
         const Rack &rack = pld.getRack();
 
-        MasterResults res(getBag());
+        MasterResults res;
         res.search(getDic(), getBoard(), rack,  getHistory().beforeFirstRound());
         if (!res.isEmpty())
         {
@@ -576,7 +576,7 @@ unsigned int Game::getNHumanPlayers() const
 
 void Game::addPlayer(Player *iPlayer)
 {
-    ASSERT(iPlayer != NULL, "Invalid player pointer in addPlayer()");
+    ASSERT(iPlayer != nullptr, "Invalid player pointer in addPlayer()");
 
     // The ID of the player is its position in the m_players vector
     iPlayer->setId(getNPlayers());

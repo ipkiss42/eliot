@@ -64,7 +64,7 @@ Box::Box(WINDOW *win, int y, int x, int h, int w,
          unsigned int iHeadingLines)
     : m_win(win),  m_x(x), m_y(y), m_w(w), m_h(h),
     m_topLine(y + 1 + iHeadingLines),
-    m_nbLines(h - 2 - iHeadingLines) 
+    m_nbLines(h - 2 - iHeadingLines)
 {
 }
 
@@ -189,8 +189,8 @@ void Box::clearRect(WINDOW *win, int y, int x, int h, int w)
 
 
 CursesIntf::CursesIntf(WINDOW *win, PublicGame& iGame)
-    : m_win(win), m_game(&iGame), 
-    m_box(win, 0, 0, 0, 0) 
+    : m_win(win), m_game(&iGame),
+    m_box(win, 0, 0, 0, 0)
 {
 }
 
@@ -211,7 +211,7 @@ void CursesIntf::drawStatus(WINDOW *win, const string& iMessage, bool error)
     int y = lines - 1;
     if (error)
         wattron(win, COLOR_PAIR(COLOR_YELLOW));
-    mvwprintw(win, y, x, truncOrPad(iMessage, cols).c_str());
+    mvwprintw(win, y, x, "%s", truncOrPad(iMessage, cols).c_str());
     if (error)
         wattron(win, COLOR_PAIR(COLOR_WHITE));
 }
@@ -266,12 +266,12 @@ void CursesIntf::drawBoard(WINDOW *win, int y, int x) const
                 if (m_game->getBoard().isJoker(row, col))
                 {
                     wattron(win, A_BOLD | COLOR_PAIR(COLOR_GREEN));
-                    mvwprintw(win, y + row + 1, x + 3 * col + 2 + offset, lfw(chr).c_str());
+                    mvwprintw(win, y + row + 1, x + 3 * col + 2 + offset, "%s", lfw(chr).c_str());
                     wattroff(win, A_BOLD);
                 }
                 else
                 {
-                    mvwprintw(win, y + row + 1, x + 3 * col + 2 + offset, lfw(chr).c_str());
+                    mvwprintw(win, y + row + 1, x + 3 * col + 2 + offset, "%s", lfw(chr).c_str());
                 }
             }
             else
@@ -749,7 +749,7 @@ bool CursesIntf::readString(WINDOW *win, int y, int x, int n, wstring &oString,
             // Remove everything after the cursor position
             int len = oString.size() - pos;
             oString = oString.erase(pos);
-            mvwprintw(win, y, x, string(len, ' ').c_str());
+            mvwprintw(win, y, x, "%s", string(len, ' ').c_str());
             wmove(win, y, x);
         }
         else if (c == 0x15)  // Ctrl-U
@@ -1127,7 +1127,7 @@ void CursesIntf::redraw(WINDOW *win)
     string title = "Eliot (" + mode + variant + ") " + _("[h for help]");
 
     int cols = getmaxx(m_win);
-    mvwprintw(win, 0, 0, truncOrPad(title, cols).c_str());
+    mvwprintw(win, 0, 0, "%s", truncOrPad(title, cols).c_str());
     attroff(A_REVERSE);
 
     wrefresh(win);

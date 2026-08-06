@@ -63,11 +63,8 @@ public:
 
     /**
      * Kill the given widget, i.e. hide it, cut its signals, and mark it for deletion.
-     * If a iSource object is given, signals from the source will be disconnected
-     * from the widget to destroy as well.
      */
-    static void DestroyObject(QWidget *ioWidgetToDestroy,
-                              QObject *iSource = nullptr);
+    static void DestroyObject(QWidget *ioWidgetToDestroy);
 
     /**
      * Ask for a confirmation.

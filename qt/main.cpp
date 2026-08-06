@@ -170,7 +170,10 @@ int main(int argc, char **argv)
 #endif
 
     QString lang = QLocale::system().name();
-    translator.load(path + "/qt_" + lang);
+    if (!translator.load(path + "/qt_" + lang))
+    {
+        LOG_ROOT_ERROR("Failed to load translation file for language: {}", lang.toStdString());
+    }
     app.installTranslator(&translator);
 #endif
 

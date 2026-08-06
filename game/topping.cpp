@@ -232,7 +232,7 @@ void Topping::addPlayer(Player *iPlayer)
 Move Topping::getTopMove() const
 {
     // Find the most interesting top
-    MasterResults results(getBag());
+    MasterResults results;
     results.search(getDic(), getBoard(), getHistory().getCurrentRack().getRack(),
                    getHistory().beforeFirstRound());
     ASSERT(!results.isEmpty(), "No top move found");
