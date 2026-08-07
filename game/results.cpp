@@ -19,7 +19,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <boost/foreach.hpp>
 #include <algorithm>
 #include <cmath>
 
@@ -183,7 +182,7 @@ void PercentResults::search(const Dictionary &iDic, const Board &iBoard,
 
     // Find the lowest score at least equal to the min_score
     int chosenPoints = m_bestScore;
-    BOOST_FOREACH(const Round &iRound, m_rounds)
+    for (const Round &iRound : m_rounds)
     {
         int points = iRound.getPoints();
         if (points >= m_minScore && points < chosenPoints)

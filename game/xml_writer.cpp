@@ -22,7 +22,6 @@
 #include <vector>
 #include <fstream>
 #include <cmath>
-#include <boost/foreach.hpp>
 #include <boost/format.hpp>
 #include <pugixml.hpp>
 
@@ -200,13 +199,13 @@ void XmlWriter::write(const Game& iGame, const std::string& iFileName)
     iGame.getNavigation().print();
 #endif
     const vector<Turn *> &turnVect = iGame.getNavigation().getTurns();
-    BOOST_FOREACH(const Turn *turn, turnVect)
+    for (const Turn *turn : turnVect)
     {
         if (turn->getCommands().empty() && turn == turnVect.back())
             continue;
 
         pugi::xml_node turnNode = historyNode.append_child("Turn");
-        BOOST_FOREACH(const Command *cmd, turn->getCommands())
+        for (const Command *cmd : turn->getCommands())
         {
             if (dynamic_cast<const GameRackCmd*>(cmd))
             {

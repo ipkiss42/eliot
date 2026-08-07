@@ -25,7 +25,6 @@
 #include <sstream>
 #include <map>
 #include <boost/format.hpp>
-#include <boost/foreach.hpp>
 #include <boost/functional/hash.hpp>
 #include <ctime>
 #include <sys/types.h>
@@ -122,7 +121,7 @@ void CompDic::addLetter(wchar_t chr, int points, int frequency,
     if (!iInputs.empty())
     {
         vector<wstring> upperInputs = iInputs;
-        BOOST_FOREACH(wstring &str, upperInputs)
+        for (wstring &str : upperInputs)
         {
             std::transform(str.begin(), str.end(), str.begin(), towupper);
         }

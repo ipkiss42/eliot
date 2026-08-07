@@ -26,7 +26,6 @@
 #include <cstring>
 #include <cerrno>
 #include <cctype>
-#include <boost/foreach.hpp>
 
 // For ntohl & Co.
 #ifdef WIN32
@@ -93,7 +92,7 @@ Dictionary::Dictionary(const string &iPath)
          it != m_header->getDisplayInputData().end(); ++it)
     {
         // Save both the upper case and lower case versions
-        BOOST_FOREACH(wstring str, it->second)
+        for (wstring str : it->second)
         {
             // Make sure the string is in uppercase
             str = toUpper(str);
@@ -199,7 +198,7 @@ wstring Dictionary::convertFromInput(const wistring &iWord) const
     for (it = m_displayInputCache.begin();
          it != m_displayInputCache.end(); ++it)
     {
-        BOOST_FOREACH(const wstring &input, it->second)
+        for (const wstring &input : it->second)
         {
             string::size_type pos = 0;
             while (pos < str.size() &&

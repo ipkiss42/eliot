@@ -19,7 +19,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <boost/foreach.hpp>
 #include <sstream>
 
 #include "config.h"
@@ -63,7 +62,7 @@ Game::Game(const GameParams &iParams, const Game *iMasterGame):
 
 Game::~Game()
 {
-    BOOST_FOREACH(Player *p, m_players)
+    for (Player *p : m_players)
     {
         delete p;
     }
@@ -120,10 +119,10 @@ void Game::realBag(Bag &ioBag) const
     if (getMode() == GameParams::kFREEGAME)
     {
         // In freegame mode, take the letters from all the racks
-        BOOST_FOREACH(const Player *player, m_players)
+        for (const Player *player : m_players)
         {
             player->getCurrentRack().getAllTiles(tiles);
-            BOOST_FOREACH(const Tile &tile, tiles)
+            for (const Tile &tile : tiles)
             {
                 ioBag.takeTile(tile);
             }
@@ -134,7 +133,7 @@ void Game::realBag(Bag &ioBag) const
         // In training or duplicate mode, take the rack of the current
         // player only
         getPlayer(m_currPlayer).getCurrentRack().getAllTiles(tiles);
-        BOOST_FOREACH(const Tile &tile, tiles)
+        for (const Tile &tile : tiles)
         {
             ioBag.takeTile(tile);
         }
@@ -167,7 +166,7 @@ bool Game::canDrawRack(const PlayedRack &iPld, bool iCheck, int *reason) const
     // Replace all the tiles of the given rack into the bag
     vector<Tile> tiles;
     iPld.getAllTiles(tiles);
-    BOOST_FOREACH(const Tile &tile, tiles)
+    for (const Tile &tile : tiles)
     {
         bag.replaceTile(tile);
     }
@@ -292,7 +291,7 @@ PlayedRack Game::helperSetRackRandom(const PlayedRack &iPld,
         // letters of the player)
         vector<Tile> tiles;
         pld.getNewTiles(tiles);
-        BOOST_FOREACH(const Tile &tile, tiles)
+        for (const Tile &tile : tiles)
         {
             bag.replaceTile(tile);
         }
@@ -303,7 +302,7 @@ PlayedRack Game::helperSetRackRandom(const PlayedRack &iPld,
         // Replace all the tiles in the bag before choosing random ones
         vector<Tile> tiles;
         pld.getAllTiles(tiles);
-        BOOST_FOREACH(const Tile &tile, tiles)
+        for (const Tile &tile : tiles)
         {
             bag.replaceTile(tile);
         }
@@ -336,7 +335,7 @@ PlayedRack Game::helperSetRackRandom(const PlayedRack &iPld,
     {
         // 1) Is there already a joker in the remaining letters of the rack?
         bool jokerFound = false;
-        BOOST_FOREACH(const Tile &tile, tiles)
+        for (const Tile &tile : tiles)
         {
             if (tile.isJoker())
             {
@@ -379,7 +378,7 @@ PlayedRack Game::helperSetRackRandom(const PlayedRack &iPld,
         // Bad luck... we have to reject the rack
         vector<Tile> rejectedTiles;
         pld.getAllTiles(rejectedTiles);
-        BOOST_FOREACH(const Tile &rejTile, rejectedTiles)
+        for (const Tile &rejTile : rejectedTiles)
         {
             bag.replaceTile(rejTile);
         }
@@ -519,7 +518,7 @@ PlayedRack Game::helperSetRackRandom(const PlayedRack &iPld,
 
 bool Game::rackInBag(const Rack &iRack, const Bag &iBag) const
 {
-    BOOST_FOREACH(const Tile &t, getDic().getAllTiles())
+    for (const Tile &t : getDic().getAllTiles())
     {
         if (iRack.count(t) > iBag.count(t))
             return false;
@@ -566,7 +565,7 @@ PlayedRack Game::helperSetRackManual(bool iCheck, const wstring &iLetters) const
 unsigned int Game::getNHumanPlayers() const
 {
     unsigned int count = 0;
-    BOOST_FOREACH(const Player *player, m_players)
+    for (const Player *player : m_players)
     {
         count += (player->isHuman() ? 1 : 0);
     }
@@ -695,7 +694,7 @@ void Game::setGameAndPlayersRack(const PlayedRack &iRack, bool iWithNoMove)
     accessNavigation().addAndExecute(pCmd);
     LOG_INFO("Setting players rack to '" + lfw(iRack.toString()) + "'");
     // All the players have the same rack
-    BOOST_FOREACH(Player *player, m_players)
+    for (Player *player : m_players)
     {
         Command *pCmd = new PlayerRackCmd(*player, iRack);
         accessNavigation().addAndExecute(pCmd);
@@ -708,7 +707,7 @@ void Game::setGameAndPlayersRack(const PlayedRack &iRack, bool iWithNoMove)
         // and "has played with no move" in duplicate and arbitration modes.
         // This is also practical to know at which turn the warnings, penalties
         // and solos should be assigned.
-        BOOST_FOREACH(Player *player, m_players)
+        for (Player *player : m_players)
         {
             Command *pCmd = new PlayerMoveCmd(*player, Move());
             accessNavigation().addAndExecute(pCmd);

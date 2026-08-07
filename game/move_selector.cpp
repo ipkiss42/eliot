@@ -18,7 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <boost/foreach.hpp>
 
 #include "move_selector.h"
 #include "round.h"
@@ -113,7 +112,7 @@ int MoveSelector::evalForRemainingLetters(const Round &iRound) const
     // Note: the repetitions are only relevant if the rack is not rejected for
     // lack of vowels and/or consonants...
     int score = 0;
-    BOOST_FOREACH(const Tile &t, m_dic.getAllTiles())
+    for (const Tile &t : m_dic.getAllTiles())
     {
         const int count = remaining.count(t);
         if (count >= 3)

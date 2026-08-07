@@ -19,7 +19,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <boost/foreach.hpp>
 
 #include <string>
 #include "rack.h"
@@ -44,7 +43,7 @@ History::History()
 
 History::~History()
 {
-    BOOST_FOREACH(TurnData *turn, m_history)
+    for (TurnData *turn : m_history)
     {
         delete turn;
     }
@@ -175,7 +174,7 @@ wstring History::toString() const
     _swprintf(buff, 4, L"%ld", m_history.size());
     rs = L"history size = " + wstring(buff) + L"\n\n";
 #endif
-    BOOST_FOREACH(const TurnData *turn, m_history)
+    for (const TurnData *turn : m_history)
     {
         rs += turn->toString() + L"\n";
     }

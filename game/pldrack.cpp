@@ -19,7 +19,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <boost/foreach.hpp>
 
 #include <algorithm>
 #include <random>
@@ -87,7 +86,7 @@ void PlayedRack::resetNew()
 Rack PlayedRack::getOld() const
 {
     Rack rack;
-    BOOST_FOREACH(const Tile &tile, m_oldTiles)
+    for (const Tile &tile : m_oldTiles)
     {
         rack.add(tile);
     }
@@ -98,7 +97,7 @@ Rack PlayedRack::getOld() const
 Rack PlayedRack::getNew() const
 {
     Rack rack;
-    BOOST_FOREACH(const Tile &tile, m_newTiles)
+    for (const Tile &tile : m_newTiles)
     {
         rack.add(tile);
     }
@@ -109,7 +108,7 @@ Rack PlayedRack::getNew() const
 Rack PlayedRack::getRack() const
 {
     Rack rack = getOld();
-    BOOST_FOREACH(const Tile &tile, m_newTiles)
+    for (const Tile &tile : m_newTiles)
     {
         rack.add(tile);
     }
@@ -170,12 +169,12 @@ bool PlayedRack::checkRack(unsigned int cMin, unsigned int vMin) const
     unsigned int v = 0;
     unsigned int c = 0;
 
-    BOOST_FOREACH(const Tile &tile, m_oldTiles)
+    for (const Tile &tile : m_oldTiles)
     {
         if (tile.isVowel()) v++;
         if (tile.isConsonant()) c++;
     }
-    BOOST_FOREACH(const Tile &tile, m_newTiles)
+    for (const Tile &tile : m_newTiles)
     {
         if (tile.isVowel()) v++;
         if (tile.isConsonant()) c++;
@@ -212,7 +211,7 @@ wstring PlayedRack::toString(display_mode mode) const
         s += L"-";
     }
 
-    BOOST_FOREACH(const Tile &tile, m_oldTiles)
+    for (const Tile &tile : m_oldTiles)
     {
         s += tile.getDisplayStr();
     }
@@ -222,7 +221,7 @@ wstring PlayedRack::toString(display_mode mode) const
         s += L"+";
     }
 
-    BOOST_FOREACH(const Tile &tile, m_newTiles)
+    for (const Tile &tile : m_newTiles)
     {
         s += tile.getDisplayStr();
     }

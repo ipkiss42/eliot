@@ -18,7 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <boost/foreach.hpp>
 
 #include "config.h"
 #if ENABLE_NLS
@@ -252,7 +251,7 @@ vector<Move> Topping::getTriedMoves() const
     vector<Move> results;
     const vector<const ToppingMoveCmd*> &cmdVect =
         getNavigation().getCurrentTurn().findAllMatchingCmd<ToppingMoveCmd>();
-    BOOST_FOREACH(const ToppingMoveCmd * cmd, cmdVect)
+    for (const ToppingMoveCmd * cmd : cmdVect)
     {
         results.push_back(cmd->getMove());
     }

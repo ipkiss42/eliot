@@ -21,7 +21,6 @@
 
 #include "config.h"
 
-#include <boost/foreach.hpp>
 #include <boost/tokenizer.hpp>
 #include <wchar.h>
 #include <fstream>
@@ -134,7 +133,7 @@ vector<wstring> readTokens()
     vector<wstring> tokens;
     boost::char_separator<wchar_t> sep(L" ");
     Tokenizer tok(command, sep);
-    BOOST_FOREACH(const wstring &wstr, tok)
+    for (const wstring &wstr : tok)
     {
         if (wstr != L"")
             tokens.push_back(wstr);
@@ -155,7 +154,7 @@ wstring parseAlpha(const vector<wstring> &tokens, uint8_t index)
     if (tokens.size() <= index)
         throw ParsingException("Not enough tokens");
     const wstring &wstr = tokens[index];
-    BOOST_FOREACH(wchar_t wch, wstr)
+    for (wchar_t wch : wstr)
     {
         if (!iswalpha(wch))
             throw ParsingException("Not an alphabetical character: " + lfw(wch));
@@ -174,7 +173,7 @@ int parseNum(const vector<wstring> &tokens, uint8_t index,
         throw ParsingException("Not enough tokens");
     }
     const wstring &wstr = tokens[index];
-    BOOST_FOREACH(wchar_t wch, wstr)
+    for (wchar_t wch : wstr)
     {
         if (!iswdigit(wch))
             throw ParsingException("Not a numeric character: " + lfw(wch));
@@ -189,7 +188,7 @@ wstring parseAlphaNum(const vector<wstring> &tokens, uint8_t index)
     if (tokens.size() <= index)
         throw ParsingException("Not enough tokens");
     const wstring &wstr = tokens[index];
-    BOOST_FOREACH(wchar_t wch, wstr)
+    for (wchar_t wch : wstr)
     {
         if (!iswalnum(wch))
             throw ParsingException("Not an alphanumeric character: " + lfw(wch));
@@ -236,7 +235,7 @@ wstring parseFileName(const vector<wstring> &tokens, uint8_t index)
     if (tokens.size() <= index)
         throw ParsingException("Not enough tokens");
     const wstring &wstr = tokens[index];
-    BOOST_FOREACH(wchar_t wch, wstr)
+    for (wchar_t wch : wstr)
     {
         if (!iswalnum(wch) && wch != L'.' && wch != L'_')
             throw ParsingException("Invalid file name");
@@ -564,7 +563,7 @@ void handleRegexp(const Dictionary& iDic, const vector<wstring> &tokens)
         return;
     }
 
-    BOOST_FOREACH(const wdstring &wstr, wordList)
+    for (const wdstring &wstr : wordList)
     {
         printf("%s\n", lfw(wstr).c_str());
     }
@@ -618,7 +617,7 @@ void loopTraining(PublicGame &iGame)
                 {
                     vector<wdstring> wordList;
                     iGame.getDic().searchBenj(word, wordList);
-                    BOOST_FOREACH(const wdstring &wstr, wordList)
+                    for (const wdstring &wstr : wordList)
                     {
                         cout << lfw(wstr) << endl;
                     }
@@ -632,7 +631,7 @@ void loopTraining(PublicGame &iGame)
                     {
                         if (it->first != 0)
                             cout << "+" << lfw(iGame.getDic().getHeader().getDisplayStr(it->first)) << endl;
-                        BOOST_FOREACH(const wdstring &wstr, it->second)
+                        for (const wdstring &wstr : it->second)
                         {
                             cout << "  " << lfw(wstr) << endl;
                         }
@@ -642,7 +641,7 @@ void loopTraining(PublicGame &iGame)
                 {
                     vector<wdstring> wordList;
                     iGame.getDic().searchRacc(word, wordList);
-                    BOOST_FOREACH(const wdstring &wstr, wordList)
+                    for (const wdstring &wstr : wordList)
                     {
                         cout << lfw(wstr) << endl;
                     }

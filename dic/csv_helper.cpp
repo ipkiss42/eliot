@@ -20,7 +20,6 @@
 
 #include <iostream>
 
-#include <boost/foreach.hpp>
 #include <boost/format.hpp>
 
 #include "csv_helper.h"
@@ -134,16 +133,16 @@ void CsvHelper::writeStream(ostream &output, const vector<DataRow> &iData)
 
     // Make sure the rows have the same number of fields
     size_t firstLength = iData.front().size();
-    BOOST_FOREACH(const DataRow &row, iData)
+    for (const DataRow &row : iData)
     {
         if (row.size() != firstLength)
             throw CsvException(_("Invalid CSV data (variable number of fields)"));
     }
 
-    BOOST_FOREACH(const DataRow &row, iData)
+    for (const DataRow &row : iData)
     {
         bool first = true;
-        BOOST_FOREACH(const string &field, row)
+        for (const string &field : row)
         {
             // Add the comma
             if (first)
@@ -157,7 +156,7 @@ void CsvHelper::writeStream(ostream &output, const vector<DataRow> &iData)
             else
             {
                 output << '"';
-                BOOST_FOREACH(char c, field)
+                for (char c : field)
                 {
                     output << c;
                     // Double the quote

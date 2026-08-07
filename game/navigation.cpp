@@ -18,7 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <boost/foreach.hpp>
 #include <sstream>
 
 #include "navigation.h"
@@ -42,7 +41,7 @@ Navigation::Navigation()
 
 Navigation::~Navigation()
 {
-    BOOST_FOREACH(Turn *c, m_allTurns)
+    for (Turn *c : m_allTurns)
     {
         delete c;
     }
@@ -243,7 +242,7 @@ void Navigation::print() const
     LOG_DEBUG("Current position at turn {}", m_currTurn);
     int index = 0;
     ostringstream oss;
-    BOOST_FOREACH(const Turn *c, m_allTurns)
+    for (const Turn *c : m_allTurns)
     {
         oss << endl << "Turn " << index << ":" << lfw(c->toString());
         ++index;

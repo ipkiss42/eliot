@@ -19,7 +19,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <boost/foreach.hpp>
 
 #include <cstdlib> // For rand()
 
@@ -33,9 +32,9 @@ INIT_LOGGER(game, Bag);
 
 
 Bag::Bag(const Dictionary &iDic)
-    : m_dic(iDic) 
+    : m_dic(iDic)
 {
-    BOOST_FOREACH(const Tile &tile, m_dic.getAllTiles())
+    for (const Tile &tile : m_dic.getAllTiles())
     {
         m_tilesMap[tile] = tile.maxNumber();
         m_nbTiles += tile.maxNumber();
@@ -55,12 +54,10 @@ unsigned Bag::count(const Tile &iTile) const
 unsigned Bag::getNbVowels() const
 {
     int v = 0;
-
-    std::pair<Tile, int> p;
-    BOOST_FOREACH(p, m_tilesMap)
+    for (const auto &[tile, count] : m_tilesMap)
     {
-        if (p.first.isVowel())
-            v += p.second;
+        if (tile.isVowel())
+            v += count;
     }
     return v;
 }
@@ -69,12 +66,10 @@ unsigned Bag::getNbVowels() const
 unsigned Bag::getNbConsonants() const
 {
     int c = 0;
-
-    std::pair<Tile, int> p;
-    BOOST_FOREACH(p, m_tilesMap)
+    for (const auto &[tile, count] : m_tilesMap)
     {
-        if (p.first.isConsonant())
-            c += p.second;
+        if (tile.isConsonant())
+            c += count;
     }
     return c;
 }
@@ -124,16 +119,15 @@ Tile Bag::selectRandomTile(unsigned total,
     ASSERT(total > 0, "Not enough tiles (of the requested kind) in the bag");
 
     int n = (int)((double)total * rand() / (RAND_MAX + 1.0));
-    std::pair<Tile, int> p;
-    BOOST_FOREACH(p, m_tilesMap)
+    for (const auto &[tile, count] : m_tilesMap)
     {
-        if (onlyVowels && !p.first.isVowel())
+        if (onlyVowels && !tile.isVowel())
             continue;
-        if (onlyConsonants && !p.first.isConsonant())
+        if (onlyConsonants && !tile.isConsonant())
             continue;
-        if (n < p.second)
-            return p.first;
-        n -= p.second;
+        if (n < count)
+            return tile;
+        n -= count;
     }
     ASSERT(false, "We should not come here");
     return Tile();

@@ -27,7 +27,6 @@
 #include <clocale>
 #include <vector>
 #include <boost/format.hpp>
-#include <boost/foreach.hpp>
 #include <boost/tokenizer.hpp>
 #include <getopt.h>
 

@@ -18,7 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <boost/foreach.hpp>
 #include <sstream>
 
 #include "config.h"
@@ -238,7 +237,7 @@ Player * Duplicate::findBestPlayer() const
 {
     Player *bestPlayer = nullptr;
     int bestScore = -1;
-    BOOST_FOREACH(Player *player, m_players)
+    for (Player *player : m_players)
     {
         const Move &move = player->getLastMove();
         if (move.isValid() && move.getScore() > bestScore)
@@ -326,7 +325,7 @@ void Duplicate::endTurn()
     // This is required by the start() method which will be called to
     // start the next turn
     const PlayedRack& pld = getHistory().getCurrentRack();
-    BOOST_FOREACH(Player *player, m_players)
+    for (Player *player : m_players)
     {
         Command *pCmd = new PlayerRackCmd(*player, pld);
         accessNavigation().addAndExecute(pCmd);
@@ -401,7 +400,7 @@ bool Duplicate::isArbitrationGame() const
 void Duplicate::setSoloAuto(unsigned int minNbPlayers, int iSoloValue)
 {
     // Remove all existing solos
-    BOOST_FOREACH(const Player *player, m_players)
+    for (const Player *player : m_players)
     {
         const PlayerEventCmd *cmd = getPlayerEvent(player->getId(), PlayerEventCmd::SOLO);
         if (cmd != nullptr)
@@ -415,7 +414,7 @@ void Duplicate::setSoloAuto(unsigned int minNbPlayers, int iSoloValue)
     // which have played at least one word during the game, even if they
     // have left the game since then, or have arrived after the beginning.
     unsigned countActive = 0;
-    BOOST_FOREACH(const Player *player, m_players)
+    for (const Player *player : m_players)
     {
         for (unsigned i = 0; i < player->getHistory().getSize(); ++i)
         {
@@ -437,7 +436,7 @@ void Duplicate::setSoloAuto(unsigned int minNbPlayers, int iSoloValue)
 
         // Find whether other players than imax have the same score
         bool otherWithSameScore = false;
-        BOOST_FOREACH(const Player *player, m_players)
+        for (const Player *player : m_players)
         {
             if (player != bestPlayer &&
                 player->getLastMove().getScore() >= bestScore &&

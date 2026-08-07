@@ -19,7 +19,6 @@
  *****************************************************************************/
 
 #include <boost/format.hpp>
-#include <boost/foreach.hpp>
 
 #include "config.h"
 #if ENABLE_NLS
@@ -167,7 +166,7 @@ string WordLettersHint::giveHint(const Move &iMove) const
 
     // Get the word
     wstring word;
-    BOOST_FOREACH(const Tile &tile, tiles)
+    for (const Tile &tile : tiles)
     {
         word += tile.getDisplayStr();
     }

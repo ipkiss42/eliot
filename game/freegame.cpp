@@ -18,7 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <boost/foreach.hpp>
 
 #include <iomanip>
 #include <wctype.h>
@@ -110,7 +109,7 @@ void FreeGame::start()
     ASSERT(getNPlayers(), "Cannot start a game without any player");
 
     // Set the initial racks of the players
-    BOOST_FOREACH(Player *player, m_players)
+    for (Player *player : m_players)
     {
         const PlayedRack &newRack =
             helperSetRackRandom(player->getCurrentRack(), false, RACK_NEW);
@@ -231,7 +230,7 @@ void FreeGame::endGame(unsigned iWinningPlayer)
             const PlayedRack &pld = m_players[i]->getCurrentRack();
             pld.getAllTiles(tiles);
             int points = 0;
-            BOOST_FOREACH(const Tile &tile, tiles)
+            for (const Tile &tile : tiles)
             {
                 points += tile.getPoints();
             }
@@ -279,7 +278,7 @@ int FreeGame::checkPass(const Player &iPlayer,
     // Check that the letters are all present in the player's rack
     const PlayedRack &pld = iPlayer.getCurrentRack();
     Rack rack = pld.getRack();
-    BOOST_FOREACH(wchar_t wch, iToChange)
+    for (wchar_t wch : iToChange)
     {
         // Remove the letter from the rack
         if (!rack.contains(Tile(wch)))
@@ -327,7 +326,7 @@ bool FreeGame::allPlayersPassedThreeTimesInARow() const
     const unsigned NB_TURNS_TO_CHECK = NB_OF_PASSES * getNPlayers();
 
     bool result = true;
-    BOOST_FOREACH(const Player *player, m_players)
+    for (const Player *player : m_players)
     {
         const History &history = player->getHistory();
         result = result && (history.getSize() >= NB_TURNS_TO_CHECK);

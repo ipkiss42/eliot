@@ -18,7 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <boost/foreach.hpp>
 
 #include <QStandardItemModel>
 #include <QSortFilterProxyModel>
@@ -577,7 +576,7 @@ bool ArbitAssignments::isSuppressMoveAllowed() const
     // Return true if at least one of the selected players has
     // a move to suppress
     QSet<unsigned int> playersIdSet = getSelectedPlayers();
-    BOOST_FOREACH(unsigned int id, playersIdSet)
+    for (unsigned int id : playersIdSet)
     {
         if (m_game->hasPlayed(id) &&
             !m_game->getPlayer(id).getLastMove().isNull())
@@ -604,7 +603,7 @@ void ArbitAssignments::helperAssignMove(const Move &iMove)
 
     // Warn if some of the selected players already have an assigned move
     QSet<unsigned int> assignedIdSet;
-    BOOST_FOREACH(unsigned int id, playersIdSet)
+    for (unsigned int id : playersIdSet)
     {
         if (m_game->hasPlayed(id) &&
             !m_game->getPlayer(id).getLastMove().isNull())
@@ -615,7 +614,7 @@ void ArbitAssignments::helperAssignMove(const Move &iMove)
     if (!assignedIdSet.empty())
     {
         QString players;
-        BOOST_FOREACH(unsigned int id, assignedIdSet)
+        for (unsigned int id : assignedIdSet)
         {
             players = QString("\t%1\n").arg(qfw(m_game->getPlayer(id).getName()));
         }
@@ -642,7 +641,7 @@ void ArbitAssignments::helperAssignMove(const Move &iMove)
     }
 
     // Assign the move to each selected player
-    BOOST_FOREACH(unsigned int id, playersIdSet)
+    for (unsigned int id : playersIdSet)
     {
         LOG_DEBUG(lfq(QString("Assigning move %1 to player %2")
                       .arg(qfw(iMove.toString())).arg(id)));
@@ -674,7 +673,7 @@ void ArbitAssignments::addRemoveSolo()
     if (playersIdSet.size() != 1)
         return;
 
-    BOOST_FOREACH(unsigned int id, playersIdSet)
+    for (unsigned int id : playersIdSet)
     {
         m_game->arbitrationToggleSolo(id);
     }
@@ -688,7 +687,7 @@ void ArbitAssignments::addRemoveWarning()
     if (playersIdSet.isEmpty())
         return;
 
-    BOOST_FOREACH(unsigned int id, playersIdSet)
+    for (unsigned int id : playersIdSet)
     {
         m_game->arbitrationToggleWarning(id);
     }
@@ -702,7 +701,7 @@ void ArbitAssignments::addRemovePenalty()
     if (playersIdSet.isEmpty())
         return;
 
-    BOOST_FOREACH(unsigned int id, playersIdSet)
+    for (unsigned int id : playersIdSet)
     {
         m_game->arbitrationTogglePenalty(id);
     }

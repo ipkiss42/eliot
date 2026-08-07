@@ -18,7 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <boost/foreach.hpp>
 
 #include <iomanip>
 #include <string>
@@ -137,7 +136,7 @@ void GameIO::printBoardMultipliers(ostream &out, const PublicGame &iGame)
 void GameIO::printNonPlayed(ostream &out, const PublicGame &iGame)
 {
     const Bag &bag = iGame.getBag();
-    BOOST_FOREACH(const Tile &tile, iGame.getDic().getAllTiles())
+    for (const Tile &tile : iGame.getDic().getAllTiles())
     {
         if (bag.count(tile) > 9)
             out << " ";
@@ -145,7 +144,7 @@ void GameIO::printNonPlayed(ostream &out, const PublicGame &iGame)
     }
     out << endl;
 
-    BOOST_FOREACH(const Tile &tile, iGame.getDic().getAllTiles())
+    for (const Tile &tile : iGame.getDic().getAllTiles())
     {
         out << " " << bag.count(tile);
     }

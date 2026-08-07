@@ -18,7 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <boost/foreach.hpp>
 #include <vector>
 #include <QTreeView>
 #include <QVBoxLayout>
@@ -86,7 +85,7 @@ void BagWidget::updateModel()
         return;
 
     const Bag &bag = m_game->getBag();
-    BOOST_FOREACH(const Tile &tile, m_game->getDic().getAllTiles())
+    for (const Tile &tile : m_game->getDic().getAllTiles())
     {
         unsigned int nb = bag.count(tile);
         if (nb != 0)
@@ -156,7 +155,7 @@ void BagWidget2::setGame(const PublicGame *iGame)
     if (m_game != nullptr)
     {
         m_totalNbTiles = 0;
-        BOOST_FOREACH(const Tile &tile, m_game->getDic().getAllTiles())
+        for (const Tile &tile : m_game->getDic().getAllTiles())
         {
             m_totalNbTiles += tile.maxNumber();
         }
@@ -197,7 +196,7 @@ void BagWidget2::refresh()
 
     // Set the correct content for all the tiles
     unsigned int index = 0;
-    BOOST_FOREACH(const Tile &tile, m_game->getDic().getAllTiles())
+    for (const Tile &tile : m_game->getDic().getAllTiles())
     {
         const unsigned int nbInBag = bag.count(tile);
         const unsigned int nbInRack = rack.count(tile);

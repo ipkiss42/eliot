@@ -18,7 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <boost/foreach.hpp>
 #include <sstream>
 #include <typeinfo>
 
@@ -39,7 +38,7 @@ Turn::Turn()
 
 Turn::~Turn()
 {
-    BOOST_FOREACH(Command *cmd, m_commands)
+    for (Command *cmd : m_commands)
     {
         delete cmd;
     }
@@ -207,7 +206,7 @@ bool Turn::hasNonAutoExecCmd() const
 
 bool Turn::isHumanIndependent() const
 {
-    BOOST_FOREACH(Command *cmd, m_commands)
+    for (Command *cmd : m_commands)
     {
         if (!cmd->isHumanIndependent())
             return false;
@@ -285,7 +284,7 @@ void Turn::dropFrom(unsigned iFirstToDrop)
 wstring Turn::toString() const
 {
     wostringstream oss;
-    BOOST_FOREACH(Command *cmd, m_commands)
+    for (Command *cmd : m_commands)
     {
         oss << endl << L"  "
             << (cmd->isExecuted() ? L"| " : L"  " )

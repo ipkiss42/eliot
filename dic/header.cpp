@@ -24,7 +24,6 @@
 #include <string>
 #include <sstream>
 #include <iostream>
-#include <boost/foreach.hpp>
 #include <boost/tokenizer.hpp>
 
 // For ntohl & Co.
@@ -284,7 +283,7 @@ void Header::buildCaches()
     // Create a string with all the characters possibly used,
     // and another one with the characters used in multi-char input strings
     m_inputChars.reserve(m_letters.size());
-    BOOST_FOREACH(wchar_t wch, m_letters)
+    for (wchar_t wch : m_letters)
     {
         map<wchar_t, vector<wstring> >::const_iterator it =
             m_displayAndInputData.find(wch);
@@ -292,9 +291,9 @@ void Header::buildCaches()
             m_inputChars.append(1, wch);
         else
         {
-            BOOST_FOREACH(const wstring &str, it->second)
+            for (const wstring &str : it->second)
             {
-                BOOST_FOREACH(wchar_t chr, str)
+                for (wchar_t chr : str)
                 {
                     wchar_t upChr = towupper(chr);
                     if (m_inputChars.find(upChr) == string::npos)
@@ -639,7 +638,7 @@ wstring Header::writeDisplayAndInput() const
         else
             serialized += L" ";
         serialized.append(1, it->first);
-        BOOST_FOREACH(const wstring &str, it->second)
+        for (const wstring &str : it->second)
         {
             // Make sure the string is uppercase
             serialized += L"|" + toUpper(str);

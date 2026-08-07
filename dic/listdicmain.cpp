@@ -31,7 +31,6 @@
 #include <cstdlib>
 #include <cstdio>
 #include <cstddef>
-#include <boost/foreach.hpp>
 #include <getopt.h>
 
 #if ENABLE_NLS
@@ -78,7 +77,7 @@ static void printLetters(const Dictionary &iDic)
             header.getDisplayInputData().find(letters[i - 1]);
         if (it != header.getDisplayInputData().end())
         {
-            BOOST_FOREACH(const wstring &input, it->second)
+            for (const wstring &input : it->second)
             {
                 cout << " " << ufw(input);
             }

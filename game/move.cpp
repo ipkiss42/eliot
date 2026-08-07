@@ -18,7 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <boost/foreach.hpp>
 
 #include <wctype.h>
 #include <sstream>
@@ -123,7 +122,7 @@ PlayedRack Move::ComputeRackForMove(const PlayedRack &iOldRack, const Move &iMov
     {
         // Remove the changed tiles from the rack
         const wstring & changed = iMove.getChangedLetters();
-        BOOST_FOREACH(wchar_t ch, changed)
+        for (wchar_t ch : changed)
         {
             newRack.remove(Tile(ch));
         }
