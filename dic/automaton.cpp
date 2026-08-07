@@ -27,7 +27,6 @@
 #include <fstream>
 #include <sstream>
 #include <cstring>
-#include <boost/format.hpp>
 
 #include "dic.h"
 #include "regexp.h"
@@ -35,7 +34,6 @@
 #include "debug.h"
 
 using namespace std;
-using boost::format;
 
 
 INIT_LOGGER(dic, Automaton);
@@ -220,7 +218,7 @@ void Automaton::dump(const string &iFileName) const
     out << "digraph automaton {\n";
     for (unsigned int i = 1; i <= m_nbStates; i++)
     {
-        out << format("\t%1% [label = \"%2%\"") % i % i;
+        out << std::format("\t{0} [label = \"{1}\"", i, i);
         if (i == m_init)
             out << ", style = filled, color=lightgrey";
         if (accept(i))
@@ -234,8 +232,8 @@ void Automaton::dump(const string &iFileName) const
         {
             if (m_transitions[i][l])
             {
-                out << format("\t%1% -> %2%") % i % m_transitions[i][l];
-                out << format(" [label = \"%1%\"];\n") % regexpPrintLetter(l);
+                out << std::format("\t{0} -> {1}", i, m_transitions[i][l]);
+                out << std::format(" [label = \"{0}\"];\n", regexpPrintLetter(l));
             }
         }
     }
@@ -499,7 +497,7 @@ void AutomatonHelper::printNodes(ostream &out) const
     {
         State * s = *it;
         const string &sid = idToString(s->getId());
-        out << format("\t\"%1%\" [label = \"%2%\"") % sid % sid;
+        out << std::format("\t\"{0}\" [label = \"{1}\"", sid, sid);
         if (s == m_initState)
         {
             out << ", style = filled, color=lightgrey";
@@ -524,8 +522,8 @@ void AutomatonHelper::printEdges(ostream &out) const
         {
             if (s->m_next[letter])
             {
-                out << format("\t\"%1%\" -> ") % idToString(s->getId());
-                out << format("\"%1%\" [label = \"") % idToString(s->m_next[letter]->getId());
+                out << std::format("\t\"{0}\" -> ", idToString(s->getId()));
+                out << std::format("\"{0}\" [label = \"", idToString(s->m_next[letter]->getId()));
                 out << regexpPrintLetter(letter);
                 out << "\"];\n";
             }

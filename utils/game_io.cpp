@@ -19,7 +19,6 @@
  *****************************************************************************/
 
 #include <boost/foreach.hpp>
-#include <boost/format.hpp>
 
 #include <iomanip>
 #include <string>
@@ -41,9 +40,6 @@
 #include "round.h"
 
 using namespace std;
-
-using boost::format;
-using boost::wformat;
 
 
 INIT_LOGGER(utils, GameIO);
@@ -240,39 +236,45 @@ void GameIO::printGameDebug(ostream &out, const PublicGame &iGame)
     {
         const TurnData &turn = iGame.getHistory().getTurn(i);
         const Move &move = turn.getMove();
-        format fmter("%1% | %2% | %3% | %4% | %5% | %6%");
-        fmter % padAndConvert(str(wformat(L"%1%") % (i + 1)), 5);
-        fmter % padAndConvert(turn.getPlayedRack().toString(), 8);
+        std::string f1 = padAndConvert(format(L"{0}", (i + 1)), 5);
+        std::string f2 = padAndConvert(turn.getPlayedRack().toString(), 8);
+        std::string f3, f4, f5, f6;
         if (move.isValid())
         {
             const Round &round = move.getRound();
-            fmter % padAndConvert(round.getWord(), 14, false);
-            fmter % padAndConvert(round.getCoord().toString(), 3);
-            fmter % padAndConvert(str(wformat(L"%1%") % round.getPoints()), 3);
-            fmter % padAndConvert(round.getBonus() ? L"*": L"", 1, false);
+            f3 = padAndConvert(round.getWord(), 14, false);
+            f4 = padAndConvert(round.getCoord().toString(), 3);
+            f5 = padAndConvert(format(L"{0}", round.getPoints()), 3);
+            f6 = padAndConvert(round.getBonus() ? L"*": L"", 1, false);
         }
         else
         {
             if (move.isInvalid())
             {
-                fmter % padAndConvert(L"#" + move.getBadWord() + L"#", 14, false);
-                fmter % padAndConvert(move.getBadCoord(), 3);
+                f3 = padAndConvert(L"#" + move.getBadWord() + L"#", 14, false);
+                f4 = padAndConvert(move.getBadCoord(), 3);
             }
             else if (move.isChangeLetters())
             {
-                fmter % padAndConvert(L"[" + move.getChangedLetters() + L"]", 14, false) % " - ";
+                f3 = padAndConvert(L"[" + move.getChangedLetters() + L"]", 14, false);
+                f4 = " - ";
             }
             else if (move.isPass())
             {
-                fmter % padAndConvert(L"(PASS)", 14, false) % " - ";
+                f3 = padAndConvert(L"(PASS)", 14, false);
+                f4 = " - ";
             }
             else
             {
-                fmter % padAndConvert(L"(NO MOVE)", 14, false) % " - ";
+                f3 = padAndConvert(L"(NO MOVE)", 14, false);
+                f4 = " - ";
             }
-            fmter % "  0" % " ";
+            f5 = "  0";
+            f6 = " ";
         }
-        out << fmter.str() << endl;
+        std::string line = format(
+            "{0} | {1} | {2} | {3} | {4} | {5}", f1, f2, f3, f4, f5, f6);
+        out << line << endl;
     }
     out << endl << endl;
 }

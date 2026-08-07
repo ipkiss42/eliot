@@ -21,18 +21,15 @@
 
 #include "config.h"
 
-#include <boost/format.hpp>
 #include <fstream>
 
 #include "dic.h"
 #include "regexp.h"
 #include "debug.h"
 
-using boost::format;
-
 
 Node::Node(int type, char v, Node *fg, Node *fd)
-    : m_type(type), m_var(v), m_fg(fg), m_fd(fd) 
+    : m_type(type), m_var(v), m_fg(fg), m_fd(fd)
 {
 }
 
@@ -177,17 +174,17 @@ void regexp_print_ptl(int ptl[])
 
 string regexpPrintLetter(char l)
 {
-    if (l == RE_EPSILON)    return (format("( &  [%1%])") % l).str();
-    if (l == RE_FINAL_TOK)  return (format("( #  [%1%])") % l).str();
-    if (l == RE_ALL_MATCH)  return (format("( .  [%1%])") % l).str();
-    if (l == RE_VOWL_MATCH) return (format("(:v: [%1%])") % l).str();
-    if (l == RE_CONS_MATCH) return (format("(:c: [%1%])") % l).str();
-    if (l == RE_USR1_MATCH) return (format("(:1: [%1%])") % l).str();
-    if (l == RE_USR2_MATCH) return (format("(:2: [%1%])") % l).str();
+    if (l == RE_EPSILON)    return (std::format("( &  [{0}])", l));
+    if (l == RE_FINAL_TOK)  return (std::format("( #  [{0}])", l));
+    if (l == RE_ALL_MATCH)  return (std::format("( .  [{0}])", l));
+    if (l == RE_VOWL_MATCH) return (std::format("(:v: [{0}])", l));
+    if (l == RE_CONS_MATCH) return (std::format("(:c: [{0}])", l));
+    if (l == RE_USR1_MATCH) return (std::format("(:1: [{0}])", l));
+    if (l == RE_USR2_MATCH) return (std::format("(:2: [{0}])", l));
     if (l < RE_FINAL_TOK)
-        return (format("(%1% [%2%])") % (char)(l + 'a' - 1) % (int)l).str();
+        return std::format("({0} [{1}])", (char)(l + 'a' - 1), (int)l);
     else
-        return (format("(liste %1%)") % (l - RE_LIST_USER_END)).str();
+        return std::format("(liste {0})", (l - RE_LIST_USER_END));
 }
 
 
@@ -214,8 +211,8 @@ void Node::printNode(ostream &out, int detail) const
     }
     if (detail == 2)
     {
-        out << format("\\n pos=%1%\\n annul=%2%\\n PP=0x%3%\\n DP=0x%3%")
-            % m_position % m_annulable % m_PP % m_DP;
+        out << std::format("\\n pos={0}\\n annul={1}\\n PP=0x{2}\\n DP=0x{3}",
+            m_position, m_annulable, m_PP, m_DP);
     }
 }
 
@@ -241,16 +238,16 @@ void Node::printEdgesRec(ostream &out) const
     switch (m_type)
     {
         case NODE_OR:
-            out << format("%1% -> %2%;") % m_number % m_fg->m_number;
-            out << format("%1% -> %2%;") % m_number % m_fd->m_number;
+            out << std::format("{0} -> {1};", m_number, m_fg->m_number);
+            out << std::format("{0} -> {1};", m_number, m_fd->m_number);
             break;
         case NODE_AND:
-            out << format("%1% -> %2%;") % m_number % m_fg->m_number;
-            out << format("%1% -> %2%;") % m_number % m_fd->m_number;
+            out << std::format("{0} -> {1};", m_number, m_fg->m_number);
+            out << std::format("{0} -> {1};", m_number, m_fd->m_number);
             break;
         case NODE_PLUS:
         case NODE_STAR:
-            out << format("%1% -> %2%;") % m_number % m_fg->m_number;
+            out << std::format("{0} -> {1};", m_number, m_fg->m_number);
             break;
     }
 }

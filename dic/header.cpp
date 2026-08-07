@@ -25,7 +25,6 @@
 #include <sstream>
 #include <iostream>
 #include <boost/foreach.hpp>
-#include <boost/format.hpp>
 #include <boost/tokenizer.hpp>
 
 // For ntohl & Co.
@@ -51,11 +50,16 @@
 #include "encoding.h"
 #include "dic_exception.h"
 
-using boost::format;
-using boost::wformat;
-
 
 INIT_LOGGER(dic, Header);
+
+
+// Short version of the string formatting for non-constant strings (e.g. when using gettext).
+// With C++26, we can use std::runtime_format instead of having to rely on make_format_args.
+#define _fmt(String, ...) \
+    ([&](auto&&... args) { \
+        return std::vformat((String), std::make_format_args(args...)); \
+    }(__VA_ARGS__))
 
 
 #if defined(WORDS_BIGENDIAN)
@@ -207,10 +211,11 @@ Header::Header(const DictHeaderInfo &iInfo)
     // Sanity checks
     if (iInfo.letters.size() > _MAX_LETTERS_NB_)
     {
-        format fmt(_("Header::Header: Too many different letters for "
-                     "the current format; only %1% are supported"));
-        fmt % _MAX_LETTERS_NB_;
-        throw DicException(fmt.str());
+        throw DicException(_fmt(
+            _("Header::Header: Too many different letters for "
+                "the current format; only {0} are supported"),
+            _MAX_LETTERS_NB_
+        ));
     }
     if (iInfo.points.size() != iInfo.letters.size())
     {
@@ -317,9 +322,8 @@ wchar_t Header::getCharFromCode(unsigned int iCode) const
     // Safety check
     if (iCode == 0 || iCode > m_letters.size())
     {
-        format fmt(_("Header::getCharFromCode: No letter for code '%1%'"));
-        fmt % iCode;
-        throw DicException(fmt.str());
+        throw DicException(_fmt(
+            _("Header::getCharFromCode: No letter for code '{0}'"), iCode));
     }
     return m_letters[iCode - 1];
 }
@@ -331,9 +335,10 @@ unsigned int Header::getCodeFromChar(wchar_t iChar) const
         m_mapCodeFromChar.find(iChar);
     if (pair == m_mapCodeFromChar.end())
     {
-        format fmt(_("Header::getCodeFromChar: No code for letter '%1%' (val=%2%)"));
-        fmt % lfw(iChar) % (unsigned) iChar;
-        throw DicException(fmt.str());
+        throw DicException(_fmt(
+            _("Header::getCodeFromChar: No code for letter '{0}' (val={1})"),
+            lfw(iChar), (unsigned) iChar
+        ));
     }
     return pair->second;
 }
@@ -646,43 +651,43 @@ wstring Header::writeDisplayAndInput() const
 
 void Header::print(ostream &out) const
 {
-#define fmt(x) boost::format(x)
-    out << fmt(_("Dictionary name: %1%")) % lfw(m_dicName) << endl;
+    out << _fmt(_("Dictionary name: {0}"), lfw(m_dicName)) << endl;
     char buf[150];
     strftime(buf, sizeof(buf), "%c", gmtime(&m_compressDate));
-    out << fmt(_("Compressed on: %1%")) % buf << endl;
-    out << fmt(_("Compressed using a binary compiled by: %1%")) % lfw(m_userHost) << endl;
-    out << fmt(_("Dictionary type: %1%")) % (m_type == kDAWG ? "DAWG" : "GADDAG") << endl;
-    out << fmt(_("Letters: %1%")) % lfw(m_letters) << endl;
-    out << fmt(_("Number of letters: %1%")) % m_letters.size() << endl;
-    out << fmt(_("Number of words: %1%")) % m_nbWords << endl;
+    out << _fmt(_("Compressed on: {0}"), buf) << endl;
+    out << _fmt(_("Compressed using a binary compiled by: {0}"), lfw(m_userHost)) << endl;
+    out << _fmt(_("Dictionary type: {0}"), (m_type == kDAWG ? "DAWG" : "GADDAG")) << endl;
+    out << _fmt(_("Letters: {0}"), lfw(m_letters)) << endl;
+    out << _fmt(_("Number of letters: {0}"), m_letters.size()) << endl;
+    out << _fmt(_("Number of words: {0}"), m_nbWords) << endl;
     long unsigned int size = sizeof(Dict_header_old) +
         sizeof(Dict_header_ext) + sizeof(Dict_header_ext_2);
-    out << fmt(_("Header size: %1% bytes")) % size << endl;
-    out << fmt(_("Root: %1% (edge)")) % m_root << endl;
-    out << fmt(_("Nodes: %1% used + %2% saved")) % m_nodesUsed % m_nodesSaved << endl;
-    out << fmt(_("Edges: %1% used + %2% saved")) % m_edgesUsed % m_edgesSaved << endl;
-#undef fmt
+    out << _fmt(_("Header size: {0} bytes"), size) << endl;
+    out << _fmt(_("Root: {0} (edge)"), m_root) << endl;
+    out << _fmt(_("Nodes: {0} used + {1} saved"), m_nodesUsed, m_nodesSaved) << endl;
+    out << _fmt(_("Edges: {0} used + {1} saved"), m_edgesUsed, m_edgesSaved) << endl;
     out << "====================================================================" << endl;
-    out << format("%1% | %2% | %3% | %4% | %5% | %6% | %7%")
-        % _("Letter") % _("Points") % _("Frequency") % _("Vowel")
-        % _("Consonant") % _("Display") % _("Alt. input") << endl;
+    out << format("{0} | {1} | {2} | {3} | {4} | {5} | {6}",
+        _("Letter"), _("Points"), _("Frequency"), _("Vowel"),
+        _("Consonant"), _("Display"), _("Alt. input")) << endl;
     out << "-------+--------+-----------+-------+-----------+-------+------" << endl;
 #define sz(x) strlen(_(x))
     for (unsigned int i = 0; i < m_letters.size(); ++i)
     {
-        format fmter("%1% | %2% | %3% | %4% | %5% | %6% | %7%");
-        fmter % centerAndConvert(wstring(1, m_letters[i]), sz("Letter"));
-        fmter % centerAndConvert(str(wformat(L"%1%") % m_points[i]), sz("Points"));
-        fmter % centerAndConvert(str(wformat(L"%1%") % m_frequency[i]), sz("Frequency"));
-        fmter % centerAndConvert(str(wformat(L"%1%") % static_cast<bool>(m_vowels[i])), sz("Vowel"));
-        fmter % centerAndConvert(str(wformat(L"%1%") % static_cast<bool>(m_consonants[i])), sz("Consonant"));
+        std::string f1 = centerAndConvert(std::wstring(1, m_letters[i]), sz("Letter"));
+        std::string f2 = centerAndConvert(std::format(L"{0}", m_points[i]), sz("Points"));
+        std::string f3 = centerAndConvert(std::format(L"{0}", m_frequency[i]), sz("Frequency"));
+        std::string f4 = centerAndConvert(std::format(L"{0}", static_cast<bool>(m_vowels[i])), sz("Vowel"));
+        std::string f5 = centerAndConvert(std::format(L"{0}", static_cast<bool>(m_consonants[i])), sz("Consonant"));
+
+        std::string f6;
+        std::string f7;
         map<wchar_t, vector<wstring> >::const_iterator it =
             m_displayAndInputData.find(m_letters[i]);
         if (it != m_displayAndInputData.end())
         {
             const vector<wstring> &inputs = it->second;
-            fmter % centerAndConvert(str(wformat(L"%1%") % inputs[0]), sz("Display"));
+            f6 = centerAndConvert(std::format(L"{0}", inputs[0]), sz("Display"));
             bool first = true;
             string s;
             for (uint8_t j = 1; j < inputs.size(); ++j)
@@ -693,13 +698,16 @@ void Header::print(ostream &out) const
                     s += " ";
                 s += lfw(inputs[j]);
             }
-            fmter % s;
+            f7 = s;
         }
         else
         {
-            fmter % string(sz("Display"), ' ') % string(sz("Alt. input"), ' ');
+            f6 = string(sz("Display"), ' ');
+            f7 = string(sz("Alt. input"), ' ');
         }
-        out << fmter.str() << endl;
+        std::string line = format(
+            "{0} | {1} | {2} | {3} | {4} | {5} | {6}", f1, f2, f3, f4, f5, f6, f7);
+        out << line << endl;
     }
 #undef sz
     out << "====================================================================" << endl;
