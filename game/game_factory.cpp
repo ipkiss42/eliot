@@ -21,7 +21,6 @@
 
 #include "config.h"
 
-#include <boost/format.hpp>
 #include <getopt.h>
 #include <string>
 #include <fstream>
@@ -166,7 +165,7 @@ Game *GameFactory::createFromCmdLine(int argc, char **argv)
                 wstring name;
                 if (optarg == nullptr)
                 {
-                    string s = str(boost::format(_("Player %1%")) % (m_players.size() + 1));
+                    string s = _fmt(_("Player {0}"), m_players.size() + 1);
                     name = wfl(s);
                 }
                 else

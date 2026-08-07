@@ -24,7 +24,6 @@
 #include <fstream>
 #include <sstream>
 #include <map>
-#include <boost/format.hpp>
 #include <boost/functional/hash.hpp>
 #include <ctime>
 #include <sys/types.h>
@@ -61,10 +60,6 @@
 
 #define MAX_STRING_LENGTH 200
 
-// Useful shortcut
-#define fmt(a) boost::format(a)
-
-
 INIT_LOGGER(dic, CompDic);
 
 
@@ -100,14 +95,15 @@ void CompDic::addLetter(wchar_t chr, int points, int frequency,
     // (started on 2009/12/31)
     if (!iswalpha(chr) && chr != L'?')
     {
-        ostringstream ss;
-        ss << fmt(_("'%1%' is not a valid letter.")) % lfw(chr) << endl;
-        ss << fmt(_("For technical reasons, Eliot currently only supports "
-                    "alphabetical characters as internal character "
-                    "representation, even if the tile has a display string "
-                    "defined. Please use another character and change your "
-                    "word list accordingly."));
-        throw DicException(ss.str());
+        throw DicException(std::format(
+            "{}\n{}",
+            _fmt(_("'{0}' is not a valid letter."), lfw(chr)),
+            _fmt(_("For technical reasons, Eliot currently only supports "
+                   "alphabetical characters as internal character "
+                   "representation, even if the tile has a display string "
+                   "defined. Please use another character and change your "
+                   "word list accordingly."))
+        ));
     }
 
     const wchar_t upChar = towupper(chr);
@@ -141,12 +137,12 @@ void CompDic::loadWordList(const string &iFileName, vector<wstring> &oWordList)
 {
     ifstream file(iFileName.c_str(), ios::in | ios::binary);
     if (!file.is_open())
-        throw DicException((fmt(_("Could not open file '%1%'")) % iFileName).str());
+        throw DicException(_fmt(_("Could not open file '{0}'"), iFileName));
 
     // Get the file size
     struct stat stat_buf;
     if (stat(iFileName.c_str(), &stat_buf) < 0)
-        throw DicException((fmt(_("Could not open file '%1%'")) % iFileName).str());
+        throw DicException(_fmt(_("Could not open file '{0}'"), iFileName));
     int dicSize = (unsigned int)stat_buf.st_size;
 
     // Reserve some space (heuristic: the average length of words is 11)
@@ -267,12 +263,12 @@ unsigned int CompDic::makeNode(ostream &outFile, const Header &iHeader,
         catch (DicException &e)
         {
             // If an invalid character is found, be specific about the problem
-            ostringstream oss;
-            oss << fmt(_("Error in the word list on line %1%, col %2%: %3%"))
-                % (1 + m_headerInfo.nwords)
-                % (1 + m_endString - m_stringBuf)
-                % e.what() << endl;
-            throw DicException(oss.str());
+            throw DicException(_fmt(
+                _("Error in the word list on line {0}, col {1}: {2}"),
+                1 + m_headerInfo.nwords,
+                1 + m_endString - m_stringBuf,
+                e.what()
+            ));
         }
         edges.push_back(newEdge);
 
@@ -347,9 +343,7 @@ Header CompDic::generateDawg(const string &iWordListFile,
     ofstream outFile(iDawgFile.c_str(), ios::out | ios::binary | ios::trunc);
     if (!outFile.is_open())
     {
-        ostringstream oss;
-        oss << fmt(_("Cannot open output file '%1%'")) % iDawgFile;
-        throw DicException(oss.str());
+        throw DicException(_fmt(_("Cannot open output file '{0}'"), iDawgFile));
     }
 
     const clock_t startLoadTime = clock();

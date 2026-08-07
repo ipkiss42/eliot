@@ -18,8 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <sstream>
-
 #include "navigation.h"
 #include "turn.h"
 #include "command.h"
@@ -32,7 +30,7 @@ INIT_LOGGER(game, Navigation);
 
 
 Navigation::Navigation()
-     
+
 {
     // Start with an empty turn
     m_allTurns.push_back(new Turn);
@@ -241,13 +239,13 @@ void Navigation::print() const
     LOG_DEBUG("=== Commands history ===");
     LOG_DEBUG("Current position at turn {}", m_currTurn);
     int index = 0;
-    ostringstream oss;
-    for (const Turn *c : m_allTurns)
+    std::string result;
+    for (const Turn* c : m_allTurns)
     {
-        oss << endl << "Turn " << index << ":" << lfw(c->toString());
+        result += std::format("\nTurn {}:{}" , index, lfw(c->toString()));
         ++index;
     }
-    LOG_DEBUG(oss.str());
+    LOG_DEBUG(result);
 #endif
 }
 

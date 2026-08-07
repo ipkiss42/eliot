@@ -22,7 +22,6 @@
 #include <vector>
 #include <fstream>
 #include <cmath>
-#include <boost/format.hpp>
 #include <pugixml.hpp>
 
 #include "config.h"
@@ -56,9 +55,6 @@
 // Current version of our save game format. Bump it when it becomes
 // incompatible (and keep it in sync with xml_reader.cpp)
 #define CURRENT_XML_VERSION "2"
-
-#define FMT1(s, a1) (boost::format(s) % (a1)).str()
-#define FMT2(s, a1, a2) (boost::format(s) % (a1) % (a2)).str()
 
 
 using namespace std;
@@ -100,7 +96,7 @@ static void writeMove(pugi::xml_node & parentNode, const Move &iMove,
     else if (iMove.isNull())
         moveNode.append_attribute("type").set_value("none");
     else
-        throw SaveGameException(FMT1(_("Unsupported move: %1%"), lfw(iMove.toString())));
+        throw SaveGameException(_fmt(_("Unsupported move: %1%"), lfw(iMove.toString())));
 }
 
 
@@ -178,7 +174,7 @@ void XmlWriter::write(const Game& iGame, const std::string& iFileName)
         {
             const AIPercent *ai = dynamic_cast<const AIPercent *>(&player);
             if (ai == nullptr)
-                throw SaveGameException(FMT1(_("Invalid player type for player %1%"), i));
+                throw SaveGameException(_fmt(_("Invalid player type for player %1%"), i));
             pNode.append_child("Level").text().set(std::to_string(lrint(ai->getPercent() * 100)));
         }
         pNode.append_child("TableNb").text().set(std::to_string(player.getTableNb()));
@@ -282,9 +278,9 @@ void XmlWriter::write(const Game& iGame, const std::string& iFileName)
             {
                 LOG_ERROR("Unsupported command: {}", lfw(cmd->toString()));
                 turnNode.append_child(pugi::node_comment).text().set(
-                    FMT1("FIXME: Unsupported command: %1%", lfw(cmd->toString())));
+                    _fmt("FIXME: Unsupported command: %1%", lfw(cmd->toString())));
                 // XXX
-                //throw SaveGameException(FMT1(_("Unsupported command: %1%"), lfw(cmd->toString())));
+                //throw SaveGameException(_fmt(_("Unsupported command: %1%"), lfw(cmd->toString())));
             }
         }
     }
@@ -344,7 +340,7 @@ void XmlWriter::write(const Game& iGame, const std::string& iFileName)
     bool success = doc.save_file(iFileName.c_str(), "    ", pugi::format_default, pugi::encoding_utf8);
     if (!success)
     {
-        throw SaveGameException(FMT1(_("Cannot open file for writing: '%1%'"), iFileName));
+        throw SaveGameException(_fmt(_("Cannot open file for writing: '%1%'"), iFileName));
     }
 }
 

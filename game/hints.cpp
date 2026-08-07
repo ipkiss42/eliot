@@ -18,8 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <boost/format.hpp>
-
 #include "config.h"
 #if ENABLE_NLS
 #   include <libintl.h>
@@ -62,7 +60,7 @@ ScoreHint::ScoreHint()
 string ScoreHint::giveHint(const Move &iMove) const
 {
     LOG_DEBUG("Getting hint for move: {}", lfw(iMove.toString()));
-    return str(boost::format(_("Score: %1%")) % iMove.getScore());
+    return _fmt(_("Score: {0}"), iMove.getScore());
 }
 
 
@@ -79,12 +77,12 @@ string OrientationHint::giveHint(const Move &iMove) const
     LOG_DEBUG("Getting hint for move: {}", lfw(iMove.toString()));
     ASSERT(iMove.isValid(), "Hints only make sense for valid moves");
     const Coord &coord = iMove.getRound().getCoord();
-    boost::format fmt(_("Orientation: %1%"));
+    string orientation;
     if (coord.getDir() == Coord::HORIZONTAL)
-        fmt % _("horizontal");
+        orientation = _("horizontal");
     else
-        fmt % _("vertical");
-    return fmt.str();
+        orientation = _("vertical");
+    return _fmt(_("Orientation: {0}"), orientation);
 }
 
 
@@ -100,8 +98,7 @@ string PositionHint::giveHint(const Move &iMove) const
 {
     LOG_DEBUG("Getting hint for move: {}", lfw(iMove.toString()));
     ASSERT(iMove.isValid(), "Hints only make sense for valid moves");
-    return str(boost::format(_("Position: %1%"))
-               % lfw(iMove.getRound().getCoord().toString()));
+    return _fmt(_("Position: {0}"), lfw(iMove.getRound().getCoord().toString()));
 }
 
 
@@ -117,8 +114,7 @@ string LengthHint::giveHint(const Move &iMove) const
 {
     LOG_DEBUG("Getting hint for move: {}", lfw(iMove.toString()));
     ASSERT(iMove.isValid(), "Hints only make sense for valid moves");
-    return str(boost::format(_("Length: %1% letters"))
-               % iMove.getRound().getWordLen());
+    return _fmt(_("Length: {0} letters"), iMove.getRound().getWordLen());
 }
 
 
@@ -142,8 +138,8 @@ string BoardLettersHint::giveHint(const Move &iMove) const
             fromBoard.push_back(iMove.getRound().getTile(i).toChar());
     }
 
-    return str(boost::format(_("Letters from board: %1%"))
-               % (fromBoard == L"" ? _("(none)") : lfw(fromBoard)));
+    return _fmt(_("Letters from board: {0}"),
+                (fromBoard == L"" ? _("(none)") : lfw(fromBoard)));
 }
 
 
@@ -171,8 +167,7 @@ string WordLettersHint::giveHint(const Move &iMove) const
         word += tile.getDisplayStr();
     }
 
-    return str(boost::format(_("Word letters: %1%"))
-               % lfw(word));
+    return _fmt(_("Word letters: {0}"), lfw(word));
 }
 
 
@@ -188,8 +183,8 @@ string FirstLetterHint::giveHint(const Move &iMove) const
 {
     LOG_DEBUG("Getting hint for move: {}", lfw(iMove.toString()));
     ASSERT(iMove.isValid(), "Hints only make sense for valid moves");
-    return str(boost::format(_("First letter: %1%"))
-               % lfw(iMove.getRound().getTile(0).toChar()));
+    return _fmt(_("First letter: {0}"),
+               lfw(iMove.getRound().getTile(0).toChar()));
 }
 
 

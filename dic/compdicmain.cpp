@@ -22,11 +22,9 @@
 #include "config.h"
 
 #include <fstream>
-#include <sstream>
 #include <iostream>
 #include <clocale>
 #include <vector>
-#include <boost/format.hpp>
 #include <boost/tokenizer.hpp>
 #include <getopt.h>
 
@@ -47,15 +45,12 @@
 
 using namespace std;
 
-// Useful shortcut
-#define fmt(a) boost::format(a)
-
 
 void readLetters(const string &iFileName, CompDic &ioBuilder)
 {
     ifstream in(iFileName.c_str());
     if (!in.is_open())
-        throw DicException((fmt(_("Could not open file '%1%'")) % iFileName).str());
+        throw DicException(_fmt(_("Could not open file '{0}'"), iFileName));
 
     // Use a more friendly type name
     using Tokenizer = boost::tokenizer<boost::char_separator<wchar_t>,
@@ -90,20 +85,20 @@ void readLetters(const string &iFileName, CompDic &ioBuilder)
         // We expect at least 5 fields on the line
         if (tokens.size() < 5)
         {
-            ostringstream ss;
-            ss << fmt(_("readLetters: Not enough fields "
-                        "in %1% (line %2%)")) % iFileName % lineNb;
-            throw DicException(ss.str());
+            throw DicException(_fmt(
+                _("readLetters: Not enough fields in {0} (line {1})"),
+                iFileName, lineNb
+            ));
         }
 
         // The first field is a single character
         wstring letter = tokens[0];
         if (letter.size() != 1)
         {
-            ostringstream ss;
-            ss << fmt(_("readLetters: Invalid letter at line %1% "
-                        "(only one character allowed)")) % lineNb;
-            throw DicException(ss.str());
+            throw DicException(_fmt(
+                _("readLetters: Invalid letter at line {0} (only one character allowed)"),
+                lineNb
+            ));
         }
 
         vector<wstring> inputs;
@@ -251,10 +246,10 @@ int main(int argc, char* argv[])
         // Print the header
         header.print(cout);
 
-        cout << fmt(_(" Load time: %1% s")) % builder.getLoadTime() << endl;
-        cout << fmt(_(" Compression time: %1% s")) % builder.getBuildTime() << endl;
+        cout << _fmt(_(" Load time: {0} s"), builder.getLoadTime()) << endl;
+        cout << _fmt(_(" Compression time: {0} s"), builder.getBuildTime()) << endl;
 #ifdef CHECK_RECURSION
-        cout << fmt(_(" Maximum recursion level reached: %1%")) % builder.getMaxRecursion() << endl;
+        cout << _fmt(_(" Maximum recursion level reached: {0}"), builder.getMaxRecursion()) << endl;
 #endif
         return 0;
     }

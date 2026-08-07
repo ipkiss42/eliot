@@ -20,8 +20,6 @@
  *****************************************************************************/
 
 #include <string>
-#include <sstream>
-#include <wctype.h>
 #include "tile.h"
 #include "round.h"
 #include "encoding.h"
@@ -32,7 +30,7 @@ INIT_LOGGER(game, Round);
 
 
 Round::Round()
-    : m_coord(1, 1, Coord::HORIZONTAL) 
+    : m_coord(1, 1, Coord::HORIZONTAL)
 {
 }
 
@@ -144,13 +142,13 @@ unsigned Round::countJokersFromRack() const
 
 wstring Round::toString() const
 {
-    wostringstream oss;
-    if (!getWord().empty())
-    {
-        oss << getWord() << L' ' << (getBonus() ? L'*' : L' ')
-            << L' ' << getPoints() << L' ' << getCoord().toString();
+    if (getWord().empty()) {
+        return L"";
     }
-    return oss.str();
+
+    return std::format(
+        L"{} {} {} {}",
+        getWord(), getBonus() ? L'*' : L' ', getPoints(), getCoord().toString());
 }
 
 

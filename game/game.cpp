@@ -19,8 +19,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <sstream>
-
 #include "config.h"
 #if ENABLE_NLS
 #   include <libintl.h>
@@ -738,13 +736,12 @@ void Game::CurrentPlayerCmd::doUndo()
 
 wstring Game::CurrentPlayerCmd::toString() const
 {
-    wostringstream oss;
-    oss << L"CurrentPlayerCmd (new player: " << m_newPlayerId;
-    if (isExecuted())
-    {
-        oss << L"  old player: " << m_oldPlayerId;
-    }
-    oss << L")";
-    return oss.str();
+    std::wstring old_player_info = isExecuted()
+        ? std::format(L"  old player: {}", m_oldPlayerId)
+        : L"";
+
+    return std::format(L"CurrentPlayerCmd (new player: {}{})",
+                       m_newPlayerId,
+                       old_player_info);
 }
 

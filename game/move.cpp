@@ -18,10 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-
-#include <wctype.h>
-#include <sstream>
-
 #include "move.h"
 #include "rack.h"
 #include "pldrack.h"
@@ -147,19 +143,18 @@ PlayedRack Move::ComputeRackForMove(const PlayedRack &iOldRack, const Move &iMov
 
 wstring Move::toString() const
 {
-    wstringstream wss;
+    std::wstring details;
     if (m_type == NO_MOVE)
-        wss << "NO_MOVE";
+        details = L"NO_MOVE";
     else if (m_type == PASS)
-        wss << "PASS";
+        details = L"PASS";
     else if (m_type == CHANGE_LETTERS)
-        wss << "CHANGE=" << m_letters;
+        details = std::format(L"CHANGE={}", m_letters);
     else if (m_type == INVALID_WORD)
-        wss << "INVALID: word=" << m_word << "  coords=" << m_coord;
+        details = std::format(L"INVALID: word={}  coords={}", m_word, m_coord);
     else if (m_type == VALID_ROUND)
-        wss << "VALID: word=" << m_round.toString();
-    wss << "  score=" << m_score;
-    return wss.str();
+        details = std::format(L"VALID: word={}", m_round.toString());
+    return std::format(L"{}  score={}", details, m_score);
 }
 
 

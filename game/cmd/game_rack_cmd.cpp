@@ -49,6 +49,6 @@ void GameRackCmd::doUndo()
 
 wstring GameRackCmd::toString() const
 {
-    return L"GameRackCmd: " + m_newRack.toString();
+    return std::format(L"GameRackCmd: {}", m_newRack.toString());
 }
 

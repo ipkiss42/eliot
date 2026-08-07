@@ -22,7 +22,6 @@
 
 #include <cstring> // for strcpy
 #include <string>
-#include <sstream>
 #include <iostream>
 #include <boost/tokenizer.hpp>
 
@@ -51,14 +50,6 @@
 
 
 INIT_LOGGER(dic, Header);
-
-
-// Short version of the string formatting for non-constant strings (e.g. when using gettext).
-// With C++26, we can use std::runtime_format instead of having to rely on make_format_args.
-#define _fmt(String, ...) \
-    ([&](auto&&... args) { \
-        return std::vformat((String), std::make_format_args(args...)); \
-    }(__VA_ARGS__))
 
 
 #if defined(WORDS_BIGENDIAN)
@@ -348,9 +339,7 @@ const wdstring & Header::getDisplayStr(unsigned int iCode) const
     // Safety check
     if (iCode == 0 || iCode > m_letters.size())
     {
-        ostringstream oss;
-        oss << iCode;
-        throw DicException("Header::getDisplayStr: No code for letter '" + oss.str());
+        throw DicException(std::format("Header::getDisplayStr: No code for letter '{}'", iCode));
     }
     return m_displayCache[iCode];
 }
@@ -361,9 +350,7 @@ vector<wistring> Header::getInputStr(unsigned int iCode) const
     // Safety check
     if (iCode == 0 || iCode > m_letters.size())
     {
-        ostringstream oss;
-        oss << iCode;
-        throw DicException("Header::getInputStr: No code for letter '" + oss.str());
+        throw DicException(std::format("Header::getInputStr: No code for letter '{}'", iCode));
     }
     map<wchar_t, vector<wstring> >::const_iterator it =
         m_displayAndInputData.find(m_letters[iCode - 1]);

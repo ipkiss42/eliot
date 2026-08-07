@@ -18,8 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <sstream>
-
 #include "cmd/topping_move_cmd.h"
 #include "player.h"
 
@@ -49,9 +47,9 @@ void ToppingMoveCmd::doUndo()
 
 wstring ToppingMoveCmd::toString() const
 {
-    wostringstream oss;
-    oss << L"ToppingMoveCmd (player " << m_playerId << L"): "
-        << m_move.toString() << "  elapsed=" << m_elapsed;
-    return oss.str();
+    return std::format(
+        L"ToppingMoveCmd (player {}): {}  elapsed={}",
+        m_playerId, m_move.toString(), m_elapsed
+    );
 }
 

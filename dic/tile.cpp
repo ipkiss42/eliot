@@ -19,7 +19,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <sstream>
 #include <string>
 #include <cwctype>
 #include "tile.h"
@@ -63,9 +62,7 @@ Tile::Tile(wchar_t c)
     }
     else
     {
-        ostringstream ss;
-        ss << "Tile::Tile: Unknown character: " << lfw(c);
-        throw DicException(ss.str());
+        throw DicException(_fmt("Tile::Tile: Unknown character: {}", lfw(c)));
     }
 }
 

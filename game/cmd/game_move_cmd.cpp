@@ -18,12 +18,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <sstream>
-
 #include "cmd/game_move_cmd.h"
 #include "game_params.h"
 #include "game.h"
-#include "rack.h"
 #include "turn_data.h"
 
 
@@ -159,9 +156,7 @@ void GameMoveCmd::unplayRound()
 
 wstring GameMoveCmd::toString() const
 {
-    wostringstream oss;
-    oss << L"GameMoveCmd (move: " << m_move.toString() << L", rack: "
-        << m_moveRack.toString() << L")";
-    return oss.str();
+    return std::format(L"GameMoveCmd (move: {}, rack: {})",
+                    m_move.toString(), m_moveRack.toString());
 }
 

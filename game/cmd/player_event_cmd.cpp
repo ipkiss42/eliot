@@ -18,8 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <sstream>
-
 #include "cmd/player_event_cmd.h"
 #include "player.h"
 #include "debug.h"
@@ -75,20 +73,18 @@ void PlayerEventCmd::doUndo()
 
 wstring PlayerEventCmd::toString() const
 {
-    wostringstream oss;
-    oss << L"PlayerEventCmd (player " << m_player.getId() << L"): ";
+    std::wstring details;
     if (m_eventType == WARNING)
-        oss << L"Warning";
+        details = L"Warning";
     else if (m_eventType == PENALTY)
-        oss << L"Penalty (" << m_points << L" points)";
+        details = std::format(L"Penalty ({} points)", m_points);
     else if (m_eventType == SOLO)
-        oss << L"Solo (" << m_points << L" points)";
+        details = std::format(L"Solo ({} points)", m_points);
     else if (m_eventType == END_GAME)
-        oss << L"EndGame (" << m_points << L" points)";
+        details = std::format(L"EndGame ({} points)", m_points);
     else
-    {
         ASSERT(false, "Missing case");
-    }
-    return oss.str();
+
+    return std::format(L"PlayerEventCmd (player {}): {}", m_player.getId(), details);
 }
 

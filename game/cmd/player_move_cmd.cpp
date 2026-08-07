@@ -18,8 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <sstream>
-
 #include "cmd/player_move_cmd.h"
 #include "player.h"
 
@@ -58,9 +56,7 @@ void PlayerMoveCmd::doUndo()
 
 wstring PlayerMoveCmd::toString() const
 {
-    wostringstream oss;
-    oss << L"PlayerMoveCmd (player " << m_player.getId() << L"): "
-        << m_move.toString();
-    return oss.str();
+    return std::format(
+        L"PlayerMoveCmd (player {}): {}", m_player.getId(), m_move.toString());
 }
 

@@ -18,7 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <sstream>
 #include <typeinfo>
 
 #include "turn.h"
@@ -31,7 +30,7 @@ INIT_LOGGER(game, Turn);
 
 
 Turn::Turn()
-     
+
 {
 }
 
@@ -283,15 +282,16 @@ void Turn::dropFrom(unsigned iFirstToDrop)
 
 wstring Turn::toString() const
 {
-    wostringstream oss;
+    std::wstring result;
     for (Command *cmd : m_commands)
     {
-        oss << endl << L"  "
-            << (cmd->isExecuted() ? L"| " : L"  " )
-            << (cmd->isAutoExecutable() ? L"* " : L"  ")
-            << (cmd->isHumanIndependent() ? L"  " : L"H ")
-            << cmd->toString();
+        result += std::format(L"\n  {} {} {} {}",
+            cmd->isExecuted()         ? L"| " : L"  ",
+            cmd->isAutoExecutable()   ? L"* " : L"  ",
+            cmd->isHumanIndependent() ? L"  " : L"H ",
+            cmd->toString()
+        );
     }
-    return oss.str();
+    return result;
 }
 

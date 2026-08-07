@@ -20,7 +20,6 @@
 
 #include <fstream>
 #include <algorithm>
-#include <boost/format.hpp>
 #include <pugixml.hpp>
 
 #include "config.h"
@@ -54,9 +53,6 @@
 // Current version of our save game format. Bump it when it becomes
 // incompatible (and keep it in sync with xml_writer.cpp)
 #define CURRENT_XML_VERSION "2"
-
-#define FMT1(s, a1) (boost::format(s) % (a1)).str()
-#define FMT2(s, a1, a2) (boost::format(s) % (a1) % (a2)).str()
 
 
 using namespace std;
@@ -131,7 +127,7 @@ static Game* createGame(const pugi::xml_node& gameNode, const Dictionary& iDic)
         else if (variant == "7among8")
             params.addVariant(GameParams::k7AMONG8);
         else if (variant != "")
-            throw LoadGameException(FMT1(_("Invalid game variant: %1%"), variant));
+            throw LoadGameException(_fmt(_("Invalid game variant: {0}"), variant));
     }
 
     // Create the game
@@ -153,7 +149,7 @@ static Player* createPlayer(const pugi::xml_node& playerNode)
         p = new AIPercent(0.01 * level);
     }
     else
-        throw LoadGameException(FMT1(_("Invalid player type: %1%"), playerType));
+        throw LoadGameException(_fmt(_("Invalid player type: {0}"), playerType));
 
     // Set the ID
     p->setId((unsigned int)toInt(playerId));
@@ -187,7 +183,7 @@ static Player & getPlayer(map<unsigned int, Player*> &all_players,
 {
     int intId = toInt(id);
     if (all_players.find(intId) == all_players.end())
-        throw LoadGameException(FMT2(_("Invalid player ID: %1% (processing tag '%2%')"), id, iTag));
+        throw LoadGameException(_fmt(_("Invalid player ID: {0} (processing tag '{1}')"), id, iTag));
     return *all_players[intId];
 }
 
@@ -206,7 +202,7 @@ static Move buildMove(const Game &iGame, const pugi::xml_node &moveCmdNode, bool
         int res = iGame.checkPlayedWord(fromUtf8(coord), wword, move, checkRack);
         if (res != 0)
         {
-            throw LoadGameException(FMT2(_("Invalid move marked as valid: %1% (%2%)"),
+            throw LoadGameException(_fmt(_("Invalid move marked as valid: {0} ({1})"),
                                          word, coord));
         }
         return move;
@@ -228,7 +224,7 @@ static Move buildMove(const Game &iGame, const pugi::xml_node &moveCmdNode, bool
         return Move();
     }
     else
-        throw LoadGameException(FMT1(_("Invalid move type: %1%"), type));
+        throw LoadGameException(_fmt(_("Invalid move type: {0}"), type));
 }
 
 
@@ -240,7 +236,7 @@ Game * XmlReader::read(const string &iFileName, const Dictionary &iDic)
     pugi::xml_document doc;
     pugi::xml_parse_result result = doc.load_file(iFileName.c_str());
     if (!result)
-        throw LoadGameException(FMT2(_("Cannot open file '%1%': %2%"), iFileName, result.description()));
+        throw LoadGameException(_fmt(_("Cannot open file '{0}': {1}"), iFileName, result.description()));
 
     pugi::xml_node root = doc.child("EliotGame");
     if (!root || string(root.attribute("format").value()) != CURRENT_XML_VERSION)
@@ -259,7 +255,7 @@ Game * XmlReader::read(const string &iFileName, const Dictionary &iDic)
     for (pugi::xml_node playerNode : gameNode.children("Player")) {
         Player *player = createPlayer(playerNode);
         if (all_players.find(player->getId()) != all_players.end())
-            throw LoadGameException(FMT1(_("A player ID must be unique: %1%"), player->getId()));
+            throw LoadGameException(_fmt(_("A player ID must be unique: {0}"), player->getId()));
         all_players[player->getId()] = player;
         game->addPlayer(player);
     }
@@ -285,7 +281,7 @@ Game * XmlReader::read(const string &iFileName, const Dictionary &iDic)
                 PlayedRack pldrack;
                 if (!iDic.validateLetters(rackStr, L"-+"))
                 {
-                    throw LoadGameException(FMT1(_("Rack invalid for the current dictionary: %1%"), cmdText));
+                    throw LoadGameException(_fmt(_("Rack invalid for the current dictionary: {0}"), cmdText));
                 }
                 pldrack.setManual(rackStr);
                 LOG_DEBUG("loaded rack: {}", lfw(pldrack.toString()));
@@ -302,7 +298,7 @@ Game * XmlReader::read(const string &iFileName, const Dictionary &iDic)
                 PlayedRack pldrack;
                 if (!iDic.validateLetters(rackStr, L"-+"))
                 {
-                    throw LoadGameException(FMT1(_("Rack invalid for the current dictionary: %1%"), cmdText));
+                    throw LoadGameException(_fmt(_("Rack invalid for the current dictionary: {0}"), cmdText));
                 }
                 pldrack.setManual(rackStr);
                 LOG_DEBUG("loaded rack: {}", lfw(pldrack.toString()));

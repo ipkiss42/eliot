@@ -21,10 +21,23 @@
 #ifndef ENCODING_H_
 #define ENCODING_H_
 
+#include <format>
 #include <string>
 
 using std::string;
 using std::wstring;
+
+
+// Short version of the string formatting for non-constant strings (e.g. when using gettext).
+// With C++26, we can use std::runtime_format instead of having to rely on make_format_args.
+#define _fmt(String, ...) \
+    ([&](auto&&... args) { \
+        return std::vformat((String), std::make_format_args(args...)); \
+    }(__VA_ARGS__))
+#define _wfmt(WString, ...) \
+    ([&](auto&&... args) { \
+        return std::wvformat((WString), std::make_wformat_args(args...)); \
+    }(__VA_ARGS__))
 
 
 /// Equivalent of atoi for wide-caracter strings

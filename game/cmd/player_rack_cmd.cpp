@@ -18,8 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <sstream>
-
 #include "cmd/player_rack_cmd.h"
 #include "player.h"
 
@@ -51,9 +49,6 @@ void PlayerRackCmd::doUndo()
 
 wstring PlayerRackCmd::toString() const
 {
-    wostringstream oss;
-    oss << L"PlayerRackCmd (player " << m_player.getId() << L"): "
-        << m_newRack.toString();
-    return oss.str();
+    return std::format(L"PlayerRackCmd (player {}): {}", m_player.getId(), m_newRack.toString());
 }
 

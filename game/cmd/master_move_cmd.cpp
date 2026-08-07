@@ -18,8 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <sstream>
-
 #include "cmd/master_move_cmd.h"
 #include "duplicate.h"
 
@@ -60,8 +58,6 @@ void MasterMoveCmd::doUndo()
 
 wstring MasterMoveCmd::toString() const
 {
-    wostringstream oss;
-    oss << L"MasterMoveCmd (move " << m_newMove.toString() << L")";
-    return oss.str();
+    return std::format(L"MasterMoveCmd (move {})", m_newMove.toString());
 }
 

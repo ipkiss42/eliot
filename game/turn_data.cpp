@@ -19,8 +19,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <sstream>
-
 #include "turn_data.h"
 
 
@@ -44,11 +42,11 @@ TurnData::TurnData(const PlayedRack& iPldRack, const Move& iMove)
 
 wstring TurnData::toString() const
 {
-    wostringstream oss;
-    oss << m_pldrack.toString() << L" " << m_move.toString()
-        << L" (W=" << m_warningsNb
-        << L" P=" << m_penaltyPoints
-        << L" S=" << m_soloPoints << L")";
-    return oss.str();
+    return std::format(L"{} {} (W={} P={} S={})",
+                       m_pldrack.toString(),
+                       m_move.toString(),
+                       m_warningsNb,
+                       m_penaltyPoints,
+                       m_soloPoints);
 }
 

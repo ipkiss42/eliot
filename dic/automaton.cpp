@@ -25,7 +25,6 @@
 #include <list>
 #include <algorithm>
 #include <fstream>
-#include <sstream>
 #include <cstring>
 
 #include "dic.h"
@@ -478,15 +477,14 @@ AutomatonHelper *AutomatonHelper::nfa2dfa(const AutomatonHelper &iNfa,
  * ************************************************** *
  * ************************************************** */
 
-static string idToString(const set<uint64_t> &iId)
+static string idToString(const set<uint64_t> &iIds)
 {
-    ostringstream oss;
-    set<uint64_t>::const_iterator it;
-    for (it = iId.begin(); it != iId.end(); it++)
+    std::string result;
+    for (uint64_t id : iIds)
     {
-        oss << *it << ' ';
+        result += std::format("{} ", id);
     }
-    return oss.str();
+    return result;
 }
 
 

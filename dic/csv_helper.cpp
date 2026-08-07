@@ -20,9 +20,8 @@
 
 #include <iostream>
 
-#include <boost/format.hpp>
-
 #include "csv_helper.h"
+#include "encoding.h"
 
 #include "debug.h"
 
@@ -118,8 +117,10 @@ vector<CsvHelper::DataRow> CsvHelper::readStream(istream &input)
     // Make sure we have a constant number of fields on the lines
     if (!data.empty() && minLength != maxLength)
     {
-        boost::format fmt(_("Invalid CSV file (variable number of fields, from %1% to %2%)"));
-        throw CsvException((fmt % minLength % maxLength).str());
+        throw CsvException(_fmt(
+            _("Invalid CSV file (variable number of fields, from {0} to {1})"),
+            minLength, maxLength
+        ));
     }
 
     return data;

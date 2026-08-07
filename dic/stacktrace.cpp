@@ -19,7 +19,6 @@
  *****************************************************************************/
 
 #include "config.h"
-#include <sstream>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -49,14 +48,15 @@ string StackTrace::GetStack()
     // Get the corresponding symbols (ignoring the first frame)
     char **symbols = backtrace_symbols(frames + 1, nb - 1);
     // Demangle the symbols and build a nice stack trace
-    ostringstream oss;
+    std::string result;
     for (int i = 0; i < nb - 1; ++i)
     {
-        oss << "    at " << Demangle(symbols[i]) << endl;
+        result += std::format("    at {}\n", Demangle(symbols[i]));
     }
+
     free (symbols);
 
-    return oss.str();
+    return result;
 #else
     return "";
 #endif

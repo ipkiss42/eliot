@@ -161,12 +161,11 @@ string truncAndConvert(const wstring &iWstr, unsigned int iMaxWidth)
         int n = wcwidth(iWstr[pos]);
         if (n == -1)
         {
-            ostringstream ss;
             // XXX: Should we throw an exception instead? Just ignore the problem?
 #if 0
-            ss << "truncAndConvert: non printable character: " << iWstr[pos];
-            cerr << ss.str() << endl;;
-            //throw DicException(ss.str());
+            std::string errorMsg = std::format("truncAndConvert: non printable character: {}", iWstr[pos]);
+            std::println(stderr, "{}", errorMsg);
+            throw DicException(errorMsg);
 #endif
             return convertToMb(iWstr);
         }
@@ -189,12 +188,11 @@ string truncOrPad(const string &iStr, unsigned int iWidth, char iChar)
         int n = wcwidth(wstr[pos]);
         if (n == -1)
         {
-            ostringstream ss;
             // XXX: Should we throw an exception instead? Just ignore the problem?
 #if 0
-            ss << "truncAndConvert: non printable character: " << wstr[pos];
-            cerr << ss.str() << endl;;
-            //throw DicException(ss.str());
+            std::string errorMsg = std::format("truncOrPad: non printable character: {}", wstr[pos]);
+            std::println(stderr, "{}", errorMsg);
+            throw DicException(errorMsg);
 #endif
             return convertToMb(wstr);
         }
@@ -219,12 +217,11 @@ string padAndConvert(const wstring &iWstr, unsigned int iLength,
         int n = wcwidth(iWstr[i]);
         if (n == -1)
         {
-            ostringstream ss;
             // XXX: Should we throw an exception instead? Just ignore the problem?
 #if 0
-            ss << "padAndConvert: non printable character: " << iWstr[i];
-            cerr << ss.str() << endl;;
-            //throw DicException(ss.str());
+            std::string errorMsg = std::format("padAndConvert: non printable character: {}", iWstr[i]);
+            std::println(stderr, "{}", errorMsg);
+            throw DicException(errorMsg);
 #endif
             return convertToMb(iWstr);
         }
@@ -253,12 +250,11 @@ string centerAndConvert(const wstring &iWstr, unsigned int iLength, char c)
         int n = wcwidth(iWstr[i]);
         if (n == -1)
         {
-            ostringstream ss;
             // XXX: Should we throw an exception instead? Just ignore the problem?
 #if 0
-            ss << "padAndConvert: non printable character: " << iWstr[i];
-            cerr << ss.str() << endl;;
-            //throw DicException(ss.str());
+            std::string errorMsg = std::format("centerAndConvert: non printable character: {}", iWstr[i]);
+            std::println(stderr, "{}", errorMsg);
+            throw DicException(errorMsg);
 #endif
             return convertToMb(iWstr);
         }
