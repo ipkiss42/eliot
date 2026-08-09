@@ -160,7 +160,7 @@ string WordLettersHint::giveHint(const Move &iMove) const
     vector<Tile> tiles = iMove.getRound().getTiles();
     // Sort the letters (we cannot sort directly the wstring from
     // Round::getWord(), because it would break digraph characters)
-    std::sort(tiles.begin(), tiles.end());
+    std::ranges::sort(tiles, std::less());
 
     // Get the word
     wstring word;

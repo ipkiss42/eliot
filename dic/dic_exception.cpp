@@ -23,13 +23,13 @@
 using namespace std;
 
 
-DicException::DicException(const string &iMessage)
+DicException::DicException(std::string_view iMessage)
     : BaseException(iMessage)
 {
 }
 
 
-InvalidRegexpException::InvalidRegexpException(const string &iMessage)
+InvalidRegexpException::InvalidRegexpException(std::string_view iMessage)
     : DicException(iMessage)
 {
 }

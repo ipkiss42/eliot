@@ -24,7 +24,7 @@
 using namespace std;
 
 
-BaseException::BaseException(const string &iMessage)
+BaseException::BaseException(std::string_view iMessage)
     : m_message(iMessage)
 {
     m_stack = StackTrace::GetStack();

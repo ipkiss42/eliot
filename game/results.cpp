@@ -20,7 +20,6 @@
  *****************************************************************************/
 
 #include <algorithm>
-#include <cmath>
 
 #include "results.h"
 #include "tile.h"
@@ -38,61 +37,6 @@ bool tileCompare(const Tile &t1, const Tile &t2)
     return t1.toCode() < t2.toCode();
 }
 
-struct less_points
-{
-    bool operator()(const Round &r1, const Round &r2)
-    {
-        // We want higher scores first, so we use '>' instead of '<'
-        if (r1.getPoints() > r2.getPoints())
-            return true;
-        else if (r1.getPoints() < r2.getPoints())
-            return false;
-        else
-        {
-            // If the scores are equal, sort alphabetically (i.e. in the
-            // order of the letters in the dictionary), ignoring the case
-            const wstring &s1 = r1.getWord();
-            const wstring &s2 = r2.getWord();
-            if (std::lexicographical_compare(r1.getTiles().begin(),
-                                             r1.getTiles().end(),
-                                             r2.getTiles().begin(),
-                                             r2.getTiles().end(),
-                                             tileCompare))
-            {
-                return true;;
-            }
-            else if (std::lexicographical_compare(r2.getTiles().begin(),
-                                                  r2.getTiles().end(),
-                                                  r1.getTiles().begin(),
-                                                  r1.getTiles().end(),
-                                                  tileCompare))
-            {
-                return false;
-            }
-            else
-            {
-                // If the rounds are still equal, compare the coordinates
-                const wstring &c1 = r1.getCoord().toString();
-                const wstring &c2 = r2.getCoord().toString();
-                if (c1 < c2)
-                    return true;
-                else if (c2 < c1)
-                    return false;
-                else
-                {
-                    // Still equal? This time compare taking the case into
-                    // account. After that, we are sure that the rounds will
-                    // be different...
-                    return std::lexicographical_compare(s1.begin(),
-                                                        s1.end(),
-                                                        s2.begin(),
-                                                        s2.end());
-                }
-            }
-        }
-    }
-};
-
 
 const Round & Results::get(unsigned int i) const
 {
@@ -103,8 +47,25 @@ const Round & Results::get(unsigned int i) const
 
 void Results::sort()
 {
-    less_points lp;
-    std::sort(m_rounds.begin(), m_rounds.end(), lp);
+    std::ranges::sort(m_rounds, [](const Round& r1, const Round& r2) {
+        // We want higher scores first, so we use descending order
+        if (auto cmp = r1.getPoints() <=> r2.getPoints(); cmp != 0)
+            return cmp > 0;
+
+        // Next, do case-insensitive sorting
+        if (std::ranges::lexicographical_compare(r1.getTiles(), r2.getTiles(), tileCompare))
+            return true;
+        if (std::ranges::lexicographical_compare(r2.getTiles(), r1.getTiles(), tileCompare))
+            return false;
+
+        // If the rounds are still equal, compare coordinates
+        if (auto cmp = r1.getCoord().toString() <=> r2.getCoord().toString(); cmp != 0)
+            return cmp < 0;
+
+        // Finally, compare taking the case into account.
+        // After that, we are sure that the rounds will be different...
+        return r1.getWord() < r2.getWord();
+    });
 }
 
 

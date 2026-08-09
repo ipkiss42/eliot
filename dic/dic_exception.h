@@ -21,7 +21,8 @@
 #ifndef DIC_EXCEPTION_H_
 #define DIC_EXCEPTION_H_
 
-#include <string>
+#include <string_view>
+
 #include "base_exception.h"
 
 
@@ -33,14 +34,14 @@
 class DicException: public BaseException
 {
     public:
-        DicException(const std::string &iMessage);
+        DicException(std::string_view iMessage);
 };
 
 
 class InvalidRegexpException : public DicException
 {
     public:
-        InvalidRegexpException(const std::string &iMessage);
+        InvalidRegexpException(std::string_view iMessage);
 };
 
 #endif

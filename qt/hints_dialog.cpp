@@ -19,6 +19,7 @@
  *****************************************************************************/
 
 #include <algorithm>
+#include <functional>
 
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -37,15 +38,6 @@
 using namespace std;
 
 INIT_LOGGER(qt, HintsDialog);
-
-
-struct CostComparator
-{
-    bool operator()(const AbstractHint *iHint1, const AbstractHint *iHint2) const
-    {
-        return iHint1->getCost() < iHint2->getCost();
-    }
-};
 
 
 HintWidget::HintWidget(const AbstractHint &iHint,
@@ -92,11 +84,11 @@ HintsDialog::HintsDialog(QWidget *parent, bool iShowCosts)
         label->setWordWrap(true);
         vLayout->addWidget(label);
     }
-    Q_FOREACH(const AbstractHint *hint, m_allHints)
+    for (const auto& hint : m_allHints)
     {
         HintWidget *hintWidget = new HintWidget(*hint, m_showCosts);
-        QObject::connect(hintWidget, SIGNAL(hintRequested(const AbstractHint&)),
-                         this, SLOT(showHint(const AbstractHint&)));
+        QObject::connect(hintWidget, &HintWidget::hintRequested,
+                         this, &HintsDialog::showHint);
         vLayout->addWidget(hintWidget);
     }
 
@@ -108,28 +100,21 @@ HintsDialog::HintsDialog(QWidget *parent, bool iShowCosts)
 }
 
 
-HintsDialog::~HintsDialog()
-{
-    Q_FOREACH(const AbstractHint *hint, m_allHints)
-    {
-        delete hint;
-    }
-}
+HintsDialog::~HintsDialog() = default;
 
 
 void HintsDialog::initializeHints()
 {
-    m_allHints.push_back(new ScoreHint);
-    m_allHints.push_back(new OrientationHint);
-    m_allHints.push_back(new PositionHint);
-    m_allHints.push_back(new LengthHint);
-    m_allHints.push_back(new BoardLettersHint);
-    m_allHints.push_back(new WordLettersHint);
-    m_allHints.push_back(new FirstLetterHint);
+    m_allHints.push_back(std::make_unique<ScoreHint>());
+    m_allHints.push_back(std::make_unique<OrientationHint>());
+    m_allHints.push_back(std::make_unique<PositionHint>());
+    m_allHints.push_back(std::make_unique<LengthHint>());
+    m_allHints.push_back(std::make_unique<BoardLettersHint>());
+    m_allHints.push_back(std::make_unique<WordLettersHint>());
+    m_allHints.push_back(std::make_unique<FirstLetterHint>());
 
     // Sort them by increasing cost
-    CostComparator costComp;
-    std::sort(m_allHints.begin(), m_allHints.end(), costComp);
+    std::ranges::sort(m_allHints, std::less{}, &AbstractHint::getCost);
 }
 
 

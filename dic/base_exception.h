@@ -23,6 +23,7 @@
 
 #include <exception>
 #include <string>
+#include <string_view>
 
 
 /**
@@ -32,7 +33,7 @@
 class BaseException: public std::exception
 {
     public:
-        BaseException(const std::string &iMessage);
+        BaseException(std::string_view iMessage);
         ~BaseException() throw() override = default;
         const char *what() const throw() override;
 

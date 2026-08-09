@@ -21,6 +21,7 @@
 #ifndef HINTS_DIALOG_H_
 #define HINTS_DIALOG_H_
 
+#include <memory>
 #include <vector>
 
 #include <QDialog>
@@ -85,7 +86,7 @@ private slots:
 
 private:
     const Move *m_move{nullptr};
-    vector<const AbstractHint *> m_allHints;
+    vector<std::unique_ptr<AbstractHint>> m_allHints;
     bool m_showCosts;
 
     /// Initialize the m_allHints vector
