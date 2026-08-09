@@ -108,7 +108,7 @@ if(BUILD_QT)
 
     # Automatically force-include qtcommon.h at the top of every file in this target.
     # This allows resolving Q_ to our gettext-based _q() custom function.
-    target_precompile_headers(eliot PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/qtcommon.h")
+    target_compile_options(eliot PRIVATE "-include" "${CMAKE_CURRENT_SOURCE_DIR}/qtcommon.h")
 
     target_include_directories(eliot PRIVATE
         ${CMAKE_SOURCE_DIR}
