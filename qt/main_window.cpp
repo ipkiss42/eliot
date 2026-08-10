@@ -49,6 +49,7 @@
 #include "turn_data.h"
 #include "move.h"
 #include "debug.h"
+#include "random.h"
 #include "round.h"
 #include "settings.h"
 
@@ -96,17 +97,8 @@ MainWindow::MainWindow(QWidget *iParent)
     createMenu();
     readSettings();
 
-    // Initialize the random numbers generator
-    // Note: This must be done _after_ creating the QMenuBar object,
-    // because on Gnome QMenuBar calls gconftool2, which for some reason
-    // calls srand() internally...
-    // This could be disabled using QApplication::setDesktopSettingsAware(),
-    // but we would lose the desktop integration...
-    unsigned int val = time(nullptr);
-    srand(val);
-
     // Make it easier to reproduce bugs
-    LOG_DEBUG("Rand seed: {}", val);
+    LOG_DEBUG("Rand seed: {}", Random::getUsedSeed());
 
     QSettings qs;
     int timerTotal = qs.value(PrefsDialog::kINTF_TIMER_TOTAL_DURATION, 180).toInt();

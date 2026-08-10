@@ -21,9 +21,10 @@
 
 
 #include <algorithm>
-#include <random>
+
 #include "pldrack.h"
 #include "rack.h"
+#include "random.h"
 
 
 INIT_LOGGER(game, PlayedRack);
@@ -185,11 +186,7 @@ bool PlayedRack::checkRack(unsigned int cMin, unsigned int vMin) const
 
 void PlayedRack::shuffleNew()
 {
-    // Initialize the random number generator
-    static std::random_device rd;
-    static std::mt19937 g(rd());
-
-    std::shuffle(m_newTiles.begin(), m_newTiles.end(), g);
+    std::shuffle(m_newTiles.begin(), m_newTiles.end(), Random::getEngine());
 }
 
 

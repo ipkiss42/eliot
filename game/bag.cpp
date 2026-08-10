@@ -20,12 +20,13 @@
  *****************************************************************************/
 
 
-#include <cstdlib> // For rand()
+#include <random> // For uniform_int_distribution()
 
 #include <dic.h>
 #include "bag.h"
 #include "debug.h"
 #include "encoding.h"
+#include "random.h"
 
 
 INIT_LOGGER(game, Bag);
@@ -118,7 +119,8 @@ Tile Bag::selectRandomTile(unsigned total,
 {
     ASSERT(total > 0, "Not enough tiles (of the requested kind) in the bag");
 
-    int n = (int)((double)total * rand() / (RAND_MAX + 1.0));
+    std::uniform_int_distribution<int> dist(0, total -1);
+    int n = dist(Random::getEngine());
     for (const auto &[tile, count] : m_tilesMap)
     {
         if (onlyVowels && !tile.isVowel())

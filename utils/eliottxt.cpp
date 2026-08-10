@@ -51,6 +51,7 @@
 #include "base_exception.h"
 #include "settings.h"
 #include "move.h"
+#include "random.h"
 
 class Game;
 
@@ -1028,7 +1029,7 @@ int main(int argc, char *argv[])
             seed = atoi(argv[2]);
         else
             seed = time(nullptr);
-        srand(seed);
+        Random::setSeed(seed);
         cerr << "Using seed: " << seed << endl;
 
         mainLoop(dic);

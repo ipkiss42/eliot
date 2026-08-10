@@ -1159,8 +1159,6 @@ int main(int argc, char ** argv)
     textdomain(PACKAGE);
 #endif
 
-    srand(time(nullptr));
-
     int retCode = 1;
     try
     {
