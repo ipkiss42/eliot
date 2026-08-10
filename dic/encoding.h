@@ -102,20 +102,6 @@ wstring toUpper(std::wstring_view iWstr);
 wstring toLower(std::wstring_view iWstr);
 
 /**
- * Utility function to convert a char* buffer encoded in UTF-8 into a
- * wchar_t* string
- * @param oString: where to write the converted string
- * @param iWideSize: size available in oString (number of wchar_t)
- * @param iBuffer: UTF-8 string to convert
- * @param iBufSize: available size in iBuffer
- * @param iContext: free text used in case of exception
- * @return: number of wide chars actually written
- */
-unsigned int readFromUTF8(wchar_t *oString, unsigned int iWideSize,
-                          const char *iBuffer, unsigned int iBufSize,
-                          const string &iContext);
-
-/**
  * Same as the other readFromUTF8 function, dealing with a wstring
  * instead of a wchar_t*. Note that it performs an additional copy
  * of the output string...

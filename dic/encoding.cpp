@@ -29,6 +29,8 @@
 #include <cwctype>
 #include <cerrno>
 #include <iconv.h>
+#include <optional>
+#include <string>
 
 #include "encoding.h"
 #include "dic_exception.h"
@@ -123,122 +125,99 @@ string truncString(const string &iStr, unsigned int iMaxWidth)
 }
 
 
-string truncAndConvert(const wstring &iWstr, unsigned int iMaxWidth)
+static std::optional<std::pair<unsigned int, wstring>> getWidth(
+    const std::wstring &iWstr,
+    std::optional<unsigned int> iMaxWidth,
+    std::string_view)
 {
     unsigned int width = 0;
-    unsigned int pos;
-    for (pos = 0; pos < iWstr.size(); ++pos)
+    for (unsigned int i = 0; i < iWstr.size(); ++i)
     {
-        int n = wcwidth(iWstr[pos]);
+        int n = wcwidth(iWstr[i]);
         if (n == -1)
         {
             // XXX: Should we throw an exception instead? Just ignore the problem?
 #if 0
-            std::string errorMsg = std::format("truncAndConvert: non printable character: {}", iWstr[pos]);
+            std::string errorMsg = std::format("{}: non printable character: {}", iFuncName, iWstr[i]);
             std::println(stderr, "{}", errorMsg);
             throw DicException(errorMsg);
 #endif
-            return convertToMb(iWstr);
+            return nullopt;
         }
-        if (width + n > iMaxWidth)
-            break;
+        if (iMaxWidth.has_value() && width + n > iMaxWidth.value()) {
+            return std::make_pair(width, iWstr.substr(0, i));
+        }
         width += n;
     }
-
-    return convertToMb(iWstr.substr(0, pos));
+    return std::make_pair(width, iWstr);
 }
 
 
-string truncOrPad(const string &iStr, unsigned int iWidth, char iChar)
+string truncAndConvert(const wstring &iWstr, unsigned int iMaxWidth)
+{
+    auto widthandNewStr = getWidth(iWstr, iMaxWidth, "truncAndConvert");
+    if (!widthandNewStr.has_value())
+        return convertToMb(iWstr);
+
+    auto &[_, newStr] = widthandNewStr.value();
+    return convertToMb(newStr);
+}
+
+
+string truncOrPad(const string &iStr, unsigned int iMaxWidth, char iChar)
 {
     wstring wstr = convertToWc(iStr);
-    unsigned int width = 0;
-    unsigned int pos;
-    for (pos = 0; pos < wstr.size(); ++pos)
-    {
-        int n = wcwidth(wstr[pos]);
-        if (n == -1)
-        {
-            // XXX: Should we throw an exception instead? Just ignore the problem?
-#if 0
-            std::string errorMsg = std::format("truncOrPad: non printable character: {}", wstr[pos]);
-            std::println(stderr, "{}", errorMsg);
-            throw DicException(errorMsg);
-#endif
-            return convertToMb(wstr);
-        }
-        if (width + n > iWidth)
-            break;
-        width += n;
-    }
+    auto widthandNewStr = getWidth(wstr, iMaxWidth,"truncOrPad");
+    if (!widthandNewStr.has_value())
+        return convertToMb(wstr);
 
-    if (iWidth > width)
-        return convertToMb(wstr.substr(0, pos)) + string(iWidth - width, iChar);
+    auto &[width, newStr] = widthandNewStr.value();
+    if (iMaxWidth > width)
+        return convertToMb(newStr) + string(iMaxWidth - width, iChar);
     else
-        return convertToMb(wstr.substr(0, pos));
+        return convertToMb(newStr);
 }
 
 
 string padAndConvert(const wstring &iWstr, unsigned int iLength,
                      bool iLeftPad, char c)
 {
-    int width = 0;
-    for (unsigned int i = 0; i < iWstr.size(); ++i)
-    {
-        int n = wcwidth(iWstr[i]);
-        if (n == -1)
-        {
-            // XXX: Should we throw an exception instead? Just ignore the problem?
-#if 0
-            std::string errorMsg = std::format("padAndConvert: non printable character: {}", iWstr[i]);
-            std::println(stderr, "{}", errorMsg);
-            throw DicException(errorMsg);
-#endif
-            return convertToMb(iWstr);
-        }
-        width += n;
-    }
+    const string &str = convertToMb(iWstr);
+    auto widthandNewStr = getWidth(iWstr, nullopt,"padAndConvert");
+    if (!widthandNewStr.has_value())
+        return str;
 
-    if ((unsigned int)width >= iLength)
-        return convertToMb(iWstr);
+    auto &[width, newStr] = widthandNewStr.value();
+    if (width >= iLength)
+        return str;
     else
     {
         // Padding is needed
         string s(iLength - width, c);
         if (iLeftPad)
-            return s + convertToMb(iWstr);
+            return s + str;
         else
-            return convertToMb(iWstr) + s;
+            return str + s;
     }
 }
 
 
 string centerAndConvert(const wstring &iWstr, unsigned int iLength, char c)
 {
-    int width = 0;
-    for (unsigned int i = 0; i < iWstr.size(); ++i)
-    {
-        int n = wcwidth(iWstr[i]);
-        if (n == -1)
-        {
-            // XXX: Should we throw an exception instead? Just ignore the problem?
-#if 0
-            std::string errorMsg = std::format("centerAndConvert: non printable character: {}", iWstr[i]);
-            std::println(stderr, "{}", errorMsg);
-            throw DicException(errorMsg);
-#endif
-            return convertToMb(iWstr);
-        }
-        width += n;
-    }
+    const string &str = convertToMb(iWstr);
 
-    if ((unsigned int)width >= iLength)
-        return convertToMb(iWstr);
+    auto widthandNewStr = getWidth(iWstr, nullopt,"centerAndConvert");
+    if (!widthandNewStr.has_value())
+        return str;
+
+    auto &[width, newStr] = widthandNewStr.value();
+    if (width >= iLength)
+        return str;
     else
     {
         // Padding is needed
         string s((iLength - width) / 2, c);
-        string res = s + convertToMb(iWstr) + s;
+        string res = s + str + s;
         // If the string cannot be centered perfectly, pad again
         // (on the left if iLength is even, on the right otherwise:
         //  this tends to align numbers of 1 or 2 digits in a nice way)
@@ -271,9 +250,9 @@ wstring toLower(std::wstring_view iWstr)
 }
 
 
-unsigned int readFromUTF8(wchar_t *oString, unsigned int iWideSize,
-                          const char *iBuffer, unsigned int iBufSize,
-                          const string &iContext)
+static unsigned int readFromUTF8(wchar_t *oString, unsigned int iWideSize,
+                                 const char *iBuffer, unsigned int iBufSize,
+                                 const string &iContext)
 {
     iconv_t handle = iconv_open("WCHAR_T", "UTF-8");
     if (handle == (iconv_t)(-1))
