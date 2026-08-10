@@ -103,7 +103,7 @@ NewGame::NewGame(const Dictionary &iDic, QWidget *iParent)
 
     // Initialize the model of the default players
     QList<PlayerDef> fav = PlayersTableHelper::getFavPlayers();
-    Q_FOREACH(const PlayerDef &def, fav)
+    for (const PlayerDef &def : fav)
     {
         if (def.isDefault)
             m_helper->addPlayer(def);
@@ -301,7 +301,7 @@ void NewGame::addSelectedToFav()
 {
     QList<PlayerDef> fav = PlayersTableHelper::getFavPlayers();
     const QList<PlayerDef> &selected = m_helper->getPlayers(true);
-    Q_FOREACH(const PlayerDef &def, selected)
+    for (const PlayerDef &def : selected)
     {
         fav.push_back(def);
     }

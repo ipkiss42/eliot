@@ -140,7 +140,7 @@ void PlayersTableHelper::populateMenu(QMenu &iMenu, const QPoint &iPoint)
     if (!index.isValid())
         return;
 
-    Q_FOREACH(QAction *action, m_popupActions)
+    for (QAction *action : m_popupActions)
     {
         iMenu.addAction(action);
     }
@@ -230,7 +230,7 @@ int PlayersTableHelper::getRowCount() const
 
 void PlayersTableHelper::addPlayers(const QList<PlayerDef> &iList)
 {
-    Q_FOREACH(const PlayerDef &player, iList)
+    for (const PlayerDef &player : iList)
     {
         addPlayer(player, false, false);
     }

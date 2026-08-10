@@ -386,7 +386,7 @@ QSet<unsigned int> ArbitAssignments::getSelectedPlayers() const
     // Map the selection to a source model index
     const QItemSelection &srcSelected = m_proxyPlayersModel->mapSelectionToSource(proxySelected);
     // Get the player ID for each line
-    Q_FOREACH(const QModelIndex &index, srcSelected.indexes())
+    for (const QModelIndex &index : srcSelected.indexes())
     {
         // Only take the first column into account
         if (index.column() != 0)

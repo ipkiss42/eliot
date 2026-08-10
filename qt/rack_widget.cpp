@@ -272,7 +272,7 @@ void RackWidget::dropEvent(QDropEvent *event)
         // Notify the rest of the world that the rack has changed
         ASSERT(m_game != NULL, "No game in progress");
         PlayedRack pldRack;
-        Q_FOREACH(const Tile &t, m_tiles)
+        for (const Tile &t : m_tiles)
         {
             pldRack.addNew(t);
         }

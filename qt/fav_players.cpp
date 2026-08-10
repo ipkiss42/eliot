@@ -133,7 +133,7 @@ void FavPlayersDialog::importPlayers()
         file.close();
 
         QList<PlayerDef> players;
-        Q_FOREACH(const CsvHelper::DataRow &row, csvData)
+        for (const CsvHelper::DataRow &row : csvData)
         {
             if (row.size() < 4)
                 throw BaseException(_("Invalid file (not enough values)"));
@@ -171,7 +171,7 @@ void FavPlayersDialog::exportPlayers()
     {
         const QList<PlayerDef> &players = m_helper->getPlayers(false);
         vector<CsvHelper::DataRow> csvData;
-        Q_FOREACH(const PlayerDef &def, players)
+        for (const PlayerDef &def : players)
         {
             CsvHelper::DataRow dataRow;
             dataRow.push_back(lfq(def.name));
