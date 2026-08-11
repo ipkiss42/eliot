@@ -30,7 +30,7 @@
 #include <string.h>
 #include <locale.h>
 #include <wctype.h>
-#if HAVE_READLINE_READLINE_H
+#ifdef HAVE_READLINE
 #   include <stdio.h>
 #   include <readline/readline.h>
 #   include <readline/history.h>
@@ -68,7 +68,7 @@ static wchar_t *wline_read = nullptr;
 // Returns NULL on EOF.
 wchar_t *rl_gets()
 {
-#if HAVE_READLINE_READLINE_H
+#if HAVE_READLINE
     // If the buffer has already been allocated, return the memory to the free
     // pool
     if (wline_read)
@@ -88,6 +88,8 @@ wchar_t *rl_gets()
     // Get a line from the user
     static char *line_read;
     line_read = readline("commande> ");
+    if (line_read == nullptr)
+        return nullptr;
 
     // If the line has any text in it, save it on the history
     if (line_read && *line_read)
@@ -129,11 +131,14 @@ wchar_t *rl_gets()
 
 vector<wstring> readTokens()
 {
-    wstring command = rl_gets();
-    // Split the command
     vector<wstring> tokens;
+
+    const wchar_t* command = rl_gets();
+    if (command == nullptr)
+        return tokens;
+    // Split the command
     boost::char_separator<wchar_t> sep(L" ");
-    Tokenizer tok(command, sep);
+    Tokenizer tok(wstring(command), sep);
     for (const wstring &wstr : tok)
     {
         if (wstr != L"")

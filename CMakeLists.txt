@@ -78,14 +78,6 @@ if(IS_BIG_ENDIAN)
     set(WORDS_BIGENDIAN 1)
 endif()
 
-# Readline
-check_include_file("readline/readline.h" HAVE_READLINE_READLINE_H)
-if(HAVE_READLINE_READLINE_H)
-    set(HAS_READLINE TRUE)
-else()
-    set(HAS_READLINE FALSE)
-endif()
-
 # --------------------------------------------------------------
 # Checks for libraries & dependencies
 # --------------------------------------------------------------
@@ -109,6 +101,14 @@ find_package(pugixml REQUIRED)
 
 # spdlog
 find_package(spdlog REQUIRED)
+
+# Readline
+pkg_check_modules(readline readline)
+if(readline_FOUND)
+    set(HAVE_READLINE TRUE)
+else()
+    set(HAVE_READLINE FALSE)
+endif()
 
 # Ncurses
 set(BUILD_NCURSES FALSE)

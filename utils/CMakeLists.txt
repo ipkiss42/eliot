@@ -36,8 +36,9 @@ if(ENABLE_TEXT)
         target_link_libraries(eliottxt PRIVATE ${LIBCONFIG_LIBRARIES})
     endif()
 
-    if(HAS_READLINE)
-        target_link_libraries(eliottxt PRIVATE readline)
+    if(HAVE_READLINE)
+        target_include_directories(eliottxt PRIVATE ${readline_INCLUDE_DIRS})
+        target_link_libraries(eliottxt PRIVATE ${readline_LIBRARIES})
     endif()
 endif()
 
