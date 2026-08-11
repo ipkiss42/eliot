@@ -88,8 +88,6 @@ wchar_t *rl_gets()
     // Get a line from the user
     static char *line_read;
     line_read = readline("commande> ");
-    if (line_read == nullptr)
-        return nullptr;
 
     // If the line has any text in it, save it on the history
     if (line_read && *line_read)
@@ -131,14 +129,11 @@ wchar_t *rl_gets()
 
 vector<wstring> readTokens()
 {
-    vector<wstring> tokens;
-
-    const wchar_t* command = rl_gets();
-    if (command == nullptr)
-        return tokens;
+    wstring command = rl_gets();
     // Split the command
+    vector<wstring> tokens;
     boost::char_separator<wchar_t> sep(L" ");
-    Tokenizer tok(wstring(command), sep);
+    Tokenizer tok(command, sep);
     for (const wstring &wstr : tok)
     {
         if (wstr != L"")
