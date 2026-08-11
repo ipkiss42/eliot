@@ -45,10 +45,10 @@ using std::wstring;
 int wtoi(const wchar_t *iWStr);
 
 /// Convert a multi-byte string into a wide-character string
-wstring convertToWc(std::string_view iStr);
+wstring convertToWc(const string& iStr);
 
 /// Convert a wide-character string into a multi-byte string
-string convertToMb(std::wstring_view iWStr);
+string convertToMb(const wstring& iWStr);
 
 /// Convert a wide character into a multi-byte string
 string convertToMb(wchar_t iWChar);

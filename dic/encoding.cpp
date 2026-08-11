@@ -21,6 +21,7 @@
 #include "config.h"
 
 #include <algorithm>
+#include <sstream>
 #include <cstdlib>
 #include <cstdarg>
 #include <cstring>
@@ -28,8 +29,6 @@
 #include <cwctype>
 #include <cerrno>
 #include <iconv.h>
-
-#include <boost/nowide/convert.hpp>
 
 #include "encoding.h"
 #include "dic_exception.h"
@@ -54,22 +53,58 @@ int wtoi(const wchar_t *iWStr)
 }
 
 
-wstring convertToWc(std::string_view iStr)
+#define _MAX_SIZE_FOR_STACK_ 30
+wstring convertToWc(const string& iStr)
 {
-    if (iStr.empty())
+    // Get the needed length (we _can't_ use string::size())
+    size_t len = mbstowcs(nullptr, iStr.c_str(), 0);
+    if (len == (size_t)-1)
         return L"";
 
-    return boost::nowide::widen(iStr.data(), iStr.size());
+    // Change the allocation method depending on the length of the string
+    if (len < _MAX_SIZE_FOR_STACK_)
+    {
+        // Without multi-thread, we can use static storage
+        static wchar_t tmp[_MAX_SIZE_FOR_STACK_];
+        len = mbstowcs(tmp, iStr.c_str(), len + 1);
+        return tmp;
+    }
+    else
+    {
+        wchar_t *tmp = new wchar_t[len + 1];
+        len = mbstowcs(tmp, iStr.c_str(), len + 1);
+        wstring res = tmp;
+        delete[] tmp;
+        return res;
+    }
 }
 
 
-string convertToMb(std::wstring_view iWStr)
+string convertToMb(const wstring& iWStr)
 {
-    if (iWStr.empty())
+    // Get the needed length (we _can't_ use wstring::size())
+    size_t len = wcstombs(nullptr, iWStr.c_str(), 0);
+    if (len == (size_t)-1)
         return "";
 
-    return boost::nowide::narrow(iWStr.data(), iWStr.size());
+    // Change the allocation method depending on the length of the string
+    if (len < _MAX_SIZE_FOR_STACK_)
+    {
+        // Without multi-thread, we can use static storage
+        static char tmp[_MAX_SIZE_FOR_STACK_];
+        len = wcstombs(tmp, iWStr.c_str(), len + 1);
+        return tmp;
+    }
+    else
+    {
+        char *tmp = new char[len + 1];
+        len = wcstombs(tmp, iWStr.c_str(), len + 1);
+        string res = tmp;
+        delete[] tmp;
+        return res;
+    }
 }
+#undef _MAX_SIZE_FOR_STACK_
 
 
 string convertToMb(wchar_t iWChar)
