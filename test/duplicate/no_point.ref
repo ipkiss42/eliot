@@ -1,16 +1,16 @@
-Using seed: 68
+Using seed: 199
 [?] pour l'aide
 commande> s b duplicate/reject-invalid 0
 commande> d 2 0
 mode duplicate
 [?] pour l'aide
 commande> a t
-ATNE??A
+NO?TIO?
 commande> j XXX a1
 commande> j ay h8
 commande> a T
-Rack 0: AAENT+UL
-Rack 1: AAENT+UL
+Rack 0: INOOT+ML
+Rack 1: INOOT+ML
 commande> a S
 Score 0:    0
 Score 1:    0
@@ -20,11 +20,11 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  ATNE??A | ay             |  H8 |   0 |  
+    1 |  NO?TIO? | ay             |  H8 |   0 |  
 
 
-Rack 0: AAENT+UL
-Rack 1: AAENT+UL
+Rack 0: INOOT+ML
+Rack 1: INOOT+ML
 Score 0:    0
 Score 1:    0
 commande> a g

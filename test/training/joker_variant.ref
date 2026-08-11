@@ -5,13 +5,14 @@ mode entraînement
 [?] pour l'aide
 commande> *
 commande> a t
-ICDSPT?
+ADR?TJE
 commande> *
 commande> a t
-DAILE?O
+U?AAEUH
 commande> *
 commande> a t
-E?ESAVP
+YEIDPO?
+commande> t E?ESAVP
 commande> j PAVEuSE h2
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
@@ -32,7 +33,7 @@ commande> a g
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
 commande> +
 commande> a t
-IAPV?IG
+NEAUDL?
 commande> t WHISKYS
 commande> r
 commande> a r
@@ -68,7 +69,7 @@ commande> +
 commande> a s
 206
 commande> a t
-NII?NAX
+RIRD?MU
 commande> j kA 3G
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
@@ -90,10 +91,11 @@ commande> a g
 commande> t ??ABCDE
 The bag does not contain all these letters
 commande> a t
-AIINNX
+DIMRRU
 commande> +
 commande> a t
-AIINNX?
+DIMRRU?
+commande> t AIINNX?
 commande> j kAS j3
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
@@ -124,8 +126,8 @@ Game: history:
    ===|==========|================|=====|=====|======
     1 |  E?ESAVP | PAVEuSE        |  H2 |  80 | *
     2 |  WHISKYS | WHISKEYS       |  5C | 126 | *
-    3 |  NII?NAX | kA             |  3G |   1 |  
-    4 | AIINNX+? | kAS            |  J3 |   2 |  
+    3 |  RIRD?MU | kA             |  3G |   1 |  
+    4 |  AIINNX? | kAS            |  J3 |   2 |  
 
 
 Rack 0: IINNX
@@ -177,13 +179,13 @@ commande> a l
 commande> h r
 commande> *
 commande> a t
-AE?IUGB
+UOB?EEO
 commande> *
 commande> a t
-DINO?EB
+ERSC?NA
 commande> *
 commande> a t
-REX?GOE
+NEFAXT?
 commande> q
 fin du mode entraînement
 commande> q

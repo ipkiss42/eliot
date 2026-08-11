@@ -9,8 +9,8 @@ commande> p
 commande> p
 commande> p
 commande> a t
-BEFHLRT
-commande> p BEFH
+DFLORS?
+commande> p DFLR
 commande> p
 commande> p
 commande> p
@@ -18,35 +18,35 @@ commande> p
 commande> p
 commande> p
 commande> a S
-Score 0:   -9
-Score 1:  -18
+Score 0:  -18
+Score 1:   -9
 commande> a T
-Rack 0: AEEOPUU
-Rack 1: CILORTZ
+Rack 0: AEEFRX?
+Rack 1: AGIOPS?
 commande> a p
 Game: player 2 out of 2
 Game: mode=Free game
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  AUEUOEP | (PASS)         |  -  |   0 |  
-    2 |  ELBFHTR | (PASS)         |  -  |   0 |  
-    3 |  AEEOPUU | (PASS)         |  -  |   0 |  
-    4 |  BEFHLRT | (PASS)         |  -  |   0 |  
-    5 |  AEEOPUU | (PASS)         |  -  |   0 |  
-    6 |  BEFHLRT | [BEFH]         |  -  |   0 |  
-    7 |  AEEOPUU | (PASS)         |  -  |   0 |  
-    8 | LRT+COIZ | (PASS)         |  -  |   0 |  
-    9 |  AEEOPUU | (PASS)         |  -  |   0 |  
-   10 |  CILORTZ | (PASS)         |  -  |   0 |  
-   11 |  AEEOPUU | (PASS)         |  -  |   0 |  
-   12 |  CILORTZ | (PASS)         |  -  |   0 |  
+    1 |  EA?FREX | (PASS)         |  -  |   0 |  
+    2 |  SLDOR?F | (PASS)         |  -  |   0 |  
+    3 |  AEEFRX? | (PASS)         |  -  |   0 |  
+    4 |  DFLORS? | (PASS)         |  -  |   0 |  
+    5 |  AEEFRX? | (PASS)         |  -  |   0 |  
+    6 |  DFLORS? | [DFLR]         |  -  |   0 |  
+    7 |  AEEFRX? | (PASS)         |  -  |   0 |  
+    8 | OS?+PIAG | (PASS)         |  -  |   0 |  
+    9 |  AEEFRX? | (PASS)         |  -  |   0 |  
+   10 |  AGIOPS? | (PASS)         |  -  |   0 |  
+   11 |  AEEFRX? | (PASS)         |  -  |   0 |  
+   12 |  AGIOPS? | (PASS)         |  -  |   0 |  
 
 
-Rack 0: AEEOPUU
-Rack 1: CILORTZ
-Score 0:   -9
-Score 1:  -18
+Rack 0: AEEFRX?
+Rack 1: AGIOPS?
+Score 0:  -18
+Score 1:   -9
 commande> p
 Cannot pass (3)
 commande> q

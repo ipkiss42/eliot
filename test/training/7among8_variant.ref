@@ -5,10 +5,10 @@ mode entraînement
 [?] pour l'aide
 commande> *
 commande> a t
-USEUVYEW
+UAIUEOLE
 commande> *
 commande> a t
-NEUUIREE
+?TPAEINZ
 commande> t AEIRSTN?
 commande> r
 commande> a r
@@ -29,7 +29,8 @@ commande> a t
 ?
 commande> +
 commande> a t
-?FKIREVZ
+?NOECFAR
+commande> t ?FKIREVZ
 commande> j KEFIRS 5C
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
@@ -56,7 +57,7 @@ Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
     1 | AEIRSTN? | TSARINE        |  H4 |  66 | *
-    2 | ?+FKIREVZ | KEFIRS         |  5C |  36 |  
+    2 | ?FKIREVZ | KEFIRS         |  5C |  36 |  
 
 
 Rack 0: VZ?

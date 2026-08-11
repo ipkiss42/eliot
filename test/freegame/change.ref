@@ -4,43 +4,43 @@ commande> l 2 0
 mode partie libre
 [?] pour l'aide
 commande> a T
-Rack 0: JNNEDEI
-Rack 1: TLAEOWA
-commande> p JID
+Rack 0: RACTMEN
+Rack 1: DAAEEUA
+commande> p CAN
 commande> a T
-Rack 0: EENN+MEN
-Rack 1: TLAEOWA
-commande> p aowalt
+Rack 0: EMRT+EAL
+Rack 1: DAAEEUA
+commande> p aaaede
 commande> a T
-Rack 0: EENN+MEN
-Rack 1: E+EEGAIS
-commande> p MA
+Rack 0: EMRT+EAL
+Rack 1: U+LEIEOQ
+commande> p MU
 Cannot pass (2)
 commande> a T
-Rack 0: EENN+MEN
-Rack 1: E+EEGAIS
-commande> p MN
+Rack 0: EMRT+EAL
+Rack 1: U+LEIEOQ
+commande> p ML
 commande> a T
-Rack 0: EEENN+ER
-Rack 1: E+EEGAIS
-commande> p SGEEEAI
+Rack 0: AEERT+SN
+Rack 1: U+LEIEOQ
+commande> p LOQUEIE
 commande> a T
-Rack 0: EEENN+ER
-Rack 1: HAAUAUO
+Rack 0: AEERT+SN
+Rack 1: IFEERNI
 commande> a p
 Game: player 1 out of 2
 Game: mode=Free game
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  JNNEDEI | [JID]          |  -  |   0 |  
-    2 |  TLAEOWA | [AOWALT]       |  -  |   0 |  
-    3 | EENN+MEN | [MN]           |  -  |   0 |  
-    4 | E+EEGAIS | [SGEEEAI]      |  -  |   0 |  
+    1 |  RACTMEN | [CAN]          |  -  |   0 |  
+    2 |  DAAEEUA | [AAAEDE]       |  -  |   0 |  
+    3 | EMRT+EAL | [ML]           |  -  |   0 |  
+    4 | U+LEIEOQ | [LOQUEIE]      |  -  |   0 |  
 
 
-Rack 0: EEENN+ER
-Rack 1: HAAUAUO
+Rack 0: AEERT+SN
+Rack 1: IFEERNI
 Score 0:    0
 Score 1:    0
 commande> q

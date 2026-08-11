@@ -4,61 +4,69 @@ commande> l 0 3
 mode partie libre
 [?] pour l'aide
 commande> a T
-Rack 0: KS+ROCT
-Rack 1: 
-Rack 2: DIU+DGEA
+Rack 0: 
+Rack 1: UU
+Rack 2: E
 commande> a S
-Score 0:  296
-Score 1:  362
-Score 2:  263
+Score 0:  310
+Score 1:  391
+Score 2:  305
 commande> a p
-Game: player 2 out of 3
+Game: player 1 out of 3
 Game: mode=Free game
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  RAHITRD | HARDI          |  H4 |  26 |  
-    2 |  ?TIEXFA | FAXAIEnT       |  5E | 126 | *
-    3 |  ATOSBUF | BOUTEFAS       |  J1 |  73 | *
-    4 | RT+AREEN | ENTERRAI       |  8A |  77 | *
-    5 |  RZUGNSS | AZURS          |  F5 |  34 |  
-    6 |  MIMLLOP | PLOMB          |  1F |  30 |  
-    7 |  EEMNETV | VETEMENT       |  C6 |  78 | *
-    8 | GNRS+PEN | PURGES         |  3I |  24 |  
-    9 | ILM+HSVI | VIS            | 14A |  25 |  
-   10 |  AWELOUB | BAVE           | A12 |  36 |  
-   11 | NN+ELEEE | SELENE         |  8J |  21 |  
-   12 | HILM+?IC | aLCHIMIE       |  A1 | 101 | *
-   13 | LOUW+ULS | SLOW           |  N3 |  33 |  
-   14 | EN+STAAI | NANTAISE       |  N8 |  70 | *
-   15 |  DIJUUYO | JOYAU          | 12K |  44 |  
-   16 | LSUU+KAQ | AUQUEL         | 15J |  63 |  
-   17 |  OENIREN | NERONIEN       | 10G |  60 | *
+    1 |  EWANIVI | IWAN           |  H5 |  26 |  
+    2 |  ORECDFG | DECOR          |  4H |  37 |  
+    3 |  RTMDLMO | DORMIT         |  5D |  18 |  
+    4 | EIV+NUSE | ENSUIVE        |  M2 |  87 | *
+    5 | FG+ZLTEA | ZELE           |  8L |  69 |  
+    6 | LM+BAIEE | REMBLAIE       |  F5 |  65 | *
+    7 |  ESOOEBE | DORMITES       |  5D |  28 |  
+    8 | AFGT+IME | FIGEAIT        | 11E |  44 |  
+    9 |  NRRTNRI | TERNIR         | H10 |  21 |  
+   10 | BEEOO+AP | WAP            |  6H |  36 |  
+   11 | M+SE?ULL | RaLLUMES       | 15H |  77 | *
+   12 | NR+HEGKO | HONGRE         | N10 |  36 |  
+   13 | BEEOO+TI | BETEE          |  2J |  26 |  
+   14 |  OUNEUYA | ETAYA          |  I4 |  47 |  
+   15 | EK+DILUA | DUNK           | 12L |  48 |  
+   16 | IOO+JAV? | JIhAD          |  D1 |  40 |  
+   17 | ENOUU+PT | JUPON          |  1D |  42 |  
+   18 | AEIL+SRS | LISERAIS       | 14B |  71 | *
+   19 | OOV+EXCH | CHOIX          | C11 |  38 |  
+   20 | ETU+USAF | FAXES          | 15A |  61 |  
+   21 |   NATIQE | QIN            | J10 |  26 |  
+   22 |      EOV | VE             |  1N |  20 |  
+   23 |      TUU | ETAYAT         |  I4 |  16 |  
+   24 |     AEIT | THAIE          | 12B |  21 |  
+   25 |        O | NO             | 13H |   6 |  
 
 
-Rack 0: KS+ROCT
-Rack 1: 
-Rack 2: DIU+DGEA
-Score 0:  296
-Score 1:  362
-Score 2:  263
+Rack 0: 
+Rack 1: UU
+Rack 2: E
+Score 0:  310
+Score 1:  391
+Score 2:  305
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   a  L  C  H  I  M  I  E  -  -  -  B  A  V  E 
- B   -  -  -  -  -  -  -  N  -  -  -  -  -  I  - 
- C   -  -  -  -  -  V  E  T  E  M  E  N  T  S  - 
- D   -  -  -  -  -  -  -  E  -  -  -  -  -  -  - 
- E   -  -  -  -  F  -  -  R  -  -  -  -  -  -  - 
- F   P  -  -  -  A  Z  U  R  S  -  -  -  -  -  - 
- G   L  -  -  -  X  -  -  A  -  N  -  -  -  -  - 
- H   O  -  -  H  A  R  D  I  -  E  -  -  -  -  - 
- I   M  -  P  -  I  -  -  -  -  R  -  -  -  -  - 
- J   B  O  U  T  E  F  A  S  -  O  -  -  -  -  A 
- K   -  -  R  -  n  -  -  E  -  N  -  J  -  -  U 
- L   -  -  G  -  T  -  -  L  -  I  -  O  -  -  Q 
- M   -  -  E  -  -  -  -  E  -  E  -  Y  -  -  U 
- N   -  -  S  L  O  W  -  N  A  N  T  A  I  S  E 
- O   -  -  -  -  -  -  -  E  -  -  -  U  -  -  L 
+ A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  F 
+ B   -  -  -  -  -  -  -  -  -  -  -  T  -  L  A 
+ C   -  -  -  -  -  -  -  -  -  -  C  H  O  I  X 
+ D   J  I  h  A  D  -  -  -  -  -  -  A  -  S  E 
+ E   U  -  -  -  O  -  -  -  -  -  F  I  -  E  S 
+ F   P  -  -  -  R  E  M  B  L  A  I  E  -  R  - 
+ G   O  -  -  -  M  -  -  -  -  -  G  -  -  A  - 
+ H   N  -  -  D  I  W  A  N  -  T  E  R  N  I  R 
+ I   -  -  -  E  T  A  Y  A  T  -  A  -  O  S  a 
+ J   -  B  -  C  E  P  -  -  -  Q  I  N  -  -  L 
+ K   -  E  -  O  S  -  -  -  -  -  T  -  -  -  L 
+ L   -  T  -  R  -  -  -  Z  -  -  -  D  -  -  U 
+ M   -  E  N  S  U  I  V  E  -  -  -  U  -  -  M 
+ N   V  E  -  -  -  -  -  L  -  H  O  N  G  R  E 
+ O   E  -  -  -  -  -  -  E  -  -  -  K  -  -  S 
 commande> q
 fin du mode partie libre
 commande> q

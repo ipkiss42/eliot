@@ -57,13 +57,13 @@ training/cross4     0
 # 2 AI players
 duplicate/2_ai      5
 # 2 human players, one IA, with manual change of human player
-duplicate/humans_ai 6
+duplicate/humans_ai 7
 # Only one player
 duplicate/1_player  8
 # One complete turn without a valid move
 duplicate/invalid_turn 9
 # Turn where the only valid move has 0 point
-duplicate/no_point 68 # For 2 jokers in the rack
+duplicate/no_point 199 # For 2 jokers in the rack
 # Navigation in the game history
 duplicate/navigation 11
 # Joker game
@@ -103,7 +103,7 @@ freegame/joker_variant 16
 # Explosive game
 freegame/explosive_variant 17
 # 7 among 8 game
-freegame/7among8_variant 20
+freegame/7among8_variant 21
 # Save games handling
 freegame/load_save  23
 

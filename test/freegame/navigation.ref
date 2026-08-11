@@ -4,24 +4,24 @@ commande> l 1 2
 mode partie libre
 [?] pour l'aide
 commande> a T
-Rack 0: NONTEEL
-Rack 1: NBZEUAU
-Rack 2: NUDATMG
-commande> j TONNE h4
+Rack 0: SLESOAI
+Rack 1: ESEAERE
+Rack 2: RMXTQAH
+commande> j SALES h4
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
  A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  M  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  A  A  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  T  U  -  -  -  -  -  -  -  -  - 
- H   -  -  -  T  O  N  N  E  -  -  -  -  -  -  - 
- I   -  -  -  -  N  E  -  -  -  -  -  -  -  -  - 
- J   -  -  -  -  -  Z  -  -  -  -  -  -  -  -  - 
- K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ E   -  -  -  -  -  R  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  A  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  S  A  L  E  S  -  -  -  -  -  -  - 
+ I   -  -  -  -  -  E  X  A  M  -  -  -  -  -  - 
+ J   -  -  -  -  -  S  -  -  -  -  -  -  -  -  - 
+ K   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
+ L   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
  M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -31,32 +31,32 @@ Game: mode=Free game
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  NONTEEL | TONNE          |  H4 |  12 |  
-    2 |  NBZEUAU | AUNEZ          |  6F |  36 |  
-    3 |  NUDATMG | MATON          |  5E |  18 |  
+    1 |  SLESOAI | SALES          |  H4 |  12 |  
+    2 |  ESEAERE | REALESEE       |  6E |  62 | *
+    3 |  RMXTQAH | EXAM           |  I6 |  49 |  
 
 
-Rack 0: EL+HI?WE
-Rack 1: BNU+FYTE
-Rack 2: DGU+IDVA
+Rack 0: IO+ORAFU
+Rack 1: TIMDDNR
+Rack 2: HQRT+KEU
 Score 0:   12
-Score 1:   36
-Score 2:   18
-commande> j WELcHE 3c
+Score 1:   62
+Score 2:   49
+commande> j FOURRAI e3
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  W  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  E  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  L  -  M  -  -  -  -  -  -  -  -  -  - 
- F   -  -  c  -  A  A  -  -  -  -  -  -  -  -  - 
- G   -  -  H  -  T  U  -  -  -  -  -  -  -  -  - 
- H   -  B  E  T  O  N  N  E  -  -  -  -  -  -  - 
- I   V  E  -  -  N  E  -  -  -  -  -  -  -  -  - 
- J   A  Y  -  -  -  Z  -  -  -  -  -  -  -  -  - 
- K   G  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   I  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ A   -  -  -  -  -  -  -  T  -  -  -  -  -  -  - 
+ B   -  -  -  -  -  -  -  R  -  -  -  -  -  -  - 
+ C   -  -  -  -  -  -  -  I  -  -  -  -  -  -  - 
+ D   -  -  -  -  -  -  -  M  -  -  -  -  -  -  - 
+ E   -  -  F  O  U  R  R  A  I  -  -  -  -  -  - 
+ F   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  A  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  S  A  L  E  S  -  -  -  -  -  -  - 
+ I   -  -  -  -  -  E  X  A  M  -  -  -  -  -  - 
+ J   -  -  -  -  -  S  -  -  -  -  -  -  -  -  - 
+ K   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
+ L   T  H  E  Q  U  E  -  -  -  -  -  -  -  -  - 
  M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -66,35 +66,35 @@ Game: mode=Free game
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  NONTEEL | TONNE          |  H4 |  12 |  
-    2 |  NBZEUAU | AUNEZ          |  6F |  36 |  
-    3 |  NUDATMG | MATON          |  5E |  18 |  
-    4 | EL+HI?WE | WELcHE         |  3C |  48 |  
-    5 | BNU+FYTE | BEY            |  2H |  43 |  
-    6 | DGU+IDVA | VAGI           |  1I |  25 |  
+    1 |  SLESOAI | SALES          |  H4 |  12 |  
+    2 |  ESEAERE | REALESEE       |  6E |  62 | *
+    3 |  RMXTQAH | EXAM           |  I6 |  49 |  
+    4 | IO+ORAFU | FOURRAI        |  E3 |  20 |  
+    5 |  TIMDDNR | TRIMA          |  8A |  24 |  
+    6 | HQRT+KEU | THEQUE         |  L1 |  34 |  
 
 
-Rack 0: I+SSPRNS
-Rack 1: FNTU+FIA
-Rack 2: DDU+?ERA
-Score 0:   60
-Score 1:   79
-Score 2:   43
+Rack 0: O+OFBAPM
+Rack 1: DDN+NATO
+Rack 2: KR+IGGNC
+Score 0:   32
+Score 1:   86
+Score 2:   83
 commande> h p
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  W  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  E  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  L  -  M  -  -  -  -  -  -  -  -  -  - 
- F   -  -  c  -  A  A  -  -  -  -  -  -  -  -  - 
- G   -  -  H  -  T  U  -  -  -  -  -  -  -  -  - 
- H   -  B  E  T  O  N  N  E  -  -  -  -  -  -  - 
- I   -  E  -  -  N  E  -  -  -  -  -  -  -  -  - 
- J   -  Y  -  -  -  Z  -  -  -  -  -  -  -  -  - 
- K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ A   -  -  -  -  -  -  -  T  -  -  -  -  -  -  - 
+ B   -  -  -  -  -  -  -  R  -  -  -  -  -  -  - 
+ C   -  -  -  -  -  -  -  I  -  -  -  -  -  -  - 
+ D   -  -  -  -  -  -  -  M  -  -  -  -  -  -  - 
+ E   -  -  F  O  U  R  R  A  I  -  -  -  -  -  - 
+ F   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  A  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  S  A  L  E  S  -  -  -  -  -  -  - 
+ I   -  -  -  -  -  E  X  A  M  -  -  -  -  -  - 
+ J   -  -  -  -  -  S  -  -  -  -  -  -  -  -  - 
+ K   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
+ L   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
  M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -104,34 +104,34 @@ Game: mode=Free game
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  NONTEEL | TONNE          |  H4 |  12 |  
-    2 |  NBZEUAU | AUNEZ          |  6F |  36 |  
-    3 |  NUDATMG | MATON          |  5E |  18 |  
-    4 | EL+HI?WE | WELcHE         |  3C |  48 |  
-    5 | BNU+FYTE | BEY            |  2H |  43 |  
+    1 |  SLESOAI | SALES          |  H4 |  12 |  
+    2 |  ESEAERE | REALESEE       |  6E |  62 | *
+    3 |  RMXTQAH | EXAM           |  I6 |  49 |  
+    4 | IO+ORAFU | FOURRAI        |  E3 |  20 |  
+    5 |  TIMDDNR | TRIMA          |  8A |  24 |  
 
 
-Rack 0: I+SSPRNS
-Rack 1: FNTU+FIA
-Rack 2: DGU+IDVA
-Score 0:   60
-Score 1:   79
-Score 2:   18
+Rack 0: O+OFBAPM
+Rack 1: DDN+NATO
+Rack 2: HQRT+KEU
+Score 0:   32
+Score 1:   86
+Score 2:   49
 commande> h p
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
  A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  W  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  E  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  L  -  M  -  -  -  -  -  -  -  -  -  - 
- F   -  -  c  -  A  A  -  -  -  -  -  -  -  -  - 
- G   -  -  H  -  T  U  -  -  -  -  -  -  -  -  - 
- H   -  -  E  T  O  N  N  E  -  -  -  -  -  -  - 
- I   -  -  -  -  N  E  -  -  -  -  -  -  -  -  - 
- J   -  -  -  -  -  Z  -  -  -  -  -  -  -  -  - 
- K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ E   -  -  F  O  U  R  R  A  I  -  -  -  -  -  - 
+ F   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  A  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  S  A  L  E  S  -  -  -  -  -  -  - 
+ I   -  -  -  -  -  E  X  A  M  -  -  -  -  -  - 
+ J   -  -  -  -  -  S  -  -  -  -  -  -  -  -  - 
+ K   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
+ L   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
  M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -141,18 +141,18 @@ Game: mode=Free game
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  NONTEEL | TONNE          |  H4 |  12 |  
-    2 |  NBZEUAU | AUNEZ          |  6F |  36 |  
-    3 |  NUDATMG | MATON          |  5E |  18 |  
-    4 | EL+HI?WE | WELcHE         |  3C |  48 |  
+    1 |  SLESOAI | SALES          |  H4 |  12 |  
+    2 |  ESEAERE | REALESEE       |  6E |  62 | *
+    3 |  RMXTQAH | EXAM           |  I6 |  49 |  
+    4 | IO+ORAFU | FOURRAI        |  E3 |  20 |  
 
 
-Rack 0: I+SSPRNS
-Rack 1: BNU+FYTE
-Rack 2: DGU+IDVA
-Score 0:   60
-Score 1:   36
-Score 2:   18
+Rack 0: O+OFBAPM
+Rack 1: TIMDDNR
+Rack 2: HQRT+KEU
+Score 0:   32
+Score 1:   62
+Score 2:   49
 commande> h r
 commande> a p
 Game: player 1 out of 3
@@ -160,34 +160,34 @@ Game: mode=Free game
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  NONTEEL | TONNE          |  H4 |  12 |  
-    2 |  NBZEUAU | AUNEZ          |  6F |  36 |  
-    3 |  NUDATMG | MATON          |  5E |  18 |  
-    4 | EL+HI?WE | WELcHE         |  3C |  48 |  
-    5 | BNU+FYTE | BEY            |  2H |  43 |  
-    6 | DGU+IDVA | VAGI           |  1I |  25 |  
+    1 |  SLESOAI | SALES          |  H4 |  12 |  
+    2 |  ESEAERE | REALESEE       |  6E |  62 | *
+    3 |  RMXTQAH | EXAM           |  I6 |  49 |  
+    4 | IO+ORAFU | FOURRAI        |  E3 |  20 |  
+    5 |  TIMDDNR | TRIMA          |  8A |  24 |  
+    6 | HQRT+KEU | THEQUE         |  L1 |  34 |  
 
 
-Rack 0: I+SSPRNS
-Rack 1: FNTU+FIA
-Rack 2: DDU+?ERA
-Score 0:   60
-Score 1:   79
-Score 2:   43
+Rack 0: O+OFBAPM
+Rack 1: DDN+NATO
+Rack 2: KR+IGGNC
+Score 0:   32
+Score 1:   86
+Score 2:   83
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  W  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  E  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  L  -  M  -  -  -  -  -  -  -  -  -  - 
- F   -  -  c  -  A  A  -  -  -  -  -  -  -  -  - 
- G   -  -  H  -  T  U  -  -  -  -  -  -  -  -  - 
- H   -  B  E  T  O  N  N  E  -  -  -  -  -  -  - 
- I   V  E  -  -  N  E  -  -  -  -  -  -  -  -  - 
- J   A  Y  -  -  -  Z  -  -  -  -  -  -  -  -  - 
- K   G  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   I  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ A   -  -  -  -  -  -  -  T  -  -  -  -  -  -  - 
+ B   -  -  -  -  -  -  -  R  -  -  -  -  -  -  - 
+ C   -  -  -  -  -  -  -  I  -  -  -  -  -  -  - 
+ D   -  -  -  -  -  -  -  M  -  -  -  -  -  -  - 
+ E   -  -  F  O  U  R  R  A  I  -  -  -  -  -  - 
+ F   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  A  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  S  A  L  E  S  -  -  -  -  -  -  - 
+ I   -  -  -  -  -  E  X  A  M  -  -  -  -  -  - 
+ J   -  -  -  -  -  S  -  -  -  -  -  -  -  -  - 
+ K   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
+ L   T  H  E  Q  U  E  -  -  -  -  -  -  -  -  - 
  M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -200,9 +200,9 @@ Game: history:
    ===|==========|================|=====|=====|======
 
 
-Rack 0: NONTEEL
-Rack 1: NBZEUAU
-Rack 2: NUDATMG
+Rack 0: SLESOAI
+Rack 1: ESEAERE
+Rack 2: RMXTQAH
 Score 0:    0
 Score 1:    0
 Score 2:    0
@@ -233,7 +233,7 @@ commande> a g
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  T  O  N  N  E  -  -  -  -  -  -  - 
+ H   -  -  -  S  A  L  E  S  -  -  -  -  -  -  - 
  I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -247,12 +247,12 @@ Game: mode=Free game
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  NONTEEL | TONNE          |  H4 |  12 |  
+    1 |  SLESOAI | SALES          |  H4 |  12 |  
 
 
-Rack 0: EL+HI?WE
-Rack 1: NBZEUAU
-Rack 2: NUDATMG
+Rack 0: IO+ORAFU
+Rack 1: ESEAERE
+Rack 2: RMXTQAH
 Score 0:   12
 Score 1:    0
 Score 2:    0
@@ -263,14 +263,14 @@ commande> a g
  B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  -  A  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  -  U  -  -  -  -  -  -  -  -  - 
- H   -  -  -  T  O  N  N  E  -  -  -  -  -  -  - 
+ E   -  -  -  -  -  R  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  A  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  S  A  L  E  S  -  -  -  -  -  -  - 
  I   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
- J   -  -  -  -  -  Z  -  -  -  -  -  -  -  -  - 
- K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ J   -  -  -  -  -  S  -  -  -  -  -  -  -  -  - 
+ K   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
+ L   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
  M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -280,15 +280,15 @@ Game: mode=Free game
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  NONTEEL | TONNE          |  H4 |  12 |  
-    2 |  NBZEUAU | AUNEZ          |  6F |  36 |  
+    1 |  SLESOAI | SALES          |  H4 |  12 |  
+    2 |  ESEAERE | REALESEE       |  6E |  62 | *
 
 
-Rack 0: EL+HI?WE
-Rack 1: BNU+FYTE
-Rack 2: NUDATMG
+Rack 0: IO+ORAFU
+Rack 1: TIMDDNR
+Rack 2: RMXTQAH
 Score 0:   12
-Score 1:   36
+Score 1:   62
 Score 2:    0
 commande> h r
 commande> a g
@@ -297,14 +297,14 @@ commande> a g
  B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  M  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  A  A  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  T  U  -  -  -  -  -  -  -  -  - 
- H   -  -  -  T  O  N  N  E  -  -  -  -  -  -  - 
- I   -  -  -  -  N  E  -  -  -  -  -  -  -  -  - 
- J   -  -  -  -  -  Z  -  -  -  -  -  -  -  -  - 
- K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ E   -  -  -  -  -  R  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  A  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  S  A  L  E  S  -  -  -  -  -  -  - 
+ I   -  -  -  -  -  E  X  A  M  -  -  -  -  -  - 
+ J   -  -  -  -  -  S  -  -  -  -  -  -  -  -  - 
+ K   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
+ L   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
  M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -314,34 +314,34 @@ Game: mode=Free game
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  NONTEEL | TONNE          |  H4 |  12 |  
-    2 |  NBZEUAU | AUNEZ          |  6F |  36 |  
-    3 |  NUDATMG | MATON          |  5E |  18 |  
+    1 |  SLESOAI | SALES          |  H4 |  12 |  
+    2 |  ESEAERE | REALESEE       |  6E |  62 | *
+    3 |  RMXTQAH | EXAM           |  I6 |  49 |  
 
 
-Rack 0: EL+HI?WE
-Rack 1: BNU+FYTE
-Rack 2: DGU+IDVA
+Rack 0: IO+ORAFU
+Rack 1: TIMDDNR
+Rack 2: HQRT+KEU
 Score 0:   12
-Score 1:   36
-Score 2:   18
+Score 1:   62
+Score 2:   49
 commande> h n
-commande> j aWELE 3f
+commande> j FOURS 4d
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
  A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  M  -  -  -  -  -  -  -  -  -  - 
- F   -  -  a  -  A  A  -  -  -  -  -  -  -  -  - 
- G   -  -  W  -  T  U  -  -  B  -  -  -  -  -  - 
- H   -  -  E  T  O  N  N  E  E  -  -  -  -  -  - 
- I   -  -  L  -  N  E  -  -  Y  -  -  -  -  -  - 
- J   -  V  E  -  -  Z  -  -  -  -  -  -  -  -  - 
- K   -  A  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  G  -  -  -  -  -  -  -  -  -  -  -  -  - 
- M   -  I  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ D   -  -  -  F  -  -  -  -  -  -  -  -  -  -  - 
+ E   -  -  -  O  -  R  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  U  -  E  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  R  -  A  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  S  A  L  E  S  -  -  -  -  -  -  - 
+ I   -  -  -  -  -  E  X  A  M  -  -  -  -  -  - 
+ J   -  -  -  -  -  S  I  -  -  -  -  -  -  -  - 
+ K   -  -  -  -  -  E  T  -  -  -  -  -  -  -  - 
+ L   T  H  E  Q  U  E  -  -  -  -  -  -  -  -  - 
+ M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
 commande> a p
@@ -350,61 +350,61 @@ Game: mode=Free game
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  NONTEEL | TONNE          |  H4 |  12 |  
-    2 |  NBZEUAU | AUNEZ          |  6F |  36 |  
-    3 |  NUDATMG | MATON          |  5E |  18 |  
-    4 | EL+HI?WE | aWELE          |  3F |  30 |  
-    5 | BNU+FYTE | BEY            |  9G |  34 |  
-    6 | DGU+IDVA | VAGI           |  2J |  29 |  
+    1 |  SLESOAI | SALES          |  H4 |  12 |  
+    2 |  ESEAERE | REALESEE       |  6E |  62 | *
+    3 |  RMXTQAH | EXAM           |  I6 |  49 |  
+    4 | IO+ORAFU | FOURS          |  4D |  16 |  
+    5 |  TIMDDNR | EXIT           |  7H |  17 |  
+    6 | HQRT+KEU | THEQUE         |  L1 |  34 |  
 
 
-Rack 0: HI+CEEEP
-Rack 1: FNTU+FSR
-Rack 2: DDU+OREE
-Score 0:   42
-Score 1:   70
-Score 2:   47
+Rack 0: AIO+TUBA
+Rack 1: DDMNR+DN
+Rack 2: KR+TSUEE
+Score 0:   28
+Score 1:   79
+Score 2:   83
 commande> p
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
  A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  M  -  -  -  -  -  -  -  -  -  - 
- F   -  -  a  -  A  A  -  -  -  -  -  -  -  -  - 
- G   -  -  W  -  T  U  -  -  B  -  -  -  -  -  - 
- H   -  -  E  T  O  N  N  E  E  -  -  -  -  -  - 
- I   -  -  L  -  N  E  -  -  Y  -  -  -  -  -  - 
- J   -  V  E  R  -  Z  -  -  -  -  -  -  -  -  - 
- K   -  A  -  E  -  -  -  -  -  -  -  -  -  -  - 
- L   -  G  -  D  -  -  -  -  -  -  -  -  -  -  - 
- M   -  I  -  O  -  -  -  -  -  -  -  -  -  -  - 
- N   -  T  U  R  F  S  -  -  -  -  -  -  -  -  - 
- O   -  -  -  E  -  -  -  -  -  -  -  -  -  -  - 
+ D   -  -  -  F  -  -  -  -  -  -  -  -  -  -  - 
+ E   -  -  -  O  -  R  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  U  -  E  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  R  -  A  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  S  A  L  E  S  -  -  -  -  -  -  - 
+ I   -  -  -  -  -  E  X  A  M  -  -  -  -  -  - 
+ J   -  -  -  -  -  S  I  -  -  -  -  -  -  -  - 
+ K   -  -  -  -  M  E  T  S  -  -  -  -  -  -  - 
+ L   T  H  E  Q  U  E  -  K  -  -  -  -  -  -  - 
+ M   -  -  -  -  R  -  -  E  -  -  -  -  -  -  - 
+ N   -  -  -  -  -  -  -  E  -  -  -  -  -  -  - 
+ O   -  -  -  -  -  -  -  T  -  -  -  -  -  -  - 
 commande> a p
 Game: player 1 out of 3
 Game: mode=Free game
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  NONTEEL | TONNE          |  H4 |  12 |  
-    2 |  NBZEUAU | AUNEZ          |  6F |  36 |  
-    3 |  NUDATMG | MATON          |  5E |  18 |  
-    4 | EL+HI?WE | aWELE          |  3F |  30 |  
-    5 | BNU+FYTE | BEY            |  9G |  34 |  
-    6 | DGU+IDVA | VAGI           |  2J |  29 |  
-    7 | HI+CEEEP | (PASS)         |  -  |   0 |  
-    8 | FNTU+FSR | TURFS          |  N2 |  38 |  
-    9 | DDU+OREE | REDORE         |  4J |  22 |  
+    1 |  SLESOAI | SALES          |  H4 |  12 |  
+    2 |  ESEAERE | REALESEE       |  6E |  62 | *
+    3 |  RMXTQAH | EXAM           |  I6 |  49 |  
+    4 | IO+ORAFU | FOURS          |  4D |  16 |  
+    5 |  TIMDDNR | EXIT           |  7H |  17 |  
+    6 | HQRT+KEU | THEQUE         |  L1 |  34 |  
+    7 | AIO+TUBA | (PASS)         |  -  |   0 |  
+    8 | DDMNR+DN | MUR            |  5K |  16 |  
+    9 | KR+TSUEE | SKEET          |  8K |  77 |  
 
 
-Rack 0: CEEEHIP
-Rack 1: FN+IIGIA
-Rack 2: DU+LRIUS
-Score 0:   42
-Score 1:  108
-Score 2:   69
+Rack 0: AABIOTU
+Rack 1: DDDNN+HR
+Rack 2: RU+?GVGV
+Score 0:   28
+Score 1:   95
+Score 2:  160
 commande> h f
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
@@ -431,9 +431,9 @@ Game: history:
    ===|==========|================|=====|=====|======
 
 
-Rack 0: NONTEEL
-Rack 1: NBZEUAU
-Rack 2: NUDATMG
+Rack 0: SLESOAI
+Rack 1: ESEAERE
+Rack 2: RMXTQAH
 Score 0:    0
 Score 1:    0
 Score 2:    0
@@ -447,7 +447,7 @@ commande> a g
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  T  O  N  N  E  -  -  -  -  -  -  - 
+ H   -  -  -  S  A  L  E  S  -  -  -  -  -  -  - 
  I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -461,12 +461,12 @@ Game: mode=Free game
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  NONTEEL | TONNE          |  H4 |  12 |  
+    1 |  SLESOAI | SALES          |  H4 |  12 |  
 
 
-Rack 0: EL+HI?WE
-Rack 1: NBZEUAU
-Rack 2: NUDATMG
+Rack 0: IO+ORAFU
+Rack 1: ESEAERE
+Rack 2: RMXTQAH
 Score 0:   12
 Score 1:    0
 Score 2:    0
@@ -476,41 +476,41 @@ commande> a g
  A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  M  -  -  -  -  -  -  -  -  -  - 
- F   -  -  a  -  A  A  -  -  -  -  -  -  -  -  - 
- G   -  -  W  -  T  U  -  -  B  -  -  -  -  -  - 
- H   -  -  E  T  O  N  N  E  E  -  -  -  -  -  - 
- I   -  -  L  -  N  E  -  -  Y  -  -  -  -  -  - 
- J   -  V  E  R  -  Z  -  -  -  -  -  -  -  -  - 
- K   -  A  -  E  -  -  -  -  -  -  -  -  -  -  - 
- L   -  G  -  D  -  -  -  -  -  -  -  -  -  -  - 
- M   -  I  -  O  -  -  -  -  -  -  -  -  -  -  - 
- N   -  T  U  R  F  S  -  -  -  -  -  -  -  -  - 
- O   -  -  -  E  -  -  -  -  -  -  -  -  -  -  - 
+ D   -  -  -  F  -  -  -  -  -  -  -  -  -  -  - 
+ E   -  -  -  O  -  R  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  U  -  E  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  R  -  A  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  S  A  L  E  S  -  -  -  -  -  -  - 
+ I   -  -  -  -  -  E  X  A  M  -  -  -  -  -  - 
+ J   -  -  -  -  -  S  I  -  -  -  -  -  -  -  - 
+ K   -  -  -  -  M  E  T  S  -  -  -  -  -  -  - 
+ L   T  H  E  Q  U  E  -  K  -  -  -  -  -  -  - 
+ M   -  -  -  -  R  -  -  E  -  -  -  -  -  -  - 
+ N   -  -  -  -  -  -  -  E  -  -  -  -  -  -  - 
+ O   -  -  -  -  -  -  -  T  -  -  -  -  -  -  - 
 commande> a p
 Game: player 1 out of 3
 Game: mode=Free game
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  NONTEEL | TONNE          |  H4 |  12 |  
-    2 |  NBZEUAU | AUNEZ          |  6F |  36 |  
-    3 |  NUDATMG | MATON          |  5E |  18 |  
-    4 | EL+HI?WE | aWELE          |  3F |  30 |  
-    5 | BNU+FYTE | BEY            |  9G |  34 |  
-    6 | DGU+IDVA | VAGI           |  2J |  29 |  
-    7 | HI+CEEEP | (PASS)         |  -  |   0 |  
-    8 | FNTU+FSR | TURFS          |  N2 |  38 |  
-    9 | DDU+OREE | REDORE         |  4J |  22 |  
+    1 |  SLESOAI | SALES          |  H4 |  12 |  
+    2 |  ESEAERE | REALESEE       |  6E |  62 | *
+    3 |  RMXTQAH | EXAM           |  I6 |  49 |  
+    4 | IO+ORAFU | FOURS          |  4D |  16 |  
+    5 |  TIMDDNR | EXIT           |  7H |  17 |  
+    6 | HQRT+KEU | THEQUE         |  L1 |  34 |  
+    7 | AIO+TUBA | (PASS)         |  -  |   0 |  
+    8 | DDMNR+DN | MUR            |  5K |  16 |  
+    9 | KR+TSUEE | SKEET          |  8K |  77 |  
 
 
-Rack 0: CEEEHIP
-Rack 1: FN+IIGIA
-Rack 2: DU+LRIUS
-Score 0:   42
-Score 1:  108
-Score 2:   69
+Rack 0: AABIOTU
+Rack 1: DDDNN+HR
+Rack 2: RU+?GVGV
+Score 0:   28
+Score 1:   95
+Score 2:  160
 commande> q
 fin du mode partie libre
 commande> q

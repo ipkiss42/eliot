@@ -4,8 +4,8 @@ commande> d 2 1
 mode duplicate
 [?] pour l'aide
 commande> a t
-IMEJVSL
-commande> j VIMES h4
+EPALREA
+commande> j PARLEE h4
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
  A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -31,10 +31,10 @@ Game: history:
    ===|==========|================|=====|=====|======
 
 
-Rack 0: JL
-Rack 1: IMEJVSL
-Rack 2: IMEJVSL
-Score 0:   26
+Rack 0: A
+Rack 1: EPALREA
+Rack 2: EPALREA
+Score 0:   22
 Score 1:    0
 Score 2:    0
 commande> h p
@@ -63,9 +63,9 @@ Game: history:
    ===|==========|================|=====|=====|======
 
 
-Rack 0: IMEJVSL
-Rack 1: IMEJVSL
-Rack 2: IMEJVSL
+Rack 0: EPALREA
+Rack 1: EPALREA
+Rack 2: EPALREA
 Score 0:    0
 Score 1:    0
 Score 2:    0
@@ -95,13 +95,13 @@ Game: history:
    ===|==========|================|=====|=====|======
 
 
-Rack 0: JL
-Rack 1: IMEJVSL
-Rack 2: IMEJVSL
-Score 0:   26
+Rack 0: A
+Rack 1: EPALREA
+Rack 2: EPALREA
+Score 0:   22
 Score 1:    0
 Score 2:    0
-commande> j JE h8
+commande> j RALE h8
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
  A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -111,7 +111,7 @@ commande> a g
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  V  I  M  E  S  -  -  -  -  -  -  - 
+ H   -  -  -  P  A  R  L  E  E  -  -  -  -  -  - 
  I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -125,15 +125,15 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  IMEJVSL | VIMES          |  H4 |  26 |  
+    1 |  EPALREA | PARLEE         |  H4 |  22 |  
 
 
-Rack 0: JL+NHAYG
-Rack 1: JL+NHAYG
-Rack 2: JL+NHAYG
-Score 0:   26
-Score 1:   18
-Score 2:   26
+Rack 0: A+ATLEMU
+Rack 1: A+ATLEMU
+Rack 2: A+ATLEMU
+Score 0:   22
+Score 1:    8
+Score 2:   22
 commande> h p
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
@@ -160,9 +160,9 @@ Game: history:
    ===|==========|================|=====|=====|======
 
 
-Rack 0: IMEJVSL
-Rack 1: IMEJVSL
-Rack 2: IMEJVSL
+Rack 0: EPALREA
+Rack 1: EPALREA
+Rack 2: EPALREA
 Score 0:    0
 Score 1:    0
 Score 2:    0
@@ -176,7 +176,7 @@ commande> a g
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  V  I  M  E  S  -  -  -  -  -  -  - 
+ H   -  -  -  P  A  R  L  E  E  -  -  -  -  -  - 
  I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -190,25 +190,25 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  IMEJVSL | VIMES          |  H4 |  26 |  
+    1 |  EPALREA | PARLEE         |  H4 |  22 |  
 
 
-Rack 0: JL+NHAYG
-Rack 1: JL+NHAYG
-Rack 2: JL+NHAYG
-Score 0:   26
-Score 1:   18
-Score 2:   26
+Rack 0: A+ATLEMU
+Rack 1: A+ATLEMU
+Rack 2: A+ATLEMU
+Score 0:   22
+Score 1:    8
+Score 2:   22
 commande> n 1
-commande> j JAN g7
+commande> j MULET g9
 commande> a T
-Rack 0: JL+NHAYG
-Rack 1: GHLY
-Rack 2: JL+NHAYG
+Rack 0: A+ATLEMU
+Rack 1: AA
+Rack 2: A+ATLEMU
 commande> a S
-Score 0:   26
-Score 1:   56
-Score 2:   26
+Score 0:   22
+Score 1:   22
+Score 2:   22
 commande> h r
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
@@ -219,7 +219,7 @@ commande> a g
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  V  I  M  E  S  -  -  -  -  -  -  - 
+ H   -  -  -  P  A  R  L  E  E  -  -  -  -  -  - 
  I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -233,16 +233,16 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  IMEJVSL | VIMES          |  H4 |  26 |  
+    1 |  EPALREA | PARLEE         |  H4 |  22 |  
 
 
-Rack 0: JL+NHAYG
-Rack 1: GHLY
-Rack 2: JL+NHAYG
-Score 0:   26
-Score 1:   56
-Score 2:   26
-commande> j AH i6
+Rack 0: A+ATLEMU
+Rack 1: AA
+Rack 2: A+ATLEMU
+Score 0:   22
+Score 1:   22
+Score 2:   22
+commande> j EMU 9h
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
  A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -250,13 +250,13 @@ commande> a g
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  -  -  J  A  N  -  -  -  -  -  - 
- H   -  -  -  V  I  M  E  S  -  -  -  -  -  -  - 
- I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  E  -  -  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  M  -  -  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  P  A  R  L  E  E  -  -  -  -  -  - 
+ I   -  -  -  A  -  -  -  -  -  -  -  -  -  -  - 
+ J   -  -  -  L  -  -  -  -  -  -  -  -  -  -  - 
+ K   -  -  -  A  -  -  -  -  -  -  -  -  -  -  - 
+ L   -  -  -  T  -  -  -  -  -  -  -  -  -  -  - 
  M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -266,17 +266,17 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  IMEJVSL | VIMES          |  H4 |  26 |  
-    2 | JL+NHAYG | JAN            |  G7 |  38 |  
+    1 |  EPALREA | PARLEE         |  H4 |  22 |  
+    2 | A+ATLEMU | EMPALAT        |  4F |  20 |  
 
 
-Rack 0: GHLY+ELA
-Rack 1: GHLY+ELA
-Rack 2: GHLY+ELA
-Score 0:   47
-Score 1:   56
-Score 2:   64
-commande> j AY f9
+Rack 0: U+URMRCU
+Rack 1: U+URMRCU
+Rack 2: U+URMRCU
+Score 0:   28
+Score 1:   22
+Score 2:   42
+commande> j CRUE 8e
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
  A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -284,13 +284,13 @@ commande> a g
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  -  -  J  A  N  -  -  -  -  -  - 
- H   -  -  -  V  I  M  E  S  -  -  -  -  -  -  - 
- I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  E  -  -  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  M  -  -  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  P  A  R  L  E  E  -  -  -  -  -  - 
+ I   -  -  -  A  -  -  -  -  -  -  -  -  -  -  - 
+ J   -  -  -  L  -  -  -  -  -  -  -  -  -  -  - 
+ K   -  -  -  A  -  -  -  -  -  -  -  -  -  -  - 
+ L   -  -  -  T  -  -  -  -  -  -  -  -  -  -  - 
  M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -300,20 +300,20 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  IMEJVSL | VIMES          |  H4 |  26 |  
-    2 | JL+NHAYG | JAN            |  G7 |  38 |  
+    1 |  EPALREA | PARLEE         |  H4 |  22 |  
+    2 | A+ATLEMU | EMPALAT        |  4F |  20 |  
 
 
-Rack 0: EGHLL
-Rack 1: GHLY+ELA
-Rack 2: GHLY+ELA
-Score 0:   80
-Score 1:   56
-Score 2:   64
+Rack 0: MRUU
+Rack 1: U+URMRCU
+Rack 2: U+URMRCU
+Score 0:   34
+Score 1:   22
+Score 2:   42
 commande> a S
-Score 0:   80
-Score 1:   56
-Score 2:   64
+Score 0:   34
+Score 1:   22
+Score 2:   42
 commande> h f
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
@@ -340,9 +340,9 @@ Game: history:
    ===|==========|================|=====|=====|======
 
 
-Rack 0: IMEJVSL
-Rack 1: IMEJVSL
-Rack 2: IMEJVSL
+Rack 0: EPALREA
+Rack 1: EPALREA
+Rack 2: EPALREA
 Score 0:    0
 Score 1:    0
 Score 2:    0
@@ -356,7 +356,7 @@ commande> a g
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  V  I  M  E  S  -  -  -  -  -  -  - 
+ H   -  -  -  P  A  R  L  E  E  -  -  -  -  -  - 
  I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -370,15 +370,15 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  IMEJVSL | VIMES          |  H4 |  26 |  
+    1 |  EPALREA | PARLEE         |  H4 |  22 |  
 
 
-Rack 0: JL+NHAYG
-Rack 1: JL+NHAYG
-Rack 2: JL+NHAYG
-Score 0:   26
-Score 1:   18
-Score 2:   26
+Rack 0: A+ATLEMU
+Rack 1: A+ATLEMU
+Rack 2: A+ATLEMU
+Score 0:   22
+Score 1:    8
+Score 2:   22
 commande> h l
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
@@ -387,13 +387,13 @@ commande> a g
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  -  -  J  A  N  -  -  -  -  -  - 
- H   -  -  -  V  I  M  E  S  -  -  -  -  -  -  - 
- I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  E  -  -  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  M  -  -  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  P  A  R  L  E  E  -  -  -  -  -  - 
+ I   -  -  -  A  -  -  -  -  -  -  -  -  -  -  - 
+ J   -  -  -  L  -  -  -  -  -  -  -  -  -  -  - 
+ K   -  -  -  A  -  -  -  -  -  -  -  -  -  -  - 
+ L   -  -  -  T  -  -  -  -  -  -  -  -  -  -  - 
  M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -403,16 +403,16 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  IMEJVSL | VIMES          |  H4 |  26 |  
-    2 | JL+NHAYG | JAN            |  G7 |  38 |  
+    1 |  EPALREA | PARLEE         |  H4 |  22 |  
+    2 | A+ATLEMU | EMPALAT        |  4F |  20 |  
 
 
-Rack 0: EGHLL
-Rack 1: GHLY+ELA
-Rack 2: GHLY+ELA
-Score 0:   80
-Score 1:   56
-Score 2:   64
+Rack 0: MRUU
+Rack 1: U+URMRCU
+Rack 2: U+URMRCU
+Score 0:   34
+Score 1:   22
+Score 2:   42
 commande> h p
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
@@ -421,13 +421,13 @@ commande> a g
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  -  -  J  A  N  -  -  -  -  -  - 
- H   -  -  -  V  I  M  E  S  -  -  -  -  -  -  - 
- I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  E  -  -  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  M  -  -  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  P  A  R  L  E  E  -  -  -  -  -  - 
+ I   -  -  -  A  -  -  -  -  -  -  -  -  -  -  - 
+ J   -  -  -  L  -  -  -  -  -  -  -  -  -  -  - 
+ K   -  -  -  A  -  -  -  -  -  -  -  -  -  -  - 
+ L   -  -  -  T  -  -  -  -  -  -  -  -  -  -  - 
  M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -437,16 +437,16 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  IMEJVSL | VIMES          |  H4 |  26 |  
-    2 | JL+NHAYG | JAN            |  G7 |  38 |  
+    1 |  EPALREA | PARLEE         |  H4 |  22 |  
+    2 | A+ATLEMU | EMPALAT        |  4F |  20 |  
 
 
-Rack 0: GHLY+ELA
-Rack 1: GHLY+ELA
-Rack 2: GHLY+ELA
-Score 0:   47
-Score 1:   56
-Score 2:   64
+Rack 0: U+URMRCU
+Rack 1: U+URMRCU
+Rack 2: U+URMRCU
+Score 0:   28
+Score 1:   22
+Score 2:   42
 commande> h p
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
@@ -457,7 +457,7 @@ commande> a g
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  V  I  M  E  S  -  -  -  -  -  -  - 
+ H   -  -  -  P  A  R  L  E  E  -  -  -  -  -  - 
  I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -471,16 +471,16 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  IMEJVSL | VIMES          |  H4 |  26 |  
+    1 |  EPALREA | PARLEE         |  H4 |  22 |  
 
 
-Rack 0: JL+NHAYG
-Rack 1: JL+NHAYG
-Rack 2: JL+NHAYG
-Score 0:   26
-Score 1:   18
-Score 2:   26
-commande> j JAN g7
+Rack 0: A+ATLEMU
+Rack 1: A+ATLEMU
+Rack 2: A+ATLEMU
+Score 0:   22
+Score 1:    8
+Score 2:   22
+commande> j EMPALAT 4f
 Cannot add a command to an old turn
 commande> h r
 commande> a g
@@ -492,7 +492,7 @@ commande> a g
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  V  I  M  E  S  -  -  -  -  -  -  - 
+ H   -  -  -  P  A  R  L  E  E  -  -  -  -  -  - 
  I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -506,17 +506,17 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  IMEJVSL | VIMES          |  H4 |  26 |  
+    1 |  EPALREA | PARLEE         |  H4 |  22 |  
 
 
-Rack 0: JL+NHAYG
-Rack 1: JL+NHAYG
-Rack 2: JL+NHAYG
-Score 0:   26
-Score 1:   18
-Score 2:   26
-commande> j JAN g7
-commande> j JE 7G
+Rack 0: A+ATLEMU
+Rack 1: A+ATLEMU
+Rack 2: A+ATLEMU
+Score 0:   22
+Score 1:    8
+Score 2:   22
+commande> j EMPALAT 4f
+commande> j EMU 9h
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
  A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -524,13 +524,13 @@ commande> a g
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  -  -  J  A  N  -  -  -  -  -  - 
- H   -  -  -  V  I  M  E  S  -  -  -  -  -  -  - 
- I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  E  -  -  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  M  -  -  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  P  A  R  L  E  E  -  -  -  -  -  - 
+ I   -  -  -  A  -  -  -  -  -  -  -  -  -  -  - 
+ J   -  -  -  L  -  -  -  -  -  -  -  -  -  -  - 
+ K   -  -  -  A  -  -  -  -  -  -  -  -  -  -  - 
+ L   -  -  -  T  -  -  -  -  -  -  -  -  -  -  - 
  M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -540,16 +540,16 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  IMEJVSL | VIMES          |  H4 |  26 |  
-    2 | JL+NHAYG | JAN            |  G7 |  38 |  
+    1 |  EPALREA | PARLEE         |  H4 |  22 |  
+    2 | A+ATLEMU | EMPALAT        |  4F |  20 |  
 
 
-Rack 0: GHLY+ITA
-Rack 1: GHLY+ITA
-Rack 2: GHLY+ITA
-Score 0:   43
-Score 1:   56
-Score 2:   64
+Rack 0: U+SAOZEQ
+Rack 1: U+SAOZEQ
+Rack 2: U+SAOZEQ
+Score 0:   28
+Score 1:   28
+Score 2:   42
 commande> q
 fin du mode duplicate
 commande> q

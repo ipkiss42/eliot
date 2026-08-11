@@ -4,63 +4,63 @@ commande> d 0 2
 mode duplicate
 [?] pour l'aide
 commande> a S
-Score 0:  929
-Score 1:  929
+Score 0: 1078
+Score 1: 1078
 commande> a T
-Rack 0: TTV
-Rack 1: TTV
+Rack 0: MPQ
+Rack 1: MPQ
 commande> a l
  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z ?
- 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 1 0 2 0 1 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0
 commande> a p
 Game: player 1 out of 2
 Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  ?EBAAEF | FABAcEE        |  H4 |  80 | *
-    2 |  KEELIFE | KIEF           | 10F |  36 |  
-    3 | EEEL+IJX | FIXEE          |  4H |  34 |  
-    4 | EJL+RANS | JALES          |  J6 |  49 |  
-    5 | NR+OAHPU | HURON          |  5K |  28 |  
-    6 | AP+MOEIA | LIPOME         |  8J |  36 |  
-    7 | AA+SMOND | ADONNAMES      |  O1 |  86 | *
-    8 |  LEATCYL | CATLEYA        |  5B |  36 |  
-    9 | L+EARBHO | BROCHA         |  B2 |  42 |  
-   10 | EL+OSULA | ALLOUES        |  A6 |  81 | *
-   11 |  DSNIMEN | DEMIS          |  I1 |  28 |  
-   12 | INN+NQUS | QUINTS         |  D1 |  42 |  
-   13 | NN+IEUR? | MUNIRENt       |  N8 |  72 | *
-   14 |  ISITTIE | EDITS          |  1H |  21 |  
-   15 | IIT+NEOP | POTINIER       | 12G |  72 | *
-   16 |  DVZEAET | DZETA          | 15K |  72 |  
-   17 | ETV+RWEV | EWE            |  F5 |  32 |  
-   18 | ERTVV+TC | YET            |  G5 |  31 |  
-   19 | CRTVV+UR | REVUE          | M11 |  30 |  
-   20 | CRTV+TUL | CRUEL          |  2F |  21 |  
+    1 |  ITUVEEA | UVEITE         |  H3 |  26 |  
+    2 | A+MOSHIL | MOSHAV         |  4C |  26 |  
+    3 | IL+RSOAT | LOTIRAS        |  9B |  69 | *
+    4 |  EISDUEB | EBAUDIES       |  G7 |  70 | *
+    5 |  RLMENNO | MERLONNE       | 13F |  70 | *
+    6 |  N?Y?AXE | oXYDANtE       | 11D | 150 | *
+    7 |  OEBRLIT | TRILOBE        |  N7 |  71 | *
+    8 |  USRUOEE | ROULEUSE       |  B6 |  62 | *
+    9 |  GIADSZL | ZIGS           |  L8 |  50 |  
+   10 | ADL+ERIA | ADULAIRE       |  3F |  84 | *
+   11 |  FAVAKCE | KA             |  2J |  64 |  
+   12 | ACEFV+TU | VECUT          | A11 |  45 |  
+   13 | AF+SNIEH | HAINES         | 14J |  73 |  
+   14 | F+ANTRPU | PAF            | C13 |  30 |  
+   15 | NRTU+LEJ | JEUN           |  O6 |  43 |  
+   16 | LRT+EQAD | DATER          |  4K |  24 |  
+   17 | LQ+FGEOT | GOLFE          |  1I |  30 |  
+   18 | QT+NWIPC | GOLFENT        |  1I |  33 |  
+   19 |  CIPQW+M | WU             |  8A |  33 |  
+   20 |    CIMPQ | CI             | 12D |  25 |  
 
 
-Rack 0: TTV
-Rack 1: TTV
-Score 0:  929
-Score 1:  929
+Rack 0: MPQ
+Rack 1: MPQ
+Score 0: 1078
+Score 1: 1078
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  A  L  L  O  U  E  S  -  -  - 
- B   -  B  R  O  C  H  A  -  -  -  -  -  -  -  - 
- C   -  -  -  -  A  -  -  -  -  -  -  -  -  -  - 
- D   Q  U  I  N  T  S  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  L  -  -  -  -  -  -  -  -  -  - 
- F   -  C  -  -  E  W  E  -  -  K  -  -  -  -  - 
- G   -  R  -  -  Y  E  T  -  -  I  -  P  -  -  - 
- H   E  U  -  F  A  B  A  c  E  E  -  O  -  -  - 
- I   D  E  M  I  S  -  -  -  -  F  -  T  -  -  - 
- J   I  L  -  X  -  J  A  L  E  S  -  I  -  -  - 
- K   T  -  -  E  H  -  -  I  -  -  -  N  -  -  D 
- L   S  -  -  E  U  -  -  P  -  -  -  I  -  -  Z 
- M   -  -  -  -  R  -  -  O  -  -  R  E  V  U  E 
- N   -  -  -  -  O  -  -  M  U  N  I  R  E  N  t 
- O   A  D  O  N  N  A  M  E  S  -  -  -  -  -  A 
+ A   -  -  -  -  -  -  -  W  -  -  V  E  C  U  T 
+ B   -  -  -  -  -  R  O  U  L  E  U  S  E  -  - 
+ C   -  -  -  M  -  -  -  -  O  -  -  -  P  A  F 
+ D   -  -  -  O  -  -  -  -  T  -  o  C  -  -  - 
+ E   -  -  -  S  -  -  -  -  I  -  X  I  -  -  - 
+ F   -  -  A  H  -  -  -  -  R  -  Y  -  M  -  - 
+ G   -  -  D  A  -  -  E  B  A  U  D  I  E  S  - 
+ H   -  -  U  V  E  I  T  E  S  -  A  -  R  -  - 
+ I   G  -  L  -  -  -  -  -  -  -  N  -  L  -  - 
+ J   O  K  A  -  -  -  -  -  -  -  t  -  O  H  - 
+ K   L  A  I  D  -  -  -  -  -  -  E  -  N  A  - 
+ L   F  -  R  A  -  -  -  Z  I  G  S  -  N  I  - 
+ M   E  -  E  T  -  -  -  -  -  -  -  -  E  N  - 
+ N   N  -  -  E  -  -  T  R  I  L  O  B  E  E  - 
+ O   T  -  -  R  -  J  E  U  N  -  -  -  -  S  - 
 commande> q
 fin du mode duplicate
 commande> q

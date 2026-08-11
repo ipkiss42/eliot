@@ -1,6 +1,6 @@
 d 2 1
 a t
-j VIMES h4
+j PARLEE h4
 a g
 a p
 h p
@@ -9,7 +9,7 @@ a p
 h n
 a g
 a p
-j JE h8
+j RALE h8
 a g
 a p
 h p
@@ -19,16 +19,16 @@ h n
 a g
 a p
 n 1
-j JAN g7
+j MULET g9
 a T
 a S
 h r
 a g
 a p
-j AH i6
+j EMU 9h
 a g
 a p
-j AY f9
+j CRUE 8e
 a g
 a p
 a S
@@ -47,12 +47,12 @@ a p
 h p
 a g
 a p
-j JAN g7
+j EMPALAT 4f
 h r
 a g
 a p
-j JAN g7
-j JE 7G
+j EMPALAT 4f
+j EMU 9h
 a g
 a p
 q

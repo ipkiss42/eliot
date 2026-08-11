@@ -5,92 +5,30 @@ mode entraînement
 [?] pour l'aide
 commande> *
 commande> a t
-SEUTISG
+NTRUNMO
 commande> r
 commande> n 1
 commande> +
 commande> a t
-SUXULRO
+NTIOHEU
 commande> r
 commande> n 1
 commande> +
 commande> a t
-ORSUSCD
+IITSELL
 commande> r
 commande> n 1
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  G  I  T  E  S  -  -  -  -  -  -  - 
- I   -  -  -  -  L  U  X  -  -  -  -  -  -  -  - 
- J   -  -  -  -  -  S  O  U  R  D  S  -  -  -  - 
- K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
-commande> a p
-Game: player 1 out of 1
-Game: mode=Training
-Game: history:
-    N |   RACK   |    SOLUTION    | REF | PTS | BONUS
-   ===|==========|================|=====|=====|======
-    1 |  SEUTISG | GITES          |  H4 |  16 |  
-    2 | SU+XULRO | LUX            |  I5 |  47 |  
-    3 | ORSU+SCD | SOURDS         |  J6 |  30 |  
-
-
-Rack 0: C
-Score 0:   93
-commande> h n
-commande> a g
-     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  G  I  T  E  S  -  -  -  -  -  -  - 
- I   -  -  -  -  L  U  X  -  -  -  -  -  -  -  - 
- J   -  -  -  -  -  S  O  U  R  D  S  -  -  -  - 
- K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
-commande> a p
-Game: player 1 out of 1
-Game: mode=Training
-Game: history:
-    N |   RACK   |    SOLUTION    | REF | PTS | BONUS
-   ===|==========|================|=====|=====|======
-    1 |  SEUTISG | GITES          |  H4 |  16 |  
-    2 | SU+XULRO | LUX            |  I5 |  47 |  
-    3 | ORSU+SCD | SOURDS         |  J6 |  30 |  
-
-
-Rack 0: C
-Score 0:   93
-commande> h p
-commande> a g
-     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  G  I  T  E  S  -  -  -  -  -  -  - 
- I   -  -  -  -  L  U  X  -  -  -  -  -  -  -  - 
+ A   -  -  -  -  -  -  -  T  -  -  -  -  -  -  - 
+ B   -  -  -  -  -  -  -  E  -  -  -  -  -  -  - 
+ C   -  -  -  -  -  -  -  I  -  -  -  -  -  -  - 
+ D   -  -  -  -  -  -  -  L  -  -  -  -  -  -  - 
+ E   -  -  -  -  -  -  -  L  -  -  -  -  -  -  - 
+ F   -  -  -  -  -  -  -  I  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  -  H  O  U  E  N  T  -  -  - 
+ H   -  -  -  M  U  R  O  N  -  -  -  -  -  -  - 
+ I   -  -  -  -  -  -  -  S  -  -  -  -  -  -  - 
  J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -103,12 +41,44 @@ Game: mode=Training
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  SEUTISG | GITES          |  H4 |  16 |  
-    2 | SU+XULRO | LUX            |  I5 |  47 |  
+    1 |  NTRUNMO | MURON          |  H4 |  16 |  
+    2 | NT+IOHEU | HOUENT         |  G7 |  25 |  
+    3 | I+ITSELL | TEILLIONS      |  8A |  80 | *
 
 
-Rack 0: ORSU+SCD
-Score 0:   63
+Rack 0: 
+Score 0:  121
+commande> h n
+commande> a g
+     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
+ A   -  -  -  -  -  -  -  T  -  -  -  -  -  -  - 
+ B   -  -  -  -  -  -  -  E  -  -  -  -  -  -  - 
+ C   -  -  -  -  -  -  -  I  -  -  -  -  -  -  - 
+ D   -  -  -  -  -  -  -  L  -  -  -  -  -  -  - 
+ E   -  -  -  -  -  -  -  L  -  -  -  -  -  -  - 
+ F   -  -  -  -  -  -  -  I  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  -  H  O  U  E  N  T  -  -  - 
+ H   -  -  -  M  U  R  O  N  -  -  -  -  -  -  - 
+ I   -  -  -  -  -  -  -  S  -  -  -  -  -  -  - 
+ J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+commande> a p
+Game: player 1 out of 1
+Game: mode=Training
+Game: history:
+    N |   RACK   |    SOLUTION    | REF | PTS | BONUS
+   ===|==========|================|=====|=====|======
+    1 |  NTRUNMO | MURON          |  H4 |  16 |  
+    2 | NT+IOHEU | HOUENT         |  G7 |  25 |  
+    3 | I+ITSELL | TEILLIONS      |  8A |  80 | *
+
+
+Rack 0: 
+Score 0:  121
 commande> h p
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
@@ -118,8 +88,8 @@ commande> a g
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  G  I  T  E  S  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  -  H  O  U  E  N  T  -  -  - 
+ H   -  -  -  M  U  R  O  N  -  -  -  -  -  -  - 
  I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -133,10 +103,40 @@ Game: mode=Training
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  SEUTISG | GITES          |  H4 |  16 |  
+    1 |  NTRUNMO | MURON          |  H4 |  16 |  
+    2 | NT+IOHEU | HOUENT         |  G7 |  25 |  
 
 
-Rack 0: SU+XULRO
+Rack 0: I+ITSELL
+Score 0:   41
+commande> h p
+commande> a g
+     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
+ A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  M  U  R  O  N  -  -  -  -  -  -  - 
+ I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+commande> a p
+Game: player 1 out of 1
+Game: mode=Training
+Game: history:
+    N |   RACK   |    SOLUTION    | REF | PTS | BONUS
+   ===|==========|================|=====|=====|======
+    1 |  NTRUNMO | MURON          |  H4 |  16 |  
+
+
+Rack 0: NT+IOHEU
 Score 0:   16
 commande> h p
 commande> a g
@@ -164,60 +164,20 @@ Game: history:
    ===|==========|================|=====|=====|======
 
 
-Rack 0: SEUTISG
+Rack 0: NTRUNMO
 Score 0:    0
 commande> h l
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  G  I  T  E  S  -  -  -  -  -  -  - 
- I   -  -  -  -  L  U  X  -  -  -  -  -  -  -  - 
- J   -  -  -  -  -  S  O  U  R  D  S  -  -  -  - 
- K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
-commande> a p
-Game: player 1 out of 1
-Game: mode=Training
-Game: history:
-    N |   RACK   |    SOLUTION    | REF | PTS | BONUS
-   ===|==========|================|=====|=====|======
-    1 |  SEUTISG | GITES          |  H4 |  16 |  
-    2 | SU+XULRO | LUX            |  I5 |  47 |  
-    3 | ORSU+SCD | SOURDS         |  J6 |  30 |  
-
-
-Rack 0: C
-Score 0:   93
-commande> +
-commande> a t
-C?BETNL
-commande> t ABCDEFG
-commande> a t
-ABCDEFG
-commande> *
-commande> a t
-URLERIE
-commande> h p
-commande> a g
-     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  G  I  T  E  S  -  -  -  -  -  -  - 
- I   -  -  -  -  L  U  X  -  -  -  -  -  -  -  - 
+ A   -  -  -  -  -  -  -  T  -  -  -  -  -  -  - 
+ B   -  -  -  -  -  -  -  E  -  -  -  -  -  -  - 
+ C   -  -  -  -  -  -  -  I  -  -  -  -  -  -  - 
+ D   -  -  -  -  -  -  -  L  -  -  -  -  -  -  - 
+ E   -  -  -  -  -  -  -  L  -  -  -  -  -  -  - 
+ F   -  -  -  -  -  -  -  I  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  -  H  O  U  E  N  T  -  -  - 
+ H   -  -  -  M  U  R  O  N  -  -  -  -  -  -  - 
+ I   -  -  -  -  -  -  -  S  -  -  -  -  -  -  - 
  J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -230,12 +190,52 @@ Game: mode=Training
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  SEUTISG | GITES          |  H4 |  16 |  
-    2 | SU+XULRO | LUX            |  I5 |  47 |  
+    1 |  NTRUNMO | MURON          |  H4 |  16 |  
+    2 | NT+IOHEU | HOUENT         |  G7 |  25 |  
+    3 | I+ITSELL | TEILLIONS      |  8A |  80 | *
 
 
-Rack 0: ORSU+SCD
-Score 0:   63
+Rack 0: 
+Score 0:  121
+commande> +
+commande> a t
+TAAEVAO
+commande> t ABCDEFG
+commande> a t
+ABCDEFG
+commande> *
+commande> a t
+SUCI?US
+commande> h p
+commande> a g
+     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
+ A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  -  H  O  U  E  N  T  -  -  - 
+ H   -  -  -  M  U  R  O  N  -  -  -  -  -  -  - 
+ I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+commande> a p
+Game: player 1 out of 1
+Game: mode=Training
+Game: history:
+    N |   RACK   |    SOLUTION    | REF | PTS | BONUS
+   ===|==========|================|=====|=====|======
+    1 |  NTRUNMO | MURON          |  H4 |  16 |  
+    2 | NT+IOHEU | HOUENT         |  G7 |  25 |  
+
+
+Rack 0: I+ITSELL
+Score 0:   41
 commande> +
 Cannot add a command to an old turn
 commande> h f
@@ -264,7 +264,7 @@ Game: history:
    ===|==========|================|=====|=====|======
 
 
-Rack 0: SEUTISG
+Rack 0: NTRUNMO
 Score 0:    0
 commande> h n
 commande> a g
@@ -276,7 +276,7 @@ commande> a g
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  G  I  T  E  S  -  -  -  -  -  -  - 
+ H   -  -  -  M  U  R  O  N  -  -  -  -  -  -  - 
  I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -290,10 +290,10 @@ Game: mode=Training
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  SEUTISG | GITES          |  H4 |  16 |  
+    1 |  NTRUNMO | MURON          |  H4 |  16 |  
 
 
-Rack 0: SU+XULRO
+Rack 0: NT+IOHEU
 Score 0:   16
 commande> h n
 commande> a g
@@ -304,9 +304,9 @@ commande> a g
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  G  I  T  E  S  -  -  -  -  -  -  - 
- I   -  -  -  -  L  U  X  -  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  -  H  O  U  E  N  T  -  -  - 
+ H   -  -  -  M  U  R  O  N  -  -  -  -  -  -  - 
+ I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -319,12 +319,12 @@ Game: mode=Training
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  SEUTISG | GITES          |  H4 |  16 |  
-    2 | SU+XULRO | LUX            |  I5 |  47 |  
+    1 |  NTRUNMO | MURON          |  H4 |  16 |  
+    2 | NT+IOHEU | HOUENT         |  G7 |  25 |  
 
 
-Rack 0: ORSU+SCD
-Score 0:   63
+Rack 0: I+ITSELL
+Score 0:   41
 commande> *
 Cannot add a command to an old turn
 commande> +
@@ -332,7 +332,7 @@ Cannot add a command to an old turn
 commande> t HELLO
 Cannot add a command to an old turn
 commande> a t
-ORSUSCD
+IITSELL
 commande> h r
 commande> t HELLO
 commande> r
@@ -344,11 +344,11 @@ commande> a g
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  G  I  T  E  S  -  -  -  -  -  -  - 
- I   -  -  -  -  L  U  X  -  -  -  -  -  -  -  - 
- J   -  -  -  -  -  -  O  H  E  -  -  -  -  -  - 
+ F   -  -  -  -  -  -  -  -  O  H  E  -  -  -  - 
+ G   -  -  -  -  -  -  H  O  U  E  N  T  -  -  - 
+ H   -  -  -  M  U  R  O  N  -  -  -  -  -  -  - 
+ I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -360,13 +360,13 @@ Game: mode=Training
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  SEUTISG | GITES          |  H4 |  16 |  
-    2 | SU+XULRO | LUX            |  I5 |  47 |  
-    3 |    HELLO | OHE            |  J7 |  18 |  
+    1 |  NTRUNMO | MURON          |  H4 |  16 |  
+    2 | NT+IOHEU | HOUENT         |  G7 |  25 |  
+    3 |    HELLO | OHE            |  F9 |  31 |  
 
 
 Rack 0: LL
-Score 0:   81
+Score 0:   72
 commande> q
 fin du mode entraînement
 commande> q

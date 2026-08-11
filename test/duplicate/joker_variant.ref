@@ -1,229 +1,57 @@
 Using seed: 14
 [?] pour l'aide
-commande> dj 1 1
+commande> dj 0 1
 mode duplicate
 [?] pour l'aide
-commande> a t
-AK?EZEN
-commande> j gENEZ h8
-commande> a S
-Score 0:   46
-Score 1:   48
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  A  K  E  N  E  S  -  -  -  -  -  -  - 
- I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
-commande> a l
- A B C D  E F G H I J K L M N O P Q R S T U V W X Y Z ?
- 8 2 2 3 13 2 2 2 8 1 0 5 3 5 6 2 1 6 5 6 6 2 1 1 1 1 2
+ A   J  -  -  -  -  -  -  C  O  T  T  A  S  S  E 
+ B   U  -  -  -  -  -  -  H  -  -  -  -  -  -  - 
+ C   N  -  -  -  -  -  -  I  -  -  -  V  -  -  - 
+ D   K  i  N  E  -  -  -  O  -  D  -  O  -  -  - 
+ E   -  -  -  T  A  R  A  U  D  E  U  R  -  -  - 
+ F   -  -  -  -  F  -  -  R  -  M  -  T  -  -  - 
+ G   -  -  -  -  F  -  -  M  -  A  -  E  -  -  b 
+ H   R  -  -  G  O  U  L  E  T  S  -  X  -  M  A 
+ I   E  -  -  -  L  -  -  -  -  Q  -  -  -  A  Y 
+ J   D  -  -  -  E  -  -  B  -  U  -  -  -  L  I 
+ K   O  -  -  -  E  -  -  I  -  E  -  -  -  T  E 
+ L   W  H  I  P  S  -  -  B  U  R  I  N  I  E  Z 
+ M   A  -  -  -  -  -  -  L  -  A  -  -  -  -  - 
+ N   -  -  -  -  -  -  -  E  -  I  -  -  -  -  - 
+ O   C  R  E  P  A  G  E  S  -  S  O  L  I  V  E 
 commande> a p
-Game: player 1 out of 2
+Game: player 1 out of 1
 Game: mode=Duplicate
 Game: variant=joker
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  AK?EZEN | AKENEs         |  H3 |  48 |  
+    1 |  STOUL?G | GOULeTS        |  H4 |  68 | *
+    2 |  LFEFEW? | aFFOLEE        |  5E |  48 |  
+    3 | W+EPS?HM | WHiPS          |  L1 |  70 |  
+    4 | EM+EQ?DA | DEMASQuE       | 10D |  70 | *
+    5 |  ?EUIZRI | URInIEZ        |  L9 | 118 | *
+    6 |  ?LESBGB | BiBLES         |  8J |  58 |  
+    7 | G+A?RPEC | CREPAGeS       |  O1 |  95 | *
+    8 |  AEA?UYI | bAYIEZ         | 15G |  69 |  
+    9 | AU+RTUR? | TARAUdEUR      |  E4 |  66 | *
+   10 |  EVLO?OX | VORtEX         | 12C |  54 |  
+   11 | LO+I?OSI | DEMASQUERaIS   | 10D |  22 |  
+   12 | ILOO+?IV | SOLIVe         | O10 |  27 |  
+   13 | IO+HOR?M | cHIOURME       |  8A |  36 |  
+   14 | O+DR?EJT | REDOWa         |  1H |  45 |  
+   15 | JT+NKE?U | KiNE           |  D1 |  48 |  
+   16 | JTU+ANET | JUNK           |  1A |  60 |  
+   17 | AETT+SOS | COTTASSE       |  A8 |  83 | *
+   18 |  NTANMNL | MALTE          | 14H |  28 |  
 
 
-Rack 0: Z+IL?ENT
-Rack 1: Z+IL?ENT
-Score 0:   46
-Score 1:   48
-commande> j pLANTIEZ 3f
-commande> a g
-     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  P  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  L  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  A  K  E  N  E  S  -  -  -  -  -  -  - 
- I   -  -  N  -  -  -  -  -  -  -  -  -  -  -  - 
- J   -  -  T  -  -  -  -  -  -  -  -  -  -  -  - 
- K   -  -  I  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  E  -  -  -  -  -  -  -  -  -  -  -  - 
- M   -  -  Z  -  -  -  -  -  -  -  -  -  -  -  - 
- N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
-commande> a l
- A B C D  E F G H I J K L M N O P Q R S T U V W X Y Z ?
- 8 2 2 3 12 2 2 2 7 1 0 4 3 4 6 1 1 6 5 5 6 2 1 1 1 0 2
-commande> a p
-Game: player 1 out of 2
-Game: mode=Duplicate
-Game: variant=joker
-Game: history:
-    N |   RACK   |    SOLUTION    | REF | PTS | BONUS
-   ===|==========|================|=====|=====|======
-    1 |  AK?EZEN | AKENEs         |  H3 |  48 |  
-    2 | Z+IL?ENT | pLANTIEZ       |  3F |  86 | *
-
-
-Rack 0: DEDOTC?
-Rack 1: DEDOTC?
-Score 0:  132
-Score 1:  134
-commande> j DECODaT g5
-commande> a g
-     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  P  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  L  -  D  E  C  O  D  A  T  -  -  -  - 
- H   -  -  A  K  E  N  E  S  -  -  -  -  -  -  - 
- I   -  -  N  -  -  -  -  -  -  -  -  -  -  -  - 
- J   -  -  T  -  -  -  -  -  -  -  -  -  -  -  - 
- K   -  -  I  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  E  -  -  -  -  -  -  -  -  -  -  -  - 
- M   -  -  Z  -  -  -  -  -  -  -  -  -  -  -  - 
- N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
-commande> a l
- A B C D  E F G H I J K L M N O P Q R S T U V W X Y Z ?
- 7 2 1 1 11 2 2 2 7 1 0 4 3 4 5 1 1 6 5 4 6 2 1 1 1 0 2
-commande> a p
-Game: player 1 out of 2
-Game: mode=Duplicate
-Game: variant=joker
-Game: history:
-    N |   RACK   |    SOLUTION    | REF | PTS | BONUS
-   ===|==========|================|=====|=====|======
-    1 |  AK?EZEN | AKENEs         |  H3 |  48 |  
-    2 | Z+IL?ENT | pLANTIEZ       |  3F |  86 | *
-    3 |  DEDOTC? | DECODaT        |  G5 |  79 | *
-
-
-Rack 0: RABEGE?
-Rack 1: RABEGE?
-Score 0:  211
-Score 1:  213
-commande> j dEPLANTIEZ 3d
-commande> a g
-     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  P  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  L  -  D  E  C  O  D  A  T  -  -  -  - 
- H   -  -  A  K  E  N  E  S  -  -  -  -  -  -  - 
- I   -  -  N  -  -  -  -  -  -  -  -  -  -  -  - 
- J   -  -  T  -  -  -  -  -  -  -  -  -  -  -  - 
- K   -  -  I  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  H  E  B  E  R  G  E  A  -  -  -  -  -  - 
- M   -  -  Z  -  -  -  -  -  -  -  -  -  -  -  - 
- N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+Rack 0: NNN
+Score 0: 1065
 commande> a l
  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z ?
- 6 1 1 1 9 2 1 1 7 1 0 4 3 4 5 1 1 5 5 4 6 2 1 1 1 0 2
-commande> a p
-Game: player 1 out of 2
-Game: mode=Duplicate
-Game: variant=joker
-Game: history:
-    N |   RACK   |    SOLUTION    | REF | PTS | BONUS
-   ===|==========|================|=====|=====|======
-    1 |  AK?EZEN | AKENEs         |  H3 |  48 |  
-    2 | Z+IL?ENT | pLANTIEZ       |  3F |  86 | *
-    3 |  DEDOTC? | DECODaT        |  G5 |  79 | *
-    4 |  RABEGE? | hEBERGEA       |  L2 |  72 | *
-
-
-Rack 0: X?MFETR
-Rack 1: X?MFETR
-Score 0:  231
-Score 1:  285
-commande> h p
-commande> a g
-     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  P  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  L  -  D  E  C  O  D  A  T  -  -  -  - 
- H   -  -  A  K  E  N  E  S  -  -  -  -  -  -  - 
- I   -  -  N  -  -  -  -  -  -  -  -  -  -  -  - 
- J   -  -  T  -  -  -  -  -  -  -  -  -  -  -  - 
- K   -  -  I  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  E  -  -  -  -  -  -  -  -  -  -  -  - 
- M   -  -  Z  -  -  -  -  -  -  -  -  -  -  -  - 
- N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
-commande> a p
-Game: player 1 out of 2
-Game: mode=Duplicate
-Game: variant=joker
-Game: history:
-    N |   RACK   |    SOLUTION    | REF | PTS | BONUS
-   ===|==========|================|=====|=====|======
-    1 |  AK?EZEN | AKENEs         |  H3 |  48 |  
-    2 | Z+IL?ENT | pLANTIEZ       |  3F |  86 | *
-    3 |  DEDOTC? | DECODaT        |  G5 |  79 | *
-
-
-Rack 0: RABEGE?
-Rack 1: RABEGE?
-Score 0:  211
-Score 1:  213
-commande> h p
-commande> a g
-     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  P  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  L  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  A  K  E  N  E  S  -  -  -  -  -  -  - 
- I   -  -  N  -  -  -  -  -  -  -  -  -  -  -  - 
- J   -  -  T  -  -  -  -  -  -  -  -  -  -  -  - 
- K   -  -  I  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  E  -  -  -  -  -  -  -  -  -  -  -  - 
- M   -  -  Z  -  -  -  -  -  -  -  -  -  -  -  - 
- N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
-commande> a p
-Game: player 1 out of 2
-Game: mode=Duplicate
-Game: variant=joker
-Game: history:
-    N |   RACK   |    SOLUTION    | REF | PTS | BONUS
-   ===|==========|================|=====|=====|======
-    1 |  AK?EZEN | AKENEs         |  H3 |  48 |  
-    2 | Z+IL?ENT | pLANTIEZ       |  3F |  86 | *
-
-
-Rack 0: DEDOTC?
-Rack 1: DEDOTC?
-Score 0:  132
-Score 1:  134
-commande> a l
- A B C D  E F G H I J K L M N O P Q R S T U V W X Y Z ?
- 8 2 2 3 12 2 2 2 7 1 0 4 3 4 6 1 1 6 5 5 6 2 1 1 1 0 2
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0
 commande> q
 fin du mode duplicate
 commande> q

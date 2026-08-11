@@ -1,57 +1,57 @@
-Using seed: 6
+Using seed: 7
 [?] pour l'aide
 commande> d 2 1
 mode duplicate
 [?] pour l'aide
 commande> a T
-Rack 0: ATOYDSI
-Rack 1: ATOYDSI
-Rack 2: ATOYDSI
-commande> j DOSAIT H4
-commande> j DOSAIT h5
+Rack 0: EZSGJRA
+Rack 1: EZSGJRA
+Rack 2: EZSGJRA
+commande> j GAREZ H7
+commande> j GAREZ h8
 commande> a S
-Score 0:   18
-Score 1:   14
-Score 2:   30
+Score 0:   30
+Score 1:   50
+Score 2:   62
 commande> a T
-Rack 0: DI+AEINS
-Rack 1: DI+AEINS
-Rack 2: DI+AEINS
+Rack 0: GR+AALNE
+Rack 1: GR+AALNE
+Rack 2: GR+AALNE
 commande> n 1
-commande> j DISAIENT 7A
+commande> j LANGERAS 10A
 commande> a S
-Score 0:   18
-Score 1:   75
-Score 2:   30
-commande> j DESTINAI 7E
+Score 0:   30
+Score 1:  113
+Score 2:   62
+commande> j GLANEZ 12C
 commande> a S
-Score 0:   79
-Score 1:   75
-Score 2:   93
+Score 0:   62
+Score 1:  113
+Score 2:  148
 commande> a t
-P?RBFEG
-commande> j FRaYE 5E
-commande> j BoY 5F
+TRGANMU
+commande> j MARGE J7
+commande> j MARE J8
 commande> a S
-Score 0:  124
-Score 1:   93
-Score 2:  138
+Score 0:   73
+Score 1:  120
+Score 2:  214
 commande> a t
-BGPBEET
+EPQRHEU
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  D  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  E  -  -  -  -  -  -  -  -  - 
- C   -  -  -  -  -  N  -  -  -  -  -  -  -  -  - 
- D   -  -  -  -  -  I  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  F  A  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  R  I  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  a  S  -  -  -  -  -  -  -  -  - 
- H   -  -  -  O  Y  A  T  S  -  -  -  -  -  -  - 
- I   -  -  -  -  E  -  -  -  -  -  -  -  -  -  - 
- J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ E   -  -  -  -  -  -  -  -  -  -  A  -  -  -  - 
+ F   -  -  -  -  -  -  -  -  -  -  G  -  -  -  - 
+ G   -  -  -  -  -  -  -  -  -  -  N  -  -  -  - 
+ H   -  -  -  -  -  -  -  J  A  S  E  Z  -  -  - 
+ I   -  -  -  -  -  -  -  -  -  -  L  -  -  -  - 
+ J   -  -  -  -  -  A  R  G  U  M  E  N  T  -  - 
+ K   -  -  -  -  -  -  -  -  -  -  R  -  -  -  - 
+ L   -  -  -  -  -  -  -  -  -  -  A  -  -  -  - 
  M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -61,17 +61,17 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  ATOYDSI | OYATS          |  H4 |  30 |  
-    2 | DI+AEINS | DENIAISA       |  6A |  63 | *
-    3 |  P?RBFEG | FRaYE          |  5E |  45 |  
+    1 |  EZSGJRA | JASEZ          |  H8 |  62 |  
+    2 | GR+AALNE | AGNELERA       | 11E |  86 | *
+    3 |  TRGANMU | ARGUMENT       |  J6 |  66 | *
 
 
-Rack 0: BGP+BEET
-Rack 1: BGP+BEET
-Rack 2: BGP+BEET
-Score 0:  124
-Score 1:   93
-Score 2:  138
+Rack 0: EPQRHEU
+Rack 1: EPQRHEU
+Rack 2: EPQRHEU
+Score 0:   73
+Score 1:  120
+Score 2:  214
 commande> q
 fin du mode duplicate
 commande> q

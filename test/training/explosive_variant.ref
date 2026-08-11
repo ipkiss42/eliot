@@ -5,16 +5,17 @@ mode entraînement
 [?] pour l'aide
 commande> *
 commande> a t
-FNGCUHO
+SENTAUT
 commande> *
 commande> a t
-RTUTCSE
+INSNORR
 commande> *
 commande> a t
-IIINCOR
+UANEORG
 commande> *
 commande> a t
-ATBEAEL
+HLAEILP
+commande> t ATBEAEL
 commande> j BALTE h4
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
@@ -35,12 +36,12 @@ commande> a g
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
 commande> +
 commande> a t
-AEDESNN
+AEAEOIR
 commande> t ABF??E
 commande> +
 commande> a t
-ABF??EI
-commande> j BI 4h
+ABF??EE
+commande> j Bi 4h
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
  A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -51,7 +52,7 @@ commande> a g
  F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  H   -  -  -  B  A  L  T  E  -  -  -  -  -  -  - 
- I   -  -  -  I  -  -  -  -  -  -  -  -  -  -  - 
+ I   -  -  -  i  -  -  -  -  -  -  -  -  -  -  - 
  J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -60,15 +61,15 @@ commande> a g
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
 commande> +
 commande> a t
-ABEF??L
+ABEEF?V
 commande> t BAF?E
 commande> +
 commande> a t
-BAF?EEU
+BAF?EHN
 commande> t BAFE
 commande> +
 commande> a t
-BAFEDAR
+BAFERLA
 commande> q
 fin du mode entraînement
 commande> q

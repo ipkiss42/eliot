@@ -1,13 +1,14 @@
 s b duplicate/reject-invalid 0
 d 2 0
 a t
-j RELIEUR 8E
+j ALLAI 8E
 j ERROR H2
 a T
 a S
 a p
-j BURGAU 2f
-j BU 7g
+a g
+j DEMIE 4h
+j DUE 4h
 a S
 a T
 a p

@@ -4,29 +4,29 @@ commande> d 1 0
 mode duplicate
 [?] pour l'aide
 commande> a T
-Rack 0: UAXEHTS
-commande> j SEAUX H8
+Rack 0: EYIMTAU
+commande> j YETI H8
 commande> a S
-Score 0:   48
+Score 0:   26
 commande> a T
-Rack 0: HT+IUONU
-commande> j HUTIN i9
+Rack 0: AMU+SIAO
+commande> j AMUSAI 12e
 commande> a S
-Score 0:   85
+Score 0:   49
 commande> a t
-OUNEUNE
+OVULNDM
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
  A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  -  -  -  -  S  E  A  U  X  -  -  - 
- I   -  -  -  -  -  -  -  -  H  U  T  I  N  -  - 
- J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ E   -  -  -  -  -  -  -  -  -  -  -  A  -  -  - 
+ F   -  -  -  -  -  -  -  -  -  -  -  M  -  -  - 
+ G   -  -  -  -  -  -  -  -  -  -  -  U  -  -  - 
+ H   -  -  -  -  -  -  -  Y  E  T  I  S  -  -  - 
+ I   -  -  -  -  -  -  -  -  -  -  -  A  -  -  - 
+ J   -  -  -  -  -  -  -  -  -  -  -  I  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -38,12 +38,12 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  UAXEHTS | SEAUX          |  H8 |  48 |  
-    2 | HT+IUONU | HUTIN          |  I9 |  37 |  
+    1 |  EYIMTAU | YETI           |  H8 |  26 |  
+    2 | AMU+SIAO | AMUSAI         | 12E |  23 |  
 
 
-Rack 0: OU+NEUNE
-Score 0:   85
+Rack 0: O+VULNDM
+Score 0:   49
 commande> q
 fin du mode duplicate
 commande> q

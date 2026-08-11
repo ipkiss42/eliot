@@ -4,9 +4,9 @@ commande> le 1 1
 mode partie libre
 [?] pour l'aide
 commande> a T
-Rack 0: ETUDALN
-Rack 1: HMIRCES
-commande> j ADULENT h3
+Rack 0: EMEETUA
+Rack 1: NOBILOE
+commande> j ETAMEE h3
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
  A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -14,82 +14,82 @@ commande> a g
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  C  -  -  -  -  -  -  -  -  -  -  -  - 
- G   -  -  H  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  A  D  U  L  E  N  T  -  -  -  -  -  - 
- I   -  -  R  -  -  -  -  -  -  -  -  -  -  -  - 
- J   -  -  I  -  -  -  -  -  -  -  -  -  -  -  - 
- K   -  -  S  -  -  -  -  -  -  -  -  -  -  -  - 
- L   -  -  M  -  -  -  -  -  -  -  -  -  -  -  - 
- M   -  -  E  -  -  -  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  -  -  B  O  O  L  I  E  N  - 
+ H   -  -  E  T  A  M  E  E  -  -  -  -  -  -  - 
+ I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
 commande> a T
-Rack 0: XRAETEL
-Rack 1: UEQNIKN
-commande> j EXULTERA 5f
+Rack 0: U+RVHDAA
+Rack 1: LEOPUFA
+commande> j ARDU 2g
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
  A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- F   -  -  C  -  E  -  -  -  -  -  -  -  -  -  - 
- G   -  -  H  -  X  -  -  -  -  -  -  -  -  -  - 
- H   -  -  A  D  U  L  E  N  T  -  -  -  -  -  - 
- I   -  -  R  -  L  -  -  -  -  -  -  -  -  -  - 
- J   -  -  I  -  T  -  -  -  -  -  -  -  -  -  - 
- K   -  -  S  -  E  -  -  -  -  -  -  -  -  -  - 
- L   -  -  M  -  R  -  -  -  -  -  -  -  -  -  - 
- M   -  -  E  -  A  -  -  -  -  -  -  -  -  -  - 
- N   -  -  -  N  I  Q  U  E  -  -  -  -  -  -  - 
+ E   -  -  -  -  -  -  -  -  -  -  -  -  -  P  - 
+ F   -  -  -  -  -  -  -  -  -  -  -  -  -  A  - 
+ G   -  A  -  -  -  -  -  B  O  O  L  I  E  N  - 
+ H   -  R  E  T  A  M  E  E  -  -  -  -  -  O  - 
+ I   -  D  -  -  -  -  -  -  -  -  -  -  -  U  - 
+ J   -  U  -  -  -  -  -  -  -  -  -  -  -  F  - 
+ K   -  -  -  -  -  -  -  -  -  -  -  -  -  L  - 
+ L   -  -  -  -  -  -  -  -  -  -  -  -  -  E  - 
+ M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
 commande> a T
-Rack 0: DITTSAE
-Rack 1: KN+PRRJE
-commande> j EDITATES F5
+Rack 0: AHV+LAGI
+Rack 1: ANOSMGI
+commande> j HALVA 5g
 commande> a gm
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
  A   @  -  -  +  -  -  -  @  -  -  -  +  -  -  @
  B   -  #  -  -  -  *  -  -  -  *  -  -  -  #  -
  C   -  -  #  -  -  -  +  -  +  -  -  -  #  -  -
  D   +  -  -  #  -  -  -  +  -  -  -  #  -  -  +
- E   -  -  -  -  #  -  -  -  -  -  #  -  -  -  -
- F   -  *  C  -  E  D  I  T  A  T  E  S  -  *  -
- G   -  -  H  -  X  -  +  -  +  -  -  -  +  -  -
- H   @  -  A  D  U  L  E  N  T  -  -  +  -  -  @
- I   -  -  R  -  L  -  +  -  +  -  -  -  +  -  -
- J   -  *  I  -  T  *  -  J  -  *  -  -  -  *  -
- K   -  -  S  -  E  -  -  E  -  -  #  -  -  -  -
- L   +  -  M  #  R  -  -  R  -  -  -  #  -  -  +
- M   -  -  E  -  A  -  +  K  +  -  -  -  #  -  -
- N   -  #  -  N  I  Q  U  E  -  *  -  -  -  #  -
- O   @  -  -  +  -  -  -  R  -  -  -  +  -  -  @
+ E   -  -  -  -  #  -  -  -  -  -  M  -  -  P  -
+ F   -  *  -  -  -  *  -  -  -  *  I  -  -  A  -
+ G   -  A  +  -  H  -  +  B  O  O  L  I  E  N  -
+ H   @  R  E  T  A  M  E  E  -  -  O  +  -  O  @
+ I   -  D  +  -  L  -  +  -  +  -  N  -  +  U  -
+ J   -  U  -  -  V  *  -  -  -  *  G  -  -  F  -
+ K   -  -  -  -  A  -  -  -  -  -  A  -  -  L  -
+ L   +  -  -  #  -  -  -  +  -  -  S  #  -  E  +
+ M   -  -  #  -  -  -  +  -  +  -  -  -  #  -  -
+ N   -  #  -  -  -  *  -  -  -  *  -  -  -  #  -
+ O   @  -  -  +  -  -  -  @  -  -  -  +  -  -  @
 commande> a T
-Rack 0: ERIMASG
-Rack 1: NP+VRNOE
-commande> j EGERMAIS 11d
+Rack 0: AGI+EFAJ
+Rack 1: RHOCSET
+commande> j GAFFE j11
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  P  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  R  -  -  -  -  -  -  - 
- C   -  -  -  -  -  -  -  E  -  -  -  -  -  -  - 
- D   -  -  -  -  -  -  -  V  -  -  E  -  -  -  - 
- E   -  -  -  -  -  -  -  O  -  -  G  -  -  -  - 
- F   -  -  C  -  E  D  I  T  A  T  E  S  -  -  - 
- G   -  -  H  -  X  -  -  -  -  -  R  -  -  -  - 
- H   -  -  A  D  U  L  E  N  T  -  M  -  -  -  - 
- I   -  -  R  -  L  -  -  -  -  -  A  -  -  -  - 
- J   -  -  I  -  T  -  -  J  -  -  I  -  -  -  - 
- K   -  -  S  -  E  -  -  E  -  -  S  -  -  -  - 
- L   -  -  M  -  R  -  -  R  -  -  -  -  -  -  - 
- M   -  -  E  -  A  -  -  K  -  -  -  -  -  -  - 
- N   -  -  -  N  I  Q  U  E  -  -  -  -  -  -  - 
- O   -  -  -  -  -  -  -  R  -  -  -  -  -  -  - 
+ A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ C   -  -  T  -  -  -  -  -  -  -  -  -  -  -  - 
+ D   -  -  O  -  -  -  -  -  -  -  -  -  -  -  - 
+ E   -  -  R  -  -  -  -  -  -  -  M  -  -  P  - 
+ F   -  -  C  -  -  -  -  -  -  -  I  -  -  A  - 
+ G   -  A  H  -  H  -  -  B  O  O  L  I  E  N  - 
+ H   -  R  E  T  A  M  E  E  -  -  O  -  -  O  - 
+ I   -  D  E  -  L  -  -  -  -  -  N  -  -  U  - 
+ J   -  U  S  -  V  -  -  -  -  -  G  A  F  F  E 
+ K   -  -  -  -  A  -  -  -  -  -  A  -  -  L  - 
+ L   -  -  -  -  -  -  -  -  -  -  S  -  -  E  - 
+ M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
 commande> a S
-Score 0:  309
-Score 1:  248
+Score 0:   65
+Score 1:  329
 commande> a p
 Game: player 1 out of 2
 Game: mode=Free game
@@ -97,20 +97,20 @@ Game: variant=explosive
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  ETUDALN | ADULENT        |  H3 |  70 | *
-    2 |  HMIRCES | CHARISME       |  3F |  88 | *
-    3 |  XRAETEL | EXULTERA       |  5F |  84 | *
-    4 |  UEQNIKN | NIQUE          |  N4 |  46 |  
-    5 |  DITTSAE | EDITATES       |  F5 |  65 | *
-    6 | KN+PRRJE | JERKER         |  8J |  69 |  
-    7 |  ERIMASG | EGERMAIS       | 11D |  90 | *
-    8 | NP+VRNOE | PREVOT         |  8A |  45 |  
+    1 |  EMEETUA | ETAMEE         |  H3 |  16 |  
+    2 |  NOBILOE | BOOLIEN        |  G8 |  65 | *
+    3 | U+RVHDAA | ARDU           |  2G |  15 |  
+    4 |  LEOPUFA | PANOUFLE       | 14E |  73 | *
+    5 | AHV+LAGI | HALVA          |  5G |  22 |  
+    6 |  ANOSMGI | MILONGAS       | 11E |  90 | *
+    7 | AGI+EFAJ | GAFFE          | J11 |  12 |  
+    8 |  RHOCSET | TORCHEES       |  3C | 101 | *
 
 
-Rack 0: LANBDII
-Rack 1: NN+ITEGU
-Score 0:  309
-Score 1:  248
+Rack 0: AGIJ+TPI
+Rack 1: QKCIRBE
+Score 0:   65
+Score 1:  329
 commande> q
 fin du mode partie libre
 commande> q

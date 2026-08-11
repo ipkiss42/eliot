@@ -4,8 +4,8 @@ commande> d 1 1
 mode duplicate
 [?] pour l'aide
 commande> a t
-NAMTIUO
-commande> j MONTA h4
+ULRIEOR
+commande> j ROULIER h4
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
  A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -15,7 +15,7 @@ commande> a g
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  M  A  N  I  T  O  U  -  -  -  -  - 
+ H   -  -  -  R  O  U  L  I  E  R  -  -  -  -  - 
  I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -24,23 +24,23 @@ commande> a g
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
 commande> a t
-SELEBNJ
-commande> j JEUNES 10F
+UQEEAEG
+commande> j LAQUE 7h
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
  A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  E  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  N  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  S  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  M  A  N  I  T  O  U  -  -  -  -  - 
- I   -  -  -  -  B  -  -  -  -  -  -  -  -  -  - 
- J   -  -  -  -  L  -  -  -  -  -  -  -  -  -  - 
- K   -  -  -  -  E  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  R  O  U  L  I  E  R  -  -  -  -  - 
+ I   -  -  -  -  -  -  -  -  -  A  -  -  -  -  - 
+ J   -  -  -  -  -  -  -  -  -  Q  -  -  -  -  - 
+ K   -  -  -  -  -  -  -  -  -  U  -  -  -  -  - 
+ L   -  -  -  -  -  -  -  -  -  E  -  -  -  -  - 
+ M   -  -  -  -  -  -  -  -  -  E  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
 commande> a p
@@ -49,14 +49,14 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  NAMTIUO | MANITOU        |  H4 |  70 | *
-    2 |  SELEBNJ | ENSABLE        |  5E |  36 |  
+    1 |  ULRIEOR | ROULIER        |  H4 |  66 | *
+    2 |  UQEEAEG | RAQUEE         | 10H |  29 |  
 
 
-Rack 0: -IGTEIEW
-Rack 1: -IGTEIEW
-Score 0:   47
-Score 1:  106
+Rack 0: EG+NACDT
+Rack 1: EG+NACDT
+Score 0:   79
+Score 1:   95
 commande> h p
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
@@ -67,7 +67,7 @@ commande> a g
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  M  A  N  I  T  O  U  -  -  -  -  - 
+ H   -  -  -  R  O  U  L  I  E  R  -  -  -  -  - 
  I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -81,13 +81,13 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  NAMTIUO | MANITOU        |  H4 |  70 | *
+    1 |  ULRIEOR | ROULIER        |  H4 |  66 | *
 
 
-Rack 0: SELEBNJ
-Rack 1: SELEBNJ
-Score 0:   16
-Score 1:   70
+Rack 0: UQEEAEG
+Rack 1: UQEEAEG
+Score 0:   66
+Score 1:   66
 commande> h n
 commande> s duplicate.save
 commande> q
@@ -101,15 +101,15 @@ commande> a g
  B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  E  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  N  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  S  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  M  A  N  I  T  O  U  -  -  -  -  - 
- I   -  -  -  -  B  -  -  -  -  -  -  -  -  -  - 
- J   -  -  -  -  L  -  -  -  -  -  -  -  -  -  - 
- K   -  -  -  -  E  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  R  O  U  L  I  E  R  -  -  -  -  - 
+ I   -  -  -  -  -  -  -  -  -  A  -  -  -  -  - 
+ J   -  -  -  -  -  -  -  -  -  Q  -  -  -  -  - 
+ K   -  -  -  -  -  -  -  -  -  U  -  -  -  -  - 
+ L   -  -  -  -  -  -  -  -  -  E  -  -  -  -  - 
+ M   -  -  -  -  -  -  -  -  -  E  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
 commande> a p
@@ -118,14 +118,14 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  NAMTIUO | MANITOU        |  H4 |  70 | *
-    2 |  SELEBNJ | ENSABLE        |  5E |  36 |  
+    1 |  ULRIEOR | ROULIER        |  H4 |  66 | *
+    2 |  UQEEAEG | RAQUEE         | 10H |  29 |  
 
 
-Rack 0: -IGTEIEW
-Rack 1: -IGTEIEW
-Score 0:   47
-Score 1:  106
+Rack 0: EG+NACDT
+Rack 1: EG+NACDT
+Score 0:   79
+Score 1:   95
 commande> h p
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
@@ -136,7 +136,7 @@ commande> a g
  E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  M  A  N  I  T  O  U  -  -  -  -  - 
+ H   -  -  -  R  O  U  L  I  E  R  -  -  -  -  - 
  I   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  J   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  K   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
@@ -150,30 +150,31 @@ Game: mode=Duplicate
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  NAMTIUO | MANITOU        |  H4 |  70 | *
+    1 |  ULRIEOR | ROULIER        |  H4 |  66 | *
 
 
-Rack 0: SELEBNJ
-Rack 1: SELEBNJ
-Score 0:   16
-Score 1:   70
+Rack 0: UQEEAEG
+Rack 1: UQEEAEG
+Score 0:   66
+Score 1:   66
 commande> h n
 commande> j WEB i3
+Mot incorrect ou mal placé (7)
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
  A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  E  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  N  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  S  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  M  A  N  I  T  O  U  -  -  -  -  - 
- I   -  -  -  -  B  -  -  -  -  -  -  -  -  -  - 
- J   -  -  -  -  L  -  -  -  -  -  -  -  -  -  - 
- K   -  -  -  -  E  -  -  -  -  -  -  -  -  -  - 
- L   -  -  E  W  E  -  -  -  -  -  -  -  -  -  - 
- M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  R  O  U  L  I  E  R  -  -  -  -  - 
+ I   -  -  -  -  -  -  -  -  -  A  -  -  -  -  - 
+ J   -  -  -  -  -  -  -  -  -  Q  -  -  -  -  - 
+ K   -  -  -  -  -  -  -  -  -  U  -  -  -  -  - 
+ L   -  -  -  -  -  -  -  -  -  E  -  -  -  -  - 
+ M   -  -  -  -  -  -  -  -  -  E  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
 commande> # FIXME: Command deactivated due to the bug with rand seeds
@@ -190,15 +191,15 @@ commande> a g
  B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  C   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  D   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- E   -  -  -  -  E  -  -  -  -  -  -  -  -  -  - 
- F   -  -  -  -  N  -  -  -  -  -  -  -  -  -  - 
- G   -  -  -  -  S  -  -  -  -  -  -  -  -  -  - 
- H   -  -  -  M  A  N  I  T  O  U  -  -  -  -  - 
- I   -  -  -  -  B  -  -  -  -  -  -  -  -  -  - 
- J   -  -  -  -  L  -  -  -  -  -  -  -  -  -  - 
- K   -  -  -  -  E  -  -  -  -  -  -  -  -  -  - 
- L   -  -  E  W  E  -  -  -  -  -  -  -  -  -  - 
- M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ E   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ F   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ G   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ H   -  -  -  R  O  U  L  I  E  R  -  -  -  -  - 
+ I   -  -  -  -  -  -  -  -  -  A  -  -  -  -  - 
+ J   -  -  -  -  -  -  -  -  -  Q  -  -  -  -  - 
+ K   -  -  -  -  -  -  -  -  -  U  -  -  -  -  - 
+ L   -  -  -  -  -  -  -  -  -  E  -  -  -  -  - 
+ M   -  -  -  -  -  -  -  -  -  E  -  -  -  -  - 
  N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
  O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
 commande> # FIXME: Command deactivated due to the bug with rand seeds

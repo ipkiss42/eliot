@@ -1,229 +1,125 @@
 Using seed: 16
 [?] pour l'aide
-commande> lj 1 1
+commande> lj 0 1
 mode partie libre
 [?] pour l'aide
 commande> a T
-Rack 0: ?AAUGOE
-Rack 1: EP?TFTI
-commande> p
-commande> p
-commande> p
-commande> p
-commande> p
-commande> a g
-     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  -  -  -  -  -  -  -  M  -  -  -  -  - 
- D   -  -  -  -  B  -  -  -  -  O  -  -  -  -  - 
- E   -  -  -  -  A  -  -  -  -  R  -  -  -  -  - 
- F   -  -  -  -  T  -  -  -  -  D  -  -  -  -  - 
- G   -  -  -  -  E  -  -  -  W  U  -  -  -  -  - 
- H   -  -  -  F  R  I  P  E  E  S  -  -  -  -  - 
- I   -  -  -  -  E  -  -  -  B  -  -  -  -  -  - 
- J   -  V  A  I  N  C  R  A  S  -  -  -  -  -  - 
- K   -  -  -  -  T  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
-commande> a l
- A B C D  E F G H I J K L M N O P Q R S T U V W X Y Z ?
- 6 0 1 2 11 1 2 2 6 1 1 5 2 5 5 1 1 3 4 4 5 1 0 1 1 1 2
+Rack 0: 
 commande> a p
-Game: player 1 out of 2
+Game: player 1 out of 1
 Game: mode=Free game
 Game: variant=joker
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  ?AAUGOE | (PASS)         |  -  |   0 |  
-    2 |  EP?TFTI | FrIPE          |  H4 |  26 |  
-    3 |  AAEGOU? | (PASS)         |  -  |   0 |  
-    4 | TT+EB?AN | BATEReNT       |  5D |  86 | *
-    5 |  AAEGOU? | (PASS)         |  -  |   0 |  
-    6 |  RCWV?AB | WeB            |  9G |  36 |  
-    7 |  AAEGOU? | (PASS)         |  -  |   0 |  
-    8 | ACRV+SA? | VAiNCRAS       |  J2 |  91 | *
-    9 |  AAEGOU? | (PASS)         |  -  |   0 |  
-   10 |  USOM?DM | MOrDUS         | 10C |  34 |  
+    1 |  MFNGEA? | FuMAGE         |  H4 |  28 |  
+    2 | N+Q?OERD | NORDiQUE       |  5B |  80 | *
+    3 |  VTAEN?P | PAVEReNT       |  D1 |  82 | *
+    4 |  ?EFRDRI | DEFIbRER       |  9G |  68 | *
+    5 |  ACELH?S | CHAPELaS       |  1A | 176 | *
+    6 |  MEOTI?G | MEGOTaI        |  O4 |  94 | *
+    7 |  TSUOET? | SOUTIEnT       |  J5 |  78 | *
+    8 |  RCRA?RK | KRACh          |  L8 |  50 |  
+    9 | RRR+ZOS? | OSeZ           | 13K |  44 |  
+   10 | RRR+EAD? | RENARDeR       |  B3 |  62 | *
+   11 |  UEI?NTU | NUITEUx        |  C9 |  69 | *
+   12 |  ?LTEIJI | IJoLITE        |  2H |  78 | *
+   13 |  SA?LBAS | ASTABLeS       | 12A |  72 | *
+   14 |  ?MPUOSN | jUMPONS        | 14E |  65 | *
+   15 |  LVY?NWU | YAWLs          | A11 |  66 |  
+   16 | NUV+LIIE | UNIE           | 15H |  31 |  
+   17 |      ILV | VIL            | F10 |  14 |  
+   18 |        L | ALU            |  7H |   4 |  
 
 
-Rack 0: AAEGOU?
-Rack 1: M+EEOSQ?
-Score 0:    0
-Score 1:  273
-commande> j VExA 2J
-commande> a g
-     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  -  -  -  -  -  -  -  M  -  -  -  -  - 
- D   -  -  -  -  B  -  -  -  -  O  -  -  -  -  - 
- E   -  -  -  -  A  -  -  M  O  R  E  S  Q  U  E 
- F   -  -  -  -  T  -  -  -  -  D  -  -  -  -  - 
- G   -  -  -  -  E  -  -  -  W  U  -  -  -  -  - 
- H   -  -  -  F  R  I  P  E  E  S  -  -  -  -  - 
- I   -  -  -  -  E  -  -  -  B  -  -  -  -  -  - 
- J   -  V  A  I  N  C  R  A  S  -  -  -  -  -  - 
- K   -  E  -  -  T  -  -  -  -  -  -  -  -  -  - 
- L   -  X  -  -  -  -  -  -  -  -  -  -  -  -  - 
- M   -  A  -  -  -  -  -  -  -  -  -  -  -  -  - 
- N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
-commande> a T
-Rack 0: AGOU+?HD
-Rack 1: IRLF?DN
+Rack 0: 
+Score 0: 1161
 commande> a l
  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z ?
- 5 0 1 2 8 1 2 2 6 1 1 5 1 5 4 1 0 3 3 4 4 1 0 0 1 1 2
-commande> j ExO 15e
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+commande> h p 8
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  -  -  -  -  -  -  -  M  -  -  -  -  - 
- D   -  -  -  -  B  -  -  -  -  O  -  -  -  -  - 
- E   -  -  -  -  A  -  -  M  O  R  E  S  Q  U  E 
- F   -  -  -  -  T  -  -  -  -  D  -  -  -  -  x 
- G   -  -  -  -  E  -  -  -  W  U  -  -  -  -  O 
- H   -  -  -  F  R  I  P  E  E  S  -  -  -  -  - 
- I   -  -  -  -  E  -  -  -  B  -  -  -  -  -  - 
- J   -  V  A  I  N  C  R  A  S  -  -  -  -  -  - 
- K   -  E  -  -  T  -  -  -  -  -  -  -  -  -  - 
- L   -  X  -  -  -  -  -  -  -  -  -  -  -  -  - 
- M   -  A  -  -  -  -  -  -  -  -  -  -  -  -  - 
- N   L  I  N  D  O  R  -  -  -  -  -  -  -  -  - 
- O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
-commande> a T
-Rack 0: ADGHU+VC
-Rack 1: F+UI?ONL
-commande> a l
- A B C D E F G H I J K L M N O P Q R S T U V W X Y Z ?
- 5 0 1 1 8 1 2 2 5 1 1 4 1 4 2 1 0 2 3 4 4 1 0 0 1 1 1
-commande> p
+ A   C  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ B   H  -  R  E  N  A  R  D  E  R  -  -  -  -  - 
+ C   A  -  -  -  O  -  -  -  -  -  -  -  -  -  - 
+ D   P  A  V  E  R  E  N  T  -  -  -  -  -  -  - 
+ E   E  -  -  -  D  -  -  -  -  -  -  -  -  -  - 
+ F   L  -  -  -  I  -  -  -  -  -  -  -  -  -  - 
+ G   A  -  -  -  Q  -  -  -  D  -  -  -  -  -  - 
+ H   S  -  -  F  U  M  A  G  E  -  -  -  -  -  - 
+ I   -  -  -  -  E  -  -  -  F  -  -  -  -  -  - 
+ J   -  -  -  -  S  O  U  T  I  E  N  T  -  -  - 
+ K   -  -  -  -  -  -  -  -  B  -  -  -  O  -  - 
+ L   -  -  -  -  -  -  -  K  R  A  C  H  S  -  - 
+ M   -  -  -  -  -  -  -  -  E  -  -  -  E  -  - 
+ N   -  -  -  -  -  -  -  -  R  -  -  -  Z  -  - 
+ O   -  -  -  M  E  G  O  T  A  I  -  -  -  -  - 
 commande> a p
-Game: player 1 out of 2
+Game: player 1 out of 1
 Game: mode=Free game
 Game: variant=joker
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  ?AAUGOE | (PASS)         |  -  |   0 |  
-    2 |  EP?TFTI | FrIPE          |  H4 |  26 |  
-    3 |  AAEGOU? | (PASS)         |  -  |   0 |  
-    4 | TT+EB?AN | BATEReNT       |  5D |  86 | *
-    5 |  AAEGOU? | (PASS)         |  -  |   0 |  
-    6 |  RCWV?AB | WeB            |  9G |  36 |  
-    7 |  AAEGOU? | (PASS)         |  -  |   0 |  
-    8 | ACRV+SA? | VAiNCRAS       |  J2 |  91 | *
-    9 |  AAEGOU? | (PASS)         |  -  |   0 |  
-   10 |  USOM?DM | MOrDUS         | 10C |  34 |  
-   11 |  AAEGOU? | VExA           |  2J |   6 |  
-   12 | M+EEOSQ? | MORESQuE       |  E8 |  80 | *
-   13 | AGOU+?HD | ExO            | 15E |   2 |  
-   14 |  IRLF?DN | LINDoR         |  N1 |  50 |  
-   15 | ADGHU+VC | (PASS)         |  -  |   0 |  
-   16 | F+UI?ONL | FLIQUONs       | 13B |  86 | *
+    1 |  MFNGEA? | FuMAGE         |  H4 |  28 |  
+    2 | N+Q?OERD | NORDiQUE       |  5B |  80 | *
+    3 |  VTAEN?P | PAVEReNT       |  D1 |  82 | *
+    4 |  ?EFRDRI | DEFIbRER       |  9G |  68 | *
+    5 |  ACELH?S | CHAPELaS       |  1A | 176 | *
+    6 |  MEOTI?G | MEGOTaI        |  O4 |  94 | *
+    7 |  TSUOET? | SOUTIEnT       |  J5 |  78 | *
+    8 |  RCRA?RK | KRACh          |  L8 |  50 |  
+    9 | RRR+ZOS? | OSeZ           | 13K |  44 |  
+   10 | RRR+EAD? | RENARDeR       |  B3 |  62 | *
 
 
-Rack 0: ACDGHUV
-Rack 1: EATLZL?
-Score 0:    8
-Score 1:  489
+Rack 0: UEI?NTU
+Score 0:  762
 commande> a l
  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z ?
- 5 0 1 1 8 0 2 2 4 1 1 3 1 3 1 1 0 2 2 4 3 1 0 0 1 1 1
-commande> h p 5
-commande> a g
-     1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  -  -  -  -  -  -  -  M  -  -  -  -  - 
- D   -  -  -  -  B  -  -  -  -  O  -  -  -  -  - 
- E   -  -  -  -  A  -  -  -  -  R  -  -  -  -  - 
- F   -  -  -  -  T  -  -  -  -  D  -  -  -  -  - 
- G   -  -  -  -  E  -  -  -  W  U  -  -  -  -  - 
- H   -  -  -  F  R  I  P  E  E  S  -  -  -  -  - 
- I   -  -  -  -  E  -  -  -  B  -  -  -  -  -  - 
- J   -  V  A  I  N  C  R  A  S  -  -  -  -  -  - 
- K   -  E  -  -  T  -  -  -  -  -  -  -  -  -  - 
- L   -  X  -  -  -  -  -  -  -  -  -  -  -  -  - 
- M   -  A  -  -  -  -  -  -  -  -  -  -  -  -  - 
- N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
-commande> a p
-Game: player 2 out of 2
-Game: mode=Free game
-Game: variant=joker
-Game: history:
-    N |   RACK   |    SOLUTION    | REF | PTS | BONUS
-   ===|==========|================|=====|=====|======
-    1 |  ?AAUGOE | (PASS)         |  -  |   0 |  
-    2 |  EP?TFTI | FrIPE          |  H4 |  26 |  
-    3 |  AAEGOU? | (PASS)         |  -  |   0 |  
-    4 | TT+EB?AN | BATEReNT       |  5D |  86 | *
-    5 |  AAEGOU? | (PASS)         |  -  |   0 |  
-    6 |  RCWV?AB | WeB            |  9G |  36 |  
-    7 |  AAEGOU? | (PASS)         |  -  |   0 |  
-    8 | ACRV+SA? | VAiNCRAS       |  J2 |  91 | *
-    9 |  AAEGOU? | (PASS)         |  -  |   0 |  
-   10 |  USOM?DM | MOrDUS         | 10C |  34 |  
-   11 |  AAEGOU? | VExA           |  2J |   6 |  
-
-
-Rack 0: AGOU+?HD
-Rack 1: M+EEOSQ?
-Score 0:    6
-Score 1:  273
-commande> a l
- A B C D  E F G H I J K L M N O P Q R S T U V W X Y Z ?
- 5 0 1 2 10 1 2 2 6 1 1 5 2 5 5 1 1 3 4 4 5 1 0 0 1 1 2
+ 2 1 0 0 4 0 0 0 5 1 0 4 1 3 2 1 0 0 3 2 4 1 1 1 1 0 2
 commande> h p
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- B   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- C   -  -  -  -  -  -  -  -  -  M  -  -  -  -  - 
- D   -  -  -  -  B  -  -  -  -  O  -  -  -  -  - 
- E   -  -  -  -  A  -  -  -  -  R  -  -  -  -  - 
- F   -  -  -  -  T  -  -  -  -  D  -  -  -  -  - 
- G   -  -  -  -  E  -  -  -  W  U  -  -  -  -  - 
- H   -  -  -  F  R  I  P  E  E  S  -  -  -  -  - 
- I   -  -  -  -  E  -  -  -  B  -  -  -  -  -  - 
- J   -  V  A  I  N  C  R  A  S  -  -  -  -  -  - 
- K   -  -  -  -  T  -  -  -  -  -  -  -  -  -  - 
- L   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- M   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- N   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
- O   -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ A   C  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+ B   H  -  -  -  N  -  -  -  -  -  -  -  -  -  - 
+ C   A  -  -  -  O  -  -  -  -  -  -  -  -  -  - 
+ D   P  A  V  E  R  E  N  T  -  -  -  -  -  -  - 
+ E   E  -  -  -  D  -  -  -  -  -  -  -  -  -  - 
+ F   L  -  -  -  I  -  -  -  -  -  -  -  -  -  - 
+ G   A  -  -  -  Q  -  -  -  D  -  -  -  -  -  - 
+ H   S  -  -  F  U  M  A  G  E  -  -  -  -  -  - 
+ I   -  -  -  -  E  -  -  -  F  -  -  -  -  -  - 
+ J   -  -  -  -  S  O  U  T  I  E  N  T  -  -  - 
+ K   -  -  -  -  -  -  -  -  B  -  -  -  O  -  - 
+ L   -  -  -  -  -  -  -  K  R  A  C  H  S  -  - 
+ M   -  -  -  -  -  -  -  -  E  -  -  -  E  -  - 
+ N   -  -  -  -  -  -  -  -  R  -  -  -  Z  -  - 
+ O   -  -  -  M  E  G  O  T  A  I  -  -  -  -  - 
 commande> a p
-Game: player 1 out of 2
+Game: player 1 out of 1
 Game: mode=Free game
 Game: variant=joker
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  ?AAUGOE | (PASS)         |  -  |   0 |  
-    2 |  EP?TFTI | FrIPE          |  H4 |  26 |  
-    3 |  AAEGOU? | (PASS)         |  -  |   0 |  
-    4 | TT+EB?AN | BATEReNT       |  5D |  86 | *
-    5 |  AAEGOU? | (PASS)         |  -  |   0 |  
-    6 |  RCWV?AB | WeB            |  9G |  36 |  
-    7 |  AAEGOU? | (PASS)         |  -  |   0 |  
-    8 | ACRV+SA? | VAiNCRAS       |  J2 |  91 | *
-    9 |  AAEGOU? | (PASS)         |  -  |   0 |  
-   10 |  USOM?DM | MOrDUS         | 10C |  34 |  
+    1 |  MFNGEA? | FuMAGE         |  H4 |  28 |  
+    2 | N+Q?OERD | NORDiQUE       |  5B |  80 | *
+    3 |  VTAEN?P | PAVEReNT       |  D1 |  82 | *
+    4 |  ?EFRDRI | DEFIbRER       |  9G |  68 | *
+    5 |  ACELH?S | CHAPELaS       |  1A | 176 | *
+    6 |  MEOTI?G | MEGOTaI        |  O4 |  94 | *
+    7 |  TSUOET? | SOUTIEnT       |  J5 |  78 | *
+    8 |  RCRA?RK | KRACh          |  L8 |  50 |  
+    9 | RRR+ZOS? | OSeZ           | 13K |  44 |  
 
 
-Rack 0: AAEGOU?
-Rack 1: M+EEOSQ?
-Score 0:    0
-Score 1:  273
+Rack 0: RRR+EAD?
+Score 0:  700
 commande> a l
- A B C D  E F G H I J K L M N O P Q R S T U V W X Y Z ?
- 6 0 1 2 11 1 2 2 6 1 1 5 2 5 5 1 1 3 4 4 5 1 0 1 1 1 2
+ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z ?
+ 3 1 0 1 6 0 0 0 5 1 0 4 1 3 2 1 0 3 3 2 4 1 1 1 1 0 2
 commande> q
 fin du mode partie libre
 commande> q

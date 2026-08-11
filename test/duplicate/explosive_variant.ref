@@ -5,21 +5,21 @@ mode duplicate
 [?] pour l'aide
 commande> a g
      1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
- A   -  -  -  V  E  R  O  N  A  I  S  E  -  -  - 
- B   -  K  -  -  -  -  -  -  -  N  -  N  -  -  - 
- C   -  W  E  B  R  A  D  I  O  S  -  O  -  -  - 
- D   F  A  -  O  -  -  -  -  -  O  -  L  -  -  - 
- E   E  S  -  G  E  N  I  C  U  L  E  s  -  -  - 
- F   R  -  -  H  -  -  -  -  -  A  -  -  -  -  - 
- G   I  -  -  E  -  -  J  -  -  N  -  -  -  -  - 
- H   A  G  L  Y  P  H  E  S  -  T  -  -  -  -  - 
- I   -  -  -  s  -  -  -  P  -  -  -  L  -  -  - 
- J   -  -  -  -  M  E  -  E  -  Q  -  U  -  -  - 
- K   -  -  -  -  A  T  T  E  N  U  E  Z  -  -  M 
- L   -  -  -  C  -  -  -  D  -  E  -  U  -  -  O 
- M   -  T  R  E  V  I  R  A  T  -  -  L  -  -  I 
- N   -  -  -  U  -  -  -  I  -  -  D  E  B  A  T 
- O   F  A  U  X  -  -  -  S  -  -  -  S  -  -  I 
+ A   -  -  -  -  -  -  -  V  -  -  -  E  -  -  - 
+ B   -  H  -  L  -  -  -  E  -  -  -  p  -  -  - 
+ C   -  O  R  E  -  -  -  N  -  -  -  O  -  -  - 
+ D   -  T  E  K  -  -  -  D  -  -  B  U  -  -  - 
+ E   -  E  T  -  -  -  -  I  -  -  A  S  -  -  M 
+ F   -  L  E  -  -  J  U  M  P  E  R  A  -  -  O 
+ G   -  -  R  -  -  -  -  E  -  -  B  I  -  -  G 
+ H   -  A  C  C  E  N  T  S  -  -  O  -  -  -  O 
+ I   -  F  A  -  -  -  -  -  D  -  T  -  -  -  L 
+ J   -  F  I  -  -  Q  -  -  R  Y  E  S  -  H  E 
+ K   -  A  -  I  X  A  -  W  U  -  R  -  -  U  S 
+ L   -  M  U  N  I  S  S  E  Z  -  -  -  -  L  - 
+ M   V  A  -  -  -  I  -  n  E  -  -  -  -  U  - 
+ N   E  T  -  -  -  D  -  G  -  -  -  -  -  L  - 
+ O   R  -  -  -  -  A  -  E  P  O  I  N  T  A  I 
 commande> a p
 Game: player 1 out of 1
 Game: mode=Duplicate
@@ -27,31 +27,29 @@ Game: variant=explosive
 Game: history:
     N |   RACK   |    SOLUTION    | REF | PTS | BONUS
    ===|==========|================|=====|=====|======
-    1 |  HSGPYEL | GLYPHES        |  H2 | 114 | *
-    2 |  OIAWEFR | FERIA          |  1D | 105 |  
-    3 | OW+HGBAE | BOGHEY         |  4C |  42 |  
-    4 | AW+EDESK | KWAS           |  2B |  51 |  
-    5 | DEE+PISA | SPEEDAIS       |  8H |  89 | *
-    6 |  OAADEIR | WEBRADIO       |  C2 |  46 |  
-    7 | A+ZTTNUE | ATTENUEZ       |  K5 | 118 | *
-    8 |  CEUIELN | GENICULE       |  E4 |  94 | *
-    9 |  TVIRETR | TREVIRAT       |  M2 |  76 | *
-   10 |  UXSNNCA | CEUX           |  4L |  50 |  
-   11 | ANNS+IOT | INSOLANT       | 10A |  83 | *
-   12 |  UAVNFOA | FAUX           |  O1 |  48 |  
-   13 | ANOV+RSE | VERONAIS       |  A4 |  95 | *
-   14 |  ESULOUL | LUZULES        | 12I |  34 |  
-   15 | O+LMEM?N | ENOLs          | 12A |  34 |  
-   16 | MM+QBTDE | QUE            | 10J |  26 |  
-   17 | BDMMT+M? | BOGHEYs        |  4C |  21 |  
-   18 | BDMMMT+A | DEBAT          | N11 |  16 |  
-   19 | MMM+JIRI | JE             |  7G |  17 |  
-   20 | IIMMMR+O | MOITI          | 15K |  21 |  
-   21 |    MMR+E | ME             |  J5 |  12 |  
+    1 |  CSCETNA | ACCENTS        |  H2 |  78 | *
+    2 |  FUMAAFT | AFFAMAT        |  2H |  44 |  
+    3 | -ZENISUS | MUNISSEZ       |  L2 |  88 | *
+    4 |  AEIDAQR | QASIDA         |  6J |  34 |  
+    5 | ER+IREAT | RETERCAI       |  3C |  85 | *
+    6 |  DGE?VMW | WEnGE          |  8K |  42 |  
+    7 | DMV+IEEN | VENDIMES       |  8A |  95 | *
+    8 |  AIOTNIP | EPOINTAI       |  O8 |  83 | *
+    9 |  LERTJOH | HOTEL          |  2B |  30 |  
+   10 | JR+PUBBE | JUMPER         |  F6 |  34 |  
+   11 | BB+EROAT | BARBOTER       | 11D |  98 | *
+   12 |  IUOA?ES | EpOUSAI        | 12A |  95 | *
+   13 |  LGERKSY | LEK            |  4B |  51 |  
+   14 | GRSY+UUL | RYES           |  J9 |  33 |  
+   15 | GLUU+LHU | HULULA         | 14J |  34 |  
+   16 | GU+MILDE | DRUZE          |  9I |  31 |  
+   17 | GILM+XOO | IXA            |  K4 |  48 |  
+   18 | GLMOO+ES | MOGOLES        | 15E |  84 | *
+   19 |    RVNEN | VER            |  1M |  25 |  
 
 
-Rack 0: MR
-Score 0: 1192
+Rack 0: NN
+Score 0: 1112
 commande> q
 fin du mode duplicate
 commande> q
