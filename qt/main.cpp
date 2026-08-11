@@ -76,7 +76,7 @@ public:
 
 int main(int argc, char **argv)
 {
-    initialize_logging();
+    initialize_logging("STDOUT");
 
 #ifdef WIN32
     // If started from an active console terminal, re-attach our text output streams to it

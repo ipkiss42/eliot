@@ -1016,6 +1016,9 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
+    // Do not log by default (can be overridden with ELIOT_LOg_PROFILE)
+    initialize_logging("NOLOG");
+
     try
     {
         Dictionary dic(argv[1]);

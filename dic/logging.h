@@ -21,6 +21,8 @@
 #ifndef DIC_LOGGING_H_
 #define DIC_LOGGING_H_
 
+#include <string_view>
+
 #include <config.h>
 
 // Must be before any include of spdlog headers
@@ -53,6 +55,6 @@
 #define LOG_ROOT_ERROR(...) SPDLOG_ERROR(__VA_ARGS__)
 #define LOG_ROOT_FATAL(...) SPDLOG_CRITICAL(__VA_ARGS__)
 
-void initialize_logging();
+void initialize_logging(std::string_view iDefaultProfile = "STDOUT+FILE");
 
 #endif
