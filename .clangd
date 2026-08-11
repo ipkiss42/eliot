@@ -1,6 +1,9 @@
 CompileFlags:
+  # This assumes that you build in a "build" subdirectory.
+  # If not, adjust this or create a symlink named "build".
+  CompilationDatabase: "build"
   Add: [
-    "-std=c++23",
+    "-std=gnu++23",
     "-Wall",
     "-Wextra",
     "-Wunused-private-field",
