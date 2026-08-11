@@ -21,7 +21,6 @@
 #include "config.h"
 
 #include <algorithm>
-#include <sstream>
 #include <cstdlib>
 #include <cstdarg>
 #include <cstring>
@@ -29,6 +28,8 @@
 #include <cwctype>
 #include <cerrno>
 #include <iconv.h>
+
+#include <boost/nowide/convert.hpp>
 
 #include "encoding.h"
 #include "dic_exception.h"
@@ -53,87 +54,22 @@ int wtoi(const wchar_t *iWStr)
 }
 
 
-int _swprintf(wchar_t *wcs, size_t maxlen, const wchar_t *format, ...)
+wstring convertToWc(std::string_view iStr)
 {
-    int res;
-    va_list argp;
-    va_start(argp, format);
-#ifdef WIN32
-    // Mingw32 does not take the maxlen argument
-    (void)maxlen;
-    res = vswprintf(wcs, format, argp);
-#else
-    res = vswprintf(wcs, maxlen, format, argp);
-#endif
-    va_end(argp);
-    return res;
-}
-
-
-wchar_t *_wcstok(wchar_t *wcs, const wchar_t *delim, wchar_t **ptr)
-{
-#ifdef WIN32
-    // Mingw32 does not take the third argument
-    (void)ptr;
-    return wcstok(wcs, delim);
-#else
-    return wcstok(wcs, delim, ptr);
-#endif
-}
-
-
-#define _MAX_SIZE_FOR_STACK_ 30
-wstring convertToWc(const string& iStr)
-{
-    // Get the needed length (we _can't_ use string::size())
-    size_t len = mbstowcs(nullptr, iStr.c_str(), 0);
-    if (len == (size_t)-1)
+    if (iStr.empty())
         return L"";
 
-    // Change the allocation method depending on the length of the string
-    if (len < _MAX_SIZE_FOR_STACK_)
-    {
-        // Without multi-thread, we can use static storage
-        static wchar_t tmp[_MAX_SIZE_FOR_STACK_];
-        len = mbstowcs(tmp, iStr.c_str(), len + 1);
-        return tmp;
-    }
-    else
-    {
-        wchar_t *tmp = new wchar_t[len + 1];
-        len = mbstowcs(tmp, iStr.c_str(), len + 1);
-        wstring res = tmp;
-        delete[] tmp;
-        return res;
-    }
+    return boost::nowide::widen(iStr.data(), iStr.size());
 }
 
 
-string convertToMb(const wstring& iWStr)
+string convertToMb(std::wstring_view iWStr)
 {
-    // Get the needed length (we _can't_ use wstring::size())
-    size_t len = wcstombs(nullptr, iWStr.c_str(), 0);
-    if (len == (size_t)-1)
+    if (iWStr.empty())
         return "";
 
-    // Change the allocation method depending on the length of the string
-    if (len < _MAX_SIZE_FOR_STACK_)
-    {
-        // Without multi-thread, we can use static storage
-        static char tmp[_MAX_SIZE_FOR_STACK_];
-        len = wcstombs(tmp, iWStr.c_str(), len + 1);
-        return tmp;
-    }
-    else
-    {
-        char *tmp = new char[len + 1];
-        len = wcstombs(tmp, iWStr.c_str(), len + 1);
-        string res = tmp;
-        delete[] tmp;
-        return res;
-    }
+    return boost::nowide::narrow(iWStr.data(), iWStr.size());
 }
-#undef _MAX_SIZE_FOR_STACK_
 
 
 string convertToMb(wchar_t iWChar)
@@ -284,18 +220,18 @@ string centerAndConvert(const wstring &iWstr, unsigned int iLength, char c)
 }
 
 
-wstring toUpper(const wstring &iWstr)
+wstring toUpper(std::wstring_view iWstr)
 {
-    wstring str = iWstr;
-    std::transform(str.begin(), str.end(), str.begin(), towupper);
+    std::wstring str(iWstr);
+    std::ranges::transform(str, str.begin(), ::towupper);
     return str;
 }
 
 
-wstring toLower(const wstring &iWstr)
+wstring toLower(std::wstring_view iWstr)
 {
-    wstring str = iWstr;
-    std::transform(str.begin(), str.end(), str.begin(), towlower);
+    std::wstring str(iWstr);
+    std::ranges::transform(str, str.begin(), ::towlower);
     return str;
 }
 

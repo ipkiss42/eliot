@@ -21,7 +21,8 @@
 
 #include <string>
 #include <cstdio>
-#include <wchar.h>
+#include <format>
+
 #include "coord.h"
 #include "board.h" // for BOARD_MIN and BOARD_MAX (TODO: remove this include)
 #include "debug.h"
@@ -70,50 +71,49 @@ void Coord::swap()
 
 void Coord::setFromString(const wstring &iWStr)
 {
-    // TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
-    // Temporary implementation: convert the wchar_t* string into a char* one
-    string iStr = lfw(iWStr);
+    wchar_t l[4] = {0};
+    int col = -1;
 
-    char l[4];
-    int col;
-
-    if (sscanf(iStr.c_str(), "%1[a-oA-O]%2d", l, &col) == 2)
+    // Scan wide characters directly using %ls format rules
+    if (std::swscanf(iWStr.c_str(), L"%1[a-oA-O]%2d", l, &col) == 2)
     {
         setDir(HORIZONTAL);
     }
-    else if (sscanf(iStr.c_str(), "%2d%1[a-oA-O]", &col, l) == 2)
+    else if (std::swscanf(iWStr.c_str(), L"%2d%1[a-oA-O]", &col, l) == 2)
     {
         setDir(VERTICAL);
     }
     else
     {
-        col = -1;
-        l[0] = 'A' - 1;
+        l[0] = L'A' - 1;
     }
-    int row = toupper(*l) - 'A' + 1;
+
+    // std::towupper handles the wide character directly (from <cwctype>)
+    int row = std::towupper(l[0]) - L'A' + 1;
     setCol(col);
     setRow(row);
+
     // Input such as "A12foo#bar&stuff" should be invalid
     if (isValid() && toString() != toUpper(iWStr))
         setCol(-1);
 }
 
+
 wstring Coord::toString() const
 {
     ASSERT(isValid(), "Invalid coordinates");
 
-    wchar_t res[7];
-    wchar_t srow[3];
-    wchar_t scol[3];
+    // Convert the numeric row to its corresponding wide character (e.g. 1 -> L'A')
+    wchar_t rowChar = static_cast<wchar_t>(m_row + L'A' - 1);
 
-    _swprintf(scol, 3, L"%d", m_col);
-    _swprintf(srow, 3, L"%c", m_row + 'A' - 1);
-
+    // Format directly into a safe, dynamically allocated std::wstring
     if (getDir() == HORIZONTAL)
-        _swprintf(res, 7, L"%ls%ls", srow, scol);
+    {
+        return std::format(L"{}{}", rowChar, m_col);
+    }
     else
-        _swprintf(res, 7, L"%ls%ls", scol, srow);
-
-    return res;
+    {
+        return std::format(L"{}{}", m_col, rowChar);
+    }
 }
 

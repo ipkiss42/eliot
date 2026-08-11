@@ -19,8 +19,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <format>
+
 #include "tile.h"
-#include "rack.h"
 #include "pldrack.h"
 #include "round.h"
 #include "results.h"
@@ -38,7 +39,7 @@ INIT_LOGGER(game, Player);
 
 
 Player::Player()
-     
+
 {
 }
 
@@ -154,15 +155,12 @@ int Player::getTotalScore() const
 
 wstring Player::toString() const
 {
-    wstring res = L"Player ";
+    return std::format(
+        L"Player {}\n{}\nscore {}\n",
+        m_id,
+        m_history.toString(),
+        getTotalScore()
+    );
 
-    wchar_t buff[6];
-    _swprintf(buff, 5, L"%d\n", m_id);
-    res += wstring(buff);
-    res += m_history.toString() + L"\n";
-    res += L"score ";
-    _swprintf(buff, 5, L"%d\n", getTotalScore());
-    res += wstring(buff);
-    return res;
 }
 

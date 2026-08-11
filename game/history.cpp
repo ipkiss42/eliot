@@ -19,8 +19,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-
+#include <format>
 #include <string>
+
 #include "rack.h"
 #include "pldrack.h"
 #include "move.h"
@@ -170,9 +171,7 @@ wstring History::toString() const
 {
     wstring rs;
 #ifdef DEBUG
-    wchar_t buff[5];
-    _swprintf(buff, 4, L"%ld", m_history.size());
-    rs = L"history size = " + wstring(buff) + L"\n\n";
+    rs = std::format(L"history size = {}\n\n", m_history.size());
 #endif
     for (const TurnData *turn : m_history)
     {

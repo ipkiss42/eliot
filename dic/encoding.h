@@ -23,6 +23,7 @@
 
 #include <format>
 #include <string>
+#include <string_view>
 
 using std::string;
 using std::wstring;
@@ -43,17 +44,11 @@ using std::wstring;
 /// Equivalent of atoi for wide-caracter strings
 int wtoi(const wchar_t *iWStr);
 
-/// Equivalent of swprintf, but working also with mingw32
-int _swprintf(wchar_t *wcs, size_t maxlen, const wchar_t *format, ...);
-
-/// Equivalent of wcstok, but working also with mingw32
-wchar_t *_wcstok(wchar_t *wcs, const wchar_t *delim, wchar_t **ptr);
-
 /// Convert a multi-byte string into a wide-character string
-wstring convertToWc(const string &iStr);
+wstring convertToWc(std::string_view iStr);
 
 /// Convert a wide-character string into a multi-byte string
-string convertToMb(const wstring &iWStr);
+string convertToMb(std::wstring_view iWStr);
 
 /// Convert a wide character into a multi-byte string
 string convertToMb(wchar_t iWChar);
@@ -99,12 +94,12 @@ string centerAndConvert(const wstring &iWstr, unsigned int iLength,
 /**
  * Return the upper case version of the given string
  */
-wstring toUpper(const wstring &iWstr);
+wstring toUpper(std::wstring_view iWstr);
 
 /**
  * Return the lower case version of the given string
  */
-wstring toLower(const wstring &iWstr);
+wstring toLower(std::wstring_view iWstr);
 
 /**
  * Utility function to convert a char* buffer encoded in UTF-8 into a
