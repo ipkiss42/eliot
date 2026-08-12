@@ -103,7 +103,7 @@ NewGame::NewGame(const Dictionary &iDic, QWidget *iParent)
 
     // Initialize the model of the default players
     QList<PlayerDef> fav = PlayersTableHelper::getFavPlayers();
-    for (const PlayerDef &def : fav)
+    for (const PlayerDef &def : std::as_const(fav))
     {
         if (def.isDefault)
             m_helper->addPlayer(def);
@@ -170,7 +170,7 @@ NewGame::NewGame(const Dictionary &iDic, QWidget *iParent)
 }
 
 
-PublicGame * NewGame::createGame() const
+PublicGame * NewGame::createGame()
 {
     // Game parameters
     GameParams params(m_dic);

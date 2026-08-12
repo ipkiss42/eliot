@@ -141,7 +141,7 @@ bool WizardInfoPage::validatePage()
     // Copy the bad chars (i.e. non letters) to a list
     QMap<QChar, int>::const_iterator it;
     QList<QChar> badChars;
-    for (it = lettersWithLine.begin(); it != lettersWithLine.end(); ++it)
+    for (it = lettersWithLine.cbegin(); it != lettersWithLine.cend(); ++it)
     {
         if (!it.key().isLetter())
             badChars.push_back(it.key());

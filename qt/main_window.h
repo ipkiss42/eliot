@@ -110,7 +110,7 @@ private slots:
     void changeDictionary(QString);
 
     /// Play the given word (all modes except topping)
-    void playWord(const wstring &iWord, const wstring &iCoord);
+    void playWord(const std::wstring &iWord, const std::wstring &iCoord);
 
     /** Perform some updates when the game is updated */
     void refresh();

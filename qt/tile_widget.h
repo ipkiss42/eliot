@@ -73,7 +73,7 @@ public:
     QSize sizeHint() const override;
 
 public slots:
-    void tileChanged(State state, const Tile &iTile = Tile(), bool isJoker = false);
+    void tileChanged(TileWidget::State state, const Tile &iTile = Tile(), bool isJoker = false);
     void arrowChanged(bool showArrow, bool horizontalArrow);
 
 signals:

@@ -249,8 +249,7 @@ void ToppingWidget::timeoutPenalty()
     QMessageBox::information(this, "Eliot - " + _q("End of turn"),
                              _q("The allocated time for the turn has expired.\n"
                                 "The top is %1 at %2 for %3 points.")
-                             .arg(qfw(move.getRound().getWord()))
-                             .arg(qfw(move.getRound().getCoord().toString()))
+                             .arg(qfw(move.getRound().getWord()), qfw(move.getRound().getCoord().toString()))
                              .arg(move.getScore()));
 
     // End the turn

@@ -48,10 +48,10 @@ public:
      * Create and return a game object from the information of the dialog.
      * The Game object is always valid
      */
-    PublicGame * createGame() const;
+    PublicGame * createGame();
 
 signals:
-    void notifyProblem(QString iMsg) const;
+    void notifyProblem(QString iMsg);
 
 private slots:
     void enableOkButton();

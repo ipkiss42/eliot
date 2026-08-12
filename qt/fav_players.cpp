@@ -116,7 +116,7 @@ void FavPlayersDialog::importPlayers()
     QString fileName = QFileDialog::getOpenFileName(this,
             _q("Choose a CSV file containing favorite players to import"),
             _q("fav_players.csv"),
-            QString("%1;;%2").arg(_q("CSV files (*.csv)")).arg("All files (*)"));
+            QString("%1;;%2").arg(_q("CSV files (*.csv)"), "All files (*)"));
     if (fileName.isEmpty())
         return;
 
@@ -156,7 +156,7 @@ void FavPlayersDialog::exportPlayers()
     QString fileName = QFileDialog::getSaveFileName(this,
             _q("Choose a CSV file to save the favorite players"),
             _q("fav_players.csv"),
-            QString("%1;;%2").arg(_q("CSV files (*.csv)")).arg("All files (*)"));
+            QString("%1;;%2").arg(_q("CSV files (*.csv)"), "All files (*)"));
     if (fileName.isEmpty())
         return;
 

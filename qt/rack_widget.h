@@ -69,7 +69,7 @@ private slots:
      */
     void refresh();
     /// Set the tiles and refresh the widget
-    void setTiles(const vector<Tile> &iTiles);
+    void setTiles(const std::vector<Tile> &iTiles);
 
 private:
     /// Tiles from which widgets are created

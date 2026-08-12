@@ -630,7 +630,7 @@ void ArbitrationWidget::selectTableNumber(const QString &iKey)
         treeViewResults->setFocus();
 
         // Write a nice message on the status bar
-        emit notifyInfo(_q("Player at table %1 selected (%2)").arg(tableNum).arg(name));
+        emit notifyInfo(_q("Player at table %1 selected (%2)").arg(tableNum, name));
         return;
     }
     LOG_DEBUG("Not found");

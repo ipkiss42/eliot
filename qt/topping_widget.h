@@ -61,7 +61,7 @@ private slots:
     void lockSizesChanged(bool checked);
     void shuffle();
     void showHintsDialog();
-    void playWord(const wstring &iWord, const wstring &iCoord);
+    void playWord(const std::wstring &iWord, const std::wstring &iCoord);
     void hintUsed(const AbstractHint&);
     void timeoutPenalty();
 

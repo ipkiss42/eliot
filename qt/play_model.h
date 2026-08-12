@@ -69,7 +69,7 @@ signals:
     void coordChanged(const Coord &iNewCoord, const Coord &iOldCoord);
     void moveChanged(const Move &iMove, const Move &iOldMove);
     // FIXME: should probably use a Move object instead
-    void movePlayed(const wstring &iWord, const wstring &iCoord);
+    void movePlayed(const std::wstring &iWord, const std::wstring &iCoord);
 
 private:
     Coord m_currCoord;

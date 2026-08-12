@@ -140,7 +140,7 @@ void PlayersTableHelper::populateMenu(QMenu &iMenu, const QPoint &iPoint)
     if (!index.isValid())
         return;
 
-    for (QAction *action : m_popupActions)
+    for (QAction *action : std::as_const(m_popupActions))
     {
         iMenu.addAction(action);
     }

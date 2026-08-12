@@ -576,7 +576,7 @@ bool ArbitAssignments::isSuppressMoveAllowed() const
     // Return true if at least one of the selected players has
     // a move to suppress
     QSet<unsigned int> playersIdSet = getSelectedPlayers();
-    for (unsigned int id : playersIdSet)
+    for (unsigned int id : std::as_const(playersIdSet))
     {
         if (m_game->hasPlayed(id) &&
             !m_game->getPlayer(id).getLastMove().isNull())
@@ -603,7 +603,7 @@ void ArbitAssignments::helperAssignMove(const Move &iMove)
 
     // Warn if some of the selected players already have an assigned move
     QSet<unsigned int> assignedIdSet;
-    for (unsigned int id : playersIdSet)
+    for (unsigned int id : std::as_const(playersIdSet))
     {
         if (m_game->hasPlayed(id) &&
             !m_game->getPlayer(id).getLastMove().isNull())
@@ -641,7 +641,7 @@ void ArbitAssignments::helperAssignMove(const Move &iMove)
     }
 
     // Assign the move to each selected player
-    for (unsigned int id : playersIdSet)
+    for (unsigned int id : std::as_const(playersIdSet))
     {
         LOG_DEBUG(lfq(QString("Assigning move %1 to player %2")
                       .arg(qfw(iMove.toString())).arg(id)));
@@ -673,7 +673,7 @@ void ArbitAssignments::addRemoveSolo()
     if (playersIdSet.size() != 1)
         return;
 
-    for (unsigned int id : playersIdSet)
+    for (unsigned int id : std::as_const(playersIdSet))
     {
         m_game->arbitrationToggleSolo(id);
     }
@@ -687,7 +687,7 @@ void ArbitAssignments::addRemoveWarning()
     if (playersIdSet.isEmpty())
         return;
 
-    for (unsigned int id : playersIdSet)
+    for (unsigned int id : std::as_const(playersIdSet))
     {
         m_game->arbitrationToggleWarning(id);
     }
@@ -701,7 +701,7 @@ void ArbitAssignments::addRemovePenalty()
     if (playersIdSet.isEmpty())
         return;
 
-    for (unsigned int id : playersIdSet)
+    for (unsigned int id : std::as_const(playersIdSet))
     {
         m_game->arbitrationTogglePenalty(id);
     }
@@ -714,16 +714,14 @@ QString ArbitAssignments::formatMove(const Move &iMove) const
     if (iMove.isValid())
     {
         return QString("%1 - %2 - %3")
-            .arg(qfw(iMove.getRound().getWord()))
-            .arg(qfw(iMove.getRound().getCoord().toString()))
+            .arg(qfw(iMove.getRound().getWord()), qfw(iMove.getRound().getCoord().toString()))
             .arg(iMove.getScore());
     }
     else
     {
         ASSERT(iMove.isInvalid(), "Unexpected move type");
         return QString("%1 - %2 - %3")
-            .arg(qfw(iMove.getBadWord()))
-            .arg(qfw(iMove.getBadCoord()))
+            .arg(qfw(iMove.getBadWord()), qfw(iMove.getBadCoord()))
             .arg(iMove.getScore());
     }
 }
@@ -742,7 +740,7 @@ void ArbitAssignments::endTurn()
 
     if (!m_game->duplicateGetMasterMove().isValid())
     {
-        notifyProblem(_q("You must select a master move before ending the turn."));
+        emit notifyProblem(_q("You must select a master move before ending the turn."));
         return;
     }
 

@@ -201,7 +201,7 @@ MainWindow::MainWindow(QWidget *iParent)
             return;
         }
     }
-    emit dicChanged(m_dic);
+    updateStatusBar(m_dic);
 
     // Check for updates
     UpdateChecker *checker = new UpdateChecker(this);
@@ -715,7 +715,7 @@ void MainWindow::playWord(const wstring &iWord, const wstring &iCoord)
     {
         // Try to be as explicit as possible concerning the error
         QString msg = _q("Cannot play '%1' at position '%2':\n%3")
-            .arg(qfw(iWord)).arg(qfw(iCoord));
+            .arg(qfw(iWord), qfw(iCoord));
         switch (res)
         {
             case 1:
@@ -1423,7 +1423,7 @@ void MainWindow::onHelpAbout()
     // TRANSLATORS: If the website is translated in your language,
     // feel free to adapt the URL.
     QString url = _q("http://www.nongnu.org/eliot/en/");
-    msg += _q("Web site: %1").arg(QString("<a href=\"%1\">%2</a>").arg(url).arg(url));
+    msg += _q("Web site: %1").arg(QString("<a href=\"%1\">%2</a>").arg(url, url));
     // QMessageBox::about() doesn't add the nice information icon, so we create
     // the box manually (not much work...)
     QMessageBox aboutBox(QMessageBox::Information, _q("About Eliot"),

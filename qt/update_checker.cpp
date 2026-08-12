@@ -115,7 +115,7 @@ UpdateChecker::VersionNumber UpdateChecker::parseVersionNumber(QString iVersion)
     // A version number has the following form: 1.12a-git (where 'a' is an
     // optional letter, and -git is optional as well)
     // Regexp to the rescue!
-    QRegularExpression re("^(\\d+)\\.(\\d+)([a-z])?(-git.*)?$");
+    static QRegularExpression re("^(\\d+)\\.(\\d+)([a-z])?(-git.*)?$");
     QRegularExpressionMatch match = re.match(iVersion);
     if (!match.hasMatch())
     {
@@ -129,7 +129,7 @@ UpdateChecker::VersionNumber UpdateChecker::parseVersionNumber(QString iVersion)
     vn.minor = match.captured(2).toInt();
     vn.letter = 0;
     if (match.hasCaptured(3))
-        vn.letter = match.captured(3)[0].toLatin1();
+        vn.letter = match.captured(3).at(0).toLatin1();
     vn.suffix = match.captured(4);
 
     LOG_DEBUG("Parsed version number: {}.{}{}{} (from '{}')", vn.major, vn.minor,
@@ -198,7 +198,7 @@ void UpdateChecker::showNewVersion(QString iVersion) const
     // TRANSLATORS: Here %1 represents a version number.
     QString msg = _q("Eliot %1 is available.").arg(iVersion);
     msg += "<br>" + _q("You can download it from %1.")
-        .arg(QString("<a href=\"%1\">%2</a>").arg(url).arg(url));
+        .arg(QString("<a href=\"%1\">%2</a>").arg(url, url));
     msg += "<br><br>" + _q("This message will be displayed at most once a week.");
     QMessageBox infoBox(QMessageBox::Information, _q("New version available"),
                          msg, QMessageBox::Ok);
