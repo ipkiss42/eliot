@@ -135,8 +135,8 @@ StatsWidget::StatsWidget(QWidget *parent, const PublicGame *iGame)
     lockSizesAction->setStatusTip(_q("Disable auto-resizing of the columns"));
     m_table->horizontalHeader()->addAction(lockSizesAction);
     m_table->horizontalHeader()->setContextMenuPolicy(Qt::ActionsContextMenu);
-    QObject::connect(lockSizesAction, SIGNAL(toggled(bool)),
-                     this, SLOT(lockSizesChanged(bool)));
+    QObject::connect(lockSizesAction, &QAction::toggled,
+                     this, &StatsWidget::lockSizesChanged);
 
     m_table->setContextMenuPolicy(Qt::ActionsContextMenu);
 
@@ -145,20 +145,20 @@ StatsWidget::StatsWidget(QWidget *parent, const PublicGame *iGame)
     flipAction->setStatusTip(_q("Flip the table so that rows and columns are exchanged.\n"
                                 "This allows sorting the players by ranking, for example."));
     m_table->addAction(flipAction);
-    QObject::connect(flipAction, SIGNAL(triggered()),
-                     this, SLOT(flipTable()));
+    QObject::connect(flipAction, &QAction::triggered,
+                     this, &StatsWidget::flipTable);
 
     QAction *printPreviewAction = new QAction(_q("Print preview..."), this);
     printPreviewAction->setStatusTip(_q("Print the table."));
     m_table->addAction(printPreviewAction);
-    QObject::connect(printPreviewAction, SIGNAL(triggered()),
-                     this, SLOT(onPrintPreview()));
+    QObject::connect(printPreviewAction, &QAction::triggered,
+                     this, &StatsWidget::onPrintPreview);
 
     QAction *printAction = new QAction(_q("Print..."), this);
     printAction->setStatusTip(_q("Print the table."));
     m_table->addAction(printAction);
-    QObject::connect(printAction, SIGNAL(triggered()),
-                     this, SLOT(onPrint()));
+    QObject::connect(printAction, &QAction::triggered,
+                     this, &StatsWidget::onPrint);
 
     refresh();
 }
@@ -526,8 +526,8 @@ void StatsWidget::onPrint()
 void StatsWidget::onPrintPreview()
 {
     QPrintPreviewDialog previewDialog;
-    QObject::connect(&previewDialog, SIGNAL(paintRequested(QPrinter *)),
-                     this, SLOT(print(QPrinter*)));
+    QObject::connect(&previewDialog, &QPrintPreviewDialog::paintRequested,
+                     this, &StatsWidget::print);
     previewDialog.exec();
 }
 

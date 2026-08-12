@@ -57,18 +57,18 @@ PlayWordMediator::PlayWordMediator(QObject *parent, QLineEdit &iEditPlay,
     }
 
     // Set all the connections
-    QObject::connect(&m_lineEditPlay, SIGNAL(textChanged(const QString&)),
-                     this, SLOT(onWordChanged()));
-    QObject::connect(&m_lineEditPlay, SIGNAL(returnPressed()),
-                     this, SLOT(playWord()));
-    QObject::connect(&m_lineEditCoord, SIGNAL(textChanged(const QString&)),
-                     this, SLOT(onCoordChanged()));
-    QObject::connect(&m_lineEditCoord, SIGNAL(returnPressed()),
-                     this, SLOT(playWord()));
-    QObject::connect(&m_pushButtonPlay, SIGNAL(clicked()),
-                     this, SLOT(playWord()));
-    QObject::connect(&m_playModel, SIGNAL(coordChanged(const Coord&, const Coord&)),
-                     this, SLOT(updateCoord(const Coord&)));
+    QObject::connect(&m_lineEditPlay, &QLineEdit::textChanged,
+                     this, &PlayWordMediator::onWordChanged);
+    QObject::connect(&m_lineEditPlay, &QLineEdit::returnPressed,
+                     this, &PlayWordMediator::playWord);
+    QObject::connect(&m_lineEditCoord, &QLineEdit::textChanged,
+                     this, &PlayWordMediator::onCoordChanged);
+    QObject::connect(&m_lineEditCoord, &QLineEdit::returnPressed,
+                     this, &PlayWordMediator::playWord);
+    QObject::connect(&m_pushButtonPlay, &QAbstractButton::clicked,
+                     this, &PlayWordMediator::playWord);
+    QObject::connect(&m_playModel, &PlayModel::coordChanged,
+                     this, &PlayWordMediator::updateCoord);
 
     // Initial state
     updatePointsAndState();

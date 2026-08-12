@@ -23,7 +23,6 @@
 #include <QMenu>
 #include <QShortcut>
 #include <QSettings>
-#include <QSignalMapper>
 
 #include "arbitration_widget.h"
 #include "arbit_assignments.h"
@@ -62,16 +61,16 @@ ArbitrationWidget::ArbitrationWidget(QWidget *parent,
 
     m_assignmentsWidget = new ArbitAssignments(this, iGame);
     layoutAssignments->addWidget(m_assignmentsWidget);
-    QObject::connect(m_assignmentsWidget, SIGNAL(gameUpdated()),
-                     this, SIGNAL(gameUpdated()));
-    QObject::connect(m_assignmentsWidget, SIGNAL(notifyProblem(QString)),
-                     this, SIGNAL(notifyProblem(QString)));
-    QObject::connect(m_assignmentsWidget, SIGNAL(notifyInfo(QString)),
-                     this, SIGNAL(notifyInfo(QString)));
-    QObject::connect(m_assignmentsWidget, SIGNAL(endOfTurn()),
-                     this, SLOT(endOfTurnRefresh()));
-    QObject::connect(m_assignmentsWidget, SIGNAL(playerSelected(unsigned)),
-                     this, SIGNAL(playerSelected(unsigned)));
+    QObject::connect(m_assignmentsWidget, &ArbitAssignments::gameUpdated,
+                     this, &ArbitrationWidget::gameUpdated);
+    QObject::connect(m_assignmentsWidget, &ArbitAssignments::notifyProblem,
+                     this, &ArbitrationWidget::notifyProblem);
+    QObject::connect(m_assignmentsWidget, &ArbitAssignments::notifyInfo,
+                     this, &ArbitrationWidget::notifyInfo);
+    QObject::connect(m_assignmentsWidget, &ArbitAssignments::endOfTurn,
+                     this, &ArbitrationWidget::endOfTurnRefresh);
+    QObject::connect(m_assignmentsWidget, &ArbitAssignments::playerSelected,
+                     this, &ArbitrationWidget::playerSelected);
 
     m_keyAccum = new KeyAccumulator(this, 400);
 
@@ -117,100 +116,97 @@ ArbitrationWidget::ArbitrationWidget(QWidget *parent,
     QShortcut *shortcut;
     shortcut = new QShortcut(QString("Shift+M"), treeViewResults);
     shortcut->setContext(Qt::WidgetWithChildrenShortcut);
-    QObject::connect(shortcut, SIGNAL(activated()),
-                     m_assignmentsWidget, SLOT(setMasterMove()));
+    QObject::connect(shortcut, &QShortcut::activated,
+                     m_assignmentsWidget, &ArbitAssignments::setMasterMove);
 
     shortcut = new QShortcut(QString("Shift+A"), treeViewResults);
     shortcut->setContext(Qt::WidgetWithChildrenShortcut);
-    QObject::connect(shortcut, SIGNAL(activated()),
-                     m_assignmentsWidget, SLOT(selectAllPlayers()));
+    QObject::connect(shortcut, &QShortcut::activated,
+                     m_assignmentsWidget, &ArbitAssignments::selectAllPlayers);
 
     // React to digits (0 to 9)
-    m_signalMapper = new QSignalMapper(this);
     for (int i = 0; i <= 9; ++i)
     {
         QString numStr = QString("%1").arg(i);
         shortcut = new QShortcut(numStr, treeViewResults);
         shortcut->setContext(Qt::WidgetWithChildrenShortcut);
-        QObject::connect(shortcut, SIGNAL(activated()),
-                         m_signalMapper, SLOT(map()));
-        m_signalMapper->setMapping(shortcut, numStr);
+
+        QObject::connect(shortcut, &QShortcut::activated,
+                         this, [this, numStr]() { this->selectTableNumber(numStr); });
     }
-    QObject::connect(m_signalMapper, SIGNAL(mapped(const QString&)),
-                     this, SLOT(selectTableNumber(const QString&)));
 
     // Validate manual rack changes
-    QObject::connect(lineEditRack, SIGNAL(textEdited(const QString&)),
-                     this, SLOT(rackEdited(const QString&)));
+    QObject::connect(lineEditRack, &QLineEdit::textEdited,
+                     this, &ArbitrationWidget::rackEdited);
     // Propagate the information on rack change
-    QObject::connect(lineEditRack, SIGNAL(textChanged(const QString&)),
-                     this, SIGNAL(rackUpdated(const QString&)));
+    QObject::connect(lineEditRack, &QLineEdit::textChanged,
+                     this, &ArbitrationWidget::rackUpdated);
     // Clear the results when the rack changes
-    QObject::connect(lineEditRack, SIGNAL(textChanged(const QString&)),
-                     this, SLOT(rackChanged()));
+    QObject::connect(lineEditRack, &QLineEdit::textChanged,
+                     this, &ArbitrationWidget::rackChanged);
     // Perform a search on Enter
-    QObject::connect(lineEditRack, SIGNAL(returnPressed()),
-                     this, SLOT(searchResults()));
+    QObject::connect(lineEditRack, &QLineEdit::returnPressed,
+                     this, &ArbitrationWidget::searchResults);
 
     // Set a random rack
-    QObject::connect(buttonRandom, SIGNAL(clicked()),
-                     this, SLOT(setRackRandom()));
+    QObject::connect(buttonRandom, &QAbstractButton::clicked,
+                     this, &ArbitrationWidget::setRackRandom);
 
     // Perform a search
-    QObject::connect(buttonSearch, SIGNAL(clicked()),
-                     this, SLOT(searchResults()));
+    QObject::connect(buttonSearch, &QAbstractButton::clicked,
+                     this, &ArbitrationWidget::searchResults);
 
     // Display a preview of the selected word on the board
     QObject::connect(treeViewResults->selectionModel(),
-                     SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
-                     this, SLOT(showPreview(const QItemSelection&)));
+                     &QItemSelectionModel::selectionChanged,
+                     this, &ArbitrationWidget::showPreview);
 
     // Dynamic filters for search results
-    QObject::connect(lineEditFilterWord, SIGNAL(textChanged(const QString&)),
-                     this, SLOT(resultsFilterWordChanged(const QString&)));
-    QObject::connect(lineEditFilterPoints, SIGNAL(textChanged(const QString&)),
-                     this, SLOT(resultsFilterPointsChanged(const QString&)));
+    QObject::connect(lineEditFilterWord, &QLineEdit::textChanged,
+                     this, &ArbitrationWidget::resultsFilterWordChanged);
+    QObject::connect(lineEditFilterPoints, &QLineEdit::textChanged,
+                     this, &ArbitrationWidget::resultsFilterPointsChanged);
 
     // Enable the assignment buttons according to the selections in trees
     QObject::connect(treeViewResults->selectionModel(),
-                     SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
-                     m_assignmentsWidget, SLOT(enableAssignmentButtons()));
+                     &QItemSelectionModel::selectionChanged,
+                     m_assignmentsWidget, &ArbitAssignments::enableAssignmentButtons);
 
     // Enable the assignment buttons according to the selections in trees
     QObject::connect(treeViewResults->selectionModel(),
-                     SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
-                     this, SLOT(updateSelectedMove()));
+                     &QItemSelectionModel::selectionChanged,
+                     this, &ArbitrationWidget::updateSelectedMove);
 
     // Coordinates model
-    QObject::connect(&m_playModel, SIGNAL(coordChanged(const Coord&, const Coord&)),
-                     this, SLOT(updateCoordText(const Coord&)));
-    QObject::connect(lineEditCoords, SIGNAL(textChanged(const QString&)),
-                     this, SLOT(updatePlayModel(const QString&)));
+    QObject::connect(&m_playModel, &PlayModel::coordChanged,
+                     this, &ArbitrationWidget::updateCoordText);
+    QObject::connect(lineEditCoords, &QLineEdit::textChanged,
+                     this, &ArbitrationWidget::updatePlayModel);
 
     // Enable the "Check word" button only when there is a word with coordinates
-    QObject::connect(lineEditWord, SIGNAL(textChanged(const QString&)),
-                     this, SLOT(enableCheckWordButton()));
-    QObject::connect(lineEditCoords, SIGNAL(textChanged(const QString&)),
-                     this, SLOT(enableCheckWordButton()));
+    QObject::connect(lineEditWord, &QLineEdit::textChanged,
+                     this, &ArbitrationWidget::enableCheckWordButton);
+    QObject::connect(lineEditCoords, &QLineEdit::textChanged,
+                     this, &ArbitrationWidget::enableCheckWordButton);
 
     // Check the given word
-    QObject::connect(lineEditWord, SIGNAL(returnPressed()),
-                     this, SLOT(checkWord()));
-    QObject::connect(lineEditCoords, SIGNAL(returnPressed()),
-                     this, SLOT(checkWord()));
-    QObject::connect(buttonCheck, SIGNAL(clicked()),
-                     this, SLOT(checkWord()));
+    QObject::connect(lineEditWord, &QLineEdit::returnPressed,
+                     this, &ArbitrationWidget::checkWord);
+    QObject::connect(lineEditCoords, &QLineEdit::returnPressed,
+                     this, &ArbitrationWidget::checkWord);
+    QObject::connect(buttonCheck, &QAbstractButton::clicked,
+                     this, &ArbitrationWidget::checkWord);
 
     // Move assignment
-    QObject::connect(treeViewResults, SIGNAL(activated(const QModelIndex&)),
-                     m_assignmentsWidget, SLOT(assignSelectedMove()));
+    QObject::connect(treeViewResults, &QAbstractItemView::activated,
+                     m_assignmentsWidget, &ArbitAssignments::assignSelectedMove);
 
     // Add a context menu for the results
     m_resultsPopup = new CustomPopup(treeViewResults);
-    QObject::connect(m_resultsPopup, SIGNAL(popupCreated(QMenu&, const QPoint&)),
-                     this, SLOT(populateResultsMenu(QMenu&, const QPoint&)));
-    QObject::connect(m_resultsPopup, SIGNAL(requestDefinition(QString)),
-                     this, SIGNAL(requestDefinition(QString)));
+    QObject::connect(m_resultsPopup, &CustomPopup::popupCreated,
+                     this, &ArbitrationWidget::populateResultsMenu);
+    QObject::connect(m_resultsPopup, &CustomPopup::requestDefinition,
+                     this, &ArbitrationWidget::requestDefinition);
 
     refresh();
 
@@ -535,8 +531,8 @@ void ArbitrationWidget::populateResultsMenu(QMenu &iMenu, const QPoint &iPoint)
     setAsMasterAction->setStatusTip(_q("Use the selected move (%1) as master move")
                                     .arg(formatMove(move)));
     setAsMasterAction->setShortcut(Qt::SHIFT | Qt::Key_M);
-    QObject::connect(setAsMasterAction, SIGNAL(triggered()),
-                     m_assignmentsWidget, SLOT(setMasterMove()));
+    QObject::connect(setAsMasterAction, &QAction::triggered,
+                     m_assignmentsWidget, &ArbitAssignments::setMasterMove);
     iMenu.addAction(setAsMasterAction);
     if (!m_assignmentsWidget->isSetMasterAllowed())
         setAsMasterAction->setEnabled(false);
@@ -546,8 +542,8 @@ void ArbitrationWidget::populateResultsMenu(QMenu &iMenu, const QPoint &iPoint)
         new QAction(_q("Select all players"), this);
     selectAllAction->setStatusTip(_q("Select all the players"));
     selectAllAction->setShortcut(Qt::SHIFT | Qt::Key_A);
-    QObject::connect(selectAllAction, SIGNAL(triggered()),
-                     m_assignmentsWidget, SLOT(selectAllPlayers()));
+    QObject::connect(selectAllAction, &QAction::triggered,
+                     m_assignmentsWidget, &ArbitAssignments::selectAllPlayers);
     iMenu.addAction(selectAllAction);
 
     // Action to assign the selected move
@@ -556,8 +552,8 @@ void ArbitrationWidget::populateResultsMenu(QMenu &iMenu, const QPoint &iPoint)
     assignSelMoveAction->setStatusTip(_q("Assign move (%1) to the selected player(s)")
                                       .arg(formatMove(move)));
     assignSelMoveAction->setShortcut(Qt::Key_Enter);
-    QObject::connect(assignSelMoveAction, SIGNAL(triggered()),
-                     m_assignmentsWidget, SLOT(assignSelectedMove()));
+    QObject::connect(assignSelMoveAction, &QAction::triggered,
+                     m_assignmentsWidget, &ArbitAssignments::assignSelectedMove);
     iMenu.addAction(assignSelMoveAction);
     if (!m_assignmentsWidget->isAssignMoveAllowed())
         assignSelMoveAction->setEnabled(false);

@@ -68,8 +68,8 @@ PrefsDialog::PrefsDialog(QWidget *iParent)
 {
     setupUi(this);
 
-    QObject::connect(pushButtonIntfDicBrowse, SIGNAL(clicked()),
-                     this, SLOT(browseDic()));
+    QObject::connect(pushButtonIntfDicBrowse, &QAbstractButton::clicked,
+                     this, &PrefsDialog::browseDic);
 
     // Display the first tab
     tabWidget->setCurrentIndex(0);
@@ -119,10 +119,10 @@ PrefsDialog::PrefsDialog(QWidget *iParent)
 
     // The "arbitration.solo-players" setting is meaningful only
     // when "arbitration.solo-auto" is true
-    QObject::connect(checkBoxArbitSoloAuto, SIGNAL(toggled(bool)),
-                     labelArbitSoloPlayers, SLOT(setEnabled(bool)));
-    QObject::connect(checkBoxArbitSoloAuto, SIGNAL(toggled(bool)),
-                     spinBoxArbitSoloPlayers, SLOT(setEnabled(bool)));
+    QObject::connect(checkBoxArbitSoloAuto, &QAbstractButton::toggled,
+                     labelArbitSoloPlayers, &QWidget::setEnabled);
+    QObject::connect(checkBoxArbitSoloAuto, &QAbstractButton::toggled,
+                     spinBoxArbitSoloPlayers, &QWidget::setEnabled);
 
     try
     {

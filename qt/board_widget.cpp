@@ -96,8 +96,8 @@ BoardWidget::BoardWidget(PlayModel &iPlayModel, QWidget *parent)
             m_widgetsMatrix[row][col] = t;
             layout->addWidget(t);
             // Listen to mouse events on the tile
-            connect(t, SIGNAL(mousePressed(int, int, QMouseEvent*)),
-                    this, SLOT(tileClicked(int, int, QMouseEvent*)));
+            connect(t, &TileWidget::mousePressed,
+                    this, &BoardWidget::tileClicked);
         }
     }
 
@@ -108,10 +108,10 @@ BoardWidget::BoardWidget(PlayModel &iPlayModel, QWidget *parent)
     setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
 
     // Listen to changes in the coordinates
-    QObject::connect(&m_playModel, SIGNAL(coordChanged(const Coord&, const Coord&)),
-                     this, SLOT(updateArrow(const Coord&, const Coord&)));
-    QObject::connect(&m_playModel, SIGNAL(moveChanged(const Move&, const Move&)),
-                     this, SLOT(onMoveChanged(const Move&)));
+    QObject::connect(&m_playModel, &PlayModel::coordChanged,
+                     this, &BoardWidget::updateArrow);
+    QObject::connect(&m_playModel, &PlayModel::moveChanged,
+                     this, &BoardWidget::onMoveChanged);
 }
 
 

@@ -67,8 +67,8 @@ void UpdateChecker::checkForUpdate()
     emit notifyInfo(_q("Checking for updates..."));
 
     QNetworkAccessManager *networkManager = new QNetworkAccessManager(this);
-    QObject::connect(networkManager, SIGNAL(finished(QNetworkReply*)),
-                     this, SLOT(updateCheckFinished(QNetworkReply*)));
+    QObject::connect(networkManager, &QNetworkAccessManager::finished,
+                     this, &UpdateChecker::updateCheckFinished);
     networkManager->get(QNetworkRequest(QUrl(URL)));
 }
 

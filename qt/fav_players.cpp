@@ -82,18 +82,18 @@ FavPlayersDialog::FavPlayersDialog(QWidget *parent)
     hLayout->addStretch();
     QPushButton *buttonImport = new QPushButton(_q("CSV Import..."));
     hLayout->addWidget(buttonImport);
-    QObject::connect(buttonImport, SIGNAL(clicked()),
-                     this, SLOT(importPlayers()));
+    QObject::connect(buttonImport, &QAbstractButton::clicked,
+                     this, &FavPlayersDialog::importPlayers);
     QPushButton *buttonExport = new QPushButton(_q("CSV Export..."));
     hLayout->addWidget(buttonExport);
-    QObject::connect(buttonExport, SIGNAL(clicked()),
-                     this, SLOT(exportPlayers()));
+    QObject::connect(buttonExport, &QAbstractButton::clicked,
+                     this, &FavPlayersDialog::exportPlayers);
 
     QDialogButtonBox *buttonBox =
         new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     vLayout->addWidget(buttonBox);
-    connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
-    connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+    connect(buttonBox, &QDialogButtonBox::accepted, this, &FavPlayersDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 
     m_helper = new PlayersTableHelper(this, tableFav, buttonAdd, buttonRemove, true);
     m_helper->addPopupRemoveAction();

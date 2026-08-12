@@ -49,21 +49,21 @@ PlayerWidget::PlayerWidget(QWidget *parent, PlayModel &iPlayModel,
     m_mediator = new PlayWordMediator(this, *lineEditPlay, *lineEditCoords,
                                       lineEditPoints, *pushButtonPlay,
                                       iPlayModel, iGame);
-    QObject::connect(m_mediator, SIGNAL(gameUpdated()),
-                     this, SIGNAL(gameUpdated()));
-    QObject::connect(m_mediator, SIGNAL(notifyProblem(QString)),
-                     this, SIGNAL(notifyProblem(QString)));
+    QObject::connect(m_mediator, &PlayWordMediator::gameUpdated,
+                     this, &PlayerWidget::gameUpdated);
+    QObject::connect(m_mediator, &PlayWordMediator::notifyProblem,
+                     this, &PlayerWidget::notifyProblem);
 
-    QObject::connect(pushButtonShuffle, SIGNAL(clicked()),
-                     this, SLOT(shuffle()));
-    QObject::connect(pushButtonPass, SIGNAL(clicked()),
-                     this, SLOT(pass()));
-    QObject::connect(pushButtonChange, SIGNAL(clicked()),
-                     this, SLOT(changeLetters()));
-    QObject::connect(lineEditChange, SIGNAL(returnPressed()),
-                     this, SLOT(changeLetters()));
-    QObject::connect(lineEditChange, SIGNAL(textChanged(const QString&)),
-                     this, SLOT(enableChangeButton()));
+    QObject::connect(pushButtonShuffle, &QAbstractButton::clicked,
+                     this, &PlayerWidget::shuffle);
+    QObject::connect(pushButtonPass, &QAbstractButton::clicked,
+                     this, &PlayerWidget::pass);
+    QObject::connect(pushButtonChange, &QAbstractButton::clicked,
+                     this, &PlayerWidget::changeLetters);
+    QObject::connect(lineEditChange, &QLineEdit::returnPressed,
+                     this, &PlayerWidget::changeLetters);
+    QObject::connect(lineEditChange, &QLineEdit::textChanged,
+                     this, &PlayerWidget::enableChangeButton);
 
     lineEditRack->setReadOnly(true);
 
@@ -204,8 +204,8 @@ void PlayerWidget::helperChangePass(QString inputLetters)
 PlayerTabWidget::PlayerTabWidget(PlayModel &iPlayModel, QWidget *parent)
     : QTabWidget(parent),  m_playModel(iPlayModel)
 {
-    QObject::connect(this, SIGNAL(currentChanged(int)),
-                     this, SLOT(changeCurrentPlayer(int)));
+    QObject::connect(this, &QTabWidget::currentChanged,
+                     this, &PlayerTabWidget::changeCurrentPlayer);
 }
 
 
@@ -234,12 +234,12 @@ void PlayerTabWidget::setGame(PublicGame *iGame)
         {
             const Player &player = iGame->getPlayer(i);
             PlayerWidget *p = new PlayerWidget(nullptr, m_playModel, i, iGame);
-            QObject::connect(this, SIGNAL(refreshSignal()), p, SLOT(refresh()));
+            QObject::connect(this, &PlayerTabWidget::refreshSignal, p, &PlayerWidget::refresh);
             // Forward signals to the outside
-            QObject::connect(p, SIGNAL(notifyProblem(QString)),
-                             this, SIGNAL(notifyProblem(QString)));
-            QObject::connect(p, SIGNAL(gameUpdated()),
-                             this, SIGNAL(gameUpdated()));
+            QObject::connect(p, &PlayerWidget::notifyProblem,
+                             this, &PlayerTabWidget::notifyProblem);
+            QObject::connect(p, &PlayerWidget::gameUpdated,
+                             this, &PlayerTabWidget::gameUpdated);
             addTab(p, qfw(player.getName()));
             // Switching to a tab corresponding to an AI player
             // is forbidden

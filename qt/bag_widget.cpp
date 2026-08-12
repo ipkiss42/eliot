@@ -127,15 +127,15 @@ BagWidget2::BagWidget2(QWidget *parent)
     actionPlayed->setCheckable(true);
     actionPlayed->setChecked(true);
     addAction(actionPlayed);
-    QObject::connect(actionPlayed, SIGNAL(toggled(bool)),
-                     this, SLOT(setShowPlayedTiles(bool)));
+    QObject::connect(actionPlayed, &QAction::toggled,
+                     this, &BagWidget2::setShowPlayedTiles);
 
     QAction *actionInRack = new QAction(_q("Highlight tiles present in the rack"), this);
     actionInRack->setCheckable(true);
     actionInRack->setChecked(true);
     addAction(actionInRack);
-    QObject::connect(actionInRack, SIGNAL(toggled(bool)),
-                     this, SLOT(setShowTilesInRack(bool)));
+    QObject::connect(actionInRack, &QAction::toggled,
+                     this, &BagWidget2::setShowTilesInRack);
 
     setContextMenuPolicy(Qt::ActionsContextMenu);
 }

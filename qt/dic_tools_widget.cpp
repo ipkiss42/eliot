@@ -62,37 +62,37 @@ DicToolsWidget::DicToolsWidget(QWidget *parent)
     labelLimitReached->hide();
 
     // Create connections
-    QObject::connect(lineEditCheck, SIGNAL(textChanged(const QString&)),
-                     this, SLOT(refreshCheck()));
-    QObject::connect(lineEditPlus1, SIGNAL(textChanged(const QString&)),
-                     this, SLOT(enableSearchPlus1()));
-    QObject::connect(lineEditPlus1, SIGNAL(returnPressed()),
-                     this, SLOT(refreshPlus1()));
-    QObject::connect(buttonSearchPlus1, SIGNAL(clicked()),
-                     this, SLOT(refreshPlus1()));
-    QObject::connect(lineEditRegexp, SIGNAL(textChanged(const QString&)),
-                     this, SLOT(enableSearchRegexp()));
-    QObject::connect(lineEditRegexp, SIGNAL(returnPressed()),
-                     this, SLOT(refreshRegexp()));
-    QObject::connect(buttonSearchRegexp, SIGNAL(clicked()),
-                     this, SLOT(refreshRegexp()));
-    QObject::connect(buttonSaveRegexp, SIGNAL(clicked()),
-                     this, SLOT(saveRegexpResults()));
-    QObject::connect(buttonSaveWords, SIGNAL(clicked()),
-                     this, SLOT(exportWordsList()));
+    QObject::connect(lineEditCheck, &QLineEdit::textChanged,
+                     this, &DicToolsWidget::refreshCheck);
+    QObject::connect(lineEditPlus1, &QLineEdit::textChanged,
+                     this, &DicToolsWidget::enableSearchPlus1);
+    QObject::connect(lineEditPlus1, &QLineEdit::returnPressed,
+                     this, &DicToolsWidget::refreshPlus1);
+    QObject::connect(buttonSearchPlus1, &QAbstractButton::clicked,
+                     this, &DicToolsWidget::refreshPlus1);
+    QObject::connect(lineEditRegexp, &QLineEdit::textChanged,
+                     this, &DicToolsWidget::enableSearchRegexp);
+    QObject::connect(lineEditRegexp, &QLineEdit::returnPressed,
+                     this, &DicToolsWidget::refreshRegexp);
+    QObject::connect(buttonSearchRegexp, &QAbstractButton::clicked,
+                     this, &DicToolsWidget::refreshRegexp);
+    QObject::connect(buttonSaveRegexp, &QAbstractButton::clicked,
+                     this, &DicToolsWidget::saveRegexpResults);
+    QObject::connect(buttonSaveWords, &QAbstractButton::clicked,
+                     this, &DicToolsWidget::exportWordsList);
 
     // Add context menus for the results
     m_customPopupPlus1 = new CustomPopup(treeViewPlus1);
-    QObject::connect(m_customPopupPlus1, SIGNAL(popupCreated(QMenu&, const QPoint&)),
-                     this, SLOT(populateMenuPlus1(QMenu&, const QPoint&)));
-    QObject::connect(m_customPopupPlus1, SIGNAL(requestDefinition(QString)),
-                     this, SIGNAL(requestDefinition(QString)));
+    QObject::connect(m_customPopupPlus1, &CustomPopup::popupCreated,
+                     this, &DicToolsWidget::populateMenuPlus1);
+    QObject::connect(m_customPopupPlus1, &CustomPopup::requestDefinition,
+                     this, &DicToolsWidget::requestDefinition);
 
     m_customPopupRegexp = new CustomPopup(treeViewRegexp);
-    QObject::connect(m_customPopupRegexp, SIGNAL(popupCreated(QMenu&, const QPoint&)),
-                     this, SLOT(populateMenuRegexp(QMenu&, const QPoint&)));
-    QObject::connect(m_customPopupRegexp, SIGNAL(requestDefinition(QString)),
-                     this, SIGNAL(requestDefinition(QString)));
+    QObject::connect(m_customPopupRegexp, &CustomPopup::popupCreated,
+                     this, &DicToolsWidget::populateMenuRegexp);
+    QObject::connect(m_customPopupRegexp, &CustomPopup::requestDefinition,
+                     this, &DicToolsWidget::requestDefinition);
 
     // Create models
     m_plus1Model = new QStandardItemModel(this);

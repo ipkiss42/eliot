@@ -71,14 +71,14 @@ WizardInfoPage::WizardInfoPage(QWidget *parent)
                                   "contain one word on each line."));
 
     // Handle the Browse buttons
-    connect(buttonBrowseGenDic, SIGNAL(clicked(bool)),
-            this, SLOT(onBrowseGenDicClicked()));
-    connect(buttonBrowseWordList, SIGNAL(clicked(bool)),
-            this, SLOT(onBrowseWordListClicked()));
+    connect(buttonBrowseGenDic, &QAbstractButton::clicked,
+            this, &WizardInfoPage::onBrowseGenDicClicked);
+    connect(buttonBrowseWordList, &QAbstractButton::clicked,
+            this, &WizardInfoPage::onBrowseWordListClicked);
 
     // Connection needed for proper calls to the isComplete() method
-    connect(editGenDic, SIGNAL(textChanged(const QString&)),
-            this, SIGNAL(completeChanged()));
+    connect(editGenDic, &QLineEdit::textChanged,
+            this, &QWizardPage::completeChanged);
 
     // Register fields and make them mandatory
     registerField("dicName*", editDicName);
@@ -225,11 +225,11 @@ WizardLettersDefPage::WizardLettersDefPage(const Dictionary *iCurrDic, QWidget *
     treeLetters->header()->setDefaultAlignment(Qt::AlignCenter);
     treeLetters->setItemDelegate(new LettersDelegate);
 
-    connect(buttonLoadLetters, SIGNAL(clicked(bool)),
-            this, SLOT(loadLettersFromWordList()));
+    connect(buttonLoadLetters, &QAbstractButton::clicked,
+            this, &WizardLettersDefPage::loadLettersFromWordList);
 
-    connect(buttonLoadFromDic, SIGNAL(clicked(bool)),
-            this, SLOT(loadValuesFromDic()));
+    connect(buttonLoadFromDic, &QAbstractButton::clicked,
+            this, &WizardLettersDefPage::loadValuesFromDic);
 }
 
 
@@ -372,15 +372,15 @@ DicWizard::DicWizard(QWidget *parent, const Dictionary *iCurrDic)
     setOption(QWizard::IndependentPages);
     setModal(true);
 
-    QWizardPage *page = new WizardInfoPage;
-    QObject::connect(page, SIGNAL(notifyProblem(QString)),
-                     this, SIGNAL(notifyProblem(QString)));
-    addPage(page);
+    WizardInfoPage *page1 = new WizardInfoPage;
+    QObject::connect(page1, &WizardInfoPage::notifyProblem,
+                     this, &DicWizard::notifyProblem);
+    addPage(page1);
 
-    page = new WizardLettersDefPage(iCurrDic);
-    QObject::connect(page, SIGNAL(notifyProblem(QString)),
-                     this, SIGNAL(notifyProblem(QString)));
-    m_lettersPageId = addPage(page);
+    WizardLettersDefPage *page2 = new WizardLettersDefPage(iCurrDic);
+    QObject::connect(page2, &WizardLettersDefPage::notifyProblem,
+                     this, &DicWizard::notifyProblem);
+    m_lettersPageId = addPage(page2);
 
     addPage(new WizardConclusionPage());
 }

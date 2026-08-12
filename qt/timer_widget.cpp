@@ -39,7 +39,7 @@ TimerModel::TimerModel(int iTotalDuration, int iAlertDuration)
     setAlertDuration(iAlertDuration);
     m_alertTriggered = false;
 
-    QObject::connect(m_timer, SIGNAL(timeout()), this, SLOT(updateTime()));
+    QObject::connect(m_timer, &QTimer::timeout, this, &TimerModel::updateTime);
 }
 
 
@@ -139,14 +139,14 @@ TimerWidget::TimerWidget(QWidget *parent, TimerModel &iTimerModel)
 {
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-    QObject::connect(&m_model, SIGNAL(valueChanged(int)),
-                     this, SLOT(displayTime(int)));
-    QObject::connect(&m_model, SIGNAL(alert(int)),
-                     this, SLOT(alertTriggered()));
-    QObject::connect(&m_model, SIGNAL(timerReset()),
-                     this, SLOT(timerReset()));
-    QObject::connect(&m_model, SIGNAL(newTotalDuration(int)),
-                     this, SLOT(newTotalDuration(int)));
+    QObject::connect(&m_model, &TimerModel::valueChanged,
+                     this, &TimerWidget::displayTime);
+    QObject::connect(&m_model, &TimerModel::alert,
+                     this, &TimerWidget::alertTriggered);
+    QObject::connect(&m_model, &TimerModel::timerReset,
+                     this, &TimerWidget::timerReset);
+    QObject::connect(&m_model, &TimerModel::newTotalDuration,
+                     this, &TimerWidget::newTotalDuration);
 
     // Initialize the display
     newTotalDuration(m_model.getTotalDuration());

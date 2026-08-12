@@ -66,11 +66,11 @@ RackWidget::RackWidget(QWidget *parent)
 void RackWidget::setPlayModel(PlayModel *iPlayModel)
 {
     if (m_playModel != nullptr)
-        m_playModel->disconnect(this, SLOT(refresh()));
+        this->disconnect(m_playModel);
     if (iPlayModel != nullptr)
     {
-        QObject::connect(iPlayModel, SIGNAL(moveChanged(const Move &, const Move&)),
-                         this, SLOT(refresh()));
+        QObject::connect(iPlayModel, &PlayModel::moveChanged,
+                         this, &RackWidget::refresh);
     }
     m_playModel = iPlayModel;
 }
@@ -127,8 +127,8 @@ void RackWidget::refresh()
     {
         TileWidget *tileWidget =
             new TileWidget(nullptr, TileWidget::NONE, 0, m_tilesVect.size());
-        QObject::connect(tileWidget, SIGNAL(mousePressed(int, int, QMouseEvent*)),
-                         this, SLOT(tilePressed(int, int, QMouseEvent*)));
+        QObject::connect(tileWidget, &TileWidget::mousePressed,
+                         this, &RackWidget::tilePressed);
         tileWidget->setBorder(2);
         layout()->addWidget(tileWidget);
         m_tilesVect.push_back(tileWidget);

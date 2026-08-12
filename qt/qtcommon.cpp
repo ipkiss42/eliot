@@ -213,8 +213,8 @@ bool QtCommon::requestConfirmation(QString confoKey, QString iMsg,
     QDialogButtonBox *buttons =
         new QDialogButtonBox(QDialogButtonBox::Yes | QDialogButtonBox::No);
     layout->addWidget(buttons, 3, 0, 1, 2);
-    QObject::connect(buttons, SIGNAL(accepted()), &dialog, SLOT(accept()));
-    QObject::connect(buttons, SIGNAL(rejected()), &dialog, SLOT(reject()));
+    QObject::connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);
+    QObject::connect(buttons, &QDialogButtonBox::rejected, &dialog, &QDialog::reject);
     buttons->button(QDialogButtonBox::Yes)->setDefault(true);
 
     if (!withCheckbox)

@@ -57,8 +57,8 @@ HintWidget::HintWidget(const AbstractHint &iHint,
 
     QPushButton *button = new QPushButton(_q("Show"));
     button->setToolTip(qfl(m_hint.getDescription()));
-    QObject::connect(button, SIGNAL(clicked()),
-                     this, SLOT(buttonClicked()));
+    QObject::connect(button, &QAbstractButton::clicked,
+                     this, &HintWidget::buttonClicked);
     layout->addWidget(button);
 
     setContentsMargins(0, 0, 0, 0);
@@ -94,7 +94,7 @@ HintsDialog::HintsDialog(QWidget *parent, bool iShowCosts)
 
     QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Cancel);
     vLayout->addWidget(buttonBox);
-    connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
+    connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 
     setWindowTitle(_q("Hints"));
 }

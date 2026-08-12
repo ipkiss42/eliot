@@ -78,77 +78,77 @@ ArbitAssignments::ArbitAssignments(QWidget *parent, PublicGame *iGame)
     QShortcut *shortcut;
     shortcut = new QShortcut(QKeySequence::Delete, treeViewPlayers);
     shortcut->setContext(Qt::WidgetWithChildrenShortcut);
-    QObject::connect(shortcut, SIGNAL(activated()),
-                     this, SLOT(suppressMove()));
+    QObject::connect(shortcut, &QShortcut::activated,
+                     this, &ArbitAssignments::suppressMove);
 
     // TRANSLATORS: 'T' is the keyboard shortcut used in arbitration mode
     // to assign the top move to players. If translated, the translation
     // will be used as shortcut instead of 'T'.
     shortcut = new QShortcut(_q("T"), treeViewPlayers);
     shortcut->setContext(Qt::WidgetWithChildrenShortcut);
-    QObject::connect(shortcut, SIGNAL(activated()),
-                     this, SLOT(assignTopMove()));
+    QObject::connect(shortcut, &QShortcut::activated,
+                     this, &ArbitAssignments::assignTopMove);
 
     // TRANSLATORS: 'S' stands for Solo, it is used as column header in
     // the history, and in the players table in arbitration mode. It is also
     // used as shortcut to assign a solo, in arbitration mode.
     shortcut = new QShortcut(_q("S"), treeViewPlayers);
     shortcut->setContext(Qt::WidgetWithChildrenShortcut);
-    QObject::connect(shortcut, SIGNAL(activated()),
-                     this, SLOT(addRemoveSolo()));
+    QObject::connect(shortcut, &QShortcut::activated,
+                     this, &ArbitAssignments::addRemoveSolo);
 
     // TRANSLATORS: 'W' stands for Warning, it is used as column header in
     // the history, and in the players table in arbitration mode. It is also
     // used as shortcut to assign a warning, in arbitration mode.
     shortcut = new QShortcut(_q("W"), treeViewPlayers);
     shortcut->setContext(Qt::WidgetWithChildrenShortcut);
-    QObject::connect(shortcut, SIGNAL(activated()),
-                     this, SLOT(addRemoveWarning()));
+    QObject::connect(shortcut, &QShortcut::activated,
+                     this, &ArbitAssignments::addRemoveWarning);
 
     // TRANSLATORS: 'P' stands for Penalty, it is used as column header in
     // the history, and in the players table in arbitration mode. It is also
     // used as shortcut to assign a penalty, in arbitration mode.
     shortcut = new QShortcut(_q("P"), treeViewPlayers);
     shortcut->setContext(Qt::WidgetWithChildrenShortcut);
-    QObject::connect(shortcut, SIGNAL(activated()),
-                     this, SLOT(addRemovePenalty()));
+    QObject::connect(shortcut, &QShortcut::activated,
+                     this, &ArbitAssignments::addRemovePenalty);
 
     // Display a preview of the master word when clicked
-    QObject::connect(labelMasterMove, SIGNAL(clicked()),
-                     this, SLOT(showMasterPreview()));
+    QObject::connect(labelMasterMove, &ClickableLabel::clicked,
+                     this, &ArbitAssignments::showMasterPreview);
 
     // Enable the assignment buttons according to the selections in trees
     QObject::connect(treeViewPlayers->selectionModel(),
-                     SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
-                     this, SLOT(enableAssignmentButtons()));
+                     &QItemSelectionModel::selectionChanged,
+                     this, &ArbitAssignments::enableAssignmentButtons);
 
     // Emit the "playerSelected" signal when appropriate
     QObject::connect(treeViewPlayers->selectionModel(),
-                     SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
-                     this, SLOT(emitPlayerSelected()));
+                     &QItemSelectionModel::selectionChanged,
+                     this, &ArbitAssignments::emitPlayerSelected);
 
     // Move assignment
-    QObject::connect(buttonSelectMaster, SIGNAL(clicked()),
-                     this, SLOT(setMasterMove()));
-    QObject::connect(buttonSuppressMove, SIGNAL(clicked()),
-                     this, SLOT(suppressMove()));
-    QObject::connect(buttonAssign, SIGNAL(clicked()),
-                     this, SLOT(assignSelectedMove()));
-    QObject::connect(treeViewPlayers, SIGNAL(activated(const QModelIndex&)),
-                     this, SLOT(assignSelectedMove()));
+    QObject::connect(buttonSelectMaster, &QAbstractButton::clicked,
+                     this, &ArbitAssignments::setMasterMove);
+    QObject::connect(buttonSuppressMove, &QAbstractButton::clicked,
+                     this, &ArbitAssignments::suppressMove);
+    QObject::connect(buttonAssign, &QAbstractButton::clicked,
+                     this, &ArbitAssignments::assignSelectedMove);
+    QObject::connect(treeViewPlayers, &QAbstractItemView::activated,
+                     this, &ArbitAssignments::assignSelectedMove);
 
     // End turn
-    QObject::connect(buttonEndTurn, SIGNAL(clicked()),
-                     this, SLOT(endTurn()));
+    QObject::connect(buttonEndTurn, &QAbstractButton::clicked,
+                     this, &ArbitAssignments::endTurn);
 
     // Show/hide players with an assigned move
-    QObject::connect(checkBoxHideAssigned, SIGNAL(toggled(bool)),
-                     this, SLOT(updatePlayersModel()));
+    QObject::connect(checkBoxHideAssigned, &QAbstractButton::toggled,
+                     this, &ArbitAssignments::updatePlayersModel);
 
     // Add a context menu for the players
     CustomPopup *playersPopup = new CustomPopup(treeViewPlayers);
-    QObject::connect(playersPopup, SIGNAL(popupCreated(QMenu&, const QPoint&)),
-                     this, SLOT(populatePlayersMenu(QMenu&, const QPoint&)));
+    QObject::connect(playersPopup, &CustomPopup::popupCreated,
+                     this, &ArbitAssignments::populatePlayersMenu);
 
     refresh();
 }
@@ -302,8 +302,8 @@ void ArbitAssignments::populatePlayersMenu(QMenu &iMenu, const QPoint &iPoint)
     assignSelMoveAction->setStatusTip(_q("Assign move (%1) to the selected player(s)")
                     .arg(selMoveString));
     assignSelMoveAction->setShortcut(Qt::Key_Enter);
-    QObject::connect(assignSelMoveAction, SIGNAL(triggered()),
-                     this, SLOT(assignSelectedMove()));
+    QObject::connect(assignSelMoveAction, &QAction::triggered,
+                     this, &ArbitAssignments::assignSelectedMove);
     iMenu.addAction(assignSelMoveAction);
     if (!isAssignMoveAllowed())
         assignSelMoveAction->setEnabled(false);
@@ -312,16 +312,16 @@ void ArbitAssignments::populatePlayersMenu(QMenu &iMenu, const QPoint &iPoint)
     QAction *assignTopMoveAction = new QAction(_q("Assign top move (if unique)"), this);
     assignTopMoveAction->setStatusTip(_q("Assign the top move (if unique) to the selected player(s)"));
     assignTopMoveAction->setShortcut(_q("T"));
-    QObject::connect(assignTopMoveAction, SIGNAL(triggered()),
-                     this, SLOT(assignTopMove()));
+    QObject::connect(assignTopMoveAction, &QAction::triggered,
+                     this, &ArbitAssignments::assignTopMove);
     iMenu.addAction(assignTopMoveAction);
 
     // Action to suppress an assigned move
     QAction *suppressMoveAction = new QAction(_q("Suppress assigned move"), this);
     suppressMoveAction->setStatusTip(_q("Suppress the currently assigned move for the selected player(s)"));
     suppressMoveAction->setShortcut(Qt::Key_Delete);
-    QObject::connect(suppressMoveAction, SIGNAL(triggered()),
-                     this, SLOT(suppressMove()));
+    QObject::connect(suppressMoveAction, &QAction::triggered,
+                     this, &ArbitAssignments::suppressMove);
     iMenu.addAction(suppressMoveAction);
     if (!isSuppressMoveAllowed())
         suppressMoveAction->setEnabled(false);
@@ -330,16 +330,16 @@ void ArbitAssignments::populatePlayersMenu(QMenu &iMenu, const QPoint &iPoint)
     QAction *selectAllAction = new QAction(_q("Select all players"), this);
     selectAllAction->setStatusTip(_q("Select all the players"));
     selectAllAction->setShortcut(QKeySequence::SelectAll);
-    QObject::connect(selectAllAction, SIGNAL(triggered()),
-                     this, SLOT(selectAllPlayers()));
+    QObject::connect(selectAllAction, &QAction::triggered,
+                     this, &ArbitAssignments::selectAllPlayers);
     iMenu.addAction(selectAllAction);
 
     // Action to give or remove a solo to players
     QAction *soloAction = new QAction(_q("Give (or remove) a solo"), this);
     soloAction->setStatusTip(_q("Give a solo to the selected player, or remove it if (s)he already has one"));
     soloAction->setShortcut(_q("S"));
-    QObject::connect(soloAction, SIGNAL(triggered()),
-                     this, SLOT(addRemoveSolo()));
+    QObject::connect(soloAction, &QAction::triggered,
+                     this, &ArbitAssignments::addRemoveSolo);
     iMenu.addAction(soloAction);
     if (useSoloAuto())
         soloAction->setEnabled(false);
@@ -348,16 +348,16 @@ void ArbitAssignments::populatePlayersMenu(QMenu &iMenu, const QPoint &iPoint)
     QAction *warningAction = new QAction(_q("Give (or remove) a warning"), this);
     warningAction->setStatusTip(_q("Give a warning to the selected player(s), or remove it if they already have one"));
     warningAction->setShortcut(_q("W"));
-    QObject::connect(warningAction, SIGNAL(triggered()),
-                     this, SLOT(addRemoveWarning()));
+    QObject::connect(warningAction, &QAction::triggered,
+                     this, &ArbitAssignments::addRemoveWarning);
     iMenu.addAction(warningAction);
 
     // Action to give or remove a penalty to players
     QAction *penaltyAction = new QAction(_q("Give (or remove) a penalty"), this);
     penaltyAction->setStatusTip(_q("Give a penalty to the selected player(s), or remove it if they already have one"));
     penaltyAction->setShortcut(_q("P"));
-    QObject::connect(penaltyAction, SIGNAL(triggered()),
-                     this, SLOT(addRemovePenalty()));
+    QObject::connect(penaltyAction, &QAction::triggered,
+                     this, &ArbitAssignments::addRemovePenalty);
     iMenu.addAction(penaltyAction);
 }
 

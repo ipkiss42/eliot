@@ -96,16 +96,16 @@ PlayersTableHelper::PlayersTableHelper(QObject *parent,
 
     if (m_buttonAdd)
     {
-        QObject::connect(m_buttonAdd, SIGNAL(clicked()),
-                         this, SLOT(addRow()));
+        QObject::connect(m_buttonAdd, &QPushButton::clicked,
+                         this, [this]() { this->addRow(); });
     }
     if (m_buttonRemove)
     {
-        QObject::connect(m_buttonRemove, SIGNAL(clicked()),
-                         this, SLOT(removeSelectedRows()));
+        QObject::connect(m_buttonRemove, &QAbstractButton::clicked,
+                         this, &PlayersTableHelper::removeSelectedRows);
     }
-    QObject::connect(tablePlayers, SIGNAL(itemSelectionChanged()),
-                     this, SLOT(enableSelDepButtons()));
+    QObject::connect(tablePlayers, &QTableWidget::itemSelectionChanged,
+                     this, &PlayersTableHelper::enableSelDepButtons);
 
     PlayersTypeDelegate *typeDelegate = new PlayersTypeDelegate(this);
     m_tablePlayers->setItemDelegateForColumn(1, typeDelegate);
@@ -114,8 +114,8 @@ PlayersTableHelper::PlayersTableHelper(QObject *parent,
 
     // Add a context menu for the results
     CustomPopup *popup = new CustomPopup(m_tablePlayers);
-    QObject::connect(popup, SIGNAL(popupCreated(QMenu&, const QPoint&)),
-                     this, SLOT(populateMenu(QMenu&, const QPoint&)));
+    QObject::connect(popup, &CustomPopup::popupCreated,
+                     this, &PlayersTableHelper::populateMenu);
 }
 
 
@@ -125,10 +125,10 @@ void PlayersTableHelper::setUpDown(QPushButton *iButtonUp, QPushButton *iButtonD
            "The up and down buttons can only be associated once");
     m_buttonUp = iButtonUp;
     m_buttonDown = iButtonDown;
-    QObject::connect(m_buttonUp, SIGNAL(clicked()),
-                     this, SLOT(moveSelectionUp()));
-    QObject::connect(m_buttonDown, SIGNAL(clicked()),
-                     this, SLOT(moveSelectionDown()));
+    QObject::connect(m_buttonUp, &QAbstractButton::clicked,
+                     this, &PlayersTableHelper::moveSelectionUp);
+    QObject::connect(m_buttonDown, &QAbstractButton::clicked,
+                     this, &PlayersTableHelper::moveSelectionDown);
     // Set a correct initial state
     enableSelDepButtons();
 }
@@ -158,8 +158,8 @@ void PlayersTableHelper::addPopupRemoveAction()
     QAction *removeAction = new QAction(_q("Remove selected player(s)"), this);
     removeAction->setStatusTip(_q("Remove the selected player(s) from the list"));
     removeAction->setShortcut(QKeySequence::Delete);
-    QObject::connect(removeAction, SIGNAL(triggered()),
-                     this, SLOT(removeSelectedRows()));
+    QObject::connect(removeAction, &QAction::triggered,
+                     this, &PlayersTableHelper::removeSelectedRows);
     // Add the action to the popup menu...
     addPopupAction(removeAction);
     // ... and to the table itself

@@ -59,8 +59,8 @@ ToppingWidget::ToppingWidget(QWidget *parent, PlayModel &iPlayModel,
     sizes << 1 << 1 << 10;
     splitter->setSizes(sizes);
 
-    QObject::connect(&iPlayModel, SIGNAL(movePlayed(const wstring&, const wstring&)),
-                     this, SLOT(playWord(const wstring&, const wstring&)));
+    QObject::connect(&iPlayModel, &PlayModel::movePlayed,
+                     this, &ToppingWidget::playWord);
 
     QHBoxLayout *layout = new QHBoxLayout(widgetContainer);
     layout->setContentsMargins(0, 0, 0, 0);
@@ -68,13 +68,13 @@ ToppingWidget::ToppingWidget(QWidget *parent, PlayModel &iPlayModel,
     TimerWidget *timerWidget = new TimerWidget(this, iTimerModel);
     timerWidget->setEnabled(false);
     //iTimerModel.setChronoMode(true);
-    QObject::connect(&iTimerModel, SIGNAL(expired()),
-                     this, SLOT(timeoutPenalty()));
+    QObject::connect(&iTimerModel, &TimerModel::expired,
+                     this, &ToppingWidget::timeoutPenalty);
     layout->addWidget(timerWidget);
 
     m_hintsDialog = new HintsDialog(this, true);
-    QObject::connect(m_hintsDialog, SIGNAL(hintUsed(const AbstractHint&)),
-                     this, SLOT(hintUsed(const AbstractHint&)));
+    QObject::connect(m_hintsDialog, &HintsDialog::hintUsed,
+                     this, &ToppingWidget::hintUsed);
 
     blackPalette = lineEditRack->palette();
     redPalette = lineEditRack->palette();
@@ -84,13 +84,13 @@ ToppingWidget::ToppingWidget(QWidget *parent, PlayModel &iPlayModel,
     m_mediator = new PlayWordMediator(this, *lineEditPlay, *lineEditCoords,
                                       nullptr, *pushButtonPlay,
                                       iPlayModel, m_game);
-    QObject::connect(m_mediator, SIGNAL(gameUpdated()),
-                     this, SIGNAL(gameUpdated()));
-    QObject::connect(m_mediator, SIGNAL(notifyProblem(QString)),
-                     this, SIGNAL(notifyProblem(QString)));
+    QObject::connect(m_mediator, &PlayWordMediator::gameUpdated,
+                     this, &ToppingWidget::gameUpdated);
+    QObject::connect(m_mediator, &PlayWordMediator::notifyProblem,
+                     this, &ToppingWidget::notifyProblem);
 
-    QObject::connect(pushButtonShuffle, SIGNAL(clicked()),
-                     this, SLOT(shuffle()));
+    QObject::connect(pushButtonShuffle, &QAbstractButton::clicked,
+                     this, &ToppingWidget::shuffle);
 
     // Associate the model to the view.
     // We use a proxy for easy sorting.
@@ -115,16 +115,16 @@ ToppingWidget::ToppingWidget(QWidget *parent, PlayModel &iPlayModel,
     lockSizesAction->setStatusTip(_q("Disable auto-resizing of the columns"));
     tableViewMoves->horizontalHeader()->addAction(lockSizesAction);
     tableViewMoves->horizontalHeader()->setContextMenuPolicy(Qt::ActionsContextMenu);
-    QObject::connect(lockSizesAction, SIGNAL(toggled(bool)),
-                     this, SLOT(lockSizesChanged(bool)));
+    QObject::connect(lockSizesAction, &QAction::toggled,
+                     this, &ToppingWidget::lockSizesChanged);
 
     // Allow very thin columns
     tableViewMoves->horizontalHeader()->setMinimumSectionSize(1);
 
     tableViewMoves->horizontalHeader()->resizeSection(1, 140);
 
-    QObject::connect(pushButtonGetHints, SIGNAL(clicked()),
-                     this, SLOT(showHintsDialog()));
+    QObject::connect(pushButtonGetHints, &QAbstractButton::clicked,
+                     this, &ToppingWidget::showHintsDialog);
 
     refresh();
 }

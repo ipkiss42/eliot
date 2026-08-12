@@ -96,8 +96,8 @@ NewGame::NewGame(const Dictionary &iDic, QWidget *iParent)
     m_helper->addPopupRemoveAction();
     QAction *addToFavAction = new QAction(_q("Mark the selected player(s) as favorites"), this);
     addToFavAction->setStatusTip(_q("Add the selected player(s) to the list of favorite players"));
-    QObject::connect(addToFavAction, SIGNAL(triggered()),
-                     this, SLOT(addSelectedToFav()));
+    QObject::connect(addToFavAction, &QAction::triggered,
+                     this, &NewGame::addSelectedToFav);
     m_helper->addPopupAction(addToFavAction);
     m_helper->setUpDown(buttonUp, buttonDown);
 
@@ -118,48 +118,48 @@ NewGame::NewGame(const Dictionary &iDic, QWidget *iParent)
 
     // Enable the Ok button only if there are enough players for the
     // current mode
-    QObject::connect(m_helper, SIGNAL(rowCountChanged()),
-                     this, SLOT(enableOkButton()));
-    QObject::connect(radioButtonDuplicate, SIGNAL(toggled(bool)),
-                     this, SLOT(enableOkButton()));
-    QObject::connect(radioButtonFreeGame, SIGNAL(toggled(bool)),
-                     this, SLOT(enableOkButton()));
-    QObject::connect(radioButtonTraining, SIGNAL(toggled(bool)),
-                     this, SLOT(enableOkButton()));
-    QObject::connect(checkBoxUseMaster, SIGNAL(toggled(bool)),
-                     this, SLOT(enableOkButton()));
-    QObject::connect(lineEditMaster, SIGNAL(textChanged(QString)),
-                     this, SLOT(enableOkButton()));
+    QObject::connect(m_helper, &PlayersTableHelper::rowCountChanged,
+                     this, &NewGame::enableOkButton);
+    QObject::connect(radioButtonDuplicate, &QAbstractButton::toggled,
+                     this, &NewGame::enableOkButton);
+    QObject::connect(radioButtonFreeGame, &QAbstractButton::toggled,
+                     this, &NewGame::enableOkButton);
+    QObject::connect(radioButtonTraining, &QAbstractButton::toggled,
+                     this, &NewGame::enableOkButton);
+    QObject::connect(checkBoxUseMaster, &QAbstractButton::toggled,
+                     this, &NewGame::enableOkButton);
+    QObject::connect(lineEditMaster, &QLineEdit::textChanged,
+                     this, &NewGame::enableOkButton);
 
-    QObject::connect(radioButtonDuplicate, SIGNAL(toggled(bool)),
-                     this, SLOT(enablePlayers(bool)));
-    QObject::connect(radioButtonFreeGame, SIGNAL(toggled(bool)),
-                     this, SLOT(enablePlayers(bool)));
-    QObject::connect(radioButtonTraining, SIGNAL(toggled(bool)),
-                     this, SLOT(enablePlayers(bool)));
-    QObject::connect(radioButtonArbitration, SIGNAL(toggled(bool)),
-                     this, SLOT(enablePlayers(bool)));
-    QObject::connect(radioButtonTopping, SIGNAL(toggled(bool)),
-                     this, SLOT(enablePlayers(bool)));
+    QObject::connect(radioButtonDuplicate, &QAbstractButton::toggled,
+                     this, &NewGame::enablePlayers);
+    QObject::connect(radioButtonFreeGame, &QAbstractButton::toggled,
+                     this, &NewGame::enablePlayers);
+    QObject::connect(radioButtonTraining, &QAbstractButton::toggled,
+                     this, &NewGame::enablePlayers);
+    QObject::connect(radioButtonArbitration, &QAbstractButton::toggled,
+                     this, &NewGame::enablePlayers);
+    QObject::connect(radioButtonTopping, &QAbstractButton::toggled,
+                     this, &NewGame::enablePlayers);
 
-    QObject::connect(radioButtonFreeGame, SIGNAL(toggled(bool)),
-                     this, SLOT(enableMasterControls()));
+    QObject::connect(radioButtonFreeGame, &QAbstractButton::toggled,
+                     this, &NewGame::enableMasterControls);
 
-    QObject::connect(checkBoxJoker, SIGNAL(stateChanged(int)),
-                     this, SLOT(onJokerChecked(int)));
-    QObject::connect(checkBoxExplosive, SIGNAL(stateChanged(int)),
-                     this, SLOT(onExplosiveChecked(int)));
+    QObject::connect(checkBoxJoker, &QCheckBox::stateChanged,
+                     this, &NewGame::onJokerChecked);
+    QObject::connect(checkBoxExplosive, &QCheckBox::stateChanged,
+                     this, &NewGame::onExplosiveChecked);
 
     // Master games
-    QObject::connect(checkBoxUseMaster, SIGNAL(toggled(bool)),
-                     widgetMasterControls, SLOT(setEnabled(bool)));
-    QObject::connect(buttonBrowseMaster, SIGNAL(clicked()),
-                     this, SLOT(browseMasterGame()));
-    QObject::connect(lineEditMaster, SIGNAL(textChanged(QString)),
-                     this, SLOT(validateMasterGame(QString)));
+    QObject::connect(checkBoxUseMaster, &QAbstractButton::toggled,
+                     widgetMasterControls, &QWidget::setEnabled);
+    QObject::connect(buttonBrowseMaster, &QAbstractButton::clicked,
+                     this, &NewGame::browseMasterGame);
+    QObject::connect(lineEditMaster, &QLineEdit::textChanged,
+                     this, &NewGame::validateMasterGame);
 
-    QObject::connect(buttonAddFav, SIGNAL(clicked()),
-                     this, SLOT(addFavoritePlayers()));
+    QObject::connect(buttonAddFav, &QAbstractButton::clicked,
+                     this, &NewGame::addFavoritePlayers);
 
     // Auto-completion on the master game path
     QCompleter *completer = new QCompleter(this);
@@ -320,8 +320,8 @@ void NewGame::addFavoritePlayers()
     QDialogButtonBox *buttonBox =
         new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     dialog->layout()->addWidget(buttonBox);
-    connect(buttonBox, SIGNAL(accepted()), dialog, SLOT(accept()));
-    connect(buttonBox, SIGNAL(rejected()), dialog, SLOT(reject()));
+    connect(buttonBox, &QDialogButtonBox::accepted, dialog, &QDialog::accept);
+    connect(buttonBox, &QDialogButtonBox::rejected, dialog, &QDialog::reject);
 
     PlayersTableHelper *helper = new PlayersTableHelper(dialog, tableFav);
     helper->addPlayers(PlayersTableHelper::getFavPlayers());

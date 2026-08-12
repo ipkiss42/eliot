@@ -31,8 +31,8 @@ CustomPopup::CustomPopup(QWidget *iWidget)
     : QObject(iWidget), m_widget(iWidget)
 {
     iWidget->setContextMenuPolicy(Qt::CustomContextMenu);
-    QObject::connect(iWidget, SIGNAL(customContextMenuRequested(const QPoint&)),
-                     this, SLOT(showPopup(const QPoint&)));
+    QObject::connect(iWidget, &QWidget::customContextMenuRequested,
+                     this, &CustomPopup::showPopup);
 }
 
 void CustomPopup::showPopup(const QPoint &iPoint)
@@ -50,8 +50,8 @@ QAction * CustomPopup::getShowDefinitionEntry(QString iWord)
 
     QAction *definitionAction = new QAction(_q("Show definition"), m_widget);
     definitionAction->setStatusTip(_q("Show definition of '%1' in an external browser").arg(m_word));
-    QObject::connect(definitionAction, SIGNAL(triggered()),
-                     this, SLOT(definitionRequested()));
+    QObject::connect(definitionAction, &QAction::triggered,
+                     this, &CustomPopup::definitionRequested);
 
     return definitionAction;
 }

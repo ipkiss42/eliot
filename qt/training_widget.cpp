@@ -60,10 +60,10 @@ TrainingWidget::TrainingWidget(QWidget *parent, PlayModel &iPlayModel, PublicGam
     m_mediator = new PlayWordMediator(this, *lineEditPlay, *lineEditCoords,
                                       lineEditPoints, *pushButtonPlay,
                                       iPlayModel, m_game);
-    QObject::connect(m_mediator, SIGNAL(gameUpdated()),
-                     this, SIGNAL(gameUpdated()));
-    QObject::connect(m_mediator, SIGNAL(notifyProblem(QString)),
-                     this, SIGNAL(notifyProblem(QString)));
+    QObject::connect(m_mediator, &PlayWordMediator::gameUpdated,
+                     this, &TrainingWidget::gameUpdated);
+    QObject::connect(m_mediator, &PlayWordMediator::notifyProblem,
+                     this, &TrainingWidget::notifyProblem);
 
     // Associate the model to the view
     m_model = new QStandardItemModel(this);
@@ -79,21 +79,21 @@ TrainingWidget::TrainingWidget(QWidget *parent, PlayModel &iPlayModel, PublicGam
     m_model->setHeaderData(HIDDEN_COLUMN, Qt::Horizontal, "", Qt::DisplayRole);
     treeViewResults->setColumnHidden(HIDDEN_COLUMN, true);
 
-    QObject::connect(lineEditRack, SIGNAL(returnPressed()),
-                     this, SLOT(search()));
-    QObject::connect(lineEditRack, SIGNAL(textEdited(const QString &)),
-                     this, SLOT(onRackEdited(const QString &)));
+    QObject::connect(lineEditRack, &QLineEdit::returnPressed,
+                     this, &TrainingWidget::search);
+    QObject::connect(lineEditRack, &QLineEdit::textEdited,
+                     this, &TrainingWidget::onRackEdited);
 
-    QObject::connect(pushButtonRack, SIGNAL(clicked()),
-                     this, SLOT(setNewRack()));
-    QObject::connect(pushButtonComplement, SIGNAL(clicked()),
-                     this, SLOT(completeRack()));
-    QObject::connect(pushButtonSearch, SIGNAL(clicked()),
-                     this, SLOT(search()));
-    QObject::connect(pushButtonPlaySelected, SIGNAL(clicked()),
-                     this, SLOT(playSelectedWord()));
-    QObject::connect(treeViewResults, SIGNAL(activated(const QModelIndex&)),
-                     this, SLOT(playSelectedWord()));
+    QObject::connect(pushButtonRack, &QAbstractButton::clicked,
+                     this, &TrainingWidget::setNewRack);
+    QObject::connect(pushButtonComplement, &QAbstractButton::clicked,
+                     this, &TrainingWidget::completeRack);
+    QObject::connect(pushButtonSearch, &QAbstractButton::clicked,
+                     this, &TrainingWidget::search);
+    QObject::connect(pushButtonPlaySelected, &QAbstractButton::clicked,
+                     this, &TrainingWidget::playSelectedWord);
+    QObject::connect(treeViewResults, &QAbstractItemView::activated,
+                     this, &TrainingWidget::playSelectedWord);
 
     // Add a context menu to the tree header
     QAction *lockSizesAction = new QAction(_q("Lock columns sizes"), this);
@@ -101,29 +101,29 @@ TrainingWidget::TrainingWidget(QWidget *parent, PlayModel &iPlayModel, PublicGam
     lockSizesAction->setStatusTip(_q("Disable auto-resizing of the columns"));
     treeViewResults->header()->addAction(lockSizesAction);
     treeViewResults->header()->setContextMenuPolicy(Qt::ActionsContextMenu);
-    QObject::connect(lockSizesAction, SIGNAL(toggled(bool)),
-                     this, SLOT(lockSizesChanged(bool)));
+    QObject::connect(lockSizesAction, &QAction::toggled,
+                     this, &TrainingWidget::lockSizesChanged);
 
     // Add another context menu for the results
     m_customPopup = new CustomPopup(treeViewResults);
-    QObject::connect(m_customPopup, SIGNAL(popupCreated(QMenu&, const QPoint&)),
-                     this, SLOT(populateMenu(QMenu&, const QPoint&)));
-    QObject::connect(m_customPopup, SIGNAL(requestDefinition(QString)),
-                     this, SIGNAL(requestDefinition(QString)));
+    QObject::connect(m_customPopup, &CustomPopup::popupCreated,
+                     this, &TrainingWidget::populateMenu);
+    QObject::connect(m_customPopup, &CustomPopup::requestDefinition,
+                     this, &TrainingWidget::requestDefinition);
 
     // Allow very thin columns
     treeViewResults->header()->setMinimumSectionSize(1);
 
     // Enable the Play button only when there is a selection in the tree
     QObject::connect(treeViewResults->selectionModel(),
-                     SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
+                     &QItemSelectionModel::selectionChanged,
                      this,
-                     SLOT(enablePlayButton(const QItemSelection&, const QItemSelection&)));
+                     &TrainingWidget::enablePlayButton);
     // Display a preview of the selected word on the board
     QObject::connect(treeViewResults->selectionModel(),
-                     SIGNAL(selectionChanged(const QItemSelection&, const QItemSelection&)),
+                     &QItemSelectionModel::selectionChanged,
                      this,
-                     SLOT(showPreview(const QItemSelection&, const QItemSelection&)));
+                     &TrainingWidget::showPreview);
 
     if (m_game)
     {
@@ -133,8 +133,8 @@ TrainingWidget::TrainingWidget(QWidget *parent, PlayModel &iPlayModel, PublicGam
     }
 
     // Notify that the rack changed
-    QObject::connect(lineEditRack, SIGNAL(textChanged(const QString&)),
-                     this, SIGNAL(rackUpdated(const QString&)));
+    QObject::connect(lineEditRack, &QLineEdit::textChanged,
+                     this, &TrainingWidget::rackUpdated);
 
     refresh();
 }

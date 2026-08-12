@@ -68,10 +68,10 @@ HistoryWidget::HistoryWidget(QWidget *parent)
 
     // Add a context menu for the results
     m_customPopup = new CustomPopup(this);
-    QObject::connect(m_customPopup, SIGNAL(popupCreated(QMenu&, const QPoint&)),
-                     this, SLOT(populateMenu(QMenu&, const QPoint&)));
-    QObject::connect(m_customPopup, SIGNAL(requestDefinition(QString)),
-                     this, SIGNAL(requestDefinition(QString)));
+    QObject::connect(m_customPopup, &CustomPopup::popupCreated,
+                     this, &HistoryWidget::populateMenu);
+    QObject::connect(m_customPopup, &CustomPopup::requestDefinition,
+                     this, &HistoryWidget::requestDefinition);
 
     // Associate the model to the view
     m_model = new QStandardItemModel(this);
@@ -307,10 +307,10 @@ void HistoryTabWidget::setGame(const PublicGame *iGame)
     {
         // Refresh the Game tab
         m_gameHistoryWidget->setHistory(&m_game->getHistory(), m_game, false);
-        QObject::connect(this, SIGNAL(refreshSignal()),
-                         m_gameHistoryWidget, SLOT(refresh()));
-        QObject::connect(m_gameHistoryWidget, SIGNAL(requestDefinition(QString)),
-                         this, SIGNAL(requestDefinition(QString)));
+        QObject::connect(this, &HistoryTabWidget::refreshSignal,
+                         m_gameHistoryWidget, &HistoryWidget::refresh);
+        QObject::connect(m_gameHistoryWidget, &HistoryWidget::requestDefinition,
+                         this, &HistoryTabWidget::requestDefinition);
 
         // In training and topping modes, the players history is completely useless
         if (m_game->getMode() == PublicGame::kTRAINING ||
@@ -325,9 +325,9 @@ void HistoryTabWidget::setGame(const PublicGame *iGame)
             const Player &player = m_game->getPlayer(i);
             HistoryWidget *h = new HistoryWidget(nullptr);
             h->setHistory(&player.getHistory(), m_game, true);
-            QObject::connect(this, SIGNAL(refreshSignal()), h, SLOT(refresh()));
-            QObject::connect(h, SIGNAL(requestDefinition(QString)),
-                             this, SIGNAL(requestDefinition(QString)));
+            QObject::connect(this, &HistoryTabWidget::refreshSignal, h, &HistoryWidget::refresh);
+            QObject::connect(h, &HistoryWidget::requestDefinition,
+                             this, &HistoryTabWidget::requestDefinition);
             addTab(h, qfw(player.getName()));
         }
     }
