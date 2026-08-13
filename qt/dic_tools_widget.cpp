@@ -336,7 +336,7 @@ void DicToolsWidget::saveRegexpResults()
         try
         {
             ofstream file(lfq(fileName).c_str());
-            foreach (const wstring &word, wordList)
+            for (const wstring &word : wordList)
             {
                 file << lfw(word) << endl;
             }

@@ -153,7 +153,7 @@ bool WizardInfoPage::validatePage()
         QString msg = _q("Some invalid (non-alphabetical) characters have "
                          "been found in the word list. They are indicated "
                          "below, with the first line on which they were found:");
-        foreach (QChar ch, badChars)
+        for (QChar ch : badChars)
         {
             QString letterMsg = "\n\t" + _q("'%1' (ASCII code %2) at line %3");
             msg += letterMsg.arg(ch).arg((int)ch.toLatin1()).arg(lettersWithLine[ch]);
@@ -258,7 +258,7 @@ void WizardLettersDefPage::loadLettersFromWordList()
 
     // Rebuild the model
     m_model->removeRows(0, m_model->rowCount());
-    foreach (QChar ch, sortedLetters)
+    for (QChar ch : sortedLetters)
     {
         const int rowNum = m_model->rowCount();
         bool res = m_model->insertRow(rowNum);

@@ -127,6 +127,9 @@ if(BUILD_QT)
 
     target_link_libraries(eliot PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Network Qt6::PrintSupport)
 
+    # Warn about code deprecated in Qt6
+    target_compile_definitions(eliot PRIVATE QT_DISABLE_DEPRECATED_BEFORE=0x060000)
+
     if(HAVE_LIBCONFIG)
         target_link_libraries(eliot PRIVATE ${LIBCONFIG_LIBRARIES})
     endif()

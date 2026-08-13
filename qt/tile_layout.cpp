@@ -191,10 +191,9 @@ void TileLayout::setGeometry(const QRect &rect)
 
     // Resize items
     int nbInRow = 1;
-    QLayoutItem *item;
     int x = left;
     int y = top;
-    foreach (item, m_items)
+    for (QLayoutItem *item : m_items)
     {
         QRect itemRect(QPoint(x, y), QSize(squareSize, squareSize));
         item->setGeometry(itemRect);
