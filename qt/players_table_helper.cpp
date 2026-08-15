@@ -121,7 +121,7 @@ PlayersTableHelper::PlayersTableHelper(QObject *parent,
 
 void PlayersTableHelper::setUpDown(QPushButton *iButtonUp, QPushButton *iButtonDown)
 {
-    ASSERT(m_buttonUp == 0 && m_buttonDown == 0,
+    ASSERT(m_buttonUp == nullptr && m_buttonDown == nullptr,
            "The up and down buttons can only be associated once");
     m_buttonUp = iButtonUp;
     m_buttonDown = iButtonDown;

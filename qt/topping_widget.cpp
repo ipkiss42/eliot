@@ -226,7 +226,7 @@ void ToppingWidget::onNewTurn()
 
 void ToppingWidget::playWord(const wstring &iWord, const wstring &iCoord)
 {
-    ASSERT(m_game != NULL, "No game in progress");
+    ASSERT(m_game != nullptr, "No game in progress");
 
     int elapsed = m_timerModel->getElapsed();
     m_game->toppingPlay(iWord, iCoord, elapsed);

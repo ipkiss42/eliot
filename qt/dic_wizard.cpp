@@ -301,7 +301,7 @@ void WizardLettersDefPage::loadLettersFromWordList()
 
 void WizardLettersDefPage::loadValuesFromDic()
 {
-    ASSERT(m_currDic != 0, "No current dictionary");
+    ASSERT(m_currDic != nullptr, "No current dictionary");
     const Header &header = m_currDic->getHeader();
     bool unknown = false;
     for (int rowNum = 0; rowNum < m_model->rowCount(); ++rowNum)

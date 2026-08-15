@@ -91,7 +91,7 @@ void RackWidget::setGame(const PublicGame *iGame)
 
 void RackWidget::setRack(const PlayedRack &iRack)
 {
-    ASSERT(m_game != NULL, "setRack() called without a game");
+    ASSERT(m_game != nullptr, "setRack() called without a game");
     if (m_showOnlyLastTurn && !m_game->isLastTurn())
         return;
 
@@ -270,7 +270,7 @@ void RackWidget::dropEvent(QDropEvent *event)
         event->accept();
 
         // Notify the rest of the world that the rack has changed
-        ASSERT(m_game != NULL, "No game in progress");
+        ASSERT(m_game != nullptr, "No game in progress");
         PlayedRack pldRack;
         for (const Tile &t : m_tiles)
         {

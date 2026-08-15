@@ -367,7 +367,7 @@ set<uint64_t> AutomatonHelper::getSuccessor(const set<uint64_t> &S,
         set<uint64_t> t;
         t.insert(*it);
         State *y = getState(t);
-        ASSERT(y != NULL, "Invalid state");
+        ASSERT(y != nullptr, "Invalid state");
 
         set<uint64_t> Ry;                                        /* Ry = \empty             */
 

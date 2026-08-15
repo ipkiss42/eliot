@@ -700,7 +700,7 @@ void MainWindow::changeDictionary(QString iFileName)
 
 void MainWindow::playWord(const wstring &iWord, const wstring &iCoord)
 {
-    ASSERT(m_game != NULL, "No game in progress");
+    ASSERT(m_game != nullptr, "No game in progress");
 
     // Do nothing in Topping mode: this is already handled
     // in the ToppingWidget class
@@ -1039,7 +1039,7 @@ void MainWindow::onGamePrintPreview()
 
 void MainWindow::print(QPrinter *printer)
 {
-    ASSERT(m_game != NULL, "No game in progress");
+    ASSERT(m_game != nullptr, "No game in progress");
 
     QPainter painter(printer);
     const History &history = m_game->getHistory();
@@ -1233,7 +1233,7 @@ void MainWindow::onSettingsFavPlayers()
 
 void MainWindow::onSettingsDefineTables()
 {
-    ASSERT(m_game != NULL, "A game should have been started");
+    ASSERT(m_game != nullptr, "A game should have been started");
 
     TablesDialog *dialog = new TablesDialog(this, *m_game);
     QObject::connect(dialog, &TablesDialog::notifyProblem, this,

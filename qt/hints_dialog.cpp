@@ -126,7 +126,7 @@ void HintsDialog::setMove(const Move &iMove)
 
 void HintsDialog::showHint(const AbstractHint &iHint)
 {
-    ASSERT(m_move != 0, "No move defined");
+    ASSERT(m_move != nullptr, "No move defined");
     // Show the hint in a message box
     const string & result = iHint.giveHint(*m_move);
     QMessageBox::information(this, _q("Hint"), qfl(result));

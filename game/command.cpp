@@ -52,7 +52,7 @@ void Command::undo()
 UndoCmd::UndoCmd(Command *cmd)
     : m_cmd(cmd)
 {
-    ASSERT(m_cmd != 0, "Null command given");
+    ASSERT(m_cmd != nullptr, "Null command given");
 }
 
 

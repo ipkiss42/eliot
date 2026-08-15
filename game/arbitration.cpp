@@ -120,7 +120,7 @@ void Arbitration::removeSolo(unsigned iPlayerId)
 {
     ASSERT(iPlayerId < getNPlayers(), "Wrong player number");
     const PlayerEventCmd *cmd = getPlayerEvent(iPlayerId, PlayerEventCmd::SOLO);
-    ASSERT(cmd != 0, "No matching PlayerEventCmd found");
+    ASSERT(cmd != nullptr, "No matching PlayerEventCmd found");
 
     accessNavigation().dropCommand(*cmd);
 }
@@ -149,7 +149,7 @@ void Arbitration::removeWarning(unsigned iPlayerId)
 {
     ASSERT(iPlayerId < getNPlayers(), "Wrong player number");
     const PlayerEventCmd *cmd = getPlayerEvent(iPlayerId, PlayerEventCmd::WARNING);
-    ASSERT(cmd != 0, "No matching PlayerEventCmd found");
+    ASSERT(cmd != nullptr, "No matching PlayerEventCmd found");
 
     accessNavigation().dropCommand(*cmd);
 }
@@ -201,7 +201,7 @@ void Arbitration::removePenalty(unsigned iPlayerId)
 {
     ASSERT(iPlayerId < getNPlayers(), "Wrong player number");
     const PlayerEventCmd *cmd = getPlayerEvent(iPlayerId, PlayerEventCmd::PENALTY);
-    ASSERT(cmd != 0, "No penalty found for player " << iPlayerId);
+    ASSERT(cmd != nullptr, "No penalty found for player " << iPlayerId);
     accessNavigation().dropCommand(*cmd);
 }
 
@@ -247,7 +247,7 @@ void Arbitration::undoCurrentRack()
     // Find the GameRackCmd we want to undo
     const GameRackCmd *cmd =
         getNavigation().getCurrentTurn().findMatchingCmd<GameRackCmd>();
-    ASSERT(cmd != 0, "No matching GameRackCmd found");
+    ASSERT(cmd != nullptr, "No matching GameRackCmd found");
 
     accessNavigation().dropFrom(*cmd);
 }
