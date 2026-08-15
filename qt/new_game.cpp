@@ -27,7 +27,6 @@
 #include "new_game.h"
 #include "players_table_helper.h"
 #include "qtcommon.h"
-#include "prefs_dialog.h"
 #include "game_factory.h"
 #include "game.h"
 #include "public_game.h"

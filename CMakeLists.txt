@@ -10,7 +10,7 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
     set(CMAKE_BUILD_TYPE "${default_build_type}" CACHE STRING "Choose the type of build." FORCE)
 endif()
 
-# Use C++23 support without GNU extensions
+# Use C++23 support with GNU extensions
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED OFF)
 set(CMAKE_CXX_EXTENSIONS ON)
@@ -62,8 +62,6 @@ endif()
 # Checks for headers and functions
 # --------------------------------------------------------------
 check_include_file("execinfo.h" HAVE_EXECINFO_H)
-check_include_file("fcntl.h" HAVE_FCNTL_H)
-check_include_file("unistd.h" HAVE_UNISTD_H)
 check_include_file("sys/stat.h" HAVE_SYS_STAT_H)
 check_include_file("sys/types.h" HAVE_SYS_TYPES_H)
 
@@ -132,8 +130,6 @@ set(BUILD_QT FALSE)
 if(ENABLE_QT6)
     find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets Network PrintSupport)
     set(BUILD_QT TRUE)
-    # FIXME: hack?
-    set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
     get_target_property(Qt6_Core_EXE Qt6::qmake LOCATION)
     execute_process(

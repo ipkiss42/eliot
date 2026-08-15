@@ -18,8 +18,6 @@
 #cmakedefine01 ENABLE_NLS
 
 #cmakedefine HAVE_EXECINFO_H 1
-#cmakedefine HAVE_FCNTL_H 1
-#cmakedefine HAVE_UNISTD_H 1
 #cmakedefine HAVE_SYS_STAT_H 1
 #cmakedefine HAVE_SYS_TYPES_H 1
 #cmakedefine HAVE_READLINE 1
