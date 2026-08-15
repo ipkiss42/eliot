@@ -145,9 +145,9 @@ NewGame::NewGame(const Dictionary &iDic, QWidget *iParent)
     QObject::connect(radioButtonFreeGame, &QAbstractButton::toggled,
                      this, &NewGame::enableMasterControls);
 
-    QObject::connect(checkBoxJoker, &QCheckBox::stateChanged,
+    QObject::connect(checkBoxJoker, &QCheckBox::checkStateChanged,
                      this, &NewGame::onJokerChecked);
-    QObject::connect(checkBoxExplosive, &QCheckBox::stateChanged,
+    QObject::connect(checkBoxExplosive, &QCheckBox::checkStateChanged,
                      this, &NewGame::onExplosiveChecked);
 
     // Master games
@@ -333,7 +333,7 @@ void NewGame::addFavoritePlayers()
 }
 
 
-void NewGame::onJokerChecked(int newState)
+void NewGame::onJokerChecked(Qt::CheckState newState)
 {
     // The joker and explosive variants are incompatible
     if (newState == Qt::Checked)
@@ -341,7 +341,7 @@ void NewGame::onJokerChecked(int newState)
 }
 
 
-void NewGame::onExplosiveChecked(int newState)
+void NewGame::onExplosiveChecked(Qt::CheckState newState)
 {
     // The joker and explosive variants are incompatible
     if (newState == Qt::Checked)

@@ -59,8 +59,8 @@ private slots:
     void enablePlayers(bool);
     void addSelectedToFav();
     void addFavoritePlayers();
-    void onJokerChecked(int);
-    void onExplosiveChecked(int);
+    void onJokerChecked(Qt::CheckState);
+    void onExplosiveChecked(Qt::CheckState);
     void browseMasterGame();
     void validateMasterGame(QString);
 
