@@ -21,6 +21,8 @@
 #ifndef HEADER_H_
 #define HEADER_H_
 
+#include <bit>
+#include <concepts>
 #include <iosfwd>
 #include <map>
 #include <vector>
@@ -34,6 +36,27 @@ using namespace std;
 // XXX: duplicated typedef (also present in dic.h)
 using wdstring = wstring;
 using wistring = wstring;
+
+
+template <std::integral T>
+constexpr T network_byte_order_swap(T value) noexcept {
+    // Nothing to do on big-endian machines
+    if constexpr (std::endian::native == std::endian::big) {
+        return value;
+    } else {
+        return std::byteswap(value);
+    }
+}
+
+// Define 2 common aliases for convenience
+template <std::integral T>
+constexpr T hton(T value) noexcept {
+    return network_byte_order_swap(value);
+}
+template <std::integral T>
+constexpr T ntoh(T value) noexcept {
+    return network_byte_order_swap(value);
+}
 
 
 /**

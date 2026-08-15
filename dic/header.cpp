@@ -25,18 +25,6 @@
 #include <iostream>
 #include <boost/tokenizer.hpp>
 
-// For ntohl & Co.
-#ifdef WIN32
-#   include <winsock2.h>
-#else
-#    if HAVE_NETINET_IN_H
-#       include <netinet/in.h>
-#    endif
-#    if HAVE_ARPA_INET_H
-#       include <arpa/inet.h>
-#    endif
-#endif
-
 #if ENABLE_NLS
 #   include <libintl.h>
 #   define _(String) gettext(String)
@@ -50,23 +38,6 @@
 
 
 INIT_LOGGER(dic, Header);
-
-
-#if defined(WORDS_BIGENDIAN)
-// Nothing to do on big-endian machines
-#   define ntohll(x) (x)
-#   define htonll(x) (x)
-#else
-static inline uint64_t htonll(uint64_t host64)
-{
-    return (((uint64_t)htonl((host64 << 32) >> 32)) << 32) | htonl(host64 >> 32);
-}
-
-static inline uint64_t ntohll(uint64_t net64)
-{
-    return htonll(net64);
-}
-#endif
 
 
 /**
@@ -391,12 +362,12 @@ void Header::read(istream &iStream)
     }
 
     // Handle endianness
-    m_root = ntohl(aHeader.root);
-    m_nbWords = ntohl(aHeader.nwords);
-    m_nodesUsed = ntohl(aHeader.nodesused);
-    m_edgesUsed = ntohl(aHeader.edgesused);
-    m_nodesSaved = ntohl(aHeader.nodessaved);
-    m_edgesSaved = ntohl(aHeader.edgessaved);
+    m_root = ntoh(aHeader.root);
+    m_nbWords = ntoh(aHeader.nwords);
+    m_nodesUsed = ntoh(aHeader.nodesused);
+    m_edgesUsed = ntoh(aHeader.edgesused);
+    m_nodesSaved = ntoh(aHeader.nodessaved);
+    m_edgesSaved = ntoh(aHeader.edgessaved);
 
     // After reading the old header, we now read the extension
     Dict_header_ext aHeaderExt;
@@ -405,13 +376,13 @@ void Header::read(istream &iStream)
         throw DicException("Header::read: expected to read more bytes");
 
     // Handle endianness in the extension
-    aHeaderExt.compressDate = ntohll(aHeaderExt.compressDate);
-    aHeaderExt.userHostSize = ntohl(aHeaderExt.userHostSize);
-    aHeaderExt.dicNameSize = ntohl(aHeaderExt.dicNameSize);
-    aHeaderExt.lettersSize = ntohl(aHeaderExt.lettersSize);
-    aHeaderExt.nbLetters = ntohl(aHeaderExt.nbLetters);
-    aHeaderExt.vowels = ntohll(aHeaderExt.vowels);
-    aHeaderExt.consonants = ntohll(aHeaderExt.consonants);
+    aHeaderExt.compressDate = ntoh(aHeaderExt.compressDate);
+    aHeaderExt.userHostSize = ntoh(aHeaderExt.userHostSize);
+    aHeaderExt.dicNameSize = ntoh(aHeaderExt.dicNameSize);
+    aHeaderExt.lettersSize = ntoh(aHeaderExt.lettersSize);
+    aHeaderExt.nbLetters = ntoh(aHeaderExt.nbLetters);
+    aHeaderExt.vowels = ntoh(aHeaderExt.vowels);
+    aHeaderExt.consonants = ntoh(aHeaderExt.consonants);
 
     m_compressDate = aHeaderExt.compressDate;
 
@@ -465,7 +436,7 @@ void Header::read(istream &iStream)
             throw DicException("Header::read: expected to read more bytes (ext2)");
 
         // Handle endianness
-        aHeaderExt2.displayAndInputSize = ntohs(aHeaderExt2.displayAndInputSize);
+        aHeaderExt2.displayAndInputSize = ntoh(aHeaderExt2.displayAndInputSize);
 
         // Convert the dictionary letters from UTF-8 to wchar_t*
         wstring serialized = readFromUTF8(string(aHeaderExt2.displayAndInput,
@@ -483,12 +454,12 @@ void Header::write(ostream &oStream) const
     strcpy(aHeader.ident, _COMPIL_KEYWORD_);
     aHeader.version = m_version;
     aHeader.unused = 0;
-    aHeader.root = htonl(m_root);
-    aHeader.nwords = htonl(m_nbWords);
-    aHeader.nodesused = htonl(m_nodesUsed);
-    aHeader.edgesused = htonl(m_edgesUsed);
-    aHeader.nodessaved = htonl(m_nodesSaved);
-    aHeader.edgessaved = htonl(m_edgesSaved);
+    aHeader.root = hton(m_root);
+    aHeader.nwords = hton(m_nbWords);
+    aHeader.nodesused = hton(m_nodesUsed);
+    aHeader.edgesused = hton(m_edgesUsed);
+    aHeader.nodessaved = hton(m_nodesSaved);
+    aHeader.edgessaved = hton(m_edgesSaved);
 
     oStream.write((char*)&aHeader, sizeof(Dict_header_old));
     if (!oStream.good())
@@ -531,13 +502,13 @@ void Header::write(ostream &oStream) const
     }
 
     // Handle endianness in the extension
-    aHeaderExt.userHostSize = htonl(aHeaderExt.userHostSize);
-    aHeaderExt.compressDate = htonll(aHeaderExt.compressDate);
-    aHeaderExt.dicNameSize = htonl(aHeaderExt.dicNameSize);
-    aHeaderExt.lettersSize = htonl(aHeaderExt.lettersSize);
-    aHeaderExt.nbLetters = htonl(aHeaderExt.nbLetters);
-    aHeaderExt.vowels = htonll(aHeaderExt.vowels);
-    aHeaderExt.consonants = htonll(aHeaderExt.consonants);
+    aHeaderExt.userHostSize = hton(aHeaderExt.userHostSize);
+    aHeaderExt.compressDate = hton(aHeaderExt.compressDate);
+    aHeaderExt.dicNameSize = hton(aHeaderExt.dicNameSize);
+    aHeaderExt.lettersSize = hton(aHeaderExt.lettersSize);
+    aHeaderExt.nbLetters = hton(aHeaderExt.nbLetters);
+    aHeaderExt.vowels = hton(aHeaderExt.vowels);
+    aHeaderExt.consonants = hton(aHeaderExt.consonants);
 
     // Write the extension
     oStream.write((char*)&aHeaderExt, sizeof(Dict_header_ext));
@@ -554,7 +525,7 @@ void Header::write(ostream &oStream) const
                     _MAX_DISPLAY_INPUT_SIZE_, "display and input data");
 
     // Handle endianness
-    aHeaderExt2.displayAndInputSize = htons(aHeaderExt2.displayAndInputSize);
+    aHeaderExt2.displayAndInputSize = hton(aHeaderExt2.displayAndInputSize);
 
     // Write the extension
     oStream.write((char*)&aHeaderExt2, sizeof(Dict_header_ext_2));

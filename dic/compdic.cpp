@@ -22,7 +22,6 @@
 #include "config.h"
 
 #include <fstream>
-#include <sstream>
 #include <map>
 #include <boost/functional/hash.hpp>
 #include <ctime>
@@ -32,20 +31,7 @@
 #include <cwctype>
 #include <cstdlib>
 #include <cstdio>
-#include <cerrno>
 #include <cstring>
-
-// For htonl & Co.
-#ifdef WIN32
-#   include <winsock2.h>
-#else
-#    if HAVE_NETINET_IN_H
-#       include <netinet/in.h>
-#    endif
-#    if HAVE_ARPA_INET_H
-#       include <arpa/inet.h>
-#    endif
-#endif
 
 #if ENABLE_NLS
 #   include <libintl.h>
@@ -193,7 +179,7 @@ void CompDic::writeNode(DicEdge *ioEdges, unsigned int num, ostream &outFile)
     // Handle endianness
     for (unsigned int i = 0; i < num; ++i)
     {
-        edgesAsUint[i] = htonl(edgesAsUint[i]);
+        edgesAsUint[i] = hton(edgesAsUint[i]);
     }
 
     LOG_TRACE("writing {} edges", num);

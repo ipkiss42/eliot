@@ -22,22 +22,6 @@
 #include "config.h"
 
 #include <fstream>
-#include <cstdlib>
-#include <cstring>
-#include <cerrno>
-#include <cctype>
-
-// For ntohl & Co.
-#ifdef WIN32
-#   include <winsock2.h>
-#else
-#    if HAVE_NETINET_IN_H
-#       include <netinet/in.h>
-#    endif
-#    if HAVE_ARPA_INET_H
-#       include <arpa/inet.h>
-#    endif
-#endif
 
 #include "dic.h"
 #include "header.h"
@@ -54,7 +38,6 @@ const Dictionary *Dictionary::m_dic = nullptr;
 
 
 Dictionary::Dictionary(const string &iPath)
-     
 {
     ifstream file(iPath.c_str(), ios::in | ios::binary);
 
@@ -124,7 +107,7 @@ void Dictionary::convertDataToArch()
 {
     for (unsigned int i = 0; i < (m_header->getNbEdgesUsed() + 1); i++)
     {
-        m_dawg[i] = ntohl(m_dawg[i]);
+        m_dawg[i] = ntoh(m_dawg[i]);
     }
 }
 

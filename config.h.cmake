@@ -22,12 +22,9 @@
 #cmakedefine HAVE_UNISTD_H 1
 #cmakedefine HAVE_SYS_STAT_H 1
 #cmakedefine HAVE_SYS_TYPES_H 1
-#cmakedefine HAVE_ARPA_INET_H 1
-#cmakedefine HAVE_NETINET_IN_H 1
 #cmakedefine HAVE_READLINE 1
 
 #cmakedefine HAVE_WCWIDTH 1
-#cmakedefine WORDS_BIGENDIAN 1
 #cmakedefine HAVE_LIBCONFIG 1
 
 /* Ncurses wide-character header availability mapping */

@@ -66,17 +66,9 @@ check_include_file("fcntl.h" HAVE_FCNTL_H)
 check_include_file("unistd.h" HAVE_UNISTD_H)
 check_include_file("sys/stat.h" HAVE_SYS_STAT_H)
 check_include_file("sys/types.h" HAVE_SYS_TYPES_H)
-check_include_file("arpa/inet.h" HAVE_ARPA_INET_H)
-check_include_file("netinet/in.h" HAVE_NETINET_IN_H)
 
 # Functions
 check_function_exists(wcwidth HAVE_WCWIDTH)
-
-# Endianness & Types
-test_big_endian(IS_BIG_ENDIAN)
-if(IS_BIG_ENDIAN)
-    set(WORDS_BIGENDIAN 1)
-endif()
 
 # --------------------------------------------------------------
 # Checks for libraries & dependencies
