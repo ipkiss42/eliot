@@ -30,10 +30,7 @@
 INIT_LOGGER(game, PlayedRack);
 
 
-PlayedRack::PlayedRack()
-
-{
-}
+PlayedRack::PlayedRack() = default;
 
 
 void PlayedRack::addOld(const Tile &t)

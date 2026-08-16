@@ -29,10 +29,7 @@
 INIT_LOGGER(qt, GameSignals);
 
 
-GameSignals::GameSignals()
-
-{
-}
+GameSignals::GameSignals() = default;
 
 
 void GameSignals::notifyGameChanged(PublicGame *iGame)

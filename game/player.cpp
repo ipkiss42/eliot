@@ -38,10 +38,7 @@
 INIT_LOGGER(game, Player);
 
 
-Player::Player()
-
-{
-}
+Player::Player() = default;
 
 
 void Player::setId(unsigned iId)

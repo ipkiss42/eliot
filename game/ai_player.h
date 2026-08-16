@@ -77,7 +77,7 @@ public:
 
 protected:
     /// This class is a pure interface, forbid any direct instanciation
-    AIPlayer() {}
+    AIPlayer() = default;
 };
 
 #endif

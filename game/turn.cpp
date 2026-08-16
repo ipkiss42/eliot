@@ -29,10 +29,7 @@
 INIT_LOGGER(game, Turn);
 
 
-Turn::Turn()
-
-{
-}
+Turn::Turn() = default;
 
 
 Turn::~Turn()

@@ -26,10 +26,7 @@ INIT_LOGGER(game, Command);
 INIT_LOGGER(game, UndoCmd);
 
 
-Command::Command()
-     
-{
-}
+Command::Command() = default;
 
 
 void Command::execute()

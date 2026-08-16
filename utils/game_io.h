@@ -44,6 +44,9 @@ class GameIO
 {
     DEFINE_LOGGER();
 public:
+    /// This class is a toolbox and should not be instantiated
+    GameIO() = delete;
+
     static void printBoard(ostream &out, const PublicGame &iGame);
     static void printBoardDebug(ostream &out, const PublicGame &iGame);
     static void printBoardMultipliers(ostream &out, const PublicGame &iGame);
@@ -56,10 +59,6 @@ public:
     static void printAllPoints(ostream &out, const PublicGame &iGame);
 
     static void printGameDebug(ostream &out, const PublicGame &iGame);
-
-private:
-    /// This class is a toolbox, and should not be instanciated
-    GameIO() = delete;
 };
 
 #endif
