@@ -17,7 +17,6 @@
 /* Define to 1 to enable Native Language Support (NLS) */
 #cmakedefine01 ENABLE_NLS
 
-#cmakedefine HAVE_EXECINFO_H 1
 #cmakedefine HAVE_SYS_STAT_H 1
 #cmakedefine HAVE_SYS_TYPES_H 1
 #cmakedefine HAVE_READLINE 1

@@ -1,6 +1,6 @@
 /*****************************************************************************
  * Eliot
- * Copyright (C) 2010-2012 Olivier Teulière
+ * Copyright (C) 2026 Olivier Teulière
  * Authors: Olivier Teulière <ipkiss @@ gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
@@ -18,24 +18,33 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#ifndef STACK_TRACE_H_
-#define STACK_TRACE_H_
+#include <boost/stacktrace.hpp>
+#include <format>
+#include <iostream>
 
-#include <string>
-
-#include "logging.h"
-
-using std::string;
+using std::cerr;
+using std::endl;
 
 
-class StackTrace
-{
-    DEFINE_LOGGER();
-public:
-    static string GetStack();
+#include "debug.h"
 
-private:
-    static string Demangle(char *symbol);
-};
 
-#endif
+std::string StackTrace::GetStack() {
+    // Skip the first frame, to avoid seeing this function
+    auto toSkip = 1;
+    auto trace = boost::stacktrace::stacktrace(toSkip, static_cast<std::size_t>(-1));
+    return boost::stacktrace::to_string(trace);
+}
+
+
+void eliotAssert(std::string_view msg) {
+    auto errorMsg = std::format(
+        "ASSERTION FAILED: {} (at {}#{})", msg, __FILE__, __LINE__
+    );
+
+    cerr << errorMsg << endl;
+    auto stack = StackTrace::GetStack();
+    cerr << stack << endl;
+
+    abort();
+}

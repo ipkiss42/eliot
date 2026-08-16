@@ -18,6 +18,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <format>
 
 #include "arbitration.h"
 #include "rack.h"
@@ -201,7 +202,7 @@ void Arbitration::removePenalty(unsigned iPlayerId)
 {
     ASSERT(iPlayerId < getNPlayers(), "Wrong player number");
     const PlayerEventCmd *cmd = getPlayerEvent(iPlayerId, PlayerEventCmd::PENALTY);
-    ASSERT(cmd != nullptr, "No penalty found for player " << iPlayerId);
+    ASSERT(cmd != nullptr, std::format("No penalty found for player {}", iPlayerId));
     accessNavigation().dropCommand(*cmd);
 }
 

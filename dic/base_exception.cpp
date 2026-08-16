@@ -19,7 +19,7 @@
  *****************************************************************************/
 
 #include "base_exception.h"
-#include "stacktrace.h"
+#include "debug.h"
 
 using namespace std;
 

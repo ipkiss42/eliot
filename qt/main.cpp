@@ -41,7 +41,7 @@
 
 #include "logging.h"
 #include "base_exception.h"
-#include "stacktrace.h"
+#include "debug.h"
 #include "main_window.h"
 
 using namespace std;

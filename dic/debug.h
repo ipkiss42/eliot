@@ -22,28 +22,27 @@
 #ifndef DEBUG_H_
 #define DEBUG_H_
 
-/**********
- * General
- **********/
+#include <string>
+
+class StackTrace
+{
+public:
+    static std::string GetStack();
+};
 
 #ifdef DEBUG
-#   include <iostream>
-#   include <cstdlib>
+#   include <string_view>
 
-using std::cerr;
-using std::endl;
+void eliotAssert(std::string_view msg);
 
+//
 // Assertion macro: if the condition is not verified, print a message on stderr
 // and stops execution, otherwise do nothing.
 #   define ASSERT(cond, msg) \
     { \
         if (!(cond)) \
         { \
-            cerr << "ASSERTION FAILED: "; \
-            cerr << msg; \
-            cerr << " (at " \
-                 << __FILE__ << "#" << __LINE__ << ")\n"; \
-            abort(); \
+            eliotAssert(msg); \
         } \
     }
 #else

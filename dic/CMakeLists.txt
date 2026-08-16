@@ -31,13 +31,12 @@ add_library(dic STATIC
     dic_search.cpp
     csv_helper.cpp csv_helper.h
     encoding.cpp encoding.h
-    stacktrace.cpp stacktrace.h
     automaton.cpp automaton.h
     regexp.cpp regexp.h
     grammar.cpp grammar.h
     compdic.cpp compdic.h
     listdic.cpp listdic.h
-    debug.h
+    debug.cpp debug.h
 )
 
 # Set up target
@@ -49,6 +48,14 @@ target_link_libraries(dic
         Iconv::Iconv
         Intl::Intl
 )
+
+
+# Stacktrace support via Boost.Stacktrace
+target_link_libraries(dic PUBLIC ${CMAKE_DL_LIBS})
+if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+    # -rdynamic allows having real function names instead of hex codes
+    target_link_options(dic INTERFACE -rdynamic)
+endif()
 
 
 # --------------------------------------------------------------

@@ -19,6 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <format>
+
 #include "config.h"
 #if ENABLE_NLS
 #   include <libintl.h>
@@ -98,9 +100,8 @@ void Game::reorderRack(const PlayedRack &iNewRack)
 
     // Make sure the new rack uses the same letters
     ASSERT(pld.getRack() == iNewRack.getRack(),
-           "The old and new racks have different letters" <<
-           "(old=" << lfw(pld.toString()) <<
-           " new=" << lfw(iNewRack.toString()) << ")");
+           std::format("The old and new racks have different letters (old={} new={})",
+                       lfw(pld.toString()), lfw(iNewRack.toString())));
 
     m_players[currPlayer()]->setCurrentRack(iNewRack);
 }

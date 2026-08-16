@@ -18,6 +18,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <format>
+
 #include "config.h"
 
 #include <QTableWidget>
@@ -295,9 +297,9 @@ void PlayersTableHelper::addRow(const PlayerDef &iDef)
 void PlayersTableHelper::moveRow(int rowFrom, int rowTo)
 {
     ASSERT(rowFrom >= 0 && rowFrom < m_tablePlayers->rowCount(),
-           "Invalid rowFrom argument: " << rowFrom);
+           std::format("Invalid rowFrom argument: {}", rowFrom));
     ASSERT(rowTo >= 0 && rowTo < m_tablePlayers->rowCount(),
-           "Invalid rowTo argument: " << rowTo);
+           std::format("Invalid rowTo argument: {}", rowTo));
     ASSERT(rowFrom != rowTo, "moveRow() should be called with different values");
 
     // We are going to insert a row, so update the indices

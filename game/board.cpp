@@ -21,6 +21,7 @@
 
 #include <cwctype>
 #include <cstdio>
+#include <format>
 
 #include "dic.h"
 
@@ -52,7 +53,7 @@ Board::Board(const GameParams &iParams):
     m_pointRow(BOARD_REALDIM, -1),
     m_pointCol(BOARD_REALDIM, -1),
     m_testsRow(BOARD_REALDIM, Tile())
-    
+
 {
     // No cross check allowed around the board
     for (int i = 0; i < BOARD_REALDIM; i++)
@@ -453,9 +454,9 @@ void Board::checkDouble()
         for (unsigned col = 1; col <= nbCols; col++)
         {
             ASSERT(m_tilesRow[row][col] == m_tilesCol[col][row],
-                   "Tiles inconsistency at " << row << "x" << col);
+                   std::format("Tiles inconsistency at {}x{}", row, col));
             ASSERT(m_jokerRow[row][col] == m_jokerCol[col][row],
-                   "Jokers inconsistency at " << row << "x" << col);
+                   std::format("Jokers inconsistency at {}x{}", row, col));
             // The crossckecks and the points have no reason to be the same
             // in both directions
         }

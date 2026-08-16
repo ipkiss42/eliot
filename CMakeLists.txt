@@ -61,7 +61,6 @@ endif()
 # --------------------------------------------------------------
 # Checks for headers and functions
 # --------------------------------------------------------------
-check_include_file("execinfo.h" HAVE_EXECINFO_H)
 check_include_file("sys/stat.h" HAVE_SYS_STAT_H)
 check_include_file("sys/types.h" HAVE_SYS_TYPES_H)
 

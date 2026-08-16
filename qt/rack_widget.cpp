@@ -19,6 +19,7 @@
  *****************************************************************************/
 
 #include <algorithm>
+#include <format>
 
 #include <QHBoxLayout>
 #include <QDrag>
@@ -184,7 +185,7 @@ void RackWidget::tilePressed(int row, int col, QMouseEvent *event)
 {
     ASSERT(row == 0, "Multi-line racks are not supported");
     ASSERT(col >= 0 && (unsigned)col < m_tilesVect.size(),
-           "Invalid tile index: " << col);
+           std::format("Invalid tile index: {}", col));
 
     if (!canStartDragDrop())
         return;
