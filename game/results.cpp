@@ -49,8 +49,8 @@ void Results::sort()
 {
     std::ranges::sort(m_rounds, [](const Round& r1, const Round& r2) {
         // We want higher scores first, so we use descending order
-        if (auto cmp = r1.getPoints() <=> r2.getPoints(); cmp != 0)
-            return cmp > 0;
+        if (auto cmp = r1.getPoints() <=> r2.getPoints(); cmp != 0) // NOLINT(modernize-use-nullptr)
+            return cmp > 0; // NOLINT(modernize-use-nullptr)
 
         // Next, do case-insensitive sorting
         if (std::ranges::lexicographical_compare(r1.getTiles(), r2.getTiles(), tileCompare))
@@ -59,8 +59,8 @@ void Results::sort()
             return false;
 
         // If the rounds are still equal, compare coordinates
-        if (auto cmp = r1.getCoord().toString() <=> r2.getCoord().toString(); cmp != 0)
-            return cmp < 0;
+        if (auto cmp = r1.getCoord().toString() <=> r2.getCoord().toString(); cmp != 0) // NOLINT(modernize-use-nullptr)
+            return cmp < 0; // NOLINT(modernize-use-nullptr)
 
         // Finally, compare taking the case into account.
         // After that, we are sure that the rounds will be different...
