@@ -45,10 +45,9 @@ TileLayout::~TileLayout()
 
 void TileLayout::clear()
 {
-    QLayoutItem *item;
-    while ((item = takeAt(0)))
+    while (auto item = takeAt(0))
     {
-        QtCommon::DestroyObject(item->widget());
+        delete item->widget();
         delete item;
     }
 }

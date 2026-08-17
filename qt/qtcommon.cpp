@@ -152,15 +152,6 @@ void QtCommon::CheckConversions()
 }
 
 
-void QtCommon::DestroyObject(QWidget *ioObjectToDestroy)
-{
-    if (ioObjectToDestroy == nullptr)
-        return;
-    ioObjectToDestroy->hide();
-    ioObjectToDestroy->deleteLater();
-}
-
-
 bool QtCommon::requestConfirmation(QString confoKey, QString iMsg,
                                    QString iQuestion, QWidget *iParent)
 {

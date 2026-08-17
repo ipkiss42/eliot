@@ -44,7 +44,7 @@ INIT_LOGGER(qt, BagWidget2);
 
 
 BagWidget::BagWidget(QWidget *parent)
-    : QWidget(parent) 
+    : QWidget(parent)
 {
     setupUi(this);
 
@@ -116,7 +116,7 @@ QSize BagWidget::sizeHint() const
 
 
 BagWidget2::BagWidget2(QWidget *parent)
-    : QWidget(parent) 
+    : QWidget(parent)
 {
     TileLayout *layout = new TileLayout;
     layout->setSpacing(5);
@@ -178,7 +178,7 @@ void BagWidget2::refresh()
     while (m_tilesVect.size() > nbTilesToDisplay)
     {
         // Extra tile: we remove it
-        QtCommon::DestroyObject(m_tilesVect.back());
+        delete m_tilesVect.back();
         m_tilesVect.pop_back();
     }
     while (m_tilesVect.size() < nbTilesToDisplay)

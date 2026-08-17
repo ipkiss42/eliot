@@ -62,11 +62,6 @@ public:
     static void CheckConversions();
 
     /**
-     * Kill the given widget, i.e. hide it, cut its signals, and mark it for deletion.
-     */
-    static void DestroyObject(QWidget *ioWidgetToDestroy);
-
-    /**
      * Ask for a confirmation.
      * Return true if the user confirms, false otherwise.
      * By default, the question is "Do you want to continue?".

@@ -121,7 +121,7 @@ void RackWidget::refresh()
     // Make sure we have as many widgets as there are letters in the rack
     while (m_tilesVect.size() > tilesCount)
     {
-        QtCommon::DestroyObject(m_tilesVect.back());
+        delete m_tilesVect.back();
         m_tilesVect.pop_back();
     }
     while (m_tilesVect.size() < tilesCount)

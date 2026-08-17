@@ -388,23 +388,23 @@ void MainWindow::updateForGame(PublicGame *iGame)
         m_timerModel->resetTimer();
 
         // Destroy the players widget
-        QtCommon::DestroyObject(m_playersWidget);
+        delete m_playersWidget;
         m_playersWidget = nullptr;
 
         // Destroy the training widget
-        QtCommon::DestroyObject(m_trainingWidget);
+        delete m_trainingWidget;
         m_trainingWidget = nullptr;
 
         // Destroy the topping widget
-        QtCommon::DestroyObject(m_toppingWidget);
+        delete m_toppingWidget;
         m_toppingWidget = nullptr;
 
         // Destroy the arbitration widget
-        QtCommon::DestroyObject(m_arbitrationWidget);
+        delete m_arbitrationWidget;
         m_arbitrationWidget = nullptr;
 
         // Destroy the scores widget
-        QtCommon::DestroyObject(m_scoresWidget);
+        delete m_scoresWidget;
         m_scoresWidget = nullptr;
     }
     else
