@@ -144,7 +144,7 @@ void evaluate(const Header &iHeader, iter_t const& i, stack<Node*> &evalStack,
         // j is the index of the new list we create
         size_t j = iList.symbl.size();
         iList.symbl.push_back(RE_ALL_MATCH + j);
-        iList.letters.push_back(vector<bool>(DIC_LETTERS + 1, false));
+        iList.letters.emplace_back(DIC_LETTERS + 1, false);
         for (itLetter = letters.begin(); itLetter != letters.end(); ++itLetter)
         {
             bool contains = (choiceLetters.find(*itLetter) != string::npos);

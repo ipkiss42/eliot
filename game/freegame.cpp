@@ -20,7 +20,7 @@
 
 
 #include <iomanip>
-#include <wctype.h>
+#include <cwctype>
 
 #include "freegame.h"
 #include "game_exception.h"

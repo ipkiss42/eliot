@@ -521,7 +521,7 @@ void AutomatonHelper::printEdges(ostream &out) const
             if (s->m_next[letter])
             {
                 out << std::format("\t\"{0}\" -> ", idToString(s->getId()));
-                out << std::format("\"{0}\" [label = \"", idToString(s->m_next[letter]->getId()));
+                out << std::format(R"("{0}" [label = ")", idToString(s->m_next[letter]->getId()));
                 out << regexpPrintLetter(letter);
                 out << "\"];\n";
             }

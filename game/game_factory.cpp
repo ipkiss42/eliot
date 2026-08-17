@@ -168,7 +168,7 @@ Game *GameFactory::createFromCmdLine(int argc, char **argv)
                 }
                 else
                     name = wfl(optarg);
-                m_players.push_back(make_pair(res == 'u', name));
+                m_players.emplace_back(res == 'u', name);
             }
             break;
         case 500:

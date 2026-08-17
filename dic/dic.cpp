@@ -123,7 +123,7 @@ void Dictionary::initializeTiles()
     {
         wchar_t chr = m_header->getLetters()[i];
         unsigned int code = m_header->getCodeFromChar(chr);
-        m_tilesVect.push_back(Tile(code, chr == Tile::kTILE_JOKER));
+        m_tilesVect.emplace_back(code, chr == Tile::kTILE_JOKER);
     }
 }
 
@@ -263,7 +263,7 @@ begin:
             return 0;
         }
         p = getNext(p);
-    } while (1);
+    } while (true);
 
     return 0;
 }
@@ -292,7 +292,7 @@ begin:
             return 0;
         }
         p = getNext(p);
-    } while (1);
+    } while (true);
 
     return 0;
 }

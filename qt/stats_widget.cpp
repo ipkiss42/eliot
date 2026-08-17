@@ -31,7 +31,7 @@
 #include <QPrintPreviewDialog>
 #include <QLocale>
 
-#include "math.h" // For floor()
+#include <cmath> // For floor()
 
 #include "stats_widget.h"
 #include "qtcommon.h"

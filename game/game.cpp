@@ -634,7 +634,7 @@ int Game::checkPlayedWord(const wstring &iCoord,
     vector<Tile> tiles;
     for (wchar_t wc : iWord)
     {
-        tiles.push_back(Tile(wc));
+        tiles.emplace_back(wc);
     }
     round.setWord(tiles);
 

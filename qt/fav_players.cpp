@@ -177,7 +177,7 @@ void FavPlayersDialog::exportPlayers()
             dataRow.push_back(lfq(def.name));
             dataRow.push_back(lfq(def.type));
             dataRow.push_back(lfq(def.level));
-            dataRow.push_back(def.isDefault ? "1" : "0");
+            dataRow.emplace_back(def.isDefault ? "1" : "0");
             csvData.push_back(dataRow);
         }
 

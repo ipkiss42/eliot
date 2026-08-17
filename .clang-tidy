@@ -1,16 +1,26 @@
 ---
 Checks: >
   -*,
-  modernize-use-nullptr,
+  modernize-avoid-bind,
+  modernize-deprecated-headers,
   modernize-loop-convert,
-  modernize-use-override,
-  modernize-replace-auto-ptr,
-  modernize-make-unique,
   modernize-make-shared,
+  modernize-make-unique,
+  modernize-raw-string-literal,
+  modernize-redundant-void-arg,
+  modernize-replace-auto-ptr,
+  modernize-shrink-to-fit,
+  modernize-use-bool-literals,
+  modernize-use-default,
   modernize-use-default-member-init,
+  modernize-use-emplace,
   modernize-use-equals-default,
   modernize-use-equals-delete,
+  modernize-use-nullptr,
+  modernize-use-override,
   modernize-use-using
+
+
 
 # Filter project header files, while allowing out of tree builds
 HeaderFilterRegex: '(dic/|game/|utils/|qt/).*\.(h|hpp|hxx)$'

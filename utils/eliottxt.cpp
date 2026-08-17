@@ -22,16 +22,16 @@
 #include "config.h"
 
 #include <boost/tokenizer.hpp>
-#include <wchar.h>
+#include <cwchar>
 #include <fstream>
 #include <iostream>
-#include <stdlib.h>
-#include <time.h>
-#include <string.h>
-#include <locale.h>
-#include <wctype.h>
+#include <cstdlib>
+#include <ctime>
+#include <cstring>
+#include <clocale>
+#include <cwctype>
 #ifdef HAVE_READLINE
-#   include <stdio.h>
+#   include <cstdio>
 #   include <readline/readline.h>
 #   include <readline/history.h>
 #endif
@@ -686,7 +686,7 @@ void loopFreegame(PublicGame &iGame)
     printf("mode partie libre\n");
     printf("[?] pour l'aide\n");
 
-    bool quit = 0;
+    bool quit = false;
     while (!quit)
     {
         const vector<wstring> &tokens = readTokens();

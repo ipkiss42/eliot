@@ -115,7 +115,7 @@ UpdateChecker::VersionNumber UpdateChecker::parseVersionNumber(QString iVersion)
     // A version number has the following form: 1.12a-git (where 'a' is an
     // optional letter, and -git is optional as well)
     // Regexp to the rescue!
-    static QRegularExpression re("^(\\d+)\\.(\\d+)([a-z])?(-git.*)?$");
+    static QRegularExpression re(R"(^(\d+)\.(\d+)([a-z])?(-git.*)?$)");
     QRegularExpressionMatch match = re.match(iVersion);
     if (!match.hasMatch())
     {

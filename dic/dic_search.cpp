@@ -175,7 +175,7 @@ void Dictionary::search7pl1(const wstring &iRack,
             }
             else
             {
-                oWordList[0].push_back(L"** joker **");
+                oWordList[0].emplace_back(L"** joker **");
                 return;
             }
         }

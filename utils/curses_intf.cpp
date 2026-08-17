@@ -33,7 +33,7 @@
 
 #include <iostream>
 #include <clocale>
-#include <ctype.h>
+#include <cctype>
 #include <cstring> // For strlen
 #include <cwctype> // For iswalnum
 #include <algorithm>

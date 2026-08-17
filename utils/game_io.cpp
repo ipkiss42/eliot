@@ -21,7 +21,7 @@
 
 #include <iomanip>
 #include <string>
-#include <stdlib.h>
+#include <cstdlib>
 
 #include "game_io.h"
 #include "game_params.h"
