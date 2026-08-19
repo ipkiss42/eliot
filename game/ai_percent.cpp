@@ -21,7 +21,6 @@
 #include "tile.h"
 #include "rack.h"
 #include "pldrack.h"
-#include "round.h"
 #include "move.h"
 #include "results.h"
 #include "board.h"
@@ -70,7 +69,7 @@ Move AIPercent::getMove() const
         // If there is no result, pass the turn.
         // FIXME: in duplicate mode, we should return a move of type NO_MOVE
         // instead of one of type PASS
-        return Move(L"");
+        return {L""};
     }
     else
     {

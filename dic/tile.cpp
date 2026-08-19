@@ -151,7 +151,7 @@ Tile Tile::toLower() const
 {
     ASSERT(iswalpha(m_char),
            "toLower() should be called on alphabetical tiles");
-    return Tile(towlower(m_char));
+    return Tile(towlower(m_char)); // NOLINT(modernize-return-braced-init-list)
 }
 
 
@@ -159,7 +159,7 @@ Tile Tile::toUpper() const
 {
     ASSERT(iswalpha(m_char),
            "toUpper() should be called on alphabetical tiles");
-    return Tile(towupper(m_char));
+    return Tile(towupper(m_char)); // NOLINT(modernize-return-braced-init-list)
 }
 
 

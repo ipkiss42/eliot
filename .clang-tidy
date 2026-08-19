@@ -7,12 +7,9 @@ Checks: >
   -modernize-avoid-variadic-functions,
   -modernize-macro-to-enum,
   -modernize-pass-by-value,
-  -modernize-return-braced-init-list,
   -modernize-use-auto,
   -modernize-use-integer-sign-comparison,
   -modernize-use-nodiscard,
-  -modernize-use-ranges,
-  -modernize-use-std-print,
   -modernize-use-trailing-return-type
 
 

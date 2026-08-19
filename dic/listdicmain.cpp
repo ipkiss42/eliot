@@ -22,6 +22,7 @@
 #include "config.h"
 
 #include <map>
+#include <print>
 #include <string>
 #include <vector>
 #include <fstream>
@@ -103,14 +104,14 @@ static void printHexa(const Dictionary &iDic)
     } ee;
 
     printf(_("offset binary   | structure\n"));
-    printf("------ -------- | --------------------\n");
+    std::println("------ -------- | --------------------");
     for (unsigned int i = 0; i < (iDic.getHeader().getNbEdgesUsed() + 1); i++)
     {
         ee.e = *reinterpret_cast<const DicEdge*>(iDic.getEdgeAt(i));
 
-        printf("0x%04zx %08x |%4d ptr=%8d t=%d l=%d chr=%2d (%lc)\n",
-               i*sizeof(ee), (unsigned int)(ee.s),
-               i, ee.e.ptr, ee.e.term, ee.e.last, ee.e.chr,
+        std::println("0x{:04x} {:08x} |{:4} ptr={:8} t={} l={} chr={:2} ({:c})",
+               i*sizeof(ee), ee.s,
+               i, +ee.e.ptr, +ee.e.term, +ee.e.last, +ee.e.chr,
                (wint_t)(ee.e.chr == 0 ? L'-' : iDic.getHeader().getCharFromCode(ee.e.chr)));
     }
 }

@@ -21,20 +21,21 @@
 
 #include "config.h"
 
-#include <boost/tokenizer.hpp>
 #include <cwchar>
-#include <fstream>
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
 #include <cstring>
 #include <clocale>
 #include <cwctype>
+#include <print>
 #ifdef HAVE_READLINE
 #   include <cstdio>
 #   include <readline/readline.h>
 #   include <readline/history.h>
 #endif
+
+#include <boost/tokenizer.hpp>
 
 #include "dic.h"
 #include "header.h"
@@ -265,174 +266,174 @@ PublicGame * readGame(const Dictionary &iDic,
 
 void helpTraining()
 {
-    printf("  ?    : aide -- cette page\n");
-    printf("  a [g|gm|gd|l|p|s|S|t|T] : afficher :\n");
-    printf("            g -- grille\n");
-    printf("            gm -- grille + valeur des cases\n");
-    printf("            gd -- grille + debug cross (debug only)\n");
-    printf("            l -- lettres non jouées\n");
-    printf("            p -- partie\n");
-    printf("            r -- recherche\n");
-    printf("            s -- score\n");
-    printf("            S -- score de tous les joueurs\n");
-    printf("            t -- tirage\n");
-    printf("            T -- tirage de tous les joueurs\n");
-    printf("  d [] : vérifier le mot []\n");
-    printf("  b [b|p|r] [] : effectuer une recherche speciale à partir de []\n");
-    printf("            b -- benjamins\n");
-    printf("            p -- 7 + 1\n");
-    printf("            r -- raccords\n");
-    printf("  *    : tirage aléatoire\n");
-    printf("  +    : tirage aléatoire ajouts\n");
-    printf("  t [] : changer le tirage\n");
-    printf("  j [] {} : jouer le mot [] aux coordonnées {}\n");
-    printf("  n [] : jouer le résultat numéro []\n");
-    printf("  r    : rechercher les meilleurs résultats\n");
-    printf("  s [] : sauver la partie en cours dans le fichier []\n");
-    printf("  h [p|n|f|l|r] : naviguer dans l'historique (prev, next, first, last, replay)\n");
-    printf("  q    : quitter le mode entraînement\n");
+    std::println("  ?    : aide -- cette page");
+    std::println("  a [g|gm|gd|l|p|s|S|t|T] : afficher :");
+    std::println("            g -- grille");
+    std::println("            gm -- grille + valeur des cases");
+    std::println("            gd -- grille + debug cross (debug only)");
+    std::println("            l -- lettres non jouées");
+    std::println("            p -- partie");
+    std::println("            r -- recherche");
+    std::println("            s -- score");
+    std::println("            S -- score de tous les joueurs");
+    std::println("            t -- tirage");
+    std::println("            T -- tirage de tous les joueurs");
+    std::println("  d [] : vérifier le mot []");
+    std::println("  b [b|p|r] [] : effectuer une recherche speciale à partir de []");
+    std::println("            b -- benjamins");
+    std::println("            p -- 7 + 1");
+    std::println("            r -- raccords");
+    std::println("  *    : tirage aléatoire");
+    std::println("  +    : tirage aléatoire ajouts");
+    std::println("  t [] : changer le tirage");
+    std::println("  j [] {{}} : jouer le mot [] aux coordonnées {{}}");
+    std::println("  n [] : jouer le résultat numéro []");
+    std::println("  r    : rechercher les meilleurs résultats");
+    std::println("  s [] : sauver la partie en cours dans le fichier []");
+    std::println("  h [p|n|f|l|r] : naviguer dans l'historique (prev, next, first, last, replay)");
+    std::println("  q    : quitter le mode entraînement");
 }
 
 
 void helpFreegame()
 {
-    printf("  ?    : aide -- cette page\n");
-    printf("  a [g|gm|gd|l|p|s|S|t|T] : afficher :\n");
-    printf("            g -- grille\n");
-    printf("            gm -- grille + valeur des cases\n");
-    printf("            gd -- grille + debug cross (debug only)\n");
-    printf("            l -- lettres non jouées\n");
-    printf("            p -- partie\n");
-    printf("            s -- score\n");
-    printf("            S -- score de tous les joueurs\n");
-    printf("            t -- tirage\n");
-    printf("            T -- tirage de tous les joueurs\n");
-    printf("  d [] : vérifier le mot []\n");
-    printf("  j [] {} : jouer le mot [] aux coordonnées {}\n");
-    printf("  p [] : passer son tour en changeant les lettres []\n");
-    printf("  s [] : sauver la partie en cours dans le fichier []\n");
-    printf("  h [p|n|f|l|r] : naviguer dans l'historique (prev, next, first, last, replay)\n");
-    printf("  q    : quitter le mode partie libre\n");
+    std::println("  ?    : aide -- cette page");
+    std::println("  a [g|gm|gd|l|p|s|S|t|T] : afficher :");
+    std::println("            g -- grille");
+    std::println("            gm -- grille + valeur des cases");
+    std::println("            gd -- grille + debug cross (debug only)");
+    std::println("            l -- lettres non jouées");
+    std::println("            p -- partie");
+    std::println("            s -- score");
+    std::println("            S -- score de tous les joueurs");
+    std::println("            t -- tirage");
+    std::println("            T -- tirage de tous les joueurs");
+    std::println("  d [] : vérifier le mot []");
+    std::println("  j [] {{}} : jouer le mot [] aux coordonnées {{}}");
+    std::println("  p [] : passer son tour en changeant les lettres []");
+    std::println("  s [] : sauver la partie en cours dans le fichier []");
+    std::println("  h [p|n|f|l|r] : naviguer dans l'historique (prev, next, first, last, replay)");
+    std::println("  q    : quitter le mode partie libre");
 }
 
 
 void helpDuplicate()
 {
-    printf("  ?    : aide -- cette page\n");
-    printf("  a [g|gm|gd|l|p|s|S|t|T] : afficher :\n");
-    printf("            g -- grille\n");
-    printf("            gm -- grille + valeur des cases\n");
-    printf("            gd -- grille + debug cross (debug only)\n");
-    printf("            l -- lettres non jouées\n");
-    printf("            p -- partie\n");
-    printf("            s -- score\n");
-    printf("            S -- score de tous les joueurs\n");
-    printf("            t -- tirage\n");
-    printf("            T -- tirage de tous les joueurs\n");
-    printf("  d [] : vérifier le mot []\n");
-    printf("  j [] {} : jouer le mot [] aux coordonnées {}\n");
-    printf("  n [] : passer au joueur n°[]\n");
-    printf("  s [] : sauver la partie en cours dans le fichier []\n");
-    printf("  h [p|n|f|l|r] : naviguer dans l'historique (prev, next, first, last, replay\n");
-    printf("  q    : quitter le mode duplicate\n");
+    std::println("  ?    : aide -- cette page");
+    std::println("  a [g|gm|gd|l|p|s|S|t|T] : afficher :");
+    std::println("            g -- grille");
+    std::println("            gm -- grille + valeur des cases");
+    std::println("            gd -- grille + debug cross (debug only)");
+    std::println("            l -- lettres non jouées");
+    std::println("            p -- partie");
+    std::println("            s -- score");
+    std::println("            S -- score de tous les joueurs");
+    std::println("            t -- tirage");
+    std::println("            T -- tirage de tous les joueurs");
+    std::println("  d [] : vérifier le mot []");
+    std::println("  j [] {{}} : jouer le mot [] aux coordonnées {{}}");
+    std::println("  n [] : passer au joueur n°[]");
+    std::println("  s [] : sauver la partie en cours dans le fichier []");
+    std::println("  h [p|n|f|l|r] : naviguer dans l'historique (prev, next, first, last, replay");
+    std::println("  q    : quitter le mode duplicate");
 }
 
 
 void helpArbitration()
 {
-    printf("  ?    : aide -- cette page\n");
-    printf("  a [g|gm|gd|l|p|s|S|t|T] : afficher :\n");
-    printf("            g -- grille\n");
-    printf("            gm -- grille + valeur des cases\n");
-    printf("            gd -- grille + debug cross (debug only)\n");
-    printf("            l -- lettres non jouées\n");
-    printf("            p -- partie\n");
-    printf("            s -- score\n");
-    printf("            S -- score de tous les joueurs\n");
-    printf("            t -- tirage\n");
-    printf("            T -- tirage de tous les joueurs\n");
-    printf("  d [] : vérifier le mot []\n");
-    printf("  *    : tirage aléatoire\n");
-    printf("  t [] : changer le tirage\n");
-    printf("  j j [] {} : jouer le mot [] aux coordonnées {} pour le joueur j\n");
-    printf("  m [] {} : définir le master move [] aux coordonnées {}\n");
-    printf("  e j [w|p] {} : assigner/supprimer un événement au joueur j :\n");
-    printf("            w -- avertissement\n");
-    printf("            p -- pénalité\n");
-    printf("  f    : finaliser le tour courant\n");
-    printf("  s [] : sauver la partie en cours dans le fichier []\n");
-    printf("  h [p|n|f|l|r] : naviguer dans l'historique (prev, next, first, last, replay)\n");
-    printf("  q    : quitter le mode arbitrage\n");
+    std::println("  ?    : aide -- cette page");
+    std::println("  a [g|gm|gd|l|p|s|S|t|T] : afficher :");
+    std::println("            g -- grille");
+    std::println("            gm -- grille + valeur des cases");
+    std::println("            gd -- grille + debug cross (debug only)");
+    std::println("            l -- lettres non jouées");
+    std::println("            p -- partie");
+    std::println("            s -- score");
+    std::println("            S -- score de tous les joueurs");
+    std::println("            t -- tirage");
+    std::println("            T -- tirage de tous les joueurs");
+    std::println("  d [] : vérifier le mot []");
+    std::println("  *    : tirage aléatoire");
+    std::println("  t [] : changer le tirage");
+    std::println("  j j [] {{}} : jouer le mot [] aux coordonnées {{}} pour le joueur j");
+    std::println("  m [] {{}} : définir le master move [] aux coordonnées {{}}");
+    std::println("  e j [w|p] {{}} : assigner/supprimer un événement au joueur j :");
+    std::println("            w -- avertissement");
+    std::println("            p -- pénalité");
+    std::println("  f    : finaliser le tour courant");
+    std::println("  s [] : sauver la partie en cours dans le fichier []");
+    std::println("  h [p|n|f|l|r] : naviguer dans l'historique (prev, next, first, last, replay)");
+    std::println("  q    : quitter le mode arbitrage");
 }
 
 
 void helpTopping()
 {
-    printf("  ?    : aide -- cette page\n");
-    printf("  a [g|gm|gd|l|p|s|S|t|T] : afficher :\n");
-    printf("            g -- grille\n");
-    printf("            gm -- grille + valeur des cases\n");
-    printf("            gd -- grille + debug cross (debug only)\n");
-    printf("            l -- lettres non jouées\n");
-    printf("            p -- partie\n");
-    printf("            r -- recherche\n");
-    printf("            s -- score\n");
-    printf("            S -- score de tous les joueurs\n");
-    printf("            t -- tirage\n");
-    printf("            T -- tirage de tous les joueurs\n");
-    printf("  d [] : vérifier le mot []\n");
-    printf("  j [] {} <> : jouer le mot [] aux coordonnées {} après <> secondes\n");
-    printf("  t [] : simuler un timeout après [] secondes\n");
-    printf("  s [] : sauver la partie en cours dans le fichier []\n");
-    printf("  h [p|n|f|l|r] : naviguer dans l'historique (prev, next, first, last, replay)\n");
-    printf("  q    : quitter le mode topping\n");
+    std::println("  ?    : aide -- cette page");
+    std::println("  a [g|gm|gd|l|p|s|S|t|T] : afficher :");
+    std::println("            g -- grille");
+    std::println("            gm -- grille + valeur des cases");
+    std::println("            gd -- grille + debug cross (debug only)");
+    std::println("            l -- lettres non jouées");
+    std::println("            p -- partie");
+    std::println("            r -- recherche");
+    std::println("            s -- score");
+    std::println("            S -- score de tous les joueurs");
+    std::println("            t -- tirage");
+    std::println("            T -- tirage de tous les joueurs");
+    std::println("  d [] : vérifier le mot []");
+    std::println("  j [] {{}} <> : jouer le mot [] aux coordonnées {{}} après <> secondes");
+    std::println("  t [] : simuler un timeout après [] secondes");
+    std::println("  s [] : sauver la partie en cours dans le fichier []");
+    std::println("  h [p|n|f|l|r] : naviguer dans l'historique (prev, next, first, last, replay)");
+    std::println("  q    : quitter le mode topping");
 }
 
 
 void help()
 {
-    printf("  ?        : aide -- cette page\n");
-    printf("  e        : démarrer le mode entraînement\n");
-    printf("  ej       : démarrer le mode entraînement en partie joker\n");
-    printf("  ee       : démarrer le mode entraînement en partie détonante\n");
-    printf("  e8       : démarrer le mode entraînement en partie 7 sur 8\n");
-    printf("  t        : démarrer le mode topping\n");
-    printf("  tj       : démarrer le mode topping en partie joker\n");
-    printf("  te       : démarrer le mode topping en partie détonante\n");
-    printf("  t8       : démarrer le mode topping en partie 7 sur 8\n");
-    printf("  d [] {}  : démarrer une partie duplicate avec\n");
-    printf("                [] joueurs humains et {} joueurs IA\n");
-    printf("  dj [] {} : démarrer une partie duplicate avec\n");
-    printf("                [] joueurs humains et {} joueurs IA (partie joker)\n");
-    printf("  de [] {} : démarrer une partie duplicate avec\n");
-    printf("                [] joueurs humains et {} joueurs IA (partie détonante)\n");
-    printf("  d8 [] {} : démarrer une partie duplicate avec\n");
-    printf("                [] joueurs humains et {} joueurs IA (partie 7 sur 8)\n");
-    printf("  l [] {}  : démarrer une partie libre avec\n");
-    printf("                [] joueurs humains et {} joueurs IA\n");
-    printf("  lj [] {} : démarrer une partie libre avec\n");
-    printf("                [] joueurs humains et {} joueurs IA (partie joker)\n");
-    printf("  le [] {} : démarrer une partie libre avec\n");
-    printf("                [] joueurs humains et {} joueurs IA (partie détonante)\n");
-    printf("  l8 [] {} : démarrer une partie libre avec\n");
-    printf("                [] joueurs humains et {} joueurs IA (partie 7 sur 8)\n");
-    printf("  a [] {}  : démarrer une partie arbitrage avec\n");
-    printf("                [] joueurs humains et {} joueurs IA\n");
-    printf("  aj [] {} : démarrer une partie arbitrage avec\n");
-    printf("                [] joueurs humains et {} joueurs IA (partie joker)\n");
-    printf("  ae [] {} : démarrer une partie arbitrage avec\n");
-    printf("                [] joueurs humains et {} joueurs IA (partie détonante)\n");
-    printf("  a8 [] {} : démarrer une partie arbitrage avec\n");
-    printf("                [] joueurs humains et {} joueurs IA (partie 7 sur 8)\n");
-    printf("  c []     : charger la partie du fichier []\n");
-    printf("  x [] {1} {2} {3} : expressions rationnelles\n");
-    printf("          [] expression à rechercher\n");
-    printf("          {1} nombre de résultats à afficher\n");
-    printf("          {2} longueur minimum d'un mot\n");
-    printf("          {3} longueur maximum d'un mot\n");
-    printf("  s [b|i] {1} {2} : définir la valeur {2} pour l'option {1},\n");
-    printf("                    qui est de type (b)ool ou (i)nt\n");
-    printf("  q        : quitter\n");
+    std::println("  ?        : aide -- cette page");
+    std::println("  e        : démarrer le mode entraînement");
+    std::println("  ej       : démarrer le mode entraînement en partie joker");
+    std::println("  ee       : démarrer le mode entraînement en partie détonante");
+    std::println("  e8       : démarrer le mode entraînement en partie 7 sur 8");
+    std::println("  t        : démarrer le mode topping");
+    std::println("  tj       : démarrer le mode topping en partie joker");
+    std::println("  te       : démarrer le mode topping en partie détonante");
+    std::println("  t8       : démarrer le mode topping en partie 7 sur 8");
+    std::println("  d [] {{}}  : démarrer une partie duplicate avec");
+    std::println("                [] joueurs humains et {{}} joueurs IA");
+    std::println("  dj [] {{}} : démarrer une partie duplicate avec");
+    std::println("                [] joueurs humains et {{}} joueurs IA (partie joker)");
+    std::println("  de [] {{}} : démarrer une partie duplicate avec");
+    std::println("                [] joueurs humains et {{}} joueurs IA (partie détonante)");
+    std::println("  d8 [] {{}} : démarrer une partie duplicate avec");
+    std::println("                [] joueurs humains et {{}} joueurs IA (partie 7 sur 8)");
+    std::println("  l [] {{}}  : démarrer une partie libre avec");
+    std::println("                [] joueurs humains et {{}} joueurs IA");
+    std::println("  lj [] {{}} : démarrer une partie libre avec");
+    std::println("                [] joueurs humains et {{}} joueurs IA (partie joker)");
+    std::println("  le [] {{}} : démarrer une partie libre avec");
+    std::println("                [] joueurs humains et {{}} joueurs IA (partie détonante)");
+    std::println("  l8 [] {{}} : démarrer une partie libre avec");
+    std::println("                [] joueurs humains et {{}} joueurs IA (partie 7 sur 8)");
+    std::println("  a [] {{}}  : démarrer une partie arbitrage avec");
+    std::println("                [] joueurs humains et {{}} joueurs IA");
+    std::println("  aj [] {{}} : démarrer une partie arbitrage avec");
+    std::println("                [] joueurs humains et {{}} joueurs IA (partie joker)");
+    std::println("  ae [] {{}} : démarrer une partie arbitrage avec");
+    std::println("                [] joueurs humains et {{}} joueurs IA (partie détonante)");
+    std::println("  a8 [] {{}} : démarrer une partie arbitrage avec");
+    std::println("                [] joueurs humains et {{}} joueurs IA (partie 7 sur 8)");
+    std::println("  c []     : charger la partie du fichier []");
+    std::println("  x [] {{1}} {{2}} {{3}} : expressions rationnelles");
+    std::println("          [] expression à rechercher");
+    std::println("          {{1}} nombre de résultats à afficher");
+    std::println("          {{2}} longueur minimum d'un mot");
+    std::println("          {{3}} longueur maximum d'un mot");
+    std::println("  s [b|i] {{1}} {{2}} : définir la valeur {{2}} pour l'option {{1}},");
+    std::println("                    qui est de type (b)ool ou (i)nt");
+    std::println("  q        : quitter");
 }
 
 
@@ -485,9 +486,9 @@ void commonCommands(PublicGame &iGame, const vector<wstring> &tokens)
     {
         const wstring &word = parseLetters(tokens, 1, iGame.getDic());
         if (iGame.getDic().searchWord(word))
-            printf("le mot -%s- existe\n", lfw(word).c_str());
+            std::println("le mot -{}- existe", lfw(word));
         else
-            printf("le mot -%s- n'existe pas\n", lfw(word).c_str());
+            std::println("le mot -{}- n'existe pas", lfw(word));
     }
     else if (command == L'h')
     {
@@ -516,7 +517,7 @@ void commonCommands(PublicGame &iGame, const vector<wstring> &tokens)
         const wstring &coord = parseAlphaNum(tokens, 2);
         int res = iGame.play(word, coord);
         if (res != 0)
-            printf("Mot incorrect ou mal placé (%i)\n", res);
+            std::println("Mot incorrect ou mal placé ({})", res);
     }
     else if (command == L's')
     {
@@ -527,7 +528,7 @@ void commonCommands(PublicGame &iGame, const vector<wstring> &tokens)
         }
         catch (std::exception &e)
         {
-            printf("Cannot save game to %ls: %s\n", fileName.c_str(), e.what());
+            std::println("Cannot save game to {}: {}", lfw(fileName), e.what());
             return;
         }
     }
@@ -546,12 +547,11 @@ void handleRegexp(const Dictionary& iDic, const vector<wstring> &tokens)
 
     if (lmax > (DIC_WORD_MAX - 1) || lmin < 1 || lmin > lmax)
     {
-        printf("bad length -%d,%d-\n", lmin, lmax);
+        std::println("bad length -{},{}-", lmin, lmax);
         return;
     }
 
-    printf("search for %ls (%d,%d,%d)\n", regexp.c_str(),
-           nres, lmin, lmax);
+    std::println("search for {} ({},{},{})", lfw(regexp), nres, lmin, lmax);
 
     vector<wdstring> wordList;
     try
@@ -560,15 +560,15 @@ void handleRegexp(const Dictionary& iDic, const vector<wstring> &tokens)
     }
     catch (InvalidRegexpException &e)
     {
-        printf("Invalid regular expression: %s\n", e.what());
+        std::println("Invalid regular expression: {}", e.what());
         return;
     }
 
     for (const wdstring &wstr : wordList)
     {
-        printf("%s\n", lfw(wstr).c_str());
+        std::println("{}", lfw(wstr));
     }
-    printf("%u printed results\n", (unsigned)wordList.size());
+    std::println("{} printed results", wordList.size());
 }
 
 
@@ -588,7 +588,7 @@ void setSetting(const vector<wstring> &tokens)
     }
     catch (GameException &e)
     {
-        printf("Error while changing a setting: %s\n", e.what());
+        std::println("Error while changing a setting: {}", e.what());
         return;
     }
 }
@@ -652,7 +652,7 @@ void loopTraining(PublicGame &iGame)
             {
                 int num = parseNum(tokens, 1);
                 if (num <= 0)
-                    printf("mauvais argument\n");
+                    std::println("mauvais argument");
                 iGame.trainingPlayResult(num - 1);
             }
             else if (command == L'r')
@@ -674,17 +674,17 @@ void loopTraining(PublicGame &iGame)
         }
         catch (std::exception &e)
         {
-            printf("%s\n", e.what());
+            std::println("{}", e.what());
         }
     }
-    printf("fin du mode entraînement\n");
+    std::println("fin du mode entraînement");
 }
 
 
 void loopFreegame(PublicGame &iGame)
 {
-    printf("mode partie libre\n");
-    printf("[?] pour l'aide\n");
+    std::println("mode partie libre");
+    std::println("[?] pour l'aide");
 
     bool quit = false;
     while (!quit)
@@ -707,7 +707,7 @@ void loopFreegame(PublicGame &iGame)
                 }
                 int res = iGame.freeGamePass(letters);
                 if (res != 0)
-                    printf("Cannot pass (%d)\n", res);
+                    std::println("Cannot pass ({})", res);
             }
             else if (command == L'q')
                 quit = true;
@@ -716,17 +716,17 @@ void loopFreegame(PublicGame &iGame)
         }
         catch (std::exception &e)
         {
-            printf("%s\n", e.what());
+            std::println("{}", e.what());
         }
     }
-    printf("fin du mode partie libre\n");
+    std::println("fin du mode partie libre");
 }
 
 
 void loopDuplicate(PublicGame &iGame)
 {
-    printf("mode duplicate\n");
-    printf("[?] pour l'aide\n");
+    std::println("mode duplicate");
+    std::println("[?] pour l'aide");
 
     bool quit = false;
     while (!quit)
@@ -751,17 +751,17 @@ void loopDuplicate(PublicGame &iGame)
         }
         catch (std::exception &e)
         {
-            printf("%s\n", e.what());
+            std::println("{}", e.what());
         }
     }
-    printf("fin du mode duplicate\n");
+    std::println("fin du mode duplicate");
 }
 
 
 void loopArbitration(PublicGame &iGame)
 {
-    printf("mode arbitrage\n");
-    printf("[?] pour l'aide\n");
+    std::println("mode arbitrage");
+    std::println("[?] pour l'aide");
 
     bool quit = false;
     while (!quit)
@@ -819,17 +819,17 @@ void loopArbitration(PublicGame &iGame)
         }
         catch (std::exception &e)
         {
-            printf("%s\n", e.what());
+            std::println("{}", e.what());
         }
     }
-    printf("fin du mode arbitrage\n");
+    std::println("fin du mode arbitrage");
 }
 
 
 void loopTopping(PublicGame &iGame)
 {
-    printf("mode topping\n");
-    printf("[?] pour l'aide\n");
+    std::println("mode topping");
+    std::println("[?] pour l'aide");
 
     bool quit = false;
     while (!quit)
@@ -861,16 +861,16 @@ void loopTopping(PublicGame &iGame)
         }
         catch (std::exception &e)
         {
-            printf("%s\n", e.what());
+            std::println("{}", e.what());
         }
     }
-    printf("fin du mode topping\n");
+    std::println("fin du mode topping");
 }
 
 
 void mainLoop(const Dictionary &iDic)
 {
-    printf("[?] pour l'aide\n");
+    std::println("[?] pour l'aide");
 
     bool quit = false;
     while (!quit)
@@ -880,7 +880,7 @@ void mainLoop(const Dictionary &iDic)
             continue;
         if (tokens[0].size() > 3)
         {
-            printf("%s\n", "Invalid command");
+            std::println("{}", "Invalid command");
             continue;
         }
 
@@ -914,7 +914,7 @@ void mainLoop(const Dictionary &iDic)
                         }
                         catch (const std::exception &e)
                         {
-                            printf("Error loading the game: %s\n", e.what());
+                            std::println("Error loading the game: {}", e.what());
                         }
                     }
                     break;
@@ -994,13 +994,13 @@ void mainLoop(const Dictionary &iDic)
                     quit = true;
                     break;
                 default:
-                    printf("commande inconnue\n");
+                    std::println("commande inconnue");
                     break;
             }
         }
         catch (std::exception &e)
         {
-            printf("%s\n", e.what());
+            std::println("{}", e.what());
         }
     }
 }
@@ -1013,7 +1013,7 @@ int main(int argc, char *argv[])
 
     if (argc != 2 && argc != 3)
     {
-        fprintf(stdout, "Usage: eliot /path/to/ods5.dawg [random_seed]\n");
+        std::println(stdout, "Usage: eliot /path/to/ods5.dawg [random_seed]");
         exit(1);
     }
 

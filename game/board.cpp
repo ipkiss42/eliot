@@ -53,7 +53,6 @@ Board::Board(const GameParams &iParams):
     m_pointRow(BOARD_REALDIM, -1),
     m_pointCol(BOARD_REALDIM, -1),
     m_testsRow(BOARD_REALDIM, Tile())
-
 {
     // No cross check allowed around the board
     for (int i = 0; i < BOARD_REALDIM; i++)
@@ -430,7 +429,7 @@ string Board::getCellContent_row(int row, int col) const
             // m_jokerRow[row][col] ? 'j':'.',
             m_crossRow[row][col].getHexContent().c_str(),
             m_pointRow[row][col]);
-    return string(buff);
+    return {buff};
 }
 
 string Board::getCellContent_col(int row, int col) const
@@ -440,7 +439,7 @@ string Board::getCellContent_col(int row, int col) const
             // m_jokerCol[col][row] ? 'j':'.',
             m_crossCol[col][row].getHexContent().c_str(),
             m_pointCol[col][row]);
-    return string(buff);
+    return {buff};
 }
 
 

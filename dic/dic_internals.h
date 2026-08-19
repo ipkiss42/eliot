@@ -21,9 +21,8 @@
 #ifndef DIC_INTERNALS_H_
 #define DIC_INTERNALS_H_
 
-#include <stdint.h>
+#include <cstdint>
 #include <cstring> // For memcpy
-#include "config.h"
 
 /**
  *  structure of a compressed dictionary \n

@@ -82,8 +82,7 @@ static void validateDictionary(const pugi::xml_node& dicNode, const Dictionary& 
         const wdstring & displayLetters = iDic.convertToDisplay(iDic.getHeader().getLetters());
         // Remove spaces
         string parsedLetters = lettersNode.text().get();
-        string::iterator it = remove(parsedLetters.begin(), parsedLetters.end(), L' ');
-        parsedLetters.erase(it, parsedLetters.end());
+        std::erase(parsedLetters, ' ');
         // Compare
         if (displayLetters != fromUtf8(parsedLetters))
             throw LoadGameException(_("The current dictionary is different from the one used in the saved game"));
@@ -208,19 +207,19 @@ static Move buildMove(const Game &iGame, const pugi::xml_node &moveCmdNode, bool
     }
     else if (type == "invalid")
     {
-        return Move(fromUtf8(word), fromUtf8(coord));
+        return {fromUtf8(word), fromUtf8(coord)};
     }
     else if (type == "change")
     {
-        return Move(fromUtf8(letters));
+        return {fromUtf8(letters)};
     }
     else if (type == "pass")
     {
-        return Move(L"");
+        return {L""};
     }
     else if (type == "none")
     {
-        return Move();
+        return {};
     }
     else
         throw LoadGameException(_fmt(_("Invalid move type: {0}"), type));
