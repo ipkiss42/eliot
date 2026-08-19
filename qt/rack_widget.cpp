@@ -54,7 +54,7 @@ RackWidget::RackWidget(QWidget *parent)
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     setFrameStyle(QFrame::Box | QFrame::Raised);
 
-    TileLayout *layout = new TileLayout(1);
+    auto *layout = new TileLayout(1);
     layout->setSpacing(5);
     layout->setContentsMargins(3, 3, 3, 3);
     layout->setAlignment(Qt::AlignCenter);
@@ -83,7 +83,7 @@ void RackWidget::setGame(const PublicGame *iGame)
     if (m_game == nullptr)
     {
         // Delete the widgets
-        TileLayout *layout = (TileLayout*) this->layout();
+        auto *layout = (TileLayout*) this->layout();
         layout->clear();
         m_tilesVect.clear();
     }
@@ -126,7 +126,7 @@ void RackWidget::refresh()
     }
     while (m_tilesVect.size() < tilesCount)
     {
-        TileWidget *tileWidget =
+        auto *tileWidget =
             new TileWidget(nullptr, TileWidget::NONE, 0, m_tilesVect.size());
         QObject::connect(tileWidget, &TileWidget::mousePressed,
                          this, &RackWidget::tilePressed);
@@ -157,8 +157,7 @@ vector<Tile> RackWidget::filterRack(const vector<Tile> &iTiles) const
         if (round.isPlayedFromRack(i))
         {
             const Tile &t = round.getTile(i);
-            vector<Tile>::iterator it =
-                std::ranges::find(result, t.isJoker() ? Tile::Joker() : t);
+            auto it = std::ranges::find(result, t.isJoker() ? Tile::Joker() : t);
             if (it != result.end())
                 result.erase(it);
         }
@@ -194,7 +193,7 @@ void RackWidget::tilePressed(int row, int col, QMouseEvent *event)
     TileWidget *tileWidget = m_tilesVect[col];
 
     // Save the initial column of the moved tile
-    QMimeData *mimeData = new QMimeData;
+    auto *mimeData = new QMimeData;
     mimeData->setData(MIME_TYPE, QByteArray());
     m_dragOrigin = col;
 
@@ -203,7 +202,7 @@ void RackWidget::tilePressed(int row, int col, QMouseEvent *event)
     tileWidget->render(&pixmap);
 
     // Initiate the drag
-    QDrag *drag = new QDrag(this);
+    auto *drag = new QDrag(this);
     drag->setMimeData(mimeData);
     drag->setHotSpot(event->pos());
     drag->setPixmap(pixmap);

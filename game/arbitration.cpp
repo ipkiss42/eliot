@@ -246,7 +246,7 @@ void Arbitration::undoCurrentRack()
            "Cannot change rack for an old turn");
 
     // Find the GameRackCmd we want to undo
-    const GameRackCmd *cmd =
+    const auto *cmd =
         getNavigation().getCurrentTurn().findMatchingCmd<GameRackCmd>();
     ASSERT(cmd != nullptr, "No matching GameRackCmd found");
 

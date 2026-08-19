@@ -444,7 +444,7 @@ bool Dictionary::searchRegExp(const wstring &iRegexp,
 
     root->nextPos(PS);
 
-    Automaton *a = new Automaton(root->getFirstPos(), ptl, PS, llist);
+    auto *a = new Automaton(root->getFirstPos(), ptl, PS, llist);
     if (a)
     {
         struct params_regexp_t params;

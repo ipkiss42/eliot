@@ -88,14 +88,14 @@ WizardInfoPage::WizardInfoPage(QWidget *parent)
     registerField("wordList*", editWordList);
 
     // Auto-completion on the paths
-    QCompleter *completer1 = new QCompleter(this);
-    QFileSystemModel *model1 = new QFileSystemModel(this);
+    auto *completer1 = new QCompleter(this);
+    auto *model1 = new QFileSystemModel(this);
     model1->setRootPath(QDir::currentPath());
     completer1->setModel(model1);
     editGenDic->setCompleter(completer1);
 
-    QCompleter *completer2 = new QCompleter(this);
-    QFileSystemModel *model2 = new QFileSystemModel(this);
+    auto *completer2 = new QCompleter(this);
+    auto *model2 = new QFileSystemModel(this);
     model2->setRootPath(QDir::currentPath());
     completer2->setModel(model2);
     editWordList->setCompleter(completer2);
@@ -374,12 +374,12 @@ DicWizard::DicWizard(QWidget *parent, const Dictionary *iCurrDic)
     setOption(QWizard::IndependentPages);
     setModal(true);
 
-    WizardInfoPage *page1 = new WizardInfoPage;
+    auto *page1 = new WizardInfoPage;
     QObject::connect(page1, &WizardInfoPage::notifyProblem,
                      this, &DicWizard::notifyProblem);
     addPage(page1);
 
-    WizardLettersDefPage *page2 = new WizardLettersDefPage(iCurrDic);
+    auto *page2 = new WizardLettersDefPage(iCurrDic);
     QObject::connect(page2, &WizardLettersDefPage::notifyProblem,
                      this, &DicWizard::notifyProblem);
     m_lettersPageId = addPage(page2);

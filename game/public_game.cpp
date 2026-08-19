@@ -338,7 +338,7 @@ Move PublicGame::arbitrationCheckWord(const wstring &iWord,
 
 void PublicGame::arbitrationToggleSolo(unsigned iPlayerId)
 {
-    Arbitration &game = getTypedGame<Arbitration>(m_game);
+    auto &game = getTypedGame<Arbitration>(m_game);
     if (game.getSolo(iPlayerId) != 0)
         game.removeSolo(iPlayerId);
     else
@@ -354,7 +354,7 @@ int PublicGame::arbitrationGetSolo(unsigned iPlayerId) const
 
 void PublicGame::arbitrationToggleWarning(unsigned iPlayerId)
 {
-    Arbitration &game = getTypedGame<Arbitration>(m_game);
+    auto &game = getTypedGame<Arbitration>(m_game);
     if (game.hasWarning(iPlayerId))
         game.removeWarning(iPlayerId);
     else
@@ -370,7 +370,7 @@ bool PublicGame::arbitrationHasWarning(unsigned iPlayerId) const
 
 void PublicGame::arbitrationTogglePenalty(unsigned iPlayerId)
 {
-    Arbitration &game = getTypedGame<Arbitration>(m_game);
+    auto &game = getTypedGame<Arbitration>(m_game);
     if (game.getPenalty(iPlayerId) != 0)
         game.removePenalty(iPlayerId);
     else

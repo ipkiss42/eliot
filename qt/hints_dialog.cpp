@@ -44,18 +44,18 @@ HintWidget::HintWidget(const AbstractHint &iHint,
                        bool iShowCosts, QWidget *parent)
     : QWidget(parent), m_hint(iHint)
 {
-    QHBoxLayout *layout = new QHBoxLayout(this);
+    auto *layout = new QHBoxLayout(this);
 
     QString labelText = qfl(m_hint.getName());
     if (iShowCosts)
         labelText += " (" + _q("cost: %1").arg(m_hint.getCost()) + ")";
-    QLabel *label = new QLabel(labelText);
+    auto *label = new QLabel(labelText);
     label->setToolTip(qfl(m_hint.getDescription()));
     layout->addWidget(label);
 
     layout->addStretch();
 
-    QPushButton *button = new QPushButton(_q("Show"));
+    auto *button = new QPushButton(_q("Show"));
     button->setToolTip(qfl(m_hint.getDescription()));
     QObject::connect(button, &QAbstractButton::clicked,
                      this, &HintWidget::buttonClicked);
@@ -77,22 +77,22 @@ HintsDialog::HintsDialog(QWidget *parent, bool iShowCosts)
 {
     initializeHints();
 
-    QVBoxLayout *vLayout = new QVBoxLayout(this);
+    auto *vLayout = new QVBoxLayout(this);
     if (m_showCosts)
     {
-        QLabel *label = new QLabel(_q("Each hint has a corresponding cost, seen as a time penalty."));
+        auto *label = new QLabel(_q("Each hint has a corresponding cost, seen as a time penalty."));
         label->setWordWrap(true);
         vLayout->addWidget(label);
     }
     for (const auto& hint : m_allHints)
     {
-        HintWidget *hintWidget = new HintWidget(*hint, m_showCosts);
+        auto *hintWidget = new HintWidget(*hint, m_showCosts);
         QObject::connect(hintWidget, &HintWidget::hintRequested,
                          this, &HintsDialog::showHint);
         vLayout->addWidget(hintWidget);
     }
 
-    QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Cancel);
+    auto *buttonBox = new QDialogButtonBox(QDialogButtonBox::Cancel);
     vLayout->addWidget(buttonBox);
     connect(buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
 

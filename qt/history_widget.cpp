@@ -323,7 +323,7 @@ void HistoryTabWidget::setGame(const PublicGame *iGame)
         for (unsigned int i = 0; i < m_game->getNbPlayers(); ++i)
         {
             const Player &player = m_game->getPlayer(i);
-            HistoryWidget *h = new HistoryWidget(nullptr);
+            auto *h = new HistoryWidget(nullptr);
             h->setHistory(&player.getHistory(), m_game, true);
             QObject::connect(this, &HistoryTabWidget::refreshSignal, h, &HistoryWidget::refresh);
             QObject::connect(h, &HistoryWidget::requestDefinition,

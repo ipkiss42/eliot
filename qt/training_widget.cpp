@@ -96,7 +96,7 @@ TrainingWidget::TrainingWidget(QWidget *parent, PlayModel &iPlayModel, PublicGam
                      this, &TrainingWidget::playSelectedWord);
 
     // Add a context menu to the tree header
-    QAction *lockSizesAction = new QAction(_q("Lock columns sizes"), this);
+    auto *lockSizesAction = new QAction(_q("Lock columns sizes"), this);
     lockSizesAction->setCheckable(true);
     lockSizesAction->setStatusTip(_q("Disable auto-resizing of the columns"));
     treeViewResults->header()->addAction(lockSizesAction);

@@ -58,17 +58,17 @@ BoardWidget::BoardWidget(PlayModel &iPlayModel, QWidget *parent)
     setForegroundRole(QPalette::Window);
     setBackgroundRole(QPalette::Window);
 
-    TileLayout *layout = new TileLayout(nbRows + 1, nbCols + 1);
+    auto *layout = new TileLayout(nbRows + 1, nbCols + 1);
     layout->setSpacing(1);
     layout->setAlignment(Qt::AlignHCenter);
 
     // Line full of coordinates
-    TileWidget *cornerTile = new TileWidget;
+    auto *cornerTile = new TileWidget;
     cornerTile->setCoordText("");
     layout->addWidget(cornerTile);
     for (unsigned int col = 1; col <= nbCols; ++col)
     {
-        TileWidget *coordTile = new TileWidget;
+        auto *coordTile = new TileWidget;
         coordTile->setCoordText(QString("%1").arg(col));
         layout->addWidget(coordTile);
     }
@@ -77,7 +77,7 @@ BoardWidget::BoardWidget(PlayModel &iPlayModel, QWidget *parent)
     for (unsigned int row = 1; row <= nbRows; ++row)
     {
         // Add the coordinate
-        TileWidget *coordTile = new TileWidget;
+        auto *coordTile = new TileWidget;
         coordTile->setCoordText(QString(QChar('A' + row - 1)));
         layout->addWidget(coordTile);
         // Add the squares
@@ -92,7 +92,7 @@ BoardWidget::BoardWidget(PlayModel &iPlayModel, QWidget *parent)
                 mult = TileWidget::LETTER_TRIPLE;
             else if (boardLayout.getLetterMultiplier(row, col) == 2)
                 mult = TileWidget::LETTER_DOUBLE;
-            TileWidget *t = new TileWidget(this, mult, row, col);
+            auto *t = new TileWidget(this, mult, row, col);
             m_widgetsMatrix[row][col] = t;
             layout->addWidget(t);
             // Listen to mouse events on the tile
@@ -148,7 +148,7 @@ void BoardWidget::onMoveChanged(const Move &iMove)
         return;
 
     // FIXME
-    Board &board = const_cast<Board&>(m_game->getBoard());
+    auto &board = const_cast<Board&>(m_game->getBoard());
     board.removeTestRound();
     if (iMove.isValid())
     {

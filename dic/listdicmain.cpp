@@ -74,8 +74,7 @@ static void printLetters(const Dictionary &iDic)
              << (header.isConsonant(i) ? "1" : "0");
 
         // Display and input strings
-        map<wchar_t, vector<wstring> >::const_iterator it =
-            header.getDisplayInputData().find(letters[i - 1]);
+        auto it = header.getDisplayInputData().find(letters[i - 1]);
         if (it != header.getDisplayInputData().end())
         {
             for (const wstring &input : it->second)

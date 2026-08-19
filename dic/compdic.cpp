@@ -176,7 +176,7 @@ Header CompDic::writeHeader(ostream &outFile) const
 
 void CompDic::writeNode(DicEdge *ioEdges, unsigned int num, ostream &outFile)
 {
-    uint32_t *edgesAsUint = reinterpret_cast<uint32_t*>(ioEdges);
+    auto *edgesAsUint = reinterpret_cast<uint32_t*>(ioEdges);
     // Handle endianness
     for (unsigned int i = 0; i < num; ++i)
     {
@@ -195,7 +195,7 @@ void CompDic::writeNode(DicEdge *ioEdges, unsigned int num, ostream &outFile)
 // of the HashTable
 size_t hash_value(const DicEdge &iEdge)
 {
-    const uint32_t *num = reinterpret_cast<const uint32_t*>(&iEdge);
+    const auto *num = reinterpret_cast<const uint32_t*>(&iEdge);
     size_t seed = 0;
     boost::hash_combine(seed, *num);
     return seed;
@@ -353,7 +353,7 @@ Header CompDic::generateDawg(const string &iWordListFile,
     // (there is no warning with -O0... g++ bug?)
     writeNode(&specialNode, 1, outFile);
 
-    vector<wstring>::const_iterator firstWord = wordList.begin();
+    auto firstWord = wordList.cbegin();
     wstring::const_iterator initialPos = firstWord->begin();
 
     // Call makeNode with null (relative to stringbuf) prefix;

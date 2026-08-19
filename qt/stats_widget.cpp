@@ -130,7 +130,7 @@ StatsWidget::StatsWidget(QWidget *parent, const PublicGame *iGame)
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
     // Add a context menu to the tree header
-    QAction *lockSizesAction = new QAction(_q("Lock columns sizes"), this);
+    auto *lockSizesAction = new QAction(_q("Lock columns sizes"), this);
     lockSizesAction->setCheckable(true);
     lockSizesAction->setStatusTip(_q("Disable auto-resizing of the columns"));
     m_table->horizontalHeader()->addAction(lockSizesAction);
@@ -141,20 +141,20 @@ StatsWidget::StatsWidget(QWidget *parent, const PublicGame *iGame)
     m_table->setContextMenuPolicy(Qt::ActionsContextMenu);
 
     // Add a context menu option to flip the table
-    QAction *flipAction = new QAction(_q("Flip table"), this);
+    auto *flipAction = new QAction(_q("Flip table"), this);
     flipAction->setStatusTip(_q("Flip the table so that rows and columns are exchanged.\n"
                                 "This allows sorting the players by ranking, for example."));
     m_table->addAction(flipAction);
     QObject::connect(flipAction, &QAction::triggered,
                      this, &StatsWidget::flipTable);
 
-    QAction *printPreviewAction = new QAction(_q("Print preview..."), this);
+    auto *printPreviewAction = new QAction(_q("Print preview..."), this);
     printPreviewAction->setStatusTip(_q("Print the table."));
     m_table->addAction(printPreviewAction);
     QObject::connect(printPreviewAction, &QAction::triggered,
                      this, &StatsWidget::onPrintPreview);
 
-    QAction *printAction = new QAction(_q("Print..."), this);
+    auto *printAction = new QAction(_q("Print..."), this);
     printAction->setStatusTip(_q("Print the table."));
     m_table->addAction(printAction);
     QObject::connect(printAction, &QAction::triggered,
@@ -498,7 +498,7 @@ void StatsWidget::flipTable()
         m_table->setModel(m_model);
     else
     {
-        QSortFilterProxyModel *proxy = new QSortFilterProxyModel;
+        auto *proxy = new QSortFilterProxyModel;
         proxy->setDynamicSortFilter(true);
         proxy->setSourceModel(m_flippedModel);
         m_table->setModel(proxy);

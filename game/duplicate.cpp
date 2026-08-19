@@ -95,7 +95,7 @@ void Duplicate::playAI(unsigned int p)
     ASSERT(p < getNPlayers(), "Wrong player number");
     ASSERT(!hasPlayed(p), "AI player has already played");
 
-    AIPlayer *player = dynamic_cast<AIPlayer*>(m_players[p]);
+    auto *player = dynamic_cast<AIPlayer*>(m_players[p]);
     ASSERT(player != nullptr, "AI requested for a human player");
 
     player->compute(getDic(), getBoard(), getHistory().beforeFirstRound());
@@ -214,7 +214,7 @@ void Duplicate::recordPlayerMove(Player &ioPlayer, const Move &iMove)
 
     // Search a PlayerMoveCmd for the given player
     MatchingPlayer predicate(ioPlayer.getId());
-    const PlayerMoveCmd *cmd =
+    const auto *cmd =
         getNavigation().getCurrentTurn().findMatchingCmd<PlayerMoveCmd>(predicate);
     if (cmd == nullptr)
     {
@@ -366,7 +366,7 @@ bool Duplicate::hasPlayed(unsigned iPlayerId) const
 
     // Search a PlayerMoveCmd for the given player
     MatchingPlayer predicate(iPlayerId);
-    const PlayerMoveCmd *cmd =
+    const auto *cmd =
         getNavigation().getCurrentTurn().findMatchingCmd<PlayerMoveCmd>(predicate);
     return cmd != nullptr && cmd->isExecuted() && !cmd->getMove().isNull();
 }

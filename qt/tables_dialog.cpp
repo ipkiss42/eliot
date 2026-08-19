@@ -49,7 +49,7 @@ void TablesDialog::fillTable()
         // Display the player data
         tablePlayers->setRowHeight(i, 24);
         tablePlayers->setItem(i, 0, new QTableWidgetItem(qfw(player.getName())));
-        QTableWidgetItem *item = new QTableWidgetItem(qfw(player.getName()));
+        auto *item = new QTableWidgetItem(qfw(player.getName()));
         item->setData(Qt::DisplayRole, QVariant((int)player.getTableNb()));
         // Also save the player ID as user data (hidden)
         item->setData(Qt::UserRole, QVariant(player.getId()));

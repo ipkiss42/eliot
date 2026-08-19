@@ -36,7 +36,7 @@ INIT_LOGGER(game, History);
 
 History::History()
 {
-    TurnData *t = new TurnData();
+    auto *t = new TurnData();
     m_history.clear();
     m_history.push_back(t);
 }
@@ -105,7 +105,7 @@ void History::playMove(const Move &iMove,
     current_turn->setMove(iMove);
 
     // Create a new turn
-    TurnData * next_turn = new TurnData();
+    auto * next_turn = new TurnData();
     next_turn->setPlayedRack(iNewRack);
     m_history.push_back(next_turn);
 }

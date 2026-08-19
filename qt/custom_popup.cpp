@@ -48,7 +48,7 @@ QAction * CustomPopup::getShowDefinitionEntry(QString iWord)
 {
     m_word = iWord;
 
-    QAction *definitionAction = new QAction(_q("Show definition"), m_widget);
+    auto *definitionAction = new QAction(_q("Show definition"), m_widget);
     definitionAction->setStatusTip(_q("Show definition of '%1' in an external browser").arg(m_word));
     QObject::connect(definitionAction, &QAction::triggered,
                      this, &CustomPopup::definitionRequested);

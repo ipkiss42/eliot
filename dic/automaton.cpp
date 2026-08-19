@@ -295,8 +295,8 @@ AutomatonHelper *AutomatonHelper::ps2nfa(uint64_t init_state_id, int *ptl, uint6
 
 
     /* 1: init_state = root->PP */
-    State * temp_state = new State(init_state_id);
-    AutomatonHelper *nfa = new AutomatonHelper(temp_state);
+    auto * temp_state = new State(init_state_id);
+    auto * nfa = new AutomatonHelper(temp_state);
     nfa->addState(temp_state);
     list<State *> L;
     L.push_front(temp_state);
@@ -433,8 +433,8 @@ AutomatonHelper *AutomatonHelper::nfa2dfa(const AutomatonHelper &iNfa,
     list<State *> L;
 
     // Clone the list
-    State * temp_state = new State(iNfa.m_initState->getId());
-    AutomatonHelper *dfa = new AutomatonHelper(temp_state);
+    auto * temp_state = new State(iNfa.m_initState->getId());
+    auto * dfa = new AutomatonHelper(temp_state);
     dfa->addState(temp_state);
     L.push_front(temp_state);
     while (! L.empty())

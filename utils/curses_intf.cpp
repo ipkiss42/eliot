@@ -898,7 +898,7 @@ int CursesIntf::handleKeyForDuplicate(int iKey, PublicGame &iGame)
             }
             unsigned int currId = iGame.getCurrentPlayer().getId();
             // Try to find a player with a bigger ID
-            set<unsigned int>::const_iterator it = humans.upper_bound(currId);
+            auto it = humans.upper_bound(currId);
             if (it != humans.end())
                 iGame.duplicateSetPlayer(*it);
             else
@@ -1168,7 +1168,7 @@ int main(int argc, char ** argv)
             GameFactory::Destroy();
             return 1;
         }
-        PublicGame *game = new PublicGame(*realGame);
+        auto *game = new PublicGame(*realGame);
 
         game->start();
 

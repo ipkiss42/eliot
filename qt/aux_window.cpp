@@ -42,7 +42,7 @@ AuxWindow::AuxWindow(QWidget &iWidget, QString iWindowTitle,
 {
     setWindowTitle(iWindowTitle);
     setWindowIcon(qApp->windowIcon());
-    QVBoxLayout *layout = new QVBoxLayout;
+    auto *layout = new QVBoxLayout;
     layout->addWidget(&iWidget);
     setLayout(layout);
 

@@ -79,7 +79,7 @@ void FreeGame::playAI(unsigned int p)
     ASSERT(p < getNPlayers(), "Wrong player number");
     ASSERT(!m_players[p]->isHuman(), "AI requested for a human player");
 
-    AIPlayer *player = static_cast<AIPlayer*>(m_players[p]);
+    auto *player = static_cast<AIPlayer*>(m_players[p]);
 
     player->compute(getDic(), getBoard(), getHistory().beforeFirstRound());
     const Move &move = player->getMove();

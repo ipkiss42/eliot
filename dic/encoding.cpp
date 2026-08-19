@@ -73,7 +73,7 @@ wstring convertToWc(const string& iStr)
     }
     else
     {
-        wchar_t *tmp = new wchar_t[len + 1];
+        auto *tmp = new wchar_t[len + 1];
         len = mbstowcs(tmp, iStr.c_str(), len + 1);
         wstring res = tmp;
         delete[] tmp;
@@ -280,7 +280,7 @@ wstring readFromUTF8(const string &iString, const string &iContext)
     const int size = iString.size();
     // Temporary buffer for output
     // We will have at most as many characters as in the UTF-8 string
-    wchar_t *wideBuf = new wchar_t[size];
+    auto *wideBuf = new wchar_t[size];
     unsigned int number;
     try
     {

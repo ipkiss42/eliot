@@ -62,10 +62,10 @@ ToppingWidget::ToppingWidget(QWidget *parent, PlayModel &iPlayModel,
     QObject::connect(&iPlayModel, &PlayModel::movePlayed,
                      this, &ToppingWidget::playWord);
 
-    QHBoxLayout *layout = new QHBoxLayout(widgetContainer);
+    auto *layout = new QHBoxLayout(widgetContainer);
     layout->setContentsMargins(0, 0, 0, 0);
 
-    TimerWidget *timerWidget = new TimerWidget(this, iTimerModel);
+    auto *timerWidget = new TimerWidget(this, iTimerModel);
     timerWidget->setEnabled(false);
     //iTimerModel.setChronoMode(true);
     QObject::connect(&iTimerModel, &TimerModel::expired,
@@ -95,7 +95,7 @@ ToppingWidget::ToppingWidget(QWidget *parent, PlayModel &iPlayModel,
     // Associate the model to the view.
     // We use a proxy for easy sorting.
     m_model = new QStandardItemModel(this);
-    QSortFilterProxyModel * proxyModel = new QSortFilterProxyModel(this);
+    auto * proxyModel = new QSortFilterProxyModel(this);
     proxyModel->setDynamicSortFilter(true);
     proxyModel->setSourceModel(m_model);
     tableViewMoves->setModel(proxyModel);
@@ -110,7 +110,7 @@ ToppingWidget::ToppingWidget(QWidget *parent, PlayModel &iPlayModel,
     tableViewMoves->horizontalHeader()->setSortIndicator(3, Qt::DescendingOrder);
 
     // Add a context menu to the table header
-    QAction *lockSizesAction = new QAction(_q("Lock columns sizes"), this);
+    auto *lockSizesAction = new QAction(_q("Lock columns sizes"), this);
     lockSizesAction->setCheckable(true);
     lockSizesAction->setStatusTip(_q("Disable auto-resizing of the columns"));
     tableViewMoves->horizontalHeader()->addAction(lockSizesAction);

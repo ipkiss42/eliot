@@ -168,10 +168,10 @@ bool QtCommon::requestConfirmation(QString confoKey, QString iMsg,
     // Build the dialog
     QDialog dialog(iParent);
     dialog.setWindowTitle(_q("Eliot"));
-    QGridLayout *layout = new QGridLayout;
+    auto *layout = new QGridLayout;
     dialog.setLayout(layout);
 
-    QLabel *iconLabel = new QLabel;
+    auto *iconLabel = new QLabel;
     layout->addWidget(iconLabel, 0, 0, 3, 1, Qt::AlignTop);
     iconLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
     QIcon icon = QApplication::style()->standardIcon(
@@ -180,12 +180,12 @@ bool QtCommon::requestConfirmation(QString confoKey, QString iMsg,
             QStyle::PM_MessageBoxIconSize, nullptr, &dialog);
     iconLabel->setPixmap(icon.pixmap(iconSize, iconSize));
 
-    QLabel *label = new QLabel;
+    auto *label = new QLabel;
     layout->addWidget(label, 0, 1, 1, 1);
     label->setText(iMsg);
     label->setWordWrap(true);
 
-    QLabel *questionLabel = new QLabel;
+    auto *questionLabel = new QLabel;
     layout->addWidget(questionLabel, 1, 1, 1, 1);
     questionLabel->setText(iQuestion != "" ? iQuestion :
                     _q("Do you want to continue?"));
@@ -201,7 +201,7 @@ bool QtCommon::requestConfirmation(QString confoKey, QString iMsg,
                                 "by changing the appropriate option in the preferences."));
     }
 
-    QDialogButtonBox *buttons =
+    auto *buttons =
         new QDialogButtonBox(QDialogButtonBox::Yes | QDialogButtonBox::No);
     layout->addWidget(buttons, 3, 0, 1, 2);
     QObject::connect(buttons, &QDialogButtonBox::accepted, &dialog, &QDialog::accept);

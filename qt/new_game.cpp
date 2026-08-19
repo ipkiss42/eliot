@@ -93,7 +93,7 @@ NewGame::NewGame(const Dictionary &iDic, QWidget *iParent)
 
     m_helper = new PlayersTableHelper(this, tablePlayers, pushButtonAdd);
     m_helper->addPopupRemoveAction();
-    QAction *addToFavAction = new QAction(_q("Mark the selected player(s) as favorites"), this);
+    auto *addToFavAction = new QAction(_q("Mark the selected player(s) as favorites"), this);
     addToFavAction->setStatusTip(_q("Add the selected player(s) to the list of favorite players"));
     QObject::connect(addToFavAction, &QAction::triggered,
                      this, &NewGame::addSelectedToFav);
@@ -161,8 +161,8 @@ NewGame::NewGame(const Dictionary &iDic, QWidget *iParent)
                      this, &NewGame::addFavoritePlayers);
 
     // Auto-completion on the master game path
-    QCompleter *completer = new QCompleter(this);
-    QFileSystemModel *model = new QFileSystemModel(this);
+    auto *completer = new QCompleter(this);
+    auto *model = new QFileSystemModel(this);
     model->setRootPath(QDir::currentPath());
     completer->setModel(model);
     lineEditMaster->setCompleter(completer);
@@ -212,7 +212,7 @@ PublicGame * NewGame::createGame()
 
     // Create the game
     Game *tmpGame = GameFactory::Instance()->createGame(params, masterGame);
-    PublicGame *game = new PublicGame(*tmpGame);
+    auto *game = new PublicGame(*tmpGame);
 
     // Add the players
     if (!radioButtonTraining->isChecked() &&
@@ -310,19 +310,19 @@ void NewGame::addSelectedToFav()
 
 void NewGame::addFavoritePlayers()
 {
-    QDialog *dialog = new QDialog(this);
+    auto *dialog = new QDialog(this);
     dialog->setWindowTitle(_q("Select the players to add"));
     dialog->resize(400, 500);
     dialog->setLayout(new QVBoxLayout);
-    QTableWidget *tableFav = new QTableWidget;
+    auto *tableFav = new QTableWidget;
     dialog->layout()->addWidget(tableFav);
-    QDialogButtonBox *buttonBox =
+    auto *buttonBox =
         new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     dialog->layout()->addWidget(buttonBox);
     connect(buttonBox, &QDialogButtonBox::accepted, dialog, &QDialog::accept);
     connect(buttonBox, &QDialogButtonBox::rejected, dialog, &QDialog::reject);
 
-    PlayersTableHelper *helper = new PlayersTableHelper(dialog, tableFav);
+    auto *helper = new PlayersTableHelper(dialog, tableFav);
     helper->addPlayers(PlayersTableHelper::getFavPlayers());
 
     if (dialog->exec() == QDialog::Accepted)

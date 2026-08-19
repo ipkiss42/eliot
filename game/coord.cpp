@@ -104,7 +104,7 @@ wstring Coord::toString() const
     ASSERT(isValid(), "Invalid coordinates");
 
     // Convert the numeric row to its corresponding wide character (e.g. 1 -> L'A')
-    wchar_t rowChar = static_cast<wchar_t>(m_row + L'A' - 1);
+    auto rowChar = static_cast<wchar_t>(m_row + L'A' - 1);
 
     // Format directly into a safe, dynamically allocated std::wstring
     if (getDir() == HORIZONTAL)

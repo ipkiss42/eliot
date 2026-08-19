@@ -45,7 +45,7 @@ Bag::Bag(const Dictionary &iDic)
 
 unsigned Bag::count(const Tile &iTile) const
 {
-    map<Tile, int>::const_iterator it = m_tilesMap.find(iTile);
+    auto it = m_tilesMap.find(iTile);
     if (it != m_tilesMap.end())
         return it->second;
     return 0;

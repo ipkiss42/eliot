@@ -241,8 +241,7 @@ void LimitResults::add(const Round &iRound)
         m_scoresCount.erase(m_minScore);
 
         // Find the new min score
-        map<int, int>::const_iterator it =
-            m_scoresCount.lower_bound(m_minScore);
+        auto it = m_scoresCount.lower_bound(m_minScore);
         ASSERT(it != m_scoresCount.end(), "Bug in LimitResults::add())");
         m_minScore = it->first;
     }

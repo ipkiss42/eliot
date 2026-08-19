@@ -233,7 +233,7 @@ void PlayerTabWidget::setGame(PublicGame *iGame)
         for (unsigned int i = 0; i < iGame->getNbPlayers(); ++i)
         {
             const Player &player = iGame->getPlayer(i);
-            PlayerWidget *p = new PlayerWidget(nullptr, m_playModel, i, iGame);
+            auto *p = new PlayerWidget(nullptr, m_playModel, i, iGame);
             QObject::connect(this, &PlayerTabWidget::refreshSignal, p, &PlayerWidget::refresh);
             // Forward signals to the outside
             QObject::connect(p, &PlayerWidget::notifyProblem,

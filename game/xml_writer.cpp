@@ -172,7 +172,7 @@ void XmlWriter::write(const Game& iGame, const std::string& iFileName)
         pNode.append_child("Type").text().set(player.isHuman() ? "human" : "computer");
         if (!player.isHuman())
         {
-            const AIPercent *ai = dynamic_cast<const AIPercent *>(&player);
+            const auto *ai = dynamic_cast<const AIPercent *>(&player);
             if (ai == nullptr)
                 throw SaveGameException(_fmt(_("Invalid player type for player %1%"), i));
             pNode.append_child("Level").text().set(std::to_string(lrint(ai->getPercent() * 100)));
@@ -205,12 +205,12 @@ void XmlWriter::write(const Game& iGame, const std::string& iFileName)
         {
             if (dynamic_cast<const GameRackCmd*>(cmd))
             {
-                const GameRackCmd *rackCmd = static_cast<const GameRackCmd*>(cmd);
+                const auto *rackCmd = static_cast<const GameRackCmd*>(cmd);
                 turnNode.append_child("GameRack").text().set(toUtf8(rackCmd->getRack().toString()));
             }
             else if (dynamic_cast<const PlayerRackCmd*>(cmd))
             {
-                const PlayerRackCmd *rackCmd = static_cast<const PlayerRackCmd*>(cmd);
+                const auto *rackCmd = static_cast<const PlayerRackCmd*>(cmd);
                 unsigned int id = rackCmd->getPlayer().getId();
                 pugi::xml_node pRack = turnNode.append_child("PlayerRack");
                 pRack.append_attribute("playerId").set_value(id);
@@ -218,29 +218,29 @@ void XmlWriter::write(const Game& iGame, const std::string& iFileName)
             }
             else if (dynamic_cast<const PlayerMoveCmd*>(cmd))
             {
-                const PlayerMoveCmd *moveCmd = static_cast<const PlayerMoveCmd*>(cmd);
+                const auto *moveCmd = static_cast<const PlayerMoveCmd*>(cmd);
                 unsigned int id = moveCmd->getPlayer().getId();
                 writeMove(turnNode, moveCmd->getMove(), "PlayerMove", id);
             }
             else if (dynamic_cast<const GameMoveCmd*>(cmd))
             {
-                const GameMoveCmd *moveCmd = static_cast<const GameMoveCmd*>(cmd);
+                const auto *moveCmd = static_cast<const GameMoveCmd*>(cmd);
                 writeMove(turnNode, moveCmd->getMove(), "GameMove", -1);
             }
             else if (dynamic_cast<const MasterMoveCmd*>(cmd))
             {
-                const MasterMoveCmd *moveCmd = static_cast<const MasterMoveCmd*>(cmd);
+                const auto *moveCmd = static_cast<const MasterMoveCmd*>(cmd);
                 writeMove(turnNode, moveCmd->getMove(), "MasterMove", -1);
             }
             else if (dynamic_cast<const ToppingMoveCmd*>(cmd))
             {
-                const ToppingMoveCmd *moveCmd = static_cast<const ToppingMoveCmd*>(cmd);
+                const auto *moveCmd = static_cast<const ToppingMoveCmd*>(cmd);
                 unsigned int id = moveCmd->getPlayerId();
                 writeMove(turnNode, moveCmd->getMove(), "ToppingMove", id);
             }
             else if (dynamic_cast<const PlayerEventCmd*>(cmd))
             {
-                const PlayerEventCmd *eventCmd = static_cast<const PlayerEventCmd*>(cmd);
+                const auto *eventCmd = static_cast<const PlayerEventCmd*>(cmd);
                 unsigned int id = eventCmd->getPlayer().getId();
                 int value = eventCmd->getPoints();
                 // Warnings

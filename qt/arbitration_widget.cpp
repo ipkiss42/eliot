@@ -526,8 +526,7 @@ void ArbitrationWidget::populateResultsMenu(QMenu &iMenu, const QPoint &iPoint)
         showDefAction->setEnabled(false);
 
     // Action to select as master move
-    QAction *setAsMasterAction =
-        new QAction(_q("Use as master move"), this);
+    auto *setAsMasterAction = new QAction(_q("Use as master move"), this);
     setAsMasterAction->setStatusTip(_q("Use the selected move (%1) as master move")
                                     .arg(formatMove(move)));
     setAsMasterAction->setShortcut(Qt::SHIFT | Qt::Key_M);
@@ -538,8 +537,7 @@ void ArbitrationWidget::populateResultsMenu(QMenu &iMenu, const QPoint &iPoint)
         setAsMasterAction->setEnabled(false);
 
     // Action to select all the players
-    QAction *selectAllAction =
-        new QAction(_q("Select all players"), this);
+    auto *selectAllAction = new QAction(_q("Select all players"), this);
     selectAllAction->setStatusTip(_q("Select all the players"));
     selectAllAction->setShortcut(Qt::SHIFT | Qt::Key_A);
     QObject::connect(selectAllAction, &QAction::triggered,
@@ -547,7 +545,7 @@ void ArbitrationWidget::populateResultsMenu(QMenu &iMenu, const QPoint &iPoint)
     iMenu.addAction(selectAllAction);
 
     // Action to assign the selected move
-    QAction *assignSelMoveAction =
+    auto *assignSelMoveAction =
         new QAction(_q("Assign selected move (%1)").arg(formatMove(move)), this);
     assignSelMoveAction->setStatusTip(_q("Assign move (%1) to the selected player(s)")
                                       .arg(formatMove(move)));

@@ -109,13 +109,13 @@ PlayersTableHelper::PlayersTableHelper(QObject *parent,
     QObject::connect(tablePlayers, &QTableWidget::itemSelectionChanged,
                      this, &PlayersTableHelper::enableSelDepButtons);
 
-    PlayersTypeDelegate *typeDelegate = new PlayersTypeDelegate(this);
+    auto *typeDelegate = new PlayersTypeDelegate(this);
     m_tablePlayers->setItemDelegateForColumn(1, typeDelegate);
-    PlayersLevelDelegate *levelDelegate = new PlayersLevelDelegate(this);
+    auto *levelDelegate = new PlayersLevelDelegate(this);
     m_tablePlayers->setItemDelegateForColumn(2, levelDelegate);
 
     // Add a context menu for the results
-    CustomPopup *popup = new CustomPopup(m_tablePlayers);
+    auto *popup = new CustomPopup(m_tablePlayers);
     QObject::connect(popup, &CustomPopup::popupCreated,
                      this, &PlayersTableHelper::populateMenu);
 }
@@ -157,7 +157,7 @@ void PlayersTableHelper::addPopupAction(QAction *iAction)
 
 void PlayersTableHelper::addPopupRemoveAction()
 {
-    QAction *removeAction = new QAction(_q("Remove selected player(s)"), this);
+    auto *removeAction = new QAction(_q("Remove selected player(s)"), this);
     removeAction->setStatusTip(_q("Remove the selected player(s) from the list"));
     removeAction->setShortcut(QKeySequence::Delete);
     QObject::connect(removeAction, &QAction::triggered,
@@ -287,7 +287,7 @@ void PlayersTableHelper::addRow(const PlayerDef &iDef)
     m_tablePlayers->setItem(row, 1, new QTableWidgetItem(iDef.type));
     m_tablePlayers->setItem(row, 2, new QTableWidgetItem(iDef.level));
 
-    QTableWidgetItem *item = new QTableWidgetItem;
+    auto *item = new QTableWidgetItem;
     item->setData(Qt::DisplayRole, iDef.isDefault);
     m_tablePlayers->setItem(row, 3, item);
     emit rowCountChanged();
@@ -454,7 +454,7 @@ QWidget *PlayersTypeDelegate::createEditor(QWidget *parent,
                                            const QStyleOptionViewItem &,
                                            const QModelIndex &) const
 {
-    QComboBox *editor = new QComboBox(parent);
+    auto *editor = new QComboBox(parent);
     editor->addItem(_q(PlayersTableHelper::kHUMAN));
     editor->addItem(_q(PlayersTableHelper::kAI));
     return editor;
@@ -464,7 +464,7 @@ QWidget *PlayersTypeDelegate::createEditor(QWidget *parent,
 void PlayersTypeDelegate::setEditorData(QWidget *editor,
                                         const QModelIndex &index) const
 {
-    QComboBox *combo = static_cast<QComboBox*>(editor);
+    auto *combo = static_cast<QComboBox*>(editor);
     QString text = index.model()->data(index, Qt::DisplayRole).toString();
     combo->setCurrentIndex(combo->findText(text));
 }
@@ -474,7 +474,7 @@ void PlayersTypeDelegate::setModelData(QWidget *editor,
                                        QAbstractItemModel *model,
                                        const QModelIndex &index) const
 {
-    QComboBox *combo = static_cast<QComboBox*>(editor);
+    auto *combo = static_cast<QComboBox*>(editor);
     model->setData(index, combo->currentText());
     // Adapt the level to the chosen type of player
     QModelIndex levelIndex = model->index(index.row(), 2);
@@ -510,7 +510,7 @@ QWidget *PlayersLevelDelegate::createEditor(QWidget *parent,
     QString type = model->data(model->index(index.row(), 1), Qt::DisplayRole).toString();
     if (type != _q(PlayersTableHelper::kAI))
         return nullptr;
-    QSpinBox *editor = new QSpinBox(parent);
+    auto *editor = new QSpinBox(parent);
     editor->setMinimum(0);
     editor->setMaximum(100);
     return editor;
@@ -520,7 +520,7 @@ QWidget *PlayersLevelDelegate::createEditor(QWidget *parent,
 void PlayersLevelDelegate::setEditorData(QWidget *editor,
                                          const QModelIndex &index) const
 {
-    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
+    auto *spinBox = static_cast<QSpinBox*>(editor);
     int value = index.model()->data(index, Qt::DisplayRole).toInt();
     spinBox->setValue(value);
 }
@@ -530,7 +530,7 @@ void PlayersLevelDelegate::setModelData(QWidget *editor,
                                         QAbstractItemModel *model,
                                         const QModelIndex &index) const
 {
-    QSpinBox *spinBox = static_cast<QSpinBox*>(editor);
+    auto *spinBox = static_cast<QSpinBox*>(editor);
     model->setData(index, spinBox->value());
 }
 

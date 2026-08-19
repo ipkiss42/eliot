@@ -40,7 +40,7 @@ INIT_LOGGER(qt, CsvHelper);
 vector<CsvHelper::DataRow> CsvHelper::readStream(istream &input)
 {
     vector<DataRow> data;
-    size_t minLength = (size_t) -1;
+    auto minLength = (size_t) -1;
     size_t maxLength = 0;
     string line;
     string currField;

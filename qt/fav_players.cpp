@@ -48,48 +48,48 @@ FavPlayersDialog::FavPlayersDialog(QWidget *parent)
     resize(480, 550);
     setMinimumSize(400, 200);
 
-    QVBoxLayout *vLayout = new QVBoxLayout(this);
-    QLabel *label = new QLabel(_q("The favorite players listed below can be "
-                                  "used in the \"New game\" dialog, to add "
-                                  "players quickly. Those marked as \"Default\" "
-                                  "will appear there directly (useful if you "
-                                  "often play with the same players)."));
+    auto *vLayout = new QVBoxLayout(this);
+    auto *label = new QLabel(_q("The favorite players listed below can be "
+                                "used in the \"New game\" dialog, to add "
+                                "players quickly. Those marked as \"Default\" "
+                                "will appear there directly (useful if you "
+                                "often play with the same players)."));
     label->setWordWrap(true);
     vLayout->addWidget(label);
-    QLabel *label2 = new QLabel(_q("To add or remove a player, use the buttons "
-                                   "at the bottom. You can edit the existing "
-                                   "players directly in the table, by "
-                                   "double-clicking on them."));
+    auto *label2 = new QLabel(_q("To add or remove a player, use the buttons "
+                                 "at the bottom. You can edit the existing "
+                                 "players directly in the table, by "
+                                 "double-clicking on them."));
     label2->setWordWrap(true);
     vLayout->addWidget(label2);
-    QTableWidget *tableFav = new QTableWidget;
+    auto *tableFav = new QTableWidget;
     vLayout->addWidget(tableFav);
 
-    QHBoxLayout *hLayout = new QHBoxLayout;
+    auto *hLayout = new QHBoxLayout;
     vLayout->addLayout(hLayout);
 
-    QPushButton *buttonAdd = new QPushButton(_q("Add player"));
+    auto *buttonAdd = new QPushButton(_q("Add player"));
     hLayout->addWidget(buttonAdd);
-    QPushButton *buttonRemove = new QPushButton(_q("Remove player"));
+    auto *buttonRemove = new QPushButton(_q("Remove player"));
     hLayout->addWidget(buttonRemove);
     hLayout->addStretch();
-    QPushButton *buttonMoveUp = new QPushButton(QIcon(":/images/go-up.png"), "");
+    auto *buttonMoveUp = new QPushButton(QIcon(":/images/go-up.png"), "");
     buttonMoveUp->setToolTip(_q("Move selection upwards"));
     hLayout->addWidget(buttonMoveUp);
-    QPushButton *buttonMoveDown = new QPushButton(QIcon(":/images/go-down.png"), "");
+    auto *buttonMoveDown = new QPushButton(QIcon(":/images/go-down.png"), "");
     buttonMoveDown->setToolTip(_q("Move selection downwards"));
     hLayout->addWidget(buttonMoveDown);
     hLayout->addStretch();
-    QPushButton *buttonImport = new QPushButton(_q("CSV Import..."));
+    auto *buttonImport = new QPushButton(_q("CSV Import..."));
     hLayout->addWidget(buttonImport);
     QObject::connect(buttonImport, &QAbstractButton::clicked,
                      this, &FavPlayersDialog::importPlayers);
-    QPushButton *buttonExport = new QPushButton(_q("CSV Export..."));
+    auto *buttonExport = new QPushButton(_q("CSV Export..."));
     hLayout->addWidget(buttonExport);
     QObject::connect(buttonExport, &QAbstractButton::clicked,
                      this, &FavPlayersDialog::exportPlayers);
 
-    QDialogButtonBox *buttonBox =
+    auto *buttonBox =
         new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
     vLayout->addWidget(buttonBox);
     connect(buttonBox, &QDialogButtonBox::accepted, this, &FavPlayersDialog::accept);

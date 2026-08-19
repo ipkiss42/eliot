@@ -130,14 +130,14 @@ MainWindow::MainWindow(QWidget *iParent)
                      this, &MainWindow::updateStatusBar);
 
     // Board
-    BoardWidget *boardWidget = new BoardWidget(m_playModel);
+    auto *boardWidget = new BoardWidget(m_playModel);
     QObject::connect(m_gameSignals, &GameSignals::gameChanged,
                      boardWidget, &BoardWidget::setGame);
     QObject::connect(m_gameSignals, &GameSignals::gameUpdated,
                      boardWidget, &BoardWidget::refresh);
 
-    QHBoxLayout *hlayout = new QHBoxLayout;
-    QSplitter *vSplitter = new QSplitter(Qt::Vertical);
+    auto *hlayout = new QHBoxLayout;
+    auto *vSplitter = new QSplitter(Qt::Vertical);
 #if 0
     QDockWidget *dock = new QDockWidget;
     dock->setWidget(boardWidget);
@@ -172,7 +172,7 @@ MainWindow::MainWindow(QWidget *iParent)
                      m_historyTabWidget, &HistoryTabWidget::refresh);
     QObject::connect(m_historyTabWidget, &HistoryTabWidget::requestDefinition,
                      this, &MainWindow::showDefinition);
-    QHBoxLayout *hlayout2 = new QHBoxLayout;
+    auto *hlayout2 = new QHBoxLayout;
     hlayout2->addWidget(m_historyTabWidget);
     m_ui.groupBoxHistory->setLayout(hlayout2);
 #else
@@ -204,7 +204,7 @@ MainWindow::MainWindow(QWidget *iParent)
     updateStatusBar(m_dic);
 
     // Check for updates
-    UpdateChecker *checker = new UpdateChecker(this);
+    auto *checker = new UpdateChecker(this);
     QObject::connect(checker, &UpdateChecker::notifyInfo,
                      this, &MainWindow::displayInfoMsg);
     checker->checkForUpdate();
@@ -680,7 +680,7 @@ void MainWindow::changeDictionary(QString iFileName)
 
         try
         {
-            Dictionary *dic = new Dictionary(lfq(iFileName));
+            auto *dic = new Dictionary(lfq(iFileName));
             delete m_dic;
             m_dic = dic;
             emit dicChanged(m_dic);
@@ -771,7 +771,7 @@ QAction * MainWindow::addMenuAction(QMenu *menu, QString iText,
                                     QString iStatusTip, const char *iMember,
                                     bool iCheckable, QIcon icon)
 {
-    QAction *action = new QAction(iText, this);
+    auto *action = new QAction(iText, this);
     action->setShortcut(iShortcut);
     action->setStatusTip(iStatusTip);
     action->setCheckable(iCheckable);
@@ -789,7 +789,7 @@ void MainWindow::createMenu()
     bool showToolBar = qs.value(PrefsDialog::kINTF_SHOW_TOOLBAR, true).toBool();
     m_ui.toolBar->setVisible(showToolBar);
 
-    QMenu *menuFile = new QMenu(m_ui.menubar);
+    auto *menuFile = new QMenu(m_ui.menubar);
     m_ui.menubar->addAction(menuFile->menuAction());
     menuFile->setTitle(_q("&Game"));
     addMenuAction(menuFile, _q("&New..."), _q("Ctrl+N"),
@@ -814,7 +814,7 @@ void MainWindow::createMenu()
                   _q("Quit Eliot"), SLOT(onGameQuit()),
                   false, QIcon(":/images/quit_16px.png"));
 
-    QMenu *menuHistory = new QMenu(m_ui.menubar);
+    auto *menuHistory = new QMenu(m_ui.menubar);
     m_ui.menubar->addAction(menuHistory->menuAction());
     menuHistory->setTitle(_q("&History"));
     m_actionHistoryFirstTurn = addMenuAction(menuHistory, _q("&First turn"), _q("Ctrl+Home"),
@@ -840,7 +840,7 @@ void MainWindow::createMenu()
     m_ui.toolBar->addAction(m_actionHistoryLastTurn);
     m_ui.toolBar->addAction(m_actionHistoryReplayTurn);
 
-    QMenu *menuSettings = new QMenu(m_ui.menubar);
+    auto *menuSettings = new QMenu(m_ui.menubar);
     m_ui.menubar->addAction(menuSettings->menuAction());
     menuSettings->setTitle(_q("&Settings"));
     addMenuAction(menuSettings, _q("&Choose dictionary..."), _q("Ctrl+I"),
@@ -860,7 +860,7 @@ void MainWindow::createMenu()
                   _q("Edit the preferences"), SLOT(onSettingsPreferences()),
                   false, QIcon(":/images/preferences.png"));
 
-    QMenu *menuWindows = new QMenu(m_ui.menubar);
+    auto *menuWindows = new QMenu(m_ui.menubar);
     m_ui.menubar->addAction(menuWindows->menuAction());
     menuWindows->setTitle(_q("&Windows"));
     m_actionWindowsToolbar = addMenuAction(menuWindows, _q("&Toolbar"), _q("Ctrl+T"),
@@ -880,7 +880,7 @@ void MainWindow::createMenu()
     m_actionWindowsDicTools = addMenuAction(menuWindows, _q("&Dictionary tools"), _q("Ctrl+D"),
                   _q("Show/hide the dictionary tools"), SLOT(onWindowsDicTools()), true);
 
-    QMenu *menuHelp = new QMenu(m_ui.menubar);
+    auto *menuHelp = new QMenu(m_ui.menubar);
     m_ui.menubar->addAction(menuHelp->menuAction());
     menuHelp->setTitle(_q("He&lp"));
     addMenuAction(menuHelp, _q("&About..."), QString(""),
@@ -1193,7 +1193,7 @@ void MainWindow::onGameQuit()
 
 void MainWindow::onSettingsPreferences()
 {
-    PrefsDialog *prefsDialog = new PrefsDialog(this);
+    auto *prefsDialog = new PrefsDialog(this);
     QObject::connect(prefsDialog, &PrefsDialog::prefsUpdated,
                      this, &MainWindow::prefsUpdated);
     prefsDialog->exec();
@@ -1210,7 +1210,7 @@ void MainWindow::onSettingsChooseDic()
 
 void MainWindow::onSettingsCreateDic()
 {
-    DicWizard *wizard = new DicWizard(this, m_dic);
+    auto *wizard = new DicWizard(this, m_dic);
     wizard->setWindowTitle(_q("Dictionary creation wizard"));
     QObject::connect(wizard, &DicWizard::notifyInfo,
                      this, &MainWindow::displayInfoMsg);
@@ -1224,7 +1224,7 @@ void MainWindow::onSettingsCreateDic()
 
 void MainWindow::onSettingsFavPlayers()
 {
-    FavPlayersDialog *dialog = new FavPlayersDialog(this);
+    auto *dialog = new FavPlayersDialog(this);
     QObject::connect(dialog, &FavPlayersDialog::notifyProblem, this,
                      [this](const QString &msg) { this->displayErrorMsg(msg); });
     dialog->exec();
@@ -1235,7 +1235,7 @@ void MainWindow::onSettingsDefineTables()
 {
     ASSERT(m_game != nullptr, "A game should have been started");
 
-    TablesDialog *dialog = new TablesDialog(this, *m_game);
+    auto *dialog = new TablesDialog(this, *m_game);
     QObject::connect(dialog, &TablesDialog::notifyProblem, this,
                      [this](const QString &msg) { this->displayErrorMsg(msg); });
     if (dialog->exec() == QDialog::Accepted)
@@ -1261,7 +1261,7 @@ void MainWindow::onWindowsBag()
     if (m_bagWindow == nullptr)
     {
         // Create the window
-        BagWidget2 *bag = new BagWidget2(nullptr);
+        auto *bag = new BagWidget2(nullptr);
         bag->setGame(m_game);
         m_bagWindow = new AuxWindow(*bag, _q("Bag"), "BagWindow",
                                     m_actionWindowsBag);
@@ -1279,17 +1279,17 @@ void MainWindow::onWindowsBoard()
     if (m_boardWindow == nullptr)
     {
         // Create the window
-        QFrame *frame = new QFrame;
+        auto *frame = new QFrame;
         QLayout *hLayout = new QHBoxLayout;
         frame->setLayout(hLayout);
 
-        QSplitter *vSplitter = new QSplitter(Qt::Vertical);
+        auto *vSplitter = new QSplitter(Qt::Vertical);
         hLayout->addWidget(vSplitter);
 
-        QSplitter *hSplitter = new QSplitter(Qt::Horizontal);
+        auto *hSplitter = new QSplitter(Qt::Horizontal);
         vSplitter->addWidget(hSplitter);
 
-        RackWidget *rackWidget = new RackWidget;
+        auto *rackWidget = new RackWidget;
         rackWidget->setShowOnlyLastTurn(true);
         rackWidget->setGame(m_game);
         QObject::connect(rackWidget, &RackWidget::gameUpdated,
@@ -1302,12 +1302,12 @@ void MainWindow::onWindowsBoard()
 
         hSplitter->addWidget(new QWidget);
 
-        TimerWidget *timerWidget = new TimerWidget(nullptr, *m_timerModel);
+        auto *timerWidget = new TimerWidget(nullptr, *m_timerModel);
         hSplitter->addWidget(timerWidget);
 
         vSplitter->addWidget(new QWidget);
 
-        BoardWidget *board = new BoardWidget(m_playModel);
+        auto *board = new BoardWidget(m_playModel);
         board->setShowTempSigns(false);
         board->setShowOnlyLastTurn(true);
         board->setGame(m_game);
@@ -1344,7 +1344,7 @@ void MainWindow::onWindowsHistory()
     if (m_historyWindow == nullptr)
     {
         // Create the window
-        HistoryTabWidget *history = new HistoryTabWidget(nullptr);
+        auto *history = new HistoryTabWidget(nullptr);
         history->setGame(m_game);
         m_historyWindow = new AuxWindow(*history, _q("History"), "HistoryWindow",
                                         m_actionWindowsHistory);
@@ -1362,7 +1362,7 @@ void MainWindow::onWindowsStatistics()
     if (m_statsWindow == nullptr)
     {
         // Create the window
-        StatsWidget *stats = new StatsWidget;
+        auto *stats = new StatsWidget;
         stats->setGame(m_game);
         m_statsWindow = new AuxWindow(*stats, _q("Statistics"), "StatsWindow",
                                       m_actionWindowsStats);
@@ -1380,7 +1380,7 @@ void MainWindow::onWindowsTimer()
     if (m_timerWindow == nullptr)
     {
         // Create the window
-        TimerWidget *timer = new TimerWidget(nullptr, *m_timerModel);
+        auto *timer = new TimerWidget(nullptr, *m_timerModel);
         m_timerWindow = new AuxWindow(*timer, _q("Timer"), "TimerWindow",
                                       m_actionWindowsTimer);
     }
@@ -1393,7 +1393,7 @@ void MainWindow::onWindowsDicTools()
     if (m_dicToolsWindow == nullptr)
     {
         // Create the window
-        DicToolsWidget *dicTools = new DicToolsWidget(nullptr);
+        auto *dicTools = new DicToolsWidget(nullptr);
         m_dicToolsWindow = new AuxWindow(*dicTools, _q("Dictionary tools"), "DicTools",
                                     m_actionWindowsDicTools);
         QObject::connect(this, &MainWindow::dicChanged,

@@ -118,19 +118,19 @@ QSize BagWidget::sizeHint() const
 BagWidget2::BagWidget2(QWidget *parent)
     : QWidget(parent)
 {
-    TileLayout *layout = new TileLayout;
+    auto *layout = new TileLayout;
     layout->setSpacing(5);
     setLayout(layout);
 
     // Define actions for the context menu
-    QAction *actionPlayed = new QAction(_q("Show played tiles"), this);
+    auto *actionPlayed = new QAction(_q("Show played tiles"), this);
     actionPlayed->setCheckable(true);
     actionPlayed->setChecked(true);
     addAction(actionPlayed);
     QObject::connect(actionPlayed, &QAction::toggled,
                      this, &BagWidget2::setShowPlayedTiles);
 
-    QAction *actionInRack = new QAction(_q("Highlight tiles present in the rack"), this);
+    auto *actionInRack = new QAction(_q("Highlight tiles present in the rack"), this);
     actionInRack->setCheckable(true);
     actionInRack->setChecked(true);
     addAction(actionInRack);
@@ -148,7 +148,7 @@ void BagWidget2::setGame(const PublicGame *iGame)
 
     m_game = iGame;
 
-    TileLayout *layout = (TileLayout*) this->layout();
+    auto *layout = (TileLayout*) this->layout();
     layout->clear();
     m_tilesVect.clear();
 
@@ -184,7 +184,7 @@ void BagWidget2::refresh()
     while (m_tilesVect.size() < nbTilesToDisplay)
     {
         // Missing tile: we add it
-        TileWidget *tileWidget = new TileWidget;
+        auto *tileWidget = new TileWidget;
         tileWidget->setBorder();
         layout()->addWidget(tileWidget);
         m_tilesVect.push_back(tileWidget);

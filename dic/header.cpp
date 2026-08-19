@@ -234,8 +234,7 @@ void Header::buildCaches()
     m_displayCache.assign(m_letters.size() + 1, L"");
     for (unsigned int i = 0; i < m_letters.size(); ++i)
     {
-        map<wchar_t, vector<wstring> >::const_iterator it =
-            m_displayAndInputData.find(m_letters[i]);
+        auto it = m_displayAndInputData.find(m_letters[i]);
         if (it == m_displayAndInputData.end())
             m_displayCache[i + 1].append(1, m_letters[i]);
         else
@@ -247,8 +246,7 @@ void Header::buildCaches()
     m_inputChars.reserve(m_letters.size());
     for (wchar_t wch : m_letters)
     {
-        map<wchar_t, vector<wstring> >::const_iterator it =
-            m_displayAndInputData.find(wch);
+        auto it = m_displayAndInputData.find(wch);
         if (it == m_displayAndInputData.end())
             m_inputChars.append(1, wch);
         else
@@ -292,8 +290,7 @@ wchar_t Header::getCharFromCode(unsigned int iCode) const
 
 unsigned int Header::getCodeFromChar(wchar_t iChar) const
 {
-    map<wchar_t, unsigned int>::const_iterator pair =
-        m_mapCodeFromChar.find(iChar);
+    auto pair = m_mapCodeFromChar.find(iChar);
     if (pair == m_mapCodeFromChar.end())
     {
         throw DicException(_fmt(
@@ -323,8 +320,7 @@ vector<wistring> Header::getInputStr(unsigned int iCode) const
     {
         throw DicException(std::format("Header::getInputStr: No code for letter '{}'", iCode));
     }
-    map<wchar_t, vector<wstring> >::const_iterator it =
-        m_displayAndInputData.find(m_letters[iCode - 1]);
+    auto it = m_displayAndInputData.find(m_letters[iCode - 1]);
     if (it == m_displayAndInputData.end())
     {
         vector<wistring> vect;
@@ -639,8 +635,7 @@ void Header::print(ostream &out) const
 
         std::string f6;
         std::string f7;
-        map<wchar_t, vector<wstring> >::const_iterator it =
-            m_displayAndInputData.find(m_letters[i]);
+        auto it = m_displayAndInputData.find(m_letters[i]);
         if (it != m_displayAndInputData.end())
         {
             const vector<wstring> &inputs = it->second;

@@ -111,8 +111,8 @@ PrefsDialog::PrefsDialog(QWidget *iParent)
                                             "Set it to 0 if you don't want any penalty."));
 
     // Auto-completion on the dictionary path
-    QCompleter *completer = new QCompleter(this);
-    QFileSystemModel *model = new QFileSystemModel(completer);
+    auto *completer = new QCompleter(this);
+    auto *model = new QFileSystemModel(completer);
     model->setRootPath(QDir::currentPath());
     completer->setModel(model);
     lineEditIntfDicPath->setCompleter(completer);

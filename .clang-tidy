@@ -7,12 +7,18 @@ Checks: >
   -modernize-avoid-variadic-functions,
   -modernize-macro-to-enum,
   -modernize-pass-by-value,
-  -modernize-use-auto,
   -modernize-use-integer-sign-comparison,
   -modernize-use-nodiscard,
   -modernize-use-trailing-return-type
 
 
+CheckOptions:
+  - key: modernize-use-auto.MinTypeNameLength
+    value: '5'
+  - key: modernize-use-auto.RemoveStars
+    value: 'false' # Keeps pointers as auto*
+  - key: modernize-use-auto.AutoWithRef
+    value: 'true'  # Keep references as auto&
 
 # Filter project header files, while allowing out of tree builds
 HeaderFilterRegex: '(dic/|game/|utils/|qt/).*\.(h|hpp|hxx)$'
