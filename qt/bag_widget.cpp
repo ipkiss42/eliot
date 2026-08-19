@@ -110,7 +110,7 @@ void BagWidget::updateModel()
 
 QSize BagWidget::sizeHint() const
 {
-    return QSize(160, 300);
+    return {160, 300};
 }
 
 
@@ -243,6 +243,6 @@ void BagWidget2::setShowTilesInRack(bool iShow)
 
 QSize BagWidget2::sizeHint() const
 {
-    return QSize(160, 300);
+    return {160, 300};
 }
 

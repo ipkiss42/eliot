@@ -85,7 +85,7 @@ class FlippedModel : public QAbstractItemModel
         QModelIndex parent(const QModelIndex &) const override
         {
             // Ignore the given index
-            return QModelIndex();
+            return {};
         }
 
         QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override

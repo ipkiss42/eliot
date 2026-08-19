@@ -34,8 +34,8 @@ class BaseException: public std::exception
 {
     public:
         BaseException(std::string_view iMessage);
-        ~BaseException() throw() override = default;
-        const char *what() const throw() override;
+        ~BaseException() noexcept override = default;
+        const char *what() const noexcept override;
 
         std::string getStackTrace() const;
 

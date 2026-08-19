@@ -31,7 +31,7 @@ BaseException::BaseException(std::string_view iMessage)
 }
 
 
-const char *BaseException::what() const throw()
+const char *BaseException::what() const noexcept
 {
     return m_message.c_str();
 }

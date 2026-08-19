@@ -132,7 +132,7 @@ Tile Bag::selectRandomTile(unsigned total,
         n -= count;
     }
     ASSERT(false, "We should not come here");
-    return Tile();
+    return {};
 }
 
 

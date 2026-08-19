@@ -97,7 +97,7 @@ PlayerWidget::PlayerWidget(QWidget *parent, PlayModel &iPlayModel,
 
 QSize PlayerWidget::sizeHint() const
 {
-    return QSize(100, 100);
+    return {100, 100};
 }
 
 

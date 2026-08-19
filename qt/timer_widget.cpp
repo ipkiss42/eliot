@@ -238,7 +238,7 @@ void TimerWidget::mouseDoubleClickEvent(QMouseEvent *iEvent)
 
 QSize TimerWidget::sizeHint() const
 {
-    return QSize(340, 170);
+    return {340, 170};
 }
 
 

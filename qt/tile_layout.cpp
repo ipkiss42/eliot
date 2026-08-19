@@ -56,7 +56,7 @@ void TileLayout::clear()
 QRect TileLayout::getBoardRect() const
 {
     if (m_items.size() < m_nbCols + 2)
-        return QRect();
+        return {};
     return m_items.at(m_nbCols + 1)->geometry().united(m_items.back()->geometry());
 }
 

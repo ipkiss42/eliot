@@ -21,6 +21,7 @@
 
 #include "config.h"
 
+#include <algorithm>
 #include <fstream>
 #include <map>
 #include <boost/functional/hash.hpp>
@@ -105,7 +106,7 @@ void CompDic::addLetter(wchar_t chr, int points, int frequency,
         vector<wstring> upperInputs = iInputs;
         for (wstring &str : upperInputs)
         {
-            std::transform(str.begin(), str.end(), str.begin(), towupper);
+            std::ranges::transform(str, str.begin(), towupper);
         }
 
         // If the display string is identical to the internal char and if
@@ -153,13 +154,13 @@ void CompDic::loadWordList(const string &iFileName, vector<wstring> &oWordList)
             continue;
         // Ensure the word is in upper case
         wstring wstr = readFromUTF8(line, "loadWordList");
-        std::transform(wstr.begin(), wstr.end(), wstr.begin(), towupper);
+        std::ranges::transform(wstr, wstr.begin(), towupper);
 
         oWordList.push_back(wstr);
     }
 
     // Sort the word list, to perform a better compression
-    sort(oWordList.begin(), oWordList.end());
+    std::ranges::sort(oWordList);
 }
 
 
@@ -346,7 +347,7 @@ Header CompDic::generateDawg(const string &iWordListFile,
     // Write the header a first time, to reserve the space in the file
     Header tempHeader = writeHeader(outFile);
 
-    DicEdge specialNode = {0, 0, 0, 0};
+    DicEdge specialNode = {.ptr=0, .term=0, .last=0, .chr=0};
     specialNode.last = 1;
     // Temporary variable to avoid a warning when compiling with -O2
     // (there is no warning with -O0... g++ bug?)
@@ -357,7 +358,7 @@ Header CompDic::generateDawg(const string &iWordListFile,
 
     // Call makeNode with null (relative to stringbuf) prefix;
     // Initialize string to null; Put index of start node on output
-    DicEdge rootNode = {0, 0, 0, 0};
+    DicEdge rootNode = {.ptr=0, .term=0, .last=0, .chr=0};
     m_endString = m_stringBuf;
     const clock_t startBuildTime = clock();
     rootNode.ptr = makeNode(outFile, tempHeader,

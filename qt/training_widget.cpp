@@ -383,6 +383,6 @@ void TrainingWidget::playSelectedWord()
 
 QSize TrainingWidget::sizeHint() const
 {
-    return QSize(160, 300);
+    return {160, 300};
 }
 

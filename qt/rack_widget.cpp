@@ -158,8 +158,7 @@ vector<Tile> RackWidget::filterRack(const vector<Tile> &iTiles) const
         {
             const Tile &t = round.getTile(i);
             vector<Tile>::iterator it =
-                std::find(result.begin(), result.end(),
-                          t.isJoker() ? Tile::Joker() : t);
+                std::ranges::find(result, t.isJoker() ? Tile::Joker() : t);
             if (it != result.end())
                 result.erase(it);
         }

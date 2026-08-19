@@ -119,15 +119,15 @@ Game *GameFactory::createFromCmdLine(int argc, char **argv)
     // 1) Parse command-line and store everything in member variables
     static struct option long_options[] =
     {
-        {"help", no_argument, nullptr, 'h'},
-        {"version", no_argument, nullptr, 'v'},
-        {"dictionary", required_argument, nullptr, 'd'},
-        {"dict", required_argument, nullptr, 'd'},
-        {"mode", required_argument, nullptr, 'm'},
-        {"human", required_argument, nullptr, 'u'},
-        {"ai", required_argument, nullptr, 'a'},
-        {"joker", no_argument, nullptr, 500},
-        {nullptr, 0, nullptr, 0}
+        {.name="help", .has_arg=no_argument, .flag=nullptr, .val='h'},
+        {.name="version", .has_arg=no_argument, .flag=nullptr, .val='v'},
+        {.name="dictionary", .has_arg=required_argument, .flag=nullptr, .val='d'},
+        {.name="dict", .has_arg=required_argument, .flag=nullptr, .val='d'},
+        {.name="mode", .has_arg=required_argument, .flag=nullptr, .val='m'},
+        {.name="human", .has_arg=required_argument, .flag=nullptr, .val='u'},
+        {.name="ai", .has_arg=required_argument, .flag=nullptr, .val='a'},
+        {.name="joker", .has_arg=no_argument, .flag=nullptr, .val=500},
+        {.name=nullptr, .has_arg=0, .flag=nullptr, .val=0}
     };
     static char short_options[] = "hvd:m:u:a:";
 

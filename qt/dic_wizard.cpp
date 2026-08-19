@@ -18,6 +18,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <algorithm>
+
 #include <QLabel>
 #include <QSpinBox>
 #include <QHeaderView>
@@ -254,7 +256,7 @@ void WizardLettersDefPage::loadLettersFromWordList()
 
     // Sort the letters alphabetically if possible
     auto sortedLetters = QList<QChar>(fileLetters.begin(), fileLetters.end());
-    sort(sortedLetters.begin(), sortedLetters.end());
+    std::ranges::sort(sortedLetters);
 
     // Rebuild the model
     m_model->removeRows(0, m_model->rowCount());

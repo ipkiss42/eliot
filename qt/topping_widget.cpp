@@ -260,6 +260,6 @@ void ToppingWidget::timeoutPenalty()
 
 QSize ToppingWidget::sizeHint() const
 {
-    return QSize(160, 300);
+    return {160, 300};
 }
 

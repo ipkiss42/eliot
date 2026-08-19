@@ -43,14 +43,14 @@ QString _q(const char* s)
 {
     if (s == nullptr)
     {
-        return QString();
+        return {};
     }
 
     string str(s);
 
     // Check if the string is wrapped in gettext format: _("your_string_here")
     // Length must be > 5 to safely hold at least _("")
-    if (str.rfind("_(\"", 0) == 0 && str.size() > 5 && str.back() == ')')
+    if (str.starts_with("_(\"") && str.size() > 5 && str.back() == ')')
     {
         // Chop off the leading '_("' (3 chars) and trailing '")' (2 chars)
         str = str.substr(3, str.size() - 5);

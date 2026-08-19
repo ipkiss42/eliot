@@ -89,6 +89,6 @@ void ScoreWidget::updateModel()
 
 QSize ScoreWidget::sizeHint() const
 {
-    return QSize(160, 100);
+    return {160, 100};
 }
 
