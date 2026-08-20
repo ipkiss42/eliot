@@ -130,6 +130,12 @@ if(BUILD_QT)
     # Warn about code deprecated in Qt6
     target_compile_definitions(eliot PRIVATE QT_DISABLE_DEPRECATED_BEFORE=0x060000)
 
+    # Generate a local .clang-tidy config file to ignore all checks on moc files (generated)
+    set(AUTOGEN_CONFIG_DIR "${CMAKE_CURRENT_BINARY_DIR}/eliot_autogen")
+    file(MAKE_DIRECTORY "${AUTOGEN_CONFIG_DIR}")
+    # Enable a single "impossible" check, because clang-tidy dislikes having no check at all
+    file(WRITE "${AUTOGEN_CONFIG_DIR}/.clang-tidy" "Checks: '-*,google-objc-function-naming'\n")
+
     if(HAVE_LIBCONFIG)
         target_link_libraries(eliot PRIVATE ${LIBCONFIG_LIBRARIES})
     endif()

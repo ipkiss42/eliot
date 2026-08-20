@@ -642,7 +642,7 @@ void Header::print(ostream &out) const
             f6 = centerAndConvert(std::format(L"{0}", inputs[0]), sz("Display"));
             bool first = true;
             string s;
-            for (uint8_t j = 1; j < inputs.size(); ++j)
+            for (unsigned long j = 1; j < inputs.size(); ++j)
             {
                 if (first)
                     first = false;
