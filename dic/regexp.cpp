@@ -19,11 +19,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <format>
+
 #include "config.h"
 
-#include <fstream>
-
-#include "dic.h"
 #include "regexp.h"
 #include "debug.h"
 
@@ -44,7 +43,7 @@ Node::~Node()
  * p is the current leaf position
  * n is the current node number
  */
-void Node::traverse(int &p, int &n, int ptl[])
+void Node::traverse(int &p, int &n, std::span<int> ptl)
 {
     if (m_fg)
         m_fg->traverse(p, n, ptl);
@@ -98,7 +97,7 @@ void Node::traverse(int &p, int &n, int ptl[])
 }
 
 
-void Node::nextPos(uint64_t PS[])
+void Node::nextPos(std::span<uint64_t> PS)
 {
     if (m_fg)
         m_fg->nextPos(PS);
@@ -151,7 +150,7 @@ void Node::nextPos(uint64_t PS[])
 ////////////////////////////////////////////////
 
 #ifdef DEBUG_RE
-void printPS(int PS[])
+void printPS(std::span<const int> PS)
 {
     printf("** next positions **\n");
     for (int i = 1; i <= PS[0]; i++)
@@ -160,7 +159,7 @@ void printPS(int PS[])
     }
 }
 
-void regexp_print_ptl(int ptl[])
+void regexp_print_ptl(std::span<const int> ptl)
 {
     printf("** pos -> lettre: ");
     for (int i = 1; i <= ptl[0]; i++)

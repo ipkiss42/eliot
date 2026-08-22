@@ -19,20 +19,16 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include "config.h"
-
 #include <map>
 #include <print>
-#include <string>
-#include <vector>
-#include <fstream>
 #include <iostream>
 #include <clocale>
-#include <cstring>
 #include <cstdlib>
 #include <cstdio>
-#include <cstddef>
+
 #include <getopt.h>
+
+#include "config.h"
 
 #if ENABLE_NLS
 #   include <libintl.h>
@@ -157,8 +153,7 @@ int main(int argc, char *argv[])
     textdomain(PACKAGE);
 #endif
 
-    static const struct option long_options[] =
-    {
+    static const std::array<struct option, 7> long_options = {{
         {.name="help", .has_arg=no_argument, .flag=nullptr, .val='h'},
         {.name="dictionary", .has_arg=required_argument, .flag=nullptr, .val='d'},
         {.name="header", .has_arg=no_argument, .flag=nullptr, .val='e'},
@@ -166,8 +161,8 @@ int main(int argc, char *argv[])
         {.name="words", .has_arg=no_argument, .flag=nullptr, .val='w'},
         {.name="hexa", .has_arg=no_argument, .flag=nullptr, .val='x'},
         {.name=nullptr, .has_arg=0, .flag=nullptr, .val=0}
-    };
-    static const char short_options[] = "hd:elwx";
+    }};
+    static const auto short_options = std::to_array("hd:elwx");
 
     bool dicSpecified = false;
     bool shouldPrintHeader = false;
@@ -178,8 +173,8 @@ int main(int argc, char *argv[])
 
     int res;
     int option_index = 1;
-    while ((res = getopt_long(argc, argv, short_options,
-                              long_options, &option_index)) != -1)
+    while ((res = getopt_long(argc, argv, short_options.data(),
+                              long_options.data(), &option_index)) != -1)
     {
         switch (res)
         {

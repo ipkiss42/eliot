@@ -23,7 +23,6 @@
 
 #include <getopt.h>
 #include <string>
-#include <fstream>
 #include <iostream>
 #include <exception>
 
@@ -117,8 +116,7 @@ Game *GameFactory::createGame(const GameParams &iParams, const Game *iMasterGame
 Game *GameFactory::createFromCmdLine(int argc, char **argv)
 {
     // 1) Parse command-line and store everything in member variables
-    static struct option long_options[] =
-    {
+    static const std::array<struct option, 9> long_options = {{
         {.name="help", .has_arg=no_argument, .flag=nullptr, .val='h'},
         {.name="version", .has_arg=no_argument, .flag=nullptr, .val='v'},
         {.name="dictionary", .has_arg=required_argument, .flag=nullptr, .val='d'},
@@ -128,15 +126,15 @@ Game *GameFactory::createFromCmdLine(int argc, char **argv)
         {.name="ai", .has_arg=required_argument, .flag=nullptr, .val='a'},
         {.name="joker", .has_arg=no_argument, .flag=nullptr, .val=500},
         {.name=nullptr, .has_arg=0, .flag=nullptr, .val=0}
-    };
-    static char short_options[] = "hvd:m:u:a:";
+    }};
+    static const auto short_options = std::to_array("hvd:m:u:a:");
 
     int option_index = 1;
     int res;
     bool found_d = false;
     bool found_m = false;
-    while ((res = getopt_long(argc, argv, short_options,
-                              long_options, &option_index)) != -1)
+    while ((res = getopt_long(argc, argv, short_options.data(),
+                              long_options.data(), &option_index)) != -1)
     {
         switch (res)
         {

@@ -20,6 +20,7 @@
 
 #include <QPainter>
 #include <QPaintEvent>
+#include <QPolygon>
 #include <QSettings>
 
 #include "tile_widget.h"
@@ -50,7 +51,7 @@ const QColor TileWidget::ArrowColour(10, 10, 10);
 TileWidget::TileWidget(QWidget *parent, Multiplier multiplier,
                        int row, int col)
     : QFrame(parent), m_multiplier(multiplier),
-    m_row(row), m_col(col) 
+    m_row(row), m_col(col)
 {
     QSizePolicy policy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     policy.setHeightForWidth(true);
@@ -220,8 +221,7 @@ void TileWidget::paintEvent(QPaintEvent *iEvent)
         painter.translate(mid, mid);
         if (m_horizontalArrow)
             painter.rotate(90);
-        const QPoint points[] =
-        {
+        const QPolygon points = {
             QPoint(-mid + fifth - 1, -width - 1),
             QPoint(-mid + 3*fifth - 1, -width - 1),
             QPoint(-mid + 3*fifth - 1, -fifth - 2),
@@ -230,7 +230,7 @@ void TileWidget::paintEvent(QPaintEvent *iEvent)
             QPoint(-mid + 3*fifth - 1, width + 1),
             QPoint(-mid + fifth - 1, width + 1)
         };
-        painter.drawPolygon(points, 7);
+        painter.drawPolygon(points);
     }
 
     if (m_state == RACK_PLAYED)

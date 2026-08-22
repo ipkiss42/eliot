@@ -18,12 +18,16 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include "config.h"
-
-#include <cstring> // for strcpy
-#include <string>
+#include <algorithm>
+#include <array>
+#include <chrono>
 #include <iostream>
+#include <string>
+#include <string_view>
+
 #include <boost/tokenizer.hpp>
+
+#include "config.h"
 
 #if ENABLE_NLS
 #   include <libintl.h>
@@ -44,13 +48,13 @@ INIT_LOGGER(dic, Header);
  * Keyword included in dictionary headers
  * Implies little endian storage on words
  */
-#define _COMPIL_KEYWORD_ "_COMPILED_DICTIONARY_"
+constexpr std::string_view COMPIL_KEYWORD = "_COMPILED_DICTIONARY_";
 
 /** Old format of the header (i.e. version 0) */
 struct Dict_header_old
 {
     /// Identification string
-    char ident[sizeof(_COMPIL_KEYWORD_)];
+    std::array<char, COMPIL_KEYWORD.size() + 1> ident; // The "+1" includes the null terminator (like sizeof() does)
     /// Version of the serialization format
     uint8_t version;
     /// Unused at the moment, reserved for future use
@@ -68,11 +72,11 @@ struct Dict_header_old
 
 // Do not change these values, as they impact the size of the structure!
 // Note: they are chosen carefully to avoid alignment issues
-#define _MAX_USER_HOST_ 32
-#define _MAX_DIC_NAME_SIZE_ 30
-#define _MAX_LETTERS_NB_ 63
-#define _MAX_LETTERS_SIZE_ 80
-#define _MAX_DISPLAY_INPUT_SIZE_ 112
+#define MAX_USER_HOST 32
+#define MAX_DIC_NAME_SIZE 30
+#define MAX_LETTERS_NB 63
+#define MAX_LETTERS_SIZE 80
+#define MAX_DISPLAY_INPUT_SIZE 112
 
 /** Extension of the old format (used in version 1) */
 struct Dict_header_ext
@@ -87,7 +91,7 @@ struct Dict_header_ext
     // (number of seconds since the Epoch)
     uint64_t compressDate;
     // Build information
-    char userHost[_MAX_USER_HOST_];
+    std::array<char, MAX_USER_HOST> userHost;
     // Size taken by the build information
     uint32_t userHostSize;
 
@@ -101,17 +105,17 @@ struct Dict_header_ext
     // --- we have a multiple of 64 bytes here
 
     // Dictionary official name and version (e.g.: ODS 5.0)
-    char dicName[_MAX_DIC_NAME_SIZE_];
+    std::array<char, MAX_DIC_NAME_SIZE> dicName;
     // Size taken by the dictionary name
     uint32_t dicNameSize;
 
     // --- we have a multiple of 64 bytes here
 
     // Letters used in the dictionary
-    // We should have: nbLetters <= lettersSize <= _MAX_LETTERS_SIZE_
-    // and:            nbLetters <= _MAX_LETTERS_NB_
+    // We should have: nbLetters <= lettersSize <= MAX_LETTERS_SIZE
+    // and:            nbLetters <= MAX_LETTERS_NB
     // The letters themselves, in UTF-8
-    char letters[_MAX_LETTERS_SIZE_];
+    std::array<char, MAX_LETTERS_SIZE> letters;
     // Size taken by the letters
     uint32_t lettersSize;
     // Number of letters (XXX: in theory useless, but allows a sanity check)
@@ -121,10 +125,10 @@ struct Dict_header_ext
 
     // Points of the letters (indexed by their code)
     // The "+ 1" is there for struct alignment
-    uint8_t points[_MAX_LETTERS_NB_ + 1];
+    std::array<uint8_t, MAX_LETTERS_NB + 1> points;
     // Frequency of the letters (indexed by their code)
     // The "+ 1" is there for struct alignment
-    uint8_t frequency[_MAX_LETTERS_NB_ + 1];
+    std::array<uint8_t, MAX_LETTERS_NB + 1> frequency;
     // Bitfield indicating whether letters are vowels
     uint64_t vowels;
     // Bitfield indicating whether letters are consonants
@@ -144,7 +148,7 @@ struct Dict_header_ext_2
 
     // Additional information concerning the display strings and the
     // alternative input strings of the letters
-    char displayAndInput[_MAX_DISPLAY_INPUT_SIZE_];
+    std::array<char, MAX_DISPLAY_INPUT_SIZE> displayAndInput;
     // Size taken by the display/input data
     uint16_t displayAndInputSize;
 
@@ -170,12 +174,12 @@ Header::Header(const DictHeaderInfo &iInfo)
     m_version = 2;
 
     // Sanity checks
-    if (iInfo.letters.size() > _MAX_LETTERS_NB_)
+    if (iInfo.letters.size() > MAX_LETTERS_NB)
     {
         throw DicException(_fmt(
             _("Header::Header: Too many different letters for "
                 "the current format; only {0} are supported"),
-            _MAX_LETTERS_NB_
+            MAX_LETTERS_NB
         ));
     }
     if (iInfo.points.size() != iInfo.letters.size())
@@ -339,8 +343,10 @@ void Header::read(istream &iStream)
     if (iStream.gcount() != sizeof(Dict_header_old))
         throw DicException("Header::read: expected to read more bytes");
 
-    // Check the identification string
-    if (string(aHeader.ident) != _COMPIL_KEYWORD_)
+    // Check the identification string, truncating to the length of the expected string
+    // (because the input is untrusted)
+    std::string_view identTrunc(aHeader.ident.data(), COMPIL_KEYWORD.size());
+    if (identTrunc != COMPIL_KEYWORD)
         throw DicException("Header::read: incorrect header keyword; is it a dictionary file?");
 
     m_version = aHeader.version;
@@ -389,17 +395,17 @@ void Header::read(istream &iStream)
     else
         throw DicException("Header::read: unrecognized algorithm type");
 
-    m_userHost = readFromUTF8(string(aHeaderExt.userHost,
+    m_userHost = readFromUTF8(string(aHeaderExt.userHost.data(),
                                      aHeaderExt.userHostSize),
                               "user and host information");
 
     // Convert the dictionary letters from UTF-8 to wchar_t*
-    m_dicName = readFromUTF8(string(aHeaderExt.dicName,
+    m_dicName = readFromUTF8(string(aHeaderExt.dicName.data(),
                                     aHeaderExt.dicNameSize),
                              "dictionary name");
 
     // Convert the dictionary letters from UTF-8 to wchar_t*
-    m_letters = readFromUTF8(string(aHeaderExt.letters,
+    m_letters = readFromUTF8(string(aHeaderExt.letters.data(),
                                     aHeaderExt.lettersSize),
                              "dictionary letters");
     // Safety check: correct number of letters?
@@ -435,7 +441,7 @@ void Header::read(istream &iStream)
         aHeaderExt2.displayAndInputSize = ntoh(aHeaderExt2.displayAndInputSize);
 
         // Convert the dictionary letters from UTF-8 to wchar_t*
-        wstring serialized = readFromUTF8(string(aHeaderExt2.displayAndInput,
+        wstring serialized = readFromUTF8(string(aHeaderExt2.displayAndInput.data(),
                                                  aHeaderExt2.displayAndInputSize),
                                           "display and input data");
         // Parse this string and structure the data
@@ -447,7 +453,7 @@ void Header::read(istream &iStream)
 void Header::write(ostream &oStream) const
 {
     Dict_header_old aHeader;
-    strcpy(aHeader.ident, _COMPIL_KEYWORD_);
+    std::ranges::copy(COMPIL_KEYWORD, aHeader.ident.begin());
     aHeader.version = m_version;
     aHeader.unused = 0;
     aHeader.root = hton(m_root);
@@ -464,19 +470,19 @@ void Header::write(ostream &oStream) const
     Dict_header_ext aHeaderExt;
     aHeaderExt.compressDate = m_compressDate;
     aHeaderExt.userHostSize =
-        writeInUTF8(m_userHost, aHeaderExt.userHost,
-                    _MAX_USER_HOST_, "user and host information");
+        writeInUTF8(m_userHost, aHeaderExt.userHost.data(),
+                    MAX_USER_HOST, "user and host information");
     aHeaderExt.algorithm = m_type;
 
     // Convert the dictionary name to UTF-8
     aHeaderExt.dicNameSize =
-        writeInUTF8(m_dicName, aHeaderExt.dicName,
-                    _MAX_DIC_NAME_SIZE_, "dictionary name");
+        writeInUTF8(m_dicName, aHeaderExt.dicName.data(),
+                    MAX_DIC_NAME_SIZE, "dictionary name");
 
     // Convert the dictionary letters to UTF-8
     aHeaderExt.lettersSize =
-        writeInUTF8(m_letters, aHeaderExt.letters,
-                    _MAX_LETTERS_SIZE_, "dictionary letters");
+        writeInUTF8(m_letters, aHeaderExt.letters.data(),
+                    MAX_LETTERS_SIZE, "dictionary letters");
     aHeaderExt.nbLetters = (uint32_t)m_letters.size();
 
     // Letters points and frequency
@@ -517,8 +523,8 @@ void Header::write(ostream &oStream) const
 
     // Convert the serialized data to UTF-8
     aHeaderExt2.displayAndInputSize =
-        writeInUTF8(serialized, aHeaderExt2.displayAndInput,
-                    _MAX_DISPLAY_INPUT_SIZE_, "display and input data");
+        writeInUTF8(serialized, aHeaderExt2.displayAndInput.data(),
+                    MAX_DISPLAY_INPUT_SIZE, "display and input data");
 
     // Handle endianness
     aHeaderExt2.displayAndInputSize = hton(aHeaderExt2.displayAndInputSize);
@@ -605,9 +611,8 @@ wstring Header::writeDisplayAndInput() const
 void Header::print(ostream &out) const
 {
     out << _fmt(_("Dictionary name: {0}"), lfw(m_dicName)) << endl;
-    char buf[150];
-    strftime(buf, sizeof(buf), "%c", gmtime(&m_compressDate));
-    out << _fmt(_("Compressed on: {0}"), buf) << endl;
+    auto time_point = std::chrono::sys_seconds{std::chrono::seconds(m_compressDate)};
+    out << _fmt(_("Compressed on: {0:%c}"), time_point) << endl;
     out << _fmt(_("Compressed using a binary compiled by: {0}"), lfw(m_userHost)) << endl;
     out << _fmt(_("Dictionary type: {0}"), (m_type == kDAWG ? "DAWG" : "GADDAG")) << endl;
     out << _fmt(_("Letters: {0}"), lfw(m_letters)) << endl;

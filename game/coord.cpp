@@ -19,9 +19,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <string>
-#include <cstdio>
 #include <format>
+#include <regex>
+#include <string>
 
 #include "coord.h"
 #include "board.h" // for BOARD_MIN and BOARD_MAX (TODO: remove this include)
@@ -71,31 +71,34 @@ void Coord::swap()
 
 void Coord::setFromString(const wstring &iWStr)
 {
-    wchar_t l[4] = {0};
+    static const std::wregex horizPattern(L"^([a-oA-O])([0-9]{1,2})$");
+    static const std::wregex vertPattern(L"^([0-9]{1,2})([a-oA-O])$");
+
+    wchar_t row = L'\0';
     int col = -1;
 
-    // Scan wide characters directly using %ls format rules
-    if (std::swscanf(iWStr.c_str(), L"%1[a-oA-O]%2d", l, &col) == 2)
+    std::wsmatch matches;
+    if (std::regex_match(iWStr, matches, horizPattern))
     {
         setDir(HORIZONTAL);
+        row = matches[1].str()[0];
+        col = std::stoi(matches[2].str());
     }
-    else if (std::swscanf(iWStr.c_str(), L"%2d%1[a-oA-O]", &col, l) == 2)
+    else if (std::regex_match(iWStr, matches, vertPattern))
     {
         setDir(VERTICAL);
+        col = std::stoi(matches[1].str());
+        row = matches[2].str()[0];
     }
     else
     {
-        l[0] = L'A' - 1;
+        row = L'A' - 1;
     }
 
     // std::towupper handles the wide character directly (from <cwctype>)
-    int row = std::towupper(l[0]) - L'A' + 1;
+    row = std::towupper(row) - L'A' + 1;
     setCol(col);
     setRow(row);
-
-    // Input such as "A12foo#bar&stuff" should be invalid
-    if (isValid() && toString() != toUpper(iWStr))
-        setCol(-1);
 }
 
 

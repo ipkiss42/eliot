@@ -17,6 +17,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <iostream>
+#include <clocale>
+#include <cstring> // For strlen
+#include <cwctype> // For iswalnum
+#include <algorithm>
+
 // Needed for Mac OS X, apparently (otherwise get_wch is not defined)
 #define _XOPEN_SOURCE_EXTENDED 1
 
@@ -30,13 +36,6 @@
 #ifdef WIN32
 #   include <windows.h>
 #endif
-
-#include <iostream>
-#include <clocale>
-#include <cctype>
-#include <cstring> // For strlen
-#include <cwctype> // For iswalnum
-#include <algorithm>
 
 #include "curses_intf.h"
 #include "dic.h"
@@ -604,13 +603,11 @@ void CursesIntf::checkWord(WINDOW *win, int y, int x)
     wstring word;
     if (readString(win, y + 2, x + 2, 15, word))
     {
-        bool res = m_game->getDic().searchWord(word);
-        char s[100];
-        if (res)
-            snprintf(s, 100, _("The word '%ls' exists"), word.c_str());
-        else
-            snprintf(s, 100, _("The word '%ls' does not exist"), word.c_str());
-        drawStatus(win, s, false);
+        bool exists = m_game->getDic().searchWord(word);
+
+        drawStatus(win,
+                   _fmt(exists ? _("The word '{}' exists") : _("The word '{}' does not exist"), lfw(word)),
+                   false);
     }
     box.clear();
 }
@@ -626,17 +623,14 @@ void CursesIntf::saveGame(WINDOW *win, int y, int x)
     wstring filename;
     if (readString(win, y + 2, x + 2, 28, filename, kFILENAME))
     {
-        char s[100];
         try
         {
             m_game->save(lfw(filename));
-            snprintf(s, 100, _("Game saved in '%ls'"), filename.c_str());
-            drawStatus(win, s, false);
+            drawStatus(win, _fmt(_("Game saved in '{}'"), lfw(filename)), false);
         }
         catch (std::exception &e)
         {
-            snprintf(s, 100, _("Error saving game %s:"), e.what());
-            drawStatus(win, s);
+            drawStatus(win, _fmt(_("Error saving game {}:"), e.what()));
         }
     }
     box.clear();
@@ -658,13 +652,11 @@ void CursesIntf::loadGame(WINDOW *win, int y, int x)
             PublicGame *loaded = PublicGame::load(lfw(filename), m_game->getDic());
             delete m_game;
             m_game = loaded;
-            char s[100];
-            snprintf(s, 100, _("Game loaded"));
-            drawStatus(win, s, false);
+            drawStatus(win, _fmt(_("Game loaded")), false);
         }
         catch (const GameException &e)
         {
-            drawStatus(win, _("Unable to load game: ") + string(e.what()));
+            drawStatus(win, _fmt(_("Unable to load game: {}"), e.what()));
         }
     }
     box.clear();

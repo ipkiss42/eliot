@@ -22,7 +22,12 @@
 #ifndef DIC_AUTOMATON_H_
 #define DIC_AUTOMATON_H_
 
+#include <cstdint>
+#include <span>
+
 #include "logging.h"
+
+using std::string;
 
 class AutomatonHelper;
 struct searchRegExpLists;
@@ -36,7 +41,7 @@ public:
      * Build a static deterministic finite automaton from
      * "init_state", "ptl" and "PS" given by the parser
      */
-    Automaton(uint64_t init_state, int *ptl, uint64_t *PS,
+    Automaton(uint64_t init_state, std::span<const int> ptl, std::span<const uint64_t> PS,
               const searchRegExpLists &iList);
 
     /// Destructor

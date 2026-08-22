@@ -19,14 +19,15 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include "config.h"
-
 #include <fstream>
 #include <iostream>
 #include <clocale>
 #include <vector>
+
 #include <boost/tokenizer.hpp>
 #include <getopt.h>
+
+#include "config.h"
 
 #if ENABLE_NLS
 #   include <libintl.h>
@@ -180,16 +181,15 @@ int main(int argc, char* argv[])
     textdomain(PACKAGE);
 #endif
 
-    static const struct option long_options[] =
-    {
+    static const std::array<struct option, 6> long_options = {{
         {.name="help", .has_arg=no_argument, .flag=nullptr, .val='h'},
         {.name="dicname", .has_arg=required_argument, .flag=nullptr, .val='d'},
         {.name="letters", .has_arg=required_argument, .flag=nullptr, .val='l'},
         {.name="input", .has_arg=required_argument, .flag=nullptr, .val='i'},
         {.name="output", .has_arg=required_argument, .flag=nullptr, .val='o'},
         {.name=nullptr, .has_arg=0, .flag=nullptr, .val=0}
-    };
-    static const char short_options[] = "hd:l:i:o:";
+    }};
+    static const auto short_options = std::to_array("hd:l:i:o:");
 
     bool found_d = false;
     bool found_l = false;
@@ -204,8 +204,8 @@ int main(int argc, char* argv[])
     int option_index = 1;
     try
     {
-        while ((res = getopt_long(argc, argv, short_options,
-                                  long_options, &option_index)) != -1)
+        while ((res = getopt_long(argc, argv, short_options.data(),
+                                  long_options.data(), &option_index)) != -1)
         {
             switch (res)
             {

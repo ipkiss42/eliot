@@ -1,7 +1,6 @@
 ---
 # TODO:
 #   * To enable:
-#       * modernize-avoid-c-arrays: no automated fix for this one though
 #       * modernize-pass-by-value
 #       * modernize-use-nodiscard
 #   * To study:
@@ -19,7 +18,6 @@
 Checks: >
   -*,
   modernize-*,
-  -modernize-avoid-c-arrays,
   -modernize-avoid-c-style-cast,
   -modernize-avoid-variadic-functions,
   -modernize-macro-to-enum,

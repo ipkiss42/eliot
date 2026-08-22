@@ -35,10 +35,10 @@
 #include <QScreen>
 #include <QSettings>
 #include <QUrl>
+#include <array>
 
 #include "main_window.h"
 #include "dic.h"
-#include "dic_exception.h"
 #include "encoding.h"
 #include "header.h"
 #include "game_factory.h"
@@ -1059,9 +1059,9 @@ void MainWindow::print(QPrinter *printer)
     // Indicate whether the rack and the solution should be aligned
     static const bool SHOULD_ALIGN = false;
     // Columns widths
-    static const int colWidths[] = { 30, 120, 120, 35, 35 };
+    static const std::array<int, 5> colWidths = { 30, 120, 120, 35, 35 };
     // Columns titles
-    static const char *colTitles[] = { _("N."), _("RACK"), _("SOLUTION"), _("REF"), _("PTS") };
+    static const std::array<char*, 5> colTitles = { _("N."), _("RACK"), _("SOLUTION"), _("REF"), _("PTS") };
 
     static const unsigned int nbCols = sizeof(colWidths) / sizeof(int);
     const unsigned int nbRows = history.getSize() + (SHOULD_ALIGN ? 1 : 2);

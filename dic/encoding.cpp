@@ -18,19 +18,18 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include "config.h"
-
 #include <algorithm>
-#include <sstream>
+#include <cerrno>
 #include <cstdlib>
-#include <cstdarg>
 #include <cstring>
 #include <cwchar>
 #include <cwctype>
-#include <cerrno>
-#include <iconv.h>
 #include <optional>
 #include <string>
+
+#include <iconv.h>
+
+#include "config.h"
 
 #include "encoding.h"
 #include "dic_exception.h"
@@ -55,7 +54,6 @@ int wtoi(const wchar_t *iWStr)
 }
 
 
-#define _MAX_SIZE_FOR_STACK_ 30
 wstring convertToWc(const string& iStr)
 {
     // Get the needed length (we _can't_ use string::size())
@@ -63,22 +61,9 @@ wstring convertToWc(const string& iStr)
     if (len == (size_t)-1)
         return L"";
 
-    // Change the allocation method depending on the length of the string
-    if (len < _MAX_SIZE_FOR_STACK_)
-    {
-        // Without multi-thread, we can use static storage
-        static wchar_t tmp[_MAX_SIZE_FOR_STACK_];
-        len = mbstowcs(tmp, iStr.c_str(), len + 1);
-        return tmp;
-    }
-    else
-    {
-        auto *tmp = new wchar_t[len + 1];
-        len = mbstowcs(tmp, iStr.c_str(), len + 1);
-        wstring res = tmp;
-        delete[] tmp;
-        return res;
-    }
+    std::wstring res(len, L'\0');
+    mbstowcs(res.data(), iStr.c_str(), len);
+    return res;
 }
 
 
@@ -89,24 +74,10 @@ string convertToMb(const wstring& iWStr)
     if (len == (size_t)-1)
         return "";
 
-    // Change the allocation method depending on the length of the string
-    if (len < _MAX_SIZE_FOR_STACK_)
-    {
-        // Without multi-thread, we can use static storage
-        static char tmp[_MAX_SIZE_FOR_STACK_];
-        len = wcstombs(tmp, iWStr.c_str(), len + 1);
-        return tmp;
-    }
-    else
-    {
-        char *tmp = new char[len + 1];
-        len = wcstombs(tmp, iWStr.c_str(), len + 1);
-        string res = tmp;
-        delete[] tmp;
-        return res;
-    }
+    std::string res(len, '\0');
+    wcstombs(res.data(), iWStr.c_str(), len);
+    return res;
 }
-#undef _MAX_SIZE_FOR_STACK_
 
 
 string convertToMb(wchar_t iWChar)

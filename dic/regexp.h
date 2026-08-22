@@ -22,9 +22,10 @@
 #ifndef REGEXP_H_
 #define REGEXP_H_
 
+#include <cstdint>
+#include <span>
 #include <string>
 #include <vector>
-#include <iosfwd>
 
 #define NODE_TOP    0
 #define NODE_VAR    1
@@ -58,7 +59,7 @@ public:
      * @param n : number of nodes in the tree (must be initialized to 1)
      * @param ptl : position to letter translation table
      */
-    void traverse(int &p, int &n, int ptl[]);
+    void traverse(int &p, int &n, std::span<int> ptl);
 
     /**
      * Computes 'next position' table used for building the
@@ -67,7 +68,7 @@ public:
      * @param PS : next position table, PS[0] must contain the
      * number of terminals contained in the regular expression
      */
-    void nextPos(uint64_t PS[]);
+    void nextPos(std::span<uint64_t> PS);
 
     /// Return the first position
     int getFirstPos() const { return m_PP; }
@@ -147,8 +148,8 @@ struct searchRegExpLists
 #define RE_LIST_USER_END   4
 
 string regexpPrintLetter(char l);
-void regexp_print_PS(int PS[]);
-void regexp_print_ptl(int ptl[]);
+void regexp_print_PS(std::span<const int> PS);
+void regexp_print_ptl(std::span<const int> ptl);
 
 #endif /* _REGEXP_H_ */
 

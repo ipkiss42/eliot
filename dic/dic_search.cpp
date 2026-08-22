@@ -19,6 +19,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <array>
 #include <cstdlib>
 #include <cstring>
 #include <cwchar>
@@ -79,8 +80,8 @@ struct params_7plus1_t
     wdstring added_display;
     map<unsigned int, vector<wdstring> > *results;
     int search_len;
-    wchar_t search_wordtst[DIC_WORD_MAX];
-    char search_letters[63];
+    std::array<wchar_t, DIC_WORD_MAX> search_wordtst;
+    std::array<char, 63> search_letters;
 };
 
 void Dictionary::searchWordByLen(struct params_7plus1_t &params,
@@ -103,8 +104,8 @@ void Dictionary::searchWordByLen(struct params_7plus1_t &params,
                     {
                         // Add the solution
                         vector<wdstring> &sols = (*params.results)[params.added_code];
-                        if (sols.empty() || sols.back() != params.search_wordtst)
-                            sols.push_back(convertToDisplay(params.search_wordtst));
+                        if (sols.empty() || sols.back() != params.search_wordtst.data())
+                            sols.push_back(convertToDisplay(params.search_wordtst.data()));
                     }
                 }
                 else
@@ -126,8 +127,8 @@ void Dictionary::searchWordByLen(struct params_7plus1_t &params,
                     {
                         // Add the solution
                         vector<wdstring> &sols = (*params.results)[params.added_code];
-                        if (sols.empty() || sols.back() != params.search_wordtst)
-                            sols.push_back(convertToDisplay(params.search_wordtst));
+                        if (sols.empty() || sols.back() != params.search_wordtst.data())
+                            sols.push_back(convertToDisplay(params.search_wordtst.data()));
                     }
                 }
                 else
@@ -427,8 +428,8 @@ bool Dictionary::searchRegExp(const wstring &iRegexp,
         throw InvalidRegexpException(lfw(iRegexp));
     }
 
-    int ptl[REGEXP_MAX+1];
-    uint64_t PS[REGEXP_MAX+1];
+    std::array<int, REGEXP_MAX+1> ptl;
+    std::array<uint64_t, REGEXP_MAX+1> PS;
 
     for (int i = 0; i < REGEXP_MAX; i++)
     {

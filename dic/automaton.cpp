@@ -19,15 +19,17 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include "config.h"
-
+#include <array>
+#include <cstdint>
 #include <set>
 #include <list>
 #include <algorithm>
 #include <fstream>
 #include <cstring>
+#include <span>
 
-#include "dic.h"
+#include "config.h"
+
 #include "regexp.h"
 #include "automaton.h"
 #include "debug.h"
@@ -69,7 +71,7 @@ public:
     // FIXME: should be private
     bool m_accept;
     int id_static;
-    State * m_next[MAX_TRANSITION_LETTERS];
+    std::array<State*, MAX_TRANSITION_LETTERS> m_next;
 
 private:
     /**
@@ -83,7 +85,7 @@ private:
     {
         m_accept = false;
         id_static = 0;
-        memset(m_next, 0, sizeof(State*) * MAX_TRANSITION_LETTERS);
+        m_next.fill(nullptr);
         DMSG("** state " << idToString(m_id) << " creation");
     }
 };
@@ -106,7 +108,9 @@ public:
     void dump(const string &iFileName) const;
 #endif
 
-    static AutomatonHelper *ps2nfa(uint64_t iInitState, int *ptl, uint64_t *PS);
+    static AutomatonHelper *ps2nfa(uint64_t iInitState,
+                                   std::span<const int> ptl,
+                                   std::span<const uint64_t> PS);
     static AutomatonHelper *nfa2dfa(const AutomatonHelper &iNfa,
                                     const searchRegExpLists &iList);
 
@@ -132,7 +136,7 @@ INIT_LOGGER(dic, AutomatonHelper);
    Definition of the Automaton class
  * ************************************************** */
 
-Automaton::Automaton(uint64_t iInitState, int *ptl, uint64_t *PS,
+Automaton::Automaton(uint64_t iInitState, std::span<const int>ptl, std::span<const uint64_t> PS,
                      const searchRegExpLists &iList)
 {
     AutomatonHelper *nfa = AutomatonHelper::ps2nfa(iInitState, ptl, PS);
@@ -287,12 +291,12 @@ State * AutomatonHelper::getState(const set<uint64_t> &iId) const
  * ************************************************** *
  * ************************************************** */
 
-AutomatonHelper *AutomatonHelper::ps2nfa(uint64_t init_state_id, int *ptl, uint64_t *PS)
+AutomatonHelper *AutomatonHelper::ps2nfa(
+    uint64_t init_state_id, std::span<const int> ptl, std::span<const uint64_t> PS)
 {
     uint64_t maxpos = PS[0];
     State * current_state;
-    bool used_letter[MAX_TRANSITION_LETTERS];
-
+    std::array<bool, MAX_TRANSITION_LETTERS> used_letter;
 
     /* 1: init_state = root->PP */
     auto * temp_state = new State(init_state_id);
@@ -306,7 +310,7 @@ AutomatonHelper *AutomatonHelper::ps2nfa(uint64_t init_state_id, int *ptl, uint6
         current_state = L.front();
         L.pop_front();
         DMSG("** current state = " << idToString(current_state->getId()));
-        memset(used_letter, 0, sizeof(used_letter));
+        used_letter.fill(false);
         /* 3: \foreach l in \sigma | l \neq # */
         for (uint32_t p = 1; p < maxpos; p++)
         {

@@ -19,8 +19,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <cwctype>
-#include <cstdio>
 #include <format>
 
 #include "dic.h"
@@ -419,27 +417,19 @@ const Tile& Board::getTestTile(int iRow, int iCol) const
 }
 
 
-// #define CELL_STRING_FORMAT "[%c:%s:%2d]"
-#define CELL_STRING_FORMAT "[%s:%2d]"
-
-string Board::getCellContent_row(int row, int col) const
+std::string Board::getCellContent_row(int row, int col) const
 {
-    char buff[1024];  // [ joker, mask, point, tiles ]
-    sprintf(buff,CELL_STRING_FORMAT,
-            // m_jokerRow[row][col] ? 'j':'.',
-            m_crossRow[row][col].getHexContent().c_str(),
-            m_pointRow[row][col]);
-    return {buff};
+    return std::format("[{}:{:2d}]",
+                       m_crossRow[row][col].getHexContent(),
+                       m_pointRow[row][col]);
 }
 
-string Board::getCellContent_col(int row, int col) const
+
+std::string Board::getCellContent_col(int row, int col) const
 {
-    char buff[1024];
-    sprintf(buff,CELL_STRING_FORMAT,
-            // m_jokerCol[col][row] ? 'j':'.',
-            m_crossCol[col][row].getHexContent().c_str(),
-            m_pointCol[col][row]);
-    return {buff};
+    return std::format("[{}:{:2d}]",
+                       m_crossCol[col][row].getHexContent(),
+                       m_pointCol[col][row]);
 }
 
 

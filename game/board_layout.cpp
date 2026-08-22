@@ -32,12 +32,14 @@
 #define BOARD_DIM 15
 #define BOARD_REALDIM (BOARD_DIM + 2)
 
+using MultiplierBoard = std::array<std::array<int, BOARD_REALDIM>, BOARD_REALDIM>;
+
 
 INIT_LOGGER(game, BoardLayout);
 
 
-static const int DefaultTileMultipliers[BOARD_REALDIM][BOARD_REALDIM] =
-{
+static constexpr MultiplierBoard DefaultTileMultipliers =
+{{
     { oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo },
     { oo,__,__,__,T2,__,__,__,__,__,__,__,T2,__,__,__,oo },
     { oo,__,__,__,__,__,T3,__,__,__,T3,__,__,__,__,__,oo },
@@ -55,11 +57,11 @@ static const int DefaultTileMultipliers[BOARD_REALDIM][BOARD_REALDIM] =
     { oo,__,__,__,__,__,T3,__,__,__,T3,__,__,__,__,__,oo },
     { oo,__,__,__,T2,__,__,__,__,__,__,__,T2,__,__,__,oo },
     { oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo }
-};
+}};
 
 
-static const int DefaultWordMultipliers[BOARD_REALDIM][BOARD_REALDIM] =
-{
+static constexpr MultiplierBoard DefaultWordMultipliers =
+{{
     { oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo },
     { oo,W3,__,__,__,__,__,__,W3,__,__,__,__,__,__,W3,oo },
     { oo,__,W2,__,__,__,__,__,__,__,__,__,__,__,W2,__,oo },
@@ -77,7 +79,7 @@ static const int DefaultWordMultipliers[BOARD_REALDIM][BOARD_REALDIM] =
     { oo,__,W2,__,__,__,__,__,__,__,__,__,__,__,W2,__,oo },
     { oo,W3,__,__,__,__,__,__,W3,__,__,__,__,__,__,W3,oo },
     { oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo,oo }
-};
+}};
 
 
 // Initialize the static member
@@ -129,7 +131,7 @@ bool BoardLayout::isValidCoord(unsigned iRow, unsigned iCol) const
 }
 
 
-static void InitMatrixFromArray(Matrix<int> &oMatrix, const int iArray[BOARD_REALDIM][BOARD_REALDIM])
+static void InitMatrixFromArray(Matrix<int> &oMatrix, const MultiplierBoard &iArray)
 {
     oMatrix.resize(BOARD_REALDIM, BOARD_REALDIM, 0);
     for (unsigned i = 0; i < BOARD_REALDIM; ++i)

@@ -19,8 +19,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <format>
 #include <string>
-#include <cstdio>
+
 #include "cross.h"
 
 #define CROSS_MASK 0xFFFFFFFF
@@ -50,10 +51,7 @@ bool Cross::isAny() const
 
 string Cross::getHexContent() const
 {
-    char buff[10];
-    sprintf(buff,"%08x",m_mask);
-    string s(buff);
-    return s;
+    return std::format("{:08x}", m_mask);
 }
 
 

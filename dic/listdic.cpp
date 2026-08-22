@@ -19,13 +19,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include "config.h"
-
 #include <iostream>
-#include <cstring>
-#include <cstdlib>
-#include <cstdio>
-#include <cstddef>
+#include <string>
 
 #include "encoding.h"
 #include "header.h"
@@ -39,20 +34,28 @@ using namespace std;
 INIT_LOGGER(dic, ListDic);
 
 
-static void printDicRec(ostream &out, const Dictionary &iDic, const wchar_t * const buf, wchar_t *s, DicEdge edge)
+static void printDicRec(ostream &out, const Dictionary &iDic, wstring &current_word, DicEdge edge)
 {
-    if (edge.term)  /* edge points at a complete word */
+    if (edge.term)
     {
-        *s = '\0';
-        out << lfw(buf) << endl;
+        // Edge points at a complete word
+        out << lfw(current_word) << endl;
     }
+
     if (edge.ptr)
-    {           /* Compute index: is it non-zero ? */
+    {
+        // Compute index: is it non-zero?
         const DicEdge *p = iDic.getEdgeAt(edge.ptr);
         do
-        {                         /* for each edge out of this node */
-            *s = iDic.getHeader().getCharFromCode(p->chr);
-            printDicRec(out, iDic, buf, s + 1, *p);
+        {
+            // Append the character for this branch
+            current_word.push_back(iDic.getHeader().getCharFromCode(p->chr));
+
+            // Recurse deeper into the tree
+            printDicRec(out, iDic, current_word, *p);
+
+            // Backtrack
+            current_word.pop_back();
         }
         while (!(*p++).last);
     }
@@ -61,7 +64,7 @@ static void printDicRec(ostream &out, const Dictionary &iDic, const wchar_t * co
 
 void ListDic::printWords(ostream &out, const Dictionary &iDic)
 {
-    wchar_t buf[100];
-    printDicRec(out, iDic, buf, buf, *iDic.getEdgeAt(iDic.getRoot()));
+    wstring word;
+    printDicRec(out, iDic, word, *iDic.getEdgeAt(iDic.getRoot()));
 }
 
