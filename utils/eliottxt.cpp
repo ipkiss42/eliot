@@ -29,13 +29,12 @@
 #include <clocale>
 #include <cwctype>
 #include <print>
+#include <ranges>
 #ifdef HAVE_READLINE
 #   include <cstdio>
 #   include <readline/readline.h>
 #   include <readline/history.h>
 #endif
-
-#include <boost/tokenizer.hpp>
 
 #include "dic.h"
 #include "header.h"
@@ -56,11 +55,6 @@
 
 class Game;
 
-
-// Use a more friendly type name for the tokenizer
-using Tokenizer = boost::tokenizer<boost::char_separator<wchar_t>,
-        std::wstring::const_iterator,
-        std::wstring>;
 
 // A static variable for holding the line
 static wchar_t *wline_read = nullptr;
@@ -131,16 +125,13 @@ wchar_t *rl_gets()
 vector<wstring> readTokens()
 {
     wstring command = rl_gets();
-    // Split the command
-    vector<wstring> tokens;
-    boost::char_separator<wchar_t> sep(L" ");
-    Tokenizer tok(command, sep);
-    for (const wstring &wstr : tok)
-    {
-        if (wstr != L"")
-            tokens.push_back(wstr);
-    }
-    return tokens;
+    return command
+        // Split the command
+        | std::views::split(L' ')
+        // Ignore empty tokens
+        | std::views::filter([](auto&& subrange) { return !subrange.empty(); })
+        // Collect into a vector
+        | std::ranges::to<vector<wstring>>();
 }
 
 

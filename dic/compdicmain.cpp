@@ -19,12 +19,13 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <clocale>
 #include <fstream>
 #include <iostream>
-#include <clocale>
+#include <ranges>
+#include <string>
 #include <vector>
 
-#include <boost/tokenizer.hpp>
 #include <getopt.h>
 
 #include "config.h"
@@ -53,11 +54,6 @@ void readLetters(const string &iFileName, CompDic &ioBuilder)
     if (!in.is_open())
         throw DicException(_fmt(_("Could not open file '{0}'"), iFileName));
 
-    // Use a more friendly type name
-    using Tokenizer = boost::tokenizer<boost::char_separator<wchar_t>,
-            std::wstring::const_iterator,
-            std::wstring>;
-
     int lineNb = 1;
     string line;
     while (getline(in, line))
@@ -78,10 +74,9 @@ void readLetters(const string &iFileName, CompDic &ioBuilder)
         // Convert the line to a wstring
         const wstring &wline = readFromUTF8(line, "readLetters (1)");
         // Split the lines on space characters
-        boost::char_separator<wchar_t> sep(L" ");
-        Tokenizer tok(wline, sep);
-        Tokenizer::iterator it;
-        vector<wstring> tokens(tok.begin(), tok.end());
+        vector<wstring> tokens = wline
+            | std::views::split(L' ')
+            | std::ranges::to<vector<wstring>>();
 
         // We expect at least 5 fields on the line
         if (tokens.size() < 5)

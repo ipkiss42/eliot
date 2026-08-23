@@ -22,10 +22,9 @@
 #include <array>
 #include <chrono>
 #include <iostream>
+#include <ranges>
 #include <string>
 #include <string_view>
-
-#include <boost/tokenizer.hpp>
 
 #include "config.h"
 
@@ -545,28 +544,19 @@ void Header::readDisplayAndInput(const wstring &serialized)
     // and the INP* are input strings (in addition to the display string,
     // which is always considered as an input string)
 
-    // Use a more friendly type name
-    using Tokenizer = boost::tokenizer<boost::char_separator<wchar_t>,
-            std::wstring::const_iterator,
-            std::wstring>;
-
     // Split the string on double spaces
-    static const boost::char_separator<wchar_t> sep1(L" ");
-    static const boost::char_separator<wchar_t> sep2(L"|");
-    Tokenizer tok(serialized, sep1);
-    Tokenizer::iterator it;
-    for (it = tok.begin(); it != tok.end(); ++it)
+    for (auto&& space_subrange : serialized | std::views::split(L' '))
     {
-        // Split the token on single space
-        Tokenizer tok2(*it, sep2);
-        vector<wstring> pieces(tok2.begin(), tok2.end());
+        std::vector<std::wstring> pieces = space_subrange
+            | std::views::split(L'|')
+            | std::ranges::to<std::vector<std::wstring>>();
         // Some sanity checks...
         if (pieces.size() < 2)
             throw DicException("Header::readDisplayAndInput: no display "
                                "string. Corrupted dictionary?");
         // The first piece must be a single char, present in m_letters
         if (pieces[0].size() != 1 ||
-            m_letters.find(pieces[0][0]) == wstring::npos)
+            !m_letters.contains(pieces[0][0]))
         {
             throw DicException("Header::readDisplayAndInput: invalid internal"
                                " letter. Corrupted dictionary?");
