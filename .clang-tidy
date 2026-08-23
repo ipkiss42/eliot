@@ -31,7 +31,6 @@ Checks: >
   -bugprone-easily-swappable-parameters,
   -bugprone-empty-catch,
   -bugprone-exception-escape,
-  -bugprone-multi-level-implicit-pointer-conversion,
   -bugprone-narrowing-conversions,
   -bugprone-reserved-identifier,
   -bugprone-signed-char-misuse,
@@ -39,7 +38,6 @@ Checks: >
   -bugprone-switch-missing-default-case,
   -bugprone-throwing-static-initialization,
   -bugprone-unchecked-string-to-number-conversion,
-  -bugprone-unused-local-non-trivial-variable,
   misc-redundant-expression,
   readability-redundant-string-cstr
 
@@ -51,6 +49,14 @@ CheckOptions:
     value: 'false' # Keeps pointers as auto*
   - key: modernize-use-auto.AutoWithRef
     value: 'true'  # Keep references as auto&
+  - key: misc-const-correctness.AnalyzeValues
+    value: 'false'
+  - key: misc-const-correctness.TransformValues
+    value: 'false'
+  - key: misc-const-correctness.TransformPointers
+    value: 'false'
+  - key: misc-const-correctness.TransformReferences
+    value: 'false'
 
 # Filter project header files, while allowing out of tree builds
 HeaderFilterRegex: '(dic/|game/|utils/|qt/).*\.(h|hpp|hxx)$'

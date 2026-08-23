@@ -22,13 +22,10 @@
 #ifndef TILE_H_
 #define TILE_H_
 
-#include <list>
-#include <vector>
 #include <string>
+#include <vector>
 
 #include "logging.h"
-
-using namespace std;
 
 class Header;
 
@@ -61,8 +58,8 @@ public:
     unsigned int getPoints() const;
     wchar_t toChar() const;
     unsigned int toCode() const;
-    wstring getDisplayStr() const;
-    vector<wstring> getInputStr() const;
+    std::wstring getDisplayStr() const;
+    std::vector<std::wstring> getInputStr() const;
 
     /// Return a copy of this tile, as a (non pure) joker
     Tile toLower() const;

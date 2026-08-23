@@ -18,7 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <algorithm>
 #include <pugixml.hpp>
 
 #include "config.h"
@@ -273,7 +272,6 @@ Game * XmlReader::read(const string &iFileName, const Dictionary &iDic)
             string cmdText = cmdNode.text().get();
             if (tagName == "PlayerRack")
             {
-                string letters = cmdNode.text().get();
                 // Build a rack for the correct player
                 const wstring &rackStr = iDic.convertFromInput(fromUtf8(cmdText));
                 PlayedRack pldrack;

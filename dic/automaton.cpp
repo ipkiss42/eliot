@@ -19,19 +19,17 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <algorithm>
 #include <array>
 #include <cstdint>
-#include <set>
-#include <list>
-#include <algorithm>
-#include <fstream>
 #include <cstring>
+#include <fstream>
+#include <list>
+#include <set>
 #include <span>
 
-#include "config.h"
-
-#include "regexp.h"
 #include "automaton.h"
+#include "regexp.h"
 #include "debug.h"
 
 using namespace std;
@@ -139,13 +137,13 @@ INIT_LOGGER(dic, AutomatonHelper);
 Automaton::Automaton(uint64_t iInitState, std::span<const int>ptl, std::span<const uint64_t> PS,
                      const searchRegExpLists &iList)
 {
-    AutomatonHelper *nfa = AutomatonHelper::ps2nfa(iInitState, ptl, PS);
+    const AutomatonHelper *nfa = AutomatonHelper::ps2nfa(iInitState, ptl, PS);
     DMSG("Non deterministic automaton OK");
 #ifdef DEBUG_AUTOMATON
     nfa->dump("auto_nfa");
 #endif
 
-    AutomatonHelper *dfa = AutomatonHelper::nfa2dfa(*nfa, iList);
+    const AutomatonHelper *dfa = AutomatonHelper::nfa2dfa(*nfa, iList);
     DMSG("Deterministic automaton OK");
 #ifdef DEBUG_AUTOMATON
     dfa->dump("auto_dfa");
@@ -494,10 +492,8 @@ static string idToString(const set<uint64_t> &iIds)
 
 void AutomatonHelper::printNodes(ostream &out) const
 {
-    list<State *>::const_iterator it;
-    for (it = m_states.begin(); it != m_states.end(); it++)
+    for (const auto * s : m_states)
     {
-        State * s = *it;
         const string &sid = idToString(s->getId());
         out << std::format("\t\"{0}\" [label = \"{1}\"", sid, sid);
         if (s == m_initState)
@@ -516,10 +512,8 @@ void AutomatonHelper::printNodes(ostream &out) const
 
 void AutomatonHelper::printEdges(ostream &out) const
 {
-    list<State *>::const_iterator it;
-    for (it = m_states.begin(); it != m_states.end(); it++)
+    for (const auto * s : m_states)
     {
-        State * s = *it;
         for (int letter = 0; letter < 255; letter++)
         {
             if (s->m_next[letter])
