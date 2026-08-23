@@ -18,10 +18,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <cmath>
 #include <string>
 #include <vector>
-#include <fstream>
-#include <cmath>
+
 #include <pugixml.hpp>
 
 #include "config.h"
@@ -100,7 +100,7 @@ static void writeMove(pugi::xml_node & parentNode, const Move &iMove,
 }
 
 
-void XmlWriter::write(const Game& iGame, const std::string& iFileName)
+void XmlWriter::write(const Game& iGame, const std::filesystem::path& iFileName)
 {
     pugi::xml_document doc;
 
@@ -337,10 +337,10 @@ void XmlWriter::write(const Game& iGame, const std::string& iFileName)
     // End of the statistics
 
     //. Save file with precise 4-space layout indentation
-    bool success = doc.save_file(iFileName.c_str(), "    ", pugi::format_default, pugi::encoding_utf8);
+    bool success = doc.save_file(iFileName.string().c_str(), "    ", pugi::format_default, pugi::encoding_utf8);
     if (!success)
     {
-        throw SaveGameException(_fmt(_("Cannot open file for writing: '%1%'"), iFileName));
+        throw SaveGameException(_fmt(_("Cannot open file for writing: '%1%'"), iFileName.string()));
     }
 }
 

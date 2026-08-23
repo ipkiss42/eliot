@@ -21,8 +21,10 @@
 #ifndef GAME_FACTORY_H_
 #define GAME_FACTORY_H_
 
+#include <filesystem>
 #include <string>
 #include <vector>
+
 #include "logging.h"
 
 using std::string;
@@ -52,7 +54,7 @@ public:
     Game *createGame(const GameParams &iParams, const Game *iMasterGame = nullptr);
 
     /// Return the loaded game, or NULL if there was a problem
-    Game *load(const string &iFileName, const Dictionary &iDic);
+    Game *load(const std::filesystem::path &iFileName, const Dictionary &iDic);
 
     Game *createFromCmdLine(int argc, char **argv);
 

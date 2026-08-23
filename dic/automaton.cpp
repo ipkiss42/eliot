@@ -103,7 +103,7 @@ public:
 
     State * getInitState() const { return m_initState; }
 #ifdef DEBUG_AUTOMATON
-    void dump(const string &iFileName) const;
+    void dump(const std::filesystem::path &iFileName) const;
 #endif
 
     static AutomatonHelper *ps2nfa(uint64_t iInitState,
@@ -213,9 +213,9 @@ void Automaton::finalize(const AutomatonHelper &iHelper)
 }
 
 
-void Automaton::dump(const string &iFileName) const
+void Automaton::dump(const std::filesystem::path &iFileName) const
 {
-    ofstream out(iFileName.c_str());
+    ofstream out(iFileName);
     out << "digraph automaton {\n";
     for (unsigned int i = 1; i <= m_nbStates; i++)
     {
@@ -529,9 +529,9 @@ void AutomatonHelper::printEdges(ostream &out) const
 
 
 #ifdef DEBUG_AUTOMATON
-void AutomatonHelper::dump(const string &iFileName) const
+void AutomatonHelper::dump(const std::filesystem::path &iFileName) const
 {
-    ofstream out(iFileName.c_str());
+    ofstream out(iFileName);
     out << "digraph automaton {\n";
     printNodes(out);
     printEdges(out);

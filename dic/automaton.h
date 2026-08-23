@@ -23,6 +23,7 @@
 #define DIC_AUTOMATON_H_
 
 #include <cstdint>
+#include <filesystem>
 #include <span>
 
 #include "logging.h"
@@ -77,7 +78,7 @@ public:
     /**
      * Dump the automaton into a file (for debugging purposes)
      */
-    void dump(const string &iFileName) const;
+    void dump(const std::filesystem::path &iFileName) const;
 
 private:
     /// Number of states

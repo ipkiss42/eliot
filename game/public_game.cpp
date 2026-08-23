@@ -397,14 +397,14 @@ void PublicGame::arbitrationFinalizeTurn()
 
 /***************************/
 
-PublicGame *PublicGame::load(const string &iFileName, const Dictionary &iDic)
+PublicGame *PublicGame::load(const std::filesystem::path &iFileName, const Dictionary &iDic)
 {
     Game *game = GameFactory::Instance()->load(iFileName, iDic);
     return new PublicGame(*game);
 }
 
 
-void PublicGame::save(const string &iFileName) const
+void PublicGame::save(const std::filesystem::path &iFileName) const
 {
     XmlWriter::write(m_game, iFileName);
 }

@@ -21,8 +21,9 @@
 #ifndef SETTINGS_H_
 #define SETTINGS_H_
 
-#include <string>
+#include <filesystem>
 #include <map>
+#include <string>
 
 #include "logging.h"
 
@@ -54,7 +55,7 @@ public:
     static void Destroy();
 
     /// Return the config file directory, with a '/' (or '\') appended to it
-    static string GetConfigFileDir();
+    static std::filesystem::path GetConfigFileDir();
 
     ~Settings();
 
@@ -74,7 +75,7 @@ private:
     Settings();
 
     /// Name of the file used to store the settings
-    string m_fileName;
+    std::filesystem::path m_fileName;
 
     libconfig::Config *m_conf;
 

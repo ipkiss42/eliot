@@ -49,11 +49,11 @@
 using namespace std;
 
 
-void readLetters(const string &iFileName, CompDic &ioBuilder)
+void readLetters(const std::filesystem::path &iFileName, CompDic &ioBuilder)
 {
-    ifstream in(iFileName.c_str());
+    ifstream in(iFileName);
     if (!in.is_open())
-        throw DicException(_fmt(_("Could not open file '{0}'"), iFileName));
+        throw DicException(_fmt(_("Could not open file '{0}'"), iFileName.string()));
 
     int lineNb = 1;
     string line;
@@ -77,7 +77,7 @@ void readLetters(const string &iFileName, CompDic &ioBuilder)
         // Convert the line to a wstring
         const wstring &wline = readFromUTF8(line, "readLetters (1)");
         // Split the lines on space characters
-        vector<wstring> tokens = wline
+        auto tokens = wline
             | std::views::split(L' ')
             | std::ranges::to<vector<wstring>>();
 
@@ -86,7 +86,7 @@ void readLetters(const string &iFileName, CompDic &ioBuilder)
         {
             throw DicException(_fmt(
                 _("readLetters: Not enough fields in {0} (line {1})"),
-                iFileName, lineNb
+                iFileName.string(), lineNb
             ));
         }
 
@@ -193,8 +193,8 @@ int main(int argc, char* argv[])
     bool found_i = false;
     bool found_o = false;
     string dicName;
-    string inFileName;
-    string outFileName;
+    std::filesystem::path inFileName;
+    std::filesystem::path outFileName;
     CompDic builder;
 
     int res;

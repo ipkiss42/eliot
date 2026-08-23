@@ -22,9 +22,11 @@
 #ifndef DIC_COMPDIC_H_
 #define DIC_COMPDIC_H_
 
-#include <vector>
-#include <string>
+#include <filesystem>
 #include <iosfwd>
+#include <string>
+#include <vector>
+
 #include <boost/unordered_map.hpp>
 
 #include "header.h"
@@ -35,7 +37,9 @@ struct DicEdge;
 struct DictHeaderInfo;
 class Header;
 
-using namespace std;
+using std::string;
+using std::vector;
+using std::wstring;
 
 #define CHECK_RECURSION
 
@@ -77,8 +81,8 @@ public:
      * @param iDicName: Internal name of the dictionary
      * @return The header of the generated dawg
      */
-    Header generateDawg(const string &iWordListFile,
-                        const string &iDawgFile,
+    Header generateDawg(const std::filesystem::path &iWordListFile,
+                        const std::filesystem::path &iDawgFile,
                         const string &iDicName);
 
     // Statistics
@@ -114,7 +118,7 @@ private:
      * @param iFileName: Name (and path) of the file containing the word list.
      * @param oWordList: Word list
      */
-    void loadWordList(const string &iFileName, vector<wstring> &oWordList);
+    void loadWordList(const std::filesystem::path &iFileName, vector<wstring> &oWordList);
 
     Header writeHeader(ostream &outFile) const;
 

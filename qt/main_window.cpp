@@ -90,7 +90,7 @@ MainWindow::MainWindow(QWidget *iParent)
 #endif
 
     // Path to the auto-saved game
-    m_autoSaveGame = Settings::GetConfigFileDir() + "autosave.xml";
+    m_autoSaveGame = Settings::GetConfigFileDir() / "autosave.xml";
 
     LOG_DEBUG("Creating main window");
     m_ui.setupUi(this);
@@ -944,7 +944,7 @@ void MainWindow::onGameLoad()
 
 void MainWindow::onGameLoadAutoSave()
 {
-    loadGame(qfl(m_autoSaveGame));
+    loadGame(qfl(m_autoSaveGame.string()));
 }
 
 

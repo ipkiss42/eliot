@@ -251,10 +251,10 @@ void Node::printEdgesRec(ostream &out) const
     }
 }
 
-void Node::printTreeDot(const string &iFileName, int detail) const
+void Node::printTreeDot(const std::filesystem::path &iFileName, int detail) const
 {
-    ofstream out(iFileName.c_str());
-    out << "digraph " << iFileName << " {\n";
+    ofstream out(iFileName);
+    out << "digraph " << iFileName.string() << " {\n";
     printNodesRec(out, detail);
     printEdgesRec(out);
     out << "fontsize=20;\n";

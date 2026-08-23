@@ -21,10 +21,11 @@
 
 #include "config.h"
 
-#include <getopt.h>
-#include <string>
-#include <iostream>
 #include <exception>
+#include <iostream>
+#include <string>
+
+#include <getopt.h>
 
 #if ENABLE_NLS
 #   include <libintl.h>
@@ -237,7 +238,7 @@ Game *GameFactory::createFromCmdLine(int argc, char **argv)
 }
 
 
-Game* GameFactory::load(const string &iFileName, const Dictionary &iDic)
+Game* GameFactory::load(const std::filesystem::path &iFileName, const Dictionary &iDic)
 {
     return XmlReader::read(iFileName, iDic);
 }

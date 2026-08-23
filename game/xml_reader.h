@@ -21,9 +21,7 @@
 #ifndef XML_READER_H_
 #define XML_READER_H_
 
-#include <map>
-
-#include "config.h"
+#include <filesystem>
 
 #include "logging.h"
 #include "game_params.h"
@@ -31,9 +29,6 @@
 class Dictionary;
 class Game;
 class Player;
-
-using std::string;
-using std::map;
 
 
 class XmlReader
@@ -47,7 +42,7 @@ public:
      * Create a Game object, from a XML file created using the XmlWriter class.
      * The method throws an exception in case of problem.
      */
-    static Game * read(const string &iFileName, const Dictionary &iDic);
+    static Game * read(const std::filesystem::path &iFileName, const Dictionary &iDic);
 
 private:
     bool m_firstTurn{true};

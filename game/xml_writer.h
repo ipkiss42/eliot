@@ -20,18 +20,18 @@
 #ifndef XML_WRITER_H_
 #define XML_WRITER_H_
 
+#include <filesystem>
+
 #include "logging.h"
 
 class Game;
-
-using std::string;
 
 
 class XmlWriter
 {
     DEFINE_LOGGER();
 public:
-    static void write(const Game &iGame, const string &iFileName);
+    static void write(const Game &iGame, const std::filesystem::path &iFileName);
 };
 
 #endif

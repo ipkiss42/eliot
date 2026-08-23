@@ -78,7 +78,7 @@ public:
      * Print the tree rooted at the current node to a file suitable
      * for dot (Graphviz)
      */
-    void printTreeDot(const string &iFileName, int detail) const;
+    void printTreeDot(const std::filesystem::path &iFileName, int detail) const;
 #endif
 
 private:

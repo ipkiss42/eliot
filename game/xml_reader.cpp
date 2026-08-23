@@ -225,15 +225,15 @@ static Move buildMove(const Game &iGame, const pugi::xml_node &moveCmdNode, bool
 }
 
 
-Game * XmlReader::read(const string &iFileName, const Dictionary &iDic)
+Game * XmlReader::read(const std::filesystem::path &iFileName, const Dictionary &iDic)
 {
-    LOG_INFO("Parsing savegame '{}'", iFileName);
+    LOG_INFO("Parsing savegame '{}'", iFileName.string());
 
     // Load the XML file into memory
     pugi::xml_document doc;
-    pugi::xml_parse_result result = doc.load_file(iFileName.c_str());
+    pugi::xml_parse_result result = doc.load_file(iFileName.string().c_str());
     if (!result)
-        throw LoadGameException(_fmt(_("Cannot open file '{0}': {1}"), iFileName, result.description()));
+        throw LoadGameException(_fmt(_("Cannot open file '{0}': {1}"), iFileName.string(), result.description()));
 
     pugi::xml_node root = doc.child("EliotGame");
     if (!root || string(root.attribute("format").value()) != CURRENT_XML_VERSION)

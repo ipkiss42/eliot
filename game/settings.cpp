@@ -18,9 +18,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <cstdlib>
+#include <filesystem>
+#include <system_error>
+
 #include "config.h"
 
-#include <cstdlib>
 #ifdef HAVE_LIBCONFIG
 #   define LIBCONFIG_STATIC
 #   include <libconfig.h++>
@@ -28,11 +31,6 @@
 #ifdef WIN32
 #   include <windows.h>
 #   include <shlobj.h>
-#else
-#   if defined(HAVE_SYS_STAT_H) && defined(HAVE_SYS_TYPES_H)
-#       include <sys/stat.h>
-#       include <sys/types.h>
-#   endif
 #endif
 
 #include "settings.h"
@@ -64,79 +62,16 @@ void Settings::Destroy()
 }
 
 
-// Return true if the given path exists and is a directory)
-static bool is_directory(const string &path)
+std::filesystem::path Settings::GetConfigFileDir()
 {
+    std::filesystem::path dirPath;
 #ifdef WIN32
-    DWORD attrib = GetFileAttributes(path.c_str());
-    return (attrib != INVALID_FILE_ATTRIBUTES &&
-            (attrib & FILE_ATTRIBUTE_DIRECTORY));
-#else
-#if defined(HAVE_SYS_STAT_H) && defined(HAVE_SYS_TYPES_H)
-    struct stat sb;
-    int res = stat(path.c_str(), &sb);
-    return res == 0 && S_ISDIR(sb.st_mode);
-#else
-    // Unimplemented
-    return false;
-#endif
-#endif
-}
-
-// Create a directory.
-// Return true in case of success, false otherwise.
-static bool my_mkdir(const string &dir)
-{
-#ifdef WIN32
-    // The value '248' comes from MSDN
-    char tmp[248];
-    snprintf(tmp, sizeof(tmp), "%s", dir.c_str());
-    return CreateDirectory(tmp, NULL);
-#else
-#if defined(HAVE_SYS_STAT_H) && defined(HAVE_SYS_TYPES_H)
-    // Create the directory with mode 0700
-    return mkdir(dir.c_str(), S_IRWXU) == 0;
-#else
-    // Unimplemented
-    return false;
-#endif
-#endif
-}
-
-// Create a directory, like mkdir -p
-// We ignore potential errors...
-static void full_mkdir(const string &dir)
-{
-    // Remove trailing '/'
-    string copy = dir;
-    string::size_type pos = dir.find_last_not_of('/');
-    if (pos != string::npos && pos != dir.size() - 1)
-        copy.erase(pos + 1, dir.size() - 1 - pos);
-
-    // Create intermediate directories
-    pos = 0;
-    while ((pos = copy.find('/', pos)) != string::npos)
-    {
-        // Ignore potential errors...
-        my_mkdir(copy.substr(0, pos));
-        ++pos;
-    }
-
-    // Create the final directory
-    my_mkdir(copy);
-}
-
-
-string Settings::GetConfigFileDir()
-{
-    string dirName;
-#ifdef WIN32
-    char szPath[MAX_PATH];
+    wchar_t szPath[MAX_PATH];
     // Get the AppData directory
-    if (SHGetFolderPath(NULL, CSIDL_APPDATA | CSIDL_FLAG_CREATE,
-                        NULL, 0, szPath) == S_OK)
+    if (SHGetFolderPathW(NULL, CSIDL_APPDATA | CSIDL_FLAG_CREATE, NULL, 0, szPath) == S_OK)
     {
-        dirName = szPath + string("/eliot");
+        dirPath = szPath;
+        dirPath /= "eliot";
     }
 #else
     // Follow the XDG Base Directory Specification (from freedesktop.org)
@@ -144,31 +79,32 @@ string Settings::GetConfigFileDir()
     // of the config file could be different when reading and writing.
     // But in the case of Eliot it's not very important (we don't try to
     // merge config files)...
-    const char *configDir = getenv("XDG_CONFIG_HOME");
-    if (configDir != nullptr)
-        dirName = configDir;
+    const char *configDir = std::getenv("XDG_CONFIG_HOME");
+    if (configDir != nullptr && configDir[0] != '\0')
+        dirPath = configDir;
     else
     {
-        // Fallback to the default value: $HOME/.config
-        configDir = getenv("HOME");
-        if (configDir)
-            dirName = configDir + string("/.config");
+        const char *homeDir = std::getenv("HOME");
+        if (homeDir && homeDir[0] != '\0')
+        {
+            dirPath = std::filesystem::path(homeDir) / ".config";
+        }
     }
-    dirName += "/eliot";
-#endif
 
-    if (dirName != "")
-        dirName += "/";
+    if (!dirPath.empty())
+        dirPath /= "eliot";
+#endif
 
     // Try to create the directory if it doesn't exist.
     // If the directory cannot be created, saving the
     // configuration file will definitely fail...
-    if (!is_directory(dirName))
+    if (!dirPath.empty())
     {
-        full_mkdir(dirName);
+        std::error_code ec;
+        std::filesystem::create_directories(dirPath, ec);
     }
 
-    return dirName;
+    return dirPath;
 }
 
 
@@ -192,7 +128,7 @@ namespace
 Settings::Settings()
 {
 #ifdef HAVE_LIBCONFIG
-    m_fileName = GetConfigFileDir() + "eliot.cfg";
+    m_fileName = GetConfigFileDir() / "eliot.cfg";
     m_conf = new Config;
 
     // ============== General options ==============
@@ -269,7 +205,7 @@ Settings::Settings()
         // settings. So we create a temporary config, and copy the settings
         // one by one...
         Config tmpConf;
-        tmpConf.readFile(m_fileName.c_str());
+        tmpConf.readFile(m_fileName.string().c_str());
         copySetting<int>(tmpConf, *m_conf, "training.search-limit");
         copySetting<int>(tmpConf, *m_conf, "duplicate.solo-players");
         copySetting<int>(tmpConf, *m_conf, "duplicate.solo-value");
@@ -307,12 +243,12 @@ void Settings::save() const
 #ifdef HAVE_LIBCONFIG
     try
     {
-        m_conf->writeFile(m_fileName.c_str());
+        m_conf->writeFile(m_fileName.string().c_str());
     }
     catch (FileIOException &e)
     {
         throw GameException("The configuration file cannot be written (" +
-                            m_fileName + ")");
+                            m_fileName.string() + ")");
     }
 #endif
 }

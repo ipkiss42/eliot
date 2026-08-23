@@ -22,12 +22,12 @@
 #include "config.h"
 
 #include <algorithm>
+#include <filesystem>
 #include <fstream>
 #include <map>
 #include <boost/functional/hash.hpp>
 #include <ctime>
 #include <sys/types.h>
-#include <sys/stat.h>
 #include <fcntl.h>
 #include <cwctype>
 #include <cstdlib>
@@ -120,17 +120,18 @@ void CompDic::addLetter(wchar_t chr, int points, int frequency,
 }
 
 
-void CompDic::loadWordList(const string &iFileName, vector<wstring> &oWordList)
+void CompDic::loadWordList(const std::filesystem::path &iFileName, vector<wstring> &oWordList)
 {
-    ifstream file(iFileName.c_str(), ios::in | ios::binary);
+    ifstream file(iFileName, ios::in | ios::binary);
     if (!file.is_open())
-        throw DicException(_fmt(_("Could not open file '{0}'"), iFileName));
+        throw DicException(_fmt(_("Could not open file '{0}'"), iFileName.string()));
 
     // Get the file size
-    struct stat stat_buf;
-    if (stat(iFileName.c_str(), &stat_buf) < 0)
-        throw DicException(_fmt(_("Could not open file '{0}'"), iFileName));
-    int dicSize = (unsigned int)stat_buf.st_size;
+    std::error_code ec;
+    auto size = std::filesystem::file_size(iFileName, ec);
+    if (ec)
+        throw DicException(_fmt(_("Could not open file '{0}'"), iFileName.string()));
+    int dicSize = static_cast<int>(size);
 
     // Reserve some space (heuristic: the average length of words is 11)
     oWordList.reserve(dicSize / 11);
@@ -318,8 +319,8 @@ unsigned int CompDic::makeNode(ostream &outFile, const Header &iHeader,
 }
 
 
-Header CompDic::generateDawg(const string &iWordListFile,
-                             const string &iDawgFile,
+Header CompDic::generateDawg(const std::filesystem::path &iWordListFile,
+                             const std::filesystem::path &iDawgFile,
                              const string &iDicName)
 {
     m_headerInfo.dicName = wfl(iDicName);
@@ -327,10 +328,10 @@ Header CompDic::generateDawg(const string &iWordListFile,
     m_headerInfo.dawg = true;
 
     // Open the output file
-    ofstream outFile(iDawgFile.c_str(), ios::out | ios::binary | ios::trunc);
+    ofstream outFile(iDawgFile, ios::out | ios::binary | ios::trunc);
     if (!outFile.is_open())
     {
-        throw DicException(_fmt(_("Cannot open output file '{0}'"), iDawgFile));
+        throw DicException(_fmt(_("Cannot open output file '{0}'"), iDawgFile.string()));
     }
 
     const clock_t startLoadTime = clock();

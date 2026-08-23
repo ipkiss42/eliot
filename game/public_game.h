@@ -21,8 +21,9 @@
 #ifndef PUBLIC_GAME_H_
 #define PUBLIC_GAME_H_
 
-#include <vector>
+#include <filesystem>
 #include <string>
+#include <vector>
 
 class GameParams;
 class Game;
@@ -38,8 +39,9 @@ class LimitResults;
 class Move;
 class PlayedRack;
 
-using namespace std;
 
+using std::vector;
+using std::wstring;
 
 /**
  * This class is a wrapper around a Game object (Façade design pattern).
@@ -320,12 +322,12 @@ public:
      * Return the loaded game, from an XML file.
      * An exception is thrown in case of problem.
      */
-    static PublicGame * load(const string &iFileName, const Dictionary &iDic);
+    static PublicGame * load(const std::filesystem::path &iFileName, const Dictionary &iDic);
 
     /**
      * Save a game to a XML file
      */
-    void save(const string &iFileName) const;
+    void save(const std::filesystem::path &iFileName) const;
 
     /***************
      * Navigation in the game history

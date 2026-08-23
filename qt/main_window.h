@@ -21,7 +21,9 @@
 #ifndef MAIN_WINDOW_H_
 #define MAIN_WINDOW_H_
 
+#include <filesystem>
 #include <string>
+
 #include <QMainWindow>
 
 #include "ui_main_window.h"
@@ -180,7 +182,7 @@ private:
 
     static const char * m_windowName;
 
-    string m_autoSaveGame;
+    std::filesystem::path m_autoSaveGame;
 
     /// Auxiliary windows
     //@{
