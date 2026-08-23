@@ -20,6 +20,7 @@
  *****************************************************************************/
 
 #include <format>
+#include <memory>
 
 #include "dic.h"
 #include "tile.h"
@@ -42,8 +43,8 @@
 INIT_LOGGER(game, Game);
 
 
-Game::Game(const GameParams &iParams, const Game *iMasterGame):
-    m_params(iParams), m_masterGame(iMasterGame),
+Game::Game(const GameParams &iParams, std::unique_ptr<const Game> iMasterGame):
+    m_params(iParams), m_masterGame(std::move(iMasterGame)),
     m_board(m_params), m_bag(iParams.getDic())
 {
     m_points = 0;
@@ -51,14 +52,7 @@ Game::Game(const GameParams &iParams, const Game *iMasterGame):
 }
 
 
-Game::~Game()
-{
-    for (Player *p : m_players)
-    {
-        delete p;
-    }
-    delete m_masterGame;
-}
+Game::~Game() = default;
 
 
 Player& Game::accessPlayer(unsigned int iNum)
@@ -109,7 +103,7 @@ void Game::realBag(Bag &ioBag) const
     if (getMode() == GameParams::kFREEGAME)
     {
         // In freegame mode, take the letters from all the racks
-        for (const Player *player : m_players)
+        for (const auto &player : m_players)
         {
             player->getCurrentRack().getAllTiles(tiles);
             for (const Tile &tile : tiles)
@@ -555,7 +549,7 @@ PlayedRack Game::helperSetRackManual(bool iCheck, const wstring &iLetters) const
 unsigned int Game::getNHumanPlayers() const
 {
     unsigned int count = 0;
-    for (const Player *player : m_players)
+    for (const auto &player : m_players)
     {
         count += (player->isHuman() ? 1 : 0);
     }
@@ -563,16 +557,16 @@ unsigned int Game::getNHumanPlayers() const
 }
 
 
-void Game::addPlayer(Player *iPlayer)
+void Game::addPlayer(std::unique_ptr<Player> iPlayer)
 {
     ASSERT(iPlayer != nullptr, "Invalid player pointer in addPlayer()");
 
-    // The ID of the player is its position in the m_players vector
-    iPlayer->setId(getNPlayers());
-    m_players.push_back(iPlayer);
-
     LOG_INFO("Adding player '{}' ({}) with ID {}",
              lfw(iPlayer->getName()), (iPlayer->isHuman() ? "human" : "AI"), iPlayer->getId());
+
+    // The ID of the player is its position in the m_players vector
+    iPlayer->setId(getNPlayers());
+    m_players.push_back(std::move(iPlayer));
 }
 
 
@@ -684,7 +678,7 @@ void Game::setGameAndPlayersRack(const PlayedRack &iRack, bool iWithNoMove)
     accessNavigation().addAndExecute(pCmd);
     LOG_INFO("Setting players rack to '" + lfw(iRack.toString()) + "'");
     // All the players have the same rack
-    for (Player *player : m_players)
+    for (auto &player : m_players)
     {
         Command *pCmd = new PlayerRackCmd(*player, iRack);
         accessNavigation().addAndExecute(pCmd);
@@ -697,7 +691,7 @@ void Game::setGameAndPlayersRack(const PlayedRack &iRack, bool iWithNoMove)
         // and "has played with no move" in duplicate and arbitration modes.
         // This is also practical to know at which turn the warnings, penalties
         // and solos should be assigned.
-        for (Player *player : m_players)
+        for (auto &player : m_players)
         {
             Command *pCmd = new PlayerMoveCmd(*player, Move());
             accessNavigation().addAndExecute(pCmd);

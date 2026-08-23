@@ -21,6 +21,8 @@
 #ifndef FREEGAME_H_
 #define FREEGAME_H_
 
+#include <memory>
+
 #include "game.h"
 #include "logging.h"
 
@@ -85,7 +87,7 @@ private:
     bool m_finished{false};
 
     /// Private constructor to force using the GameFactory class
-    FreeGame(const GameParams &iParams, const Game *iMasterGame);
+    FreeGame(const GameParams &iParams, std::unique_ptr<const Game> iMasterGame);
 
     /// Make the AI player whose ID is p play its turn
     void playAI(unsigned int p);

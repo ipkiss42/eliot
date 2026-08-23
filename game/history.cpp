@@ -36,19 +36,11 @@ INIT_LOGGER(game, History);
 
 History::History()
 {
-    auto *t = new TurnData();
-    m_history.clear();
-    m_history.push_back(t);
+    m_history.push_back(std::make_unique<TurnData>());
 }
 
 
-History::~History()
-{
-    for (TurnData *turn : m_history)
-    {
-        delete turn;
-    }
-}
+History::~History() = default;
 
 
 unsigned int History::getSize() const
@@ -99,15 +91,15 @@ bool History::beforeFirstRound() const
 void History::playMove(const Move &iMove,
                        const PlayedRack &iNewRack)
 {
-    TurnData * current_turn = m_history.back();
+    TurnData * current_turn = m_history.back().get();
 
     // Set the number and the round
     current_turn->setMove(iMove);
 
     // Create a new turn
-    auto * next_turn = new TurnData();
+    auto next_turn = std::make_unique<TurnData>();
     next_turn->setPlayedRack(iNewRack);
-    m_history.push_back(next_turn);
+    m_history.push_back(std::move(next_turn));
 }
 
 
@@ -118,9 +110,7 @@ void History::removeLastTurn()
 
     if (idx > 1)
     {
-        TurnData *t = m_history.back();
         m_history.pop_back();
-        delete t;
     }
 
 #ifdef BACK_REMOVE_RACK_NEW_PART
@@ -173,7 +163,7 @@ wstring History::toString() const
 #ifdef DEBUG
     rs = std::format(L"history size = {}\n\n", m_history.size());
 #endif
-    for (const TurnData *turn : m_history)
+    for (const auto & turn : m_history)
     {
         rs += turn->toString() + L"\n";
     }

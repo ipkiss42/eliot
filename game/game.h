@@ -22,8 +22,10 @@
 #ifndef GAME_H_
 #define GAME_H_
 
+#include <memory>
 #include <string>
 #include <vector>
+
 #include "game_params.h"
 #include "logging.h"
 #include "bag.h"
@@ -39,8 +41,8 @@ class Round;
 class Rack;
 class TurnData;
 
-using namespace std;
-
+using std::vector;
+using std::wstring;
 
 /**
  * Parent class of all the Game types.
@@ -111,7 +113,7 @@ public:
      * Add a player to the game.
      * The Game object takes ownership of the given player
      */
-    virtual void addPlayer(Player *iPlayer);
+    virtual void addPlayer(std::unique_ptr<Player> iPlayer);
 
     /***************
      * Game handling
@@ -205,8 +207,8 @@ private:
     /// Game characteristics
     GameParams m_params;
 
-    /// Master game (can be NULL)
-    const Game *m_masterGame;
+    /// Master game (can be nullptr)
+    std::unique_ptr<const Game> m_masterGame;
 
     /**
      * History of the game.
@@ -243,7 +245,7 @@ private:
 // TODO: check what should be private and what should be protected
 protected:
     /// All the players, indexed by their ID
-    vector<Player*> m_players;
+    vector<std::unique_ptr<Player>> m_players;
     /// ID of the "current" player
     unsigned int m_currPlayer;
 
@@ -258,7 +260,7 @@ protected:
      * The iMasterGame parameter is optional (i.e. it can be NULL).
      * This game takes ownership of the master game, if one is provided.
      */
-    Game(const GameParams &iParams, const Game *iMasterGame);
+    Game(const GameParams &iParams, std::unique_ptr<const Game> iMasterGame);
 
     /*********************************************************
      * Helper functions

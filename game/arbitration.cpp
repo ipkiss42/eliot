@@ -36,8 +36,8 @@
 INIT_LOGGER(game, Arbitration);
 
 
-Arbitration::Arbitration(const GameParams &iParams, const Game *iMasterGame)
-    : Duplicate(iParams, iMasterGame)
+Arbitration::Arbitration(const GameParams &iParams, std::unique_ptr<const Game> iMasterGame)
+    : Duplicate(iParams, std::move(iMasterGame))
 {
 }
 

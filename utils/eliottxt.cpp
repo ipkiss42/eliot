@@ -28,6 +28,7 @@
 #include <cstring>
 #include <clocale>
 #include <cwctype>
+#include <memory>
 #include <print>
 #include <ranges>
 #ifdef HAVE_READLINE
@@ -913,7 +914,7 @@ void mainLoop(const Dictionary &iDic)
                     {
                         // New training game
                         PublicGame *game = readGame(iDic, GameParams::kTRAINING, tokens[0]);
-                        game->addPlayer(new HumanPlayer);
+                        game->addPlayer(make_unique<HumanPlayer>());
                         game->start();
                         loopTraining(*game);
                         delete game;
@@ -926,9 +927,9 @@ void mainLoop(const Dictionary &iDic)
                         // New duplicate game
                         PublicGame *game = readGame(iDic, GameParams::kDUPLICATE, tokens[0]);
                         for (int i = 0; i < nbHuman; i++)
-                            game->addPlayer(new HumanPlayer);
+                            game->addPlayer(make_unique<HumanPlayer>());
                         for (int i = 0; i < nbAI; i++)
-                            game->addPlayer(new AIPercent(1));
+                            game->addPlayer(make_unique<AIPercent>(1));
                         game->start();
                         loopDuplicate(*game);
                         delete game;
@@ -941,9 +942,9 @@ void mainLoop(const Dictionary &iDic)
                         // New free game
                         PublicGame *game = readGame(iDic, GameParams::kFREEGAME, tokens[0]);
                         for (int i = 0; i < nbHuman; i++)
-                            game->addPlayer(new HumanPlayer);
+                            game->addPlayer(make_unique<HumanPlayer>());
                         for (int i = 0; i < nbAI; i++)
-                            game->addPlayer(new AIPercent(1));
+                            game->addPlayer(make_unique<AIPercent>(1));
                         game->start();
                         loopFreegame(*game);
                         delete game;
@@ -956,9 +957,9 @@ void mainLoop(const Dictionary &iDic)
                         // New free game
                         PublicGame *game = readGame(iDic, GameParams::kARBITRATION, tokens[0]);
                         for (int i = 0; i < nbHuman; i++)
-                            game->addPlayer(new HumanPlayer);
+                            game->addPlayer(make_unique<HumanPlayer>());
                         for (int i = 0; i < nbAI; i++)
-                            game->addPlayer(new AIPercent(1));
+                            game->addPlayer(make_unique<AIPercent>(1));
                         game->start();
                         loopArbitration(*game);
                         delete game;
@@ -968,7 +969,7 @@ void mainLoop(const Dictionary &iDic)
                     {
                         // New topping game
                         PublicGame *game = readGame(iDic, GameParams::kTOPPING, tokens[0]);
-                        game->addPlayer(new HumanPlayer);
+                        game->addPlayer(make_unique<HumanPlayer>());
                         game->start();
                         loopTopping(*game);
                         delete game;

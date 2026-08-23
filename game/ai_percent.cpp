@@ -24,6 +24,7 @@
 #include "move.h"
 #include "results.h"
 #include "board.h"
+#include <memory>
 #include "ai_percent.h"
 
 
@@ -41,16 +42,13 @@ AIPercent::AIPercent(float iPercent)
 
     // Use BestResults to be slightly faster when the percentage is 100%
     if (iPercent == 1)
-        m_results = new BestResults;
+        m_results = std::make_unique<BestResults>();
     else
-        m_results = new PercentResults(iPercent);
+        m_results = std::make_unique<PercentResults>(iPercent);
 }
 
 
-AIPercent::~AIPercent()
-{
-    delete m_results;
-}
+AIPercent::~AIPercent() = default;
 
 
 void AIPercent::compute(const Dictionary &iDic, const Board &iBoard, bool iFirstWord)

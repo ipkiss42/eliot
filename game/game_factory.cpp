@@ -50,10 +50,7 @@ GameFactory *GameFactory::m_factory = nullptr;
 GameFactory::GameFactory() = default;
 
 
-GameFactory::~GameFactory()
-{
-    delete m_dic;
-}
+GameFactory::~GameFactory() = default;
 
 
 GameFactory *GameFactory::Instance()
@@ -71,36 +68,42 @@ void GameFactory::Destroy()
 }
 
 
-Game *GameFactory::createGame(const GameParams &iParams, const Game *iMasterGame)
+Game* GameFactory::createGame(const GameParams &iParams) {
+    // Forward to the overload
+    return createGame(iParams, nullptr);
+}
+
+
+Game *GameFactory::createGame(const GameParams &iParams, std::unique_ptr<const Game> iMasterGame)
 {
     if (iParams.getMode() == GameParams::kTRAINING)
     {
         LOG_INFO("Creating a training game");
-        auto *game = new Training(iParams, iMasterGame);
+        auto *game = new Training(iParams, std::move(iMasterGame));
         return game;
     }
     if (iParams.getMode() == GameParams::kFREEGAME)
     {
         LOG_INFO("Creating a free game");
-        auto *game = new FreeGame(iParams, iMasterGame);
+        auto *game = new FreeGame(iParams, std::move(iMasterGame));
         return game;
     }
     if (iParams.getMode() == GameParams::kDUPLICATE)
     {
         LOG_INFO("Creating a duplicate game");
-        auto *game = new Duplicate(iParams, iMasterGame);
+        auto *game = new Duplicate(iParams, std::move(iMasterGame));
         return game;
     }
     if (iParams.getMode() == GameParams::kARBITRATION)
     {
         LOG_INFO("Creating an arbitration game");
-        auto *game = new Arbitration(iParams, iMasterGame);
+        auto *game = new Arbitration(iParams, std::move(iMasterGame));
         return game;
     }
     if (iParams.getMode() == GameParams::kTOPPING)
     {
         LOG_INFO("Creating a topping game");
-        auto *game = new Topping(iParams, iMasterGame);
+        auto *game = new Topping(iParams, std::move(iMasterGame));
         return game;
     }
     throw GameException("Unknown game type");
@@ -186,7 +189,8 @@ Game *GameFactory::createFromCmdLine(int argc, char **argv)
     // 3) Try to load the dictionary
     try
     {
-        m_dic = new Dictionary(m_dicStr);
+        auto new_dic = std::make_unique<Dictionary>(m_dicStr);
+        m_dic = std::move(new_dic);
     }
     catch (std::exception &e)
     {
@@ -218,13 +222,13 @@ Game *GameFactory::createFromCmdLine(int argc, char **argv)
     for (auto & player_and_name : m_players)
     {
         // Human?
-        Player *new_player;
+        std::unique_ptr<Player> new_player;
         if (player_and_name.first)
-            new_player = new HumanPlayer;
+            new_player = make_unique<HumanPlayer>();
         else
-            new_player = new AIPercent(1);
+            new_player = make_unique<AIPercent>(1);
         new_player->setName(player_and_name.second);
-        game->addPlayer(new_player);
+        game->addPlayer(std::move(new_player));
     }
 
     return game;

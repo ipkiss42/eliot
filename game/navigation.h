@@ -21,7 +21,9 @@
 #ifndef NAVIGATION_H_
 #define NAVIGATION_H_
 
+#include <memory>
 #include <vector>
+
 #include "logging.h"
 
 class Turn;
@@ -92,7 +94,7 @@ class Navigation
         void replaceCommand(const Command &iOldCmd,
                             Command *iNewCmd);
 
-        const vector<Turn *> & getTurns() const;
+        const vector<std::unique_ptr<Turn>> & getTurns() const;
         const Turn & getCurrentTurn() const;
 
         /**
@@ -101,7 +103,7 @@ class Navigation
         void print() const;
 
     private:
-        vector<Turn *> m_allTurns;
+        vector<std::unique_ptr<Turn>> m_allTurns;
         unsigned int m_currTurn{0};
 };
 

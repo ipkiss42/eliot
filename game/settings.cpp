@@ -18,8 +18,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <algorithm>
 #include <cstdlib>
 #include <filesystem>
+#include <memory>
 #include <system_error>
 
 #include "config.h"
@@ -34,6 +36,7 @@
 #endif
 
 #include "settings.h"
+#include "debug.h"
 #include "game_exception.h"
 
 using namespace libconfig;
@@ -129,7 +132,7 @@ Settings::Settings()
 {
 #ifdef HAVE_LIBCONFIG
     m_fileName = GetConfigFileDir() / "eliot.cfg";
-    m_conf = new Config;
+    m_conf = std::make_unique<Config>();
 
     // ============== General options ==============
 
@@ -224,18 +227,13 @@ Settings::Settings()
     catch (const std::exception &e)
     {
         // Only log the exception
-        LOG_ERROR("Error reading config file: {}", e.what());
+        LOG_ERROR("Error reading config file: {}\n{}", e.what(), StackTrace::GetStack());
     }
 #endif
 }
 
 
-Settings::~Settings()
-{
-#ifdef HAVE_LIBCONFIG
-    delete m_conf;
-#endif
-}
+Settings::~Settings() = default;
 
 
 void Settings::save() const

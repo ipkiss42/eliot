@@ -21,6 +21,7 @@
 #ifndef TOPPING_H_
 #define TOPPING_H_
 
+#include <memory>
 #include <string>
 
 #include "game.h"
@@ -59,7 +60,7 @@ public:
      * Override the default behaviour of addPlayer(), because in topping
      * mode we only want a human player
      */
-    void addPlayer(Player *iPlayer) override;
+    void addPlayer(std::unique_ptr<Player> iPlayer) override;
 
     /**
      * Word played by the player, with the corresponding elapsed time, in seconds
@@ -92,7 +93,7 @@ public:
 
 private:
     /// Private constructor and destructor to force using the GameFactory class
-    Topping(const GameParams &iParams, const Game *iMasterGame);
+    Topping(const GameParams &iParams, std::unique_ptr<const Game> iMasterGame);
 
     /// Record a player move
     void recordPlayerMove(const Move &iMove, Player &ioPlayer, int iElapsed);

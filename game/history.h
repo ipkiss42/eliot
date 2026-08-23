@@ -22,6 +22,7 @@
 #ifndef HISTORY_H_
 #define HISTORY_H_
 
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -101,7 +102,7 @@ public:
     wstring toString() const;
 
  private:
-    vector<TurnData*> m_history;
+    vector<std::unique_ptr<TurnData>> m_history;
 };
 
 #endif

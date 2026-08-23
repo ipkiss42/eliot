@@ -102,9 +102,9 @@ const History& PublicGame::getHistory() const
 }
 
 
-void PublicGame::addPlayer(Player *iPlayer)
+void PublicGame::addPlayer(std::unique_ptr<Player> iPlayer)
 {
-    m_game.addPlayer(iPlayer);
+    m_game.addPlayer(std::move(iPlayer));
 }
 
 

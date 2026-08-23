@@ -18,6 +18,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <memory>
+
 #include "topping.h"
 #include "settings.h"
 #include "rack.h"
@@ -38,8 +40,8 @@
 INIT_LOGGER(game, Topping);
 
 
-Topping::Topping(const GameParams &iParams, const Game *iMasterGame)
-    : Game(iParams, iMasterGame)
+Topping::Topping(const GameParams &iParams, std::unique_ptr<const Game> iMasterGame)
+    : Game(iParams, std::move(iMasterGame))
 {
 }
 
@@ -207,13 +209,13 @@ void Topping::endGame()
 }
 
 
-void Topping::addPlayer(Player *iPlayer)
+void Topping::addPlayer(std::unique_ptr<Player> iPlayer)
 {
     ASSERT(getNPlayers() == 0,
            "Only one player can be added in Topping mode");
     // Force the name of the player
     iPlayer->setName(wfl(_("Topping")));
-    Game::addPlayer(iPlayer);
+    Game::addPlayer(std::move(iPlayer));
 }
 
 

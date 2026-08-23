@@ -23,7 +23,7 @@
 #include "command.h"
 #include "game_exception.h"
 #include "debug.h"
-#include "encoding.h"
+#include <memory>
 
 
 INIT_LOGGER(game, Navigation);
@@ -33,24 +33,18 @@ Navigation::Navigation()
 
 {
     // Start with an empty turn
-    m_allTurns.push_back(new Turn);
+    m_allTurns.push_back(std::make_unique<Turn>());
 }
 
 
-Navigation::~Navigation()
-{
-    for (Turn *c : m_allTurns)
-    {
-        delete c;
-    }
-}
+Navigation::~Navigation() = default;
 
 
 void Navigation::newTurn()
 {
     LOG_INFO("New turn");
     lastTurn();
-    m_allTurns.push_back(new Turn);
+    m_allTurns.push_back(std::make_unique<Turn>());
     ++m_currTurn;
 }
 
@@ -97,7 +91,7 @@ void Navigation::prevTurn()
         return;
 
     LOG_DEBUG("Navigating to the previous turn");
-    Turn *turn = m_allTurns[m_currTurn];
+    Turn *turn = m_allTurns[m_currTurn].get();
     if (turn->isFullyExecuted() && turn->hasNonAutoExecCmd())
     {
         ASSERT(isLastTurn(), "Unexpected turn state");
@@ -120,7 +114,7 @@ void Navigation::nextTurn()
         return;
 
     LOG_DEBUG("Navigating to the next turn");
-    Turn *turn = m_allTurns[m_currTurn];
+    Turn *turn = m_allTurns[m_currTurn].get();
     ASSERT(turn->isPartiallyExecuted(), "Unexpected turn state");
 
     if (m_currTurn + 1 < m_allTurns.size())
@@ -178,11 +172,10 @@ void Navigation::clearFuture()
     // Destroy future turns
     while (m_allTurns.size() > m_currTurn + 1)
     {
-        delete m_allTurns.back();
         m_allTurns.pop_back();
     }
 
-    Turn *turn = m_allTurns[m_currTurn];
+    Turn *turn = m_allTurns[m_currTurn].get();
 
     // Destroy non executed commands for the current turn
     ASSERT(turn->isPartiallyExecuted(), "Invalid state");
@@ -221,7 +214,7 @@ void Navigation::replaceCommand(const Command &iOldCmd,
 }
 
 
-const vector<Turn *> & Navigation::getTurns() const
+const vector<std::unique_ptr<Turn>> & Navigation::getTurns() const
 {
     return m_allTurns;
 }

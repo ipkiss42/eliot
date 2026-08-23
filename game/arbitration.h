@@ -21,6 +21,8 @@
 #ifndef ARBITRATION_H_
 #define ARBITRATION_H_
 
+#include <memory>
+
 #include "duplicate.h"
 #include "logging.h"
 
@@ -72,7 +74,7 @@ public:
 
 private:
     // Private constructor to force using the GameFactory class
-    Arbitration(const GameParams &iParams, const Game *iMasterGame);
+    Arbitration(const GameParams &iParams, std::unique_ptr<const Game> iMasterGame);
 
     /// Undo the current rack, and subsequent commands
     void undoCurrentRack();

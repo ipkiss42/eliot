@@ -32,13 +32,15 @@
 #include "encoding.h"
 
 #include "debug.h"
+#include <memory>
+#include <utility>
 
 
 INIT_LOGGER(game, Training);
 
 
-Training::Training(const GameParams &iParams, const Game *iMasterGame)
-    : Game(iParams, iMasterGame), m_results(1000)
+Training::Training(const GameParams &iParams, std::unique_ptr<const Game> iMasterGame)
+    : Game(iParams, std::move(iMasterGame)), m_results(1000)
 {
 }
 
@@ -166,12 +168,12 @@ int Training::playResult(unsigned int n)
 }
 
 
-void Training::addPlayer(Player *iPlayer)
+void Training::addPlayer(std::unique_ptr<Player> iPlayer)
 {
     ASSERT(getNPlayers() == 0,
            "Only one player can be added in Training mode");
     // Force the name of the player
     iPlayer->setName(wfl(_("Training")));
-    Game::addPlayer(iPlayer);
+    Game::addPlayer(std::move(iPlayer));
 }
 

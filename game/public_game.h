@@ -22,6 +22,7 @@
 #define PUBLIC_GAME_H_
 
 #include <filesystem>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -112,7 +113,7 @@ public:
      * Add a player to the game.
      * The Game object takes ownership of the given player
      */
-    void addPlayer(Player *iPlayer);
+    void addPlayer(std::unique_ptr<Player> iPlayer);
 
     const Player& getPlayer(unsigned int iNum) const;
     const Player& getCurrentPlayer() const;

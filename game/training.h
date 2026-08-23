@@ -22,6 +22,7 @@
 #ifndef TRAINING_H_
 #define TRAINING_H_
 
+#include <memory>
 #include <string>
 
 #include "game.h"
@@ -80,11 +81,11 @@ public:
      * Override the default behaviour of addPlayer(), because in training
      * mode we only want a human player
      */
-    void addPlayer(Player *iPlayer) override;
+    void addPlayer(std::unique_ptr<Player> iPlayer) override;
 
 private:
     /// Private constructor and destructor to force using the GameFactory class
-    Training(const GameParams &iParams, const Game *iMasterGame);
+    Training(const GameParams &iParams, std::unique_ptr<const Game> iMasterGame);
 
     /// Record a player move
     void recordPlayerMove(const Move &iMove, Player &ioPlayer);

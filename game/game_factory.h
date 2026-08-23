@@ -22,6 +22,7 @@
 #define GAME_FACTORY_H_
 
 #include <filesystem>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -51,7 +52,8 @@ public:
     static void Destroy();
 
     /// Create a game
-    Game *createGame(const GameParams &iParams, const Game *iMasterGame = nullptr);
+    Game *createGame(const GameParams &iParams);
+    Game *createGame(const GameParams &iParams, std::unique_ptr<const Game> iMasterGame);
 
     /// Return the loaded game, or NULL if there was a problem
     Game *load(const std::filesystem::path &iFileName, const Dictionary &iDic);
@@ -67,7 +69,7 @@ private:
     static GameFactory *m_factory;
 
     /// Initial dictionary (it could be changed later)
-    Dictionary *m_dic{nullptr};
+    std::unique_ptr<Dictionary> m_dic;
 
     /** Parameters specified on the command-line */
     //@{

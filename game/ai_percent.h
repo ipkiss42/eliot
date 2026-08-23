@@ -21,6 +21,8 @@
 #ifndef AI_PERCENT_H_
 #define AI_PERCENT_H_
 
+#include <memory>
+
 #include "ai_player.h"
 #include "results.h"
 #include "logging.h"
@@ -58,7 +60,7 @@ public:
 private:
     float m_percent;
     /// Container for all the found solutions
-    Results *m_results;
+    std::unique_ptr<Results> m_results;
 };
 
 #endif

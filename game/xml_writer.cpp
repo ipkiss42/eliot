@@ -19,6 +19,7 @@
  *****************************************************************************/
 
 #include <cmath>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -186,8 +187,8 @@ void XmlWriter::write(const Game& iGame, const std::filesystem::path& iFileName)
 #if 0
     iGame.getNavigation().print();
 #endif
-    const vector<Turn *> &turnVect = iGame.getNavigation().getTurns();
-    for (const Turn *turn : turnVect)
+    const vector<std::unique_ptr<Turn>> &turnVect = iGame.getNavigation().getTurns();
+    for (const auto &turn : turnVect)
     {
         if (turn->getCommands().empty() && turn == turnVect.back())
             continue;

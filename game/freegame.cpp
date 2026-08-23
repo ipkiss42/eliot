@@ -19,15 +19,11 @@
  *****************************************************************************/
 
 
-#include <iomanip>
-#include <cwctype>
-
 #include "freegame.h"
 #include "game_exception.h"
 #include "dic.h"
 #include "tile.h"
 #include "rack.h"
-#include "round.h"
 #include "move.h"
 #include "pldrack.h"
 #include "results.h"
@@ -47,8 +43,8 @@
 INIT_LOGGER(game, FreeGame);
 
 
-FreeGame::FreeGame(const GameParams &iParams, const Game *iMasterGame)
-    : Game(iParams, iMasterGame)
+FreeGame::FreeGame(const GameParams &iParams, std::unique_ptr<const Game> iMasterGame)
+    : Game(iParams, std::move(iMasterGame))
 {
 }
 
@@ -79,7 +75,7 @@ void FreeGame::playAI(unsigned int p)
     ASSERT(p < getNPlayers(), "Wrong player number");
     ASSERT(!m_players[p]->isHuman(), "AI requested for a human player");
 
-    auto *player = static_cast<AIPlayer*>(m_players[p]);
+    auto *player = static_cast<AIPlayer*>(m_players[p].get());
 
     player->compute(getDic(), getBoard(), getHistory().beforeFirstRound());
     const Move &move = player->getMove();
@@ -109,7 +105,7 @@ void FreeGame::start()
     ASSERT(getNPlayers(), "Cannot start a game without any player");
 
     // Set the initial racks of the players
-    for (Player *player : m_players)
+    for (auto &player : m_players)
     {
         const PlayedRack &newRack =
             helperSetRackRandom(player->getCurrentRack(), false, RACK_NEW);
@@ -326,7 +322,7 @@ bool FreeGame::allPlayersPassedThreeTimesInARow() const
     const unsigned NB_TURNS_TO_CHECK = NB_OF_PASSES * getNPlayers();
 
     bool result = true;
-    for (const Player *player : m_players)
+    for (const auto &player : m_players)
     {
         const History &history = player->getHistory();
         result = result && (history.getSize() >= NB_TURNS_TO_CHECK);

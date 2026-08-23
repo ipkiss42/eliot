@@ -23,6 +23,7 @@
 
 #include <filesystem>
 #include <map>
+#include <memory>
 #include <string>
 
 #include "logging.h"
@@ -77,7 +78,7 @@ private:
     /// Name of the file used to store the settings
     std::filesystem::path m_fileName;
 
-    libconfig::Config *m_conf;
+    std::unique_ptr<libconfig::Config> m_conf;
 
     template<class T>
     void setValue(const string &iName, T iValue);

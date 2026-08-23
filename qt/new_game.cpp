@@ -18,6 +18,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <memory>
+
 #include <QAction>
 #include <QCompleter>
 #include <QFileSystemModel>
@@ -192,13 +194,13 @@ PublicGame * NewGame::createGame()
         params.addVariant(GameParams::k7AMONG8);
 
     // Load the master game if needed
-    Game *masterGame = nullptr;
+    std::unique_ptr<const Game> masterGame;
     if (checkBoxUseMaster->isChecked())
     {
         const QString &path = lineEditMaster->text();
         try
         {
-            masterGame = GameFactory::Instance()->load(lfq(path), m_dic);
+            masterGame = std::unique_ptr<const Game>(GameFactory::Instance()->load(lfq(path), m_dic));
         }
         catch (const GameException &e)
         {
@@ -211,7 +213,7 @@ PublicGame * NewGame::createGame()
     }
 
     // Create the game
-    Game *tmpGame = GameFactory::Instance()->createGame(params, masterGame);
+    Game *tmpGame = GameFactory::Instance()->createGame(params, std::move(masterGame));
     auto *game = new PublicGame(*tmpGame);
 
     // Add the players
@@ -238,21 +240,21 @@ PublicGame * NewGame::createGame()
             allNames.insert(name);
 
             QString type = players.at(num).type;
-            Player *player;
+            std::unique_ptr<Player> player;
             if (type == _q(kHUMAN))
-                player = new HumanPlayer;
+                player = make_unique<HumanPlayer>();
             else
             {
                 double level = players.at(num).level.toInt();
-                player = new AIPercent(level / 100.);
+                player = make_unique<AIPercent>(level / 100.);
             }
             player->setName(wfq(name));
-            game->addPlayer(player);
+            game->addPlayer(std::move(player));
         }
     }
     else
     {
-        game->addPlayer(new HumanPlayer);
+        game->addPlayer(make_unique<HumanPlayer>());
     }
 
     return game;

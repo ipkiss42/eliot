@@ -18,6 +18,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <memory>
 #include <pugixml.hpp>
 
 #include "xml_reader.h"
@@ -124,18 +125,18 @@ static Game* createGame(const pugi::xml_node& gameNode, const Dictionary& iDic)
 }
 
 
-static Player* createPlayer(const pugi::xml_node& playerNode)
+static std::unique_ptr<Player> createPlayer(const pugi::xml_node& playerNode)
 {
     string playerId = playerNode.attribute("id").value();
 
-    Player *p;
+    std::unique_ptr<Player> p;
     string playerType = playerNode.child_value("Type");
     if (playerType == "human")
-        p = new HumanPlayer();
+        p = make_unique<HumanPlayer>();
     else if (playerType == "computer")
     {
         int level = toInt(playerNode.child_value("Level"));
-        p = new AIPercent(0.01 * level);
+        p = make_unique<AIPercent>(0.01 * level);
     }
     else
         throw LoadGameException(_fmt(_("Invalid player type: {0}"), playerType));
@@ -242,11 +243,11 @@ Game * XmlReader::read(const std::filesystem::path &iFileName, const Dictionary 
 
     map<unsigned int, Player*> all_players;
     for (pugi::xml_node playerNode : gameNode.children("Player")) {
-        Player *player = createPlayer(playerNode);
+        std::unique_ptr<Player> player = createPlayer(playerNode);
         if (all_players.find(player->getId()) != all_players.end())
             throw LoadGameException(_fmt(_("A player ID must be unique: {0}"), player->getId()));
-        all_players[player->getId()] = player;
-        game->addPlayer(player);
+        all_players[player->getId()] = player.get();
+        game->addPlayer(std::move(player));
     }
 
     bool firstTurn = true;

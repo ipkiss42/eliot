@@ -21,6 +21,8 @@
 #ifndef DUPLICATE_H_
 #define DUPLICATE_H_
 
+#include <memory>
+
 #include "game.h"
 #include "move.h"
 #include "logging.h"
@@ -107,7 +109,7 @@ public:
 
 protected:
     // Protected constructor to force using the GameFactory class
-    Duplicate(const GameParams &iParams, const Game *iMasterGame);
+    Duplicate(const GameParams &iParams, std::unique_ptr<const Game> iMasterGame);
 
     /// Record a player move
     void recordPlayerMove(Player &ioPlayer, const Move &iMove);
