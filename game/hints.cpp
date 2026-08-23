@@ -20,15 +20,6 @@
 
 #include <algorithm>
 
-#include "config.h"
-#if ENABLE_NLS
-#   include <libintl.h>
-#   define _(String) gettext(String)
-#else
-#   define _(String) String
-#endif
-
-
 #include "hints.h"
 #include "move.h"
 #include "encoding.h"

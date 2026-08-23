@@ -19,18 +19,13 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <clocale>
+#include <exception>
+#include <filesystem>
+#include <iostream>
+
 #include "config.h"
 
-#include <exception>
-#include <iostream>
-#include <clocale>
-
-#if ENABLE_NLS
-#   include <libintl.h>
-#   define _(String) gettext(String)
-#else
-#   define _(String) String
-#endif
 #ifdef WIN32
 #   include <windows.h>
 #endif
@@ -55,17 +50,12 @@ int main(int argc, char* argv[])
 #if ENABLE_NLS
     // Set the message domain
 #ifdef WIN32
-    // Get the absolute path, as returned by GetFullPathName()
-    char baseDir[MAX_PATH];
-    GetFullPathName(argv[0], MAX_PATH, baseDir, NULL);
-    char *pos = strrchr(baseDir, L'\\');
-    if (pos)
-        *pos = '\0';
-    const string localeDir = baseDir + string("\\locale");
+    const std::filesystem::path localeDir =
+        std::filesystem::absolute(argv[0]).parent_path() / "locale";
 #else
-    static const string localeDir = LOCALEDIR;
+    static const std::filesystem::path localeDir = LOCALEDIR;
 #endif
-    bindtextdomain(PACKAGE, localeDir.c_str());
+    bindtextdomain(PACKAGE, localeDir.string().c_str());
     textdomain(PACKAGE);
 #endif
 

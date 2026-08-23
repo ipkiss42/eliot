@@ -21,9 +21,11 @@
 #ifndef QT_COMMON_H_
 #define QT_COMMON_H_
 
-#include "config.h"
 #include <string>
 #include <QString>
+
+#include "config.h"
+
 #include "encoding.h"
 
 #if ENABLE_NLS

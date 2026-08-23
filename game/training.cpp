@@ -19,20 +19,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include "config.h"
-#if ENABLE_NLS
-#   include <libintl.h>
-#   define _(String) gettext(String)
-#else
-#   define _(String) String
-#endif
-
 #include "training.h"
-#include "dic.h"
-#include "tile.h"
 #include "settings.h"
 #include "rack.h"
-#include "round.h"
 #include "move.h"
 #include "pldrack.h"
 #include "player.h"

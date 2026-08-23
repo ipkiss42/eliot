@@ -19,20 +19,13 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include "config.h"
-
 #include <exception>
 #include <iostream>
 #include <string>
 
 #include <getopt.h>
 
-#if ENABLE_NLS
-#   include <libintl.h>
-#   define _(String) gettext(String)
-#else
-#   define _(String) String
-#endif
+#include "config.h"
 
 #include "game_factory.h"
 #include "game_params.h"

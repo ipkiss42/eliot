@@ -18,23 +18,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <iostream>
-
 #include "csv_helper.h"
 #include "encoding.h"
 
-#include "debug.h"
-
-#if ENABLE_NLS
-#   include <libintl.h>
-#   define _(String) gettext(String)
-#else
-#   define _(String) String
-#endif
-
 using namespace std;
 
-INIT_LOGGER(qt, CsvHelper);
+INIT_LOGGER(dic, CsvHelper);
 
 
 vector<CsvHelper::DataRow> CsvHelper::readStream(istream &input)

@@ -25,6 +25,15 @@
 #include <string>
 #include <string_view>
 
+#include "config.h"
+
+#if ENABLE_NLS
+#   include <libintl.h>
+#   define _(String) gettext(String)
+#else
+#   define _(String) String
+#endif
+
 using std::string;
 using std::wstring;
 

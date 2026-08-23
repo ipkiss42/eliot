@@ -31,15 +31,6 @@
 #include <map>
 #include <sys/types.h>
 
-#include "config.h"
-
-#if ENABLE_NLS
-#   include <libintl.h>
-#   define _(String) gettext(String)
-#else
-#   define _(String) String
-#endif
-
 #include "compdic.h"
 #include "encoding.h"
 #include "dic_exception.h"
