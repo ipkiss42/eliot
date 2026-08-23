@@ -19,20 +19,19 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include "config.h"
-
 #include <algorithm>
+#include <bit>
+#include <cstdint>
+#include <ctime>
+#include <cwctype>
+#include <fcntl.h>
 #include <filesystem>
 #include <fstream>
+#include <functional>
 #include <map>
-#include <boost/functional/hash.hpp>
-#include <ctime>
 #include <sys/types.h>
-#include <fcntl.h>
-#include <cwctype>
-#include <cstdlib>
-#include <cstdio>
-#include <cstring>
+
+#include "config.h"
 
 #if ENABLE_NLS
 #   include <libintl.h>
@@ -48,6 +47,19 @@
 #define MAX_STRING_LENGTH 200
 
 INIT_LOGGER(dic, CompDic);
+
+
+std::size_t DicEdgeVectorHash::operator()(const vector<DicEdge>& edges) const {
+    std::size_t seed = edges.size();
+    for (const auto& edge : edges) {
+        auto rawBits = std::bit_cast<uint32_t>(edge);
+        std::size_t edgeHash = std::hash<uint32_t>()(rawBits);
+
+        // Magic hashing constants
+        seed ^= edgeHash + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+    }
+    return seed;
+}
 
 
 CompDic::CompDic()
@@ -192,15 +204,6 @@ void CompDic::writeNode(DicEdge *ioEdges, unsigned int num, ostream &outFile)
 /* ods3: ??   */
 /* ods4: 1746 */
 
-// Hashing function for a vector of DicEdge, based on the hashing function
-// of the HashTable
-size_t hash_value(const DicEdge &iEdge)
-{
-    const auto *num = reinterpret_cast<const uint32_t*>(&iEdge);
-    size_t seed = 0;
-    boost::hash_combine(seed, *num);
-    return seed;
-}
 
 #ifdef CHECK_RECURSION
 class IncDec
@@ -298,7 +301,7 @@ unsigned int CompDic::makeNode(ostream &outFile, const Header &iHeader,
     // Mark the last edge
     edges.back().last = 1;
 
-    HashMap::const_iterator itMap = m_hashMap.find(edges);
+    auto itMap = m_hashMap.find(edges);
     if (itMap != m_hashMap.end())
     {
         m_headerInfo.edgessaved += numedges;

@@ -25,9 +25,8 @@
 #include <filesystem>
 #include <iosfwd>
 #include <string>
+#include <unordered_map>
 #include <vector>
-
-#include <boost/unordered_map.hpp>
 
 #include "header.h"
 #include "dic_internals.h"
@@ -44,10 +43,15 @@ using std::wstring;
 #define CHECK_RECURSION
 
 
+struct DicEdgeVectorHash {
+    std::size_t operator()(const vector<DicEdge>& edges) const;
+};
+
+
 class CompDic
 {
     DEFINE_LOGGER();
-    using HashMap = boost::unordered_map<vector<DicEdge>, unsigned int>;
+    using HashMap = std::unordered_map<vector<DicEdge>, unsigned int, DicEdgeVectorHash>;
 
 public:
     CompDic();
