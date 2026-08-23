@@ -24,7 +24,6 @@
 #include <exception>
 #include <iostream>
 #include <clocale>
-#include <cstring> // For memset
 
 #if ENABLE_NLS
 #   include <libintl.h>

@@ -24,6 +24,7 @@
 #include <iostream>
 #include <ranges>
 #include <string>
+#include <string_view>
 #include <vector>
 
 #include <getopt.h>
@@ -56,19 +57,21 @@ void readLetters(const string &iFileName, CompDic &ioBuilder)
 
     int lineNb = 1;
     string line;
-    while (getline(in, line))
+    while (std::getline(in, line))
     {
+        string_view lineView(line);
+        while (!lineView.empty() && (lineView.back() == '\r' || lineView.back() == '\n' || lineView.back() == ' ')) {
+            lineView.remove_suffix(1);
+        }
         // Ignore empty lines
-        if (line == "" || line == "\r" || line == "\n")
+        if (lineView.empty()) {
             continue;
+        }
 
-        // If there is a BOM in the file, remove it from the first line
-        if (ioBuilder.getLettersCount() == 0 && line.size() >= 3 &&
-            (uint8_t)line[0] == 0xEF &&
-            (uint8_t)line[1] == 0xBB &&
-            (uint8_t)line[2] == 0xBF)
+        // If there is a UTF-8 BOM on the very first line, erase it in place
+        if (ioBuilder.getLettersCount() == 0 && lineView.starts_with("\xEF\xBB\xBF"))
         {
-            line = line.substr(3);
+            line.erase(0, 3);
         }
 
         // Convert the line to a wstring
@@ -88,8 +91,8 @@ void readLetters(const string &iFileName, CompDic &ioBuilder)
         }
 
         // The first field is a single character
-        wstring letter = tokens[0];
-        if (letter.size() != 1)
+        wstring_view letterView = tokens[0];
+        if (letterView.size() != 1)
         {
             throw DicException(_fmt(
                 _("readLetters: Invalid letter at line {0} (only one character allowed)"),
@@ -97,12 +100,11 @@ void readLetters(const string &iFileName, CompDic &ioBuilder)
             ));
         }
 
-        vector<wstring> inputs;
-        if (tokens.size() > 5)
-        {
-            inputs = vector<wstring>(tokens.begin() + 5, tokens.end());
-        }
-        ioBuilder.addLetter(letter[0], wtoi(tokens[1].c_str()),
+        auto inputs = tokens
+            | std::views::drop(5)
+            | std::ranges::to<vector<wstring>>();
+
+        ioBuilder.addLetter(letterView[0], wtoi(tokens[1].c_str()),
                             wtoi(tokens[2].c_str()), wtoi(tokens[3].c_str()),
                             wtoi(tokens[4].c_str()), inputs);
 

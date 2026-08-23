@@ -226,8 +226,9 @@ static unsigned int readFromUTF8(wchar_t *oString, unsigned int iWideSize,
                                  const string &iContext)
 {
     iconv_t handle = iconv_open("WCHAR_T", "UTF-8");
-    if (handle == (iconv_t)(-1))
+    if (handle == reinterpret_cast<iconv_t>(-1))
         throw DicException("readFromUTF8: iconv_open failed");
+
     size_t inChars = iBufSize;
     size_t outChars = iWideSize * sizeof(wchar_t);
     // Use the ICONV_CONST trick because the declaration of iconv()
@@ -237,7 +238,7 @@ static unsigned int readFromUTF8(wchar_t *oString, unsigned int iWideSize,
     size_t res = iconv(handle, &in, &inChars, &out, &outChars);
     iconv_close(handle);
     // Problem during encoding conversion?
-    if (res == (size_t)(-1))
+    if (res == static_cast<size_t>(-1))
     {
         throw DicException("readFromUTF8: iconv failed (" +
                            iContext + "): " + string(strerror(errno)));
@@ -248,24 +249,19 @@ static unsigned int readFromUTF8(wchar_t *oString, unsigned int iWideSize,
 
 wstring readFromUTF8(const string &iString, const string &iContext)
 {
-    const int size = iString.size();
+    const size_t size = iString.size();
+    if (size == 0)
+        return L"";
+
     // Temporary buffer for output
     // We will have at most as many characters as in the UTF-8 string
-    auto *wideBuf = new wchar_t[size];
-    unsigned int number;
-    try
-    {
-        number = readFromUTF8(wideBuf, size, iString.data(), size, iContext);
-    }
-    catch (...)
-    {
-        // Make sure not to leak
-        delete[] wideBuf;
-        throw;
-    }
-    // Copy the string
-    wstring res(wideBuf, number);
-    delete[] wideBuf;
+    std::wstring res(size, L'\0');
+
+    // Convert
+    unsigned int actualChars = readFromUTF8(res.data(), size, iString.data(), size, iContext);
+
+    // Shrink to the actual size
+    res.resize(actualChars);
     return res;
 }
 
@@ -300,24 +296,19 @@ unsigned int writeInUTF8(const wstring &iWString, char *oBuffer,
 
 string writeInUTF8(const wstring &iWString, const string &iContext)
 {
+    if (iWString.empty())
+        return "";
+
     // Temporary buffer for output
     // Each character will take at most 4 bytes in the UTF-8 string
-    unsigned int bufSize = iWString.size() * 4;
-    char *buf = new char[bufSize];
-    unsigned int number;
-    try
-    {
-        number = writeInUTF8(iWString, buf, bufSize, iContext);
-    }
-    catch (...)
-    {
-        // Make sure not to leak
-        delete[] buf;
-        throw;
-    }
-    // Copy the string
-    string res(buf, number);
-    delete[] buf;
+    const unsigned int bufSize = iWString.size() * 4;
+    std::string res(bufSize, '\0');
+
+    // Convert
+    unsigned int actualBytes = writeInUTF8(iWString, res.data(), bufSize, iContext);
+
+    // Shrink to the actual size
+    res.resize(actualBytes);
     return res;
 }
 
