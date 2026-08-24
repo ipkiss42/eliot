@@ -276,8 +276,9 @@ Game * XmlReader::read(const std::filesystem::path &iFileName, const Dictionary 
                 LOG_DEBUG("loaded rack: {}", lfw(pldrack.toString()));
 
                 Player &p = getPlayer(all_players, readPlayerIdAttribute(cmdNode), tagName);
-                auto *cmd = new PlayerRackCmd(p, pldrack);
-                game->accessNavigation().addAndExecute(cmd);
+                game->accessNavigation().addAndExecute(
+                    std::make_unique<PlayerRackCmd>(p, pldrack)
+                );
                 LOG_DEBUG("rack: {}", lfw(pldrack.toString()));
             }
             else if (tagName == "GameRack")
@@ -292,8 +293,9 @@ Game * XmlReader::read(const std::filesystem::path &iFileName, const Dictionary 
                 pldrack.setManual(rackStr);
                 LOG_DEBUG("loaded rack: {}", lfw(pldrack.toString()));
 
-                auto *cmd = new GameRackCmd(*game, pldrack);
-                game->accessNavigation().addAndExecute(cmd);
+                game->accessNavigation().addAndExecute(
+                    std::make_unique<GameRackCmd>(*game, pldrack)
+                );
                 LOG_DEBUG("rack: {}", lfw(pldrack.toString()));
             }
             else if (tagName == "MasterMove")
@@ -304,8 +306,9 @@ Game * XmlReader::read(const std::filesystem::path &iFileName, const Dictionary 
                 {
                     throw LoadGameException(_("The 'MasterMove' tag should only be present for duplicate games"));
                 }
-                auto *cmd = new MasterMoveCmd(*duplicateGame, move);
-                game->accessNavigation().addAndExecute(cmd);
+                game->accessNavigation().addAndExecute(
+                    std::make_unique<MasterMoveCmd>(*duplicateGame, move)
+                );
             }
             else if (tagName == "PlayerMove")
             {
@@ -314,41 +317,47 @@ Game * XmlReader::read(const std::filesystem::path &iFileName, const Dictionary 
 
                 const Move move = buildMove(*game, cmdNode, /*XXX:true*/false);
                 Player &p = getPlayer(all_players, readPlayerIdAttribute(cmdNode), tagName);
-                auto *cmd = new PlayerMoveCmd(p, move, isArbitrationGame);
-                game->accessNavigation().addAndExecute(cmd);
+                game->accessNavigation().addAndExecute(
+                    std::make_unique<PlayerMoveCmd>(p, move, isArbitrationGame)
+                );
             }
             else if (tagName == "GameMove")
             {
                 const Move move = buildMove(*game, cmdNode, false);
-                auto *cmd = new GameMoveCmd(*game, move);
-                game->accessNavigation().addAndExecute(cmd);
+                game->accessNavigation().addAndExecute(
+                    std::make_unique<GameMoveCmd>(*game, move)
+                );
             }
             else if (tagName == "Warning")
             {
                 Player &p = getPlayer(all_players, readPlayerIdAttribute(cmdNode), tagName);
-                auto *cmd = new PlayerEventCmd(p, PlayerEventCmd::WARNING);
-                game->accessNavigation().addAndExecute(cmd);
+                game->accessNavigation().addAndExecute(
+                    std::make_unique<PlayerEventCmd>(p, PlayerEventCmd::WARNING)
+                );
             }
             else if (tagName == "Penalty")
             {
                 Player &p = getPlayer(all_players, readPlayerIdAttribute(cmdNode), tagName);
                 int points = cmdNode.attribute("points").as_int();
-                auto *cmd = new PlayerEventCmd(p, PlayerEventCmd::PENALTY, points);
-                game->accessNavigation().addAndExecute(cmd);
+                game->accessNavigation().addAndExecute(
+                    std::make_unique<PlayerEventCmd>(p, PlayerEventCmd::PENALTY, points)
+                );
             }
             else if (tagName == "Solo")
             {
                 Player &p = getPlayer(all_players, readPlayerIdAttribute(cmdNode), tagName);
                 int points = cmdNode.attribute("points").as_int();
-                auto *cmd = new PlayerEventCmd(p, PlayerEventCmd::SOLO, points);
-                game->accessNavigation().addAndExecute(cmd);
+                game->accessNavigation().addAndExecute(
+                    std::make_unique<PlayerEventCmd>(p, PlayerEventCmd::SOLO, points)
+                );
             }
             else if (tagName == "EndGame")
             {
                 Player &p = getPlayer(all_players, readPlayerIdAttribute(cmdNode), tagName);
                 int points = cmdNode.attribute("points").as_int();
-                auto *cmd = new PlayerEventCmd(p, PlayerEventCmd::END_GAME, points);
-                game->accessNavigation().addAndExecute(cmd);
+                game->accessNavigation().addAndExecute(
+                    std::make_unique<PlayerEventCmd>(p, PlayerEventCmd::END_GAME, points)
+                );
             }
             else
             {

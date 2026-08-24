@@ -21,6 +21,8 @@
 #ifndef TURN_CMD_H_
 #define TURN_CMD_H_
 
+#include <memory>
+#include <ranges>
 #include <vector>
 
 #include "logging.h"
@@ -69,7 +71,7 @@ class Turn
          * Add the given command and execute it.
          * The Turn object takes ownership of the given Command.
          */
-        void addAndExecute(Command *iCmd);
+        void addAndExecute(std::unique_ptr<Command> iCmd);
 
         // Getters for the execution status.
 
@@ -90,7 +92,7 @@ class Turn
 
         bool hasNonAutoExecCmd() const;
 
-        const vector<Command *> & getCommands() const { return m_commands; }
+        const vector<std::unique_ptr<Command>> & getCommands() const { return m_commands; }
 
         bool isHumanIndependent() const;
 
@@ -119,7 +121,7 @@ class Turn
          * Insert the given command before the first NAEC (or at the end if
          * there is no NAEC). The command must be flagged insertable and NAEC.
          */
-        void insertCommand(Command *iCmd);
+        void insertCommand(std::unique_ptr<Command> iCmd);
 
         /**
          * Replace the first command with the second one.
@@ -127,7 +129,7 @@ class Turn
          * Use with care...
          */
         void replaceCommand(const Command &iOldCmd,
-                            Command *iNewCmd);
+                            std::unique_ptr<Command> iNewCmd);
 
         /**
          * Find the command matching the given predicate, or 0 if not found.
@@ -138,10 +140,9 @@ class Turn
         const CMD * findMatchingCmd(PRED predicate) const
         {
             // Iterate backwards, to be sure to have the latest one for the player
-            vector<Command*>::const_reverse_iterator it;
-            for (it = m_commands.rbegin(); it != m_commands.rend(); ++it)
+            for (const auto& cmdPtr : m_commands | std::views::reverse)
             {
-                const CMD *cmd = dynamic_cast<const CMD*>(*it);
+                const CMD *cmd = dynamic_cast<const CMD*>(cmdPtr.get());
                 if (cmd != nullptr && predicate(*cmd))
                 {
                     // Found it!
@@ -170,10 +171,9 @@ class Turn
             vector<const CMD *> results;
             // TODO: can probably be simplified using std::find_if() (or something similar)
             // associated with a TypePred functor doing the dynamic_cast
-            vector<Command*>::const_iterator it;
-            for (it = m_commands.begin(); it != m_commands.end(); ++it)
+            for (const auto &cmdPtr : m_commands)
             {
-                const CMD *cmd = dynamic_cast<const CMD*>(*it);
+                const CMD *cmd = dynamic_cast<const CMD*>(cmdPtr.get());
                 if (cmd != nullptr)
                 {
                     // Found one!
@@ -184,7 +184,8 @@ class Turn
         }
 
     private:
-        vector<Command *> m_commands;
+        vector<std::unique_ptr<Command>> m_commands;
+
         /**
          * Pointer to the first not executed command.
          * If it is equal to m_commands.size(), all the commands have been executed.

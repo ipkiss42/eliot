@@ -18,12 +18,13 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <memory>
+
 #include "navigation.h"
 #include "turn.h"
 #include "command.h"
 #include "game_exception.h"
 #include "debug.h"
-#include <memory>
 
 
 INIT_LOGGER(game, Navigation);
@@ -49,11 +50,11 @@ void Navigation::newTurn()
 }
 
 
-void Navigation::addAndExecute(Command *iCmd)
+void Navigation::addAndExecute(std::unique_ptr<Command> iCmd)
 {
     if (!isLastTurn())
         throw GameException("Cannot add a command to an old turn");
-    m_allTurns[m_currTurn]->addAndExecute(iCmd);
+    m_allTurns[m_currTurn]->addAndExecute(std::move(iCmd));
 }
 
 
@@ -201,16 +202,16 @@ void Navigation::dropCommand(const Command &iCmd)
 }
 
 
-void Navigation::insertCommand(Command *iCmd)
+void Navigation::insertCommand(std::unique_ptr<Command> iCmd)
 {
-    m_allTurns[m_currTurn]->insertCommand(iCmd);
+    m_allTurns[m_currTurn]->insertCommand(std::move(iCmd));
 }
 
 
 void Navigation::replaceCommand(const Command &iOldCmd,
-                                Command *iNewCmd)
+                                std::unique_ptr<Command> iNewCmd)
 {
-    m_allTurns[m_currTurn]->replaceCommand(iOldCmd, iNewCmd);
+    m_allTurns[m_currTurn]->replaceCommand(iOldCmd, std::move(iNewCmd));
 }
 
 

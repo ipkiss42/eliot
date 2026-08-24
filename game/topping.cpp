@@ -88,8 +88,9 @@ void Topping::tryWord(const wstring &iWord, const wstring &iCoord, int iElapsed)
 
     // Record the try
     LOG_INFO("Player {} plays topping move after {}s: {}", m_currPlayer, iElapsed, lfw(move.toString()));
-    Command *pCmd = new ToppingMoveCmd(m_currPlayer, move, iElapsed);
-    accessNavigation().addAndExecute(pCmd);
+    accessNavigation().addAndExecute(
+        std::make_unique<ToppingMoveCmd>(m_currPlayer, move, iElapsed)
+    );
 
     // Find the best score
     int bestScore = getTopScore();
@@ -132,8 +133,9 @@ void Topping::turnTimeOut(int iElapsed)
         points += iElapsed;
 
     // The player didn't find the move
-    Command *pCmd = new PlayerMoveCmd(*m_players[m_currPlayer], Move(points));
-    accessNavigation().addAndExecute(pCmd);
+    accessNavigation().addAndExecute(
+        std::make_unique<PlayerMoveCmd>(*m_players[m_currPlayer], Move(points))
+    );
 
     // Next turn
     endTurn();
@@ -142,9 +144,9 @@ void Topping::turnTimeOut(int iElapsed)
 
 void Topping::addPenalty(int iPenalty)
 {
-    Command *pCmd = new PlayerEventCmd(*m_players[m_currPlayer],
-                                       PlayerEventCmd::PENALTY, iPenalty);
-    accessNavigation().addAndExecute(pCmd);
+    accessNavigation().addAndExecute(
+        std::make_unique<PlayerEventCmd>(*m_players[m_currPlayer], PlayerEventCmd::PENALTY, iPenalty)
+    );
 }
 
 
@@ -173,8 +175,9 @@ void Topping::recordPlayerMove(const Move &iMove, Player &ioPlayer, int iElapsed
     // PlayerMoveCmd::execute() must be called before Game::helperPlayMove()
     // (called in this class in endTurn()).
     // See the big comment in game.cpp, line 96
-    Command *pCmd = new PlayerMoveCmd(ioPlayer, newMove);
-    accessNavigation().addAndExecute(pCmd);
+    accessNavigation().addAndExecute(
+        std::make_unique<PlayerMoveCmd>(ioPlayer, newMove)
+    );
 }
 
 
@@ -188,15 +191,16 @@ void Topping::endTurn()
 {
     // Play the top move on the board
     const Move &move = getTopMove();
-    Command *pCmd = new GameMoveCmd(*this, move);
-    accessNavigation().addAndExecute(pCmd);
+    accessNavigation().addAndExecute(
+        std::make_unique<GameMoveCmd>(*this, move)
+    );
     accessNavigation().newTurn();
 
     // Make sure that the player has the correct rack
     // (in case he didn't find the top, or not the same one)
-    Command *pCmd2 = new PlayerRackCmd(*m_players[m_currPlayer],
-                getHistory().getCurrentRack());
-    accessNavigation().addAndExecute(pCmd2);
+    accessNavigation().addAndExecute(
+        std::make_unique<PlayerRackCmd>(*m_players[m_currPlayer], getHistory().getCurrentRack())
+    );
 
     // Start next turn...
     start();

@@ -33,7 +33,6 @@
 #include "turn_data.h"
 #include "encoding.h"
 #include "game_exception.h"
-#include "turn.h"
 #include "cmd/player_rack_cmd.h"
 #include "cmd/player_move_cmd.h"
 #include "cmd/game_rack_cmd.h"
@@ -579,8 +578,9 @@ void Game::nextPlayer()
         newPlayerId = 0;
     else
         newPlayerId = m_currPlayer + 1;
-    Command *pCmd = new CurrentPlayerCmd(*this, newPlayerId);
-    accessNavigation().addAndExecute(pCmd);
+    accessNavigation().addAndExecute(
+        std::make_unique<CurrentPlayerCmd>(*this, newPlayerId)
+    );
 }
 
 
@@ -674,14 +674,16 @@ int Game::checkPlayedWord(const wstring &iCoord,
 void Game::setGameAndPlayersRack(const PlayedRack &iRack, bool iWithNoMove)
 {
     // Set the game rack
-    Command *pCmd = new GameRackCmd(*this, iRack);
-    accessNavigation().addAndExecute(pCmd);
+    accessNavigation().addAndExecute(
+        std::make_unique<GameRackCmd>(*this, iRack)
+    );
     LOG_INFO("Setting players rack to '" + lfw(iRack.toString()) + "'");
     // All the players have the same rack
     for (auto &player : m_players)
     {
-        Command *pCmd = new PlayerRackCmd(*player, iRack);
-        accessNavigation().addAndExecute(pCmd);
+        accessNavigation().addAndExecute(
+            std::make_unique<PlayerRackCmd>(*player, iRack)
+        );
     }
 
     if (iWithNoMove)
@@ -693,8 +695,9 @@ void Game::setGameAndPlayersRack(const PlayedRack &iRack, bool iWithNoMove)
         // and solos should be assigned.
         for (auto &player : m_players)
         {
-            Command *pCmd = new PlayerMoveCmd(*player, Move());
-            accessNavigation().addAndExecute(pCmd);
+            accessNavigation().addAndExecute(
+                std::make_unique<PlayerMoveCmd>(*player, Move())
+            );
         }
     }
 }

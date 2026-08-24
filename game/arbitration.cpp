@@ -19,6 +19,7 @@
  *****************************************************************************/
 
 #include <format>
+#include <memory>
 
 #include "arbitration.h"
 #include "rack.h"
@@ -111,9 +112,9 @@ void Arbitration::setSolo(unsigned iPlayerId, int iPoints)
         accessNavigation().dropCommand(*cmd);
     }
 
-    Command *pCmd = new PlayerEventCmd(*m_players[iPlayerId],
-                                       PlayerEventCmd::SOLO, iPoints);
-    accessNavigation().insertCommand(pCmd);
+    accessNavigation().insertCommand(
+        std::make_unique<PlayerEventCmd>(*m_players[iPlayerId], PlayerEventCmd::SOLO, iPoints)
+    );
 }
 
 
@@ -140,9 +141,9 @@ int Arbitration::getSolo(unsigned iPlayerId) const
 void Arbitration::addWarning(unsigned iPlayerId)
 {
     ASSERT(iPlayerId < getNPlayers(), "Wrong player number");
-    Command *pCmd = new PlayerEventCmd(*m_players[iPlayerId],
-                                       PlayerEventCmd::WARNING, 0);
-    accessNavigation().insertCommand(pCmd);
+    accessNavigation().insertCommand(
+        std::make_unique<PlayerEventCmd>(*m_players[iPlayerId], PlayerEventCmd::WARNING, 0)
+    );
 }
 
 
@@ -183,17 +184,18 @@ void Arbitration::addPenalty(unsigned iPlayerId, int iPoints)
     const PlayerEventCmd *cmd = getPlayerEvent(iPlayerId, PlayerEventCmd::PENALTY);
     if (cmd == nullptr)
     {
-        Command *pCmd = new PlayerEventCmd(*m_players[iPlayerId],
-                                           PlayerEventCmd::PENALTY, iPoints);
-        accessNavigation().insertCommand(pCmd);
+        accessNavigation().insertCommand(
+            std::make_unique<PlayerEventCmd>(*m_players[iPlayerId], PlayerEventCmd::PENALTY, iPoints)
+        );
     }
     else
     {
         // When the resulting value is 0, instead of merging we drop the existing one
-        Command *pCmd = new PlayerEventCmd(*m_players[iPlayerId],
-                                           PlayerEventCmd::PENALTY,
-                                           iPoints + cmd->getPoints());
-        accessNavigation().replaceCommand(*cmd, pCmd);
+        accessNavigation().replaceCommand(*cmd,
+            std::make_unique<PlayerEventCmd>(
+                *m_players[iPlayerId], PlayerEventCmd::PENALTY, iPoints + cmd->getPoints()
+            )
+        );
     }
 }
 

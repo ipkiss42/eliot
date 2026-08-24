@@ -194,8 +194,9 @@ void XmlWriter::write(const Game& iGame, const std::filesystem::path& iFileName)
             continue;
 
         pugi::xml_node turnNode = historyNode.append_child("Turn");
-        for (const Command *cmd : turn->getCommands())
+        for (const auto &cmdPtr : turn->getCommands())
         {
+            const auto *cmd = cmdPtr.get();
             if (dynamic_cast<const GameRackCmd*>(cmd))
             {
                 const auto *rackCmd = static_cast<const GameRackCmd*>(cmd);

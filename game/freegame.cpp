@@ -18,6 +18,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <memory>
 
 #include "freegame.h"
 #include "game_exception.h"
@@ -95,8 +96,9 @@ void FreeGame::playAI(unsigned int p)
 void FreeGame::recordPlayerMove(const Move &iMove, Player &ioPlayer)
 {
     LOG_INFO("Player {} plays: {}", ioPlayer.getId(), lfw(iMove.toString()));
-    Command *pCmd = new PlayerMoveCmd(ioPlayer, iMove);
-    accessNavigation().addAndExecute(pCmd);
+    accessNavigation().addAndExecute(
+        std::make_unique<PlayerMoveCmd>(ioPlayer, iMove)
+    );
 }
 
 
@@ -109,13 +111,15 @@ void FreeGame::start()
     {
         const PlayedRack &newRack =
             helperSetRackRandom(player->getCurrentRack(), false, RACK_NEW);
-        Command *pCmd = new PlayerRackCmd(*player, newRack);
-        accessNavigation().addAndExecute(pCmd);
+        accessNavigation().addAndExecute(
+            std::make_unique<PlayerRackCmd>(*player, newRack)
+        );
     }
 
     // Set the game rack to the rack of the current player
-    Command *pCmd = new GameRackCmd(*this, getPlayer(0).getCurrentRack());
-    accessNavigation().addAndExecute(pCmd);
+    accessNavigation().addAndExecute(
+        std::make_unique<GameRackCmd>(*this, getPlayer(0).getCurrentRack())
+    );
 
     // If the first player is an AI, make it play now
     if (!m_players[m_currPlayer]->isHuman())
@@ -140,16 +144,17 @@ int FreeGame::endTurn()
     {
         if (i == m_currPlayer)
             continue;
-        Command *pCmd = new PlayerMoveCmd(*m_players[i], Move());
+        auto pCmd = std::make_unique<PlayerMoveCmd>(*m_players[i], Move());
         // The pseudo-moves should be completely transparent
         pCmd->setHumanIndependent(true);
-        accessNavigation().addAndExecute(pCmd);
+        accessNavigation().addAndExecute(std::move(pCmd));
     }
 
     const Move &move = getCurrentPlayer().getLastMove();
     // Update the game
-    Command *pCmd = new GameMoveCmd(*this, move);
-    accessNavigation().addAndExecute(pCmd);
+    accessNavigation().addAndExecute(
+        std::make_unique<GameMoveCmd>(*this, move)
+    );
 
     // Complete the rack for the player that just played
     if (move.isValid() || move.isChangeLetters())
@@ -158,8 +163,9 @@ int FreeGame::endTurn()
         {
             const PlayedRack &newRack =
                 helperSetRackRandom(getCurrentPlayer().getCurrentRack(), false, RACK_NEW);
-            Command *pCmd2 = new PlayerRackCmd(*m_players[m_currPlayer], newRack);
-            accessNavigation().addAndExecute(pCmd2);
+            accessNavigation().addAndExecute(
+                std::make_unique<PlayerRackCmd>(*m_players[m_currPlayer], newRack)
+            );
         }
         catch (EndGameException &e)
         {
@@ -180,8 +186,9 @@ int FreeGame::endTurn()
     nextPlayer();
 
     // Set the game rack to the rack of the current player
-    Command *pCmd3 = new GameRackCmd(*this, getCurrentPlayer().getCurrentRack());
-    accessNavigation().addAndExecute(pCmd3);
+    accessNavigation().addAndExecute(
+        std::make_unique<GameRackCmd>(*this, getCurrentPlayer().getCurrentRack())
+    );
 
     accessNavigation().newTurn();
 
@@ -232,17 +239,19 @@ void FreeGame::endGame(unsigned iWinningPlayer)
             }
             addedPoints += points;
             // Remove the points from the "losing" player
-            Command *pCmd = new PlayerEventCmd(*m_players[i],
-                                               PlayerEventCmd::END_GAME, -points);
-            accessNavigation().addAndExecute(pCmd);
+            accessNavigation().addAndExecute(
+                std::make_unique<PlayerEventCmd>(*m_players[i],
+                                                 PlayerEventCmd::END_GAME, -points)
+            );
         }
     }
     // Give all the points to the winning player
     if (iWinningPlayer < getNPlayers())
     {
-        Command *pCmd = new PlayerEventCmd(*m_players[m_currPlayer],
-                                        PlayerEventCmd::END_GAME, addedPoints);
-        accessNavigation().addAndExecute(pCmd);
+        accessNavigation().addAndExecute(
+            std::make_unique<PlayerEventCmd>(*m_players[m_currPlayer],
+                                             PlayerEventCmd::END_GAME, addedPoints)
+        );
     }
 
     // Lock game

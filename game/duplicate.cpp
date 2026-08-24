@@ -209,8 +209,9 @@ void Duplicate::recordPlayerMove(Player &ioPlayer, const Move &iMove)
         getNavigation().getCurrentTurn().findMatchingCmd<PlayerMoveCmd>(predicate);
     if (cmd == nullptr)
     {
-        Command *pCmd = new PlayerMoveCmd(ioPlayer, iMove, isArbitrationGame());
-        accessNavigation().addAndExecute(pCmd);
+        accessNavigation().addAndExecute(
+            std::make_unique<PlayerMoveCmd>(ioPlayer, iMove, isArbitrationGame())
+        );
     }
     else
     {
@@ -218,8 +219,9 @@ void Duplicate::recordPlayerMove(Player &ioPlayer, const Move &iMove)
         LOG_DEBUG("Replacing move for player {}", ioPlayer.getId());
         if (!isArbitrationGame() && !getNavigation().isLastTurn())
             throw GameException("Cannot add a command to an old turn");
-        Command *pCmd = new PlayerMoveCmd(ioPlayer, iMove, isArbitrationGame());
-        accessNavigation().replaceCommand(*cmd, pCmd);
+        accessNavigation().replaceCommand(*cmd,
+            std::make_unique<PlayerMoveCmd>(ioPlayer, iMove, isArbitrationGame())
+        );
     }
 }
 
@@ -304,8 +306,9 @@ void Duplicate::endTurn()
     // Play the master word on the board
     // We assign it to player 0 arbitrarily (this is only used
     // to retrieve the rack, which is the same for all players...)
-    Command *pCmd = new GameMoveCmd(*this, m_masterMove);
-    accessNavigation().addAndExecute(pCmd);
+    accessNavigation().addAndExecute(
+        std::make_unique<GameMoveCmd>(*this, m_masterMove)
+    );
 
     // Change the turn after doing all the game changes.
     // The navigation system expects auto-executable commands (like setting
@@ -318,8 +321,9 @@ void Duplicate::endTurn()
     const PlayedRack& pld = getHistory().getCurrentRack();
     for (auto &player : m_players)
     {
-        Command *pCmd = new PlayerRackCmd(*player, pld);
-        accessNavigation().addAndExecute(pCmd);
+        accessNavigation().addAndExecute(
+            std::make_unique<PlayerRackCmd>(*player, pld)
+        );
     }
 
     // Start next turn...
@@ -377,8 +381,9 @@ void Duplicate::setMasterMove(const Move &iMove)
     // result in many MasterMoveCmd commands in the command stack.
     // This shouldn't be a problem though.
     LOG_DEBUG("Setting master move: " + lfw(iMove.toString()));
-    Command *pCmd = new MasterMoveCmd(*this, iMove);
-    accessNavigation().addAndExecute(pCmd);
+    accessNavigation().addAndExecute(
+        std::make_unique<MasterMoveCmd>(*this, iMove)
+    );
 }
 
 
@@ -442,8 +447,9 @@ void Duplicate::setSoloAuto(unsigned int minNbPlayers, int iSoloValue)
         {
             // Give the bonus to the player of the best move
             LOG_INFO("Giving a solo of {} to player {}", iSoloValue, bestPlayer->getId());
-            Command *pCmd = new PlayerEventCmd(*bestPlayer, PlayerEventCmd::SOLO, iSoloValue);
-            accessNavigation().insertCommand(pCmd);
+            accessNavigation().insertCommand(
+                std::make_unique<PlayerEventCmd>(*bestPlayer, PlayerEventCmd::SOLO, iSoloValue)
+            );
         }
     }
 }

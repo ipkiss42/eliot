@@ -18,6 +18,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <algorithm>
+#include <memory>
 #include <typeinfo>
 
 #include "turn.h"
@@ -32,20 +34,14 @@ INIT_LOGGER(game, Turn);
 Turn::Turn() = default;
 
 
-Turn::~Turn()
-{
-    for (Command *cmd : m_commands)
-    {
-        delete cmd;
-    }
-}
+Turn::~Turn() = default;
 
 
-void Turn::addAndExecute(Command *iCmd)
+void Turn::addAndExecute(std::unique_ptr<Command> iCmd)
 {
     ASSERT(isFullyExecuted(), "Adding a command to a partially executed turn");
-    m_commands.push_back(iCmd);
     iCmd->execute();
+    m_commands.push_back(std::move(iCmd));
     ++m_firstNotExecuted;
 }
 
@@ -112,7 +108,6 @@ void Turn::dropCommand(const Command &iCmd)
     ASSERT(!iCmd.isExecuted(), "Logic error");
 
     // Drop the command
-    delete m_commands[idx];
     m_commands.erase(m_commands.begin() + idx);
 
     // We have deleted one command, so the index should be decreased
@@ -123,7 +118,7 @@ void Turn::dropCommand(const Command &iCmd)
 }
 
 
-void Turn::insertCommand(Command *iCmd)
+void Turn::insertCommand(std::unique_ptr<Command> iCmd)
 {
     ASSERT(iCmd->isInsertable(), "Only insertable commands can be inserted");
     ASSERT(iCmd->isAutoExecutable(), "Non auto-executable commands cannot be inserted");
@@ -138,9 +133,9 @@ void Turn::insertCommand(Command *iCmd)
 
     // Insert the command (possibly at the end, if there is no NAEC)
     if (idx == m_commands.size())
-        m_commands.push_back(iCmd);
+        m_commands.push_back(std::move(iCmd));
     else
-        m_commands.insert(m_commands.begin() + idx, iCmd);
+        m_commands.insert(m_commands.begin() + idx, std::move(iCmd));
 
     // We have inserted one command, so the index should be increased
     ++tmpIdx;
@@ -150,13 +145,13 @@ void Turn::insertCommand(Command *iCmd)
 }
 
 
-void Turn::replaceCommand(const Command &iOldCmd,
-                             Command *iNewCmd)
+void Turn::replaceCommand(const Command &iOldCmd, std::unique_ptr<Command> iNewCmd)
 {
-    ASSERT(string(typeid(iOldCmd).name()) == string(typeid(*iNewCmd).name()),
-           "The commands should be of the same type (" +
-           string(typeid(iOldCmd).name()) + " vs. " +
-           string(typeid(*iNewCmd).name()));
+    const Command& newCmdRef = *iNewCmd;
+    std::string_view oldName = typeid(iOldCmd).name();
+    std::string_view newName = typeid(newCmdRef).name();
+    ASSERT(oldName == newName,
+           std::format("The commands should be of the same type ({} vs. {})", oldName, newName));
 
     unsigned idx = findIndex(iOldCmd);
     ASSERT(idx != m_commands.size(), "Cannot find command");
@@ -166,8 +161,7 @@ void Turn::replaceCommand(const Command &iOldCmd,
     ASSERT(!iOldCmd.isExecuted(), "Logic error");
 
     // Replace the command
-    delete m_commands[idx];
-    m_commands[idx] = iNewCmd;
+    m_commands[idx] = std::move(iNewCmd);
 
     // Re-execute the commands
     execTo(tmpIdx);
@@ -202,12 +196,9 @@ bool Turn::hasNonAutoExecCmd() const
 
 bool Turn::isHumanIndependent() const
 {
-    for (Command *cmd : m_commands)
-    {
-        if (!cmd->isHumanIndependent())
-            return false;
-    }
-    return true;
+    return std::ranges::all_of(m_commands, [](const auto &cmd) {
+        return cmd->isHumanIndependent();
+    });
 }
 
 
@@ -215,7 +206,7 @@ unsigned Turn::findIndex(const Command &iCmd) const
 {
     for (unsigned i = 0; i < m_commands.size(); ++i)
     {
-        if (m_commands[i] == &iCmd)
+        if (m_commands[i].get() == &iCmd)
             return i;
     }
     return m_commands.size();
@@ -239,7 +230,7 @@ unsigned Turn::execTo(unsigned iNewFirstNotExec)
     unsigned oldVal = m_firstNotExecuted;
     while (m_firstNotExecuted < iNewFirstNotExec)
     {
-        Command *cmd = m_commands[m_firstNotExecuted];
+        Command *cmd = m_commands[m_firstNotExecuted].get();
         ASSERT(!cmd->isExecuted(), "Bug with m_firstNotExecuted");
         cmd->execute();
         ++m_firstNotExecuted;
@@ -254,7 +245,7 @@ unsigned Turn::undoTo(unsigned iNewFirstNotExec)
     while (m_firstNotExecuted > iNewFirstNotExec)
     {
         --m_firstNotExecuted;
-        Command *cmd = m_commands[m_firstNotExecuted];
+        Command *cmd = m_commands[m_firstNotExecuted].get();
         ASSERT(cmd->isExecuted(), "Bug with m_firstNotExecuted");
         cmd->undo();
     }
@@ -268,10 +259,9 @@ void Turn::dropFrom(unsigned iFirstToDrop)
     LOG_DEBUG("Deleting turn commands, starting from index {}", iFirstToDrop);
 
     undoTo(iFirstToDrop);
-    while (m_commands.size() > iFirstToDrop)
+    if (m_commands.size() > iFirstToDrop)
     {
-        delete m_commands.back();
-        m_commands.pop_back();
+        m_commands.resize(iFirstToDrop);
     }
     ASSERT(m_firstNotExecuted <= m_commands.size(), "Invalid state");
 }
@@ -280,7 +270,7 @@ void Turn::dropFrom(unsigned iFirstToDrop)
 wstring Turn::toString() const
 {
     std::wstring result;
-    for (Command *cmd : m_commands)
+    for (const auto &cmd : m_commands)
     {
         result += std::format(L"\n  {} {} {} {}",
             cmd->isExecuted()         ? L"| " : L"  ",

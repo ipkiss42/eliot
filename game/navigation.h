@@ -53,7 +53,7 @@ class Navigation
         ~Navigation();
 
         void newTurn();
-        void addAndExecute(Command *iCmd);
+        void addAndExecute(std::unique_ptr<Command> iCmd);
 
         unsigned int getCurrTurn() const;
         unsigned int getNbTurns() const;
@@ -85,14 +85,14 @@ class Navigation
          * Insert the given command in the current turn, before the first NAEC
          * (only if it is an insertable and non auto-executable command)
          */
-        void insertCommand(Command *iCmd);
+        void insertCommand(std::unique_ptr<Command> iCmd);
 
         /**
          * Replace one existing command (for the current turn) with another one
          * (of the same type).
          */
         void replaceCommand(const Command &iOldCmd,
-                            Command *iNewCmd);
+                            std::unique_ptr<Command> iNewCmd);
 
         const vector<std::unique_ptr<Turn>> & getTurns() const;
         const Turn & getCurrentTurn() const;

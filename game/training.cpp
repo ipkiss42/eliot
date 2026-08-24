@@ -19,6 +19,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <memory>
+#include <utility>
+
 #include "training.h"
 #include "settings.h"
 #include "rack.h"
@@ -32,8 +35,6 @@
 #include "encoding.h"
 
 #include "debug.h"
-#include <memory>
-#include <utility>
 
 
 INIT_LOGGER(game, Training);
@@ -50,12 +51,12 @@ void Training::setRackRandom(bool iCheck, set_rack_mode mode)
     m_results.clear();
     const PlayedRack &newRack =
         helperSetRackRandom(getHistory().getCurrentRack(), iCheck, mode);
-    Command *pCmd1 = new GameRackCmd(*this, newRack);
+    auto pCmd1 = std::make_unique<GameRackCmd>(*this, newRack);
     pCmd1->setHumanIndependent(false);
-    accessNavigation().addAndExecute(pCmd1);
-    Command *pCmd2 = new PlayerRackCmd(*m_players[m_currPlayer], newRack);
+    accessNavigation().addAndExecute(std::move(pCmd1));
+    auto pCmd2 = std::make_unique<PlayerRackCmd>(*m_players[m_currPlayer], newRack);
     pCmd2->setHumanIndependent(false);
-    accessNavigation().addAndExecute(pCmd2);
+    accessNavigation().addAndExecute(std::move(pCmd2));
 }
 
 
@@ -70,12 +71,12 @@ void Training::setRackManual(bool iCheck, const wstring &iLetters)
     // As a result, we simply make all the letters uppercase
     wstring upperLetters = toUpper(iLetters);
     const PlayedRack &newRack = helperSetRackManual(iCheck, upperLetters);
-    Command *pCmd1 = new GameRackCmd(*this, newRack);
+    auto pCmd1 = std::make_unique<GameRackCmd>(*this, newRack);
     pCmd1->setHumanIndependent(false);
-    accessNavigation().addAndExecute(pCmd1);
-    Command *pCmd2 = new PlayerRackCmd(*m_players[m_currPlayer], newRack);
+    accessNavigation().addAndExecute(std::move(pCmd1));
+    auto pCmd2 = std::make_unique<PlayerRackCmd>(*m_players[m_currPlayer], newRack);
     pCmd2->setHumanIndependent(false);
-    accessNavigation().addAndExecute(pCmd2);
+    accessNavigation().addAndExecute(std::move(pCmd2));
     // Clear the results if everything went well
     m_results.clear();
 }
@@ -107,8 +108,9 @@ void Training::recordPlayerMove(const Move &iMove, Player &ioPlayer)
     // PlayerMoveCmd::execute() must be called before Game::helperPlayMove()
     // (called in this class in endTurn()).
     // See the big comment in game.cpp, line 96
-    Command *pCmd = new PlayerMoveCmd(ioPlayer, iMove);
-    accessNavigation().addAndExecute(pCmd);
+    accessNavigation().addAndExecute(
+        std::make_unique<PlayerMoveCmd>(ioPlayer, iMove)
+    );
 }
 
 
@@ -136,8 +138,9 @@ void Training::endTurn()
         move = getMoveFromMasterGame();
     else
         move = m_players[m_currPlayer]->getLastMove();
-    Command *pCmd = new GameMoveCmd(*this, move);
-    accessNavigation().addAndExecute(pCmd);
+    accessNavigation().addAndExecute(
+        std::make_unique<GameMoveCmd>(*this, move)
+    );
     accessNavigation().newTurn();
 }
 
