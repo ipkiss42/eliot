@@ -3,7 +3,7 @@ CompileFlags:
   # If not, adjust this or create a symlink named "build".
   CompilationDatabase: "build"
   Add: [
-    "-std=gnu++23",
+    "-std=c++23",
     "-Wall",
     "-Wextra",
     "-Wunused-private-field",
