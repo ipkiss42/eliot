@@ -33,7 +33,6 @@ class Bag;
 class Board;
 class History;
 class Player;
-class Navigation;
 class Round;
 class Results;
 class LimitResults;

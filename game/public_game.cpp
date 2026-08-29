@@ -19,7 +19,6 @@
  *****************************************************************************/
 
 #include "public_game.h"
-#include "game_params.h"
 #include "game.h"
 #include "training.h"
 #include "duplicate.h"
@@ -30,7 +29,6 @@
 #include "game_exception.h"
 #include "xml_writer.h"
 #include "player.h"
-#include "pldrack.h"
 
 
 PublicGame::PublicGame(Game &iGame)

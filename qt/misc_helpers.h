@@ -28,7 +28,6 @@
 using std::vector;
 
 class QMouseEvent;
-class QEvent;
 class QTimer;
 
 

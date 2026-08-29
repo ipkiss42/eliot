@@ -18,10 +18,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <utility>
-
 #include "duplicate.h"
 #include "game_exception.h"
+#include <game_params.h>
 #include "rack.h"
 #include "move.h"
 #include "pldrack.h"

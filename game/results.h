@@ -32,7 +32,6 @@ using namespace std;
 class Dictionary;
 class Board;
 class Rack;
-class Bag;
 
 
 /**

@@ -21,10 +21,9 @@
 
 #include <cwctype>
 
-#include <dic.h>
+#include "dic.h"
 #include "tile.h"
 #include "board.h"
-#include "debug.h"
 
 
 static void Board_checkout_tile(const Dictionary &iDic,

@@ -22,7 +22,6 @@
 
 #include "tile_layout.h"
 #include "tile_widget.h"
-#include "qtcommon.h"
 
 using namespace std;
 

@@ -18,6 +18,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <format>
+
 #include "cmd/topping_move_cmd.h"
 #include "player.h"
 

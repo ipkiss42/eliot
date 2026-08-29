@@ -27,7 +27,6 @@
 #include "logging.h"
 
 class Player;
-class Rack;
 
 
 /**

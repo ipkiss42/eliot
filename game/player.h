@@ -22,16 +22,15 @@
 #ifndef PLAYER_H_
 #define PLAYER_H_
 
-#include <vector>
 #include <string>
-#include "pldrack.h"
+
 #include "history.h"
 #include "logging.h"
 
 using std::wstring;
 
-class TurnData;
-class Rack;
+class Move;
+class PlayedRack;
 
 
 /**

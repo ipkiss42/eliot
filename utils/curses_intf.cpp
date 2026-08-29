@@ -23,6 +23,7 @@
 #include <cwctype> // For iswalnum
 #include <filesystem>
 #include <iostream>
+#include <set>
 
 // Needed for Mac OS X, apparently (otherwise get_wch is not defined)
 #define _XOPEN_SOURCE_EXTENDED 1

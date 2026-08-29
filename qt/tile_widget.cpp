@@ -19,7 +19,6 @@
  *****************************************************************************/
 
 #include <QPainter>
-#include <QPaintEvent>
 #include <QPolygon>
 #include <QSettings>
 

@@ -18,7 +18,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <format>
+
 #include "cmd/player_event_cmd.h"
+#include "history.h"
 #include "player.h"
 #include "debug.h"
 

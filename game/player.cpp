@@ -21,18 +21,13 @@
 
 #include <format>
 
-#include "tile.h"
 #include "pldrack.h"
-#include "round.h"
-#include "results.h"
-#include "board.h"
 #include "player.h"
 #include "turn_data.h"
 #include "history.h"
+#include "move.h"
 #include "encoding.h"
 #include "settings.h"
-
-#include "debug.h"
 
 
 INIT_LOGGER(game, Player);

@@ -21,7 +21,6 @@
 #ifndef DIC_TOOLS_WIDGET_H_
 #define DIC_TOOLS_WIDGET_H_
 
-#include <string>
 #include <QWidget>
 #include <QPalette>
 

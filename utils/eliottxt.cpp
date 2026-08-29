@@ -21,11 +21,9 @@
 
 #include "config.h"
 
-#include <cwchar>
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <cstring>
 #include <clocale>
 #include <cwctype>
 #include <memory>

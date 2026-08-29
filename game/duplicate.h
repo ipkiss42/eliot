@@ -24,11 +24,12 @@
 #include <memory>
 
 #include "game.h"
+#include "game_params.h"
 #include "move.h"
 #include "logging.h"
 
+class GameParams;
 class Player;
-class Move;
 class PlayerEventCmd;
 
 using std::string;

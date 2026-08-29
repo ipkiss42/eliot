@@ -23,11 +23,10 @@
 
 #include <bit>
 #include <concepts>
+#include <ctime>
 #include <iosfwd>
 #include <map>
 #include <vector>
-#include <time.h>
-#include <stdint.h>
 
 #include "logging.h"
 

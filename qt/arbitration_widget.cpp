@@ -35,9 +35,9 @@
 
 #include "public_game.h"
 #include "player.h"
+#include "pldrack.h"
 #include "rack.h"
 #include "results.h"
-#include "settings.h"
 #include "game_params.h"
 #include "dic.h"
 #include "debug.h"

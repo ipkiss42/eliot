@@ -1,6 +1,6 @@
 /*****************************************************************************
  * Eliot
- * Copyright (C) 1999-2012 Antoine Fraboulet & Olivier Teulière
+ * Copyright (C) 1999-2026 Antoine Fraboulet & Olivier Teulière
  * Authors: Antoine Fraboulet <antoine.fraboulet @@ free.fr>
  *          Olivier Teulière <ipkiss @@ gmail.com>
  *
@@ -22,7 +22,7 @@
 
 #include <random> // For uniform_int_distribution()
 
-#include <dic.h>
+#include "dic.h"
 #include "bag.h"
 #include "debug.h"
 #include "encoding.h"

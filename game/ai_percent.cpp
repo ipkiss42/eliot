@@ -18,7 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include "tile.h"
 #include "rack.h"
 #include "pldrack.h"
 #include "move.h"

@@ -22,7 +22,6 @@
 #ifndef CROSS_H_
 #define CROSS_H_
 
-#include <set>
 #include "tile.h"
 #include "logging.h"
 

@@ -319,9 +319,7 @@ vector<wistring> Header::getInputStr(unsigned int iCode) const
     auto it = m_displayAndInputData.find(m_letters[iCode - 1]);
     if (it == m_displayAndInputData.end())
     {
-        vector<wistring> vect;
-        vect.push_back(m_displayCache[iCode]);
-        return vect;
+        return { m_displayCache[iCode] };
     }
     else
         return it->second;

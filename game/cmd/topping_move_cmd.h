@@ -23,11 +23,7 @@
 
 #include "command.h"
 #include "move.h"
-#include "pldrack.h"
 #include "logging.h"
-
-class Player;
-class Rack;
 
 
 /**

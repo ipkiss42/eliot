@@ -36,9 +36,7 @@
 class Dictionary;
 class Player;
 class PlayedRack;
-class Round;
 class Rack;
-class TurnData;
 
 using std::vector;
 using std::wstring;

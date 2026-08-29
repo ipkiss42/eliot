@@ -32,8 +32,8 @@
 #include "dic.h"
 #include "bag.h"
 #include "public_game.h"
-#include "game_exception.h"
 #include "player.h"
+#include "pldrack.h"
 #include "results.h"
 #include "debug.h"
 
@@ -47,7 +47,7 @@ static const int HIDDEN_COLUMN = 6;
 
 
 TrainingWidget::TrainingWidget(QWidget *parent, PlayModel &iPlayModel, PublicGame *iGame)
-    : QWidget(parent), m_game(iGame) 
+    : QWidget(parent), m_game(iGame)
 {
     setupUi(this);
     treeViewResults->setAlternatingRowColors(true);

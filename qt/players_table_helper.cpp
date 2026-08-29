@@ -20,17 +20,13 @@
 
 #include <format>
 
-#include "config.h"
-
 #include <QTableWidget>
 #include <QPushButton>
 #include <QHeaderView>
 #include <QComboBox>
 #include <QSpinBox>
-#include <QKeyEvent>
 #include <QMenu>
 #include <QAction>
-#include <QShortcut>
 #include <QSettings>
 
 #include "players_table_helper.h"

@@ -18,7 +18,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <vector>
 #include <QTreeView>
 #include <QVBoxLayout>
 #include <QStandardItemModel>
@@ -33,7 +32,7 @@
 #include "tile.h"
 #include "bag.h"
 #include "rack.h"
-#include "player.h"
+#include "pldrack.h"
 #include "debug.h"
 
 using namespace std;
