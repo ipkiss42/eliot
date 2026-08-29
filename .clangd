@@ -9,3 +9,6 @@ CompileFlags:
     "-Wunused-private-field",
     "-Wshadow"
   ]
+
+Diagnostics:
+  UnusedIncludes: Strict
