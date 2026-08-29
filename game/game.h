@@ -32,7 +32,6 @@
 #include "board.h"
 #include "history.h"
 #include "navigation.h"
-#include "command.h"
 
 class Dictionary;
 class Player;
@@ -104,6 +103,8 @@ public:
 
     Player & accessPlayer(unsigned int iNum);
     const Player& getPlayer(unsigned int iNum) const;
+    /// Change the player who is supposed to play
+    void setCurrentPlayer(unsigned int iPlayerId) { m_currPlayer = iPlayerId; }
     const Player& getCurrentPlayer() const { return getPlayer(currPlayer()); };
     unsigned int getNPlayers() const { return m_players.size(); }
     unsigned int getNHumanPlayers() const;
@@ -219,28 +220,6 @@ private:
 
     int m_points;
 
-
-    /// Change the player who is supposed to play
-    void setCurrentPlayer(unsigned int iPlayerId) { m_currPlayer = iPlayerId; }
-
-    /// Command used to keep track of the current player changes
-    class CurrentPlayerCmd: public Command
-    {
-        public:
-            CurrentPlayerCmd(Game &ioGame,
-                             unsigned int iPlayerId);
-
-            wstring toString() const override;
-
-        protected:
-            void doExecute() override;
-            void doUndo() override;
-
-        private:
-            Game &m_game;
-            unsigned int m_newPlayerId;
-            unsigned int m_oldPlayerId{0};
-    };
 
 // TODO: check what should be private and what should be protected
 protected:

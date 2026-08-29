@@ -33,6 +33,7 @@
 #include "turn_data.h"
 #include "encoding.h"
 #include "game_exception.h"
+#include "cmd/current_player_cmd.h"
 #include "cmd/player_rack_cmd.h"
 #include "cmd/player_move_cmd.h"
 #include "cmd/game_rack_cmd.h"
@@ -573,11 +574,7 @@ void Game::nextPlayer()
 {
     ASSERT(getNPlayers() != 0, "Expected at least one player");
 
-    unsigned int newPlayerId;
-    if (m_currPlayer == getNPlayers() - 1)
-        newPlayerId = 0;
-    else
-        newPlayerId = m_currPlayer + 1;
+    unsigned int newPlayerId = (m_currPlayer + 1) % getNPlayers();
     accessNavigation().addAndExecute(
         std::make_unique<CurrentPlayerCmd>(*this, newPlayerId)
     );
@@ -700,37 +697,5 @@ void Game::setGameAndPlayersRack(const PlayedRack &iRack, bool iWithNoMove)
             );
         }
     }
-}
-
-
-Game::CurrentPlayerCmd::CurrentPlayerCmd(Game &ioGame,
-                             unsigned int iPlayerId)
-    : m_game(ioGame), m_newPlayerId(iPlayerId)
-{
-}
-
-
-void Game::CurrentPlayerCmd::doExecute()
-{
-    m_oldPlayerId = m_game.currPlayer();
-    m_game.setCurrentPlayer(m_newPlayerId);
-}
-
-
-void Game::CurrentPlayerCmd::doUndo()
-{
-    m_game.setCurrentPlayer(m_oldPlayerId);
-}
-
-
-wstring Game::CurrentPlayerCmd::toString() const
-{
-    std::wstring old_player_info = isExecuted()
-        ? std::format(L"  old player: {}", m_oldPlayerId)
-        : L"";
-
-    return std::format(L"CurrentPlayerCmd (new player: {}{})",
-                       m_newPlayerId,
-                       old_player_info);
 }
 

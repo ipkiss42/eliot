@@ -20,6 +20,7 @@
 
 #include <cmath>
 #include <memory>
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -35,6 +36,7 @@
 #include "ai_percent.h"
 #include "game_exception.h"
 #include "turn.h"
+#include "cmd/current_player_cmd.h"
 #include "cmd/game_rack_cmd.h"
 #include "cmd/game_move_cmd.h"
 #include "cmd/player_rack_cmd.h"
@@ -61,11 +63,11 @@ static string toUtf8(const wstring &s)
 }
 
 static void writeMove(pugi::xml_node & parentNode, const Move &iMove,
-                      const string &iTag, int iPlayerId)
+                      const string &iTag, std::optional<unsigned int> iPlayerId = nullopt)
 {
     pugi::xml_node moveNode = parentNode.append_child(iTag);
-    if (iPlayerId != -1)
-        moveNode.append_attribute("playerId").set_value(iPlayerId);
+    if (iPlayerId.has_value())
+        moveNode.append_attribute("playerId").set_value(iPlayerId.value());
     moveNode.append_attribute("points").set_value(iMove.getScore());
     if (iMove.isValid())
     {
@@ -219,18 +221,24 @@ void XmlWriter::write(const Game& iGame, const std::filesystem::path& iFileName)
             else if (dynamic_cast<const GameMoveCmd*>(cmd))
             {
                 const auto *moveCmd = static_cast<const GameMoveCmd*>(cmd);
-                writeMove(turnNode, moveCmd->getMove(), "GameMove", -1);
+                writeMove(turnNode, moveCmd->getMove(), "GameMove");
             }
             else if (dynamic_cast<const MasterMoveCmd*>(cmd))
             {
                 const auto *moveCmd = static_cast<const MasterMoveCmd*>(cmd);
-                writeMove(turnNode, moveCmd->getMove(), "MasterMove", -1);
+                writeMove(turnNode, moveCmd->getMove(), "MasterMove");
             }
             else if (dynamic_cast<const ToppingMoveCmd*>(cmd))
             {
                 const auto *moveCmd = static_cast<const ToppingMoveCmd*>(cmd);
                 unsigned int id = moveCmd->getPlayerId();
                 writeMove(turnNode, moveCmd->getMove(), "ToppingMove", id);
+            }
+            else if (dynamic_cast<const CurrentPlayerCmd*>(cmd))
+            {
+                const auto *currPlayerCmd = static_cast<const CurrentPlayerCmd*>(cmd);
+                unsigned int id = currPlayerCmd->getNewPlayerId();
+                turnNode.append_child("CurrentPlayer").append_attribute("playerId").set_value(id);
             }
             else if (dynamic_cast<const PlayerEventCmd*>(cmd))
             {

@@ -32,6 +32,7 @@
 #include "player.h"
 #include "ai_percent.h"
 #include "encoding.h"
+#include "cmd/current_player_cmd.h"
 #include "cmd/game_rack_cmd.h"
 #include "cmd/game_move_cmd.h"
 #include "cmd/player_rack_cmd.h"
@@ -326,6 +327,13 @@ Game * XmlReader::read(const std::filesystem::path &iFileName, const Dictionary 
                 const Move move = buildMove(*game, cmdNode, false);
                 game->accessNavigation().addAndExecute(
                     std::make_unique<GameMoveCmd>(*game, move)
+                );
+            }
+            else if (tagName == "CurrentPlayer")
+            {
+                unsigned int playerId = toInt(readPlayerIdAttribute(cmdNode));
+                game->accessNavigation().addAndExecute(
+                    std::make_unique<CurrentPlayerCmd>(*game, playerId)
                 );
             }
             else if (tagName == "Warning")

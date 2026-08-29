@@ -32,6 +32,7 @@ set(GAME_SOURCES
     history.cpp history.h
     hints.cpp hints.h
     player.cpp player.h
+    cmd/current_player_cmd.cpp cmd/current_player_cmd.h
     cmd/topping_move_cmd.cpp cmd/topping_move_cmd.h
     cmd/player_event_cmd.cpp cmd/player_event_cmd.h
     cmd/player_move_cmd.cpp cmd/player_move_cmd.h
