@@ -1,0 +1,38 @@
+name: Multi-Platform C++23 Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-26.04
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install host toolchain dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y clang-21 cmake ninja-build
+
+    - name: Bootstrap vcpkg and install dependencies
+      uses: lukka/run-vcpkg@v11
+      with:
+        vcpkgGitCommitId: 'latest' # Uses the latest available ports registry snapshot
+        runVcpkgInstall: true      # Automatically triggers "vcpkg install" for vcpkg.json
+
+    - name: Configure CMake
+      run: |
+        cmake -B build -G Ninja \
+          -DCMAKE_C_COMPILER=clang-21 \
+          -DCMAKE_CXX_COMPILER=clang++-21 \
+          -DVCPKG_TARGET_TRIPLET=x64-linux-release \
+          -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/extras/cmake/vcpkg-linux.toolchain.cmake \
+
+    - name: Compile
+      run: cmake --build build --parallel $(nproc)
+
