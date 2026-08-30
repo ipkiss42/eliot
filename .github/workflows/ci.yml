@@ -10,6 +10,10 @@ jobs:
   linux-build:
     runs-on: ubuntu-26.04
 
+    # Binary cache configuration
+    env:
+      VCPKG_BINARY_SOURCES: "clear;x-gha,readwrite"
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v7
