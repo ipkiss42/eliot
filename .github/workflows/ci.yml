@@ -12,7 +12,7 @@ jobs:
 
     env:
       # Instruct vcpkg to read/write from its default local path
-      VCPKG_BINARY_SOURCES: "default,rw"
+      VCPKG_BINARY_SOURCES: "default,readwrite"
 
     steps:
     - name: Checkout code
