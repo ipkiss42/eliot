@@ -9,6 +9,7 @@
         },
         "boost-headers",
         "boost-spirit",
+        "boost-stacktrace",
         "gettext-libintl",
         "libiconv",
         "ncurses",
