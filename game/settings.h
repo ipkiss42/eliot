@@ -78,7 +78,9 @@ private:
     /// Name of the file used to store the settings
     std::filesystem::path m_fileName;
 
+#ifdef HAVE_LIBCONFIG
     std::unique_ptr<libconfig::Config> m_conf;
+#endif
 
     template<class T>
     void setValue(const string &iName, T iValue);
