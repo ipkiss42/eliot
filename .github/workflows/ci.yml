@@ -10,10 +10,6 @@ jobs:
   linux-build:
     runs-on: ubuntu-26.04
 
-    # Binary cache configuration
-    env:
-      VCPKG_BINARY_SOURCES: "clear;x-gha,readwrite"
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v7
@@ -21,7 +17,8 @@ jobs:
     - name: Install host toolchain dependencies
       run: |
         sudo apt update
-        sudo apt install -y build-essential clang-21 cmake ninja-build
+        sudo apt install -y autoconf autoconf-archive automake libtool
+        sudo apt install -y clang-21 cmake ninja-build
 
     - name: Bootstrap vcpkg and install dependencies
       uses: lukka/run-vcpkg@v11
