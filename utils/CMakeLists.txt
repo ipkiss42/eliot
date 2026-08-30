@@ -37,8 +37,7 @@ if(ENABLE_TEXT)
     endif()
 
     if(HAVE_READLINE)
-        target_include_directories(eliottxt PRIVATE ${readline_INCLUDE_DIRS})
-        target_link_libraries(eliottxt PRIVATE ${readline_LIBRARIES})
+        target_link_libraries(eliottxt PRIVATE PkgConfig::readline)
     endif()
 endif()
 

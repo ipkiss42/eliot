@@ -85,7 +85,7 @@ find_package(pugixml REQUIRED)
 find_package(spdlog REQUIRED)
 
 # Readline
-pkg_check_modules(readline readline)
+pkg_check_modules(readline IMPORTED_TARGET readline)
 if(readline_FOUND)
     set(HAVE_READLINE TRUE)
 else()
