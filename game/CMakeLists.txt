@@ -87,5 +87,11 @@ target_link_libraries(game
 )
 
 if(HAVE_LIBCONFIG)
-    target_link_libraries(game PRIVATE PkgConfig::LIBCONFIG++)
+    if(TARGET LIBCONFIG++)
+        # For vcpkg-based resolution (preferred)
+        target_link_libraries(game PRIVATE LIBCONFIG++)
+    elseif(TARGET PkgConfig::LIBCONFIG++)
+        # For pkg-config-based resolution (less nice)
+        target_link_libraries(game PRIVATE PkgConfig::LIBCONFIG++)
+    endif()
 endif()

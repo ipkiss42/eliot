@@ -76,13 +76,27 @@ find_package(PkgConfig REQUIRED)
 find_package(Boost 1.36.0 REQUIRED)
 
 # libconfig++
-# Their cmake support is really bad in version 1.8.2,
-# so keep using pkg-config for now.
-pkg_check_modules(LIBCONFIG++ libconfig++ IMPORTED_TARGET)
-if(LIBCONFIG++_FOUND)
+find_package(libconfig CONFIG)
+
+if(TARGET libconfig::config++)
     set(HAVE_LIBCONFIG 1)
+
+    add_library(LIBCONFIG++ INTERFACE IMPORTED)
+
+    target_link_libraries(LIBCONFIG++ INTERFACE libconfig::config++ libconfig::config)
+
+    message(STATUS "vcpkg: Successfully configured libconfig++ with base C linkages.")
 else()
-    set(HAVE_LIBCONFIG 0)
+    # Their cmake support is really bad in version 1.8.2,
+    # so keep using pkg-config for now. It is needed when installing
+    # the lib on Linux (Manjaro) at least, because find_package()
+    # is unable to locate it.
+    pkg_check_modules(LIBCONFIG++ libconfig++ IMPORTED_TARGET)
+    if(LIBCONFIG++_FOUND)
+        set(HAVE_LIBCONFIG 1)
+    else()
+        set(HAVE_LIBCONFIG 0)
+    endif()
 endif()
 
 # pugixml
