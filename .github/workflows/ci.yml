@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build-and-test:
+  linux-build:
     runs-on: ubuntu-26.04
 
     steps:
@@ -16,13 +16,13 @@ jobs:
 
     - name: Install host toolchain dependencies
       run: |
-        sudo apt-get update
-        sudo apt-get install -y clang-21 cmake ninja-build
+        sudo apt update
+        sudo apt install -y build-essential clang-21 cmake ninja-build
 
     - name: Bootstrap vcpkg and install dependencies
       uses: lukka/run-vcpkg@v11
       with:
-        runVcpkgInstall: true      # Automatically triggers "vcpkg install" for vcpkg.json
+        runVcpkgInstall: false      # Do not build for vcpkg.json, we will do it with CMake's manifes tmode
 
     - name: Configure CMake
       run: |
