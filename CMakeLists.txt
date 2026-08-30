@@ -221,4 +221,6 @@ add_subdirectory(po)
 add_subdirectory(extras)
 
 # Packaging commands (win32/macos)
-include(Packaging.cmake)
+if(BUILD_QT)
+    include(Packaging.cmake)
+endif()
