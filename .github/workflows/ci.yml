@@ -22,7 +22,7 @@ jobs:
       # First apt install for gperf
       # Second one for libxcrypt
       # Third one for qtbase
-      # Third one for eliot's build (without dependencies)
+      # Fourth one is for eliot's build (without dependencies)
       run: |
         sudo apt update
         sudo apt install -y autoconf autoconf-archive automake libtool
@@ -31,7 +31,7 @@ jobs:
             libxkbcommon-dev libxkbcommon-x11-dev libxcb-image0-dev libxcb-keysyms1-dev \
             libxcb-icccm4-dev libxcb-render-util0-dev libxcb-cursor-dev \
             libgl1-mesa-dev libegl1-mesa-dev libdbus-1-dev libxi-dev libxrender-dev
-        sudo apt install -y clang-21 cmake ninja-build
+        sudo apt install -y gettext clang-21 cmake ninja-build
 
     # Set up caching
     - name: Set up binary cache storage
