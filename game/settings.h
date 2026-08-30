@@ -22,30 +22,14 @@
 #define SETTINGS_H_
 
 #include <filesystem>
-#include <map>
 #include <memory>
 #include <string>
 
 #include "logging.h"
 
-using std::string;
-using std::map;
-
-namespace libconfig
-{
-    class Config;
-}
+namespace toml::inline v3 { class table; }
 
 
-/**
- * This class centralizes the various configuration options of Eliot.
- * It implements the Singleton pattern.
- *
- * Currently, there are few settings, and their initial value is hard-coded.
- * It is possible to load/save the settings from/to a configuration file.
- * In a later phase, it should be possible to override configuration
- * settings with settings given on the command-line (TODO).
- */
 class Settings
 {
     DEFINE_LOGGER();
@@ -55,7 +39,7 @@ public:
     /// Destroy the singleton cleanly
     static void Destroy();
 
-    /// Return the config file directory, with a '/' (or '\') appended to it
+    /// Return the config file directory path
     static std::filesystem::path GetConfigFileDir();
 
     ~Settings();
@@ -63,11 +47,11 @@ public:
     /// Save the current value of the settings to a configuration file
     void save() const;
 
-    void setBool(const string &iName, bool iValue);
-    bool getBool(const string &iName) const;
+    void setBool(const std::string &iName, bool iValue);
+    bool getBool(const std::string &iName) const;
 
-    void setInt(const string &iName, int iValue);
-    int getInt(const string &iName) const;
+    void setInt(const std::string &iName, int iValue);
+    int getInt(const std::string &iName) const;
 
 private:
 
@@ -78,12 +62,12 @@ private:
     /// Name of the file used to store the settings
     std::filesystem::path m_fileName;
 
-#ifdef HAVE_LIBCONFIG
-    std::unique_ptr<libconfig::Config> m_conf;
-#endif
+    // Structured in-memory configuration table managed by toml++
+    std::unique_ptr<toml::table> m_conf;
 
     template<class T>
-    void setValue(const string &iName, T iValue);
+    requires std::same_as<T, int> || std::same_as<T, bool>
+    void setValue(const std::string &iName, T iValue);
 };
 
 #endif

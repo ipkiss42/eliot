@@ -11,11 +11,11 @@
         "boost-spirit",
         "boost-stacktrace",
         "gettext-libintl",
-        "libconfig",
         "libiconv",
         "ncurses",
         "pugixml",
         "readline",
-        "spdlog"
+        "spdlog",
+        "tomlplusplus"
     ]
 }
