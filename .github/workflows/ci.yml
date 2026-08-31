@@ -70,10 +70,12 @@ jobs:
 
     - name: Install build systems
       # First apt install for gperf
-      # Second one is for eliot's build (without dependencies)
+      # Second one for libxcrypt
+      # Third one is for eliot's build (without dependencies)
       run: |
         sudo apt update
         sudo apt install -y autoconf autoconf-archive automake libtool
+        sudo apt install -y libltdl-dev
         sudo apt install -y gettext cmake ninja-build
 
     - name: Setup LLVM-MinGW Toolchain
