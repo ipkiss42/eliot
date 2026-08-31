@@ -29,7 +29,7 @@ TAR = tar -C $(BUILD_DIR)
 CXXFLAGS = -std=c++17
 CPPFLAGS += -I$(PREFIX)/include
 CONFIGURE = CC="$(CC)" CXX="$(CXX)" CPPFLAGS="$(CPPFLAGS)" CXXFLAGS="$(CXXFLAGS)" ./configure --host=$(HOST) --build=$(BUILD) --prefix=$(PREFIX) --enable-static --disable-shared
-CMAKE = cmake -B . -DCMAKE_TOOLCHAIN_FILE=$(BASE)/mingw-w64-x86_64.cmake -DCMAKE_INSTALL_PREFIX="$(PREFIX)"
+CMAKE = cmake -B . -DCMAKE_TOOLCHAIN_FILE=$(BASE)/../cmake/llvm-mingw-compiler.cmake -DCMAKE_INSTALL_PREFIX="$(PREFIX)"
 
 # Dependencies (incomplete list):
 LIBS := iconv gettext boost tomlplusplus pugixml spdlog qt6
@@ -215,7 +215,7 @@ $(QT6_DIR_FLAG): $(QT6_ARCHIVE)
 		-G Ninja \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=$(PREFIX) \
-		-DCMAKE_TOOLCHAIN_FILE=$(BASE)/llvm-mingw-toolchain.cmake \
+		-DCMAKE_TOOLCHAIN_FILE=$(BASE)/../cmake/llvm-mingw-compiler.cmake \
 		-DCMAKE_FIND_ROOT_PATH="$(TOOLCHAIN_PREFIX)${HOST}" \
 		-DQT_HOST_PATH=/usr \
 		-DQT_BUILD_SHARED_LIBS=OFF \
