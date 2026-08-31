@@ -12,8 +12,7 @@ jobs:
 
     env:
       # Force vcpkg to use an explicit local folder inside the workspace
-      VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/vcpkg_cache
-      VCPKG_BINARY_SOURCES: "clear;files,${{ github.workspace }}/vcpkg_cache,readwrite"
+      VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/.vcpkg_cache
 
     steps:
     - name: Checkout code
@@ -39,15 +38,9 @@ jobs:
       uses: actions/cache@v6
       with:
         path: ${{ env.VCPKG_DEFAULT_BINARY_CACHE }}
-        key: ${{ runner.os }}-vcpkg-cache-${{ hashFiles('vcpkg.json') }}
+        key: ${{ runner.os }}-vcpkg-linux-${{ hashFiles('vcpkg.json', 'extras/cmake/vcpkg-linux.toolchain.cmake', 'extras/cmake/x64-linux-release.cmake') }}
         restore-keys: |
-          ${{ runner.os }}-vcpkg-cache-
-
-    - name: Bootstrap vcpkg and install dependencies
-      uses: lukka/run-vcpkg@v11
-      with:
-        # Do not build for vcpkg.json, we will do it with CMake's manifest mode
-        runVcpkgInstall: false
+          ${{ runner.os }}-vcpkg-linux-
 
     - name: Configure CMake
       run: |
@@ -66,8 +59,7 @@ jobs:
 
     env:
       # Force vcpkg to use an explicit local folder inside the workspace
-      VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/vcpkg_cache
-      VCPKG_BINARY_SOURCES: "clear;files,${{ github.workspace }}/vcpkg_cache,readwrite"
+      VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/.vcpkg_cache
 
     steps:
     - name: Checkout code
@@ -98,15 +90,9 @@ jobs:
       uses: actions/cache@v6
       with:
         path: ${{ env.VCPKG_DEFAULT_BINARY_CACHE }}
-        key: ${{ runner.os }}-vcpkg-win-cache-${{ hashFiles('vcpkg.json') }}
+        key: ${{ runner.os }}-vcpkg-win-${{ hashFiles('vcpkg.json', 'extras/cmake/vcpkg-windows.toolchain.cmake', 'extras/cmake/x64-mingw-static-release.cmake', 'extras/cmake/llvm-mingw-compiler.cmake') }}
         restore-keys: |
-          ${{ runner.os }}-vcpkg-win-cache-
-
-    - name: Bootstrap vcpkg and install dependencies
-      uses: lukka/run-vcpkg@v11
-      id: runvcpkg
-      with:
-        runVcpkgInstall: false
+          ${{ runner.os }}-vcpkg-win-
 
     - name: Configure CMake
       run: |
