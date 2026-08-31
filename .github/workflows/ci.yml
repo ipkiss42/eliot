@@ -59,3 +59,46 @@ jobs:
     - name: Compile
       run: cmake --build build --parallel $(nproc)
 
+
+  windows-cross-build:
+    runs-on: ubuntu-26.04
+    env:
+      VCPKG_BINARY_SOURCES: "default,readwrite"
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v7
+
+    - name: Install build systems
+      run: |
+        sudo apt update
+        sudo apt install -y gettext cmake ninja-build
+
+    - name: Setup LLVM-MinGW Toolchain
+      run: |
+        mkdir -p /opt/llvm-mingw
+        curl -L https://github.com/mstorsjo/llvm-mingw/releases/download/20260826/llvm-mingw-20260826-ucrt-ubuntu-22.04-x86_64.tar.xz | tar -xJ --strip-components=1 -C /opt/llvm-mingw
+        echo "/opt/llvm-mingw/bin" >> $GITHUB_PATH
+
+    - name: Set up binary cache storage
+      uses: actions/cache@v6
+      with:
+        path: ~/.cache/vcpkg/archives
+        key: ${{ runner.os }}-vcpkg-win-cache-${{ hashFiles('vcpkg.json') }}
+        restore-keys: |
+          ${{ runner.os }}-vcpkg-win-cache-
+
+    - name: Bootstrap vcpkg and install dependencies
+      uses: lukka/run-vcpkg@v11
+      id: runvcpkg
+      with:
+        runVcpkgInstall: false
+
+    - name: Configure CMake
+      run: |
+        export VCPKG_ROOT="${{ steps.runvcpkg.outputs.RUNVCPKG_VCPKG_ROOT_OUT }}"
+        cmake -B vcpkg-win32 -G Ninja \
+          -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/extras/cmake/vcpkg-windows.toolchain.cmake \
+          -D_WIN32_WINNT=0x0A00
+
+    - name: Compile
+      run: cmake --build vcpkg-win32 --parallel $(nproc)
