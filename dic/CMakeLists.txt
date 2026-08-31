@@ -51,8 +51,8 @@ target_link_libraries(dic
 
 
 # Stacktrace support via Boost.Stacktrace
-target_link_libraries(dic PUBLIC ${CMAKE_DL_LIBS})
 if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+    target_link_libraries(dic PUBLIC ${CMAKE_DL_LIBS})
     # -rdynamic allows having real function names instead of hex codes
     target_link_options(dic INTERFACE -rdynamic)
 endif()

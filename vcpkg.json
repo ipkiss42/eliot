@@ -12,7 +12,10 @@
         "boost-stacktrace",
         "gettext-libintl",
         "libiconv",
-        "ncurses",
+        {
+            "name": "ncurses",
+            "platform": "linux"
+        },
         "pugixml",
         "readline",
         "spdlog",
