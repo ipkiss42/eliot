@@ -2,11 +2,11 @@ BOOST_VERSION := 1.91.0
 EXPAT_VERSION := 2.2.9
 GETTEXT_VERSION := 1.0
 ICONV_VERSION := 1.19
-LIBCONFIG_VERSION := 1.8.2
 PUGIXML_VERSION := 1.16
 QT5_VERSION := 5.6.3
 QT6_VERSION := 6.11.1
 SPDLOG_VERSION := 1.17.0
+TOMLPLUSPLUS_VERSION := 3.4.0
 XERCES_VERSION := 3.2.2
 
 HOST := x86_64-w64-mingw32
@@ -26,14 +26,13 @@ BUILD_DIR = $(BASE)/build
 WGET = wget -c -P $(ARCHIVE_DIR)
 TAR = tar -C $(BUILD_DIR)
 
-# CXXFLAGS = -std=gnu++17 -include $(BASE)/mingw-fix.h
-CXXFLAGS = -std=gnu++17
+CXXFLAGS = -std=c++17
 CPPFLAGS += -I$(PREFIX)/include
 CONFIGURE = CC="$(CC)" CXX="$(CXX)" CPPFLAGS="$(CPPFLAGS)" CXXFLAGS="$(CXXFLAGS)" ./configure --host=$(HOST) --build=$(BUILD) --prefix=$(PREFIX) --enable-static --disable-shared
 CMAKE = cmake -B . -DCMAKE_TOOLCHAIN_FILE=$(BASE)/mingw-w64-x86_64.cmake -DCMAKE_INSTALL_PREFIX="$(PREFIX)"
 
 # Dependencies (incomplete list):
-LIBS := iconv gettext boost libconfig pugixml spdlog qt6
+LIBS := iconv gettext boost tomlplusplus pugixml spdlog qt6
 TARGETS = $(LIBS:%=.%)
 
 .PHONY: help all clean clean-% distclean distclean-%
@@ -127,25 +126,22 @@ $(ICONV_DIR_FLAG): $(ICONV_ARCHIVE)
 	touch $@
 
 
-### libconfig ###
+### tomlplusplus ###
 
-LIBCONFIG_DIR = $(BUILD_DIR)/libconfig-$(LIBCONFIG_VERSION)
-LIBCONFIG_DIR_FLAG = $(LIBCONFIG_DIR)/.flag
-LIBCONFIG_ARCHIVE = $(ARCHIVE_DIR)/v$(LIBCONFIG_VERSION).tar.gz
+TOMLPLUSPLUS_DIR = $(BUILD_DIR)/tomlplusplus-$(TOMLPLUSPLUS_VERSION)
+TOMLPLUSPLUS_DIR_FLAG = $(TOMLPLUSPLUS_DIR)/.flag
+TOMLPLUSPLUS_ARCHIVE = $(ARCHIVE_DIR)/v$(TOMLPLUSPLUS_VERSION).tar.gz
 
-$(LIBCONFIG_ARCHIVE): $(PREFIX_FLAG)
-	$(WGET) https://github.com/hyperrealm/libconfig/archive/$(shell basename $@)
+$(TOMLPLUSPLUS_ARCHIVE): $(PREFIX_FLAG)
+	$(WGET) https://github.com/marzer/tomlplusplus/archive/$(shell basename $@)
 
-$(LIBCONFIG_DIR_FLAG): $(LIBCONFIG_ARCHIVE)
+$(TOMLPLUSPLUS_DIR_FLAG): $(TOMLPLUSPLUS_ARCHIVE)
 	$(TAR) -xvf $<
 	touch $@
 
-.libconfig: $(LIBCONFIG_DIR_FLAG)
-	(cd $(LIBCONFIG_DIR) \
-		&& autoreconf -i \
-		&& patch -p0 < $(BASE)/libconfig++-static-build.patch \
-		&& patch -p0 < $(BASE)/libconfig++-commit.patch \
-		&& $(CONFIGURE) --disable-examples --disable-doc --disable-tests \
+.tomlplusplus: $(TOMLPLUSPLUS_DIR_FLAG)
+	(cd $(TOMLPLUSPLUS_DIR) \
+		&& $(CMAKE) \
 		&& make install)
 	touch $@
 
