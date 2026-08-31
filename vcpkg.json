@@ -17,6 +17,28 @@
             "platform": "linux"
         },
         "pugixml",
+        {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+                "gui",
+                "widgets",
+                "network",
+                "png",
+                {
+                    "name": "fontconfig",
+                    "platform": "linux"
+                },
+                {
+                    "name": "freetype",
+                    "platform": "linux"
+                },
+                {
+                    "name": "xcb",
+                    "platform": "linux"
+                }
+            ]
+        },
         "readline",
         "spdlog",
         "tomlplusplus"

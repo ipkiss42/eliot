@@ -27,10 +27,10 @@ jobs:
         sudo apt update
         sudo apt install -y autoconf autoconf-archive automake libtool
         sudo apt install -y libltdl-dev
-        sudo apt install -y libx11-dev libx11-xcb-dev libxcb-res0-dev libxcb-xinput-dev \
-            libxkbcommon-dev libxkbcommon-x11-dev libxcb-image0-dev libxcb-keysyms1-dev \
-            libxcb-icccm4-dev libxcb-render-util0-dev libxcb-cursor-dev \
-            libgl1-mesa-dev libegl1-mesa-dev libdbus-1-dev libxi-dev libxrender-dev
+        sudo apt install -y libx11-dev libx11-xcb-dev \
+            libxkbcommon-dev libxkbcommon-x11-dev \
+            libgl1-mesa-dev libegl1-mesa-dev libdbus-1-dev libxi-dev \
+            '^libxcb.*-dev' libxrender-dev libglu1-mesa-dev libsm-dev libice-dev
         sudo apt install -y gettext clang-21 cmake ninja-build
 
     # Set up caching
@@ -54,8 +54,7 @@ jobs:
           -DCMAKE_C_COMPILER=clang-21 \
           -DCMAKE_CXX_COMPILER=clang++-21 \
           -DVCPKG_TARGET_TRIPLET=x64-linux-release \
-          -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/extras/cmake/vcpkg-linux.toolchain.cmake \
-          -DENABLE_QT6=OFF
+          -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/extras/cmake/vcpkg-linux.toolchain.cmake
 
     - name: Compile
       run: cmake --build build --parallel $(nproc)
