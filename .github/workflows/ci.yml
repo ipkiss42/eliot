@@ -11,12 +11,28 @@ jobs:
     runs-on: ubuntu-26.04
 
     env:
+      VCPKG_ROOT: ${{ github.workspace }}/vcpkg
       # Force vcpkg to use an explicit local folder inside the workspace
       VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/.vcpkg_cache
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v7
+
+    - name: Clone and sync vcpkg to baseline
+      run: |
+        # Extract the builtin-baseline hash from vcpkg.json
+        BASELINE_SHA=$(grep -o '"builtin-baseline": *"[^"]*"' vcpkg.json | sed 's/.*"builtin-baseline": *"\([^"]*\)".*/\1/')
+        echo "Target Baseline SHA: $BASELINE_SHA"
+
+        # Initialize a local repository folder
+        mkdir -p ${{ env.VCPKG_ROOT }}
+        git init ${{ env.VCPKG_ROOT }}
+
+        # Fetch only the exact baseline commit directly from GitHub (shallow fetch)
+        git -C ${{ env.VCPKG_ROOT }} remote add origin https://github.com/microsoft/vcpkg.git
+        git -C ${{ env.VCPKG_ROOT }} fetch --depth 1 origin "$BASELINE_SHA"
+        git -C ${{ env.VCPKG_ROOT }} checkout FETCH_HEAD
 
     - name: Install host toolchain dependencies
       # First apt install for gperf
@@ -58,12 +74,32 @@ jobs:
     runs-on: ubuntu-26.04
 
     env:
+      VCPKG_ROOT: ${{ github.workspace }}/vcpkg
       # Force vcpkg to use an explicit local folder inside the workspace
       VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/.vcpkg_cache
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v7
+
+    - name: Clone vcpkg repository
+      run: |
+        git clone https://github.com ${{ env.VCPKG_ROOT }}
+
+    - name: Clone and sync vcpkg to baseline
+      run: |
+        # Extract the builtin-baseline hash from vcpkg.json
+        BASELINE_SHA=$(grep -o '"builtin-baseline": *"[^"]*"' vcpkg.json | sed 's/.*"builtin-baseline": *"\([^"]*\)".*/\1/')
+        echo "Target Baseline SHA: $BASELINE_SHA"
+
+        # Initialize a local repository folder
+        mkdir -p ${{ env.VCPKG_ROOT }}
+        git init ${{ env.VCPKG_ROOT }}
+
+        # Fetch only the exact baseline commit directly from GitHub (shallow fetch)
+        git -C ${{ env.VCPKG_ROOT }} remote add origin https://github.com/microsoft/vcpkg.git
+        git -C ${{ env.VCPKG_ROOT }} fetch --depth 1 origin "$BASELINE_SHA"
+        git -C ${{ env.VCPKG_ROOT }} checkout FETCH_HEAD
 
     - name: Install build systems
       # First apt install for gperf
@@ -97,9 +133,9 @@ jobs:
     - name: Configure CMake
       run: |
         export VCPKG_ROOT="${{ steps.runvcpkg.outputs.RUNVCPKG_VCPKG_ROOT_OUT }}"
-        cmake -B vcpkg-win32 -G Ninja \
+        cmake -B build -G Ninja \
           -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/extras/cmake/vcpkg-windows.toolchain.cmake \
           -D_WIN32_WINNT=0x0A00
 
     - name: Compile
-      run: cmake --build vcpkg-win32 --parallel $(nproc)
+      run: cmake --build build --parallel $(nproc)
