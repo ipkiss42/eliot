@@ -17,7 +17,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v7
+      uses: actions/checkout@f548e57e544e1ff5a4c46bf1e1b8685f8e4a348a
 
     - name: Clone and sync vcpkg to baseline
       run: bash .github/scripts/setup-vcpkg.sh
@@ -27,7 +27,7 @@ jobs:
 
     # Set up caching
     - name: Set up binary cache storage
-      uses: actions/cache@v6
+      uses: actions/cache@3edfce9056124e459a23f683a21433670d47daca
       with:
         path: ${{ env.VCPKG_DEFAULT_BINARY_CACHE }}
         key: ${{ runner.os }}-vcpkg-linux-${{ hashFiles('vcpkg.json', 'extras/cmake/vcpkg-linux.toolchain.cmake', 'extras/cmake/x64-linux-release.cmake') }}
@@ -57,7 +57,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v7
+      uses: actions/checkout@f548e57e544e1ff5a4c46bf1e1b8685f8e4a348a
 
     - name: Clone and sync vcpkg to baseline
       run: bash .github/scripts/setup-vcpkg.sh
@@ -72,7 +72,7 @@ jobs:
         echo "/opt/llvm-mingw/bin" >> $GITHUB_PATH
 
     - name: Set up binary cache storage
-      uses: actions/cache@v6
+      uses: actions/cache@3edfce9056124e459a23f683a21433670d47daca
       with:
         path: ${{ env.VCPKG_DEFAULT_BINARY_CACHE }}
         key: ${{ runner.os }}-vcpkg-win-${{ hashFiles('vcpkg.json', 'extras/cmake/vcpkg-windows.toolchain.cmake', 'extras/cmake/x64-mingw-static-release.cmake', 'extras/cmake/llvm-mingw-compiler.cmake') }}

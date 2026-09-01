@@ -1,0 +1,21 @@
+version: 2
+updates:
+  # Update vcpkg.json baseline
+  - package-ecosystem: "vcpkg"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    groups:
+      vcpkg-dependencies:
+        patterns:
+          - "*" # Bundles all baseline updates into a single PR
+
+  # Update SHAs for the GitHub actions in ci.yml
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    groups:
+      actions-updates:
+        patterns:
+          - "*" # Bundles all GitHub Actions SHA bumps into a single PR
