@@ -83,10 +83,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v7
 
-    - name: Clone vcpkg repository
-      run: |
-        git clone https://github.com ${{ env.VCPKG_ROOT }}
-
     - name: Clone and sync vcpkg to baseline
       run: |
         # Extract the builtin-baseline hash from vcpkg.json
