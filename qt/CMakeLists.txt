@@ -136,10 +136,6 @@ if(BUILD_QT)
     # Enable a single "impossible" check, because clang-tidy dislikes having no check at all
     file(WRITE "${AUTOGEN_CONFIG_DIR}/.clang-tidy" "Checks: '-*,google-objc-function-naming'\n")
 
-    if(HAVE_LIBCONFIG)
-        target_link_libraries(eliot PRIVATE ${LIBCONFIG_LIBRARIES})
-    endif()
-
     set_target_properties(eliot PROPERTIES ENABLE_EXPORTS TRUE)
     if(CMAKE_SYSTEM_NAME MATCHES "Linux")
         target_link_options(eliot PRIVATE "-rdynamic")

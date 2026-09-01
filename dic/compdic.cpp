@@ -24,12 +24,10 @@
 #include <cstdint>
 #include <ctime>
 #include <cwctype>
-#include <fcntl.h>
 #include <filesystem>
 #include <fstream>
 #include <functional>
 #include <map>
-#include <sys/types.h>
 
 #include "compdic.h"
 #include "encoding.h"

@@ -17,12 +17,9 @@
 /* Define to 1 to enable Native Language Support (NLS) */
 #cmakedefine01 ENABLE_NLS
 
-#cmakedefine HAVE_SYS_STAT_H 1
-#cmakedefine HAVE_SYS_TYPES_H 1
 #cmakedefine HAVE_READLINE 1
 
 #cmakedefine HAVE_WCWIDTH 1
-#cmakedefine HAVE_LIBCONFIG 1
 
 /* Ncurses wide-character header availability mapping */
 #cmakedefine HAVE_NCURSESW_NCURSES_H 1

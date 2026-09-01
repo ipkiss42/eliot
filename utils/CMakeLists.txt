@@ -32,10 +32,6 @@ if(ENABLE_TEXT)
 
     target_link_libraries(eliottxt PRIVATE game Intl::Intl Iconv::Iconv)
 
-    if(HAVE_LIBCONFIG)
-        target_link_libraries(eliottxt PRIVATE ${LIBCONFIG_LIBRARIES})
-    endif()
-
     if(HAVE_READLINE)
         target_link_libraries(eliottxt PRIVATE PkgConfig::readline)
     endif()
@@ -61,10 +57,6 @@ if(BUILD_NCURSES)
         Iconv::Iconv
         ${CURSES_LIBRARIES}
     )
-
-    if(HAVE_LIBCONFIG)
-        target_link_libraries(eliotcurses PRIVATE ${LIBCONFIG_LIBRARIES})
-    endif()
 
     # Include Curses system search headers if needed
     target_include_directories(eliotcurses PRIVATE ${CURSES_INCLUDE_DIRS})
