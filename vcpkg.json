@@ -41,6 +41,11 @@
         },
         "readline",
         "spdlog",
-        "tomlplusplus"
+        "tomlplusplus",
+        {
+            "name": "xkbcommon",
+            "features": ["x11"],
+            "platform": "linux"
+        }
     ]
 }
