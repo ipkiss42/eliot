@@ -20,6 +20,9 @@ endif()
 # XXX: temporary. This saves time locally until I find the right vcpkg.json and toolchain setups
 set(VCPKG_CLEAN_BUILDTREES OFF CACHE BOOL "" FORCE)
 
+# XXX: try to bridge the host apt-installed packages with the built ones
+set(ENV{PKG_CONFIG_PATH} "/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig:$ENV{PKG_CONFIG_PATH}")
+
 ## Load the vcpkg toolchain
 include("${INTERNAL_TOOLCHAIN_FILE}")
 
