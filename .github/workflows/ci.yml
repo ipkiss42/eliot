@@ -60,6 +60,7 @@ jobs:
 
     - name: Configure CMake
       run: |
+        mkdir -p ${{ env.VCPKG_DEFAULT_BINARY_CACHE }}
         cmake -B build -G Ninja \
           -DCMAKE_C_COMPILER=clang-21 \
           -DCMAKE_CXX_COMPILER=clang++-21 \
@@ -132,7 +133,7 @@ jobs:
 
     - name: Configure CMake
       run: |
-        export VCPKG_ROOT="${{ steps.runvcpkg.outputs.RUNVCPKG_VCPKG_ROOT_OUT }}"
+        mkdir -p ${{ env.VCPKG_DEFAULT_BINARY_CACHE }}
         cmake -B build -G Ninja \
           -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/extras/cmake/vcpkg-windows.toolchain.cmake \
           -D_WIN32_WINNT=0x0A00
