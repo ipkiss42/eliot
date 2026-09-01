@@ -12,10 +12,7 @@
     "boost-stacktrace",
     "gettext-libintl",
     "libiconv",
-    {
-      "name": "ncurses",
-      "platform": "linux"
-    },
+    "ncurses",
     "pugixml",
     {
       "name": "qtbase",

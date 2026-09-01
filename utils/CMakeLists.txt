@@ -55,11 +55,13 @@ if(BUILD_NCURSES)
         game
         Intl::Intl
         Iconv::Iconv
-        ${CURSES_LIBRARIES}
+        Curses::Curses
     )
 
-    # Include Curses system search headers if needed
-    target_include_directories(eliotcurses PRIVATE ${CURSES_INCLUDE_DIRS})
+    # Force static linking on Windows
+    if(WIN32)
+        target_compile_definitions(eliotcurses PRIVATE NCURSES_STATIC=1)
+    endif()
 
     # Installation configuration
     install(TARGETS eliotcurses DESTINATION bin)

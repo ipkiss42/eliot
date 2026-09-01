@@ -94,16 +94,25 @@ set(BUILD_NCURSES FALSE)
 if(NOT ENABLE_NCURSES STREQUAL "OFF")
     set(CURSES_NEED_NCURSES TRUE)
     set(CURSES_NEED_WIDE TRUE)
-
-    find_package(Curses MODULE)
+    find_package(Curses)
 
     # Check specifically for wide-character ncurses (ncursesw)
     if(CURSES_FOUND)
         set(BUILD_NCURSES TRUE)
 
+        if(NOT TARGET Curses::Curses)
+            add_library(Curses::Curses INTERFACE IMPORTED)
+            set_target_properties(Curses::Curses PROPERTIES
+                INTERFACE_INCLUDE_DIRECTORIES "${CURSES_INCLUDE_DIRS}"
+                INTERFACE_LINK_LIBRARIES "${CURSES_LIBRARIES}"
+            )
+        endif()
+
+        set(CMAKE_REQUIRED_INCLUDES ${CURSES_INCLUDE_DIRS})
         check_include_file("ncursesw/ncurses.h" HAVE_NCURSESW_NCURSES_H)
         check_include_file("ncursesw.h" HAVE_NCURSESW_H)
         check_include_file("ncurses.h" HAVE_NCURSES_H)
+        unset(CMAKE_REQUIRED_INCLUDES)
     else()
         # Enforce strict validation: If the user explicitly requested it via "ON", hard-fail
         if(ENABLE_NCURSES STREQUAL "ON")
