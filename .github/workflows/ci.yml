@@ -20,34 +20,10 @@ jobs:
       uses: actions/checkout@v7
 
     - name: Clone and sync vcpkg to baseline
-      run: |
-        # Extract the builtin-baseline hash from vcpkg.json
-        BASELINE_SHA=$(grep -o '"builtin-baseline": *"[^"]*"' vcpkg.json | sed 's/.*"builtin-baseline": *"\([^"]*\)".*/\1/')
-        echo "Target Baseline SHA: $BASELINE_SHA"
-
-        # Initialize a local repository folder
-        mkdir -p ${{ env.VCPKG_ROOT }}
-        git init ${{ env.VCPKG_ROOT }}
-
-        # Fetch only the exact baseline commit directly from GitHub (shallow fetch)
-        git -C ${{ env.VCPKG_ROOT }} remote add origin https://github.com/microsoft/vcpkg.git
-        git -C ${{ env.VCPKG_ROOT }} fetch --depth 1 origin "$BASELINE_SHA"
-        git -C ${{ env.VCPKG_ROOT }} checkout FETCH_HEAD
+      run: bash .github/scripts/setup-vcpkg.sh
 
     - name: Install host toolchain dependencies
-      # First apt install for gperf
-      # Second one for libxcrypt
-      # Third one for qtbase
-      # Fourth one is for eliot's build (without dependencies)
-      run: |
-        sudo apt update
-        sudo apt install -y autoconf autoconf-archive automake libtool
-        sudo apt install -y libltdl-dev
-        sudo apt install -y pkgconf libx11-dev libx11-xcb-dev \
-            libxkbcommon-dev libxkbcommon-x11-dev libxcb-xkb-dev \
-            libgl1-mesa-dev libegl1-mesa-dev libdbus-1-dev libxi-dev \
-            '^libxcb.*-dev' libxrender-dev libglu1-mesa-dev libsm-dev libice-dev
-        sudo apt install -y gettext clang-21 cmake ninja-build
+      run: bash .github/scripts/apt-install.sh clang-21
 
     # Set up caching
     - name: Set up binary cache storage
@@ -84,34 +60,10 @@ jobs:
       uses: actions/checkout@v7
 
     - name: Clone and sync vcpkg to baseline
-      run: |
-        # Extract the builtin-baseline hash from vcpkg.json
-        BASELINE_SHA=$(grep -o '"builtin-baseline": *"[^"]*"' vcpkg.json | sed 's/.*"builtin-baseline": *"\([^"]*\)".*/\1/')
-        echo "Target Baseline SHA: $BASELINE_SHA"
+      run: bash .github/scripts/setup-vcpkg.sh
 
-        # Initialize a local repository folder
-        mkdir -p ${{ env.VCPKG_ROOT }}
-        git init ${{ env.VCPKG_ROOT }}
-
-        # Fetch only the exact baseline commit directly from GitHub (shallow fetch)
-        git -C ${{ env.VCPKG_ROOT }} remote add origin https://github.com/microsoft/vcpkg.git
-        git -C ${{ env.VCPKG_ROOT }} fetch --depth 1 origin "$BASELINE_SHA"
-        git -C ${{ env.VCPKG_ROOT }} checkout FETCH_HEAD
-
-    - name: Install build systems
-      # First apt install for gperf
-      # Second one for libxcrypt
-      # Third one for qtbase
-      # Fourth one is for eliot's build (without dependencies)
-      run: |
-        sudo apt update
-        sudo apt install -y autoconf autoconf-archive automake libtool
-        sudo apt install -y libltdl-dev
-        sudo apt install -y pkgconf libx11-dev libx11-xcb-dev \
-            libxkbcommon-dev libxkbcommon-x11-dev libxcb-xkb-dev \
-            libgl1-mesa-dev libegl1-mesa-dev libdbus-1-dev libxi-dev \
-            '^libxcb.*-dev' libxrender-dev libglu1-mesa-dev libsm-dev libice-dev
-        sudo apt install -y gettext cmake ninja-build
+    - name: Install host toolchain dependencies
+      run: bash .github/scripts/apt-install.sh clang-21
 
     - name: Setup LLVM-MinGW Toolchain
       run: |
