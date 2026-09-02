@@ -33,6 +33,8 @@
 #include "encoding.h"
 #include "dic_exception.h"
 
+using namespace std;
+
 #define MAX_STRING_LENGTH 200
 
 INIT_LOGGER(dic, CompDic);

@@ -36,8 +36,6 @@ class Rack;
 class Round;
 class Results;
 
-using namespace std;
-
 #define BOARD_MIN 1
 #define BOARD_MAX 15
 #define BOARD_DIM 15
@@ -61,7 +59,7 @@ public:
     bool isVacant(int iRow, int iCol) const;
 
     const Tile& getTile(int iRow, int iCol) const;
-    wstring getDisplayStr(int iRow, int iCol) const;
+    std::wstring getDisplayStr(int iRow, int iCol) const;
 
     void addRound(const Dictionary &iDic, const Round &iRound);
     void removeRound(const Dictionary &iDic, const Round &iRound);
@@ -79,10 +77,10 @@ public:
     void searchFirst(const Dictionary &iDic, const Rack &iRack, Results &oResults) const;
 
     /**
-     * 
+     *
      */
-    string getCellContent_row(int row, int col) const;
-    string getCellContent_col(int row, int col) const;
+    std::string getCellContent_row(int row, int col) const;
+    std::string getCellContent_col(int row, int col) const;
 
 private:
 

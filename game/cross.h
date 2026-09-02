@@ -22,15 +22,11 @@
 #ifndef CROSS_H_
 #define CROSS_H_
 
+#include <string>
+
 #include "tile.h"
 #include "logging.h"
 
-using namespace std;
-
-
-/*************************
- *
- *************************/
 
 // TODO: implement using the bitset class
 class Cross
@@ -53,7 +49,7 @@ public:
     // Standard set methods (almost)
     void insert(const Tile& iTile);
 
-    string getHexContent() const;
+    std::string getHexContent() const;
 private:
     /// Mask indicating which tiles are accepted for the cross check
     unsigned int m_mask;

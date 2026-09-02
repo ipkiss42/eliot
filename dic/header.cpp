@@ -32,6 +32,8 @@
 #include "encoding.h"
 #include "dic_exception.h"
 
+using namespace std;
+
 
 INIT_LOGGER(dic, Header);
 

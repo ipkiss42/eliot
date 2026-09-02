@@ -128,7 +128,7 @@ void PlayedRack::setNew(const Rack &iRack)
 }
 
 
-void PlayedRack::setManual(const wstring& iLetters)
+void PlayedRack::setManual(const std::wstring& iLetters)
 {
     reset();
 
@@ -196,9 +196,9 @@ void PlayedRack::shuffle()
 }
 
 
-wstring PlayedRack::toString(display_mode mode) const
+std::wstring PlayedRack::toString(display_mode mode) const
 {
-    wstring s;
+    std::wstring s;
 
     if (mode >= RACK_EXTRA && m_reject)
     {

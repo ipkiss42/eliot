@@ -23,11 +23,12 @@
 #define ROUND_H_
 
 #include <vector>
+
 #include "tile.h"
 #include "coord.h"
 #include "logging.h"
 
-using namespace std;
+using std::vector;
 
 
 /**

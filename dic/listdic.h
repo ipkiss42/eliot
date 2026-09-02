@@ -28,7 +28,7 @@
 
 class Dictionary;
 
-using namespace std;
+using std::ostream;
 
 
 class ListDic

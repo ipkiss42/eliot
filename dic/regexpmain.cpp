@@ -34,6 +34,8 @@
 #include "dic_exception.h"
 #include "encoding.h"
 
+using namespace std;
+
 
 void usage(const char *iBinaryName)
 {

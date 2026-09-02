@@ -52,6 +52,8 @@
 #include "move.h"
 #include "random.h"
 
+using namespace std;
+
 class Game;
 
 

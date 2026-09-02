@@ -19,8 +19,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include "config.h"
-
 #include <fstream>
 
 #include "dic.h"
@@ -30,6 +28,7 @@
 #include "encoding.h"
 #include "tile.h"
 
+using namespace std;
 
 INIT_LOGGER(dic, Dictionary);
 

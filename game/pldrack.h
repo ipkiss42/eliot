@@ -22,14 +22,15 @@
 #ifndef PLAYEDRACK_H_
 #define PLAYEDRACK_H_
 
-#include <vector>
 #include <string>
+#include <vector>
+
 #include "tile.h"
 #include "logging.h"
 
 class Rack;
 
-using namespace std;
+using std::vector;
 
 
 /**
@@ -53,7 +54,7 @@ public:
 
     void setOld(const Rack &iRack);
     void setNew(const Rack &iRack);
-    void setManual(const wstring& iLetters);
+    void setManual(const std::wstring& iLetters);
     void setReject(bool iReject = true) { m_reject = iReject; }
 
     unsigned int getNbTiles() const  { return getNbNew() + getNbOld(); }
@@ -79,7 +80,7 @@ public:
         RACK_EXTRA,
         RACK_DEBUG
     };
-    wstring toString(display_mode iShowExtraSigns = RACK_EXTRA) const;
+    std::wstring toString(display_mode iShowExtraSigns = RACK_EXTRA) const;
 
 private:
     bool m_reject{false};

@@ -49,7 +49,7 @@ bool Cross::isAny() const
 }
 
 
-string Cross::getHexContent() const
+std::string Cross::getHexContent() const
 {
     return std::format("{:08x}", m_mask);
 }

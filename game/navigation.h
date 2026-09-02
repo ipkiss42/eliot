@@ -29,7 +29,7 @@
 class Turn;
 class Command;
 
-using namespace std;
+using std::vector;
 
 
 /**

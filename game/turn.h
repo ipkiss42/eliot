@@ -27,7 +27,7 @@
 
 #include "logging.h"
 
-using namespace std;
+using std::vector;
 
 class Command;
 
@@ -96,7 +96,7 @@ class Turn
 
         bool isHumanIndependent() const;
 
-        wstring toString() const;
+        std::wstring toString() const;
 
         /// Execute all the commands which were not yet executed
         void execute();

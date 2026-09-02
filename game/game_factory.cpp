@@ -41,6 +41,8 @@
 #include "encoding.h"
 #include "xml_reader.h"
 
+using namespace std;
+
 
 INIT_LOGGER(game, GameFactory);
 

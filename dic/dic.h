@@ -22,15 +22,18 @@
 #ifndef DIC_H_
 #define DIC_H_
 
-#include <stdint.h>
+#include <cstdint>
+#include <map>
 #include <string>
 #include <vector>
-#include <map>
 
 #include "tile.h"
 #include "logging.h"
 
-using namespace std;
+using std::map;
+using std::string;
+using std::wstring;
+using std::vector;
 
 
 /**

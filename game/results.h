@@ -22,12 +22,10 @@
 #ifndef RESULTS_H_
 #define RESULTS_H_
 
-#include <vector>
 #include <map>
+
 #include "round.h"
 #include "logging.h"
-
-using namespace std;
 
 class Dictionary;
 class Board;
@@ -133,7 +131,7 @@ public:
 
 private:
     int m_limit;
-    map<int, int> m_scoresCount;
+    std::map<int, int> m_scoresCount;
     int m_total{0};
     int m_minScore{-1};
 };

@@ -22,13 +22,13 @@
 #ifndef RACK_H_
 #define RACK_H_
 
-#include <vector>
 #include <string>
+#include <vector>
 
 #include "tile.h"
 #include "logging.h"
 
-using namespace std;
+using std::vector;
 
 
 /**
@@ -52,7 +52,7 @@ public:
     void clear();
     void getTiles(vector<Tile> &oTiles) const;
 
-    wstring toString() const;
+    std::wstring toString() const;
 
     bool operator==(const Rack &iOther) const;
 

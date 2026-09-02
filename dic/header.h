@@ -30,7 +30,12 @@
 
 #include "logging.h"
 
-using namespace std;
+using std::map;
+using std::vector;
+using std::string;
+using std::wstring;
+using std::istream;
+using std::ostream;
 
 // XXX: duplicated typedef (also present in dic.h)
 using wdstring = wstring;

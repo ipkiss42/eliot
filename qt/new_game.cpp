@@ -221,7 +221,7 @@ PublicGame * NewGame::createGame()
         !radioButtonTopping->isChecked())
     {
         const QList<PlayerDef> &players = m_helper->getPlayers(false);
-        set<QString> allNames;
+        std::set<QString> allNames;
         for (int num = 0; num < players.size(); ++num)
         {
             QString name = players.at(num).name;
@@ -242,11 +242,11 @@ PublicGame * NewGame::createGame()
             QString type = players.at(num).type;
             std::unique_ptr<Player> player;
             if (type == _q(kHUMAN))
-                player = make_unique<HumanPlayer>();
+                player = std::make_unique<HumanPlayer>();
             else
             {
                 double level = players.at(num).level.toInt();
-                player = make_unique<AIPercent>(level / 100.);
+                player = std::make_unique<AIPercent>(level / 100.);
             }
             player->setName(wfq(name));
             game->addPlayer(std::move(player));
@@ -254,7 +254,7 @@ PublicGame * NewGame::createGame()
     }
     else
     {
-        game->addPlayer(make_unique<HumanPlayer>());
+        game->addPlayer(std::make_unique<HumanPlayer>());
     }
 
     return game;
