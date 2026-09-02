@@ -18,6 +18,9 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
+#include <algorithm>
+#include <utility>
+
 #include "csv_helper.h"
 #include "encoding.h"
 
@@ -29,8 +32,6 @@ INIT_LOGGER(dic, CsvHelper);
 vector<CsvHelper::DataRow> CsvHelper::readStream(istream &input)
 {
     vector<DataRow> data;
-    auto minLength = (size_t) -1;
-    size_t maxLength = 0;
     string line;
     string currField;
     // XXX: Using getline() prevents from parsing newline chars in fields.
@@ -40,14 +41,13 @@ vector<CsvHelper::DataRow> CsvHelper::readStream(istream &input)
         DataRow row;
         // Parse the line
         bool inQuotes = false;
-        size_t pos = 0;
-        while (pos < line.size())
+        for (size_t pos = 0; pos < line.size(); ++pos)
         {
             char c = line[pos];
             if (c == ',' && !inQuotes)
             {
                 // Field separator
-                row.push_back(currField);
+                row.push_back(std::move(currField));
                 currField.clear();
             }
             else if (c == '"')
@@ -86,30 +86,29 @@ vector<CsvHelper::DataRow> CsvHelper::readStream(istream &input)
                 // Normal char
                 currField.push_back(c);
             }
-
-            // Next char
-            ++pos;
         }
 
         // Add the last field of the line
-        row.push_back(currField);
+        row.push_back(std::move(currField));
         currField.clear();
 
-        data.push_back(row);
-
-        if (minLength > row.size())
-            minLength = row.size();
-        if (maxLength < row.size())
-            maxLength = row.size();
+        data.push_back(std::move(row));
     }
 
     // Make sure we have a constant number of fields on the lines
-    if (!data.empty() && minLength != maxLength)
+    if (!data.empty())
     {
-        throw CsvException(_fmt(
-            _("Invalid CSV file (variable number of fields, from {0} to {1})"),
-            minLength, maxLength
-        ));
+        auto [minIt, maxIt] = std::ranges::minmax_element(data, {}, [](const DataRow& r) { return r.size(); });
+        size_t minLength = minIt->size();
+        size_t maxLength = maxIt->size();
+
+        if (minLength != maxLength)
+        {
+            throw CsvException(_fmt(
+                _("Invalid CSV file (variable number of fields, from {0} to {1})"),
+                minLength, maxLength
+            ));
+        }
     }
 
     return data;
@@ -122,11 +121,10 @@ void CsvHelper::writeStream(ostream &output, const vector<DataRow> &iData)
         return;
 
     // Make sure the rows have the same number of fields
-    size_t firstLength = iData.front().size();
-    for (const DataRow &row : iData)
+    size_t expectedSize = iData.front().size();
+    if (!std::ranges::all_of(iData, [expectedSize](const DataRow& r) { return r.size() == expectedSize; }))
     {
-        if (row.size() != firstLength)
-            throw CsvException(_("Invalid CSV data (variable number of fields)"));
+        throw CsvException(_("Invalid CSV data (variable number of fields)"));
     }
 
     for (const DataRow &row : iData)

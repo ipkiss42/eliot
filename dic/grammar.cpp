@@ -18,8 +18,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *****************************************************************************/
 
-#include <string>
+#include <iterator>
+#include <string_view>
 #include <stack>
+
 #include <boost/spirit/include/classic_core.hpp>
 #include <boost/spirit/include/classic_chset.hpp>
 #include <boost/spirit/include/classic_ast.hpp>
@@ -41,6 +43,7 @@ using namespace std;
 using iterator_t = const wchar_t *;
 using parse_tree_match_t = tree_match<iterator_t>;
 using iter_t = parse_tree_match_t::const_tree_iterator;
+using tree_node_t = parse_tree_match_t::node_t;
 
 
 struct RegexpGrammar : grammar<RegexpGrammar>
@@ -119,146 +122,131 @@ struct RegexpGrammar : grammar<RegexpGrammar>
 };
 
 
-void evaluate(const Header &iHeader, iter_t const& i, stack<Node*> &evalStack,
+void evaluate(const Header &iHeader, const tree_node_t &i, stack<Node*> &evalStack,
               searchRegExpLists &iList, bool negate = false)
 {
-    if (i->value.id() == RegexpGrammar::alphavarId)
+    std::wstring_view valueView(&*i.value.begin(), std::distance(i.value.begin(), i.value.end()));
+
+    if (i.value.id() == RegexpGrammar::alphavarId)
     {
-        assert(i->children.size() == 0);
+        assert(i.children.size() == 0);
 
         // Extract the character and convert it to its internal code
-        uint8_t code = iHeader.getCodeFromChar(*i->value.begin());
-        Node *n = new Node(NODE_VAR, code, nullptr, nullptr);
-        evalStack.push(n);
+        uint8_t code = iHeader.getCodeFromChar(valueView.front());
+        evalStack.push(new Node(NODE_VAR, code, nullptr, nullptr));
     }
-    else if (i->value.id() == RegexpGrammar::choiceId)
+    else if (i.value.id() == RegexpGrammar::choiceId)
     {
-        assert(i->children.size() == 0);
+        assert(i.children.size() == 0);
 
-        wstring choiceLetters(i->value.begin(), i->value.end());
+        wstring choiceLetters(valueView);
         // Make sure the letters are in upper case
         choiceLetters = toUpper(choiceLetters);
         // The dictionary letters are already in upper case
         const wstring &letters = iHeader.getLetters();
-        wstring::const_iterator itLetter;
         // j is the index of the new list we create
         size_t j = iList.symbl.size();
         iList.symbl.push_back(RE_ALL_MATCH + j);
         iList.letters.emplace_back(DIC_LETTERS + 1, false);
-        for (itLetter = letters.begin(); itLetter != letters.end(); ++itLetter)
+        for (wchar_t letter : letters)
         {
-            bool contains = (choiceLetters.find(*itLetter) != string::npos);
-            iList.letters[j][iHeader.getCodeFromChar(*itLetter)] =
+            bool contains = choiceLetters.contains(letter);
+            iList.letters[j][iHeader.getCodeFromChar(letter)] =
                 (contains ? !negate : negate);
         }
-        Node *node = new Node(NODE_VAR, iList.symbl[j], nullptr, nullptr);
-        evalStack.push(node);
+        evalStack.push(new Node(NODE_VAR, iList.symbl[j], nullptr, nullptr));
     }
-    else if (i->value.id() == RegexpGrammar::varId)
+    else if (i.value.id() == RegexpGrammar::varId)
     {
-        assert(i->children.size() == 0);
+        assert(i.children.size() == 0);
 
-        string var(i->value.begin(), i->value.end());
-        Node *node = nullptr;
-        if (var == ":v:")
-            node = new Node(NODE_VAR, RE_VOWL_MATCH, nullptr, nullptr);
-        else if (var == ":c:")
-            node = new Node(NODE_VAR, RE_CONS_MATCH, nullptr, nullptr);
-        else if (var == ":1:")
-            node = new Node(NODE_VAR, RE_USR1_MATCH, nullptr, nullptr);
-        else if (var == ":2:")
-            node = new Node(NODE_VAR, RE_USR2_MATCH, nullptr, nullptr);
-        else if (var == ".")
-            node = new Node(NODE_VAR, RE_ALL_MATCH, nullptr, nullptr);
+        uint8_t matchType = RE_ALL_MATCH;
+        if (valueView == L":v:")
+            matchType = RE_VOWL_MATCH;
+        else if (valueView == L":c:")
+            matchType = RE_CONS_MATCH;
+        else if (valueView == L":1:")
+            matchType = RE_USR1_MATCH;
+        else if (valueView == L":2:")
+            matchType = RE_USR2_MATCH;
+        else if (valueView == L".")
+            matchType = RE_ALL_MATCH;
         else
             assert(0);
 
-        evalStack.push(node);
+        evalStack.push(new Node(NODE_VAR, matchType, nullptr, nullptr));
     }
-    else if (i->value.id() == RegexpGrammar::groupId)
+    else if (i.value.id() == RegexpGrammar::groupId)
     {
-        if (*i->value.begin() == L'(')
+        if (valueView.starts_with(L'('))
         {
-            assert(i->children.size() != 0);
+            assert(i.children.size() != 0);
             // Create a node for each child
-            iter_t iter;
-            for (iter = i->children.begin(); iter != i->children.end(); ++iter)
-                evaluate(iHeader, iter, evalStack, iList);
+            for (const auto &child : i.children)
+                evaluate(iHeader, child, evalStack, iList);
             // "Concatenate" the created child nodes with AND nodes
-            for (unsigned int j = 0; j < i->children.size() - 1; ++j)
+            for (unsigned int j = 0; j < i.children.size() - 1; ++j)
             {
                 Node *old2 = evalStack.top();
                 evalStack.pop();
                 Node *old1 = evalStack.top();
                 evalStack.pop();
-                Node *node = new Node(NODE_AND, '\0', old1, old2);
-                evalStack.push(node);
+                evalStack.push(new Node(NODE_AND, '\0', old1, old2));
             }
         }
-        else if (*i->value.begin() == L'[')
+        else if (valueView.starts_with(L'['))
         {
-            assert(i->children.size() == 1);
-            bool hasCaret = (i->value.begin() + 1 != i->value.end());
-            evaluate(iHeader, i->children.begin(), evalStack, iList, hasCaret);
+            assert(i.children.size() == 1);
+            bool hasCaret = valueView.size() > 1;
+            evaluate(iHeader, i.children.front(), evalStack, iList, hasCaret);
         }
         else
             assert(0);
     }
-    else if (i->value.id() == RegexpGrammar::repeatId)
+    else if (i.value.id() == RegexpGrammar::repeatId)
     {
-        assert(i->children.size() == 1);
-        evaluate(iHeader, i->children.begin(), evalStack, iList);
+        assert(i.children.size() == 1);
+        evaluate(iHeader, i.children.front(), evalStack, iList);
 
-        if (*i->value.begin() == L'*')
+        Node *old = evalStack.top();
+        evalStack.pop();
+
+        if (*i.value.begin() == L'*')
         {
-            assert(i->children.size() == 1);
-            Node *old = evalStack.top();
-            evalStack.pop();
-            Node *node = new Node(NODE_STAR, '\0', old, nullptr);
-            evalStack.push(node);
+            evalStack.push(new Node(NODE_STAR, '\0', old, nullptr));
         }
-        else if (*i->value.begin() == L'+')
+        else if (*i.value.begin() == L'+')
         {
-            assert(i->children.size() == 1);
-            Node *old = evalStack.top();
-            evalStack.pop();
-            Node *node = new Node(NODE_PLUS, '\0', old, nullptr);
-            evalStack.push(node);
+            evalStack.push(new Node(NODE_PLUS, '\0', old, nullptr));
         }
-        else if (*i->value.begin() == L'?')
+        else if (*i.value.begin() == L'?')
         {
-            assert(i->children.size() == 1);
-            Node *old = evalStack.top();
-            evalStack.pop();
             Node *epsilon = new Node(NODE_VAR, RE_EPSILON, nullptr, nullptr);
-            Node *node = new Node(NODE_OR, '\0', old, epsilon);
-            evalStack.push(node);
+            evalStack.push(new Node(NODE_OR, '\0', old, epsilon));
         }
         else
             assert(0);
     }
-    else if (i->value.id() == RegexpGrammar::exprId)
+    else if (i.value.id() == RegexpGrammar::exprId)
     {
-        assert(i->children.size() == 2);
-        evaluate(iHeader, i->children.begin(), evalStack, iList);
-        evaluate(iHeader, i->children.begin() + 1, evalStack, iList);
+        assert(i.children.size() == 2);
+        evaluate(iHeader, i.children.front(), evalStack, iList);
+        evaluate(iHeader, *(i.children.begin() + 1), evalStack, iList);
 
         Node *old2 = evalStack.top();
         evalStack.pop();
         Node *old1 = evalStack.top();
         evalStack.pop();
-        Node *node = new Node(NODE_AND, '\0', old1, old2);
-        evalStack.push(node);
+        evalStack.push(new Node(NODE_AND, '\0', old1, old2));
     }
-    else if (i->value.id() == RegexpGrammar::wrapperId)
+    else if (i.value.id() == RegexpGrammar::wrapperId)
     {
-        assert(i->children.size() == 2);
-        evaluate(iHeader, i->children.begin(), evalStack, iList);
+        assert(i.children.size() == 2);
+        evaluate(iHeader, i.children.front(), evalStack, iList);
         Node *old = evalStack.top();
         evalStack.pop();
         Node* sharp = new Node(NODE_VAR, RE_FINAL_TOK, nullptr, nullptr);
-        Node *node = new Node(NODE_AND, '\0', old, sharp);
-        evalStack.push(node);
+        evalStack.push(new Node(NODE_AND, '\0', old, sharp));
     }
     else
     {
@@ -279,19 +267,20 @@ bool parseRegexp(const Dictionary &iDic, const wchar_t *input, Node **root,
     {
 #ifdef DEBUG_RE
         // Dump parse tree as XML
-        std::map<parser_id, std::string> rule_names;
-        rule_names[RegexpGrammar::wrapperId] = "wrapper";
-        rule_names[RegexpGrammar::exprId] = "expr";
-        rule_names[RegexpGrammar::repeatId] = "repeat";
-        rule_names[RegexpGrammar::groupId] = "group";
-        rule_names[RegexpGrammar::varId] = "var";
-        rule_names[RegexpGrammar::choiceId] = "choice";
-        rule_names[RegexpGrammar::alphavarId] = "alphavar";
+        static const std::map<parser_id, std::string_view> rule_names {
+            { RegexpGrammar::wrapperId,  "wrapper"  },
+            { RegexpGrammar::exprId,     "expr"     },
+            { RegexpGrammar::repeatId,   "repeat"   },
+            { RegexpGrammar::groupId,    "group"    },
+            { RegexpGrammar::varId,      "var"      },
+            { RegexpGrammar::choiceId,   "choice"   },
+            { RegexpGrammar::alphavarId, "alphavar" }
+        };
         tree_to_xml(cout, info.trees);
 #endif
 
         stack<Node*> evalStack;
-        evaluate(iDic.getHeader(), info.trees.begin(), evalStack, iList);
+        evaluate(iDic.getHeader(), *info.trees.begin(), evalStack, iList);
         assert(evalStack.size() == 1);
         *root = evalStack.top();
         return true;
