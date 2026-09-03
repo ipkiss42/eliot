@@ -41,7 +41,8 @@ jobs:
           -DCMAKE_C_COMPILER=clang-21 \
           -DCMAKE_CXX_COMPILER=clang++-21 \
           -DVCPKG_TARGET_TRIPLET=x64-linux-release \
-          -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/extras/cmake/vcpkg-linux.toolchain.cmake
+          -DCMAKE_TOOLCHAIN_FILE=${{ github.workspace }}/extras/cmake/vcpkg-linux.toolchain.cmake \
+          -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 
     - name: Compile
       run: cmake --build build --parallel $(nproc)
