@@ -85,7 +85,9 @@ jobs:
     - name: Configure CMake
       env:
         # For ncurses, even though we don't care much about ncurses for Windows
-        CPPFLAGS_FOR_BUILD: "-D_XOPEN_SOURCE_EXTENDED=1"
+        CC_FOR_BUILD: gcc
+        CXX_FOR_BUILD: g++
+        CPP_FOR_BUILD: gcc -E
       run: |
         mkdir -p ${{ env.VCPKG_DEFAULT_BINARY_CACHE }}
         cmake -B build -G Ninja \
