@@ -23,7 +23,7 @@ jobs:
       run: bash .github/scripts/setup-vcpkg.sh
 
     - name: Install host toolchain dependencies
-      run: bash .github/scripts/apt-install.sh clang-21
+      run: bash .github/scripts/apt-install.sh clang-21 clang-tidy
 
     # Set up caching
     - name: Set up binary cache storage
@@ -45,6 +45,9 @@ jobs:
 
     - name: Compile
       run: cmake --build build --parallel $(nproc)
+
+    - name: Run clang-tidy
+      run: run-clang-tidy -p build -warnings-as-errors='*'
 
 
   windows-cross-build:
