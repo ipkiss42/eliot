@@ -132,10 +132,10 @@ bool WizardInfoPage::validatePage()
     while (!in.atEnd()) {
         QString line = in.readLine().toUpper();
         words.insert(line);
-        for (int i = 0; i < line.size(); ++i)
+        for (auto chr: line)
         {
-            if (!lettersWithLine.contains(line[i]))
-                lettersWithLine.insert(line[i], lineNb);
+            if (!lettersWithLine.contains(chr))
+                lettersWithLine.insert(chr, lineNb);
         }
         ++lineNb;
     }
