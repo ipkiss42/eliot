@@ -20,6 +20,7 @@
  *****************************************************************************/
 
 #include <fstream>
+#include <string_view>
 
 #include "dic.h"
 #include "header.h"
@@ -69,24 +70,23 @@ Dictionary::Dictionary(const string &iPath)
 
     // Build the cache for the convertToDisplay() and convertFromInput()
     // methods.
-    map<wchar_t, vector<wstring> >::const_iterator it;
-    for (it = m_header->getDisplayInputData().begin();
-         it != m_header->getDisplayInputData().end(); ++it)
+    const auto& displayInputData = m_header->getDisplayInputData();
+    for (const auto& [wch, inputs] : displayInputData)
     {
         // Save both the upper case and lower case versions
-        for (wstring str : it->second)
+        for (const auto &str : inputs)
         {
             // Make sure the string is in uppercase
-            str = toUpper(str);
+            auto upper = toUpper(str);
             // Make a lowercase copy
-            wstring lower = toLower(str);
+            auto lower = toLower(str);
             // Fill the cache
-            m_displayInputCache[towupper(it->first)].push_back(str);
-            m_displayInputCache[towlower(it->first)].push_back(lower);
+            m_displayInputCache[towupper(wch)].push_back(std::move(upper));
+            m_displayInputCache[towlower(wch)].push_back(std::move(lower));
         }
 
         // Update the m_hasDisplay flag
-        if (!m_hasDisplay && it->second[0] != wstring(1, it->first))
+        if (!m_hasDisplay && inputs[0] != wstring(1, wch))
             m_hasDisplay = true;
     }
 
@@ -151,14 +151,11 @@ wdstring Dictionary::convertToDisplay(const wstring &iWord) const
         return iWord;
 
     wdstring dispStr = iWord;
-    map<wchar_t, vector<wstring> >::const_iterator it;
-    for (it = m_displayInputCache.begin();
-         it != m_displayInputCache.end(); ++it)
+    for (const auto& [internalChar, inputs] : m_displayInputCache)
     {
-        const wstring &disp = it->second[0];
-        string::size_type pos = 0;
-        while (pos < dispStr.size() &&
-               (pos = dispStr.find(it->first, pos)) != string::npos)
+        const wstring_view &disp = inputs[0];
+        size_t pos = 0;
+        while ((pos = dispStr.find(internalChar, pos)) != std::wstring::npos)
         {
             dispStr.replace(pos, 1, disp);
             pos += disp.size();
@@ -176,17 +173,14 @@ wstring Dictionary::convertFromInput(const wistring &iWord) const
         return iWord;
 
     wstring str = iWord;
-    map<wchar_t, vector<wstring> >::const_iterator it;
-    for (it = m_displayInputCache.begin();
-         it != m_displayInputCache.end(); ++it)
+    for (const auto& [internalChar, inputStrings] : m_displayInputCache)
     {
-        for (const wstring &input : it->second)
+        for (const auto &input : inputStrings)
         {
-            string::size_type pos = 0;
-            while (pos < str.size() &&
-                   (pos = str.find(input, pos)) != string::npos)
+            size_t pos = 0;
+            while ((pos = str.find(input, pos)) != string::npos)
             {
-                str.replace(pos, input.size(), wstring(1, it->first));
+                str.replace(pos, input.size(), 1, internalChar);
                 pos += input.size();
             }
         }

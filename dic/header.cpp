@@ -221,22 +221,22 @@ Header::Header(const DictHeaderInfo &iInfo)
 void Header::buildCaches()
 {
     // Build the char --> code mapping
-    for (unsigned int i = 0; i < m_letters.size(); ++i)
+    for (auto [idx, wch] : std::views::enumerate(m_letters))
     {
+        const unsigned int code = static_cast<unsigned int>(idx) + 1;
         // We don't differentiate uppercase and lowercase letters
-        m_mapCodeFromChar[towlower(m_letters[i])] = i + 1;
-        m_mapCodeFromChar[towupper(m_letters[i])] = i + 1;
+        m_mapCodeFromChar[std::towlower(wch)] = code;
+        m_mapCodeFromChar[std::towupper(wch)] = code;
     }
 
     // Build the display strings cache
     m_displayCache.assign(m_letters.size() + 1, L"");
-    for (unsigned int i = 0; i < m_letters.size(); ++i)
+    for (auto [idx, wch] : std::views::enumerate(m_letters))
     {
-        auto it = m_displayAndInputData.find(m_letters[i]);
-        if (it == m_displayAndInputData.end())
-            m_displayCache[i + 1].append(1, m_letters[i]);
+        if (auto it = m_displayAndInputData.find(wch); it != m_displayAndInputData.end())
+            m_displayCache[idx + 1] = it->second[0];
         else
-            m_displayCache[i + 1] = it->second[0];
+            m_displayCache[idx + 1].push_back(wch);
     }
 
     // Create a string with all the characters possibly used,
@@ -246,20 +246,19 @@ void Header::buildCaches()
     {
         auto it = m_displayAndInputData.find(wch);
         if (it == m_displayAndInputData.end())
-            m_inputChars.append(1, wch);
+            m_inputChars.push_back(wch);
         else
         {
-            for (const wstring &str : it->second)
+            for (const auto &str : it->second)
             {
                 for (wchar_t chr : str)
                 {
                     wchar_t upChr = towupper(chr);
-                    if (m_inputChars.find(upChr) == string::npos)
-                        m_inputChars.append(1, upChr);
-                    if (str.size() > 1 &&
-                        m_multiCharInputChars.find(upChr) == wstring::npos)
+                    if (!m_inputChars.contains(upChr))
+                        m_inputChars.push_back(upChr);
+                    if (str.size() > 1 && !m_multiCharInputChars.contains(upChr))
                     {
-                        m_multiCharInputChars.append(1, upChr);
+                        m_multiCharInputChars.push_back(upChr);
                     }
                 }
             }
@@ -316,15 +315,15 @@ vector<wistring> Header::getInputStr(unsigned int iCode) const
     // Safety check
     if (iCode == 0 || iCode > m_letters.size())
     {
-        throw DicException(std::format("Header::getInputStr: No code for letter '{}'", iCode));
+        throw DicException(std::format("Header::getInputStr: No letter for code '{}'", iCode));
     }
-    auto it = m_displayAndInputData.find(m_letters[iCode - 1]);
-    if (it == m_displayAndInputData.end())
+
+    const auto& letterKey = m_letters[iCode - 1];
+    if (auto it = m_displayAndInputData.find(letterKey); it != m_displayAndInputData.end())
     {
-        return { m_displayCache[iCode] };
-    }
-    else
         return it->second;
+    }
+    return { m_displayCache[iCode] };
 }
 
 
@@ -571,17 +570,14 @@ void Header::readDisplayAndInput(const wstring &serialized)
 wstring Header::writeDisplayAndInput() const
 {
     wstring serialized;
-    bool first = true;
-    map<wchar_t, vector<wstring> >::const_iterator it;
-    for (it = m_displayAndInputData.begin();
-         it != m_displayAndInputData.end(); ++it)
+    for (const auto& [wch, inputs] : m_displayAndInputData)
     {
-        if (first)
-            first = false;
-        else
+        if (!serialized.empty())
+        {
             serialized += L" ";
-        serialized.append(1, it->first);
-        for (const wstring &str : it->second)
+        }
+        serialized.push_back(wch);
+        for (const auto &str : inputs)
         {
             // Make sure the string is uppercase
             serialized += L"|" + toUpper(str);
@@ -626,8 +622,8 @@ void Header::print(ostream &out) const
         auto it = m_displayAndInputData.find(m_letters[i]);
         if (it != m_displayAndInputData.end())
         {
-            const vector<wstring> &inputs = it->second;
-            f6 = centerAndConvert(std::format(L"{0}", inputs[0]), sz("Display"));
+            const auto &inputs = it->second;
+            f6 = centerAndConvert(inputs[0], sz("Display"));
             bool first = true;
             string s;
             for (unsigned long j = 1; j < inputs.size(); ++j)
