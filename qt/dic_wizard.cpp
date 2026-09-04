@@ -248,9 +248,9 @@ void WizardLettersDefPage::loadLettersFromWordList()
     in.setEncoding(QStringConverter::Utf8);
     while (!in.atEnd()) {
         QString line = in.readLine().toUpper();
-        for (int i = 0; i < line.size(); ++i)
+        for (auto chr: line)
         {
-            fileLetters.insert(line[i]);
+            fileLetters.insert(chr);
         }
     }
 
