@@ -181,7 +181,7 @@ wstring Dictionary::convertFromInput(const wistring &iWord) const
             while ((pos = str.find(input, pos)) != string::npos)
             {
                 str.replace(pos, input.size(), 1, internalChar);
-                pos += input.size();
+                pos += 1;
             }
         }
     }
