@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
+import difflib
 import os
 import re
 import subprocess
 import sys
+from enum import Enum
 from pathlib import Path
 
 SCRIPT_PATH = Path(__file__).resolve()
@@ -32,18 +34,18 @@ def locate_dependencies() -> tuple[Path, Path]:
     # Find first match using lazy generators
     ods = next((f for f in ods_locations if f.is_file()), Path(""))
     if not ods.is_file():
-        raise RuntimeError(
-            f"Cannot find dictionary {ods}, check files: [{', '.join(map(str, ods_locations))}]"
-        )
+        locations = ", ".join(map(str, ods_locations))
+        msg = f"Cannot find ods5.dawg at: [{locations}]"
+        sys.exit(colorize(msg, Color.ERROR))
 
     eliottxt = next(
         (f for f in eliottxt_locations if f.is_file() and os.access(f, os.X_OK)),
         Path(""),
     )
     if not eliottxt.is_file():
-        raise RuntimeError(
-            f"Cannot find the text interface executable in [{', '.join(map(str, eliottxt_locations))}]"
-        )
+        locations = ", ".join(map(str, eliottxt_locations))
+        msg = f"Cannot find the text interface executable in [{locations}]"
+        sys.exit(colorize(msg, Color.ERROR))
 
     return ods, eliottxt
 
@@ -61,7 +63,7 @@ def parse_driver(driver_path: Path) -> dict[str, str]:
 
         return scenario_map
     except Exception as e:
-        raise RuntimeError(f"Cannot open the scenario list: {e}") from e
+        sys.exit(colorize(f"Cannot open the scenario list: {e}", Color.ERROR))
 
 
 def select_scenarios(argv: list[str], all_scenarios: list[str]) -> list[str]:
@@ -119,19 +121,43 @@ def run_scenario(scenario: str, eliottxt: Path, dic_path: Path, seed: str) -> bo
         out = str(e)
 
     if out != "":
-        print(f"--> Error: execution of scenario failed ({out})")
+        print(colorize(f"--> Error: execution of scenario failed ({out})", Color.ERROR))
         return False
 
-    # Compare output with expectation
-    diff_cmd = ["diff", str(ref_file), str(run_file)]
-    diff_result = subprocess.run(diff_cmd, capture_output=True, text=True, check=True)
+    return check_and_display_diff(ref_file, run_file)
 
-    if diff := diff_result.stdout:
-        print("--> Error: found differences:")
-        print(diff, end="")
-        return False
 
-    return True
+def check_and_display_diff(ref_file: Path, run_file: Path) -> bool:
+    """Compares the run output against expectations. Prints a colorized diff if differences exist."""
+    ref_lines = ref_file.read_text(encoding="utf-8").splitlines()
+    run_lines = run_file.read_text(encoding="utf-8").splitlines()
+
+    diff_lines = list(
+        difflib.unified_diff(
+            ref_lines,
+            run_lines,
+            fromfile=str(ref_file),
+            tofile=str(run_file),
+            lineterm="",
+        )
+    )
+    if not diff_lines:
+        return True
+
+    print(colorize("--> Error: found differences:", Color.ERROR))
+    for line in diff_lines:
+        if line.startswith(("---", "+++")):
+            print(colorize(line, Color.MAGENTA))
+        elif line.startswith("-"):
+            print(colorize(line, Color.RED))
+        elif line.startswith("+"):
+            print(colorize(line, Color.GREEN))
+        elif line.startswith("@@"):
+            print(colorize(line, Color.CYAN))
+        else:
+            print(colorize(line, Color.DIM))
+
+    return False
 
 
 def main() -> None:
@@ -151,13 +177,35 @@ def main() -> None:
             errors.append(scenario)
 
     # Display the results
-    print("\nSummary: ", end="")
     if not errors:
-        print("Everything was OK.")
+        print(colorize("Everything was OK.", Color.SUCCESS))
     else:
-        print(f"{len(errors)} error(s). The following scenario(s) have failed:")
+        print(
+            colorize(
+                f"{len(errors)} error(s). The following scenario(s) have failed:",
+                Color.ERROR,
+            )
+        )
         print(" ".join(errors))
         sys.exit(1)
+
+
+class Color(Enum):
+    ERROR = "\033[38;5;196m"
+    SUCCESS = "\033[38;5;40m"
+
+    RED = "\033[38;5;124m"
+    GREEN = "\033[38;5;28m"
+    CYAN = "\033[38;5;44m"
+    MAGENTA = "\033[38;5;13m"
+    #     ORANGE = "\033[38;5;208m"
+    DIM = "\033[38;5;244m"
+    RESET = "\033[0m"
+
+
+def colorize(text: str, color: Color) -> str:
+    """Wraps text in a 256-color ANSI code and automatically appends a reset."""
+    return f"{color.value}{text}{Color.RESET.value}"
 
 
 if __name__ == "__main__":
