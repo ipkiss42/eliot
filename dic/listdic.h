@@ -37,7 +37,7 @@ class ListDic
 public:
     ListDic();
 
-    static void printWords(ostream &out, const Dictionary &iDic);
+    static void printWords(ostream &out, const Dictionary &iDic, bool useDisplayString);
 
 private:
 

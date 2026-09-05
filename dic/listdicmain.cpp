@@ -24,7 +24,6 @@
 #include <cstdlib>
 #include <filesystem>
 #include <iostream>
-#include <map>
 #include <print>
 
 #include <getopt.h>
@@ -76,12 +75,6 @@ static void printLetters(const Dictionary &iDic)
 
         cout << endl;
     }
-}
-
-
-static void printWords(const Dictionary &iDic)
-{
-    ListDic::printWords(cout, iDic);
 }
 
 
@@ -143,21 +136,23 @@ int main(int argc, char *argv[])
     textdomain(PACKAGE);
 #endif
 
-    static const std::array<struct option, 7> long_options = {{
+    static const std::array<struct option, 8> long_options = {{
         {.name="help", .has_arg=no_argument, .flag=nullptr, .val='h'},
         {.name="dictionary", .has_arg=required_argument, .flag=nullptr, .val='d'},
         {.name="header", .has_arg=no_argument, .flag=nullptr, .val='e'},
         {.name="letters", .has_arg=no_argument, .flag=nullptr, .val='l'},
+        {.name="raw-words", .has_arg=no_argument, .flag=nullptr, .val='r'},
         {.name="words", .has_arg=no_argument, .flag=nullptr, .val='w'},
         {.name="hexa", .has_arg=no_argument, .flag=nullptr, .val='x'},
         {.name=nullptr, .has_arg=0, .flag=nullptr, .val=0}
     }};
-    static const auto short_options = std::to_array("hd:elwx");
+    static const auto short_options = std::to_array("hd:elrwx");
 
     bool dicSpecified = false;
     bool shouldPrintHeader = false;
     bool shouldPrintLetters = false;
-    bool shouldPrintWords = false;
+    bool shouldPrintInternalWords = false;
+    bool shouldPrintDisplayWords = false;
     bool shouldPrintHexa = false;
     string dicPath;
 
@@ -181,8 +176,11 @@ int main(int argc, char *argv[])
             case 'l':
                 shouldPrintLetters = true;
                 break;
+            case 'r':
+                shouldPrintInternalWords = true;
+                break;
             case 'w':
-                shouldPrintWords = true;
+                shouldPrintDisplayWords = true;
                 break;
             case 'x':
                 shouldPrintHexa = true;
@@ -200,7 +198,7 @@ int main(int argc, char *argv[])
 
     // The default is to print the header
     if (!shouldPrintHeader && !shouldPrintLetters &&
-        !shouldPrintWords && !shouldPrintHexa)
+        !shouldPrintInternalWords && !shouldPrintDisplayWords && !shouldPrintHexa)
     {
         shouldPrintHeader = true;
     }
@@ -214,8 +212,10 @@ int main(int argc, char *argv[])
             printHeader(dic);
         if (shouldPrintLetters)
             printLetters(dic);
-        if (shouldPrintWords)
-            printWords(dic);
+        if (shouldPrintInternalWords)
+            ListDic::printWords(cout, dic, false);
+        if (shouldPrintDisplayWords)
+            ListDic::printWords(cout, dic, true);
         if (shouldPrintHexa)
             printHexa(dic);
 

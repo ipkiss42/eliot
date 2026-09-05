@@ -416,7 +416,8 @@ void DicToolsWidget::exportWordsList()
         try
         {
             ofstream file(lfq(fileName).c_str());
-            ListDic::printWords(file, *m_dic);
+            // We only save the internal format for now
+            ListDic::printWords(file, *m_dic, false);
             QMessageBox::information(this, _q("Save words list"),
                                      _q("File '%1' successfully saved").arg(fileName));
         }

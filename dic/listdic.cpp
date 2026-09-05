@@ -34,7 +34,7 @@ using namespace std;
 INIT_LOGGER(dic, ListDic);
 
 
-static void printDicRec(ostream &out, const Dictionary &iDic, wstring &current_word, DicEdge edge)
+static void printDicRec(ostream &out, const Dictionary &iDic, wstring &current_word, DicEdge edge, bool useDisplayString)
 {
     if (edge.term)
     {
@@ -49,10 +49,13 @@ static void printDicRec(ostream &out, const Dictionary &iDic, wstring &current_w
         do
         {
             // Append the character for this branch
-            current_word.push_back(iDic.getHeader().getCharFromCode(p->chr));
+            if (useDisplayString)
+                current_word += iDic.getHeader().getDisplayStr(p->chr);
+            else
+                current_word.push_back(iDic.getHeader().getCharFromCode(p->chr));
 
             // Recurse deeper into the tree
-            printDicRec(out, iDic, current_word, *p);
+            printDicRec(out, iDic, current_word, *p, useDisplayString);
 
             // Backtrack
             current_word.pop_back();
@@ -62,9 +65,9 @@ static void printDicRec(ostream &out, const Dictionary &iDic, wstring &current_w
 }
 
 
-void ListDic::printWords(ostream &out, const Dictionary &iDic)
+void ListDic::printWords(ostream &out, const Dictionary &iDic, bool useDisplayString)
 {
     wstring word;
-    printDicRec(out, iDic, word, *iDic.getEdgeAt(iDic.getRoot()));
+    printDicRec(out, iDic, word, *iDic.getEdgeAt(iDic.getRoot()), useDisplayString);
 }
 
