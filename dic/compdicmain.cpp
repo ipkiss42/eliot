@@ -24,6 +24,7 @@
 #include <fstream>
 #include <iostream>
 #include <ranges>
+#include <sstream>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -55,6 +56,11 @@ void readLetters(const std::filesystem::path &iFileName, CompDic &ioBuilder)
     while (std::getline(in, line))
     {
         string_view lineView(line);
+        // Remove comments
+        if (const auto pos = lineView.find('#'); pos != std::string_view::npos) {
+            lineView = lineView.substr(0, pos);
+        }
+        // Remove trailing spaces and newlines
         while (!lineView.empty() && (lineView.back() == '\r' || lineView.back() == '\n' || lineView.back() == ' ')) {
             lineView.remove_suffix(1);
         }
@@ -71,10 +77,10 @@ void readLetters(const std::filesystem::path &iFileName, CompDic &ioBuilder)
 
         // Convert the line to a wstring
         const wstring &wline = readFromUTF8(line, "readLetters (1)");
-        // Split the lines on space characters
-        auto tokens = wline
-            | std::views::split(L' ')
-            | std::ranges::to<vector<wstring>>();
+        // Split the lines on consecutive whitespace
+        std::wstringstream wss(wline);
+        auto tokens = std::views::istream<std::wstring>(wss)
+            | std::ranges::to<std::vector<std::wstring>>();
 
         // We expect at least 5 fields on the line
         if (tokens.size() < 5)
