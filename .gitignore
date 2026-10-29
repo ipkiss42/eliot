@@ -22,11 +22,13 @@
 /test/*/*.run
 /utils/eliotcurses
 /utils/eliottxt
-/linux
-/win32
+/build*
+/linux*
+/win32*
+/vcpkg-*
 /extras/contrib/archives
 /extras/contrib/build
-/extras/contrib/inst
+/extras/contrib/inst*
 /extras/contrib/.*
 /extras/reports/*.pyc
 /qt/eliot
