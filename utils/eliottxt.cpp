@@ -27,6 +27,7 @@
 #include <clocale>
 #include <cwctype>
 #include <memory>
+#include <optional>
 #include <print>
 #include <ranges>
 #ifdef HAVE_READLINE
@@ -70,6 +71,7 @@ wchar_t *rl_gets()
     if (wline_read)
     {
         delete[] wline_read;
+        wline_read = nullptr;
     }
 
     static bool init = true;
@@ -84,6 +86,8 @@ wchar_t *rl_gets()
     // Get a line from the user
     static char *line_read;
     line_read = readline("commande> ");
+    if (line_read == nullptr)
+        return nullptr;
 
     // If the line has any text in it, save it on the history
     if (line_read && *line_read)
@@ -105,7 +109,8 @@ wchar_t *rl_gets()
 
     cout << "commande> ";
     string line;
-    std::getline(cin, line);
+    if (!std::getline(cin, line))
+        return NULL;
     // Echo the input, to behave like readline and allow playing the
     // non-regression tests
     cout << line << endl;
@@ -123,9 +128,12 @@ wchar_t *rl_gets()
 }
 
 
-vector<wstring> readTokens()
+optional<vector<wstring>> readTokens()
 {
-    wstring command = rl_gets();
+    const wchar_t *line = rl_gets();
+    if (line == nullptr)
+        return nullopt;
+    wstring command = line;
     return command
         // Split the command
         | std::views::split(L' ')
@@ -594,7 +602,10 @@ void loopTraining(PublicGame &iGame)
     bool quit = false;
     while (!quit)
     {
-        const vector<wstring> &tokens = readTokens();
+        auto input = readTokens();
+        if (!input)
+            break;
+        const vector<wstring> &tokens = *input;
         if (tokens.empty())
             continue;
         try
@@ -681,7 +692,10 @@ void loopFreegame(PublicGame &iGame)
     bool quit = false;
     while (!quit)
     {
-        const vector<wstring> &tokens = readTokens();
+        auto input = readTokens();
+        if (!input)
+            break;
+        const vector<wstring> &tokens = *input;
         if (tokens.empty())
             continue;
         try
@@ -723,7 +737,10 @@ void loopDuplicate(PublicGame &iGame)
     bool quit = false;
     while (!quit)
     {
-        const vector<wstring> &tokens = readTokens();
+        auto input = readTokens();
+        if (!input)
+            break;
+        const vector<wstring> &tokens = *input;
         if (tokens.empty())
             continue;
         try
@@ -758,7 +775,10 @@ void loopArbitration(PublicGame &iGame)
     bool quit = false;
     while (!quit)
     {
-        const vector<wstring> &tokens = readTokens();
+        auto input = readTokens();
+        if (!input)
+            break;
+        const vector<wstring> &tokens = *input;
         if (tokens.empty())
             continue;
         try
@@ -826,7 +846,10 @@ void loopTopping(PublicGame &iGame)
     bool quit = false;
     while (!quit)
     {
-        const vector<wstring> &tokens = readTokens();
+        auto input = readTokens();
+        if (!input)
+            break;
+        const vector<wstring> &tokens = *input;
         if (tokens.empty())
             continue;
         try
@@ -867,7 +890,10 @@ void mainLoop(const Dictionary &iDic)
     bool quit = false;
     while (!quit)
     {
-        const vector<wstring> &tokens = readTokens();
+        auto input = readTokens();
+        if (!input)
+            break;
+        const vector<wstring> &tokens = *input;
         if (tokens.empty())
             continue;
         if (tokens[0].size() > 3)
