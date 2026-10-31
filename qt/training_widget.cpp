@@ -154,7 +154,7 @@ void TrainingWidget::refresh()
     }
     else
     {
-        wstring rack = m_game->getPlayer(0).getCurrentRack().toString(PlayedRack::RACK_SIMPLE);
+        wstring rack = m_game->getPlayer(0).getCurrentRack().getDisplayStr();
         // Update the rack only if it is needed, to avoid losing cursor position
         if (qfw(rack) != lineEditRack->text())
             lineEditRack->setText(qfw(rack));

@@ -80,6 +80,9 @@ public:
         RACK_EXTRA,
         RACK_DEBUG
     };
+    /// Plain tile display, without rack-expression punctuation.
+    std::wstring getDisplayStr() const;
+    /// Formatted rack expression with the requested punctuation.
     std::wstring toString(display_mode iShowExtraSigns = RACK_EXTRA) const;
 
 private:

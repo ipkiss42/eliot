@@ -322,7 +322,7 @@ void CursesIntf::drawScoresRacks(WINDOW *win, int y, int x) const
     {
         if (m_game->getMode() != PublicGame::kTRAINING && i == currId)
             attron(A_BOLD);
-        wstring rack = m_game->getPlayer(i).getCurrentRack().toString(PlayedRack::RACK_SIMPLE);
+        wstring rack = m_game->getPlayer(i).getCurrentRack().getDisplayStr();
         mvwprintw(win, y + yOff + i + 1, x + 2, _("%s: %ls"),
                   truncOrPad(lfw(m_game->getPlayer(i).getName()),
                              maxForRacks).c_str(),

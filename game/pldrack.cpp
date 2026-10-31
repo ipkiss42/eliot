@@ -196,6 +196,12 @@ void PlayedRack::shuffle()
 }
 
 
+std::wstring PlayedRack::getDisplayStr() const
+{
+    return toString(RACK_SIMPLE);
+}
+
+
 std::wstring PlayedRack::toString(display_mode mode) const
 {
     std::wstring s;
