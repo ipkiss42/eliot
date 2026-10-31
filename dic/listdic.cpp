@@ -39,7 +39,18 @@ static void printDicRec(ostream &out, const Dictionary &iDic, wstring &current_w
     if (edge.term)
     {
         // Edge points at a complete word
-        out << lfw(current_word) << endl;
+        if (useDisplayString)
+        {
+            wstring displayWord;
+            for (wchar_t internalChar : current_word)
+            {
+                const unsigned code = iDic.getHeader().getCodeFromChar(internalChar);
+                displayWord += iDic.getHeader().getDisplayStr(code);
+            }
+            out << lfw(displayWord) << endl;
+        }
+        else
+            out << lfw(current_word) << endl;
     }
 
     if (edge.ptr)
@@ -48,11 +59,8 @@ static void printDicRec(ostream &out, const Dictionary &iDic, wstring &current_w
         const DicEdge *p = iDic.getEdgeAt(edge.ptr);
         do
         {
-            // Append the character for this branch
-            if (useDisplayString)
-                current_word += iDic.getHeader().getDisplayStr(p->chr);
-            else
-                current_word.push_back(iDic.getHeader().getCharFromCode(p->chr));
+            // The traversal always stores one internal character per tile.
+            current_word.push_back(iDic.getHeader().getCharFromCode(p->chr));
 
             // Recurse deeper into the tree
             printDicRec(out, iDic, current_word, *p, useDisplayString);
