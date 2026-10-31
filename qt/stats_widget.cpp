@@ -36,6 +36,7 @@
 #include "stats_widget.h"
 #include "qtcommon.h"
 #include "public_game.h"
+#include "dic.h"
 #include "player.h"
 #include "history.h"
 #include "turn_data.h"
@@ -437,7 +438,7 @@ QString StatsWidget::getTooltip(const TurnData &iTurn, const TurnData &iGameTurn
     }
     else if (move.isChangeLetters())
     {
-        tooltip += "\n" + _q("Changed letters: %1").arg(qfw(move.getChangedLetters()));
+        tooltip += "\n" + _q("Changed letters: %1").arg(qfw(m_game->getDic().convertToDisplay(move.getChangedLetters())));
     }
     else if (move.isPass())
     {

@@ -254,7 +254,7 @@ void GameIO::printGameDebug(ostream &out, const PublicGame &iGame)
             }
             else if (move.isChangeLetters())
             {
-                f3 = padAndConvert(L"[" + move.getChangedLetters() + L"]", 14, false);
+                f3 = padAndConvert(L"[" + iGame.getDic().convertToDisplay(move.getChangedLetters()) + L"]", 14, false);
                 f4 = " - ";
             }
             else if (move.isPass())

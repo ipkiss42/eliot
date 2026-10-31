@@ -128,7 +128,7 @@ string BoardLettersHint::giveHint(const Move &iMove) const
     for (unsigned i = 0; i < iMove.getRound().getWordLen(); ++i)
     {
         if (!iMove.getRound().isPlayedFromRack(i))
-            fromBoard.push_back(iMove.getRound().getTile(i).toChar());
+            fromBoard += iMove.getRound().getTile(i).getDisplayStr();
     }
 
     return _fmt(_("Letters from board: {0}"),
@@ -177,7 +177,7 @@ string FirstLetterHint::giveHint(const Move &iMove) const
     LOG_DEBUG("Getting hint for move: {}", lfw(iMove.toString()));
     ASSERT(iMove.isValid(), "Hints only make sense for valid moves");
     return _fmt(_("First letter: {0}"),
-               lfw(iMove.getRound().getTile(0).toChar()));
+               lfw(iMove.getRound().getTile(0).getDisplayStr()));
 }
 
 

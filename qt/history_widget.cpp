@@ -33,6 +33,7 @@
 #include "prefs_dialog.h"
 #include "qtcommon.h"
 #include "public_game.h"
+#include "dic.h"
 #include "player.h"
 #include "history.h"
 #include "turn_data.h"
@@ -223,7 +224,7 @@ void HistoryWidget::updateModel()
             else
             {
                 setCellData(rowNum, m_colWord,
-                            "[-" + qfw(m.getChangedLetters()) + "]");
+                            "[-" + qfw(m_game->getDic().convertToDisplay(m.getChangedLetters())) + "]");
                 color = Qt::blue;
             }
 
