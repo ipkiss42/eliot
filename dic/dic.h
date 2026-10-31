@@ -309,7 +309,7 @@ private:
      */
     struct DisplayAndInputsCache
     {
-        wstring display;
+        DDString display;
         vector<wstring> inputs;
     };
     map<wchar_t, DisplayAndInputsCache> m_displayInputCache;

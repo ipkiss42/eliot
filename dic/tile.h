@@ -25,6 +25,7 @@
 #include <string>
 #include <vector>
 
+#include "dstring.h"
 #include "logging.h"
 
 class Header;
@@ -60,7 +61,7 @@ public:
     unsigned int toCode() const;
     /// One internal character, retaining assigned-joker case.
     std::wstring getInternalStr() const;
-    std::wstring getDisplayStr() const;
+    DDString getDisplayStr() const;
     std::vector<std::wstring> getInputStr() const;
 
     /// Return a copy of this tile, as a (non pure) joker

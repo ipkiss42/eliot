@@ -92,7 +92,7 @@ Dictionary::Dictionary(const string &iPath)
         }
 
         // Update the m_hasDisplay flag
-        if (!m_hasDisplay && displayAndInputs.display != wstring(1, wch))
+        if (!m_hasDisplay && displayAndInputs.display.raw() != wstring(1, wch))
             m_hasDisplay = true;
     }
 
@@ -159,7 +159,7 @@ wdstring Dictionary::convertToDisplay(const wstring &iWord) const
     wdstring dispStr = iWord;
     for (const auto& [internalChar, displayAndInputs] : m_displayInputCache)
     {
-        const wstring &disp = displayAndInputs.display;
+        const wstring &disp = displayAndInputs.display.raw();
         size_t pos = 0;
         while ((pos = dispStr.find(internalChar, pos)) != std::wstring::npos)
         {

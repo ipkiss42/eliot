@@ -25,7 +25,7 @@ add_library(dic STATIC
     base_exception.cpp base_exception.h
     dic_exception.cpp dic_exception.h
     header.cpp header.h
-    dic_internals.h
+    dic_internals.h dstring.h
     tile.cpp tile.h
     dic.cpp dic.h
     dic_search.cpp

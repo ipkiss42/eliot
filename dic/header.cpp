@@ -230,13 +230,13 @@ void Header::buildCaches()
     }
 
     // Build the display strings cache
-    m_displayCache.assign(m_letters.size() + 1, L"");
+    m_displayCache.assign(m_letters.size() + 1, DDString());
     for (auto [idx, wch] : std::views::enumerate(m_letters))
     {
         if (auto it = m_displayAndInputData.find(wch); it != m_displayAndInputData.end())
             m_displayCache[idx + 1] = it->second.display;
         else
-            m_displayCache[idx + 1].push_back(wch);
+            m_displayCache[idx + 1] = DDString::fromTrusted(wstring(1, wch));
     }
 
     // Create a string with all the characters possibly used,
@@ -299,7 +299,7 @@ unsigned int Header::getCodeFromChar(wchar_t iChar) const
 }
 
 
-const wdstring & Header::getDisplayStr(unsigned int iCode) const
+const DDString & Header::getDisplayStr(unsigned int iCode) const
 {
     // Safety check
     if (iCode == 0 || iCode > m_letters.size())
@@ -323,7 +323,7 @@ vector<wistring> Header::getInputStr(unsigned int iCode) const
     {
         return it->second.getInputs();
     }
-    return { m_displayCache[iCode] };
+    return { m_displayCache[iCode].raw() };
 }
 
 
@@ -562,7 +562,7 @@ void Header::readDisplayAndInput(const wstring &serialized)
         }
         // OK, save the data
         m_displayAndInputData[chr] = {
-            .display = pieces[1],
+            .display = DDString::fromTrusted(pieces[1]),
             .alternatives = vector<wstring>(pieces.begin() + 2, pieces.end())
         };
     }
@@ -579,7 +579,7 @@ wstring Header::writeDisplayAndInput() const
             serialized += L" ";
         }
         serialized.push_back(wch);
-        serialized += L"|" + toUpper(displayAndInputs.display);
+        serialized += L"|" + toUpper(displayAndInputs.display.raw());
         for (const auto &str : displayAndInputs.alternatives)
         {
             // Make sure the string is uppercase

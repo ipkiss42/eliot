@@ -30,6 +30,7 @@
 #include <map>
 
 #include "compdic.h"
+#include "dstring.h"
 #include "encoding.h"
 #include "dic_exception.h"
 
@@ -118,7 +119,7 @@ void CompDic::addLetter(wchar_t chr, int points, int frequency,
         if (upperInputs.size() != 1 || upperInputs[0] != wstring(1, upChar))
         {
             m_headerInfo.displayInputData[upChar] = {
-                .display = upperInputs.front(),
+                .display = DDString::fromTrusted(upperInputs.front()),
                 .alternatives = vector<wstring>(upperInputs.begin() + 1, upperInputs.end())
             };
         }

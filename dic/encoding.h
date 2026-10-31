@@ -25,6 +25,7 @@
 #include <string>
 #include <string_view>
 
+#include "dstring.h"
 #include "config.h"
 
 #if ENABLE_NLS
@@ -104,11 +105,13 @@ string centerAndConvert(const wstring &iWstr, unsigned int iLength,
  * Return the upper case version of the given string
  */
 wstring toUpper(std::wstring_view iWstr);
+DDString toUpper(const DDString &iStr);
 
 /**
  * Return the lower case version of the given string
  */
 wstring toLower(std::wstring_view iWstr);
+DDString toLower(const DDString &iStr);
 
 /**
  * Same as the other readFromUTF8 function, dealing with a wstring

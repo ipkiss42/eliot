@@ -263,7 +263,7 @@ void Dictionary::searchRacc(const wstring &iWord,
         {
             if (edge->term)
             {
-                oWordList.push_back(displayWord + getHeader().getDisplayStr(edge->chr));
+                oWordList.push_back(displayWord + getHeader().getDisplayStr(edge->chr).raw());
                 if (iMaxResults && oWordList.size() >= iMaxResults)
                     return;
             }
@@ -359,7 +359,7 @@ void Dictionary::searchRegexpRec(const struct params_regexp_t &params,
         if (next_state)
         {
             searchRegexpRec(params, next_state, current, oWordList, iMaxResults,
-                            iCurrWord + getHeader().getDisplayStr(current->chr), iNbChars + 1);
+                            iCurrWord + getHeader().getDisplayStr(current->chr).raw(), iNbChars + 1);
         }
     } while (!(*current++).last);
 }

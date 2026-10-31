@@ -213,11 +213,23 @@ wstring toUpper(std::wstring_view iWstr)
 }
 
 
+DDString toUpper(const DDString &iStr)
+{
+    return DDString::fromTrusted(toUpper(iStr.raw()));
+}
+
+
 wstring toLower(std::wstring_view iWstr)
 {
     std::wstring str(iWstr);
     std::ranges::transform(str, str.begin(), ::towlower);
     return str;
+}
+
+
+DDString toLower(const DDString &iStr)
+{
+    return DDString::fromTrusted(toLower(iStr.raw()));
 }
 
 

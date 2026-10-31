@@ -28,6 +28,7 @@
 #include <map>
 #include <vector>
 
+#include "dstring.h"
 #include "logging.h"
 
 using std::map;
@@ -66,12 +67,12 @@ constexpr T ntoh(T value) noexcept {
 /** Canonical display and alternative input representations for a tile. */
 struct TileDisplayAndInputs
 {
-    wstring display;
+    DDString display;
     vector<wstring> alternatives;
 
     vector<wstring> getInputs() const
     {
-        vector<wstring> inputs{display};
+        vector<wstring> inputs{display.raw()};
         inputs.insert(inputs.end(), alternatives.begin(), alternatives.end());
         return inputs;
     }
@@ -185,7 +186,7 @@ public:
     /**
      * Return the display string corresponding to the given code
      */
-    const wdstring & getDisplayStr(unsigned int iCode) const;
+    const DDString & getDisplayStr(unsigned int iCode) const;
 
     /**
      * Return all the accepted input strings corresponding to the given code
@@ -252,7 +253,7 @@ private:
     map<wchar_t, unsigned int> m_mapCodeFromChar;
 
     /// Cache for the display string of each code
-    vector<wdstring> m_displayCache;
+    vector<DDString> m_displayCache;
 
     /**
      * Load the header from a file

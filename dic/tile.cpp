@@ -115,7 +115,7 @@ wstring Tile::getInternalStr() const
 }
 
 
-wstring Tile::getDisplayStr() const
+DDString Tile::getDisplayStr() const
 {
     if (m_code == 0)
         throw DicException("Tile::getDisplayStr: Invalid tile");
