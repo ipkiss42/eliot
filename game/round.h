@@ -24,6 +24,7 @@
 
 #include <vector>
 
+#include "dstring.h"
 #include "tile.h"
 #include "coord.h"
 #include "logging.h"
@@ -69,7 +70,7 @@ public:
     const Tile& getTile  (unsigned int iIndex) const;
 
     wstring getInternalWord() const;
-    wstring getDisplayWord() const;
+    DDString getDisplayWord() const;
     unsigned int getWordLen() const { return m_word.size(); }
     int getPoints() const           { return m_points; }
     bool getBonus() const           { return m_bonus; }

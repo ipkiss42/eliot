@@ -141,7 +141,7 @@ void ToppingWidget::refresh()
     }
     else
     {
-        wstring rack = m_game->getCurrentPlayer().getCurrentRack().getDisplayStr();
+        DDString rack = m_game->getCurrentPlayer().getCurrentRack().getDisplayStr();
         // Update the rack only if it is needed, to avoid losing cursor position
         if (qfw(rack) != lineEditRack->text())
             lineEditRack->setText(qfw(rack));

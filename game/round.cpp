@@ -122,13 +122,13 @@ wstring Round::getInternalWord() const
 }
 
 
-wstring Round::getDisplayWord() const
+DDString Round::getDisplayWord() const
 {
-    wstring s;
+    DDString s;
 
     for (unsigned int i = 0; i < getWordLen(); i++)
     {
-        wstring chr = getTile(i).getDisplayStr();
+        DDString chr = getTile(i).getDisplayStr();
         if (isJoker(i))
             chr = toLower(chr);
         s += chr;
@@ -157,7 +157,7 @@ wstring Round::toString() const
 
     return std::format(
         L"{} {} {} {}",
-        getDisplayWord(), getBonus() ? L'*' : L' ', getPoints(), getCoord().toString());
+        getDisplayWord().raw(), getBonus() ? L'*' : L' ', getPoints(), getCoord().toString());
 }
 
 

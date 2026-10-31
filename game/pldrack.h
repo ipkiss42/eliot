@@ -25,6 +25,7 @@
 #include <string>
 #include <vector>
 
+#include "dstring.h"
 #include "tile.h"
 #include "logging.h"
 
@@ -81,7 +82,7 @@ public:
         RACK_DEBUG
     };
     /// Plain tile display, without rack-expression punctuation.
-    std::wstring getDisplayStr() const;
+    DDString getDisplayStr() const;
     /// Formatted rack expression with the requested punctuation.
     std::wstring toString(display_mode iShowExtraSigns = RACK_EXTRA) const;
 

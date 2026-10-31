@@ -90,7 +90,7 @@ void BagWidget::updateModel()
         if (nb != 0)
         {
             // Concatenate the display char nb times
-            wdstring str;
+            DDString str;
             for (unsigned int i = 0; i < nb; ++i)
                 str += tile.getDisplayStr();
 

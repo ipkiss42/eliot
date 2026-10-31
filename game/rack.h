@@ -25,6 +25,7 @@
 #include <string>
 #include <vector>
 
+#include "dstring.h"
 #include "tile.h"
 #include "logging.h"
 
@@ -52,7 +53,7 @@ public:
     void clear();
     void getTiles(vector<Tile> &oTiles) const;
 
-    std::wstring toString() const;
+    DDString toString() const;
 
     bool operator==(const Rack &iOther) const;
 

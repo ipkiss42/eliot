@@ -170,7 +170,7 @@ void GameIO::printAllRacks(ostream &out, const PublicGame &iGame)
 static void searchResultLine(ostream &out, const Results &iResults, int num)
 {
     const Round &r = iResults.get(num);
-    const wstring &word = r.getDisplayWord();
+    const DDString &word = r.getDisplayWord();
     if (word.empty())
         return;
     out << padAndConvert(word, 16, false)

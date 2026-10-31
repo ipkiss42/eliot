@@ -73,11 +73,11 @@ const Tile& Board::getTile(int iRow, int iCol) const
 }
 
 
-wstring Board::getDisplayStr(int iRow, int iCol) const
+DDString Board::getDisplayStr(int iRow, int iCol) const
 {
     ASSERT(!isVacant(iRow, iCol),
            "Trying to get the display string on an empty board square");
-    wstring str = getTile(iRow, iCol).getDisplayStr();
+    DDString str = getTile(iRow, iCol).getDisplayStr();
     if (isJoker(iRow, iCol))
         str = toLower(str);
     return str;

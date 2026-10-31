@@ -124,7 +124,7 @@ string BoardLettersHint::giveHint(const Move &iMove) const
     LOG_DEBUG("Getting hint for move: {}", lfw(iMove.toString()));
     ASSERT(iMove.isValid(), "Hints only make sense for valid moves");
     // Retrieve the letters coming from the board
-    wstring fromBoard;
+    DDString fromBoard;
     for (unsigned i = 0; i < iMove.getRound().getWordLen(); ++i)
     {
         if (!iMove.getRound().isPlayedFromRack(i))
@@ -132,7 +132,7 @@ string BoardLettersHint::giveHint(const Move &iMove) const
     }
 
     return _fmt(_("Letters from board: {0}"),
-                (fromBoard == L"" ? _("(none)") : lfw(fromBoard)));
+                (fromBoard.empty() ? _("(none)") : lfw(fromBoard)));
 }
 
 
@@ -154,7 +154,7 @@ string WordLettersHint::giveHint(const Move &iMove) const
     std::ranges::sort(tiles, std::less());
 
     // Get the word
-    wstring word;
+    DDString word;
     for (const Tile &tile : tiles)
     {
         word += tile.getDisplayStr();

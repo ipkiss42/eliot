@@ -182,7 +182,7 @@ void TileWidget::paintEvent(QPaintEvent *iEvent)
     // Draw the letter
     if (!m_tile.isEmpty())
     {
-        wstring chr = toUpper(m_tile.getDisplayStr());
+        DDString chr = toUpper(m_tile.getDisplayStr());
         // Make the display char in upper case
         painter.setPen(m_isJoker ? TextJokerColour : TextNormalColour);
         painter.setFont(letterFont);

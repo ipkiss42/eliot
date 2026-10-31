@@ -254,7 +254,7 @@ void CursesIntf::drawBoard(WINDOW *win, int y, int x) const
             const Tile &t = m_game->getBoard().getTile(row, col);
             if (!t.isEmpty())
             {
-                const wstring &chr = t.getDisplayStr();
+                const DDString &chr = t.getDisplayStr();
                 const string cell = truncString(centerAndConvert(chr, 3), 3);
                 if (m_game->getBoard().isJoker(row, col))
                 {
@@ -320,7 +320,7 @@ void CursesIntf::drawScoresRacks(WINDOW *win, int y, int x) const
     {
         if (m_game->getMode() != PublicGame::kTRAINING && i == currId)
             attron(A_BOLD);
-        wstring rack = m_game->getPlayer(i).getCurrentRack().getDisplayStr();
+        DDString rack = m_game->getPlayer(i).getCurrentRack().getDisplayStr();
         // Clear the display area before drawing; its width is not a tile count.
         mvwhline(win, y + yOff + i + 1, x + 1, ' ', box2.getWidth());
         mvwprintw(win, y + yOff + i + 1, x + 2, _("%s: %ls"),
@@ -509,8 +509,8 @@ void CursesIntf::drawBag(Box &ioBox) const
     int i;
     for (i = ioBox.getFirstLine(); i < (int)allTiles.size() && i < ioBox.getLastLine(); i++)
     {
-        const wstring &chr = allTiles[i].getDisplayStr();
-        wstring str;
+        const DDString &chr = allTiles[i].getDisplayStr();
+        DDString str;
         for (unsigned int j = 0; j < m_game->getBag().count(allTiles[i]); ++j)
              str += chr;
         ioBox.printDataLine(i, ioBox.getLeft() + 1,

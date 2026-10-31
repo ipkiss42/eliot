@@ -21,6 +21,7 @@
 #ifndef DSTRING_H_
 #define DSTRING_H_
 
+#include <compare>
 #include <string>
 #include <utility>
 
@@ -35,6 +36,10 @@ public:
     {
         return DDString(std::move(s));
     }
+
+    bool empty() const noexcept { return m_data.empty(); }
+    DDString &operator+=(const DDString &s) { m_data += s.m_data; return *this; }
+    auto operator<=>(const DDString &) const = default;
 
     const std::wstring &raw() const & noexcept { return m_data; }
     std::wstring raw() && noexcept { return std::move(m_data); }

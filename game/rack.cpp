@@ -64,13 +64,13 @@ void Rack::getTiles(vector<Tile> &oTiles) const
 }
 
 
-wstring Rack::toString() const
+DDString Rack::toString() const
 {
-    wstring rs;
+    DDString rs;
     for (unsigned i = 1; i < m_tiles.size(); i++)
     {
         // Append m_tiles[i] copies of the char
-        const wstring &chr = Dictionary::GetDic().getTileFromCode(i).getDisplayStr();
+        const DDString &chr = Dictionary::GetDic().getTileFromCode(i).getDisplayStr();
         for (unsigned j = 0; j < m_tiles[i]; ++j)
         {
             rs += chr;

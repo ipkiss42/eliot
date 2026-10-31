@@ -196,9 +196,14 @@ void PlayedRack::shuffle()
 }
 
 
-std::wstring PlayedRack::getDisplayStr() const
+DDString PlayedRack::getDisplayStr() const
 {
-    return toString(RACK_SIMPLE);
+    DDString display;
+    for (const Tile &tile : m_oldTiles)
+        display += tile.getDisplayStr();
+    for (const Tile &tile : m_newTiles)
+        display += tile.getDisplayStr();
+    return display;
 }
 
 

@@ -25,6 +25,7 @@
 #include <string>
 
 #include "matrix.h"
+#include "dstring.h"
 #include "tile.h"
 #include "cross.h"
 #include "logging.h"
@@ -59,7 +60,7 @@ public:
     bool isVacant(int iRow, int iCol) const;
 
     const Tile& getTile(int iRow, int iCol) const;
-    std::wstring getDisplayStr(int iRow, int iCol) const;
+    DDString getDisplayStr(int iRow, int iCol) const;
 
     void addRound(const Dictionary &iDic, const Round &iRound);
     void removeRound(const Dictionary &iDic, const Round &iRound);
