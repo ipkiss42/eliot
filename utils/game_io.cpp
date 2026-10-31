@@ -173,7 +173,7 @@ static void searchResultLine(ostream &out, const Results &iResults, int num)
     const wstring &word = r.getDisplayWord();
     if (word.empty())
         return;
-    out << lfw(word) << string(16 - word.size(), ' ')
+    out << padAndConvert(word, 16, false)
         << (r.getBonus() ? '*' : ' ')
         << setw(4) << r.getPoints()
         << ' ' << lfw(r.getCoord().toString());

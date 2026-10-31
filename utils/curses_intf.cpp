@@ -255,18 +255,16 @@ void CursesIntf::drawBoard(WINDOW *win, int y, int x) const
             if (!t.isEmpty())
             {
                 const wstring &chr = t.getDisplayStr();
-                int offset = 0;
-                if (chr.size() > 1)
-                    offset = -1;
+                const string cell = truncString(centerAndConvert(chr, 3), 3);
                 if (m_game->getBoard().isJoker(row, col))
                 {
                     wattron(win, A_BOLD | COLOR_PAIR(COLOR_GREEN));
-                    mvwprintw(win, y + row + 1, x + 3 * col + 2 + offset, "%s", lfw(chr).c_str());
+                    mvwprintw(win, y + row + 1, x + 3 * col + 1, "%s", cell.c_str());
                     wattroff(win, A_BOLD);
                 }
                 else
                 {
-                    mvwprintw(win, y + row + 1, x + 3 * col + 2 + offset, "%s", lfw(chr).c_str());
+                    mvwprintw(win, y + row + 1, x + 3 * col + 1, "%s", cell.c_str());
                 }
             }
             else
@@ -323,14 +321,15 @@ void CursesIntf::drawScoresRacks(WINDOW *win, int y, int x) const
         if (m_game->getMode() != PublicGame::kTRAINING && i == currId)
             attron(A_BOLD);
         wstring rack = m_game->getPlayer(i).getCurrentRack().getDisplayStr();
+        // Clear the display area before drawing; its width is not a tile count.
+        mvwhline(win, y + yOff + i + 1, x + 1, ' ', box2.getWidth());
         mvwprintw(win, y + yOff + i + 1, x + 2, _("%s: %ls"),
                   truncOrPad(lfw(m_game->getPlayer(i).getName()),
                              maxForRacks).c_str(),
-                  rack.c_str());
+                  convertToWc(truncAndConvert(rack,
+                      box2.getWidth() - maxForRacks - 3)).c_str());
         if (m_game->getMode() != PublicGame::kTRAINING && i == currId)
             attroff(A_BOLD);
-        // Force to refresh the whole rack
-        whline(win, ' ', 7 - rack.size());
     }
 
     // Display a message when the search is complete
