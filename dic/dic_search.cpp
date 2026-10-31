@@ -104,8 +104,9 @@ void Dictionary::searchWordByLen(struct params_7plus1_t &params,
                     {
                         // Add the solution
                         vector<wdstring> &sols = (*params.results)[params.added_code];
-                        if (sols.empty() || sols.back() != params.search_wordtst.data())
-                            sols.push_back(convertToDisplay(params.search_wordtst.data()));
+                        wdstring candidate = convertToDisplay(params.search_wordtst.data());
+                        if (sols.empty() || sols.back() != candidate)
+                            sols.push_back(std::move(candidate));
                     }
                 }
                 else
@@ -127,8 +128,9 @@ void Dictionary::searchWordByLen(struct params_7plus1_t &params,
                     {
                         // Add the solution
                         vector<wdstring> &sols = (*params.results)[params.added_code];
-                        if (sols.empty() || sols.back() != params.search_wordtst.data())
-                            sols.push_back(convertToDisplay(params.search_wordtst.data()));
+                        wdstring candidate = convertToDisplay(params.search_wordtst.data());
+                        if (sols.empty() || sols.back() != candidate)
+                            sols.push_back(std::move(candidate));
                     }
                 }
                 else
