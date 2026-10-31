@@ -299,7 +299,7 @@ int ArbitrationWidget::addSingleMove(const Move &iMove, int moveType,
     if (iMove.isValid())
     {
         const Round &r = iMove.getRound();
-        m_resultsModel->setData(m_resultsModel->index(rowNum, 0), qfw(r.getWord()));
+        m_resultsModel->setData(m_resultsModel->index(rowNum, 0), qfw(r.getDisplayWord()));
         m_resultsModel->setData(m_resultsModel->index(rowNum, 1),
                                 qfw(r.getCoord().toString()));
     }

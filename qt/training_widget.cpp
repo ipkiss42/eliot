@@ -200,7 +200,7 @@ void TrainingWidget::updateModel()
         const Round &r = results.get(i);
         int rowNum = m_model->rowCount();
         m_model->insertRow(rowNum);
-        m_model->setData(m_model->index(rowNum, 0), qfw(r.getWord()));
+        m_model->setData(m_model->index(rowNum, 0), qfw(r.getDisplayWord()));
         m_model->setData(m_model->index(rowNum, 1),
                          qfw(r.getCoord().toString()));
         m_model->setData(m_model->index(rowNum, 2), r.getPoints());

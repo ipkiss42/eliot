@@ -172,7 +172,7 @@ void ToppingWidget::updateModel()
         m_model->setData(m_model->index(rowNum, 0), i);
         if (m.isValid())
         {
-            m_model->setData(m_model->index(rowNum, 1), qfw(m.getRound().getWord()));
+            m_model->setData(m_model->index(rowNum, 1), qfw(m.getRound().getDisplayWord()));
             m_model->setData(m_model->index(rowNum, 2),
                              qfw(m.getRound().getCoord().toString()));
         }
@@ -249,7 +249,7 @@ void ToppingWidget::timeoutPenalty()
     QMessageBox::information(this, "Eliot - " + _q("End of turn"),
                              _q("The allocated time for the turn has expired.\n"
                                 "The top is %1 at %2 for %3 points.")
-                             .arg(qfw(move.getRound().getWord()), qfw(move.getRound().getCoord().toString()))
+                             .arg(qfw(move.getRound().getDisplayWord()), qfw(move.getRound().getCoord().toString()))
                              .arg(move.getScore()));
 
     // End the turn

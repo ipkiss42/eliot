@@ -170,7 +170,7 @@ void GameIO::printAllRacks(ostream &out, const PublicGame &iGame)
 static void searchResultLine(ostream &out, const Results &iResults, int num)
 {
     const Round &r = iResults.get(num);
-    const wstring &word = r.getWord();
+    const wstring &word = r.getDisplayWord();
     if (word.empty())
         return;
     out << lfw(word) << string(16 - word.size(), ' ')
@@ -240,7 +240,7 @@ void GameIO::printGameDebug(ostream &out, const PublicGame &iGame)
         if (move.isValid())
         {
             const Round &round = move.getRound();
-            f3 = padAndConvert(round.getWord(), 14, false);
+            f3 = padAndConvert(round.getDisplayWord(), 14, false);
             f4 = padAndConvert(round.getCoord().toString(), 3);
             f5 = padAndConvert(format(L"{0}", round.getPoints()), 3);
             f6 = padAndConvert(round.getBonus() ? L"*": L"", 1, false);

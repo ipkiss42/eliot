@@ -1137,7 +1137,7 @@ void MainWindow::print(QPrinter *printer)
         if (m.isValid())
         {
             const Round &r = m.getRound();
-            painter.drawText(curWidth, nextHeight, qfw(r.getWord()));
+            painter.drawText(curWidth, nextHeight, qfw(r.getDisplayWord()));
             curWidth += colWidths[2];
             painter.drawText(curWidth, nextHeight,
                              qfw(r.getCoord().toString()));

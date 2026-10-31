@@ -150,7 +150,7 @@ string WordLettersHint::giveHint(const Move &iMove) const
     ASSERT(iMove.isValid(), "Hints only make sense for valid moves");
     vector<Tile> tiles = iMove.getRound().getTiles();
     // Sort the letters (we cannot sort directly the wstring from
-    // Round::getWord(), because it would break digraph characters)
+    // Round::getDisplayWord(), because it would break digraph characters)
     std::ranges::sort(tiles, std::less());
 
     // Get the word

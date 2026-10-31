@@ -107,6 +107,14 @@ unsigned int Tile::getPoints() const
 }
 
 
+wstring Tile::getInternalStr() const
+{
+    if (m_code == 0)
+        throw DicException("Tile::getInternalStr: Invalid tile");
+    return wstring(1, toChar());
+}
+
+
 wstring Tile::getDisplayStr() const
 {
     if (m_code == 0)

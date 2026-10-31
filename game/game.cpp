@@ -442,7 +442,7 @@ PlayedRack Game::helperSetRackRandom(const PlayedRack &iPld,
             // Get the best word
             const Round & bestRound = res.get(0);
             LOG_DEBUG("helperSetRackRandom(): initial rack: {} (best word: {})",
-                      lfw(pld.toString()), lfw(bestRound.getWord()));
+                      lfw(pld.toString()), lfw(bestRound.getDisplayWord()));
 
             // Identify the tile we should use to replace the joker
             Tile replacingTile;

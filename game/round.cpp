@@ -113,7 +113,16 @@ void Round::removeRight()
 }
 
 
-wstring Round::getWord() const
+wstring Round::getInternalWord() const
+{
+    wstring word;
+    for (const Tile &tile : m_word)
+        word += tile.getInternalStr();
+    return word;
+}
+
+
+wstring Round::getDisplayWord() const
 {
     wstring s;
 
@@ -142,13 +151,13 @@ unsigned Round::countJokersFromRack() const
 
 wstring Round::toString() const
 {
-    if (getWord().empty()) {
+    if (getDisplayWord().empty()) {
         return L"";
     }
 
     return std::format(
         L"{} {} {} {}",
-        getWord(), getBonus() ? L'*' : L' ', getPoints(), getCoord().toString());
+        getDisplayWord(), getBonus() ? L'*' : L' ', getPoints(), getCoord().toString());
 }
 
 

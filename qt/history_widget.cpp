@@ -200,7 +200,7 @@ void HistoryWidget::updateModel()
             {
                 const Round &r = m.getRound();
                 wstring coord = r.getCoord().toString();
-                setCellData(rowNum, m_colWord, qfw(r.getWord()));
+                setCellData(rowNum, m_colWord, qfw(r.getDisplayWord()));
                 setCellData(rowNum, m_colRef, qfw(coord));
                 color = Qt::black;
             }

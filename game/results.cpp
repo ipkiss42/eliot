@@ -64,7 +64,7 @@ void Results::sort()
 
         // Finally, compare taking the case into account.
         // After that, we are sure that the rounds will be different...
-        return r1.getWord() < r2.getWord();
+        return r1.getDisplayWord() < r2.getDisplayWord();
     });
 }
 

@@ -58,6 +58,8 @@ public:
     unsigned int getPoints() const;
     wchar_t toChar() const;
     unsigned int toCode() const;
+    /// One internal character, retaining assigned-joker case.
+    std::wstring getInternalStr() const;
     std::wstring getDisplayStr() const;
     std::vector<std::wstring> getInputStr() const;
 

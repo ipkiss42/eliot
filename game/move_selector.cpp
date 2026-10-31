@@ -135,7 +135,7 @@ int MoveSelector::evalForRemainingLetters(const Round &iRound) const
 int MoveSelector::evalForExtensions(const Round &iRound) const
 {
     // Find front and back extensions to the given round
-    const wstring &roundWord = iRound.getWord();
+    const wstring &roundWord = iRound.getInternalWord();
     vector<wdstring> results;
     m_dic.searchRacc(roundWord, results);
 
@@ -189,7 +189,7 @@ int MoveSelector::evalForBenjamins(const Round &iRound) const
     }
 
     // Find possible benjamins
-    const wstring &roundWord = iRound.getWord();
+    const wstring &roundWord = iRound.getInternalWord();
     vector<wdstring> results;
     m_dic.searchBenj(roundWord, results);
 

@@ -362,7 +362,7 @@ void CursesIntf::drawResults(Box &ioBox) const
         wstring coord = r.getCoord().toString();
         ioBox.printDataLine(i, x, "%3d %s %3s",
                             r.getPoints(),
-                            padAndConvert(r.getWord(), ioBox.getWidth() - 9, false).c_str(),
+                            padAndConvert(r.getDisplayWord(), ioBox.getWidth() - 9, false).c_str(),
                             lfw(coord).c_str());
     }
     // Complete the list with empty lines, to avoid trails
@@ -403,7 +403,7 @@ void CursesIntf::drawHistory(Box &ioBox) const
             ioBox.printDataLine(i, x,
                 " %2d   %s   %s   %s   %3d   %c",
                 i + 1, padAndConvert(t.getPlayedRack().toString(), 14, false).c_str(),
-                padAndConvert(r.getWord(), 15, false).c_str(),
+                padAndConvert(r.getDisplayWord(), 15, false).c_str(),
                 padAndConvert(coord, 3).c_str(), r.getPoints(),
                 r.getBonus() ? '*' : ' ');
         }

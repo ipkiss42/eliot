@@ -68,7 +68,8 @@ public:
     bool isPlayedFromRack(unsigned int iIndex) const;
     const Tile& getTile  (unsigned int iIndex) const;
 
-    wstring getWord() const;
+    wstring getInternalWord() const;
+    wstring getDisplayWord() const;
     unsigned int getWordLen() const { return m_word.size(); }
     int getPoints() const           { return m_points; }
     bool getBonus() const           { return m_bonus; }
