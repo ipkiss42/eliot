@@ -629,7 +629,9 @@ void loopTraining(PublicGame &iGame)
                 else if (type == L'p')
                 {
                     map<unsigned int, vector<wdstring> > wordMap;
-                    iGame.getDic().search7pl1(word, wordMap, false);
+                    const auto status = iGame.getDic().search7pl1(word, wordMap, false);
+                    if (status == Dictionary::Search7pl1Status::JokerNotAllowed)
+                        cout << "  ** joker **" << endl;
                     map<unsigned int, vector<wdstring> >::const_iterator it;
                     for (it = wordMap.begin(); it != wordMap.end(); ++it)
                     {

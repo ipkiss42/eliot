@@ -143,12 +143,12 @@ void Dictionary::searchWordByLen(struct params_7plus1_t &params,
 }
 
 
-void Dictionary::search7pl1(const wstring &iRack,
+Dictionary::Search7pl1Status Dictionary::search7pl1(const wstring &iRack,
                             map<unsigned int, vector<wdstring> > &oWordList,
                             bool joker) const
 {
     if (iRack == L"" || iRack.size() > DIC_WORD_MAX)
-        return;
+        return Search7pl1Status::Complete;
 
     struct params_7plus1_t params;
 
@@ -176,14 +176,13 @@ void Dictionary::search7pl1(const wstring &iRack,
             }
             else
             {
-                oWordList[0].emplace_back(L"** joker **");
-                return;
+                return Search7pl1Status::JokerNotAllowed;
             }
         }
     }
 
     if (wordlen < 1)
-        return;
+        return Search7pl1Status::Complete;
 
     const DicEdge *root_edge = getEdgeAt(getRoot());
     root_edge = getEdgeAt(root_edge->ptr);
@@ -212,6 +211,7 @@ void Dictionary::search7pl1(const wstring &iRack,
 
         params.search_letters[code]--;
     }
+    return Search7pl1Status::Complete;
 }
 
 /****************************************/

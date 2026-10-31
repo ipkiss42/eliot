@@ -236,6 +236,12 @@ public:
     void searchRacc(const wstring &iWord, vector<wdstring> &oWordList,
                     unsigned int iMaxResults = 0) const;
 
+    enum class Search7pl1Status
+    {
+        Complete,
+        JokerNotAllowed
+    };
+
     /**
      * Search for all feasible word with "rack" plus one letter
      * XXX: the key in the map is the internal code, because it allows an easy
@@ -248,7 +254,7 @@ public:
      * @param joker: true if the search must be performed when a joker is in the rack
      * @param iMaxResults: maximum number of returned results (0 means no limit)
      */
-    void search7pl1(const wstring &iRack,
+    Search7pl1Status search7pl1(const wstring &iRack,
                     map<unsigned int, vector<wdstring> > &oWordList,
                     bool joker) const;
 
