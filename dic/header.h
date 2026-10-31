@@ -63,6 +63,21 @@ constexpr T ntoh(T value) noexcept {
 }
 
 
+/** Canonical display and alternative input representations for a tile. */
+struct TileDisplayAndInputs
+{
+    wstring display;
+    vector<wstring> alternatives;
+
+    vector<wstring> getInputs() const
+    {
+        vector<wstring> inputs{display};
+        inputs.insert(inputs.end(), alternatives.begin(), alternatives.end());
+        return inputs;
+    }
+};
+
+
 /**
  * Structure used to create a Header object.
  * Note: this structure doesn't pretend to map the way the data is stored in a
@@ -83,7 +98,7 @@ struct DictHeaderInfo
     vector<uint8_t> frequency;
     vector<bool> vowels;
     vector<bool> consonants;
-    map<wchar_t, vector<wstring> > displayInputData;
+    map<wchar_t, TileDisplayAndInputs> displayInputData;
 };
 
 
@@ -150,7 +165,7 @@ public:
     bool         isConsonant(unsigned int iCode) const { return m_consonants[iCode - 1]; }
     //@}
 
-    const map<wchar_t, vector<wstring> > & getDisplayInputData() const { return m_displayAndInputData; }
+    const map<wchar_t, TileDisplayAndInputs> & getDisplayInputData() const { return m_displayAndInputData; }
 
     /**
      * Return true if the given char is part of a multi-char input string, false otherwise
@@ -231,7 +246,7 @@ private:
     vector<bool> m_consonants;
 
     /// Additional display and input strings for some letters
-    map<wchar_t, vector<wstring> > m_displayAndInputData;
+    map<wchar_t, TileDisplayAndInputs> m_displayAndInputData;
 
     /// Cache for the char --> code associations
     map<wchar_t, unsigned int> m_mapCodeFromChar;

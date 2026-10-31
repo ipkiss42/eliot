@@ -71,22 +71,28 @@ Dictionary::Dictionary(const string &iPath)
     // Build the cache for the convertToDisplay() and convertFromInput()
     // methods.
     const auto& displayInputData = m_header->getDisplayInputData();
-    for (const auto& [wch, inputs] : displayInputData)
+    for (const auto& [wch, displayAndInputs] : displayInputData)
     {
+        auto &upperCache = m_displayInputCache[towupper(wch)];
+        auto &lowerCache = m_displayInputCache[towlower(wch)];
+        upperCache.display = toUpper(displayAndInputs.display);
+        if (towupper(wch) != towlower(wch))
+            lowerCache.display = toLower(displayAndInputs.display);
+
         // Save both the upper case and lower case versions
-        for (const auto &str : inputs)
+        for (const auto &str : displayAndInputs.getInputs())
         {
             // Make sure the string is in uppercase
             auto upper = toUpper(str);
             // Make a lowercase copy
             auto lower = toLower(str);
             // Fill the cache
-            m_displayInputCache[towupper(wch)].push_back(std::move(upper));
-            m_displayInputCache[towlower(wch)].push_back(std::move(lower));
+            upperCache.inputs.push_back(std::move(upper));
+            lowerCache.inputs.push_back(std::move(lower));
         }
 
         // Update the m_hasDisplay flag
-        if (!m_hasDisplay && inputs[0] != wstring(1, wch))
+        if (!m_hasDisplay && displayAndInputs.display != wstring(1, wch))
             m_hasDisplay = true;
     }
 
@@ -151,9 +157,9 @@ wdstring Dictionary::convertToDisplay(const wstring &iWord) const
         return iWord;
 
     wdstring dispStr = iWord;
-    for (const auto& [internalChar, inputs] : m_displayInputCache)
+    for (const auto& [internalChar, displayAndInputs] : m_displayInputCache)
     {
-        const wstring_view &disp = inputs[0];
+        const wstring &disp = displayAndInputs.display;
         size_t pos = 0;
         while ((pos = dispStr.find(internalChar, pos)) != std::wstring::npos)
         {
@@ -173,9 +179,9 @@ wstring Dictionary::convertFromInput(const wistring &iWord) const
         return iWord;
 
     wstring str = iWord;
-    for (const auto& [internalChar, inputStrings] : m_displayInputCache)
+    for (const auto& [internalChar, displayAndInputs] : m_displayInputCache)
     {
-        for (const auto &input : inputStrings)
+        for (const auto &input : displayAndInputs.inputs)
         {
             size_t pos = 0;
             while ((pos = str.find(input, pos)) != string::npos)

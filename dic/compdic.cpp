@@ -117,7 +117,10 @@ void CompDic::addLetter(wchar_t chr, int points, int frequency,
         // it is already the default.
         if (upperInputs.size() != 1 || upperInputs[0] != wstring(1, upChar))
         {
-            m_headerInfo.displayInputData[upChar] = upperInputs;
+            m_headerInfo.displayInputData[upChar] = {
+                .display = upperInputs.front(),
+                .alternatives = vector<wstring>(upperInputs.begin() + 1, upperInputs.end())
+            };
         }
     }
 }

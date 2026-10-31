@@ -300,14 +300,19 @@ private:
 
     /**
      * Associate to some internal chars (both the lower case and
-     * upper case versions) all the corresponding input strings.
-     * The first one is always the display string.
+     * upper case versions) their canonical display representation and accepted input
+     * representations, including the display representation.
      *
      * Note: only the chars which have more than 1 input string,
      * or which have a display string different from the internal char,
      * are present in the map.
      */
-    map<wchar_t, vector<wstring> > m_displayInputCache;
+    struct DisplayAndInputsCache
+    {
+        wstring display;
+        vector<wstring> inputs;
+    };
+    map<wchar_t, DisplayAndInputsCache> m_displayInputCache;
 
     /**
      * True if at least one display strings is different from the internal

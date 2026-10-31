@@ -67,7 +67,7 @@ static void printLetters(const Dictionary &iDic)
         auto it = header.getDisplayInputData().find(letters[i - 1]);
         if (it != header.getDisplayInputData().end())
         {
-            for (const wstring &input : it->second)
+            for (const wstring &input : it->second.getInputs())
             {
                 cout << " " << ufw(input);
             }

@@ -234,7 +234,7 @@ void Header::buildCaches()
     for (auto [idx, wch] : std::views::enumerate(m_letters))
     {
         if (auto it = m_displayAndInputData.find(wch); it != m_displayAndInputData.end())
-            m_displayCache[idx + 1] = it->second[0];
+            m_displayCache[idx + 1] = it->second.display;
         else
             m_displayCache[idx + 1].push_back(wch);
     }
@@ -249,7 +249,7 @@ void Header::buildCaches()
             m_inputChars.push_back(wch);
         else
         {
-            for (const auto &str : it->second)
+            for (const auto &str : it->second.getInputs())
             {
                 for (wchar_t chr : str)
                 {
@@ -321,7 +321,7 @@ vector<wistring> Header::getInputStr(unsigned int iCode) const
     const auto& letterKey = m_letters[iCode - 1];
     if (auto it = m_displayAndInputData.find(letterKey); it != m_displayAndInputData.end())
     {
-        return it->second;
+        return it->second.getInputs();
     }
     return { m_displayCache[iCode] };
 }
@@ -561,8 +561,10 @@ void Header::readDisplayAndInput(const wstring &serialized)
                                " dictionary?");
         }
         // OK, save the data
-        pieces.erase(pieces.begin());
-        m_displayAndInputData[chr] = pieces;
+        m_displayAndInputData[chr] = {
+            .display = pieces[1],
+            .alternatives = vector<wstring>(pieces.begin() + 2, pieces.end())
+        };
     }
 }
 
@@ -570,14 +572,15 @@ void Header::readDisplayAndInput(const wstring &serialized)
 wstring Header::writeDisplayAndInput() const
 {
     wstring serialized;
-    for (const auto& [wch, inputs] : m_displayAndInputData)
+    for (const auto& [wch, displayAndInputs] : m_displayAndInputData)
     {
         if (!serialized.empty())
         {
             serialized += L" ";
         }
         serialized.push_back(wch);
-        for (const auto &str : inputs)
+        serialized += L"|" + toUpper(displayAndInputs.display);
+        for (const auto &str : displayAndInputs.alternatives)
         {
             // Make sure the string is uppercase
             serialized += L"|" + toUpper(str);
@@ -622,11 +625,11 @@ void Header::print(ostream &out) const
         auto it = m_displayAndInputData.find(m_letters[i]);
         if (it != m_displayAndInputData.end())
         {
-            const auto &inputs = it->second;
-            f6 = centerAndConvert(inputs[0], sz("Display"));
+            const auto &inputs = it->second.alternatives;
+            f6 = centerAndConvert(it->second.display, sz("Display"));
             bool first = true;
             string s;
-            for (unsigned long j = 1; j < inputs.size(); ++j)
+            for (unsigned long j = 0; j < inputs.size(); ++j)
             {
                 if (first)
                     first = false;
