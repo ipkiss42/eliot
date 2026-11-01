@@ -223,7 +223,7 @@ void ArbitAssignments::updatePlayersModel()
             if (move.isValid())
             {
                 const Round &round = move.getRound();
-                m_playersModel->setData(m_playersModel->index(rowNum, 2), qfw(round.getDisplayWord()));
+                m_playersModel->setData(m_playersModel->index(rowNum, 2), qfd(round.getDisplayWord()));
                 m_playersModel->setData(m_playersModel->index(rowNum, 3), qfw(round.getCoord().toString()));
             }
             else if (move.isInvalid())
@@ -714,7 +714,7 @@ QString ArbitAssignments::formatMove(const Move &iMove) const
     if (iMove.isValid())
     {
         return QString("%1 - %2 - %3")
-            .arg(qfw(iMove.getRound().getDisplayWord()), qfw(iMove.getRound().getCoord().toString()))
+            .arg(qfd(iMove.getRound().getDisplayWord()), qfw(iMove.getRound().getCoord().toString()))
             .arg(iMove.getScore());
     }
     else

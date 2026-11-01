@@ -149,14 +149,17 @@ bool Dictionary::validateInputChars(const wistring &iLetters,
 }
 
 
-wdstring Dictionary::convertToDisplay(const wstring &iWord) const
+DDString Dictionary::convertToDisplay(const wstring &iWord) const
 {
+    if (!validateLetters(iWord))
+        throw DicException("Dictionary::convertToDisplay: invalid internal letters");
+
     // Optimization for dictionaries without display nor input chars,
     // which is the case in most languages.
     if (!m_hasDisplay)
-        return iWord;
+        return DDString::fromTrusted(iWord);
 
-    wdstring dispStr = iWord;
+    wstring dispStr = iWord;
     for (const auto& [internalChar, displayAndInputs] : m_displayInputCache)
     {
         const wstring &disp = displayAndInputs.display.raw();
@@ -167,7 +170,7 @@ wdstring Dictionary::convertToDisplay(const wstring &iWord) const
             pos += disp.size();
         }
     }
-    return dispStr;
+    return DDString::fromTrusted(std::move(dispStr));
 }
 
 

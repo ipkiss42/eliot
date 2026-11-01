@@ -46,6 +46,7 @@
 #include "cmd/topping_move_cmd.h"
 #include "dic.h"
 #include "header.h"
+#include "tile.h"
 
 // Current version of our save game format. Bump it when it becomes
 // incompatible (and keep it in sync with xml_reader.cpp)
@@ -122,12 +123,14 @@ void XmlWriter::write(const Game& iGame, const std::filesystem::path& iFileName)
         throw SaveGameException(_("Invalid dictionary type"));
     dictNode.append_child("Type").text().set(dictType);
 
-    // Retrieve the dictionary letters, ans separate them with spaces
-    wstring lettersWithSpaces = header.getLetters();
-    for (size_t i = lettersWithSpaces.size() - 1; i > 0; --i)
-        lettersWithSpaces.insert(i, 1, L' ');
-    // Convert to a display string
-    const wstring &displayLetters = dict.convertToDisplay(lettersWithSpaces);
+    // Render each dictionary tile before adding metadata separators.
+    wstring displayLetters;
+    for (wchar_t letter : header.getLetters())
+    {
+        if (!displayLetters.empty())
+            displayLetters += L' ';
+        displayLetters += dict.convertToDisplay(Tile(letter).getInternalStr()).raw();
+    }
     dictNode.append_child("Letters").text().set(toUtf8(displayLetters));
     dictNode.append_child("WordNb").text().set(std::to_string(header.getNbWords()));
 

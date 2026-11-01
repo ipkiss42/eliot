@@ -201,7 +201,7 @@ void HistoryWidget::updateModel()
             {
                 const Round &r = m.getRound();
                 wstring coord = r.getCoord().toString();
-                setCellData(rowNum, m_colWord, qfw(r.getDisplayWord()));
+                setCellData(rowNum, m_colWord, qfd(r.getDisplayWord()));
                 setCellData(rowNum, m_colRef, qfw(coord));
                 color = Qt::black;
             }
@@ -224,7 +224,7 @@ void HistoryWidget::updateModel()
             else
             {
                 setCellData(rowNum, m_colWord,
-                            "[-" + qfw(m_game->getDic().convertToDisplay(m.getChangedLetters())) + "]");
+                            "[-" + qfd(m_game->getDic().convertToDisplay(m.getChangedLetters())) + "]");
                 color = Qt::blue;
             }
 

@@ -96,7 +96,7 @@ void BagWidget::updateModel()
 
             int rowNum = m_model->rowCount();
             m_model->insertRow(rowNum);
-            m_model->setData(m_model->index(rowNum, 0), qfw(str));
+            m_model->setData(m_model->index(rowNum, 0), qfd(str));
             m_model->setData(m_model->index(rowNum, 1), tile.getPoints());
         }
     }

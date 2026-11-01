@@ -113,7 +113,7 @@ public:
      * Convert the given string (made of internal characters)
      * into a string suitable for display
      */
-    wdstring convertToDisplay(const wstring &iWord) const;
+    DDString convertToDisplay(const wstring &iWord) const;
 
     /**
      * Convert the given string (direct user input)

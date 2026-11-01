@@ -168,15 +168,15 @@ void DicToolsWidget::refreshCheck()
         bool res = m_dic->searchWord(input);
         // Convert the input to uppercase
         input = toUpper(input);
-        const wdstring &dispStr = m_dic->convertToDisplay(input);
+        const DDString &dispStr = m_dic->convertToDisplay(input);
         if (res)
         {
-            labelCheck->setText(_q("The word '%1' exists").arg(qfw(dispStr)));
+            labelCheck->setText(_q("The word '%1' exists").arg(qfd(dispStr)));
             labelCheck->setPalette(greenPalette);
         }
         else
         {
-            labelCheck->setText(_q("The word '%1' does not exist").arg(qfw(dispStr)));
+            labelCheck->setText(_q("The word '%1' does not exist").arg(qfd(dispStr)));
             labelCheck->setPalette(redPalette);
         }
     }
@@ -204,16 +204,21 @@ void DicToolsWidget::refreshPlus1()
         return;
     }
 
-    const wstring &input = m_dic->convertFromInput(wfq(rack->text().toUpper()));
-    const wdstring &disp = m_dic->convertToDisplay(input);
+    if (!rack->text().isEmpty() && !rack->hasAcceptableInput())
+    {
+        model->setHeaderData(0, Qt::Horizontal, _q("Invalid or incomplete letters"), Qt::DisplayRole);
+        return;
+    }
+    const wstring &internalLetters = m_dic->convertFromInput(wfq(rack->text().toUpper()));
+    const DDString &disp = m_dic->convertToDisplay(internalLetters);
     model->setHeaderData(0, Qt::Horizontal,
-                         _q("Rack: %1").arg(qfw(disp)),
+                         _q("Rack: %1").arg(qfd(disp)),
                          Qt::DisplayRole);
 
-    if (input != L"")
+    if (internalLetters != L"")
     {
         map<unsigned int, vector<wstring> > wordList;
-        m_dic->search7pl1(input, wordList, true);
+        m_dic->search7pl1(internalLetters, wordList, true);
 
         int rowNum = 0;
         map<unsigned int, vector<wstring> >::const_iterator it;
@@ -223,7 +228,7 @@ void DicToolsWidget::refreshPlus1()
             model->insertRow(rowNum);
             const QModelIndex &index = model->index(rowNum, 0);
             if (it->first != 0)
-                model->setData(index, qfw(m_dic->getHeader().getDisplayStr(it->first)));
+                model->setData(index, qfd(m_dic->getHeader().getDisplayStr(it->first)));
             else
                 model->setData(index, _q("Anagrams"));
             treeView->setExpanded(index, true);
@@ -266,9 +271,8 @@ void DicToolsWidget::refreshRegexp()
     }
 
     const wstring &input = m_dic->convertFromInput(wfq(rack->text().toUpper()));
-    const wdstring &disp = m_dic->convertToDisplay(input);
     model->setHeaderData(0, Qt::Horizontal,
-                         _q("Regular expression: %1").arg(qfw(disp)),
+                         _q("Regular expression: %1").arg(rack->text()),
                          Qt::DisplayRole);
 
     if (input != L"")
@@ -363,7 +367,7 @@ void DicToolsWidget::refreshDicInfo()
     {
         const Header &header = m_dic->getHeader();
         lineEditName->setText(qfw(header.getName()));
-        lineEditLetters->setText(qfw(m_dic->convertToDisplay(header.getLetters())));
+        lineEditLetters->setText(qfd(m_dic->convertToDisplay(header.getLetters())));
         spinBoxWords->setValue(header.getNbWords());
 
         QStandardItemModel *model = m_dicInfoModel;
@@ -375,7 +379,7 @@ void DicToolsWidget::refreshDicInfo()
         {
             model->insertRow(rowNum);
             model->setData(model->index(rowNum, 0),
-                           qfw(it->getDisplayStr()));
+                           qfd(it->getDisplayStr()));
             model->setData(model->index(rowNum, 1), it->getPoints());
             model->setData(model->index(rowNum, 2), it->maxNumber());
             model->setData(model->index(rowNum, 3),

@@ -208,7 +208,7 @@ void StatsWidget::refresh()
         if (move.isValid() && !isFlipped())
         {
             turnString += QString(" (%1 - %2)")
-                .arg(qfw(move.getRound().getDisplayWord()), qfw(move.getRound().getCoord().toString()));
+                .arg(qfd(move.getRound().getDisplayWord()), qfw(move.getRound().getCoord().toString()));
         }
         setModelHeader(col++, turnString, false);
     }
@@ -428,7 +428,7 @@ QString StatsWidget::getTooltip(const TurnData &iTurn, const TurnData &iGameTurn
     const Move &move = iTurn.getMove();
     if (move.isValid())
     {
-        tooltip += "\n" + _q("Word: %1").arg(qfw(move.getRound().getDisplayWord()));
+        tooltip += "\n" + _q("Word: %1").arg(qfd(move.getRound().getDisplayWord()));
         tooltip += "\n" + _q("Ref: %1").arg(qfw(move.getRound().getCoord().toString()));
     }
     else if (move.isInvalid())
@@ -438,7 +438,7 @@ QString StatsWidget::getTooltip(const TurnData &iTurn, const TurnData &iGameTurn
     }
     else if (move.isChangeLetters())
     {
-        tooltip += "\n" + _q("Changed letters: %1").arg(qfw(m_game->getDic().convertToDisplay(move.getChangedLetters())));
+        tooltip += "\n" + _q("Changed letters: %1").arg(qfd(m_game->getDic().convertToDisplay(move.getChangedLetters())));
     }
     else if (move.isPass())
     {

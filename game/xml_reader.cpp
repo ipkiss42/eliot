@@ -72,12 +72,12 @@ static void validateDictionary(const pugi::xml_node& dicNode, const Dictionary& 
     pugi::xml_node lettersNode = dicNode.child("Letters");
     if (lettersNode)
     {
-        const wdstring & displayLetters = iDic.convertToDisplay(iDic.getHeader().getLetters());
+        const DDString & displayLetters = iDic.convertToDisplay(iDic.getHeader().getLetters());
         // Remove spaces
         string parsedLetters = lettersNode.text().get();
         std::erase(parsedLetters, ' ');
         // Compare
-        if (displayLetters != fromUtf8(parsedLetters))
+        if (displayLetters.raw() != fromUtf8(parsedLetters))
             throw LoadGameException(_("The current dictionary is different from the one used in the saved game"));
     }
     pugi::xml_node wordNbNode = dicNode.child("WordNb");

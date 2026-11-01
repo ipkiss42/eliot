@@ -189,7 +189,7 @@ void TileWidget::paintEvent(QPaintEvent *iEvent)
         if (!m_tile.isPureJoker())
         {
             painter.drawText(0, 0, squareSize, squareSize,
-                             Qt::AlignCenter, qfw(chr));
+                             Qt::AlignCenter, qfd(chr));
         }
         painter.setPen(TextNormalColour);
 

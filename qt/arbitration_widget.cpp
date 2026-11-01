@@ -220,7 +220,7 @@ void ArbitrationWidget::refresh()
 {
     const PlayedRack &pldRack = m_game->getCurrentRack();
     // Update the rack only if needed, to avoid losing cursor position
-    QString qrack = qfw(pldRack.getDisplayStr());
+    QString qrack = qfd(pldRack.getDisplayStr());
     if (qrack != lineEditRack->text()) {
         // Save the selection status
         bool isAllselected = lineEditRack->text() == lineEditRack->selectedText();
@@ -299,7 +299,7 @@ int ArbitrationWidget::addSingleMove(const Move &iMove, int moveType,
     if (iMove.isValid())
     {
         const Round &r = iMove.getRound();
-        m_resultsModel->setData(m_resultsModel->index(rowNum, 0), qfw(r.getDisplayWord()));
+        m_resultsModel->setData(m_resultsModel->index(rowNum, 0), qfd(r.getDisplayWord()));
         m_resultsModel->setData(m_resultsModel->index(rowNum, 1),
                                 qfw(r.getCoord().toString()));
     }
@@ -395,7 +395,7 @@ void ArbitrationWidget::rackEdited(const QString &iText)
     {
         // Restore the rack (visually)
         const PlayedRack &pldRack = m_game->getCurrentRack();
-        QString qrack = qfw(pldRack.getDisplayStr());
+        QString qrack = qfd(pldRack.getDisplayStr());
         lineEditRack->setText(qrack);
         return;
     }

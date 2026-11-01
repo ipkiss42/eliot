@@ -425,7 +425,7 @@ void CursesIntf::drawHistory(Box &ioBox) const
             else if (m.isPass())
                 action = wfl(_("(PASS)"));
             else if (m.isChangeLetters())
-                action = L"(-" + m_game->getDic().convertToDisplay(m.getChangedLetters()) + L")";
+                action = L"(-" + m_game->getDic().convertToDisplay(m.getChangedLetters()).raw() + L")";
 
             ioBox.printDataLine(i, x,
                 " %2d   %s   %s   %s   %3d",

@@ -588,12 +588,15 @@ int Game::checkPlayedWord(const wstring &iCoord,
 {
     ASSERT(getNPlayers() != 0, "Expected at least one player");
 
-    // Assume that the move is invalid by default
-    const wdstring &dispWord = getDic().convertToDisplay(iWord);
-    oMove = Move(dispWord, iCoord);
-
     if (!getDic().validateLetters(iWord))
+    {
+        oMove = Move(iWord, iCoord);
         return 1;
+    }
+
+    // Assume that the move is invalid by default
+    const DDString &dispWord = getDic().convertToDisplay(iWord);
+    oMove = Move(dispWord.raw(), iCoord);
 
     // Init the round with the given coordinates
     Round round;

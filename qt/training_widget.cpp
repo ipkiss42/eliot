@@ -156,8 +156,8 @@ void TrainingWidget::refresh()
     {
         DDString rack = m_game->getPlayer(0).getCurrentRack().getDisplayStr();
         // Update the rack only if it is needed, to avoid losing cursor position
-        if (qfw(rack) != lineEditRack->text())
-            lineEditRack->setText(qfw(rack));
+        if (qfd(rack) != lineEditRack->text())
+            lineEditRack->setText(qfd(rack));
         lineEditPlay->clear();
         lineEditCoords->clear();
         lineEditRack->setEnabled(true);
@@ -200,7 +200,7 @@ void TrainingWidget::updateModel()
         const Round &r = results.get(i);
         int rowNum = m_model->rowCount();
         m_model->insertRow(rowNum);
-        m_model->setData(m_model->index(rowNum, 0), qfw(r.getDisplayWord()));
+        m_model->setData(m_model->index(rowNum, 0), qfd(r.getDisplayWord()));
         m_model->setData(m_model->index(rowNum, 1),
                          qfw(r.getCoord().toString()));
         m_model->setData(m_model->index(rowNum, 2), r.getPoints());

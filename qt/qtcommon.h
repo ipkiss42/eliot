@@ -41,6 +41,7 @@
 // Convert to/from std::wstring
 std::wstring wfq(const QString &q);
 QString qfw(const wstring &wstr);
+inline QString qfd(const DDString &s) { return qfw(s.raw()); }
 // Convert to/from local encoding
 #define qfl(s) qfw(convertToWc(s))
 #define lfq(s) convertToMb(wfq(s))

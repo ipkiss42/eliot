@@ -715,8 +715,10 @@ void MainWindow::playWord(const wstring &iWord, const wstring &iCoord)
     else
     {
         // Try to be as explicit as possible concerning the error
+        const QString word = res == 1 ? qfw(iWord)
+            : qfd(m_game->getDic().convertToDisplay(iWord));
         QString msg = _q("Cannot play '%1' at position '%2':\n%3")
-            .arg(qfw(m_game->getDic().convertToDisplay(iWord)), qfw(iCoord));
+            .arg(word, qfw(iCoord));
         switch (res)
         {
             case 1:
@@ -1137,7 +1139,7 @@ void MainWindow::print(QPrinter *printer)
         if (m.isValid())
         {
             const Round &r = m.getRound();
-            painter.drawText(curWidth, nextHeight, qfw(r.getDisplayWord()));
+            painter.drawText(curWidth, nextHeight, qfd(r.getDisplayWord()));
             curWidth += colWidths[2];
             painter.drawText(curWidth, nextHeight,
                              qfw(r.getCoord().toString()));
@@ -1166,7 +1168,7 @@ void MainWindow::print(QPrinter *printer)
         else
         {
             painter.drawText(curWidth, nextHeight,
-                             "[-" + qfw(m_game->getDic().convertToDisplay(m.getChangedLetters())) + "]");
+                             "[-" + qfd(m_game->getDic().convertToDisplay(m.getChangedLetters())) + "]");
             curWidth += colWidths[2];
             curWidth += colWidths[3];
         }
