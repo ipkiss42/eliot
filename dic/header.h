@@ -39,7 +39,6 @@ using std::istream;
 using std::ostream;
 
 // XXX: duplicated typedef (also present in dic.h)
-using wdstring = wstring;
 using wistring = wstring;
 
 

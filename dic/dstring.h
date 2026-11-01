@@ -55,4 +55,10 @@ private:
     explicit DDString(std::wstring s) : m_data(std::move(s)) {}
 };
 
+inline DDString operator+(DDString lhs, const DDString &rhs)
+{
+    lhs += rhs;
+    return lhs;
+}
+
 #endif

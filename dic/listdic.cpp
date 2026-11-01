@@ -41,7 +41,7 @@ static void printDicRec(ostream &out, const Dictionary &iDic, wstring &current_w
         // Edge points at a complete word
         if (useDisplayString)
         {
-            wstring displayWord;
+            DDString displayWord;
             for (wchar_t internalChar : current_word)
             {
                 const unsigned code = iDic.getHeader().getCodeFromChar(internalChar);

@@ -553,7 +553,7 @@ void handleRegexp(const Dictionary& iDic, const vector<wstring> &tokens)
 
     std::println("search for {} ({},{},{})", lfw(regexp), nres, lmin, lmax);
 
-    vector<wdstring> wordList;
+    vector<DDString> wordList;
     try
     {
         iDic.searchRegExp(regexp, wordList, lmin, lmax, nres);
@@ -564,7 +564,7 @@ void handleRegexp(const Dictionary& iDic, const vector<wstring> &tokens)
         return;
     }
 
-    for (const wdstring &wstr : wordList)
+    for (const DDString &wstr : wordList)
     {
         std::println("{}", lfw(wstr));
     }
@@ -619,25 +619,25 @@ void loopTraining(PublicGame &iGame)
                 const wstring &word = parseLetters(tokens, 2, iGame.getDic());
                 if (type == L'b')
                 {
-                    vector<wdstring> wordList;
+                    vector<DDString> wordList;
                     iGame.getDic().searchBenj(word, wordList);
-                    for (const wdstring &wstr : wordList)
+                    for (const DDString &wstr : wordList)
                     {
                         cout << lfw(wstr) << endl;
                     }
                 }
                 else if (type == L'p')
                 {
-                    map<unsigned int, vector<wdstring> > wordMap;
+                    map<unsigned int, vector<DDString> > wordMap;
                     const auto status = iGame.getDic().search7pl1(word, wordMap, false);
                     if (status == Dictionary::Search7pl1Status::JokerNotAllowed)
                         cout << "  ** joker **" << endl;
-                    map<unsigned int, vector<wdstring> >::const_iterator it;
+                    map<unsigned int, vector<DDString> >::const_iterator it;
                     for (it = wordMap.begin(); it != wordMap.end(); ++it)
                     {
                         if (it->first != 0)
                             cout << "+" << lfw(iGame.getDic().getHeader().getDisplayStr(it->first)) << endl;
-                        for (const wdstring &wstr : it->second)
+                        for (const DDString &wstr : it->second)
                         {
                             cout << "  " << lfw(wstr) << endl;
                         }
@@ -645,9 +645,9 @@ void loopTraining(PublicGame &iGame)
                 }
                 else if (type == L'r')
                 {
-                    vector<wdstring> wordList;
+                    vector<DDString> wordList;
                     iGame.getDic().searchRacc(word, wordList);
-                    for (const wdstring &wstr : wordList)
+                    for (const DDString &wstr : wordList)
                     {
                         cout << lfw(wstr) << endl;
                     }

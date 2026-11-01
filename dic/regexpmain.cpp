@@ -81,12 +81,12 @@ int main(int argc, char* argv[])
                 break;
 
             /* Automaton */
-            vector<wstring> wordList;
+            vector<DDString> wordList;
             try
             {
                 dic.searchRegExp(wfl(line), wordList, 1, 15);
                 cout << _("result:") << endl;
-                vector<wstring>::const_iterator it;
+                vector<DDString>::const_iterator it;
                 for (it = wordList.begin(); it != wordList.end(); it++)
                 {
                     cout << lfw(*it) << endl;

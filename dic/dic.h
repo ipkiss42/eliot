@@ -49,16 +49,6 @@ struct params_7plus1_t;
 struct params_regexp_t;
 struct DicEdge;
 
-/**
- * A wdstring is a display string, i.e. it can contain more chars than
- * the represented string. The difference arises in languages such as Catalan,
- * where for example "QU" is made of 2 real characters, but corresponds to a
- * single tile.
- *
- * The wdstring type has no particular interest other than signaling
- * a bit more precisely the type of contents of the string.
- */
-using wdstring = wstring;
 using wistring = wstring;
 
 class Dictionary
@@ -224,7 +214,7 @@ public:
      * @param oWordList: results
      * @param iMaxResults: maximum number of returned results (0 means no limit)
      */
-    void searchBenj(const wstring &iWord, vector<wdstring> &oWordList,
+    void searchBenj(const wstring &iWord, vector<DDString> &oWordList,
                     unsigned int iMaxResults = 0) const;
 
     /**
@@ -233,7 +223,7 @@ public:
      * @param oWordList: results
      * @param iMaxResults: maximum number of returned results (0 means no limit)
      */
-    void searchRacc(const wstring &iWord, vector<wdstring> &oWordList,
+    void searchRacc(const wstring &iWord, vector<DDString> &oWordList,
                     unsigned int iMaxResults = 0) const;
 
     enum class Search7pl1Status
@@ -255,14 +245,15 @@ public:
      * @param iMaxResults: maximum number of returned results (0 means no limit)
      */
     Search7pl1Status search7pl1(const wstring &iRack,
-                    map<unsigned int, vector<wdstring> > &oWordList,
+                    map<unsigned int, vector<DDString> > &oWordList,
                     bool joker) const;
 
     /**
      * Search for words matching a regular expression
      * @param iRegexp: regular expression
      * @param oWordList: results
-     * @param iList: parameters for the search (?)
+     * @param iMinLength: minimum word length in internal tiles
+     * @param iMaxLength: maximum word length in internal tiles
      * @param iMaxResults: maximum number of returned results (0 means no limit)
      * @return true if all the matching words were returned, false otherwise
      *      (i.e. if the maximum number of results was reached, and there are
@@ -270,7 +261,7 @@ public:
      * @throw InvalidRegexpException When the regular expression cannot be parsed
      */
     bool searchRegExp(const wstring &iRegexp,
-                      vector<wdstring> &oWordList,
+                      vector<DDString> &oWordList,
                       unsigned int iMinLength,
                       unsigned int iMaxLength,
                       unsigned int iMaxResults = 0) const;
@@ -342,9 +333,9 @@ private:
     void searchRegexpRec(const struct params_regexp_t &params,
                          int state,
                          const DicEdge *edgeptr,
-                         vector<wdstring> &oWordList,
+                         vector<DDString> &oWordList,
                          unsigned int iMaxResults,
-                         const wdstring &iCurrWord = L"",
+                         const DDString &iCurrWord = DDString(),
                          unsigned int iNbChars = 0) const;
 };
 

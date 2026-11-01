@@ -217,11 +217,11 @@ void DicToolsWidget::refreshPlus1()
 
     if (internalLetters != L"")
     {
-        map<unsigned int, vector<wstring> > wordList;
+        map<unsigned int, vector<DDString> > wordList;
         m_dic->search7pl1(internalLetters, wordList, true);
 
         int rowNum = 0;
-        map<unsigned int, vector<wstring> >::const_iterator it;
+        map<unsigned int, vector<DDString> >::const_iterator it;
         for (it = wordList.begin(); it != wordList.end(); it++)
         {
             // Create the header line
@@ -237,11 +237,11 @@ void DicToolsWidget::refreshPlus1()
             // Create the result lines
             model->insertColumn(0, index);
             model->insertRows(0, it->second.size(), index);
-            const vector<wstring> &results = it->second;
+            const vector<DDString> &results = it->second;
             for (unsigned i = 0; i < results.size(); ++i)
             {
                 model->setData(model->index(i, 0, index),
-                                 qfw(results[i]));
+                                 qfd(results[i]));
             }
         }
     }
@@ -282,7 +282,7 @@ void DicToolsWidget::refreshRegexp()
         // FIXME: this value should not be hardcoded,
         // or a warning should appear when it is reached
         unsigned limit = 1000;
-        vector<wstring> wordList;
+        vector<DDString> wordList;
         bool res = true;
         int rowNum = 0;
         try
@@ -298,11 +298,11 @@ void DicToolsWidget::refreshRegexp()
                            QBrush(Qt::red), Qt::ForegroundRole);
         }
 
-        vector<wstring>::const_iterator it;
+        vector<DDString>::const_iterator it;
         for (it = wordList.begin(); it != wordList.end(); it++)
         {
             model->insertRow(rowNum);
-            model->setData(model->index(rowNum, 0), qfw(*it));
+            model->setData(model->index(rowNum, 0), qfd(*it));
             ++rowNum;
         }
         if (res)
@@ -324,7 +324,7 @@ void DicToolsWidget::saveRegexpResults()
         const wstring &input = m_dic->convertFromInput(wfq(lineEditRegexp->text().toUpper()));
         unsigned lmin = spinBoxMinLength->value();
         unsigned lmax = spinBoxMaxLength->value();
-        vector<wstring> wordList;
+        vector<DDString> wordList;
         try
         {
             m_dic->searchRegExp(input, wordList, lmin, lmax, 0);
@@ -338,7 +338,7 @@ void DicToolsWidget::saveRegexpResults()
         try
         {
             ofstream file(lfq(fileName).c_str());
-            for (const wstring &word : wordList)
+            for (const DDString &word : wordList)
             {
                 file << lfw(word) << endl;
             }
