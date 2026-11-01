@@ -159,16 +159,16 @@ DDString Dictionary::convertToDisplay(const wstring &iWord) const
     if (!m_hasDisplay)
         return DDString::fromTrusted(iWord);
 
-    wstring dispStr = iWord;
-    for (const auto& [internalChar, displayAndInputs] : m_displayInputCache)
+    // Render only the original internal letters: a display string can itself
+    // contain another tile's internal character.
+    wstring dispStr;
+    for (wchar_t internalChar : iWord)
     {
-        const wstring &disp = displayAndInputs.display.raw();
-        size_t pos = 0;
-        while ((pos = dispStr.find(internalChar, pos)) != std::wstring::npos)
-        {
-            dispStr.replace(pos, 1, disp);
-            pos += disp.size();
-        }
+        auto it = m_displayInputCache.find(internalChar);
+        if (it == m_displayInputCache.end())
+            dispStr += internalChar;
+        else
+            dispStr += it->second.display.raw();
     }
     return DDString::fromTrusted(std::move(dispStr));
 }

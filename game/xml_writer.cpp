@@ -125,11 +125,11 @@ void XmlWriter::write(const Game& iGame, const std::filesystem::path& iFileName)
 
     // Render each dictionary tile before adding metadata separators.
     wstring displayLetters;
-    for (wchar_t letter : header.getLetters())
+    for (const Tile &tile : dict.getAllTiles())
     {
         if (!displayLetters.empty())
             displayLetters += L' ';
-        displayLetters += dict.convertToDisplay(Tile(letter).getInternalStr()).raw();
+        displayLetters += tile.getDisplayStr().raw();
     }
     dictNode.append_child("Letters").text().set(toUtf8(displayLetters));
     dictNode.append_child("WordNb").text().set(std::to_string(header.getNbWords()));
