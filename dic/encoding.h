@@ -63,6 +63,9 @@ string convertToMb(const wstring& iWStr);
 /// Convert a wide character into a multi-byte string
 string convertToMb(wchar_t iWChar);
 
+/// Convert a display string to the local encoding.
+inline string lfd(const DDString &s) { return convertToMb(s.raw()); }
+
 /**
  * Truncate the given string to ensure that the number of columns needed
  * to display it is at most iMaxWidth. If the string is already less wide,

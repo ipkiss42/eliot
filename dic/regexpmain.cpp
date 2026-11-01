@@ -89,7 +89,7 @@ int main(int argc, char* argv[])
                 vector<DDString>::const_iterator it;
                 for (it = wordList.begin(); it != wordList.end(); it++)
                 {
-                    cout << lfw(*it) << endl;
+                    cout << lfd(*it) << endl;
                 }
             }
             catch (InvalidRegexpException &e)

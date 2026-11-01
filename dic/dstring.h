@@ -45,11 +45,6 @@ public:
     std::wstring raw() && noexcept { return std::move(m_data); }
     std::wstring raw() const && { return m_data; }
 
-    // STRING_MIGRATION: owning compatibility for unmigrated wide consumers.
-    // Remove after display producers and consumers have all been migrated.
-    operator std::wstring() const & { return m_data; }
-    operator std::wstring() && noexcept { return std::move(m_data); }
-
 private:
     std::wstring m_data;
     explicit DDString(std::wstring s) : m_data(std::move(s)) {}

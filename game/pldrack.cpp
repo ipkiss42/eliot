@@ -218,7 +218,7 @@ std::wstring PlayedRack::toString(display_mode mode) const
 
     for (const Tile &tile : m_oldTiles)
     {
-        s += tile.getDisplayStr();
+        s += tile.getDisplayStr().raw();
     }
 
     if (mode > RACK_SIMPLE && getNbOld() > 0 && getNbNew() > 0)
@@ -228,7 +228,7 @@ std::wstring PlayedRack::toString(display_mode mode) const
 
     for (const Tile &tile : m_newTiles)
     {
-        s += tile.getDisplayStr();
+        s += tile.getDisplayStr().raw();
     }
 
     return s;

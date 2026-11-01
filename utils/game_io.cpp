@@ -60,7 +60,7 @@ void GameIO::printBoard(ostream &out, const PublicGame &iGame)
             if (iGame.getBoard().isVacant(row, col))
                 out << " - ";
             else
-                out << centerAndConvert(iGame.getBoard().getDisplayStr(row, col), 3);
+                out << centerAndConvert(iGame.getBoard().getDisplayStr(row, col).raw(), 3);
         }
         out << endl;
     }
@@ -113,7 +113,7 @@ void GameIO::printBoardMultipliers(ostream &out, const PublicGame &iGame)
         for (int col = 1; col <= nbCols; ++col)
         {
             if (!iGame.getBoard().isVacant(row, col))
-                out << padAndConvert(iGame.getBoard().getDisplayStr(row, col), 3);
+                out << padAndConvert(iGame.getBoard().getDisplayStr(row, col).raw(), 3);
             else
             {
                 int wm = boardLayout.getWordMultiplier(row, col);
@@ -139,7 +139,7 @@ void GameIO::printNonPlayed(ostream &out, const PublicGame &iGame)
     {
         if (bag.count(tile) > 9)
             out << " ";
-        out << setw(2) << lfw(tile.getDisplayStr());
+        out << setw(2) << lfd(tile.getDisplayStr());
     }
     out << endl;
 
@@ -153,7 +153,7 @@ void GameIO::printNonPlayed(ostream &out, const PublicGame &iGame)
 
 void GameIO::printPlayedRack(ostream &out, const PublicGame &iGame)
 {
-    out << lfw(iGame.getCurrentRack().getDisplayStr()) << endl;
+    out << lfd(iGame.getCurrentRack().getDisplayStr()) << endl;
 }
 
 
@@ -173,7 +173,7 @@ static void searchResultLine(ostream &out, const Results &iResults, int num)
     const DDString &word = r.getDisplayWord();
     if (word.empty())
         return;
-    out << padAndConvert(word, 16, false)
+    out << padAndConvert(word.raw(), 16, false)
         << (r.getBonus() ? '*' : ' ')
         << setw(4) << r.getPoints()
         << ' ' << lfw(r.getCoord().toString());
@@ -240,7 +240,7 @@ void GameIO::printGameDebug(ostream &out, const PublicGame &iGame)
         if (move.isValid())
         {
             const Round &round = move.getRound();
-            f3 = padAndConvert(round.getDisplayWord(), 14, false);
+            f3 = padAndConvert(round.getDisplayWord().raw(), 14, false);
             f4 = padAndConvert(round.getCoord().toString(), 3);
             f5 = padAndConvert(format(L"{0}", round.getPoints()), 3);
             f6 = padAndConvert(round.getBonus() ? L"*": L"", 1, false);

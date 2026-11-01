@@ -79,7 +79,7 @@ unsigned Bag::getNbConsonants() const
 void Bag::takeTile(const Tile &iTile)
 {
     ASSERT(contains(iTile),
-           "The bag does not contain the letter " + lfw(iTile.getDisplayStr()));
+           "The bag does not contain the letter " + lfd(iTile.getDisplayStr()));
 
     m_tilesMap[iTile]--;
     m_nbTiles--;
@@ -89,7 +89,7 @@ void Bag::takeTile(const Tile &iTile)
 void Bag::replaceTile(const Tile &iTile)
 {
     ASSERT(count(iTile) < iTile.maxNumber(),
-           "Cannot replace tile: " + lfw(iTile.getDisplayStr()));
+           "Cannot replace tile: " + lfd(iTile.getDisplayStr()));
 
     m_tilesMap[iTile]++;
     m_nbTiles++;

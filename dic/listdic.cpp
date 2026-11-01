@@ -47,7 +47,7 @@ static void printDicRec(ostream &out, const Dictionary &iDic, wstring &current_w
                 const unsigned code = iDic.getHeader().getCodeFromChar(internalChar);
                 displayWord += iDic.getHeader().getDisplayStr(code);
             }
-            out << lfw(displayWord) << endl;
+            out << lfd(displayWord) << endl;
         }
         else
             out << lfw(current_word) << endl;

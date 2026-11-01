@@ -76,7 +76,7 @@ void Arbitration::setRackManual(const wstring &iLetters)
 void Arbitration::search(LimitResults &oResults)
 {
     const Rack &rack = getHistory().getCurrentRack().getRack();
-    LOG_DEBUG("Performing search for rack " + lfw(rack.toString()));
+    LOG_DEBUG("Performing search for rack " + lfd(rack.toString()));
     int limit = Settings::Instance().getInt("arbitration.search-limit");
     oResults.setLimit(limit);
     oResults.search(getDic(), getBoard(), rack, getHistory().beforeFirstRound());

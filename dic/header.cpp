@@ -626,7 +626,7 @@ void Header::print(ostream &out) const
         if (it != m_displayAndInputData.end())
         {
             const auto &inputs = it->second.alternatives;
-            f6 = centerAndConvert(it->second.display, sz("Display"));
+            f6 = centerAndConvert(it->second.display.raw(), sz("Display"));
             bool first = true;
             string s;
             for (const auto & input : inputs)

@@ -340,7 +340,7 @@ void DicToolsWidget::saveRegexpResults()
             ofstream file(lfq(fileName).c_str());
             for (const DDString &word : wordList)
             {
-                file << lfw(word) << endl;
+                file << lfd(word) << endl;
             }
             QMessageBox::information(this, _q("Save words list"),
                                      _q("File '%1' successfully saved").arg(fileName));

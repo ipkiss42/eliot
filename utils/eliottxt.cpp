@@ -566,7 +566,7 @@ void handleRegexp(const Dictionary& iDic, const vector<wstring> &tokens)
 
     for (const DDString &wstr : wordList)
     {
-        std::println("{}", lfw(wstr));
+        std::println("{}", lfd(wstr));
     }
     std::println("{} printed results", wordList.size());
 }
@@ -623,7 +623,7 @@ void loopTraining(PublicGame &iGame)
                     iGame.getDic().searchBenj(word, wordList);
                     for (const DDString &wstr : wordList)
                     {
-                        cout << lfw(wstr) << endl;
+                        cout << lfd(wstr) << endl;
                     }
                 }
                 else if (type == L'p')
@@ -636,10 +636,10 @@ void loopTraining(PublicGame &iGame)
                     for (it = wordMap.begin(); it != wordMap.end(); ++it)
                     {
                         if (it->first != 0)
-                            cout << "+" << lfw(iGame.getDic().getHeader().getDisplayStr(it->first)) << endl;
+                            cout << "+" << lfd(iGame.getDic().getHeader().getDisplayStr(it->first)) << endl;
                         for (const DDString &wstr : it->second)
                         {
-                            cout << "  " << lfw(wstr) << endl;
+                            cout << "  " << lfd(wstr) << endl;
                         }
                     }
                 }
@@ -649,7 +649,7 @@ void loopTraining(PublicGame &iGame)
                     iGame.getDic().searchRacc(word, wordList);
                     for (const DDString &wstr : wordList)
                     {
-                        cout << lfw(wstr) << endl;
+                        cout << lfd(wstr) << endl;
                     }
                 }
             }

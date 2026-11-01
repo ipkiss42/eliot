@@ -74,7 +74,7 @@ static void writeMove(pugi::xml_node & parentNode, const Move &iMove,
     {
         const Round &round = iMove.getRound();
         moveNode.append_attribute("type").set_value("valid");
-        moveNode.append_attribute("word").set_value(toUtf8(round.getDisplayWord()));
+        moveNode.append_attribute("word").set_value(toUtf8(round.getDisplayWord().raw()));
         moveNode.append_attribute("coord").set_value(toUtf8(round.getCoord().toString()));
     }
     else if (iMove.isInvalid())

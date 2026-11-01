@@ -255,7 +255,7 @@ void CursesIntf::drawBoard(WINDOW *win, int y, int x) const
             if (!t.isEmpty())
             {
                 const DDString &chr = t.getDisplayStr();
-                const string cell = truncString(centerAndConvert(chr, 3), 3);
+                const string cell = truncString(centerAndConvert(chr.raw(), 3), 3);
                 if (m_game->getBoard().isJoker(row, col))
                 {
                     wattron(win, A_BOLD | COLOR_PAIR(COLOR_GREEN));
@@ -326,7 +326,7 @@ void CursesIntf::drawScoresRacks(WINDOW *win, int y, int x) const
         mvwprintw(win, y + yOff + i + 1, x + 2, _("%s: %ls"),
                   truncOrPad(lfw(m_game->getPlayer(i).getName()),
                              maxForRacks).c_str(),
-                  convertToWc(truncAndConvert(rack,
+                  convertToWc(truncAndConvert(rack.raw(),
                       box2.getWidth() - maxForRacks - 3)).c_str());
         if (m_game->getMode() != PublicGame::kTRAINING && i == currId)
             attroff(A_BOLD);
@@ -361,7 +361,7 @@ void CursesIntf::drawResults(Box &ioBox) const
         wstring coord = r.getCoord().toString();
         ioBox.printDataLine(i, x, "%3d %s %3s",
                             r.getPoints(),
-                            padAndConvert(r.getDisplayWord(), ioBox.getWidth() - 9, false).c_str(),
+                            padAndConvert(r.getDisplayWord().raw(), ioBox.getWidth() - 9, false).c_str(),
                             lfw(coord).c_str());
     }
     // Complete the list with empty lines, to avoid trails
@@ -402,7 +402,7 @@ void CursesIntf::drawHistory(Box &ioBox) const
             ioBox.printDataLine(i, x,
                 " %2d   %s   %s   %s   %3d   %c",
                 i + 1, padAndConvert(t.getPlayedRack().toString(), 14, false).c_str(),
-                padAndConvert(r.getDisplayWord(), 15, false).c_str(),
+                padAndConvert(r.getDisplayWord().raw(), 15, false).c_str(),
                 padAndConvert(coord, 3).c_str(), r.getPoints(),
                 r.getBonus() ? '*' : ' ');
         }
@@ -515,10 +515,10 @@ void CursesIntf::drawBag(Box &ioBox) const
              str += chr;
         ioBox.printDataLine(i, ioBox.getLeft() + 1,
                             "  %s        %2d        %2d       %s",
-                            padAndConvert(allTiles[i].getDisplayStr(), 2).c_str(),
+                            padAndConvert(allTiles[i].getDisplayStr().raw(), 2).c_str(),
                             allTiles[i].getPoints(),
                             allTiles[i].maxNumber(),
-                            lfw(str).c_str());
+                            lfd(str).c_str());
     }
 
     int nbLines = min(i + 2 - ioBox.getFirstLine(),

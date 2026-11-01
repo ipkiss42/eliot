@@ -132,7 +132,7 @@ string BoardLettersHint::giveHint(const Move &iMove) const
     }
 
     return _fmt(_("Letters from board: {0}"),
-                (fromBoard.empty() ? _("(none)") : lfw(fromBoard)));
+                (fromBoard.empty() ? _("(none)") : lfd(fromBoard)));
 }
 
 
@@ -160,7 +160,7 @@ string WordLettersHint::giveHint(const Move &iMove) const
         word += tile.getDisplayStr();
     }
 
-    return _fmt(_("Word letters: {0}"), lfw(word));
+    return _fmt(_("Word letters: {0}"), lfd(word));
 }
 
 
@@ -177,7 +177,7 @@ string FirstLetterHint::giveHint(const Move &iMove) const
     LOG_DEBUG("Getting hint for move: {}", lfw(iMove.toString()));
     ASSERT(iMove.isValid(), "Hints only make sense for valid moves");
     return _fmt(_("First letter: {0}"),
-               lfw(iMove.getRound().getTile(0).getDisplayStr()));
+               lfd(iMove.getRound().getTile(0).getDisplayStr()));
 }
 
 
