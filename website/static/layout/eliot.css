@@ -76,21 +76,39 @@ img {
 
 .menu {
   display: block;
-  width: 150px;
-  height: 32px;
-  padding-top: 4px;
+  min-height: 30px;
+  margin-bottom: 2px;
+  padding: 3px 7px;
+  border: 1px solid transparent;
+  border-radius: 999px;
   color: #d0e8ff;
-  background: url(links_flat.png) no-repeat;
+  background: #52799e;
   font-weight: bold;
   text-align: center;
+  overflow-wrap: anywhere;
 }
 
 .menu:hover,
 .menu:focus-visible {
   color: #fff;
-  background-image: url(links_3D.png);
+  box-shadow: inset 2px 2px 3px #c0d2e1, inset -2px -2px 3px #294e76;
   text-decoration: none;
   text-shadow: 2px 2px 2px #426280;
+}
+
+.menu:focus-visible {
+  outline: 2px solid #294e76;
+  outline-offset: 2px;
+}
+
+.menu:active {
+  box-shadow: inset 2px 2px 3px #294e76;
+}
+
+@media (forced-colors: active) {
+  .menu {
+    border-color: ButtonText;
+  }
 }
 
 main {
