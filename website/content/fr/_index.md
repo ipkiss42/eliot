@@ -17,7 +17,9 @@ modes:
 
 ## Jeu de Scrabble gratuit
 
-Eliot est un jeu de Scrabble [open source](http://fr.wikipedia.org/wiki/Open_Source), disponible librement en accord avec la license [GNU](http://www.gnu.org/home.fr.html) [GPL](http://www.gnu.org/licenses/gpl.html).
+Eliot est un jeu de Scrabble [open source](http://fr.wikipedia.org/wiki/Open_Source), disponible librement sous la [licence publique générale GNU (GPL), version 2 ou ultérieure](https://github.com/ipkiss42/eliot/blob/main/COPYING).
+
+Cette indication de licence concerne le logiciel Eliot. Pour les listes de mots, les illustrations du site et les articles cités, vérifiez les conditions de réutilisation auprès de leurs sources respectives.
 
 Eliot propose quatre différents **modes de jeu** :
 
