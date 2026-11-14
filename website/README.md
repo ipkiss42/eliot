@@ -28,6 +28,7 @@ at `/en/`, `/fr/`, and `/it/`.
 
 ```sh
 hugo --baseURL https://OWNER.github.io/REPOSITORY/ --minify --panicOnWarning --cleanDestinationDir
+cp public/fr/404.html public/404.html
 ```
 
 Replace the example URL with the actual public URL, including its trailing
@@ -43,6 +44,19 @@ hugo server --baseURL http://localhost:1313/eliot/ --appendPort=false
 
 Then open <http://localhost:1313/eliot/>. Check navigation, language switching,
 dictionary section links, images, and downloads before publishing.
+
+## Missing pages
+
+The shared `layouts/404.html` template generates an error page in each language,
+with links to home, downloads, dictionaries, and help. The language selector
+switches between these error pages.
+
+GitHub Pages serves one root `404.html` for all missing URLs. The production
+commands above and CI copy the French error page there, matching the site's
+default language. Its stylesheet and recovery links work from nested missing
+URLs, including under `/eliot/`. `hugo server` uses the same French fallback;
+the language selector offers English and Italian. Test a nonexistent
+URL such as `/en/missing/page/`; it should return HTTP 404 with the custom page.
 
 ## Validate changes
 

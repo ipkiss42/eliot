@@ -4,6 +4,11 @@ defaultContentLanguage = 'fr'
 defaultContentLanguageInSubdir = true
 disableKinds = ['taxonomy', 'term', 'RSS']
 
+[[server.redirects]]
+from = '/**'
+to = '/fr/404.html'
+status = 404
+
 [module.hugoVersion]
 min = '0.167.0'
 

@@ -1,0 +1,10 @@
+{{ define "main" }}
+  <h1>404 — {{ i18n "notFoundTitle" }}</h1>
+  <p>{{ i18n "notFoundDescription" }}</p>
+  <ul>
+    <li><a href="{{ .Site.Home.RelPermalink }}">{{ i18n "overview" }}</a></li>
+    <li><a href="{{ (.Site.GetPage "download").RelPermalink }}">{{ i18n "download" }}</a></li>
+    <li><a href="{{ (.Site.GetPage "dict").RelPermalink }}">{{ i18n "dictionaries" }}</a></li>
+    <li><a href="{{ (.Site.GetPage "contact").RelPermalink }}">{{ i18n "help" }}</a></li>
+  </ul>
+{{ end }}

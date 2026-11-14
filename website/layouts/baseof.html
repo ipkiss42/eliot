@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="{{ .Site.Params.author }}">
   <meta name="description" content="{{ .Site.Params.description }}">
-  <title>{{ if .IsHome }}Eliot - An Open Source software for playing Scrabble{{ else }}{{ .Title }} — Eliot{{ end }}</title>
+  <title>{{ if eq .Kind "404" }}404 — {{ i18n "notFoundTitle" }} — Eliot{{ else if .IsHome }}Eliot - An Open Source software for playing Scrabble{{ else }}{{ .Title }} — Eliot{{ end }}</title>
+  {{ if eq .Kind "404" }}
+  <meta name="robots" content="noindex">
+  {{ else }}
   <link rel="canonical" href="{{ .Permalink }}">
+  {{ end }}
   {{ range .AllTranslations }}
   <link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
   {{ end }}
