@@ -1423,7 +1423,7 @@ void MainWindow::onHelpAbout()
     msg += "<br><br>";
     // TRANSLATORS: If the website is translated in your language,
     // feel free to adapt the URL.
-    QString url = _q("http://www.nongnu.org/eliot/en/");
+    QString url = _q("https://ipkiss42.github.io/eliot/en/");
     msg += _q("Web site: %1").arg(QString("<a href=\"%1\">%2</a>").arg(url, url));
     // QMessageBox::about() doesn't add the nice information icon, so we create
     // the box manually (not much work...)

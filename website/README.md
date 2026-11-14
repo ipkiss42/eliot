@@ -71,6 +71,12 @@ paths for internal links, such as `[Download](/en/download/)`; the link
 renderer adds any deployment prefix. Preserve explicit heading IDs such as
 `{#fr}` and existing front-matter aliases so bookmarks and older URLs work.
 
+## Project links
+
+The public website is <https://ipkiss42.github.io/eliot/>. Set the repository's
+**About → Website** field on GitHub to this URL as well; that repository setting
+is managed separately from Git commits.
+
 ## Hosting
 
 The repository's `.github/workflows/website.yml` builds the site using the

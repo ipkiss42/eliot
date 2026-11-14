@@ -1794,8 +1794,8 @@ msgstr ""
 #. TRANSLATORS: If the website is translated in your language,
 #. feel free to adapt the URL.
 #: qt/main_window.cpp:1439 qt/update_checker.cpp:199
-msgid "http://www.nongnu.org/eliot/en/"
-msgstr "http://www.nongnu.org/eliot/en/"
+msgid "https://ipkiss42.github.io/eliot/en/"
+msgstr "https://ipkiss42.github.io/eliot/en/"
 
 #: qt/main_window.cpp:1440
 msgid "Web site: %1"

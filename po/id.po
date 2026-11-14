@@ -1840,8 +1840,8 @@ msgstr ""
 #. feel free to adapt the URL.
 #: qt/main_window.cpp:1439 qt/update_checker.cpp:199
 #, fuzzy
-msgid "http://www.nongnu.org/eliot/en/"
-msgstr "Web site: http://www.nongnu.org/eliot/en/"
+msgid "https://ipkiss42.github.io/eliot/en/"
+msgstr "Web site: https://ipkiss42.github.io/eliot/en/"
 
 #: qt/main_window.cpp:1440
 msgid "Web site: %1"

@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Olivier Teuliere <ipkiss@gmail.com>
 Build-Depends: debhelper (>= 8), autotools-dev, libqt4-dev, libboost-dev, libexpat-dev, libconfig++-dev, libarabica-dev
 Standards-Version: 3.9.3
-Homepage: http://www.nongnu.org/eliot/
+Homepage: https://ipkiss42.github.io/eliot/
 
 Package: eliot
 Architecture: any

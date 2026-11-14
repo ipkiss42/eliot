@@ -194,7 +194,7 @@ bool UpdateChecker::isNewer(QString iNewVersion) const
 
 void UpdateChecker::showNewVersion(QString iVersion) const
 {
-    const QString url = _q("http://www.nongnu.org/eliot/en/");
+    const QString url = _q("https://ipkiss42.github.io/eliot/en/");
     // TRANSLATORS: Here %1 represents a version number.
     QString msg = _q("Eliot %1 is available.").arg(iVersion);
     msg += "<br>" + _q("You can download it from %1.")
