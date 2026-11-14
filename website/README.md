@@ -65,7 +65,19 @@ renderer adds any deployment prefix. Preserve explicit heading IDs such as
 
 ## Hosting
 
-The generated `public/` directory can be published to GitHub Pages. Automated
-deployment is not configured here yet. A repository-level GitHub Actions
-workflow can build `website/` using the pinned Hugo version and publish the
-output as a Pages artifact. Generated files do not need to be committed.
+The repository's `.github/workflows/website.yml` builds the site using the
+version in `.hugo-version`. Pull requests targeting `main` build without
+deploying. Changes merged or pushed to `main` build and deploy automatically
+when they affect `website/` or the website workflow. Website-only changes do
+not trigger the application's Linux/Windows builds.
+
+To enable publishing, select **GitHub Actions** in the repository's
+**Settings → Pages → Build and deployment → Source**. If the `github-pages`
+environment has deployment branch restrictions, allow `main`. See
+[GitHub's Pages workflow documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+
+Deployment builds use the public URL supplied by GitHub Pages, including any
+project path or custom domain. Pull requests use an example project-path URL
+and can build before Pages is enabled. The workflow can also be run manually
+from the Actions tab; only runs on `main` deploy. Generated files are uploaded
+as a Pages artifact and do not need to be committed.
