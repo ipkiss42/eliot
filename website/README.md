@@ -66,6 +66,10 @@ filenames to connect translations, and the language selector opens the
 translation of the current page. Each language's `_index.md` defines its
 overview, including the descriptions used by the `game-modes` shortcode.
 
+The current page and language are highlighted in navigation. If a translation
+is missing, its language name is shown without a link, with an explanation on
+hover; it never silently falls back to a different page.
+
 Write prose in Markdown and keep shared layout in templates. Use site-root
 paths for internal links, such as `[Download](/en/download/)`; the link
 renderer adds any deployment prefix. Preserve explicit heading IDs such as

@@ -61,8 +61,18 @@ img {
   gap: 2px;
 }
 
-.languages a {
+.languages > * {
   height: 24px;
+}
+
+.languages [aria-current="page"] {
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.languages [aria-disabled="true"] {
+  color: #555;
 }
 
 .languages img {
@@ -99,6 +109,13 @@ img {
 .menu:focus-visible {
   outline: 2px solid #294e76;
   outline-offset: 2px;
+}
+
+.menu[aria-current] {
+  color: #fff;
+  background: #394d63;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 .menu:active {

@@ -5,6 +5,12 @@
     {{ if ne . "overview" }}
       {{ $target = $page.Site.GetPage . }}
     {{ end }}
-    <a class="menu" href="{{ $target.RelPermalink }}"{{ if eq $target $page }} aria-current="page"{{ end }}>{{ i18n . }}</a>
+    {{ $current := "" }}
+    {{ if eq $target $page }}
+      {{ $current = "page" }}
+    {{ else if and (eq . "download") (or (strings.HasPrefix $page.Path "/dl-") (eq $page.Path "/dict")) }}
+      {{ $current = "location" }}
+    {{ end }}
+    <a class="menu" href="{{ $target.RelPermalink }}"{{ with $current }} aria-current="{{ . }}"{{ end }}>{{ i18n . }}</a>
   {{ end }}
 </nav>

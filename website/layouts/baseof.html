@@ -19,8 +19,17 @@
       <img class="logo" src="{{ "layout/eliot2.png" | relURL }}" alt="{{ printf "Eliot — %s" (i18n "overview") }}" width="363" height="75">
     </a>
     <nav class="languages" aria-label="{{ i18n "languages" }}">
-      {{ range .AllTranslations }}
-      <a href="{{ .RelPermalink }}" lang="{{ .Language.Locale }}" hreflang="{{ .Language.Locale }}"><img src="{{ printf "layout/%s" .Site.Params.flag | relURL }}" alt="" width="36" height="24">{{ .Language.Label }}</a>
+      {{ $page := . }}
+      {{ range hugo.Sites }}
+      {{ $translation := false }}
+      {{ with where $page.AllTranslations "Language.Lang" .Language.Lang }}
+        {{ $translation = index . 0 }}
+      {{ end }}
+      {{ if $translation }}
+      <a href="{{ $translation.RelPermalink }}" lang="{{ .Language.Locale }}" hreflang="{{ .Language.Locale }}"{{ if eq .Language.Lang $page.Language.Lang }} aria-current="page"{{ end }}><img src="{{ printf "layout/%s" .Params.flag | relURL }}" alt="" width="36" height="24">{{ .Language.Label }}</a>
+      {{ else }}
+      <span lang="{{ .Language.Locale }}" aria-disabled="true" title="{{ i18n "translationUnavailable" }}"><img src="{{ printf "layout/%s" .Params.flag | relURL }}" alt="" width="36" height="24">{{ .Language.Label }}</span>
+      {{ end }}
       {{ end }}
     </nav>
   </header>
