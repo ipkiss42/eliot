@@ -22,4 +22,6 @@ Choisissez votre plateforme ou téléchargez le code source. Chaque page contien
 
 [Choisissez et téléchargez un dictionnaire](/fr/dict/) pour la langue dans laquelle vous souhaitez jouer. La page Dictionnaires explique également comment créer un dictionnaire à partir de votre propre liste de mots.
 
+Les langues des dictionnaires sont indépendantes de la langue du site et de celle de l’interface d’Eliot.
+
 {{< dictionary-index >}}

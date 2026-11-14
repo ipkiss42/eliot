@@ -93,6 +93,38 @@ paths for internal links, such as `[Download](/en/download/)`; the link
 renderer adds any deployment prefix. Preserve explicit heading IDs such as
 `{#fr}` and existing front-matter aliases so bookmarks and older URLs work.
 
+## Editorial conventions
+
+Use these game-mode names in prose; capitalize them at the start of a sentence
+or when quoting an interface label:
+
+| English | French | Italian |
+| --- | --- | --- |
+| classic | classique | classico |
+| duplicate | duplicate | duplicato |
+| training | entraînement | allenamento |
+| arbitration | arbitrage | arbitrato |
+| topping | topping | topping |
+
+Introduce the current application label once on each localized homepage, then
+use the terms above throughout the website. In Italian prose, use *modalità
+classica* and *partita classica*.
+
+- Write dates as day, spelled-out month, and year: `15 September 2020`,
+  `15 septembre 2020`, `15 settembre 2020`. Omit leading zeros; use lowercase
+  month names in French and Italian. Preserve existing heading IDs when editing
+  dated announcements so bookmarks keep working.
+- Use `Mac OS X` for the historical packages and `Mac OS` for classic versions
+  such as 8.5. Keep product names such as Eliot, Git, Windows, and Linux Mint
+  consistently capitalized. For published releases, prefer "release" in English,
+  "version" in French, and "versione" in Italian.
+- A word list (liste de mots/lista di parole) is the source vocabulary; an Eliot
+  dictionary (dictionnaire/dizionario) is a compiled `.dawg` file. Dictionary
+  languages, application interface translations, and website translations are
+  independent choices.
+- Italicize interface labels and match the application's wording in `qt/ui/`
+  and `po/`. Use inline code for commands, filenames, and program names.
+
 ## Project links
 
 The public website is <https://ipkiss42.github.io/eliot/>. Set the repository's

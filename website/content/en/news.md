@@ -7,7 +7,7 @@ aliases:
 These announcements are preserved as a historical archive. For releases, see [Eliot on GitHub](https://github.com/ipkiss42/eliot/releases).
 
 
-## September 15, 2020: Eliot 2.2 {#septembre-15-2020-eliot-22}
+## 15 September 2020: Eliot 2.2 {#septembre-15-2020-eliot-22}
 
 This version is only available as source code and for Debian/Ubuntu/Mint.
 

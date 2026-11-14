@@ -5,6 +5,8 @@ aliases:
 - /dict.html
 ---
 
+A dictionary for Eliot is a compiled `.dawg` file built from a word list. The sections below describe the word lists used by the available dictionaries.
+
 {{< dictionary-index >}}
 
 ## Bambara {#bm}
@@ -47,13 +49,13 @@ The dictionaries below contain official word lists used for playing Scrabble in 
 
 - [french-unofficial-v1](https://github.com/ipkiss42/eliot/releases/download/dictionaries/french-unofficial-v1.dawg)
 
-The word list of this dictionary contains additions and omissions, compared to the Officiel Du Scrabble (ODS 6) word list, which contains 386264 words. It has been obtained by a combination of the following sources:
+The word list of this dictionary contains additions and omissions, compared to the Officiel du Scrabble (ODS 6) word list, which contains 386264 words. It has been obtained by a combination of the following sources:
 
 - [Français-Gutenberg list](http://www.pallier.org/ressources/dicofr/dicofr.html)
 - [Moby list for French](http://www.gutenberg.org/etext/3206)
 - [List of words between 2 and 4 letters](http://www.motsduscrabble.com/)
 
-**Note:** for legal reasons, the word list of the Officiel Du Scrabble (ODS) is not provided anymore on this site. It is however possible to find other word lists on the Internet (including the ODS one...), and to use them to [build your own dictionary](#own).
+**Note:** for legal reasons, the word list of the Officiel du Scrabble (ODS) is not provided anymore on this site. It is however possible to find other word lists on the Internet (including the ODS one...), and to use them to [build your own dictionary](#own).
 
 {{< space >}}
 
@@ -121,12 +123,12 @@ Since Eliot 1.12, a wizard makes it easy to create your own dictionary from any 
 
 **Note:** languages using double letters for a single tile (like the Spanish *LL* or the Catalan *QU*) must use the old method indicated below.
 
-For those who prefer to use a command-line tool, another (more complex) method consists in using the **compdic** program, provided with Eliot (and pre-compiled for Windows).
+For those who prefer to use a command-line tool, another (more complex) method consists in using the `compdic` program, provided with Eliot (and precompiled for Windows).
 
 Here is the procedure to follow:
 
-- Save the word list to a file (for example *words.txt*), using UTF-8 encoding
-- Create a letters definition file (for example *letters.txt*), also encoded in UTF-8. Each line of the file corresponds to a letter, and contains the following fields (separated with one or more spaces):
+- Save the word list to a file (for example `words.txt`), using UTF-8 encoding
+- Create a letters definition file (for example `letters.txt`), also encoded in UTF-8. Each line of the file corresponds to a letter, and contains the following fields (separated with one or more spaces):
   - Letter (for the joker, use a question mark)
   - Number of points
   - Frequency (number of occurrences)
@@ -134,4 +136,4 @@ Here is the procedure to follow:
   - 1 if the letter is a consonant, 0 otherwise
   
   An example of letters file, suitable for French Scrabble, is available [here](/download/letters.txt)
-- Run the **compdic** program, using the following command line:{{< br >}} `compdic -d "Nom du dictionnaire" -i words.txt -l letters.txt -o my-dic.dawg`{{< br >}} This will generate a file called *my-dic.dawg*, usable with Eliot.
+- Run the `compdic` program, using the following command line:{{< br >}} `compdic -d "Nom du dictionnaire" -i words.txt -l letters.txt -o my-dic.dawg`{{< br >}} This will generate a file called `my-dic.dawg`, usable with Eliot.

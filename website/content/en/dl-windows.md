@@ -4,7 +4,7 @@ aliases:
 - /dl-windows.html
 ---
 
-## Version 2.1
+## Eliot 2.1 {#version-21}
 
 This version of Eliot works on all Windows versions starting from Windows 2000.{{< br >}} No installation is needed; you just need to unzip the file into a directory.
 

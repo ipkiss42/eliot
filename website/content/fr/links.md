@@ -17,8 +17,8 @@ aliases:
 ## Scrabble
 
 - [Zyzzyva](http://zyzzyva.net/) : programme gratuit et puissant pour étudier les mots. Supporte plusieurs dictionnaires.
-- [Internet Scrabble Club](http://www.isc.ro/fr/) : un site gratuit pour jouer au Scrabble dans plusieurs langues, dont le français (avec l'Officiel Du Scrabble !)
-- [Quackle](http://people.csail.mit.edu/jasonkb/quackle/) : un jeu spécialisé dans l'analyse de parties (mode partie libre)
+- [Internet Scrabble Club](http://www.isc.ro/fr/) : un site gratuit pour jouer au Scrabble dans plusieurs langues, dont le français (avec l'Officiel du Scrabble !)
+- [Quackle](http://people.csail.mit.edu/jasonkb/quackle/) : un jeu spécialisé dans l'analyse de parties (mode classique)
 - [Lampword](http://members.shaw.ca/lampwords/) : un jeu de Scrabble pour PalmPilot par Paul Sidorsky
 - Le [site de Scrabble de Montpellier](http://www.montpellier-scrabble.org/)
 - Les pages de [Patrick Jenty](http://patrick.jenty.free.fr/)

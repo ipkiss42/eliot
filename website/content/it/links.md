@@ -18,7 +18,7 @@ aliases:
 
 - [Zyzzyva](http://zyzzyva.net/): un software potente e gratuito per lo studio delle parole. Supporta molti dizionari.
 - [Internet Scrabble Club](http://www.isc.ro/): un sito gratuito per giocare a Scrabble online; sono disponibili diversi dizionari (inglese, francese, italiano, rumeno e olandese)
-- [Quackle](http://web.mit.edu/jasonkb/www/quackle/): un programma di Scrabble specializzato nell'analisi del gioco (modalità gioco libero)
+- [Quackle](http://web.mit.edu/jasonkb/www/quackle/): un programma di Scrabble specializzato nell'analisi del gioco (modalità classica)
 - [Lampword](http://members.shaw.ca/lampwords/): un gioco di Scrabble per PalmPilot di Paul Sidorsky (in francese)
 - [Montpellier Scrabble club](http://www.montpellier-scrabble.org/) (in francese)
 - [Patrick Jenty's pages](http://patrick.jenty.free.fr/) (in francese)

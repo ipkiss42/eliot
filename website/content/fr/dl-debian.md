@@ -14,13 +14,13 @@ Pour les distributions basées sur Ubuntu (telles que [Ubuntu](http://www.ubuntu
 
 Cette méthode devrait fonctionner à partir d'Ubuntu 11.10 (oneiric).
 
-**Note :** après une nouvelle release d'Ubuntu, cela peut prendre quelques jours avant que les paquets ne soient disponibles sur le PPA.
+**Note :** après une nouvelle version d'Ubuntu, cela peut prendre quelques jours avant que les paquets ne soient disponibles sur le PPA.
 
 ## Autres distributions basées sur Debian
 
 Les autres distributions basées sur Debian peuvent probablement utiliser les mêmes paquets, mais l'installation est moins pratique.
 
-- [Télécharger](https://launchpad.net/~ipkiss-0/+archive/ppa-eliot/+packages) les paquets "eliot" et "libarabica" (fichiers .deb) pour la bonne architecture (i386 ou amd64)
+- [Télécharger](https://launchpad.net/~ipkiss-0/+archive/ppa-eliot/+packages) les paquets "eliot" et "libarabica" (fichiers `.deb`) pour la bonne architecture (i386 ou amd64)
 - Les installer (en adaptant les noms de fichiers) : `sudo dpkg -i libarabica-202004-focal1_amd64.deb eliot_2.2-focal1_amd64.deb`
 
 ## Code source

@@ -5,6 +5,8 @@ aliases:
 - /dict.html
 ---
 
+Un dizionario per Eliot è un file `.dawg` compilato a partire da una lista di parole. Le sezioni seguenti descrivono le liste di parole usate dai dizionari disponibili.
+
 {{< dictionary-index >}}
 
 ## Bambara {#bm}
@@ -44,7 +46,7 @@ La lista delle parole di questo dizionario contiene aggiunte ed omissioni, rispe
 - [Moby lista Francese](http://www.gutenberg.org/etext/3206)
 - [Lista di parole da 2 a 4 lettere](http://www.motsduscrabble.com/)
 
-**Nota:** per motivi legali, la lista di parole Officiel Du Scrabble (ODS) non viene più fornita su questo sito. È comunque possibile trovare altri elenchi di parole su Internet (compreso l'ODS ...), e utilizzarli per [creare il proprio dizionario](#own).
+**Nota:** per motivi legali, la lista di parole Officiel du Scrabble (ODS) non viene più fornita su questo sito. È comunque possibile trovare altri elenchi di parole su Internet (compreso l'ODS ...), e utilizzarli per [creare il proprio dizionario](#own).
 
 {{< space >}}
 
@@ -119,12 +121,12 @@ A partire dalla versione 1.12 di Eliot, una procedura guidata permette di creare
 
 **Nota:** Le lingue che utilizzano lettere doppie per una singola lettera (come lo spagnolo *LL* o il catalano *QU*) devono utilizzare il vecchio metodo sotto indicato.
 
-Per coloro che non hanno ancora la versione 1.12, o che preferiscono utilizzare una riga di comando, un altro (più complesso) metodo consiste nell'utilizzare il programma compdic, fornito con Eliot (e pre-compilato per Windows).
+Per coloro che non hanno ancora la versione 1.12, o che preferiscono utilizzare una riga di comando, un altro (più complesso) metodo consiste nell'utilizzare il programma `compdic`, fornito con Eliot (e precompilato per Windows).
 
 Ecco la procedura da seguire:
 
-- Salva la lista delle parole in un file (ad esempio *parole.txt*), usando la codifica UTF-8
-- Crea un file di definizione lettere (per esempio *lettere.txt*), sempre con codifica UTF-8. Ogni riga del file corrisponde ad una lettera, e contiene i seguenti campi (separati da uno o più spazi):
+- Salva la lista delle parole in un file (ad esempio `parole.txt`), usando la codifica UTF-8
+- Crea un file di definizione lettere (per esempio `lettere.txt`), sempre con codifica UTF-8. Ogni riga del file corrisponde ad una lettera, e contiene i seguenti campi (separati da uno o più spazi):
 
 * Lettera (per il jolly, utilizza il punto interrogativo)
 * Numero di punti
@@ -136,4 +138,4 @@ Ecco la procedura da seguire:
 Un esempio di file, adatto per lo Scrabble in francese è disponibile [qui](/download/letters.txt)
 {{< /plain >}}
 
-- Esegui il programma **compdic**, utilizzando la seguente riga di comando:{{< br >}} `compdic -d "Nome del dizionario" -i parole.txt -l lettere.txt -o my-dic.dawg`{{< br >}} Questo genererà un file chiamato *my-dic.dawg*, utilizzabile con Eliot.
+- Esegui il programma `compdic`, utilizzando la seguente riga di comando:{{< br >}} `compdic -d "Nome del dizionario" -i parole.txt -l lettere.txt -o my-dic.dawg`{{< br >}} Questo genererà un file chiamato `my-dic.dawg`, utilizzabile con Eliot.

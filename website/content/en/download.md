@@ -22,4 +22,6 @@ Choose your platform or download the source code. Each page includes installatio
 
 [Choose and download a dictionary](/en/dict/) for your playing language. The Dictionaries page also explains how to build a dictionary from your own word list.
 
+Dictionary languages are independent of the website language and Eliot's interface language.
+
 {{< dictionary-index >}}

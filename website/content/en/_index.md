@@ -4,13 +4,13 @@ aliases:
 - /overview.html
 - /overview/
 modes:
-- The **free game** mode is the standard one, ideal for having fun with your friends or family. The players
-  take turns playing on the board, each with his own rack.
+- The **classic** mode (called *Free game* in Eliot) is the standard one, ideal for having fun with your
+  friends or family. The players take turns playing on the board, each with his own rack.
 - In the **duplicate** mode, all the players are faced with the same board and letters at the same time.
   It is mainly used in clubs and competitions since it takes away the chance (and tactics) component(s)
   of the game.
 - The **training** mode allows you to play alone and improve at duplicate. It gives more freedom
-  than the multi-player modes.
+  than the multiplayer modes.
 - The **arbitration** mode lets you arbitrate very efficiently a duplicate game, possibly with a large
   number of players.
 ---
@@ -33,13 +33,13 @@ Eliot also provides many tools for advanced **search** such as the following:
 
 ## Screenshots
 
-- Eliot version 2.1:
+- Eliot 2.1:
   - A [game in arbitration mode](/img/eliot-2.1-arbitration.png)
   - The [statistics window](/img/eliot-2.1-statistics.png) for the [same game](/download/eliot-2.1-arbitration.xml)
   - The [generated HTML page](/download/eliot-2.1-stats.html), still for the [same game](/download/eliot-2.1-arbitration.xml)
-- Eliot version 1.11b:
-  - A [free game](/img/eliot-1.11b-macosx.png) on Mac OS X, with the Catalan dictionary
-- Eliot version 1.7:
+- Eliot 1.11b:
+  - A [classic game](/img/eliot-1.11b-macosx.png) on Mac OS X, with the Catalan dictionary
+- Eliot 1.7:
   - A [duplicate game](/img/eliot-1.7-duplicate.png) on Ubuntu
-  - A [free game](/img/eliot-1.7-freegame.png)
+  - A [classic game](/img/eliot-1.7-freegame.png)
   - A [training mode game](/img/eliot-1.7-training.png), with English interface

@@ -5,6 +5,8 @@ aliases:
 - /dict.html
 ---
 
+Un dictionnaire pour Eliot est un fichier `.dawg` compilé à partir d’une liste de mots. Les sections ci-dessous décrivent les listes de mots utilisées par les dictionnaires disponibles.
+
 {{< dictionary-index >}}
 
 ## Anglais {#en}
@@ -50,7 +52,7 @@ La liste de mots de ce dictionnaire contient des ajouts et omissions par rapport
 - [Liste Moby pour le français](http://www.gutenberg.org/etext/3206)
 - [Liste de mots de 2 à 4 lettres](http://www.motsduscrabble.com/)
 
-**Note :** pour des raisons légales, la liste de mots de l'Officiel Du Scrabble (ODS) n'est plus fournie sur ce site. Il est toutefois possible de trouver d'autres listes de mots sur Internet (y compris celle de l'ODS...) et de les utiliser pour [construire son propre dictionnaire](#own).
+**Note :** pour des raisons légales, la liste de mots de l'Officiel du Scrabble (ODS) n'est plus fournie sur ce site. Il est toutefois possible de trouver d'autres listes de mots sur Internet (y compris celle de l'ODS...) et de les utiliser pour [construire son propre dictionnaire](#own).
 
 {{< space >}}
 
@@ -121,12 +123,12 @@ Depuis la version 1.12 d'Eliot, un assistant permet de créer très facilement s
 
 **Note :** les langues utilisant 2 lettres pour un même jeton (comme le *LL* espagnol ou le *QU* catalan) doivent utiliser l'ancienne méthode indiquée ci-dessous.
 
-Pour ceux qui préfèrent utiliser la ligne de commande, une autre méthode (plus complexe) consiste à utiliser le programme **compdic** fourni avec Eliot (et précompilé pour Windows).
+Pour ceux qui préfèrent utiliser la ligne de commande, une autre méthode (plus complexe) consiste à utiliser le programme `compdic` fourni avec Eliot (et précompilé pour Windows).
 
 Voici la procédure à suivre :
 
-- Enregistrer la liste de mots dans un fichier (par exemple *mots.txt*), en utilisant l'encodage UTF-8
-- Créer un fichier de définition des lettres (par exemple *lettres.txt*), également encodé en UTF-8. Chaque ligne du fichier correspond à une lettre, et contient les champs suivants (séparés par un ou plusieurs espaces) :
+- Enregistrer la liste de mots dans un fichier (par exemple `mots.txt`), en utilisant l'encodage UTF-8
+- Créer un fichier de définition des lettres (par exemple `lettres.txt`), également encodé en UTF-8. Chaque ligne du fichier correspond à une lettre, et contient les champs suivants (séparés par un ou plusieurs espaces) :
   - Lettre (pour le joker, utiliser un point d'interrogation)
   - Nombre de points
   - Fréquence (nombre d'occurrences)
@@ -134,4 +136,4 @@ Voici la procédure à suivre :
   - 1 si la lettre est une consonne, 0 sinon
   
   Un exemple de fichier de lettres correspondant au Scrabble en français est disponible [ici](/download/letters.txt)
-- Exécuter le programme **compdic** en utilisant la ligne de commande suivante :{{< br >}} `compdic -d "Nom du dictionnaire" -i mots.txt -l lettres.txt -o mon-dico.dawg`{{< br >}} Cela génère le fichier *mon-dico.dawg*, utilisable avec Eliot.
+- Exécuter le programme `compdic` en utilisant la ligne de commande suivante :{{< br >}} `compdic -d "Nom du dictionnaire" -i mots.txt -l lettres.txt -o mon-dico.dawg`{{< br >}} Cela génère le fichier `mon-dico.dawg`, utilisable avec Eliot.

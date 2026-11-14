@@ -11,7 +11,7 @@ Eliot a été développé par Antoine Fraboulet et Olivier Teulière. Les nouvea
 Il reste de nombreuses choses à faire sur Eliot. Par exemple :
 
 - jeu en réseau, pour jouer avec des amis via Internet
-- amélioration de l'intelligence artificielle en mode partie libre
+- amélioration de l'intelligence artificielle en mode classique
 - implémentation du format de dictionnaire [GADDAG](http://www.ericsink.com/downloads/faster-scrabble-gordon.pdf) pour une recherche encore plus rapide
 - ...
 

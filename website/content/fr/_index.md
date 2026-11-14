@@ -4,13 +4,13 @@ aliases:
 - /overview.html
 - /overview/
 modes:
-- Le mode **partie libre** est le mode traditionnel, l'idéal pour s'amuser en famille. Les joueurs possèdent
-  chacun leur tirage et jouent à tour de rôle.
+- Le mode **classique** (appelé *Partie libre* dans Eliot) est le mode traditionnel, l'idéal pour s'amuser
+  en famille. Les joueurs possèdent chacun leur tirage et jouent à tour de rôle.
 - Le mode **duplicate** est la façon privilégiée de jouer en club et en compétition. Dans ce mode, les
   joueurs réfléchissent en même temps sur le même tirage et la même grille. Il élimine ainsi la part de
   chance (et de tactique).
 - Le mode **entraînement** permet de jouer seul et de progresser au duplicate. Il offre plus de liberté
-  que les modes multi-joueurs.
+  que les modes multijoueurs.
 - Le mode **arbitrage** permet d'arbitrer de manière très efficace une partie duplicate, potentiellement
   avec un grand nombre de joueurs.
 ---
@@ -33,13 +33,13 @@ Eliot propose également de nombreuses fonctions de **recherche** avancées. Vou
 
 ## Captures d'écran {#captures-décrans}
 
-- Eliot version 2.1 :
+- Eliot 2.1 :
   - Une [partie en mode arbitrage](/img/eliot-2.1-arbitration.png)
   - La [fenêtre de statistiques](/img/eliot-2.1-statistics.png), pour la [même partie](/download/eliot-2.1-arbitration.xml)
   - La [page HTML générée](/download/eliot-2.1-stats.html), toujours pour la [même partie](/download/eliot-2.1-arbitration.xml)
-- Eliot version 1.11b :
-  - Une [partie libre](/img/eliot-1.11b-macosx.png) sur Mac OS X, avec le dictionnaire catalan
-- Eliot version 1.7 :
+- Eliot 1.11b :
+  - Une [partie classique](/img/eliot-1.11b-macosx.png) sur Mac OS X, avec le dictionnaire catalan
+- Eliot 1.7 :
   - Une [partie duplicate](/img/eliot-1.7-duplicate.png) sur Ubuntu
-  - Une [partie libre](/img/eliot-1.7-freegame.png)
+  - Une [partie classique](/img/eliot-1.7-freegame.png)
   - Une [partie en mode entraînement](/img/eliot-1.7-training.png), avec l'interface en anglais

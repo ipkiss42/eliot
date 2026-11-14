@@ -11,7 +11,7 @@ Eliot è stato sviluppato da Antoine Fraboulet e Olivier Teulière. Nuovi svilup
 Ci sono ancora molte cose da fare per migliorare Eliot. Ecco alcuni esempi:
 
 - Gioco di rete, per giocare con gli amici attraverso Internet
-- Miglioramento dell'intelligenza artificiale nella modalità di gioco libero
+- Miglioramento dell'intelligenza artificiale nella modalità classica
 - L'attuazione del formato dizionario [GADDAG](http://www.ericsink.com/downloads/faster-scrabble-gordon.pdf) per una ricerca ancora più veloce
 - ...
 
