@@ -156,6 +156,33 @@ h1 + h2 {
   border-top: 1px solid #52799e;
 }
 
+.dictionary-index {
+  margin: 10px 5px;
+}
+
+.dictionary-index ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  list-style: none;
+}
+
+.dictionary-index li {
+  margin: 0;
+}
+
+.dictionary-index a {
+  display: inline-block;
+  padding: 3px 0;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.dictionary-index a:focus-visible {
+  outline: 2px solid #294e76;
+  outline-offset: 2px;
+}
+
 h3 {
   margin: 10px 0 5px 12px;
   padding: 5px;

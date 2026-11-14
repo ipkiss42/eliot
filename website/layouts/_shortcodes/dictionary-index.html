@@ -1,0 +1,10 @@
+{{ $dictionary := .Page.Site.GetPage "dict" }}
+<nav class="dictionary-index" aria-label="{{ i18n "dictionaryLanguages" }}">
+  <ul>
+    {{ range $dictionary.Fragments.Headings }}
+      {{ range .Headings }}
+    <li><a href="{{ $dictionary.RelPermalink }}#{{ .ID }}">{{ .Title | plainify }}</a></li>
+      {{ end }}
+    {{ end }}
+  </ul>
+</nav>

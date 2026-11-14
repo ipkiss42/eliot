@@ -5,6 +5,8 @@ aliases:
 - /dict.html
 ---
 
+{{< dictionary-index >}}
+
 ## Anglais {#en}
 
 Les dictionnaires ci-dessous contiennent les listes de mots de référence utilisées pour le Scrabble anglophone :

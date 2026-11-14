@@ -5,6 +5,8 @@ aliases:
 - /dict.html
 ---
 
+{{< dictionary-index >}}
+
 ## Bambara {#bm}
 
 The dictionary below is based on the Bambara-French dictionary by Charles Bailleul. The letter distribution has been calculated using the [Corpus bambara (FR)](http://cormand.tge-adonis.fr/).

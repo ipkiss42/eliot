@@ -4,32 +4,22 @@ aliases:
 - /download.html
 ---
 
-Pour utiliser Eliot, il vous faut le programme et un dictionnaire.
+Pour utiliser Eliot, il vous faut **le programme et un dictionnaire**. Téléchargez Eliot pour votre système d’exploitation, puis choisissez un dictionnaire pour la langue dans laquelle vous souhaitez jouer.
 
-## Télécharger Eliot (version 2.1 ou 2.2 selon la plateforme)
+## 1. Télécharger Eliot {#télécharger-eliot-version-21-ou-22-selon-la-plateforme}
 
-- [Windows](/fr/dl-windows/)
-- [Debian/Ubuntu](/fr/dl-debian/)
-- [Mac OS X](/fr/dl-macosx/)
-- [Autres systèmes d'exploitation](/fr/dl-others/)
-- [Code source](/fr/dl-sources/)
+Choisissez votre plateforme ou téléchargez le code source. Chaque page contient les instructions d’installation ou de compilation.
+
+- **[Windows](/fr/dl-windows/)** — Eliot 2.1, archive ZIP à décompresser.
+- **[Debian/Ubuntu](/fr/dl-debian/)** — PPA Ubuntu et paquets `.deb`.
+- **[Mac OS X](/fr/dl-macosx/)** — Eliot 2.1, image disque DMG.
+- **[Autres systèmes d’exploitation](/fr/dl-others/)** — compilation d’Eliot à partir du code source.
+- **[Code source](/fr/dl-sources/)** — archive d’Eliot 2.2 et version de développement.
 
 [Notes de version sur GitHub](https://github.com/ipkiss42/eliot/releases)
 
-{{< space >}}
+## 2. Choisir un dictionnaire {#télécharger-un-dictionnaire}
 
-## Télécharger un dictionnaire
+[Choisissez et téléchargez un dictionnaire](/fr/dict/) pour la langue dans laquelle vous souhaitez jouer. La page Dictionnaires explique également comment créer un dictionnaire à partir de votre propre liste de mots.
 
-- [Anglais](/fr/dict/#en)
-- [Bambara](/fr/dict/#bm)
-- [Catalan](/fr/dict/#ca)
-- [Espagnol](/fr/dict/#es)
-- [Français](/fr/dict/#fr)
-- [Italien](/fr/dict/#it)
-- [Malgache](/fr/dict/#mg)
-- [Norvégien](/fr/dict/#no)
-- [Polonais](/fr/dict/#po)
-- [Roumain](/fr/dict/#ro)
-- [Serbe](/fr/dict/#rs)
-- [Tchèque](/fr/dict/#cs)
-- [Créer son propre dictionnaire](/fr/dict/#own)
+{{< dictionary-index >}}

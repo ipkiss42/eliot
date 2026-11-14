@@ -4,32 +4,22 @@ aliases:
 - /download.html
 ---
 
-To use Eliot, you need both the software and a dictionary.
+To use Eliot, you need **both the software and a dictionary**. Download Eliot for your operating system, then choose a dictionary for the language you want to play in.
 
-## Download Eliot (version 2.1 or 2.2 depending on the platform)
+## 1. Download Eliot {#download-eliot-version-21-or-22-depending-on-the-platform}
 
-- [Windows](/en/dl-windows/)
-- [Debian/Ubuntu](/en/dl-debian/)
-- [Mac OS X](/en/dl-macosx/)
-- [Other operating systems](/en/dl-others/)
-- [Source code](/en/dl-sources/)
+Choose your platform or download the source code. Each page includes installation or build instructions.
+
+- **[Windows](/en/dl-windows/)** — Eliot 2.1, ZIP archive to extract.
+- **[Debian/Ubuntu](/en/dl-debian/)** — Ubuntu PPA and `.deb` packages.
+- **[Mac OS X](/en/dl-macosx/)** — Eliot 2.1, DMG disk image.
+- **[Other operating systems](/en/dl-others/)** — build Eliot from source.
+- **[Source code](/en/dl-sources/)** — Eliot 2.2 release archive and development version.
 
 [Release notes on GitHub](https://github.com/ipkiss42/eliot/releases)
 
-{{< space >}}
+## 2. Choose a dictionary {#download-a-dictionary}
 
-## Download a dictionary
+[Choose and download a dictionary](/en/dict/) for your playing language. The Dictionaries page also explains how to build a dictionary from your own word list.
 
-- [Bambara](/en/dict/#bm)
-- [Catalan](/en/dict/#ca)
-- [Czech](/en/dict/#cs)
-- [English](/en/dict/#en)
-- [French](/en/dict/#fr)
-- [Italian](/en/dict/#it)
-- [Malagasy](/en/dict/#mg)
-- [Norwegian](/en/dict/#no)
-- [Polish](/en/dict/#po)
-- [Romanian](/en/dict/#ro)
-- [Serbian](/en/dict/#rs)
-- [Spanish](/en/dict/#es)
-- [Create your own dictionary](/en/dict/#own)
+{{< dictionary-index >}}

@@ -80,6 +80,10 @@ filenames to connect translations, and the language selector opens the
 translation of the current page. Each language's `_index.md` defines its
 overview, including the descriptions used by the `game-modes` shortcode.
 
+The `dictionary-index` shortcode lists the sections of the current language's
+`dict.md`, using its heading labels and IDs. Use it on dictionary and download
+pages; adding a dictionary section automatically updates both indexes.
+
 The current page and language are highlighted in navigation. If a translation
 is missing, its language name is shown without a link, with an explanation on
 hover; it never silently falls back to a different page.
