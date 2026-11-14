@@ -1,0 +1,191 @@
+:root {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  color: #000;
+  background: #fff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 156px minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+a {
+  color: #394d63;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  color: #000;
+  background: #add8e6;
+  text-decoration: underline;
+}
+
+img {
+  border: 0;
+}
+
+.site-header {
+  position: relative;
+  grid-column: 1 / -1;
+  min-height: 130px;
+  padding: 32px 10px 23px;
+}
+
+.logo {
+  display: block;
+}
+
+.languages {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  gap: 2px;
+}
+
+.languages a {
+  height: 24px;
+}
+
+.languages img {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.site-navigation {
+  padding: 10px 2px 0 4px;
+}
+
+.menu {
+  display: block;
+  width: 150px;
+  height: 32px;
+  padding-top: 4px;
+  color: #d0e8ff;
+  background: url(links_flat.png) no-repeat;
+  font-weight: bold;
+  text-align: center;
+}
+
+.menu:hover,
+.menu:focus-visible {
+  color: #fff;
+  background-image: url(links_3D.png);
+  text-decoration: none;
+  text-shadow: 2px 2px 2px #426280;
+}
+
+main {
+  min-width: 0;
+  padding-left: 2px;
+}
+
+h1 {
+  margin: 10px 0;
+  padding: 2px 2px 2px 5px;
+  color: #fff;
+  background: #52799e;
+  font-size: 14pt;
+}
+
+h2 {
+  margin: 10px 0;
+  padding: 5px;
+  border-top: 1px solid #52799e;
+  font-size: 12pt;
+}
+
+h1 + h2 {
+  border-top: 0;
+}
+
+.dictionaries > h1 + h2 {
+  border-top: 1px solid #52799e;
+}
+
+h3 {
+  margin: 10px 0 5px 12px;
+  padding: 5px;
+  font-size: 11pt;
+}
+
+p {
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+ul {
+  list-style: url(bullet.png) outside;
+}
+
+li {
+  margin-left: 40px;
+}
+
+li > p {
+  margin: 0;
+  padding: 0;
+}
+
+.plain {
+  margin: 0;
+  padding: 0;
+}
+
+code {
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.game-modes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.game-modes > div {
+  padding: 6pt 12pt;
+}
+
+.game-modes > div:nth-child(even) {
+  border-left: 2px solid #52799e;
+}
+
+.game-modes > div:nth-child(n + 3) {
+  border-top: 2px solid #52799e;
+}
+
+.content-space {
+  height: 1lh;
+}
+
+.site-footer {
+  grid-column: 1 / -1;
+  min-height: 54px;
+  border-top: 2px groove #52799e;
+  font-size: 0.8em;
+}
+
+.validation-badges {
+  float: left;
+  margin-bottom: 5px;
+  padding: 5px;
+  font-size: 11pt;
+}
+
+.legal-note {
+  color: #555;
+  font-size: inherit;
+}

@@ -1,0 +1,10 @@
+<nav class="site-navigation" aria-label="{{ i18n "navigation" }}">
+  {{ $page := . }}
+  {{ range slice "overview" "news" "download" "contribute" "links" "contact" }}
+    {{ $target := $page.Site.Home }}
+    {{ if ne . "overview" }}
+      {{ $target = $page.Site.GetPage . }}
+    {{ end }}
+    <a class="menu" href="{{ $target.RelPermalink }}"{{ if eq $target $page }} aria-current="page"{{ end }}>{{ i18n . }}</a>
+  {{ end }}
+</nav>

@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EliotGame format="2">
+    <Dictionary>
+        <Name>ODS 6</Name>
+        <Type>dawg</Type>
+        <Letters>A B C D E F G H I J K L M N O P Q R S T U V W X Y Z ?</Letters>
+        <WordNb>386264</WordNb>
+    </Dictionary>
+    <Game>
+        <Mode>arbitration</Mode>
+        <Player id="0">
+            <Name>Player 1</Name>
+            <Type>human</Type>
+            <TableNb>1</TableNb>
+        </Player>
+        <Player id="1">
+            <Name>Player 2</Name>
+            <Type>human</Type>
+            <TableNb>2</TableNb>
+        </Player>
+        <Player id="2">
+            <Name>Player 3</Name>
+            <Type>human</Type>
+            <TableNb>3</TableNb>
+        </Player>
+        <Player id="3">
+            <Name>Player 4</Name>
+            <Type>human</Type>
+            <TableNb>4</TableNb>
+        </Player>
+        <Turns>19</Turns>
+    </Game>
+    <History>
+        <Turn>
+            <MasterMove points="0" type="none" />
+            <GameRack>TCARIUT</GameRack>
+            <PlayerRack playerId="0">TCARIUT</PlayerRack>
+            <PlayerRack playerId="1">TCARIUT</PlayerRack>
+            <PlayerRack playerId="2">TCARIUT</PlayerRack>
+            <PlayerRack playerId="3">TCARIUT</PlayerRack>
+            <PlayerMove playerId="0" points="10" type="valid" word="ARC" coord="H6" />
+            <PlayerMove playerId="1" points="22" type="valid" word="CUITAT" coord="H4" />
+            <PlayerMove playerId="2" points="18" type="valid" word="CUITAT" coord="H3" />
+            <PlayerMove playerId="3" points="22" type="valid" word="CUITAT" coord="H4" />
+            <MasterMove points="22" type="valid" word="CUITAT" coord="H4" />
+            <GameMove points="22" type="valid" word="CUITAT" coord="H4" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0">R</PlayerRack>
+            <PlayerRack playerId="1">R</PlayerRack>
+            <PlayerRack playerId="2">R</PlayerRack>
+            <PlayerRack playerId="3">R</PlayerRack>
+            <MasterMove points="0" type="none" />
+            <GameRack>R+I?ETFH</GameRack>
+            <PlayerRack playerId="0">R+I?ETFH</PlayerRack>
+            <PlayerRack playerId="1">R+I?ETFH</PlayerRack>
+            <PlayerRack playerId="2">R+I?ETFH</PlayerRack>
+            <PlayerRack playerId="3">R+I?ETFH</PlayerRack>
+            <PlayerMove playerId="0" points="36" type="valid" word="FlEURIT" coord="5E" />
+            <PlayerMove playerId="1" points="82" type="valid" word="CHERIFaT" coord="4H" />
+            <PlayerMove playerId="2" points="64" type="valid" word="cHERIFAT" coord="8B" />
+            <PlayerMove playerId="3" points="80" type="valid" word="FoRTICHE" coord="4C" />
+            <MasterMove points="82" type="valid" word="CHERIFaT" coord="4H" />
+            <Solo playerId="1" points="10" />
+            <GameMove points="82" type="valid" word="CHERIFaT" coord="4H" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0"></PlayerRack>
+            <PlayerRack playerId="1"></PlayerRack>
+            <PlayerRack playerId="2"></PlayerRack>
+            <PlayerRack playerId="3"></PlayerRack>
+            <MasterMove points="0" type="none" />
+            <GameRack>ECOEANB</GameRack>
+            <PlayerRack playerId="0">ECOEANB</PlayerRack>
+            <PlayerRack playerId="1">ECOEANB</PlayerRack>
+            <PlayerRack playerId="2">ECOEANB</PlayerRack>
+            <PlayerRack playerId="3">ECOEANB</PlayerRack>
+            <PlayerMove playerId="0" points="30" type="valid" word="BEANCE" coord="N2" />
+            <PlayerMove playerId="1" points="74" type="valid" word="CARBONEE" coord="K2" />
+            <PlayerMove playerId="2" points="74" type="valid" word="CARBONEE" coord="K2" />
+            <PlayerMove playerId="3" points="74" type="valid" word="CARBONEE" coord="K2" />
+            <MasterMove points="74" type="valid" word="CARBONEE" coord="K2" />
+            <Warning playerId="0" />
+            <Warning playerId="1" />
+            <Warning playerId="3" />
+            <GameMove points="74" type="valid" word="CARBONEE" coord="K2" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0"></PlayerRack>
+            <PlayerRack playerId="1"></PlayerRack>
+            <PlayerRack playerId="2"></PlayerRack>
+            <PlayerRack playerId="3"></PlayerRack>
+            <MasterMove points="0" type="none" />
+            <GameRack>EDOSEWP</GameRack>
+            <PlayerRack playerId="0">EDOSEWP</PlayerRack>
+            <PlayerRack playerId="1">EDOSEWP</PlayerRack>
+            <PlayerRack playerId="2">EDOSEWP</PlayerRack>
+            <PlayerRack playerId="3">EDOSEWP</PlayerRack>
+            <PlayerMove playerId="0" points="20" type="valid" word="DESAPE" coord="N1" />
+            <PlayerMove playerId="1" points="48" type="valid" word="TWEEDS" coord="O4" />
+            <PlayerMove playerId="2" points="36" type="valid" word="DEPOSE" coord="8J" />
+            <PlayerMove playerId="3" points="48" type="valid" word="TWEEDS" coord="O4" />
+            <MasterMove points="48" type="valid" word="TWEEDS" coord="O4" />
+            <GameMove points="48" type="valid" word="TWEEDS" coord="O4" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0">OP</PlayerRack>
+            <PlayerRack playerId="1">OP</PlayerRack>
+            <PlayerRack playerId="2">OP</PlayerRack>
+            <PlayerRack playerId="3">OP</PlayerRack>
+            <MasterMove points="0" type="none" />
+            <GameRack>OP+MZUAN</GameRack>
+            <PlayerRack playerId="0">OP+MZUAN</PlayerRack>
+            <PlayerRack playerId="1">OP+MZUAN</PlayerRack>
+            <PlayerRack playerId="2">OP+MZUAN</PlayerRack>
+            <PlayerRack playerId="3">OP+MZUAN</PlayerRack>
+            <PlayerMove playerId="0" points="14" type="valid" word="COMA" coord="2K" />
+            <PlayerMove playerId="1" points="34" type="valid" word="ZOOM" coord="6J" />
+            <PlayerMove playerId="2" points="26" type="valid" word="MAZA" coord="N1" />
+            <PlayerMove playerId="3" points="33" type="valid" word="ZAIN" coord="6F" />
+            <MasterMove points="34" type="valid" word="ZOOM" coord="6J" />
+            <Warning playerId="3" />
+            <Solo playerId="1" points="10" />
+            <GameMove points="34" type="valid" word="ZOOM" coord="6J" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0">ANPU</PlayerRack>
+            <PlayerRack playerId="1">ANPU</PlayerRack>
+            <PlayerRack playerId="2">ANPU</PlayerRack>
+            <PlayerRack playerId="3">ANPU</PlayerRack>
+            <MasterMove points="0" type="none" />
+            <GameRack>ANPU+SRS</GameRack>
+            <PlayerRack playerId="0">ANPU+SRS</PlayerRack>
+            <PlayerRack playerId="1">ANPU+SRS</PlayerRack>
+            <PlayerRack playerId="2">ANPU+SRS</PlayerRack>
+            <PlayerRack playerId="3">ANPU+SRS</PlayerRack>
+            <PlayerMove playerId="0" points="12" type="valid" word="ANA" coord="3I" />
+            <PlayerMove playerId="1" points="28" type="valid" word="PARFUMS" coord="M1" />
+            <PlayerMove playerId="2" points="21" type="valid" word="SPAS" coord="10K" />
+            <PlayerMove playerId="3" points="28" type="valid" word="PARFUMS" coord="M1" />
+            <MasterMove points="28" type="valid" word="PARFUMS" coord="M1" />
+            <GameMove points="28" type="valid" word="PARFUMS" coord="M1" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0">NS</PlayerRack>
+            <PlayerRack playerId="1">NS</PlayerRack>
+            <PlayerRack playerId="2">NS</PlayerRack>
+            <PlayerRack playerId="3">NS</PlayerRack>
+            <MasterMove points="0" type="none" />
+            <GameRack>NS+DAUER</GameRack>
+            <PlayerRack playerId="0">NS+DAUER</PlayerRack>
+            <PlayerRack playerId="1">NS+DAUER</PlayerRack>
+            <PlayerRack playerId="2">NS+DAUER</PlayerRack>
+            <PlayerRack playerId="3">NS+DAUER</PlayerRack>
+            <PlayerMove playerId="0" points="60" type="valid" word="RENAUDAS" coord="8B" />
+            <PlayerMove playerId="1" points="72" type="valid" word="ENDURAS" coord="N9" />
+            <PlayerMove playerId="2" points="60" type="valid" word="RENAUDAS" coord="8B" />
+            <PlayerMove playerId="3" points="72" type="valid" word="ENDURAS" coord="N9" />
+            <MasterMove points="72" type="valid" word="ENDURAS" coord="N9" />
+            <GameMove points="72" type="valid" word="ENDURAS" coord="N9" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0"></PlayerRack>
+            <PlayerRack playerId="1"></PlayerRack>
+            <PlayerRack playerId="2"></PlayerRack>
+            <PlayerRack playerId="3"></PlayerRack>
+            <MasterMove points="0" type="none" />
+            <GameRack>MTUSP?E</GameRack>
+            <PlayerRack playerId="0">MTUSP?E</PlayerRack>
+            <PlayerRack playerId="1">MTUSP?E</PlayerRack>
+            <PlayerRack playerId="2">MTUSP?E</PlayerRack>
+            <PlayerRack playerId="3">MTUSP?E</PlayerRack>
+            <PlayerMove playerId="0" points="0" type="invalid" word="TEMPUrAS" coord="8B" />
+            <PlayerMove playerId="1" points="86" type="valid" word="SUrTEMPS" coord="15G" />
+            <PlayerMove playerId="2" points="66" type="valid" word="sEPTUMS" coord="G8" />
+            <PlayerMove playerId="3" points="86" type="valid" word="SUrTEMPS" coord="15G" />
+            <MasterMove points="86" type="valid" word="SUrTEMPS" coord="15G" />
+            <GameMove points="86" type="valid" word="SUrTEMPS" coord="15G" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0"></PlayerRack>
+            <PlayerRack playerId="1"></PlayerRack>
+            <PlayerRack playerId="2"></PlayerRack>
+            <PlayerRack playerId="3"></PlayerRack>
+            <MasterMove points="0" type="none" />
+            <GameRack>LALERJI</GameRack>
+            <PlayerRack playerId="0">LALERJI</PlayerRack>
+            <PlayerRack playerId="1">LALERJI</PlayerRack>
+            <PlayerRack playerId="2">LALERJI</PlayerRack>
+            <PlayerRack playerId="3">LALERJI</PlayerRack>
+            <PlayerMove playerId="0" points="30" type="valid" word="JAR" coord="14F" />
+            <PlayerMove playerId="1" points="69" type="valid" word="REJAILLI" coord="6A" />
+            <PlayerMove playerId="2" points="69" type="valid" word="REJAILLI" coord="6A" />
+            <PlayerMove playerId="3" points="69" type="valid" word="REJAILLI" coord="6A" />
+            <MasterMove points="69" type="valid" word="REJAILLI" coord="6A" />
+            <Penalty playerId="2" points="-5" />
+            <GameMove points="69" type="valid" word="REJAILLI" coord="6A" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0"></PlayerRack>
+            <PlayerRack playerId="1"></PlayerRack>
+            <PlayerRack playerId="2"></PlayerRack>
+            <PlayerRack playerId="3"></PlayerRack>
+            <MasterMove points="0" type="none" />
+            <GameRack>ILNLONE</GameRack>
+            <PlayerRack playerId="0">ILNLONE</PlayerRack>
+            <PlayerRack playerId="1">ILNLONE</PlayerRack>
+            <PlayerRack playerId="2">ILNLONE</PlayerRack>
+            <PlayerRack playerId="3">ILNLONE</PlayerRack>
+            <PlayerMove playerId="0" points="68" type="valid" word="LANOLINE" coord="D5" />
+            <PlayerMove playerId="1" points="68" type="valid" word="LANOLINE" coord="D5" />
+            <PlayerMove playerId="2" points="68" type="valid" word="LANOLINE" coord="D5" />
+            <PlayerMove playerId="3" points="68" type="valid" word="LANOLINE" coord="D5" />
+            <MasterMove points="68" type="valid" word="LANOLINE" coord="D5" />
+            <GameMove points="68" type="valid" word="LANOLINE" coord="D5" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0"></PlayerRack>
+            <PlayerRack playerId="1"></PlayerRack>
+            <PlayerRack playerId="2"></PlayerRack>
+            <PlayerRack playerId="3"></PlayerRack>
+            <MasterMove points="0" type="none" />
+            <GameRack>OOTSNAT</GameRack>
+            <PlayerRack playerId="0">OOTSNAT</PlayerRack>
+            <PlayerRack playerId="1">OOTSNAT</PlayerRack>
+            <PlayerRack playerId="2">OOTSNAT</PlayerRack>
+            <PlayerRack playerId="3">OOTSNAT</PlayerRack>
+            <PlayerMove playerId="0" points="10" type="valid" word="AN" coord="E11" />
+            <PlayerMove playerId="1" points="24" type="valid" word="SORTANT" coord="A4" />
+            <PlayerMove playerId="2" points="18" type="valid" word="ACTAS" coord="2J" />
+            <PlayerMove playerId="3" points="24" type="valid" word="SORTANT" coord="A4" />
+            <MasterMove points="24" type="valid" word="SORTANT" coord="A4" />
+            <Warning playerId="3" />
+            <GameMove points="24" type="valid" word="SORTANT" coord="A4" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0">O</PlayerRack>
+            <PlayerRack playerId="1">O</PlayerRack>
+            <PlayerRack playerId="2">O</PlayerRack>
+            <PlayerRack playerId="3">O</PlayerRack>
+            <MasterMove points="0" type="none" />
+            <GameRack>O+IVLXKY</GameRack>
+            <PlayerRack playerId="0">O+IVLXKY</PlayerRack>
+            <PlayerRack playerId="1">O+IVLXKY</PlayerRack>
+            <PlayerRack playerId="2">O+IVLXKY</PlayerRack>
+            <PlayerRack playerId="3">O+IVLXKY</PlayerRack>
+            <PlayerMove playerId="0" points="18" type="valid" word="VOL" coord="14F" />
+            <PlayerMove playerId="1" points="43" type="valid" word="XYLOL" coord="F2" />
+            <PlayerMove playerId="2" points="34" type="valid" word="VINYL" coord="11B" />
+            <PlayerMove playerId="3" points="42" type="valid" word="KYU" coord="12L" />
+            <MasterMove points="44" type="valid" word="LYNX" coord="11B" />
+            <Solo playerId="1" points="10" />
+            <GameMove points="44" type="valid" word="LYNX" coord="11B" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0">IKOV</PlayerRack>
+            <PlayerRack playerId="1">IKOV</PlayerRack>
+            <PlayerRack playerId="2">IKOV</PlayerRack>
+            <PlayerRack playerId="3">IKOV</PlayerRack>
+            <MasterMove points="0" type="none" />
+            <GameRack>IKOV+NEI</GameRack>
+            <PlayerRack playerId="0">IKOV+NEI</PlayerRack>
+            <PlayerRack playerId="1">IKOV+NEI</PlayerRack>
+            <PlayerRack playerId="2">IKOV+NEI</PlayerRack>
+            <PlayerRack playerId="3">IKOV+NEI</PlayerRack>
+            <PlayerMove playerId="0" points="19" type="valid" word="OVE" coord="J2" />
+            <PlayerMove playerId="1" points="46" type="valid" word="INUK" coord="12L" />
+            <PlayerMove playerId="2" points="36" type="valid" word="KEN" coord="14F" />
+            <PlayerMove playerId="3" points="46" type="valid" word="INUK" coord="12L" />
+            <MasterMove points="46" type="valid" word="INUK" coord="12L" />
+            <GameMove points="46" type="valid" word="INUK" coord="12L" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0">EIOV</PlayerRack>
+            <PlayerRack playerId="1">EIOV</PlayerRack>
+            <PlayerRack playerId="2">EIOV</PlayerRack>
+            <PlayerRack playerId="3">EIOV</PlayerRack>
+            <MasterMove points="0" type="none" />
+            <GameRack>EIOV+UAR</GameRack>
+            <PlayerRack playerId="0">EIOV+UAR</PlayerRack>
+            <PlayerRack playerId="1">EIOV+UAR</PlayerRack>
+            <PlayerRack playerId="2">EIOV+UAR</PlayerRack>
+            <PlayerRack playerId="3">EIOV+UAR</PlayerRack>
+            <PlayerMove playerId="0" points="26" type="valid" word="IOULERA" coord="B8" />
+            <PlayerMove playerId="1" points="63" type="valid" word="OVULAIRE" coord="F3" />
+            <PlayerMove playerId="2" points="63" type="valid" word="OVULAIRE" coord="F3" />
+            <PlayerMove playerId="3" points="63" type="valid" word="OVULAIRE" coord="F3" />
+            <MasterMove points="63" type="valid" word="OVULAIRE" coord="F3" />
+            <Warning playerId="3" />
+            <GameMove points="63" type="valid" word="OVULAIRE" coord="F3" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0"></PlayerRack>
+            <PlayerRack playerId="1"></PlayerRack>
+            <PlayerRack playerId="2"></PlayerRack>
+            <PlayerRack playerId="3"></PlayerRack>
+            <MasterMove points="0" type="none" />
+            <GameRack>GBUAIEE</GameRack>
+            <PlayerRack playerId="0">GBUAIEE</PlayerRack>
+            <PlayerRack playerId="1">GBUAIEE</PlayerRack>
+            <PlayerRack playerId="2">GBUAIEE</PlayerRack>
+            <PlayerRack playerId="3">GBUAIEE</PlayerRack>
+            <PlayerMove playerId="0" points="12" type="valid" word="AGEE" coord="B1" />
+            <PlayerMove playerId="1" points="28" type="valid" word="EUBAGE" coord="14B" />
+            <PlayerMove playerId="2" points="21" type="valid" word="EPIA" coord="1L" />
+            <PlayerMove playerId="3" points="28" type="valid" word="EUBAGE" coord="14B" />
+            <MasterMove points="28" type="valid" word="EUBAGE" coord="14B" />
+            <GameMove points="28" type="valid" word="EUBAGE" coord="14B" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0">I</PlayerRack>
+            <PlayerRack playerId="1">I</PlayerRack>
+            <PlayerRack playerId="2">I</PlayerRack>
+            <PlayerRack playerId="3">I</PlayerRack>
+            <MasterMove points="0" type="none" />
+            <GameRack>I+IEAHEQ</GameRack>
+            <PlayerRack playerId="0">I+IEAHEQ</PlayerRack>
+            <PlayerRack playerId="1">I+IEAHEQ</PlayerRack>
+            <PlayerRack playerId="2">I+IEAHEQ</PlayerRack>
+            <PlayerRack playerId="3">I+IEAHEQ</PlayerRack>
+            <PlayerMove playerId="0" points="11" type="valid" word="ECHA" coord="2J" />
+            <PlayerMove playerId="1" points="26" type="valid" word="AICHAI" coord="2I" />
+            <PlayerMove playerId="2" points="20" type="valid" word="AH" coord="15A" />
+            <PlayerMove playerId="3" points="26" type="valid" word="AICHAI" coord="2I" />
+            <MasterMove points="26" type="valid" word="AICHAI" coord="2I" />
+            <GameMove points="26" type="valid" word="AICHAI" coord="2I" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0">EEQ</PlayerRack>
+            <PlayerRack playerId="1">EEQ</PlayerRack>
+            <PlayerRack playerId="2">EEQ</PlayerRack>
+            <PlayerRack playerId="3">EEQ</PlayerRack>
+            <MasterMove points="0" type="none" />
+            <GameRack>EEQ+EOVG</GameRack>
+            <PlayerRack playerId="0">EEQ+EOVG</PlayerRack>
+            <PlayerRack playerId="1">EEQ+EOVG</PlayerRack>
+            <PlayerRack playerId="2">EEQ+EOVG</PlayerRack>
+            <PlayerRack playerId="3">EEQ+EOVG</PlayerRack>
+            <PlayerMove playerId="0" points="9" type="valid" word="OLE" coord="B10" />
+            <PlayerMove playerId="1" points="21" type="valid" word="OVE" coord="13A" />
+            <PlayerMove playerId="2" points="16" type="valid" word="EVOE" coord="B1" />
+            <PlayerMove playerId="3" points="20" type="valid" word="QUE" coord="C13" />
+            <MasterMove points="21" type="valid" word="OVE" coord="13A" />
+            <Solo playerId="1" points="10" />
+            <GameMove points="21" type="valid" word="OVE" coord="13A" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0">EEGQ</PlayerRack>
+            <PlayerRack playerId="1">EEGQ</PlayerRack>
+            <PlayerRack playerId="2">EEGQ</PlayerRack>
+            <PlayerRack playerId="3">EEGQ</PlayerRack>
+            <MasterMove points="0" type="none" />
+            <GameRack>EEGQ+MFR</GameRack>
+            <PlayerRack playerId="0">EEGQ+MFR</PlayerRack>
+            <PlayerRack playerId="1">EEGQ+MFR</PlayerRack>
+            <PlayerRack playerId="2">EEGQ+MFR</PlayerRack>
+            <PlayerRack playerId="3">EEGQ+MFR</PlayerRack>
+            <PlayerMove playerId="0" points="13" type="valid" word="EN" coord="7C" />
+            <PlayerMove playerId="1" points="32" type="valid" word="GREE" coord="15A" />
+            <PlayerMove playerId="2" points="32" type="valid" word="GREE" coord="15A" />
+            <PlayerMove playerId="3" points="32" type="valid" word="GREE" coord="15A" />
+            <MasterMove points="32" type="valid" word="GREE" coord="15A" />
+            <GameMove points="32" type="valid" word="GREE" coord="15A" />
+        </Turn>
+        <Turn>
+            <PlayerRack playerId="0">FMQ</PlayerRack>
+            <PlayerRack playerId="1">FMQ</PlayerRack>
+            <PlayerRack playerId="2">FMQ</PlayerRack>
+            <PlayerRack playerId="3">FMQ</PlayerRack>
+            <MasterMove points="0" type="none" />
+            <MasterMove points="0" type="none" />
+        </Turn>
+    </History>
+    <!-- These statistics are simply informative, they are not used when loading a game. -->
+    <Statistics>
+        <GameStats totalScore="867" />
+        <PlayerStats playerId="0"
+             rawScore="398" warningsNb="1" penaltiesPoints="0" solosPoints="0"
+             totalScore="398" diffWithTop="-469" percentTop="46%" rank="4" />
+        <PlayerStats playerId="1"
+             rawScore="866" warningsNb="1" penaltiesPoints="0" solosPoints="40"
+             totalScore="906" diffWithTop="39" percentTop="104%" rank="1" />
+        <PlayerStats playerId="2"
+             rawScore="742" warningsNb="0" penaltiesPoints="-5" solosPoints="0"
+             totalScore="737" diffWithTop="-130" percentTop="85%" rank="3" />
+        <PlayerStats playerId="3"
+             rawScore="861" warningsNb="4" penaltiesPoints="-5" solosPoints="0"
+             totalScore="856" diffWithTop="-11" percentTop="99%" rank="2" />
+    </Statistics>
+</EliotGame>

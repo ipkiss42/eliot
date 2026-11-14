@@ -1,0 +1,46 @@
+baseURL = 'http://localhost:1313/'
+title = 'Eliot'
+defaultContentLanguage = 'fr'
+defaultContentLanguageInSubdir = true
+disableKinds = ['taxonomy', 'term', 'RSS']
+
+[module.hugoVersion]
+min = '0.167.0'
+
+[params]
+description = 'Eliot Scrabble ODS'
+author = 'Xavier Rousselot'
+
+[languages.en]
+contentDir = 'content/en'
+label = 'English'
+locale = 'en'
+weight = 1
+
+[languages.en.params]
+flag = 'flag-uk.gif'
+
+[languages.fr]
+contentDir = 'content/fr'
+label = 'Français'
+locale = 'fr'
+weight = 2
+
+[languages.fr.params]
+flag = 'flag-fr.gif'
+
+[languages.it]
+contentDir = 'content/it'
+label = 'Italiano'
+locale = 'it'
+weight = 3
+
+[languages.it.params]
+flag = 'flag-it.gif'
+
+[markup.goldmark.extensions]
+typographer = false
+
+[markup.goldmark.parser.attribute]
+block = true
+title = true

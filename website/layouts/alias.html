@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="{{ .Page.Language.Locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="{{ "layout/redirect.js" | relURL }}" data-target="{{ .Permalink }}"></script>
+  <meta http-equiv="refresh" content="0; url={{ .Permalink }}">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <title>Eliot</title>
+</head>
+<body>
+  <a href="{{ .Permalink }}">{{ .Page.Title }}</a>
+</body>
+</html>
