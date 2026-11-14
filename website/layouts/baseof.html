@@ -15,7 +15,9 @@
 </head>
 <body>
   <header class="site-header">
-    <img class="logo" src="{{ "layout/eliot2.png" | relURL }}" alt="[Eliot]" width="363" height="75">
+    <a class="home-link" href="{{ .Site.Home.RelPermalink }}">
+      <img class="logo" src="{{ "layout/eliot2.png" | relURL }}" alt="{{ printf "Eliot — %s" (i18n "overview") }}" width="363" height="75">
+    </a>
     <nav class="languages" aria-label="{{ i18n "languages" }}">
       {{ range .AllTranslations }}
       <a href="{{ .RelPermalink }}" lang="{{ .Language.Locale }}" hreflang="{{ .Language.Locale }}"><img src="{{ printf "layout/%s" .Site.Params.flag | relURL }}" alt="" width="36" height="24">{{ .Language.Label }}</a>
