@@ -20,10 +20,24 @@ Questo metodo dovrebbe funzionare a partire da Ubuntu 11.10 (oneiric).{{< br >}}
 
 Altre “distro” basate su Debian possono probabilmente anche utilizzare gli stessi pacchetti, ma l'installazione è meno pratica.
 
-- Installa le dipendenze: `sudo apt install libqtcore5 libqtgui5 libexpat1 libconfig++9`
 - [Scarica](https://launchpad.net/~ipkiss-0/+archive/ppa-eliot/+packages) i pacchetti "eliot" e "libarabica" (.deb files) per la tua architettura (i386 o amd64)
 - Installale (cambiando i nomi dei file di conseguenza): `sudo dpkg -i libarabica-202004-focal1_amd64.deb eliot_2.2-focal1_amd64.deb`
 
 ## Codice sorgente
 
 Volendo è possibile scaricare il [codice sorgente](/it/dl-sources/) di Eliot.
+
+### Dipendenze della versione di sviluppo attuale
+
+Per la compilazione predefinita con l’interfaccia grafica Qt6, le dipendenze del [CMakeLists.txt principale](https://github.com/ipkiss42/eliot/blob/main/CMakeLists.txt) corrispondono ai seguenti pacchetti di sviluppo:
+
+```sh
+sudo apt install build-essential cmake pkg-config gettext \
+  libboost-dev libtomlplusplus-dev libpugixml-dev libspdlog-dev qt6-base-dev
+```
+
+Il codice attuale richiede CMake 4.3 o successivo e un compilatore compatibile con C++23; verificate le versioni fornite dalla distribuzione. Qt6 Core, Gui, Widgets, Network e PrintSupport sono inclusi in `qt6-base-dev`. Gli header Intl e iconv sono forniti dai file di sviluppo della libreria C di sistema.
+
+Le funzionalità opzionali del terminale usano `libreadline-dev` (modifica della riga) e `libncurses-dev` (interfaccia curses con caratteri estesi).
+
+Queste sono le dipendenze di compilazione del codice attuale. I vecchi pacchetti `.deb` di Eliot 2.2 indicati sopra hanno le proprie dipendenze di esecuzione.
