@@ -44,6 +44,14 @@ hugo server --baseURL http://localhost:1313/eliot/ --appendPort=false
 Then open <http://localhost:1313/eliot/>. Check navigation, language switching,
 dictionary section links, images, and downloads before publishing.
 
+## Validate changes
+
+After changing templates or styles, check representative pages in each language
+with the [W3C HTML Checker](https://validator.w3.org/nu/) and the
+[W3C CSS Validator](https://jigsaw.w3.org/css-validator/). Submit a deployed page
+URL or upload a generated file from `public/`. Include a long dictionary/archive
+page when checking layout and structure.
+
 ## Structure and editing
 
 - `content/en/`, `content/fr/`, `content/it/`: translated Markdown pages

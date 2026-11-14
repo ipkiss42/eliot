@@ -178,13 +178,6 @@ code {
   font-size: 0.8em;
 }
 
-.validation-badges {
-  float: left;
-  margin-bottom: 5px;
-  padding: 5px;
-  font-size: 11pt;
-}
-
 .legal-note {
   color: #555;
   font-size: inherit;
