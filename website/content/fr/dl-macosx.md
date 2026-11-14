@@ -6,7 +6,7 @@ aliases:
 
 ## Paquet Mac OS X
 
-Le paquet pré-compilé ci-dessous fonctionne sur Mac OS X 10.6 ou ultérieur :
+Le paquet précompilé ci-dessous fonctionne sur Mac OS X 10.6 ou ultérieur :
 
 - [eliot-2.1.dmg](http://dl.sv.nongnu.org/releases/eliot/releases/2.1/eliot-2.1.dmg)
 

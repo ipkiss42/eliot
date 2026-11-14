@@ -12,7 +12,7 @@ aliases:
 - [DAWG dictionary format](http://www.wutka.com/dawg.html): the format used for Eliot dictionaries
 - [The World's Fastest Scrabble Program](/download/aj.pdf): search algorithm used in Eliot (by Andrew W. Appel and Guy J. Jacobson)
 - [A Faster Scrabble Move Generation Algorithm](http://www.ericsink.com/downloads/faster-scrabble-gordon.pdf): an improvement of the previous algorithm (by Steven A. Gordon)
-- [Qt library](http://trolltech.com/products/qt/) : used in eliot for the graphical user interface
+- [Qt library](http://trolltech.com/products/qt/): used in Eliot for the graphical user interface
 
 ## Scrabble
 

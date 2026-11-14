@@ -25,7 +25,7 @@ Eliot offre quattro diverse modalità di gioco:
 
 {{< game-modes >}}
 
-Eliot offre anche molti strumenti per la ricerca avanzata, come :
+Eliot offre anche molti strumenti per la ricerca avanzata, come:
 
 - Ricerca della mossa migliore per un dato schema e leggio. Questa ricerca è quasi istantanea!
 - Ricerca di possibili connessioni, "Sciarade" (aggiunta di tre lettere all'inizio di una parola preesistente), o per tutte le parole che possono essere composte con le lettere sul leggio.
@@ -40,6 +40,6 @@ Eliot offre anche molti strumenti per la ricerca avanzata, come :
 - Eliot versione 1.11b:
   - Una [partita libera](/img/eliot-1.11b-macosx.png) su Mac OS X, con il dizionario catalano
 - Eliot versione 1.7:
-  - Una [parita a duplicato](/img/eliot-1.7-duplicate.png) su Ubuntu
+  - Una [partita a duplicato](/img/eliot-1.7-duplicate.png) su Ubuntu
   - Una [partita libera](/img/eliot-1.7-freegame.png)
   - Una [partita di allenamento](/img/eliot-1.7-training.png), con interfaccia in inglese

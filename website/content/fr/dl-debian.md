@@ -6,7 +6,7 @@ aliases:
 
 ## Distributions basées sur Ubuntu
 
-Pour les distributions basées sur Ubuntu (telles que [Ubuntu](http://www.ubuntu.com/) ou [Linux Mint](http://linuxmint.com/)), des paquets précompilés sont disponibles sur un [PPA](http://doc.ubuntu-fr.org/ppa). On peut trouver beaucoup d'information en ligne sur la manière d'installer un PPA, mais cela se résume généralement à :
+Pour les distributions basées sur Ubuntu (telles que [Ubuntu](http://www.ubuntu.com/) ou [Linux Mint](http://linuxmint.com/)), des paquets précompilés sont disponibles sur un [PPA](http://doc.ubuntu-fr.org/ppa). On peut trouver beaucoup d'informations en ligne sur la manière d'installer un PPA, mais cela se résume généralement à :
 
 - `sudo add-apt-repository ppa:ipkiss-0/ppa-eliot`
 - `sudo apt update`

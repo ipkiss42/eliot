@@ -22,8 +22,8 @@ Even if you don't know how to program or simply don't want to, there are still m
 - help promoting Eliot (Scrabble club, websites, friends, ...)
 - translate Eliot into another language
 - write a small user guide or a tutorial
-- provide the official word list in another language than French or English
+- provide the official word list in a language other than French or English
 - report bugs in the program
-- ... and any other ideas that could help improving the program (suggestions about the ergonomy, ...)
+- ... and any other ideas that could help improve the program (suggestions about the ergonomics, ...)
 
 Feel free to [contact us](/en/contact/) about it!

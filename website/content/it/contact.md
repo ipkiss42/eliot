@@ -12,6 +12,6 @@ Puoi iscriverti (o cancellarti) in questa pagina: [http://lists.nongnu.org/mailm
 
 ## eliot-dev
 
-La mailing-list eliot-dev (@nongnu.org) viene utilizzata per lo sviluppo di Eliot. Gli iscritti riceveranno un messaggio di notifica ogni volta che viene apportata una modifica al codice sorgente. Questa lista è il posto giusto per chiedere aiuto in merito alla compilazione, per inviare le patch, ecc
+La mailing-list eliot-dev (@nongnu.org) viene utilizzata per lo sviluppo di Eliot. Gli iscritti riceveranno un messaggio di notifica ogni volta che viene apportata una modifica al codice sorgente. Questa lista è il posto giusto per chiedere aiuto in merito alla compilazione, per inviare le patch, ecc.
 
 È possibile iscriversi o cancellarsi su [http://lists.nongnu.org/mailman/listinfo/eliot-dev](http://lists.nongnu.org/mailman/listinfo/eliot-dev).

@@ -26,7 +26,7 @@ Le dictionnaire ci-dessous est basé sur le Dictionnaire bambara-français de Ch
 
 ## Catalan {#ca}
 
-Le DISC (Diccionari Informatitzat de l'Scrabble en Català) est une alternative libre au dictionnaire officiel en Catalan (DOSC).{{< br >}} Pour plus de détails, consulter le [site dédié (en catalan)](http://diccionari.totescrable.cat/).
+Le DISC (Diccionari Informatitzat de l'Scrabble en Català) est une alternative libre au dictionnaire officiel en catalan (DOSC).{{< br >}} Pour plus de détails, consulter le [site dédié (en catalan)](http://diccionari.totescrable.cat/).
 
 - [DISC 2.4.10](https://github.com/ipkiss42/eliot/releases/download/dictionaries/catalan-disc-v2.4.10.dawg)
 
@@ -34,7 +34,7 @@ Le DISC (Diccionari Informatitzat de l'Scrabble en Català) est une alternative 
 
 ## Espagnol {#es}
 
-Le dictionnaire ci-dessous contient la liste officielle 2017 de la Federación Internacional de Léxico en Español ([FILE](https://www.filexico.com/))
+Le dictionnaire ci-dessous contient la liste officielle 2017 de la Federación Internacional de Léxico en Español ([FILE](https://www.filexico.com/)) :
 
 - [FILE 2017](https://github.com/ipkiss42/eliot/releases/download/dictionaries/spanish-file-2017.dawg)
 
@@ -46,7 +46,7 @@ Le dictionnaire ci-dessous contient la liste officielle 2017 de la Federación I
 
 La liste de mots de ce dictionnaire contient des ajouts et omissions par rapport à l'Officiel du Scrabble (ODS 6), qui contient 386264 mots. Elle a été obtenue en combinant les sources suivantes :
 
-- [Liste Français-Gutemberg](http://www.pallier.org/ressources/dicofr/dicofr.html)
+- [Liste Français-Gutenberg](http://www.pallier.org/ressources/dicofr/dicofr.html)
 - [Liste Moby pour le français](http://www.gutenberg.org/etext/3206)
 - [Liste de mots de 2 à 4 lettres](http://www.motsduscrabble.com/)
 
@@ -54,13 +54,13 @@ La liste de mots de ce dictionnaire contient des ajouts et omissions par rapport
 
 {{< space >}}
 
-## Italian {#it}
+## Italien {#it}
 
 Le dictionnaire ci-dessous contient la liste de mots officielle utilisée pour le Scrabble en italien. Les formes avec enclitique sont également acceptées en partie, mais il n'existe actuellement aucune liste avec toutes les formes valides.
 
 - [Zingarelli 2011](https://github.com/ipkiss42/eliot/releases/download/dictionaries/italian-zingarelli-2011.dawg)
 
-**Note :** les mots containant les lettres J, K, W, X ou Y ne peuvent être joués qu'en utilisant les jokers..
+**Note :** les mots contenant les lettres J, K, W, X ou Y ne peuvent être joués qu'en utilisant les jokers.
 
 {{< space >}}
 
@@ -98,7 +98,7 @@ Le dictionnaire ci-dessous est basé sur la liste officielle, disponible [ici](h
 
 ## Serbe {#rs}
 
-Il n'existe pas de liste de mots officielle pour jouer au Scrabble en Serbe. Voici un dictionaire non officiel :
+Il n'existe pas de liste de mots officielle pour jouer au Scrabble en serbe. Voici un dictionnaire non officiel :
 
 - [Serbe](https://github.com/ipkiss42/eliot/releases/download/dictionaries/serbian-unofficial-v1.dawg)
 
@@ -119,9 +119,9 @@ La liste de mots de ce dictionnaire a été obtenue en combinant les sources sui
 
 Depuis la version 1.12 d'Eliot, un assistant permet de créer très facilement son propre dictionnaire à partir d'une liste de mots quelconque. L'assistant est disponible dans le menu *Paramètres* : *Créer un nouveau dictionnaire...*. Il suffit ensuite de se laisser guider...
 
-**Note :** les langues utilisant 2 lettres pour un même jeton (comme le *LL* espagnol ou le *QU* catalan) doivent utiliser l'ancienne méthode indiquée ci-dessous..
+**Note :** les langues utilisant 2 lettres pour un même jeton (comme le *LL* espagnol ou le *QU* catalan) doivent utiliser l'ancienne méthode indiquée ci-dessous.
 
-Pour ceux qui préfèrent utiliser la ligne de commande, une autre méthode (plus complexe) consiste à utiliser le programme **compdic** fourni avec Eliot (et pré-compilé pour Windows)
+Pour ceux qui préfèrent utiliser la ligne de commande, une autre méthode (plus complexe) consiste à utiliser le programme **compdic** fourni avec Eliot (et précompilé pour Windows).
 
 Voici la procédure à suivre :
 

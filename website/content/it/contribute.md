@@ -6,7 +6,7 @@ aliases:
 
 ## Programmatori
 
-Eliot è stato sviluppato da Antoine e Olivier Fraboulet Teulière. Nuovi sviluppatori sono benvenuti.
+Eliot è stato sviluppato da Antoine Fraboulet e Olivier Teulière. Nuovi sviluppatori sono benvenuti.
 
 Ci sono ancora molte cose da fare per migliorare Eliot. Ecco alcuni esempi:
 
@@ -17,7 +17,7 @@ Ci sono ancora molte cose da fare per migliorare Eliot. Ecco alcuni esempi:
 
 ## Non-programmatori
 
-Anche se non sai come programmare o semplicemente non vuoi, ci sono ancora molti altri modi  per partecipare al progetto:
+Anche se non sai come programmare o semplicemente non vuoi, ci sono ancora molti altri modi per partecipare al progetto:
 
 - Contribuire a promuovere Eliot (Scrabble club, siti web, amici, ...)
 - Tradurre Eliot in un'altra lingua

@@ -47,9 +47,9 @@ The dictionaries below contain official word lists used for playing Scrabble in 
 
 - [french-unofficial-v1](https://github.com/ipkiss42/eliot/releases/download/dictionaries/french-unofficial-v1.dawg)
 
-The word list of this dictionary contains additions and omissions, compared to the Officiel Du Scrabble (ODS 6) word list, which contains 386264 words). It has been obtained by a combination of the following sources:
+The word list of this dictionary contains additions and omissions, compared to the Officiel Du Scrabble (ODS 6) word list, which contains 386264 words. It has been obtained by a combination of the following sources:
 
-- [Français-Gutemberg list](http://www.pallier.org/ressources/dicofr/dicofr.html)
+- [Français-Gutenberg list](http://www.pallier.org/ressources/dicofr/dicofr.html)
 - [Moby list for French](http://www.gutenberg.org/etext/3206)
 - [List of words between 2 and 4 letters](http://www.motsduscrabble.com/)
 
@@ -69,7 +69,7 @@ The dictionary below contains the official word list for playing Scrabble in Ita
 
 ## Malagasy {#mg}
 
-You can play in Malagasy with the below dictionary:
+You can play in Malagasy with the following dictionary:
 
 - [RAK](https://github.com/ipkiss42/eliot/releases/download/dictionaries/malagasy-rakibolana-v1.dawg)
 
@@ -117,9 +117,9 @@ The dictionary below uses the official 2017 word list of the Federación Interna
 
 ## Create your own dictionary {#own}
 
-Since Eliot 1.12, a wizard allows creating very easily your own dictionary from any list of words. The wizard is available in the *Settings* menu: *Create a new dictionary...*. Then you just need to follow the instructions...
+Since Eliot 1.12, a wizard makes it easy to create your own dictionary from any list of words. The wizard is available in the *Settings* menu: *Create a new dictionary...*. Then you just need to follow the instructions...
 
-**Note:** languages using double letters for a single tile (like the spanish *LL* or the catalan *QU*) must use the old method indicated below..
+**Note:** languages using double letters for a single tile (like the Spanish *LL* or the Catalan *QU*) must use the old method indicated below.
 
 For those who prefer to use a command-line tool, another (more complex) method consists in using the **compdic** program, provided with Eliot (and pre-compiled for Windows).
 
@@ -127,11 +127,11 @@ Here is the procedure to follow:
 
 - Save the word list to a file (for example *words.txt*), using UTF-8 encoding
 - Create a letters definition file (for example *letters.txt*), also encoded in UTF-8. Each line of the file corresponds to a letter, and contains the following fields (separated with one or more spaces):
-  - Letter (for the joker, use the interrogation mark)
+  - Letter (for the joker, use a question mark)
   - Number of points
   - Frequency (number of occurrences)
   - 1 if the letter is a vowel, 0 otherwise
   - 1 if the letter is a consonant, 0 otherwise
   
   An example of letters file, suitable for French Scrabble, is available [here](/download/letters.txt)
-- Run the **compdic** program, using the following command-line:{{< br >}} `compdic -d "Nom du dictionnaire" -i words.txt -l letters.txt -o my-dic.dawg`{{< br >}} This will generate a file called *my-dic.dawg*, usable with Eliot.
+- Run the **compdic** program, using the following command line:{{< br >}} `compdic -d "Nom du dictionnaire" -i words.txt -l letters.txt -o my-dic.dawg`{{< br >}} This will generate a file called *my-dic.dawg*, usable with Eliot.

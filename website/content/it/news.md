@@ -30,7 +30,7 @@ The main changes include:
   - added information
   - allow flipping the table
   - allow print preview and printing
-- Ergonomy improvements:
+- Ergonomics improvements:
   - new "visual" rack under the main board
   - tiles can be reordered using drag & drop in the visual rack
   - automatic preview (on the board) of the word being played

@@ -6,7 +6,7 @@ aliases:
 
 ## Versione 2.1
 
-Questa versione di Eliot gira su tutte le versioni di Windows a parttire da Windows 2000.{{< br >}} Non è necessaria l'installazione, basta decomprimere i file in una cartella o directory
+Questa versione di Eliot gira su tutte le versioni di Windows a partire da Windows 2000.{{< br >}} Non è necessaria l'installazione, basta decomprimere i file in una cartella o directory.
 
 - [eliot-2.1-win32.zip](http://dl.sv.nongnu.org/releases/eliot/releases/2.1/eliot-2.1-win32.zip)
 

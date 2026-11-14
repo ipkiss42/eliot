@@ -5,13 +5,13 @@ aliases:
 - /overview/
 modes:
 - The **free game** mode is the standard one, ideal for having fun with your friends or family. The players
-  play in turn on the board, each with his own rack.
+  take turns playing on the board, each with his own rack.
 - In the **duplicate** mode, all the players are faced with the same board and letters at the same time.
   It is mainly used in clubs and competitions since it takes away the chance (and tactics) component(s)
   of the game.
-- The **training** mode allows to play alone and make progress for the duplicate. It gives more freedom
+- The **training** mode allows you to play alone and improve at duplicate. It gives more freedom
   than the multi-player modes.
-- The **arbitration** mode lets you arbitrate very efficiently a duplicate game, possibly with an important
+- The **arbitration** mode lets you arbitrate very efficiently a duplicate game, possibly with a large
   number of players.
 ---
 

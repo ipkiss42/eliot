@@ -31,7 +31,7 @@ The main changes include:
   - added information
   - allow flipping the table
   - allow print preview and printing
-- Ergonomy improvements:
+- Ergonomics improvements:
   - new "visual" rack under the main board
   - tiles can be reordered using drag & drop in the visual rack
   - automatic preview (on the board) of the word being played
@@ -89,7 +89,7 @@ Changes:
 - Allow exporting the dictionary words list to a file
 - Training mode: enable hiding the words and/or positions of search results
 - New translations: Serbian and Indonesian
-- Several bugs fixes
+- Several bug fixes
 
 ## May 22, 2010: Eliot 1.12
 
@@ -141,7 +141,7 @@ This version brings several enhancements:
 
 - It is possible to navigate in the history of the game, and resume from any turn
 - The search is much faster, even with jokers in the rack
-- Tiles points are displayed on the board
+- Tile points are displayed on the board
 - A new game variant is available: "explosive" games
 - There are a few GUI enhancements
 
@@ -161,7 +161,7 @@ There are two main novelties in this new version:
 - Three different types of game are now available:
   - Training mode: the mode already present in the previous versions of Eliot
   - Duplicate mode: a multiplayer game (with human or computer players), in which all the players have the same rack
-  - Free game mode: this is the classical Scrabble game, in which the players play by turn
+  - Free game mode: this is the classical Scrabble game, in which the players take turns
 
 It is also possible to play joker games.
 
@@ -184,20 +184,20 @@ Une première version de l'ODS5 est disponible pour Eliot. D'après son auteur, 
 ## 22 avril 2006 : Eliot avec MacOSX
 
 {{< plain >}}
-Grâce au travail de schlum, Eliot fonctionne maintenant sur MaxOSX (ppc et x86). Une version avec un installeur et un binaire fonctionnant sur les deux plateformes devrait être disponible sous peu. Pour plus de renseignements contactez [schlum](mailto:schlum@macbidouille.com). La version disponible est la version CVS du projet. Une capture d'écran est disponible [ici](/img/eliot-osx.jpg).
+Grâce au travail de schlum, Eliot fonctionne maintenant sur MacOSX (ppc et x86). Une version avec un installeur et un binaire fonctionnant sur les deux plateformes devrait être disponible sous peu. Pour plus de renseignements contactez [schlum](mailto:schlum@macbidouille.com). La version disponible est la version CVS du projet. Une capture d'écran est disponible [ici](/img/eliot-osx.jpg).
 {{< /plain >}}
 
 ## 30 juillet 2005: Eliot version 1.5.2
 
-Quelques corrections pour la dernière version qui était sortie un peu rapidement. Le comptage des points a été corrigé (merci à Nicolas et Olivier). Le chargement/sauvegarde des parties est corrigé ainsi que l'affichage de la grille sous Windows.
+Quelques corrections pour la dernière version qui était sortie un peu rapidement. Le comptage des points a été corrigé (merci à Nicolas et Olivier). Le chargement et la sauvegarde des parties sont corrigés ainsi que l'affichage de la grille sous Windows.
 
 ## 28 mai 2005: Eliot version 1.5
 
-Une nouvelle version d'Eliot est disponible pour Linux et pour Windows. Les plus grosse modifications ne sont pas visibles et concernent le moteur du jeu. Ces modifications permettrons dans une prochaine version de mettre en place de nouveaux modes de jeux. Pour ce qui est de l'interface vous pourrez découvrir la recherche dans le dictionnaire à l'aide d'expressions rationnelles ainsi qu'une nouvelle interface *ncurses* qui contient déjà les différents modes de jeux (duplicate, partie libre, entrainement, jeu à plusieurs, parties joker, ...).
+Une nouvelle version d'Eliot est disponible pour Linux et pour Windows. Les plus grosses modifications ne sont pas visibles et concernent le moteur du jeu. Ces modifications permettront dans une prochaine version de mettre en place de nouveaux modes de jeu. Pour ce qui est de l'interface vous pourrez découvrir la recherche dans le dictionnaire à l'aide d'expressions rationnelles ainsi qu'une nouvelle interface *ncurses* qui contient déjà les différents modes de jeu (duplicate, partie libre, entraînement, jeu à plusieurs, parties joker, ...).
 
 ## 26 mars 2005: déplacement du site
 
-Le site web d'Eliot a été déplace sur le serveur de projet [Savannah](/).
+Le site web d'Eliot a été déplacé sur le serveur de projet [Savannah](/).
 
 ## 5 octobre 2003: correction de l'ODS 4
 
@@ -205,11 +205,11 @@ La version précédente du dictionnaire comportait des mots de plus de 15 lettre
 
 ## 21 septembre 2003: ODS 4
 
-L'ODS 4 est disponible pour Eliot. Merci Fabien !!
+L'ODS 4 est disponible pour Eliot. Merci Fabien !
 
 ## 8 mars 2003: Eliot 1.3
 
-Les binaires du 2 mars étaient encore en édition de liens dynamique sur une partie : [mingwm10.dll](https://www.nongnu.org/eliot/download/mingwm10.dll) Pour plus d'informations voir le site [wingw](http://www.mingw.org/). Si vous avez pris ces binaires il vous suffit de rajouter la dll dans le même dossier qu'eliot pour le faire fonctionner. Sinon, les binaires ont été mis à jour et vous pouvez les recharger.
+Les binaires du 2 mars étaient encore en édition de liens dynamique sur une partie : [mingwm10.dll](https://www.nongnu.org/eliot/download/mingwm10.dll). Pour plus d'informations voir le site [MinGW](http://www.mingw.org/). Si vous avez pris ces binaires il vous suffit de rajouter la dll dans le même dossier qu'Eliot pour le faire fonctionner. Sinon, les binaires ont été mis à jour et vous pouvez les recharger.
 
 ## 2 mars 2003: Eliot 1.3
 
@@ -217,7 +217,7 @@ Les binaires ont été mis à jour sur le site. La version d'hier utilisait wxWi
 
 ## 1 mars 2003: Eliot 1.3
 
-Merci beaucoup à Olivier Teulière pour les nombreuses corrections sur le code d'eliot.
+Merci beaucoup à Olivier Teulière pour les nombreuses corrections sur le code d'Eliot.
 
 - effacement de résultats de recherche lors du chargement d'une partie
 - corrections sur la vérification de la validité des tirages
@@ -227,7 +227,7 @@ En plus de ces modifications, l'adaptation pour la compilation avec la nouvelle 
 
 ## 16 janvier 2001: Eliot 1.1.2
 
-Correction d'un bug sur les scores. Les mots en appuis vertical sur un joker comptaient les points de la lettre blanche. Merci à Jean-Luc Grevesse pour avoir levé l'erreur.
+Correction d'un bug sur les scores. Les mots en appui vertical sur un joker comptaient les points de la lettre blanche. Merci à Jean-Luc Grevesse pour avoir levé l'erreur.
 
 ## 21 déc 2000: Eliot 1.1.1
 
@@ -242,9 +242,9 @@ Eliot dispose maintenant d'un panneau de recherche ([captures](/img/recherche.jp
 
 Une première version du [manuel](https://www.nongnu.org/eliot/en/intro/) est aussi disponible.
 
-les 15 premiers tirages peuvent être vérifiés selon les règles officielles (au moins 2 voyelles et 2 consonnes par tirage)
+Les 15 premiers tirages peuvent être vérifiés selon les règles officielles (au moins 2 voyelles et 2 consonnes par tirage)
 
-pas mal de ménage dans le code du programme.
+Pas mal de ménage dans le code du programme.
 
 ## 10 déc 2000: Rien de spécial aujourd'hui.
 
@@ -258,7 +258,7 @@ Des modifications légères : un peu de ménage dans les sources et quelques cor
 
 ## 28 nov 2000: appel à participation
 
-Je n'ai pas de Mac disponible pour faire le portage d'Eliot. Il faut pouvoir disposer de MacOS 8.5 et de CodeWarrior 4.0. wxWindows pour Mac semble avoir un peut de retard par rapport aux versions Unix et Windows®, certaines modifications seront sans doute nécessaires pour compiler en attendant la version 2.2. Quelqu'un est-il intéressé pour faire le portage ?
+Je n'ai pas de Mac disponible pour faire le portage d'Eliot. Il faut pouvoir disposer de MacOS 8.5 et de CodeWarrior 4.0. wxWindows pour Mac semble avoir un peu de retard par rapport aux versions Unix et Windows®, certaines modifications seront sans doute nécessaires pour compiler en attendant la version 2.2. Quelqu'un est-il intéressé pour faire le portage ?
 
 ## 7 nov 2000: Eliot version 1.0
 

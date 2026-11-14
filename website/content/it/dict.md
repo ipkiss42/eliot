@@ -17,7 +17,7 @@ The dictionary below is based on the Bambara-French dictionary by Charles Baille
 
 ## Catalano {#ca}
 
-Il DISC (Diccionari Informatitzat de l'Scrabble en Català) è un dizionario alternativo a quello ufficiale Catalano (DOSC).{{< br >}} Per ulteriori dettagli, visita il [sito dedicato (in Catalano)](http://diccionari.totescrable.cat/).
+Il DISC (Diccionari Informatitzat de l'Scrabble en Català) è un dizionario alternativo a quello ufficiale catalano (DOSC).{{< br >}} Per ulteriori dettagli, visita il [sito dedicato (in catalano)](http://diccionari.totescrable.cat/).
 
 - [DISC 2.4.10](https://github.com/ipkiss42/eliot/releases/download/dictionaries/catalan-disc-v2.4.10.dawg)
 
@@ -38,19 +38,19 @@ Il dizionario è ottenuto dalle seguenti fonti:
 
 - [french-unofficial-v1](https://github.com/ipkiss42/eliot/releases/download/dictionaries/french-unofficial-v1.dawg)
 
-La lista delle parole di questo dizionario contiene aggiunte ed omissioni, rispetto all'elenco di parole Officiel du Scrabble (ODS 6), che contiene 386.264 parole. È ottenuto da una combinazione delle seguenti fonti:
+La lista delle parole di questo dizionario contiene aggiunte ed omissioni, rispetto all'elenco di parole Officiel du Scrabble (ODS 6), che contiene 386.264 parole. È ottenuta da una combinazione delle seguenti fonti:
 
-- [Français-Gutemberg](http://www.pallier.org/ressources/dicofr/dicofr.html)
+- [Français-Gutenberg](http://www.pallier.org/ressources/dicofr/dicofr.html)
 - [Moby lista Francese](http://www.gutenberg.org/etext/3206)
 - [Lista di parole da 2 a 4 lettere](http://www.motsduscrabble.com/)
 
-**Nota:** per motivi legali, la lista di parole Officiel Du Scrabble (ODS) non viene più fornita su questo sito. È comunque possibile trovare altri elenchi di parole su Internet (compreso l'ODS ...), e utilizzarle per [creare il proprio dizionario](#own).
+**Nota:** per motivi legali, la lista di parole Officiel Du Scrabble (ODS) non viene più fornita su questo sito. È comunque possibile trovare altri elenchi di parole su Internet (compreso l'ODS ...), e utilizzarli per [creare il proprio dizionario](#own).
 
 {{< space >}}
 
 ## Inglese {#en}
 
-I dizionari qui sotto contengono liste di parole ufficiali per giocare a Scrabble in Inglese:
+I dizionari qui sotto contengono liste di parole ufficiali per giocare a Scrabble in inglese:
 
 - [CSW 2012](https://github.com/ipkiss42/eliot/releases/download/dictionaries/english-csw-2012.dawg)
 - [TWL 2006](https://github.com/ipkiss42/eliot/releases/download/dictionaries/english-twl-2006.dawg)
@@ -67,13 +67,13 @@ Il dizionario che segue è la lista ufficiale di parole per giocare a Scrabble i
 
 ## Malgascio {#mg}
 
-Puoi giocare in Malgascio con questo dizionario::
+Puoi giocare in malgascio con questo dizionario:
 
 - [RAK](https://github.com/ipkiss42/eliot/releases/download/dictionaries/malagasy-rakibolana-v1.dawg)
 
 {{< space >}}
 
-## Norwegian {#no}
+## Norvegese {#no}
 
 The dictionary below is based on the official word list, available [here](http://www2.scrabbleforbundet.no/?attachment_id=1620):
 
@@ -81,7 +81,7 @@ The dictionary below is based on the official word list, available [here](http:/
 
 {{< space >}}
 
-## Polish {#po}
+## Polacco {#po}
 
 The dictionary below is based on the SJP (Słownik Języka Polskiego), available [here](http://www.sjp.pl/slownik/growy/):
 
@@ -99,7 +99,7 @@ Il dizionario qui sotto è basato sulla lista ufficiale, disponibile [qui](http:
 
 ## Serbo {#rs}
 
-Non esiste un dizionario ufficiale per giocare a Scrabble in Serbo. Questo è un dizionario non ufficiale:
+Non esiste un dizionario ufficiale per giocare a Scrabble in serbo. Questo è un dizionario non ufficiale:
 
 - [Serbo](https://github.com/ipkiss42/eliot/releases/download/dictionaries/serbian-unofficial-v1.dawg)
 
