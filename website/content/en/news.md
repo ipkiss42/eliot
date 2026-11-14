@@ -1,8 +1,11 @@
 ---
-title: News
+title: News archive
 aliases:
 - /news.html
 ---
+
+These announcements are preserved as a historical archive. For releases, see [Eliot on GitHub](https://github.com/ipkiss42/eliot/releases).
+
 
 ## Septembre 15, 2020: Eliot 2.2
 

@@ -14,6 +14,8 @@ Pour utiliser Eliot, il vous faut le programme et un dictionnaire.
 - [Autres systèmes d'exploitation](/fr/dl-others/)
 - [Code source](/fr/dl-sources/)
 
+[Notes de version sur GitHub](https://github.com/ipkiss42/eliot/releases)
+
 {{< space >}}
 
 ## Télécharger un dictionnaire

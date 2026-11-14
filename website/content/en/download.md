@@ -14,6 +14,8 @@ To use Eliot, you need both the software and a dictionary.
 - [Other operating systems](/en/dl-others/)
 - [Source code](/en/dl-sources/)
 
+[Release notes on GitHub](https://github.com/ipkiss42/eliot/releases)
+
 {{< space >}}
 
 ## Download a dictionary

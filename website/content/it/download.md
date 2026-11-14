@@ -14,6 +14,8 @@ Per utilizzare Eliot scarica il software e un dizionario.
 - [Altro sistema operativo](/it/dl-others/)
 - [Codice sorgente](/it/dl-sources/)
 
+[Note di rilascio su GitHub](https://github.com/ipkiss42/eliot/releases)
+
 {{< space >}}
 
 ## Scarica un dizionario

@@ -1,8 +1,11 @@
 ---
-title: 'Older news:'
+title: Older news archive
 aliases:
 - /nouv.html
 ---
+
+These announcements are preserved as a historical archive. For releases, see [Eliot on GitHub](https://github.com/ipkiss42/eliot/releases).
+
 
 ## April 07, 2013: Eliot 2.1
 

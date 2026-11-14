@@ -1,8 +1,11 @@
 ---
-title: Nouveautés
+title: Archives des nouveautés
 aliases:
 - /news.html
 ---
+
+Ces annonces sont conservées à titre historique. Pour les versions publiées, consultez [Eliot sur GitHub](https://github.com/ipkiss42/eliot/releases).
+
 
 ## 15 septembre 2020 : Eliot 2.2
 

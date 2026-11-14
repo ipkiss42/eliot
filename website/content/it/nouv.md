@@ -1,8 +1,11 @@
 ---
-title: 'Older news:'
+title: Archivio delle novità precedenti
 aliases:
 - /nouv.html
 ---
+
+Questi annunci sono conservati come archivio storico. Per le versioni pubblicate, consulta [Eliot su GitHub](https://github.com/ipkiss42/eliot/releases).
+
 
 ## 14 Ottobre, 2012: Eliot 2.0
 

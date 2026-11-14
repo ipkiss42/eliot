@@ -1,6 +1,6 @@
 <nav class="site-navigation" aria-label="{{ i18n "navigation" }}">
   {{ $page := . }}
-  {{ range slice "overview" "news" "download" "contribute" "links" "contact" }}
+  {{ range slice "overview" "download" "contribute" "links" "contact" }}
     {{ $target := $page.Site.Home }}
     {{ if ne . "overview" }}
       {{ $target = $page.Site.GetPage . }}

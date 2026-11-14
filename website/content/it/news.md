@@ -1,8 +1,11 @@
 ---
-title: Novità
+title: Archivio delle novità
 aliases:
 - /news.html
 ---
+
+Questi annunci sono conservati come archivio storico. Per le versioni pubblicate, consulta [Eliot su GitHub](https://github.com/ipkiss42/eliot/releases).
+
 
 ## 07 Aprile, 2013: Eliot 2.1
 

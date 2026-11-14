@@ -7,6 +7,7 @@ aliases:
 ## Technique
 
 - Accès au [projet sur GitHub](https://github.com/ipkiss42/eliot)
+- [Archives des nouveautés](/fr/news/)
 - Accès au [projet sur Ohloh](http://www.ohloh.net/p/eliot)
 - [Format de dictionnaire DAWG](http://www.wutka.com/dawg.html) : le format utilisé pour les dictionnaires d'Eliot
 - [The World's Fastest Scrabble Program](/download/aj.pdf) : algorithme de recherche utilisé par Eliot (par Andrew W. Appel et Guy J. Jacobson)
