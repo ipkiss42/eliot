@@ -6,7 +6,7 @@ aliases:
 
 ## Link tecnici
 
-- Accesso al progetto [Eliot su Savannah](http://savannah.nongnu.org/projects/eliot)
+- Accesso al progetto [Eliot su GitHub](https://github.com/ipkiss42/eliot)
 - Accesso al progetto [Eliot su Ohloh](http://www.ohloh.net/p/eliot)
 - [DAWG dictionary format](http://www.wutka.com/dawg.html): il formato usato per i dizionari di Eliot
 - [The World's Fastest Scrabble Program](/download/aj.pdf): algoritmo di ricerca usato in Eliot (di Andrew W. Appel e Guy J. Jacobson)

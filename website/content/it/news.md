@@ -15,7 +15,7 @@ The main changes include:
   - ergonomic interface, words can be typed quickly
   - various hints can be used to help the player
   - penalties can be configured
-- New reports system (in [Python](https://it.wikipedia.org/wiki/Python)), easily extensible. There are two reports at the moment (cf. [README](https://github.com/ipkiss42/eliot/blob/master/extras/reports/README.txt)):
+- New reports system (in [Python](https://it.wikipedia.org/wiki/Python)), easily extensible. There are two reports at the moment (cf. [README](https://github.com/ipkiss42/eliot/blob/main/extras/reports/README.txt)):
   - stats.py: generates an HTML page similar to the statistics window in Eliot
   - sigles.py: generates a file usable with the SIGLES program (used in French Scrabble tournaments)
 - New "master game" feature: allows replaying a game with the same racks and words as in the reference game (be it in the same mode or in another one)

@@ -16,7 +16,7 @@ Parmi les principaux changements :
   - interface ergonomique, on peut taper les mots très rapidement
   - de nombreux; indices peuvent être utilisés pour aider le joueur
   - les pénalités sont configurables
-- Nouveau système de rapports (en [Python](https://fr.wikipedia.org/wiki/Python_%28langage%29)), facilement extensible. Deux rapports existent pour l'instant (cf. [README](https://github.com/ipkiss42/eliot/blob/master/extras/reports/README.txt), en anglais) :
+- Nouveau système de rapports (en [Python](https://fr.wikipedia.org/wiki/Python_%28langage%29)), facilement extensible. Deux rapports existent pour l'instant (cf. [README](https://github.com/ipkiss42/eliot/blob/main/extras/reports/README.txt), en anglais) :
   - stats.py : génère une page HTML similaire à la fenêtre des statistiques
   - sigles.py : génère un fichier utilisable par le programme SIGLES (utilisé dans certains tournois)
 - Nouvelle fonctionnalité "partie maîtresse" : permet de rejouer une partie avec les mêmes tirages et les mêmes mots que la partie de référence (et ce dans le même mode de jeu, ou dans un mode différent)

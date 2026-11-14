@@ -12,7 +12,7 @@ Dernière version officielle : [eliot-2.2.tar.gz](http://dl.sv.nongnu.org/releas
 
 La version de développement est disponible via git. Pour la récupérer, vous pouvez utiliser la commande suivante :
 
-- `git clone git://git.savannah.nongnu.org/eliot.git`
+- `git clone https://github.com/ipkiss42/eliot.git`
 
 ## Anciennes versions
 
