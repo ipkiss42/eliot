@@ -1,14 +1,15 @@
 ---
-title: Téléchargement
+title: Installer Eliot
 aliases:
+- /download/
 - /download.html
 ---
 
-Pour utiliser Eliot, il vous faut **le programme et un dictionnaire**. Téléchargez Eliot pour votre système d’exploitation, puis choisissez un dictionnaire pour la langue dans laquelle vous souhaitez jouer.
+Pour utiliser Eliot, il vous faut **le programme et un dictionnaire**. Suivez les instructions d’installation pour votre système d’exploitation, puis choisissez un dictionnaire pour la langue dans laquelle vous souhaitez jouer.
 
-## 1. Télécharger Eliot {#télécharger-eliot-version-21-ou-22-selon-la-plateforme}
+## 1. Installer Eliot {#télécharger-eliot-version-21-ou-22-selon-la-plateforme}
 
-Choisissez votre plateforme ou téléchargez le code source. Chaque page contient les instructions d’installation ou de compilation.
+Choisissez votre plateforme pour suivre les instructions d’installation, ou compilez Eliot à partir du code source.
 
 - **[Windows](/fr/dl-windows/)** — Eliot 2.1, archive ZIP à décompresser.
 - **[Debian/Ubuntu](/fr/dl-debian/)** — PPA Ubuntu et paquets `.deb`.

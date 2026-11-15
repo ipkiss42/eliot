@@ -1,5 +1,5 @@
 ---
-title: Download Eliot for another operating system
+title: Install Eliot on another operating system
 aliases:
 - /dl-others.html
 ---

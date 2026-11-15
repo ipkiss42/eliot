@@ -1,6 +1,6 @@
 <nav class="site-navigation" aria-label="{{ i18n "navigation" }}">
   {{ $page := . }}
-  {{ range slice "overview" "download" "dict" "screenshots" "contribute" "links" "contact" }}
+  {{ range slice "overview" "install" "dict" "screenshots" "contribute" "links" "contact" }}
     {{ $target := $page.Site.Home }}
     {{ if ne . "overview" }}
       {{ $target = $page.Site.GetPage . }}
@@ -8,7 +8,7 @@
     {{ $current := "" }}
     {{ if eq $target $page }}
       {{ $current = "page" }}
-    {{ else if and (eq . "download") (strings.HasPrefix $page.Path "/dl-") }}
+    {{ else if and (eq . "install") (strings.HasPrefix $page.Path "/dl-") }}
       {{ $current = "location" }}
     {{ end }}
     {{ $label := cond (eq . "dict") "dictionaries" . }}

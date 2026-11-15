@@ -1,5 +1,5 @@
 ---
-title: Scarica Eliot per Debian/Ubuntu
+title: Installa Eliot su Debian/Ubuntu
 aliases:
 - /dl-debian.html
 ---

@@ -48,7 +48,7 @@ dictionary section links, images, and downloads before publishing.
 ## Missing pages
 
 The shared `layouts/404.html` template generates an error page in each language,
-with links to home, downloads, dictionaries, and help. The language selector
+with links to home, installation, dictionaries, and help. The language selector
 switches between these error pages.
 
 GitHub Pages serves one root `404.html` for all missing URLs. The production
@@ -78,12 +78,15 @@ page when checking layout and structure.
 
 Keep corresponding translations under the same filename. Hugo uses those
 filenames to connect translations, and the language selector opens the
-translation of the current page. Each language's `_index.md` defines its
-overview, including the descriptions used by the `game-modes` shortcode.
+translation of the current page. Each language's `install.md` defines the
+installation overview at `/<language>/install/`; `/download/` and
+`download.html` aliases within each language preserve older links.
+Each language's `_index.md` defines its overview, including the descriptions
+used by the `game-modes` shortcode.
 
 The `dictionary-index` shortcode lists the sections of the current language's
-`dict.md`, using its heading labels and IDs. Use it on dictionary and download
-pages; adding a dictionary section automatically updates both indexes.
+`dict.md`, using its heading labels and IDs. Use it on dictionary and
+installation pages; adding a dictionary section automatically updates both indexes.
 
 The `screenshots` shortcode renders the shared gallery from `data/screenshots.yaml`
 and the captions in each language's `screenshots.md`. Add original images to
@@ -101,7 +104,7 @@ is missing, its language name is shown without a link, with an explanation on
 hover; it never silently falls back to a different page.
 
 Write prose in Markdown and keep shared layout in templates. Use site-root
-paths for internal links, such as `[Download](/en/download/)`; the link
+paths for internal links, such as `[Install](/en/install/)`; the link
 renderer adds any deployment prefix. Preserve explicit heading IDs such as
 `{#fr}` and existing front-matter aliases so bookmarks and older URLs work.
 

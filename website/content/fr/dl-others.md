@@ -1,5 +1,5 @@
 ---
-title: Télécharger Eliot pour un autre système d'exploitation
+title: Installer Eliot sur un autre système d’exploitation
 aliases:
 - /dl-others.html
 ---

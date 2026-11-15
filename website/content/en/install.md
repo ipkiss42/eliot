@@ -1,14 +1,15 @@
 ---
-title: Download
+title: Install Eliot
 aliases:
+- /download/
 - /download.html
 ---
 
-To use Eliot, you need **both the software and a dictionary**. Download Eliot for your operating system, then choose a dictionary for the language you want to play in.
+To use Eliot, you need **both the software and a dictionary**. Follow the installation instructions for your operating system, then choose a dictionary for the language you want to play in.
 
-## 1. Download Eliot {#download-eliot-version-21-or-22-depending-on-the-platform}
+## 1. Install Eliot {#download-eliot-version-21-or-22-depending-on-the-platform}
 
-Choose your platform or download the source code. Each page includes installation or build instructions.
+Choose your platform for installation instructions, or build Eliot from source.
 
 - **[Windows](/en/dl-windows/)** — Eliot 2.1, ZIP archive to extract.
 - **[Debian/Ubuntu](/en/dl-debian/)** — Ubuntu PPA and `.deb` packages.

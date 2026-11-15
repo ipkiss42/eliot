@@ -1,5 +1,5 @@
 ---
-title: Download source code
+title: Source code
 aliases:
 - /dl-sources.html
 ---

@@ -1,5 +1,5 @@
 ---
-title: Scarica Eliot per Mac OS X
+title: Installa Eliot su Mac OS X
 aliases:
 - /dl-macosx.html
 ---

@@ -1,5 +1,5 @@
 ---
-title: Scarica il codice sorgente
+title: Codice sorgente
 aliases:
 - /dl-sources.html
 ---
