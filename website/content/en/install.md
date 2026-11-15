@@ -16,7 +16,7 @@ Choose your operating system for installation instructions:
 - **[Debian/Ubuntu](/en/dl-debian/)** — packages for older Ubuntu releases and source-build dependencies.
 - **[Mac OS X](/en/dl-macosx/)** — Eliot 2.1, DMG disk image.
 
-For other systems or a custom build, see [other operating systems](/en/dl-others/) and the [source code](/en/dl-sources/) (Eliot 2.2 release archive and development version).
+For other operating systems or a custom build, see [Build from source](/en/dl-sources/) (Eliot 2.2 release archive and development version).
 
 [Release notes on GitHub](https://github.com/ipkiss42/eliot/releases)
 
@@ -36,4 +36,4 @@ Dictionary languages are independent of the website language and Eliot's interfa
 
 Keep the dictionary file in its chosen folder so Eliot can find it next time. Use **Settings → Choose dictionary...** again whenever you want to switch dictionaries.
 
-If you need help installing Eliot or loading a dictionary, [ask the eliot-dev email list](/en/help/#eliot-dev).
+If you need help installing Eliot or loading a dictionary, [ask the eliot-general email list](/en/help/#eliot-general).

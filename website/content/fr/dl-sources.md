@@ -1,9 +1,13 @@
 ---
 type: installation
-title: Code source
+title: Compiler Eliot à partir des sources
 aliases:
 - /dl-sources.html
+- /dl-others/
+- /dl-others.html
 ---
+
+Pour un système sans paquet précompilé ou pour une compilation personnalisée, compilez Eliot à partir des sources. Choisissez ci-dessous l’archive de la version publiée ou la version de développement.
 
 ## Eliot 2.2
 
@@ -26,4 +30,8 @@ Lisez le fichier `INSTALL` de cette copie avant de compiler. Les versions publi�
 
 Les anciennes archives du code source se trouvent dans les [archives des versions sur Savannah](http://dl.sv.nongnu.org/releases/eliot/releases/).
 
-{{< installation-next >}}
+## Autres paquets
+
+Si vous connaissez un paquet précompilé pour un autre système, [signalez-le à la liste de discussion eliot-dev](/fr/help/#eliot-dev) pour que nous puissions ajouter un lien.
+
+{{< installation-next build=true >}}

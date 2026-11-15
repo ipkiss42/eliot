@@ -17,7 +17,7 @@ sudo apt update
 sudo apt install eliot
 ```
 
-Se la vostra versione non è elencata, consultate la [compilazione dai sorgenti](#codice-sorgente) qui sotto oppure [chiedete aiuto per l’installazione](/it/help/#eliot-dev).
+Se la vostra versione non è elencata, consultate la [compilazione dai sorgenti](#codice-sorgente) qui sotto oppure [chiedete aiuto per l’installazione](/it/help/#eliot-general).
 
 ## Altre distribuzioni basate su Debian
 

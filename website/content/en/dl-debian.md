@@ -17,7 +17,7 @@ sudo apt update
 sudo apt install eliot
 ```
 
-If your release is not listed, see the [source-build option](#source-code) below or [ask for installation help](/en/help/#eliot-dev).
+If your release is not listed, see the [source-build option](#source-code) below or [ask for installation help](/en/help/#eliot-general).
 
 ## Other Debian-based distributions
 

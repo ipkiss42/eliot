@@ -84,6 +84,12 @@ installation overview at `/<language>/install/`; `/download/` and
 Installation pages use `type: installation` for shared list and command styling.
 The overview covers software, dictionaries, and first launch; platform/source
 pages use `{{< installation-next >}}` for shared onward and email-help links.
+Ordinary installation, dictionary, startup, and usage help belongs on
+`eliot-general`; compiling from source and development belong on `eliot-dev`.
+The Build from source page uses `{{< installation-next build=true >}}` to
+select build help. Its `dl-sources.md` combines source downloads and guidance
+for other operating systems; `/dl-others/` and `/dl-others.html` remain aliases
+within each language, alongside `/dl-sources.html`.
 Keep menu names in the first-launch instructions consistent with the application's
 translation catalogs. Historical package compatibility and current development
 build requirements describe different versions; keep that distinction explicit.

@@ -1,9 +1,13 @@
 ---
 type: installation
-title: Source code
+title: Build from source
 aliases:
 - /dl-sources.html
+- /dl-others/
+- /dl-others.html
 ---
+
+Build Eliot from source if no package is listed for your operating system or you want a custom build. Choose the released source archive or the development version below.
 
 ## Eliot 2.2 {#eliot-21}
 
@@ -26,4 +30,8 @@ Read the `INSTALL` file in this checkout before building. Release and developmen
 
 Older source archives are available in the [Savannah release archive](http://dl.sv.nongnu.org/releases/eliot/releases/).
 
-{{< installation-next >}}
+## Other packages
+
+If you know of a precompiled package for another system, [tell us on the eliot-dev email list](/en/help/#eliot-dev) so we can add a link.
+
+{{< installation-next build=true >}}

@@ -1,9 +1,13 @@
 ---
 type: installation
-title: Codice sorgente
+title: Compilare Eliot dai sorgenti
 aliases:
 - /dl-sources.html
+- /dl-others/
+- /dl-others.html
 ---
+
+Se non è disponibile un pacchetto per il vostro sistema operativo o volete una compilazione personalizzata, compilate Eliot dai sorgenti. Scegliete qui sotto l’archivio della versione pubblicata oppure la versione di sviluppo.
 
 ## Eliot 2.2 {#eliot-21}
 
@@ -26,4 +30,8 @@ Leggete il file `INSTALL` di questa copia prima di compilare. Le versioni pubbli
 
 I vecchi archivi del codice sorgente sono disponibili nell’[archivio delle versioni su Savannah](http://dl.sv.nongnu.org/releases/eliot/releases/).
 
-{{< installation-next >}}
+## Altri pacchetti
+
+Se conoscete un pacchetto precompilato per un altro sistema, [segnalatelo alla lista di discussione eliot-dev](/it/help/#eliot-dev) così potremo aggiungere un link.
+
+{{< installation-next build=true >}}

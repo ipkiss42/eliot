@@ -16,7 +16,7 @@ Choisissez votre système d’exploitation pour suivre les instructions d’inst
 - **[Debian/Ubuntu](/fr/dl-debian/)** — paquets pour d’anciennes versions d’Ubuntu et dépendances de compilation.
 - **[Mac OS X](/fr/dl-macosx/)** — Eliot 2.1, image disque DMG.
 
-Pour les autres systèmes ou pour compiler Eliot vous-même, consultez les pages [autres systèmes d’exploitation](/fr/dl-others/) et [code source](/fr/dl-sources/) (archive d’Eliot 2.2 et version de développement).
+Pour les autres systèmes ou une compilation personnalisée, consultez les [instructions de compilation à partir des sources](/fr/dl-sources/) (archive d’Eliot 2.2 et version de développement).
 
 [Notes de version sur GitHub](https://github.com/ipkiss42/eliot/releases)
 
@@ -36,4 +36,4 @@ Les langues des dictionnaires sont indépendantes de la langue du site et de cel
 
 Conservez le dictionnaire dans le dossier choisi pour qu’Eliot puisse le retrouver au prochain démarrage. Pour changer de dictionnaire, utilisez à nouveau **Paramètres → Choisir un dictionnaire...**.
 
-Si vous avez besoin d’aide pour installer Eliot ou charger un dictionnaire, [écrivez à la liste de discussion eliot-dev](/fr/help/#eliot-dev).
+Si vous avez besoin d’aide pour installer Eliot ou charger un dictionnaire, [écrivez à la liste de discussion eliot-general](/fr/help/#eliot-general).
