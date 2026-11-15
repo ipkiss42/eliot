@@ -131,7 +131,7 @@ New features:
 
 Enhancements:
 
-- Joker games work again (version 1.8 was buggy)
+- The blank-tile variant works again (version 1.8 was buggy)
 - In training mode, a word can be entered manually, without doing a search
 - The coordinates of the word to play can be entered by clicking on the board (left click to set the coordinates, right click to clear them)
 
@@ -140,7 +140,7 @@ Enhancements:
 This version brings several enhancements:
 
 - It is possible to navigate in the history of the game, and resume from any turn
-- The search is much faster, even with jokers in the rack
+- The search is much faster, even with blanks in the rack
 - Tile points are displayed on the board
 - A new game variant is available: "explosive" games
 - There are a few GUI enhancements
@@ -151,7 +151,7 @@ The Eliot website has been completely redesigned, thanks to the work of Xavier R
 
 ## 18 October 2008: Eliot 1.7a {#october-18-2008-eliot-17a}
 
-This version corrects a pretty annoying bug, which was introduced in the previous version: the search could miss some solutions when the rack contained a joker. Thanks to Christian Pierre for detecting the problem.
+This version corrects a pretty annoying bug, which was introduced in the previous version: the search could miss some solutions when the rack contained a blank. Thanks to Christian Pierre for detecting the problem.
 
 ## 27 September 2008: Eliot 1.7 {#september-27-2008-eliot-17}
 
@@ -163,7 +163,7 @@ There are two main novelties in this new version:
   - Duplicate mode: a multiplayer game (with human or computer players), in which all the players have the same rack
   - Classic mode: this is the classical Scrabble game, in which the players take turns
 
-It is also possible to play joker games.
+It is also possible to play the blank-tile variant.
 
 Note: for now, saving games is only possible in the training mode.
 

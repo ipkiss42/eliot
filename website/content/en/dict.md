@@ -34,7 +34,7 @@ The word list of this dictionary has been obtained from the following sources:
 - [Unofficial list](http://www.gtoal.com/wordgames/details/czech/czech.txt)
 - [List of words from 2 to 5 letters](http://scrabble.hrejsi.cz/pravidla/blex.htm)
 
-**Note:** the letters follow the distribution indicated on [this page](http://hrejsi.cz/scrabble/pravidla.htm). Thus the few words containing a W or a Z must necessarily be played using the jokers.
+**Note:** the letters follow the distribution indicated on [this page](http://hrejsi.cz/scrabble/pravidla.htm). Thus the few words containing a W or a Z must necessarily be played using blanks.
 
 ## English {#en}
 
@@ -65,7 +65,7 @@ The dictionary below contains the official word list for playing Scrabble in Ita
 
 - [Zingarelli 2011](https://github.com/ipkiss42/eliot/releases/download/dictionaries/italian-zingarelli-2011.dawg)
 
-**Note:** words containing the letters J, K, W, X or Y can only be played using the jokers.
+**Note:** words containing the letters J, K, W, X or Y can only be played using blanks.
 
 {{< space >}}
 
@@ -129,7 +129,7 @@ Here is the procedure to follow:
 
 - Save the word list to a file (for example `words.txt`), using UTF-8 encoding
 - Create a letters definition file (for example `letters.txt`), also encoded in UTF-8. Each line of the file corresponds to a letter, and contains the following fields (separated with one or more spaces):
-  - Letter (for the joker, use a question mark)
+  - Letter (for the blank, use a question mark)
   - Number of points
   - Frequency (number of occurrences)
   - 1 if the letter is a vowel, 0 otherwise

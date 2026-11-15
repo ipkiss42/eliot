@@ -110,6 +110,15 @@ Introduce the current application label once on each localized homepage, then
 use the terms above throughout the website. In Italian prose, use *modalità
 classica* and *partita classica*.
 
+Distinguish the tile from the rule variant, which is separate from the main
+game modes. Use these terms in prose; the English and Italian variant names
+are descriptive labels:
+
+| Meaning | English | French | Italian |
+| --- | --- | --- | --- |
+| Tile | blank / blank tile | joker | jolly |
+| Rule variant | blank-tile variant | partie joker | variante jolly |
+
 - Write dates as day, spelled-out month, and year: `15 September 2020`,
   `15 septembre 2020`, `15 settembre 2020`. Omit leading zeros; use lowercase
   month names in French and Italian. Preserve existing heading IDs when editing
