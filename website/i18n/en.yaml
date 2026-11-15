@@ -1,8 +1,6 @@
 overview: Home
 install: Install
 contribute: Contribute
-links: Links
-contact: Contact
 legal: 'Legal note: SCRABBLE® is a registered trademark. All intellectual property rights in and to the game are
   owned in the U.S.A. by Hasbro Inc., in Canada by Hasbro Canada Corporation and throughout the rest of the world
   by J.W. Spear & Sons Limited of Maidenhead, Berkshire, England, a subsidiary of Mattel Inc. Mattel and Spear are
@@ -14,5 +12,8 @@ notFoundTitle: Page not found
 notFoundDescription: The page you requested could not be found. Use one of these links to continue, or choose another language above.
 dictionaries: Dictionaries
 dictionaryLanguages: Dictionary languages
-help: Help and contact
+help: Help
 screenshots: Screenshots
+resources: Resources
+newsArchive: News archive
+secondaryNavigation: Additional navigation

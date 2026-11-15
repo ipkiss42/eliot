@@ -6,7 +6,7 @@ aliases:
 
 ## Eliot 2.2
 
-Dernière version officielle : [eliot-2.2.tar.gz](http://dl.sv.nongnu.org/releases/eliot/releases/2.2/eliot-2.2.tar.gz){{< br >}} Les instructions de compilation se trouvent dans le fichier `INSTALL`, fourni avec le code source. En cas de problème pour compiler le programme, envoyer un e-mail sur la liste de diffusion eliot-dev (cf. section [Contact](/fr/contact/)).
+Dernière version officielle : [eliot-2.2.tar.gz](http://dl.sv.nongnu.org/releases/eliot/releases/2.2/eliot-2.2.tar.gz){{< br >}} Les instructions de compilation se trouvent dans le fichier `INSTALL`, fourni avec le code source. En cas de problème pour compiler le programme, envoyer un e-mail sur la liste de diffusion eliot-dev (cf. section [Aide](/fr/help/)).
 
 ## Version de développement
 

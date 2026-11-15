@@ -26,4 +26,4 @@ Anche se non sai come programmare o semplicemente non vuoi, ci sono ancora molti
 - Segnalare i bug nel programma
 - ... e tutte le altre idee che potrebbero contribuire a migliorare il programma (suggerimenti circa l'aspetto, ...)
 
-Non esitare a [contattarci](/it/contact/) a questo proposito!
+Non esitare a [contattarci](/it/help/) a questo proposito!

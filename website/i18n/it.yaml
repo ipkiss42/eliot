@@ -1,8 +1,6 @@
 overview: Home
 install: Installa
 contribute: Partecipa
-links: Collegamenti
-contact: Contatti
 legal: 'Nota legale: SCRABBLE ® è un marchio registrato. Tutti i diritti di proprietà intellettuale relativi al
   gioco sono detenuti negli Stati Uniti dalla Hasbro Inc., in Canada dalla Hasbro Corporation Canada e in tutto
   il resto del mondo da JW Spear & Sons Limited di Maidenhead, Berkshire, Inghilterra, società sussidiaria di Mattel
@@ -14,5 +12,8 @@ notFoundTitle: Pagina non trovata
 notFoundDescription: La pagina richiesta non è stata trovata. Usate uno di questi collegamenti per continuare o scegliete un’altra lingua in alto nella pagina.
 dictionaries: Dizionari
 dictionaryLanguages: Lingue dei dizionari
-help: Aiuto e contatti
+help: Aiuto
 screenshots: Schermate
+resources: Risorse
+newsArchive: Archivio delle novità
+secondaryNavigation: Navigazione aggiuntiva

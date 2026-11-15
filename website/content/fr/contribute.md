@@ -26,4 +26,4 @@ Pour les non-programmeurs, il y a également de nombreuses façons de participer
 - signaler des bugs
 - ... et toutes les autres idées qui peuvent améliorer le programme (suggestions d'ergonomie, ...)
 
-N'hésitez pas à [nous contacter](/fr/contact/) !
+N'hésitez pas à [nous contacter](/fr/help/) !

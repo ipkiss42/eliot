@@ -26,4 +26,4 @@ Even if you don't know how to program or simply don't want to, there are still m
 - report bugs in the program
 - ... and any other ideas that could help improve the program (suggestions about the ergonomics, ...)
 
-Feel free to [contact us](/en/contact/) about it!
+Feel free to [contact us](/en/help/) about it!

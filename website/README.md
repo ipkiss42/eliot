@@ -105,6 +105,12 @@ The current page and language are highlighted in navigation. If a translation
 is missing, its language name is shown without a link, with an explanation on
 hover; it never silently falls back to a different page.
 
+The main menu focuses on Home, Install, Dictionaries, Screenshots, Contribute,
+and Help. Help pages (`help.md`) cover installation, bug reports, and email
+lists. Resources (`resources.md`) and the news archive are linked
+from the footer. Former `contact/`, `contact.html`, `links/`, and `links.html`
+URLs remain aliases within each language; preserve their existing section IDs.
+
 Write prose in Markdown and keep shared layout in templates. Use site-root
 paths for internal links, such as `[Install](/en/install/)`; the link
 renderer adds any deployment prefix. Preserve explicit heading IDs such as

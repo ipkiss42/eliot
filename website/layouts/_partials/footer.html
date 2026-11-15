@@ -1,3 +1,11 @@
 <footer class="site-footer">
+  <nav class="footer-navigation" aria-label="{{ i18n "secondaryNavigation" }}">
+    {{ $page := . }}
+    {{ range slice "resources" "news" }}
+      {{ $target := $page.Site.GetPage . }}
+      {{ $label := cond (eq . "news") "newsArchive" . }}
+      <a href="{{ $target.RelPermalink }}"{{ if eq $target $page }} aria-current="page"{{ end }}>{{ i18n $label }}</a>
+    {{ end }}
+  </nav>
   <span class="legal-note">{{ i18n "legal" }}</span>
 </footer>

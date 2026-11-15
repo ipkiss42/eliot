@@ -1,6 +1,7 @@
 ---
-title: Link
+title: Risorse
 aliases:
+- /links/
 - /links.html
 ---
 
