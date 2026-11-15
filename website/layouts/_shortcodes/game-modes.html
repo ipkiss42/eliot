@@ -1,5 +1,5 @@
-<div class="game-modes">
+<ul class="game-modes">
   {{ range .Page.Params.modes }}
-  <div>{{ . | markdownify }}</div>
+  <li>{{ . | markdownify }}</li>
   {{ end }}
-</div>
+</ul>

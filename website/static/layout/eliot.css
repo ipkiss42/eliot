@@ -218,20 +218,12 @@ code {
 }
 
 .game-modes {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  margin: 5px 12px 15px 5px;
 }
 
-.game-modes > div {
-  padding: 6pt 12pt;
-}
-
-.game-modes > div:nth-child(even) {
-  border-left: 2px solid #52799e;
-}
-
-.game-modes > div:nth-child(n + 3) {
-  border-top: 2px solid #52799e;
+.game-modes > li {
+  margin: 0 0 10px 24px;
+  line-height: 1.5;
 }
 
 .content-space {

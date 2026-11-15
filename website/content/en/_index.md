@@ -5,15 +5,20 @@ aliases:
 - /overview.html
 - /overview/
 modes:
-- The **classic** mode (called *Free game* in Eliot) is the standard one, ideal for having fun with your
-  friends or family. The players take turns playing on the board, each with his own rack.
-- In the **duplicate** mode, all the players are faced with the same board and letters at the same time.
-  It is mainly used in clubs and competitions since it takes away the chance (and tactics) component(s)
-  of the game.
-- The **training** mode allows you to play alone and improve at duplicate. It gives more freedom
-  than the multiplayer modes.
-- The **arbitration** mode lets you arbitrate very efficiently a duplicate game, possibly with a large
-  number of players.
+- >-
+  **Classic** (called *Free game* in Eliot): take turns playing with your own rack.
+  Ideal for games with friends or family.
+- >-
+  **Duplicate**: everyone uses the same rack and board. Each player scores their own word,
+  and the best move is placed on the board. Common in clubs and competitions.
+- >-
+  **Training**: practise alone, choose your rack and explore possible moves to improve at duplicate.
+- >-
+  **Arbitration**: manage a duplicate game for a club or competition, recording players' moves
+  and choosing the move played on the shared board.
+- >-
+  **Topping**: find the highest-scoring move as quickly as possible. You can try multiple moves
+  and request hints, which incur time penalties. A challenge for experienced players.
 ---
 
 ## Free Scrabble game
@@ -22,7 +27,7 @@ Eliot is an [open source](http://en.wikipedia.org/wiki/Open_source) Scrabble gam
 
 This license statement covers Eliot's software. For dictionary word lists, website artwork, and referenced papers, check the reuse terms with their respective sources.
 
-Eliot offers four different **game modes**:
+Eliot offers five different **game modes**:
 
 {{< game-modes >}}
 

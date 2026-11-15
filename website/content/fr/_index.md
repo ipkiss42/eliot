@@ -5,15 +5,23 @@ aliases:
 - /overview.html
 - /overview/
 modes:
-- Le mode **classique** (appelé *Partie libre* dans Eliot) est le mode traditionnel, l'idéal pour s'amuser
-  en famille. Les joueurs possèdent chacun leur tirage et jouent à tour de rôle.
-- Le mode **duplicate** est la façon privilégiée de jouer en club et en compétition. Dans ce mode, les
-  joueurs réfléchissent en même temps sur le même tirage et la même grille. Il élimine ainsi la part de
-  chance (et de tactique).
-- Le mode **entraînement** permet de jouer seul et de progresser au duplicate. Il offre plus de liberté
-  que les modes multijoueurs.
-- Le mode **arbitrage** permet d'arbitrer de manière très efficace une partie duplicate, potentiellement
-  avec un grand nombre de joueurs.
+- >-
+  **Classique** (appelé *Partie libre* dans Eliot) : jouez à tour de rôle, chacun avec son tirage.
+  Idéal pour jouer en famille ou entre amis.
+- >-
+  **Duplicate** : tous les joueurs utilisent le même tirage et la même grille. Chacun marque
+  les points de son mot, et le meilleur coup est joué sur la grille. Un mode courant en club
+  et en compétition.
+- >-
+  **Entraînement** : progressez seul au duplicate en choisissant votre tirage et en explorant
+  les coups possibles.
+- >-
+  **Arbitrage** : gérez une partie duplicate en club ou en compétition, en enregistrant les coups
+  des joueurs et en choisissant le coup joué sur la grille commune.
+- >-
+  **Topping** : trouvez le coup qui rapporte le plus de points le plus vite possible.
+  Vous pouvez faire plusieurs essais et demander des indices, au prix de pénalités de temps.
+  Un défi pour les joueurs expérimentés.
 ---
 
 ## Jeu de Scrabble gratuit
@@ -22,7 +30,7 @@ Eliot est un jeu de Scrabble [open source](http://fr.wikipedia.org/wiki/Open_Sou
 
 Cette indication de licence concerne le logiciel Eliot. Pour les listes de mots, les illustrations du site et les articles cités, vérifiez les conditions de réutilisation auprès de leurs sources respectives.
 
-Eliot propose quatre différents **modes de jeu** :
+Eliot propose cinq différents **modes de jeu** :
 
 {{< game-modes >}}
 
