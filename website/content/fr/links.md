@@ -4,21 +4,22 @@ aliases:
 - /links.html
 ---
 
-## Technique
+## Projet Eliot
 
-- Accès au [projet sur GitHub](https://github.com/ipkiss42/eliot)
+- [Eliot sur GitHub](https://github.com/ipkiss42/eliot)
 - [Archives des nouveautés](/fr/news/)
-- Accès au [projet sur Ohloh](http://www.ohloh.net/p/eliot)
-- [Format de dictionnaire DAWG](http://www.wutka.com/dawg.html) : le format utilisé pour les dictionnaires d'Eliot
-- [The World's Fastest Scrabble Program](/download/aj.pdf) : algorithme de recherche utilisé par Eliot (par Andrew W. Appel et Guy J. Jacobson)
-- [A Faster Scrabble Move Generation Algorithm](http://www.ericsink.com/downloads/faster-scrabble-gordon.pdf) : amélioration de l'algorithme précédent (par Steven A. Gordon)
-- [Bibliothèque Qt](http://trolltech.com/products/qt/) : utilisée pour l'interface graphique d'Eliot
+- [Eliot sur Open Hub](https://openhub.net/p/eliot)
 
-## Scrabble
+## Autres outils de Scrabble {#scrabble}
 
-- [Zyzzyva](http://zyzzyva.net/) : programme gratuit et puissant pour étudier les mots. Supporte plusieurs dictionnaires.
-- [Internet Scrabble Club](http://www.isc.ro/fr/) : un site gratuit pour jouer au Scrabble dans plusieurs langues, dont le français (avec l'Officiel du Scrabble !)
-- [Quackle](http://people.csail.mit.edu/jasonkb/quackle/) : un jeu spécialisé dans l'analyse de parties (mode classique)
-- [Lampword](http://members.shaw.ca/lampwords/) : un jeu de Scrabble pour PalmPilot par Paul Sidorsky
-- Le [site de Scrabble de Montpellier](http://www.montpellier-scrabble.org/)
-- Les pages de [Patrick Jenty](http://patrick.jenty.free.fr/)
+- [NASPA Zyzzyva](https://www.scrabbleplayers.org/w/NASPA_Zyzzyva:_The_Last_Word_in_Word_Study) : étude des mots et vérification des mots joués (site en anglais).
+- [Internet Scrabble Club](https://isc.ro/fr/) : Scrabble en ligne dans plusieurs langues.
+- [Quackle](https://www.quackle.org/) : analyse de parties classiques et jeu contre l’ordinateur (site en anglais).
+- [Scrabble3D](https://github.com/Scrabble3D) : Scrabble sur des plateaux classiques ou en trois dimensions.
+
+## Lectures techniques {#technique}
+
+- [Structure de données DAWG](https://www.wutka.com/dawg.html) : la structure utilisée pour les dictionnaires d’Eliot (en anglais).
+- [The World's Fastest Scrabble Program](/download/aj.pdf) (PDF, en anglais) — Andrew W. Appel et Guy J. Jacobson, 1988. L’algorithme de génération des coups utilisé dans Eliot.
+- [A Faster Scrabble Move Generation Algorithm](https://ericsink.com/downloads/faster-scrabble-gordon.pdf) (PDF, en anglais) — Steven A. Gordon, 1994. L’algorithme de génération des coups avec un GADDAG.
+- [Documentation Qt](https://doc.qt.io/qt-6/) : documentation du framework utilisé pour l’interface graphique d’Eliot (en anglais).

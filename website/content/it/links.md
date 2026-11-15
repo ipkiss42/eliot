@@ -4,22 +4,22 @@ aliases:
 - /links.html
 ---
 
-## Link tecnici
+## Progetto Eliot
 
-- Accesso al progetto [Eliot su GitHub](https://github.com/ipkiss42/eliot)
+- [Eliot su GitHub](https://github.com/ipkiss42/eliot)
 - [Archivio delle novità](/it/news/)
-- Accesso al progetto [Eliot su Ohloh](http://www.ohloh.net/p/eliot)
-- [DAWG dictionary format](http://www.wutka.com/dawg.html): il formato usato per i dizionari di Eliot
-- [The World's Fastest Scrabble Program](/download/aj.pdf): algoritmo di ricerca usato in Eliot (di Andrew W. Appel e Guy J. Jacobson)
-- [A Faster Scrabble Move Generation Algorithm](http://www.ericsink.com/downloads/faster-scrabble-gordon.pdf): un miglioramento del precedente algoritmo (di Steven A. Gordon)
-- [Qt library](http://trolltech.com/products/qt/): usata in Eliot per l'interfaccia grafica utente
+- [Eliot su Open Hub](https://openhub.net/p/eliot)
 
-## Scrabble
+## Altri strumenti per Scrabble {#scrabble}
 
-- [Zyzzyva](http://zyzzyva.net/): un software potente e gratuito per lo studio delle parole. Supporta molti dizionari.
-- [Internet Scrabble Club](http://www.isc.ro/): un sito gratuito per giocare a Scrabble online; sono disponibili diversi dizionari (inglese, francese, italiano, rumeno e olandese)
-- [Quackle](http://web.mit.edu/jasonkb/www/quackle/): un programma di Scrabble specializzato nell'analisi del gioco (modalità classica)
-- [Lampword](http://members.shaw.ca/lampwords/): un gioco di Scrabble per PalmPilot di Paul Sidorsky (in francese)
-- [Montpellier Scrabble club](http://www.montpellier-scrabble.org/) (in francese)
-- [Patrick Jenty's pages](http://patrick.jenty.free.fr/) (in francese)
-- [Scrabble 3D](http://sourceforge.net/projects/scrabble/): Un gioco di Scrabble open source con molte funzioni speciali ed un server internet dedicato al gioco online
+- [NASPA Zyzzyva](https://www.scrabbleplayers.org/w/NASPA_Zyzzyva:_The_Last_Word_in_Word_Study): studio delle parole e verifica delle parole giocate (sito in inglese).
+- [Internet Scrabble Club](https://isc.ro/): Scrabble online in diverse lingue.
+- [Quackle](https://www.quackle.org/): analisi di partite classiche e gioco contro il computer (sito in inglese).
+- [Scrabble3D](https://github.com/Scrabble3D): Scrabble su tabelloni classici o tridimensionali.
+
+## Approfondimenti tecnici {#link-tecnici}
+
+- [Struttura dati DAWG](https://www.wutka.com/dawg.html): la struttura utilizzata per i dizionari di Eliot (in inglese).
+- [The World's Fastest Scrabble Program](/download/aj.pdf) (PDF, in inglese) — Andrew W. Appel e Guy J. Jacobson, 1988. L’algoritmo di generazione delle mosse utilizzato in Eliot.
+- [A Faster Scrabble Move Generation Algorithm](https://ericsink.com/downloads/faster-scrabble-gordon.pdf) (PDF, in inglese) — Steven A. Gordon, 1994. L’algoritmo di generazione delle mosse con un GADDAG.
+- [Documentazione Qt](https://doc.qt.io/qt-6/): documentazione del framework utilizzato per l’interfaccia grafica di Eliot (in inglese).
