@@ -1,0 +1,18 @@
+- version: '2.1'
+  images:
+    - id: arbitration
+      file: eliot-2.1-arbitration.png
+    - id: statistics
+      file: eliot-2.1-statistics.png
+- version: '1.11b'
+  images:
+    - id: macos
+      file: eliot-1.11b-macosx.png
+- version: '1.7'
+  images:
+    - id: duplicate
+      file: eliot-1.7-duplicate.png
+    - id: classic
+      file: eliot-1.7-freegame.png
+    - id: training
+      file: eliot-1.7-training.png

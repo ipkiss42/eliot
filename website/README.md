@@ -70,6 +70,7 @@ page when checking layout and structure.
 
 - `content/en/`, `content/fr/`, `content/it/`: translated Markdown pages
 - `i18n/`: translated navigation labels and footer text
+- `data/screenshots.yaml`: shared screenshot inventory, grouped by version
 - `layouts/`: shared document structure, partials, and shortcodes
 - `static/layout/eliot.css`: site styling
 - `static/img/`, `static/layout/`, `static/download/`: images and downloadable files
@@ -83,6 +84,17 @@ overview, including the descriptions used by the `game-modes` shortcode.
 The `dictionary-index` shortcode lists the sections of the current language's
 `dict.md`, using its heading labels and IDs. Use it on dictionary and download
 pages; adding a dictionary section automatically updates both indexes.
+
+The `screenshots` shortcode renders the shared gallery from `data/screenshots.yaml`
+and the captions in each language's `screenshots.md`. Add original images to
+`static/img/`; Hugo also mounts this directory as image resources and generates
+WebP thumbnails during the build. Full-size image URLs stay unchanged; generated
+thumbnails do not need to be committed.
+The homepages' `screenshotsAnchor` values preserve former screenshot-section
+bookmarks on the gallery menu link.
+
+Hugo fingerprints the stylesheet from `static/layout/eliot.css`, so CSS changes
+get a new URL and browsers fetch the matching styles after an update.
 
 The current page and language are highlighted in navigation. If a translation
 is missing, its language name is shown without a link, with an explanation on

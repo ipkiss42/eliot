@@ -9,6 +9,14 @@ from = '/**'
 to = '/fr/404.html'
 status = 404
 
+[[module.mounts]]
+source = 'static/img'
+target = 'assets/screenshots'
+
+[[module.mounts]]
+source = 'static/layout'
+target = 'assets/layout'
+
 [module.hugoVersion]
 min = '0.167.0'
 

@@ -1,0 +1,21 @@
+{{ $page := .Page }}
+{{ range hugo.Data.screenshots }}
+  <h2 id="eliot-{{ .version | anchorize }}">Eliot {{ .version }}</h2>
+  {{ if eq .version "2.1" }}
+    {{ $page.RenderString (dict "display" "block") $page.Params.related }}
+  {{ end }}
+  <div class="screenshot-gallery">
+    {{ range .images }}
+      {{ $image := resources.Get (printf "screenshots/%s" .file) }}
+      {{ $thumbnail := $image.Fit "560x420 webp" }}
+      {{ $largeThumbnail := $image.Fit "1120x840 webp" }}
+      {{ $captionID := printf "caption-%s" .id }}
+      <figure>
+        <a class="screenshot-thumbnail" href="{{ printf "img/%s" .file | relURL }}" aria-labelledby="{{ $captionID }}">
+          <img src="{{ $thumbnail.RelPermalink }}" srcset="{{ $thumbnail.RelPermalink }} {{ $thumbnail.Width }}w, {{ $largeThumbnail.RelPermalink }} {{ $largeThumbnail.Width }}w" sizes="(max-width: 850px) calc(100vw - 210px), (max-width: 1250px) calc((100vw - 230px) / 2), 510px" alt="" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" loading="lazy" decoding="async">
+        </a>
+        <figcaption id="{{ $captionID }}">{{ index $page.Params.captions .id }}</figcaption>
+      </figure>
+    {{ end }}
+  </div>
+{{ end }}

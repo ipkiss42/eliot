@@ -1,5 +1,6 @@
 ---
 title: Eliot
+screenshotsAnchor: schermate
 aliases:
 - /overview.html
 - /overview/
@@ -30,16 +31,3 @@ Eliot offre anche molti strumenti per la ricerca avanzata, come:
 - Ricerca della mossa migliore per un dato schema e leggio. Questa ricerca è quasi istantanea!
 - Ricerca di possibili connessioni, "Sciarade" (aggiunta di tre lettere all'inizio di una parola preesistente), o per tutte le parole che possono essere composte con le lettere sul leggio.
 - È inoltre possibile utilizzare [espressioni regolari](http://it.wikipedia.org/wiki/Espressione_regolare) da cercare nel dizionario.
-
-## Schermate
-
-- Eliot 2.1:
-  - A [game in arbitration mode](/img/eliot-2.1-arbitration.png)
-  - The [statistics window](/img/eliot-2.1-statistics.png) for the [same game](/download/eliot-2.1-arbitration.xml)
-  - The [generated HTML page](/download/eliot-2.1-stats.html), still for the [same game](/download/eliot-2.1-arbitration.xml)
-- Eliot 1.11b:
-  - Una [partita classica](/img/eliot-1.11b-macosx.png) su Mac OS X, con il dizionario catalano
-- Eliot 1.7:
-  - Una [partita a duplicato](/img/eliot-1.7-duplicate.png) su Ubuntu
-  - Una [partita classica](/img/eliot-1.7-freegame.png)
-  - Una [partita di allenamento](/img/eliot-1.7-training.png), con interfaccia in inglese

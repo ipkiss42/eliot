@@ -15,7 +15,8 @@
   <link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
   {{ end }}
   <link rel="icon" href="{{ "layout/favicon.ico" | relURL }}">
-  <link rel="stylesheet" href="{{ "layout/eliot.css" | relURL }}">
+  {{ $stylesheet := resources.Get "layout/eliot.css" | fingerprint }}
+  <link rel="stylesheet" href="{{ $stylesheet.RelPermalink }}">
 </head>
 <body>
   <header class="site-header">

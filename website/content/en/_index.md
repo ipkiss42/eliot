@@ -1,5 +1,6 @@
 ---
 title: Eliot
+screenshotsAnchor: screenshots
 aliases:
 - /overview.html
 - /overview/
@@ -30,16 +31,3 @@ Eliot also provides many tools for advanced **search** such as the following:
 - Search for the best move on a given board and rack. This search is almost instantaneous!
 - Search for the possible connections, "Benjamins" (addition of three letters at the beginning of a previous word), or for all the words that can be composed with the letters of the rack.
 - You can also use [regular expressions](http://en.wikipedia.org/wiki/Regular_expression) to search in the dictionary.
-
-## Screenshots
-
-- Eliot 2.1:
-  - A [game in arbitration mode](/img/eliot-2.1-arbitration.png)
-  - The [statistics window](/img/eliot-2.1-statistics.png) for the [same game](/download/eliot-2.1-arbitration.xml)
-  - The [generated HTML page](/download/eliot-2.1-stats.html), still for the [same game](/download/eliot-2.1-arbitration.xml)
-- Eliot 1.11b:
-  - A [classic game](/img/eliot-1.11b-macosx.png) on Mac OS X, with the Catalan dictionary
-- Eliot 1.7:
-  - A [duplicate game](/img/eliot-1.7-duplicate.png) on Ubuntu
-  - A [classic game](/img/eliot-1.7-freegame.png)
-  - A [training mode game](/img/eliot-1.7-training.png), with English interface
