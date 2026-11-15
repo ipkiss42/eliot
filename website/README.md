@@ -84,6 +84,8 @@ installation overview at `/<language>/install/`; `/download/` and
 Each language's `_index.md` defines its overview, including the descriptions
 used by the `game-modes` shortcode.
 
+Each language's `news.md` contains the full historical news archive.
+
 The `dictionary-index` shortcode lists the sections of the current language's
 `dict.md`, using its heading labels and IDs. Use it on dictionary and
 installation pages; adding a dictionary section automatically updates both indexes.
