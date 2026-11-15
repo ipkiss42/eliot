@@ -1,4 +1,5 @@
 ---
+type: installation
 title: Installer Eliot sous Windows
 aliases:
 - /dl-windows.html
@@ -6,14 +7,18 @@ aliases:
 
 ## Eliot 2.1 {#version-21}
 
-Cette version d'Eliot fonctionne sur toutes les versions de Windows à partir de Windows 2000.{{< br >}} Aucun programme d’installation n’est nécessaire ; il suffit de décompresser le fichier dans un répertoire.
+Le paquet Windows contient Eliot 2.1, initialement proposé pour Windows 2000 et les versions suivantes. Il s’agit d’une archive ZIP ; aucun programme d’installation n’est nécessaire.
 
-- [eliot-2.1-win32.zip](http://dl.sv.nongnu.org/releases/eliot/releases/2.1/eliot-2.1-win32.zip)
+1. Téléchargez [eliot-2.1-win32.zip](https://dl.sv.nongnu.org/releases/eliot/releases/2.1/eliot-2.1-win32.zip).
+2. Décompressez **toute l’archive** dans le dossier de votre choix.
+3. Ouvrez le dossier `eliot-2.1` extrait et lancez **`eliot.exe`**. Conservez les autres fichiers à ses côtés.
 
 ## Code source
 
-Si vous le souhaitez, vous pouvez également télécharger le [code source](/fr/dl-sources/).
+Pour compiler Eliot vous-même, consultez le [code source et les instructions de compilation](/fr/dl-sources/).
 
 ## Anciennes versions
 
-Vous pouvez télécharger les anciennes versions d'Eliot sur [Savannah](http://dl.sv.nongnu.org/releases/eliot/releases/).
+Les anciens paquets se trouvent dans les [archives des versions sur Savannah](http://dl.sv.nongnu.org/releases/eliot/releases/).
+
+{{< installation-next >}}

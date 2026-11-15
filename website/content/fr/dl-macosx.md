@@ -1,4 +1,5 @@
 ---
+type: installation
 title: Installer Eliot sous Mac OS X
 aliases:
 - /dl-macosx.html
@@ -6,16 +7,22 @@ aliases:
 
 ## Paquet Mac OS X
 
-Le paquet précompilé ci-dessous fonctionne sur Mac OS X 10.6 ou ultérieur :
+L’image disque proposée ici contient Eliot 2.1, initialement prévu pour Mac OS X 10.6 et les versions suivantes.
 
-- [eliot-2.1.dmg](http://dl.sv.nongnu.org/releases/eliot/releases/2.1/eliot-2.1.dmg)
-
-Pour Mac OS X 10.4 et 10.5, il est possible d'utiliser [Eliot 1.12](http://dl.sv.nongnu.org/releases/eliot/releases/1.12/eliot-1.12.dmg).
+- [Télécharger eliot-2.1.dmg](https://dl.sv.nongnu.org/releases/eliot/releases/2.1/eliot-2.1.dmg)
 
 ## Installation
 
-Eliot pour Mac OS X est distribué sous la forme d'une image (`.dmg`). Pour l'installer, il suffit d'ouvrir le fichier, et de copier Eliot sur votre disque dur (par exemple dans le dossier `/Applications`).
+1. Ouvrez l’image disque `.dmg` téléchargée.
+2. Copiez **Eliot** dans votre dossier **Applications** (`/Applications`).
+3. Ouvrez Eliot depuis le dossier Applications.
 
 ## Code source
 
-Si vous le souhaitez, vous pouvez également télécharger le [code source](/fr/dl-sources/).
+Pour compiler Eliot vous-même, consultez le [code source et les instructions de compilation](/fr/dl-sources/).
+
+## Anciennes versions
+
+Le paquet historique pour Mac OS X 10.4 et 10.5 est [Eliot 1.12](http://dl.sv.nongnu.org/releases/eliot/releases/1.12/eliot-1.12.dmg).
+
+{{< installation-next >}}

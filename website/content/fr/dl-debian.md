@@ -1,4 +1,5 @@
 ---
+type: installation
 title: Installer Eliot sous Debian/Ubuntu
 aliases:
 - /dl-debian.html
@@ -6,26 +7,33 @@ aliases:
 
 ## Distributions basées sur Ubuntu
 
-Pour les distributions basées sur Ubuntu (telles que [Ubuntu](http://www.ubuntu.com/) ou [Linux Mint](http://linuxmint.com/)), des paquets précompilés sont disponibles sur un [PPA](http://doc.ubuntu-fr.org/ppa). On peut trouver beaucoup d'informations en ligne sur la manière d'installer un PPA, mais cela se résume généralement à :
+Le [PPA d’Eliot](https://launchpad.net/~ipkiss-0/+archive/ubuntu/ppa-eliot) propose des paquets pour d’anciennes versions d’Ubuntu. **Vérifiez que votre version d’Ubuntu figure dans la liste** du PPA avant de l’ajouter.
 
-- `sudo add-apt-repository ppa:ipkiss-0/ppa-eliot`
-- `sudo apt update`
-- `sudo apt install eliot`
+Si des paquets sont disponibles pour votre version, exécutez ces commandes dans un terminal :
 
-Cette méthode devrait fonctionner à partir d'Ubuntu 11.10 (oneiric).
+```sh
+sudo add-apt-repository ppa:ipkiss-0/ppa-eliot
+sudo apt update
+sudo apt install eliot
+```
 
-**Note :** après une nouvelle version d'Ubuntu, cela peut prendre quelques jours avant que les paquets ne soient disponibles sur le PPA.
+Si votre version ne figure pas dans la liste, consultez la [compilation depuis les sources](#code-source) ci-dessous ou [demandez de l’aide pour l’installation](/fr/help/#eliot-dev).
 
 ## Autres distributions basées sur Debian
 
-Les autres distributions basées sur Debian peuvent probablement utiliser les mêmes paquets, mais l'installation est moins pratique.
+Pour une installation manuelle, consultez les [détails des paquets](https://launchpad.net/~ipkiss-0/+archive/ppa-eliot/+packages) et recherchez une compilation adaptée à votre version de distribution et à l’architecture de votre processeur. Le PPA contient des paquets Ubuntu ; leur présence ne garantit pas leur compatibilité avec Debian.
 
-- [Télécharger](https://launchpad.net/~ipkiss-0/+archive/ppa-eliot/+packages) les paquets "eliot" et "libarabica" (fichiers `.deb`) pour la bonne architecture (i386 ou amd64)
-- Les installer (en adaptant les noms de fichiers) : `sudo dpkg -i libarabica-202004-focal1_amd64.deb eliot_2.2-focal1_amd64.deb`
+Téléchargez les fichiers `.deb` d’`eliot` et de `libarabica` correspondant à cette compilation. Par exemple, les paquets historiques pour Ubuntu 20.04 (Focal), amd64, s’installent avec cette commande, depuis le dossier où se trouvent les fichiers téléchargés :
+
+```sh
+sudo dpkg -i libarabica_202004-1_amd64.deb eliot_2.2-focal1_amd64.deb
+```
+
+Pour une autre compilation, utilisez les noms des fichiers que vous avez téléchargés.
 
 ## Code source
 
-Si vous le souhaitez, vous pouvez également télécharger le [code source](/fr/dl-sources/).
+Si aucun paquet adapté n’est disponible, consultez le [code source et les instructions de compilation](/fr/dl-sources/).
 
 ### Dépendances de la version de développement actuelle
 
@@ -41,3 +49,5 @@ Le code actuel nécessite CMake 4.3 ou une version ultérieure et un compilateur
 Les fonctions optionnelles en terminal utilisent `libreadline-dev` (édition de ligne) et `libncurses-dev` (interface curses avec caractères larges).
 
 Il s’agit des dépendances de compilation du code actuel. Les anciens paquets `.deb` d’Eliot 2.2 ci-dessus ont leurs propres dépendances d’exécution.
+
+{{< installation-next >}}

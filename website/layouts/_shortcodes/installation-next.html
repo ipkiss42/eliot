@@ -1,0 +1,6 @@
+{{ $install := .Page.Site.GetPage "install" }}
+{{ $help := .Page.Site.GetPage "help" }}
+<nav class="installation-next" aria-label="{{ i18n "installationNavigation" }}">
+  <p><a href="{{ $install.RelPermalink }}">{{ i18n "installationContinue" }}</a></p>
+  <p><a href="{{ $help.RelPermalink }}#eliot-dev">{{ i18n "installationHelp" }}</a></p>
+</nav>

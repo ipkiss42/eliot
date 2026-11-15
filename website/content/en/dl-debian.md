@@ -1,4 +1,5 @@
 ---
+type: installation
 title: Install Eliot on Debian/Ubuntu
 aliases:
 - /dl-debian.html
@@ -6,26 +7,33 @@ aliases:
 
 ## Ubuntu-based distributions
 
-For Ubuntu-based distributions (such as [Ubuntu](http://www.ubuntu.com/) or [Linux Mint](http://linuxmint.com/)), precompiled packages are available on a [PPA](https://en.wikipedia.org/wiki/Personal_Package_Archive). There is a lot of documentation online about how to activate a PPA, but usually the following is enough:
+The [Eliot PPA](https://launchpad.net/~ipkiss-0/+archive/ubuntu/ppa-eliot) provides packages for older Ubuntu releases. **Check that your Ubuntu release is listed** on the PPA page before adding it.
 
-- `sudo add-apt-repository ppa:ipkiss-0/ppa-eliot`
-- `sudo apt update`
-- `sudo apt install eliot`
+If packages are available for your release, run these commands in a terminal:
 
-This method should work starting from Ubuntu 11.10 (oneiric).{{< br >}}
+```sh
+sudo add-apt-repository ppa:ipkiss-0/ppa-eliot
+sudo apt update
+sudo apt install eliot
+```
 
-**Note:** after a new release of Ubuntu it may take a few days before the packages are available on the PPA.
+If your release is not listed, see the [source-build option](#source-code) below or [ask for installation help](/en/help/#eliot-dev).
 
 ## Other Debian-based distributions
 
-Other Debian-based distributions can probably also use the same packages, but the installation is less practical.
+For manual installation, check the [package details](https://launchpad.net/~ipkiss-0/+archive/ppa-eliot/+packages) for a build matching your distribution release and processor architecture. The PPA contains Ubuntu packages; availability there does not establish compatibility with Debian.
 
-- [Download](https://launchpad.net/~ipkiss-0/+archive/ppa-eliot/+packages) the "eliot" and "libarabica" packages (`.deb` files) for your architecture (i386 or amd64)
-- Install them (changing the file names accordingly): `sudo dpkg -i libarabica-202004-focal1_amd64.deb eliot_2.2-focal1_amd64.deb`
+Download the `eliot` and `libarabica` `.deb` files for the matching build. For example, the historical Ubuntu 20.04 (Focal), amd64 packages use this command from the folder containing the downloaded files:
+
+```sh
+sudo dpkg -i libarabica_202004-1_amd64.deb eliot_2.2-focal1_amd64.deb
+```
+
+Use the filenames of your downloaded packages when installing a different build.
 
 ## Source code
 
-If you want, you can download the [source code](/en/dl-sources/) of Eliot.
+If no suitable package is available, see the [source code and build instructions](/en/dl-sources/).
 
 ### Dependencies for the current development version
 
@@ -41,3 +49,5 @@ The current source requires CMake 4.3 or newer and a C++23-capable compiler; che
 Optional terminal support uses `libreadline-dev` (line editing) and `libncurses-dev` (wide-character curses interface).
 
 These are build dependencies for the current source. The historical Eliot 2.2 `.deb` packages above have their own runtime dependencies.
+
+{{< installation-next >}}

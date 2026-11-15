@@ -81,6 +81,12 @@ filenames to connect translations, and the language selector opens the
 translation of the current page. Each language's `install.md` defines the
 installation overview at `/<language>/install/`; `/download/` and
 `download.html` aliases within each language preserve older links.
+Installation pages use `type: installation` for shared list and command styling.
+The overview covers software, dictionaries, and first launch; platform/source
+pages use `{{< installation-next >}}` for shared onward and email-help links.
+Keep menu names in the first-launch instructions consistent with the application's
+translation catalogs. Historical package compatibility and current development
+build requirements describe different versions; keep that distinction explicit.
 Each language's `_index.md` defines its overview, including the descriptions
 used by the `game-modes` shortcode.
 

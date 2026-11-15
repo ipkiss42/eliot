@@ -1,19 +1,29 @@
 ---
+type: installation
 title: Codice sorgente
 aliases:
 - /dl-sources.html
 ---
 
-## Eliot 2.1
+## Eliot 2.2 {#eliot-21}
 
-Ultima versione: [eliot-2.2.tar.gz](http://dl.sv.nongnu.org/releases/eliot/releases/2.2/eliot-2.2.tar.gz){{< br >}} Le istruzioni di compilazione sono descritte nel file `INSTALL`, fornito con il codice sorgente. In caso di problemi nel compilare il programma, è possibile chiedere aiuto sulla lista di discussione eliot-dev (vedi sezione [Aiuto](/it/help/)).
+Scaricate l’archivio del codice sorgente della versione pubblicata: [eliot-2.2.tar.gz](https://dl.sv.nongnu.org/releases/eliot/releases/2.2/eliot-2.2.tar.gz).
+
+Estraete l’archivio e seguite il file `INSTALL` al suo interno. Descrive le dipendenze e i comandi di compilazione di quella versione.
 
 ## Versione di sviluppo
 
-La versione di sviluppo è disponibile tramite Git. Per ottenerla, è possibile utilizzare il seguente comando:
+Il codice di sviluppo è disponibile su [GitHub](https://github.com/ipkiss42/eliot). Per scaricarlo con Git:
 
-- `git clone https://github.com/ipkiss42/eliot.git`
+```sh
+git clone https://github.com/ipkiss42/eliot.git
+cd eliot
+```
+
+Leggete il file `INSTALL` di questa copia prima di compilare. Le versioni pubblicata e di sviluppo hanno dipendenze diverse; la [pagina Debian/Ubuntu](/it/dl-debian/#dipendenze-della-versione-di-sviluppo-attuale) elenca i requisiti di compilazione del codice attuale per questi sistemi.
 
 ## Vecchie versioni
 
-Puoi scaricare vecchie versioni di Eliot su [Savannah](http://dl.sv.nongnu.org/releases/eliot/releases/).
+I vecchi archivi del codice sorgente sono disponibili nell’[archivio delle versioni su Savannah](http://dl.sv.nongnu.org/releases/eliot/releases/).
+
+{{< installation-next >}}

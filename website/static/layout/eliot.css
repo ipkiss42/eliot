@@ -226,6 +226,32 @@ code {
   line-height: 1.5;
 }
 
+.installation {
+  line-height: 1.5;
+}
+
+.installation > ul > li,
+.installation > ol > li {
+  margin: 0 12px 10px 32px;
+}
+
+.installation pre {
+  margin: 5px 12px 15px 5px;
+  padding: 10px;
+  overflow-x: auto;
+}
+
+.installation-next {
+  margin-top: 15px;
+  padding-top: 5px;
+  border-top: 1px solid #52799e;
+}
+
+.installation-next a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
 .content-space {
   height: 1lh;
 }

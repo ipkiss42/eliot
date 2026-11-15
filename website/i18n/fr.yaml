@@ -17,3 +17,6 @@ screenshots: Captures d’écran
 resources: Ressources
 newsArchive: Archives des nouveautés
 secondaryNavigation: Navigation complémentaire
+installationNavigation: Suite de l’installation
+installationContinue: 'Poursuivre : choisir un dictionnaire et démarrer une partie'
+installationHelp: Demander de l’aide par e-mail pour l’installation
