@@ -484,11 +484,15 @@ void commonCommands(PublicGame &iGame, const vector<wstring> &tokens)
         displayData(iGame, tokens);
     else if (command == L'd')
     {
-        const wstring &word = parseLetters(tokens, 1, iGame.getDic());
-        if (iGame.getDic().searchWord(word))
-            std::println("le mot -{}- existe", lfw(word));
+        const Dictionary &dic = iGame.getDic();
+        const wstring &word = parseLetters(tokens, 1, dic);
+        const string displayWord = dic.validateLetters(word)
+            ? lfd(dic.convertToDisplay(word))
+            : lfw(word);
+        if (dic.searchWord(word))
+            std::println("le mot -{}- existe", displayWord);
         else
-            std::println("le mot -{}- n'existe pas", lfw(word));
+            std::println("le mot -{}- n'existe pas", displayWord);
     }
     else if (command == L'h')
     {
