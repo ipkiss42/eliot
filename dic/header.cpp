@@ -629,13 +629,13 @@ void Header::print(ostream &out) const
             f6 = centerAndConvert(it->second.display, sz("Display"));
             bool first = true;
             string s;
-            for (unsigned long j = 0; j < inputs.size(); ++j)
+            for (const auto & input : inputs)
             {
                 if (first)
                     first = false;
                 else
                     s += " ";
-                s += lfw(inputs[j]);
+                s += lfw(input);
             }
             f7 = s;
         }
