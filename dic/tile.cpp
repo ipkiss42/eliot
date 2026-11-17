@@ -111,7 +111,7 @@ wstring Tile::getInternalStr() const
 {
     if (m_code == 0)
         throw DicException("Tile::getInternalStr: Invalid tile");
-    return wstring(1, toChar());
+    return {1, toChar()};
 }
 
 
